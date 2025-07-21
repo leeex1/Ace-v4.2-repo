@@ -4,6 +4,12 @@
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
+   [                            Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
    1. Definitions.
 
       "License" shall mean the terms and conditions for use, reproduction,
@@ -175,7 +181,41 @@
 
    END OF TERMS AND CONDITIONS
 
-   APPENDIX: How to apply the Apache License to your work.
+   ----
+
+                       Commons Clause License Condition v1.0
+
+   The Software is provided to you by the Licensor under the License
+   (Apache License, Version 2.0), subject to the following condition:
+
+   Without limiting other conditions in the License, the grant of
+   rights under the License does not include, and the License does not
+   grant to you, the right to “Sell” the Software.
+
+   For purposes of this condition, “Sell” means using any rights
+   granted under the License to provide the Software, alone or
+   substantially unchanged, to third parties for a fee or other
+   consideration (including hosting, support, or consulting services),
+   **without** providing:
+
+     (a) clear attribution to the original Licensor (e.g., "This includes
+         Software © YEAR LicensorName"),
+     (b) a **revenue share of at least X%** of fees collected.
+
+   You may develop upon, embed, redistribute, or sell a **derivative
+   work** or larger product that includes the Software — **so long as**
+   the value does not derive *entirely or substantially* from the
+   original Software.
+
+   Any notices required by the License **must** also include this
+   Commons Clause text.
+
+   Software: [Ace v4.2 and any other itteration]
+   License: Apache License, Version 2.0 + Commons Clause v1.0
+   Licensor: [Joshua Don Lee]
+
+
+APPENDIX: How to apply the Apache License to your work.
 
       To apply the Apache License to your work, attach the following
       boilerplate notice, with the fields enclosed by brackets "[]"
@@ -186,7 +226,7 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [yyyy] [name of copyright owner]
+   Copyright [2025] [Joshua Don Lee]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
