@@ -13,19 +13,19 @@ Here is a guide
 
 Deployments may vary deplending on subscription plan 
 
-Gpt = $20 (optional as not the best deployment) need plus or better for custom gpt access (20 file hard limit for knowledge section)
-Claude = $20 Plus teir for access to projects and better limits 
-Le Chat = $15 pro recomennded (best bang for buck $15 for alot)
-Gemini custom GeminiGem = $0 free tier dont waste money (10 file knowledge section hard limit)
-Perplexity = $20 pro/enterprise reccomended (pro only needed one time to upload more than 5 files offered by free tier ) 
-Grok = $30 super grok recommended but free works fine (10 file hard limit, bypass add files into project will bug. start conversation with grok normally then move it to the project and regen answer inside project. can check upper left corner of grok to make sure your in the project you want )
+-Gpt = $20 (optional as not the best deployment) need plus or better for custom gpt access (20 file -hard limit for knowledge section)
+-Claude = $20 Plus teir for access to projects and better limits 
+-Le Chat = $15 pro recomennded (best bang for buck $15 for alot)
+-Gemini custom GeminiGem = $0 free tier dont waste money (10 file knowledge section hard limit)
+-Perplexity = $20 pro/enterprise reccomended (pro only needed one time to upload more than 5 files offered by free tier ) 
+-Grok = $30 super grok recommended but free works fine (10 file hard limit, bypass add files into project will bug. start conversation with grok normally then move it to the project and regen answer inside project. can check upper left corner of grok to make sure your in the project you want )
 
 P.S. System prompt can be used alone, but this is a simulated roleplay if you dont have the files 
 
-Deepseek = must be custom host, deepseek platfrom doesn't allow files or system prompts 
-Qwen = must be custom host, Qwen platfrom doesn't allow files or system prompts 
-Kimi K2 = must be custom host, KimiK2 platfrom doesn't allow files or system prompts
-Copilot (microsoft) must be custom host, Copilot platfrom doesn't allow files or system prompts
+-Deepseek = must be custom host, deepseek platfrom doesn't allow files or system prompts 
+-Qwen = must be custom host, Qwen platfrom doesn't allow files or system prompts 
+-Kimi K2 = must be custom host, KimiK2 platfrom doesn't allow files or system prompts
+-Copilot (microsoft) must be custom host, Copilot platfrom doesn't allow files or system prompts
 
 
 
