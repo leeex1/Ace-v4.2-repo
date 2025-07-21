@@ -1,0 +1,4104 @@
+Test Set Answers
+
+id
+string
+answer
+string
+6687ffb1091058ff19128813
+Rxf3, Rf1#
+668825f80a642802bdfeadfa
+D
+668828540a642802bdfeadfc
+yeyo
+669402b41dcb3d5a1ef9e951
+Z+Z+Z+Z+Z
+6696c3734c196f1af6a16fcb
+18
+66b2c7c9795022550abb176b
+$1 + 3x + 6x^2 + 8x^3 + 6x^4 + 3x^5 + x^6$
+66b727d367968fa27f2dddda
+\(-((d - 2k)^2) + d\)
+66b827b9b64deaedfbb997a2
+3
+66b91693d86bff9a12fc1f99
+Katie kicked the knotted kite string, knowing it would take skill to unknot the tangled mess.
+66ba5510db07a3a9151be0d2
+$\mathcal{A}^{\alpha-}(X)$, denoting $\cap_{\delta>0} \mathcal{A}^{\alpha-\delta}(X)$
+66c5c3eae30bdd4f1da62cfc
+\mathbb{Z}
+66e4cdec11c64a7e4051b2d9
+E
+66e70c75bbb9b1754c0869ce
+Sale Law
+66e8784d70625d8c7700315a
+C
+66e883265ab37f0a7da089be
+C
+66e884515ab37f0a7da089bf
+Shuriken
+66e88728ba7d8bc0d5806f3a
+B
+66e8967ae99ca52dd4b94441
+D+1
+66e89811ca68059533a83566
+Yes
+66e89ebe7361982cbfbc5952
+\begin{pmatrix}8&9\\9&8\end{pmatrix}
+66e8a1833aa94517d4573b0d
+Yes
+66e8a23d15c60c2c32f2ba55
+No, the regular subgradient may be empty.
+66e8a3ed3aa94517d4573b14
+\frac{2}{7}
+66e8add1650a03361a14c6f8
+False
+66e8ae603aa94517d4573b32
+1
+66e8ae613aa94517d4573b33
+Final step or Product Desorption Step, 1.4*10^-14 or 1.4E-14 (hr-1)
+66e8b0a9e5eaa390aa9fdde5
+56
+66e8b578d0c1f7390bad120c
+F
+66e8c151efbbc8b5a54da02b
+1430
+66e8ccc4089d1e34c84c76c0
+(1,4,5), (1,3,4,5,6)
+66e8ccd402beabf885334534
+min(max(0, T - z), z)
+66e8cfa03add731d7fce4352
+\frac{1-1/(\pi+1)}{\log(\pi+1)}
+66e8d3ed713a83e8aeddc2f5
+J
+66e8d4736299517dd7a5da8c
+6
+66e8d4d65699cf35c9a1527c
+1/1451520
+66e8db4fe1e483c59165a247
+C
+66e8e05c8bc4119df2ce4395
+J4s
+66e8e1056c0b8ace336996ea
+B
+66e8e473f59e5564daf565b6
+8
+66e8e6c8f59e5564daf565bd
+D
+66e8e8864c478c24f1a7e7b8
+$-m^2/2$
+66e8ea4cacb34dd5dbffa298
+B
+66e8f69b1440516dd6ab54da
+46.24
+66e9032060abc895aedcf460
+5.7
+66e906f860abc895aedcf467
+C
+66e907c51440516dd6ab54fb
+flag{no_zeros}
+66e90adfa5b0e84a801c7660
+H
+66e9100b48468f864f861b90
+-0.5
+66e9172ef3f20cc62f5143a4
+C
+66e9173256ec303aa22ccd37
+5429515560378
+66e91bc08dd8f00467e3d5d8
+D
+66e9249c953867e04c273db7
+(6, 14, 15, 7)
+66e926cd0a94aa76a5ed8df8
+G
+66e932f00bd16d40d4bc4d81
+D
+66e93893a3326adf2da92ef0
+A
+66e939c176b5b4f3e8a369b8
+0
+66e93b7099d9d12b2b824c44
+hereth
+66e942c180435ab1cb1ef049
+TC⁰
+66e9469b76b5b4f3e8a369d5
+48
+66e946fbb78e263c565b17e3
+C
+66e949664ea2c791558f8620
+F
+66e94a88b78e263c565b17ee
+$2\mathbb{Z}$
+66e94bf0d61a79cca258c675
+F(U_i, U_j, U_{ij})
+66e9560659cb31393efa7046
+2, 47176870 steps
+66e9580bc845662f61f3664b
+236(2),236(3),236(3A)
+66e95faf8451a9b41f307932
+California
+66e962f814e5657e81349bfa
+Saint Sebastian
+66e96946cde24c5e61925dc1
+3.14183994
+66e97fd756455f341c7849c3
+D
+66e98ce28056cd9dd9b1d9f6
+$-t^4+2t^3-2t^2+2t+t^{-1}-2t^{-3}+2t^{-4}-2t^{-5}+t^{-6}$
+66e991ec2dad0e536fb92ece
+C
+66e996260930c00374ceaa0b
+4
+66e9a39f2dad0e536fb92efa
+B
+66e9a436876fbf9ff158c137
+4
+66e9ae5ba60f4072c0bf5106
+Shinzou wo Sasageyo!
+66e9b2899cf8fcf41599246f
+K
+66e9b92578e89514d9ab6093
+Benin and Madagascar
+66e9c038d2d1c2dec1f6978e
+352311
+66e9ce9d29eb7c1a0721fdf1
+7
+66e9d06a420b60a0ede79e8e
+4
+66e9e6b3c27ad6bc46adbc20
+\left(N_1N_2 \over n\right)
+66e9fc11c19c8c61add294f0
+1
+66ea031360fbbf249dec70e1
+4
+66ea12bd86227f91af18b88b
+No
+66ea12d21684c1846037a28d
+F
+66ea1dd348eb93c2aef1c735
+E
+66ea216e142383cfe2f74fde
+8
+66ea260280667dae8de4a8ec
+C
+66ea29ab7131229007ccbd9d
+I
+66ea2cc3c602e2b991ae8aba
+684
+66ea355dd1767539f1308fc3
+6
+66ea36e7aa2256fb4c995faf
+kənʃə
+66ea387a7cb8e0fce662592b
+(N+1)\left\lceil \frac{\pi}{2\arcsin \left( \frac{1}{2t} \right)} \right\rceil
+66ea3ba5444b8f31ef575799
+8
+66ea3d3fa715c6c835b25764
+F5 G♭5 G5 F5 G5 F5 E♭5 F5 G5 C5 F5
+66ea3fb6e2dc97dd61195fe6
+D
+66ea4076d1767539f1308fde
+Db5 D5 Eb5 E5 F5 Gb5 Db6 Db6 B5 Ab5
+66ea40e5b44d5e443ba2eac5
+Chromatic Scale
+66ea4881b7291c80d7f10f9d
+I
+66ea534258a0968d95583cd8
+$\frac{3}{10}$
+66ea542e4509a12ed7db1d7b
+29010
+66ea63837c49faf4e570535e
+(3μ_2 - 2μ_3)/e
+66ea6b423082708f0c7163ca
+Virgil Elings
+66ea70cd3d800a43340dd4d0
+Canals on Mars
+66ea7d2cc321286a5288ef06
+624
+66ea814c5544860edb5aa9fa
+1.776 * 10^-3
+66ea857b6b8edd4f56302c06
+A dodecagon
+66ea99e17094e6aa0bc758e7
+8
+66eaa401c7a3252f0f3fe535
+I
+66eaa5414a8ccea7bfdf2df5
+A
+66eaa5ddc7a3252f0f3fe53f
+10
+66eac1d4124e580e615a27dc
+C
+66eadaf22b7de7dec0a046bd
+B
+66eae4e351a34eec5d943952
+23
+66eae565b2e7406d498f8cc9
+H
+66eaeaa8afe364e4f477b777
+A
+66eaed13c47c4325f612ff48
+172.20.0.0 0.0.255.255
+66eaed874f8d520f598dbf11
+D
+66eaf0ba5e31c19691fe73b1
+E
+66eaf1f49c43656de6cf31f6
+E
+66eaf456afe364e4f477b78f
+B
+66eaf77aec7a1adc61bbb13e
+The poem appears with Stans puer ad mensam in Cotton Caligula A.ii
+66eaf9bbb082c5e6a76a49b5
+10
+66eafb96b082c5e6a76a49c0
+C
+66eb0883f3acd11c70662aff
+$2/\sqrt{3}$
+66eb105d5f6e64fbae56b0fe
+$d^{1/2-1/p}$ if $p > 2$ and $1$ if $p \leq 2$
+66eb1706d3b17bc68156e3e3
+D
+66eb1ad641ef9e7d6011c3be
+teip
+66eb1d84ca5fb5434978190f
+142
+66eb206f99363a31f68414bc
+h6+ Kf6 Ng4#
+66eb2d7378d12ffd1e4d123d
+f bc=X|V|U|T|L
+66eb35e9e3d7202c68806272
+D
+66eb36fbb38dbcd7910ceafc
+B-green
+66eb3aab27b19dd593af7ebe
+A Gathering of Heroes
+66eb3cfb2b3ac1255c97d92a
+{A, C, E, G, I}
+66eb533fcd1fb71d6d1127e4
+Jack of Spades
+66eb894e6feeaea27b557782
+G
+66eb968f69502893cf210115
+4
+66eba0ac68e7d4b6c48bb022
+Q
+66ebb1e8709fbb756c1f7b74
+47
+66ebe6b6a708e0910828c0d6
+Edges are preserved and become sharper
+66ebefa090db075818df99a9
+D
+66ec02c52ec65d6153428744
+B
+66ec0ed8b0ae7f67e365a163
+c4, f4, g4
+66ec11b230ba0debf40b1fec
+B
+66ec3eb19c00ffe17adfde9f
+D
+66ec5671713826aca26a9dba
+e^{-\pi/2}
+66ec5c9bf633b774fa320b36
+273
+66ec5e266f83e1764787e118
+10
+66ec6ad7b64b08f801db4fde
+4
+66ec89f3f215bf00d749dc21
+Kenya
+66ec8ab4b489956467209e0c
+\frac{32}{29}
+66ecb2eb54baa602e636a457
+369
+66ecd3c6e8b95a8f971fb485
+4667348672819419628992129
+66ecddac93c4bf17acb6c106
+1.86
+66ecf59741de2844089fc54b
+E
+66ecfd03e7478ca5fcbb7495
+30
+66ed23aa629fe9acce7dd93d
+Yes, salience include to which part of the stimuly learners direct their attention
+66ed28dfde312a049a78b3ba
+B
+66ed2cfeaa8b7a0620149264
+3
+66ed2fb252c07b4611580699
+$(1/{1088640}, 7, 6)$
+66ed3c5dae789e6253eedddd
+5 1 3 6 8 7 2 4 9
+66ed3e7cd841eb51a985ca7f
+$0, \frac{2^{2n-2}((n-1)!)^2}{n(2n - 1)!}$
+66ed458ed841eb51a985ca8d
+N100+1
+66ed49b5f7d32ce7859d1f48
+8,7
+66ed4b33edca8147396f87f4
+4312
+66ed5611d94c2fb87ded8826
+h5
+66ed58561d24f687ee9b06bb
+G
+66ed5e6a1d24f687ee9b06d1
+Triangle. 0 dots. Arrow is straight up.
+66ed5f1e85adbeda9f978022
+C
+66ed80da7c4ab15ec9270e94
+10
+66ed93471cbe5da13351cd67
+humanity
+66ed96aec2becb9452e4d7b1
+56
+66ed97d1c2becb9452e4d7b4
+(2,1,3)
+66eda111ea64e37f9218600c
+\mu_rho=1/\mu_theta. H_int=H0(R2/R1)
+66edb74f98f720a96783bd0e
+59
+66edbcd4d0ce7f9082f8d736
+G
+66edc256d0ce7f9082f8d744
+5904
+66edc60801af2a724035ad4b
+E
+66edd3dc1ee489494038d9eb
+A
+66edd857a0ffa4c025458242
+6
+66ede973564cb32b38cc8a4a
+$\binom{k}{n}2^{n}$
+66edf49c46d28f04618d6498
+4.73
+66ee01a4126fac9cef29cb8b
+501
+66ee0b4d95cd6c1ce2259e50
+D
+66ee158c5db68805b7d3d27b
+C
+66ee1745f77f20ac4db1fd7b
+The smallest angle is about 35° and it can be achieved orienting the textile at about 17.5°.
+66ee386f26abf77702fa5a5d
+E
+66ee3918d7b2b78925bd20b6
+2469
+66ee60c50e499ab807af71f2
+B
+66ee7549084dcacdcaac6437
+5/2016
+66ee81afdec0afc28a74dc93
+C
+66ee8c598124ad52c77de7ee
+N4
+66ee93ba02314f06feb186cf
+D
+66eea759f76fda99cec44de6
+401
+66eea9e29a4d46950f16c7f2
+-10^35 + 10^30 + 1
+67c7ea98b89aea98883703ed
+$\frac{1}{2}$
+66eed40a01d60ceefc5e586c
+841
+66eed8524a95bab59d824b95
+18800 ms
+66eee253ae4c04f9d17d9420
+3003
+66eee811093c534ea2673f87
+(45221482481175/472728182)\pi^{-10}
+66eeea0187ec4a6a04092e78
+2
+66eef273278112bed8e1d96b
+28
+66eefc79e487aa1349195d5f
+[11,19,22,23,29,30,31,36]
+66ef0afb2bfc879851eeb93f
+4809
+66ef12031fef83a322e4131f
+998069:249517:62379
+66ef20a50312bf74c8ff43a0
+3/8
+66ef2a1b8829dedb61d5627a
+collagen
+66ef2b318829dedb61d5627e
+A) BET $1000 100% B) BET $1000 99%, CHECK 1% C) CALL 1%, FOLD 99%
+66ef37d1e2195ad810081d37
+BET 24 100%
+66ef3de8b8a1ba6e0ba23498
+C
+66ef5b2ee2bec3c64e8e4415
+ULDL
+66ef5d6513bb3ffb31829b6f
+I
+66ef5e39a57b7ef1047d2f58
+\pi
+66ef663370b6c01c3d20a5d5
+yes
+66ef7b50d3cdb68693dc3f5c
+4598
+66ef7b798ec4c5bfcdb205fc
+5x^4 - 325x^2 + 311
+66ef98088171e6ed71be1454
+$6^{\sum_{i = 1}^n a_i} + 6$
+66efa01e327e4a95dc760d01
+C
+66efbf654a006318b6b4e256
+1\2\sqrt{3+1/n^2}
+66efc68bd7d1b7b37f6e1681
+(13, 2028/119)
+66efd054c04acd134cc4bb36
+0
+66efe2bd21f9ff1dde1c4837
+10
+66f000874b6bc4f9d21fc7fa
+(1), (2), (3); (2), (5), (6)
+66f0247d8777dcd82dba8253
+1[*]
+66f02cc56ea864e80ba2d3d7
+4.328
+66f02d3f022a2fa8918f215c
+0
+66f02e237e0e9c9b46db0db3
+47
+66f03563a291f119cd841967
+12,000 migrants, 60,000 acres larger.
+66f042e57cd17eb270eb9ccb
+… Nf3#
+66f052e814be84cc1edd3fbd
+no change
+66f059e79e9f029011633cba
+1. C major, 2. N6 of V/relative, 3. N6/Bm
+66f05a0644e8181fd0e3f69b
+No
+66f05d93454a69621ec1badc
+mat3 Ry=mat3(vec3(cos(a.y),0,sin(a.y)),vec3(0,1,0),vec3(-sin(a.y),0,cos(a.y)));
+66f05e67d297cdebd9abb742
+Japan
+66f095153f4896d6fb81ca59
+$2^{35}+1$
+66f0bc36c6a29a8fa8010813
+A
+66f0ce4bba6f1855fcaa5af3
+$\min\{H, H^2|\mathcal{A}|(1-e^{-\lambda})\}$
+66f0dab31f3d7fb98443ad69
+1, 4, 8
+66f0e2bb707a9da209d68e32
+The current account balance will improve
+66f0ed63707a9da209d68e4f
+46
+66f0f4efd23ed0ac5f43b25f
+B
+66f0f65fd23ed0ac5f43b260
+D
+66f1058e1ce23c0620f1efd8
+H
+66f1384dba7cd382e52dc0c6
+[1, -1+j, 1, -1-j]
+66f162bd5542aa4ebe64481e
+19
+66f19a7b768aced3a5e2ba8a
+118584442309
+66f1a1fdccdf3d48cee44b17
+76
+66f1b5cec75c3ece07124859
+12345
+66f1b940f8bb4425f74e4299
+[1,3]
+66f1bc99f8bb4425f74e42a5
+12
+66f1ce25cd6a2b9d36fe8ea2
+D
+66f1d0828fa08a4717238167
+6
+66f1d9a589b78acd31812b99
+Even n.
+66f1db990130ee934e5b9810
+12, 481043
+66f1e0138e382acde4df9a95
+72
+66f1eeb2f673b42e5c4616e7
+19
+66f20ebbe54b6b68fc3062d3
+3
+66f2298b868e51658baf900a
+55.025 Nm/Kg
+66f248f6a9be6bc83b5b57f7
+$42,250
+66f25c95da5074d064015c54
+5
+66f275c6e2a2b5d3594eae87
+171:933
+66f27d65a40482f6012a4006
+C
+66f28a89f1256af80477e15d
+3:30:N:16000000000000000000
+66f28cc8b866ea3f1f4e95f5
+These are high impedance coils.
+66f2b236b1d41433f8a4edea
+4
+66f2cda3b508188b6e7328a8
+45
+66f2dee46721a56e35d20300
+A
+66f2e2405f45c4f4f424e9a9
+The three-torus $T^3$
+66f2e58b5f45c4f4f424e9ae
+11/18
+66f2e7d9384d43333482ba75
+шашлык, запах, горелым, прибежал, сосед, дошёл, его
+66f2e9b4d18ac34db32642b7
+0
+66f31140cdc5dafd297e9b5a
+B
+66f3117acff7b10052fe1e3d
+MAKEAIGREAT
+66f319f205629941be821347
+$\lfloor n/m\rfloor+\lceil n/m\rceil+1$
+66f330fc96e593d9e020e95a
+$\{A,B\}, \{A,C,D\}, \{A,C,E\}, \{B,D\}$
+66f3380c96e593d9e020e96d
+Negative
+66f358d4cdd3ce36208e23ca
+7
+66f378a504165ae3e4f46de9
+A
+66f3c52f6d142335350bb6e5
+111110001101110010011
+66f3cf8fb5184675d867ef6a
+F
+66f3ee4cd1c77d20ca3338c1
+7
+66f3ef9802a20e79fb9bfb2e
+C6
+66f3f37374771c74247b6892
+C
+66f3fa084a937a16c867c042
+(3999,4000)
+66f3fbaad1c77d20ca3338e6
+German 6/5
+66f402add1c77d20ca3338ef
+Al, Re2Al13; Al, ReAl12; Al, Re2Al9
+66f407a066abc59ffb9a82ae
+28
+66f42e3287046c01dba2115b
+G
+66f44382e369fb72959c8e86
+none
+66f4491ee406283b486f0f51
+321
+66f454d18ab578bcbb18387c
+$\frac{1}{6^{3/2}}$
+66f472d2e4b80835fd2a01bb
+14
+66f47471bba0ce38e1ca559f
+E
+66f4979d41a8777b61cf391a
+A
+66f4a7ba439f15c2c0752479
+36
+66f4aa5df382ae9214c8dc9b
+1121314
+66f52a03c518a8eba1cf963e
+3/2
+66f531b3383872bf2182c10a
+2,60,120
+66f566bb9f9308128679f63e
+$\infty$,$\infty$,1,1,2,$\infty$,1,1,2
+66f56cf9ee58cb70d2bff0e9
+yes
+66f579027a2ac7b4fffe1740
+a: n+1-m, b: m-1
+66f57a7e9f9308128679f668
+B
+66f57e187a2ac7b4fffe174e
+0.05567
+66f57e3ddc7259d8b5bb0b46
+[62720,243]
+66f583effa3f26008ed527e0
+Pierre Léopold Albert Marquet
+66f589b926268030174717bd
+$14+2\sqrt{13}$
+66f5ac3d909b45b3b472d01f
+Bb3 1, Db4 1, F4 2, Bb4 4, Db5 5
+66f5c96b4ae309d465eeca47
+955
+66f5db356e132c6b4fd9408b
+G
+66f5e796acadd55c11fb11f5
+9
+66f5f12b7d734fba2ce800d6
+106
+66f5fa6547b598f037ec67fd
+7
+66f5fd3235147083021a66c6
+12
+66f63324376699e7c6894239
+7527
+66f647ec6b41277283a0813c
+\frac{6}{13}
+66f6743f2db0dfd3e0b594e7
+PVQ
+66f684db71131a41ff244fb9
+6
+66f6a78cf5f84fe0d6bbcb84
+6
+66f6b73a1b586571e550784f
+10
+66f6bffd76e8f5503a11d413
+$10^{980}$
+66f6c390489d30372dbc1816
+$\pi(1-\log 2\pi)$
+66f6d6bb851e7fd5e8e5e5eb
+5
+66f6f048b40ada5ac3b91cf8
+$\frac{k-1}{2}-1$
+66f6f494e56a5e5bc0b5a7af
+31
+66f708eec8903a7f2c03edbe
+126
+66f7218240bd9498c95bfdf3
+[Z, Z, 0, Z/2Z, Z/2Z, Z/3Z]
+66f7292f3f4622b6ce24b961
+\( 2^{cardinality of R} \)
+66f760ebf206a49e129c7ed9
+C
+66f77487fb10531253ee7842
+H
+66f788502fd8c4ffcf2ab3fa
+D
+66f79e7259706e88d28a23b5
+D
+66f7c1bff433ef9260df6e77
+2.5
+66f7fa54fa61639b844aa420
+63
+66f820bb7ea359a842b73398
+1,3
+66f83aed0d92e99048a4ae9d
+D
+66f85b33881bc7c87a8fc0e9
+(1) 1, 2, 2
+66f864c8f7c10f2d2ba396df
+G
+66f86bbb27a30cecdc2d6c7e
+A
+66f87ab781a069162c8e7cd2
+2, 1, 0
+66f883265b247a255a42fba1
+-\frac{2}{5}
+66f88d96e4deeaf4670af95d
+F
+66f8ab9c89c09a99da336b5b
+Scottish Gaelic, Faroese
+66f8bd4e140fefe7ceb34b75
+(a) $\{\}$, $\mathbb{R}$; (b) No; (c) Yes.
+66f8cff8469c315e2c9ed2f6
+B
+66f8e3db469c315e2c9ed2ff
+8
+66f8f56e204cc74a525a23b8
+E
+66f986e852b9d5843203d342
+5,6,10,11,12,13,14,15,16,18,19,20,21
+66f9912f9912b9571e291d0a
+\frac{5}{4}
+66f9a1ed4f798b651f6d3c8e
+(27/4,2/9)
+66f9a8a4e613d5c62b6c0d22
+G
+66f9aac10b5d5283ffc39014
+H
+66f9b34f57eb54e8772c53a7
+1.00, 1.00, 1.51, 1.45
+66f9e9d3e0e271cd8ae533c6
+BABAB
+66fa0dffda3403394e6b9996
+E
+66fa6641c4f1bf6c2036b745
+12
+66fa67dc29908114d8954b55
+\frac{5}{4}
+66fac0eca07ff774fa2219c5
+5
+66faccfb44cb2f3b0e1be0ff
+H
+66faeb7db8fca5695f011626
+[C,D,F]
+66faf88b01b2c4f27ab6c742
+(-0.5,0.87),(0,0),(0.37,1.37),(0.87,0.5)
+66faf94d44885308354a46fa
+A, D, E
+66fb066681a166feb2adc2f5
+(2,3), (7,8), (1,1), (1,1)
+66fb24e7dea0e38a195b0030
+40
+66fb417395a8e2fc57e479d7
+500
+66fb519482c7c707d50d6012
+6
+66fb60f0fce3673bfc606f35
+F
+66fb75c8d83ed7a299fdd135
+16663878
+66fb75ded83ed7a299fdd136
+A
+66fb8135483861eb2d0252a3
+15/16
+66fb931a089552943999ce86
+F
+66fbbe8cb6f8564117792b00
+E
+66fbc8ca51f7e5e714c6c4b1
+7
+66fbcca4a177ae967e470415
+CADMIUM, COBALT, COPPER, GOLD, IRIDIUM, IRON, LEAD, MAGNESIUM, MANGANESE, MERCURY, NICKEL, PLATINUM
+66fbd5aca177ae967e47041b
+1, 6, 28, 120
+66fbe64df560b62458a7b6a1
+A, D
+66fc006ad058f160ec5a48a1
+E
+66fc1a0ea7be4edbe85cf15c
+Nationalgalerie Berlin-Ost
+66fc1cc8c935ad838247482b
+The presence of peristome teeth.
+66fc1d71418b50634438f3f1
+3623878683
+66fc2282b7609fc1d8099125
+D
+66fc23cfa7be4edbe85cf177
+22.572
+66fc2559876b283872e52acc
+D
+66fc2689b72463921f6c40e8
+T
+66fc2b7dbdebe91c66389e50
+135 cc/hr
+66fc2bf8b7405dff90941948
+D
+66fc2df0b72463921f6c40f2
+Glycine-Serine-Glycine-Glycine-linker
+66fc3273b7405dff90941955
+$-\arctan(-\sqrt{24}\frac{699}{1024})$
+66fc35ef3d06493836155397
+D
+66fc41489546a49018698bed
+B
+66fc43322198db684765b90a
+S100B binds more strongly to the VC1 domain of RAGE than the V domain and, due to its low specificity, can be used as an adjunct marker.
+66fc45034293a9638d7e0f47
+108
+66fc462f9546a49018698bf6
+F
+66fc49ef5067ff35e6302b7f
+55.43
+66fc4d3a9a78ab495d9f2aba
+35.9 micro Tesla
+66fc4dc04293a9638d7e0f65
+No separating equilibrium exists
+66fc539cfb0c1cf50794a0e2
+36
+66fc550fd90ebe461bfd0c94
+7
+66fc564eae059175d7cc3244
+3
+66fc56f5d90ebe461bfd0c9c
+2.2
+66fc57b2efe6ee63db94967a
+(Z)-1-chloro-2-(3-phenylallyl)benzene
+66fc5b54ffa390c4af01820f
+(R)-2-((1R,3S)-3-methyl-2-methylenecyclopentyl)-N-((S)-1-phenylethyl)propanamide
+66fc5d63d90ebe461bfd0cab
+C
+66fc5e611f5f3f3b48ae9566
+B
+66fc5e8f98a7264ef58309b9
+(2S,3aR)-2-((tert-butyldimethylsilyl)oxy)-6,6-dimethyl-2,3,3a,5,5a,6,8a,8b-octahydro-as-indacen-4(1H)-one
+66fc5ed440e3b3e56869687f
+0.0062
+66fc62d80fdbeffcd143e87c
+6
+66fc633698a7264ef58309c0
+1/200
+66fc698fd90ebe461bfd0cc4
+DDSSDS
+66fc6a20d90ebe461bfd0cc7
+\frac{3g^4}{64\pi E^2}
+66fc7aff818e0b579ee95856
+B
+66fc7c4c1d39fbf6d8bcdcdc
+The optimal reactive power injection required is $Q_{\text{opt}} = 12.43 \, \text{MVAR}$
+67aacfd513ec9e1a16359d51
+O(1), m=1
+66fc7ed699d3b5d0fbbad745
+The total reactive power compensation required is $5.03 \, \text{MVAR}$.
+66fc7efd5b5cf30b0e009669
+30.0%, 133.33%
+66fc82b2bb24336da864daef
+0.08
+66fc8353c9752085eff2c8c0
+21
+66fc89ce455038a48ed359e4
+D
+66fc8b271d39fbf6d8bcdd0c
+0.3
+66fc8c821d39fbf6d8bcdd11
+5
+66fc8d96b315bda762372081
+E
+66fc8f1b8a73f859d8fa1608
+2010
+66fc9bdb1dbb3f522c0ee579
+73
+66fcbb1e2c2f679cc795985f
+yes radial direction is considered.
+66fcbc3e2c2f679cc7959864
+\(\eta^{\prime} \sqrt{N}\)
+66fcbe5b68476a89da553c97
+2
+66fcbff58d68a0bf3cafb696
+F
+66fcc286eab6d512704d96af
+C
+66fccb32baca958eff49a086
+honesta mors turpi vita potior
+66fcde117e54294eb4a8fbba
+E
+66fce56c8585e7734661a9c7
+1
+66fce79d5dc8a9560304265b
+Switch to progestin-only pill
+66fcf077c494ec3fe0ed5635
+I
+66fcf48f6da31bbbe3d17e72
+E
+66fcf81e8a146dd80cfb2296
+D
+66fcfe789608881c6aecde88
+D
+66fcff257870c26149f4615d
+(r-1)!^d
+66fd08fb8a146dd80cfb22c0
+142550893797972739664870582906490524117043564169034167276752220620
+66fd166eda2dbed1f5cc240b
+89057
+66fd4055654e577c714fb716
+(0,-1,1)
+66fd442c654e577c714fb724
+\mu_{0}\log\left( 1-\Gamma\right) \mathbf{Q}(\mu_{0})
+66fd469e7a33ca69ccc69729
+C
+66fd4b01b5c28915c8897f6f
+$x(1)$ does not exist.
+66fd5050c58a30160cbc0978
+2
+66fd596216bd2158748fda21
+1
+66fd60ea6be05c0b608861d5
+Cut off of LFC > 4 in contaminated samples
+66fd6e4007a5eeb48898d67b
+$\mathbf{S}_c$ with diversity order of 4
+66fd758e29f96fd9d054df43
+Time Slot 1:Antenna 1: $0.8 \times (-1-j) \times e^{j(7\pi/24)}$Antenna 2: $$0.8 \times (1-j) \times e^{j(7\pi/24)}$$Time Slot 2:Antenna 1: $0.8 \times (1+j) \times e^{j(7\pi/24)}$Antenna 2: $$0.8 \times (-1-j) \times e^{j(7\pi/24)}$$
+66fd89bd8c7969267538ba86
+6
+66fd961ff9a32c6d2bd295df
+F(x,y,z)=x, G(y,x,y)=y, H(z,y,x)=z
+66fda7a057cea4445778e88a
+A
+66fdaf20d1e0bb15b8fc1eb6
+E
+66fdb31a57cea4445778e8ab
+D
+66fdb51b903727942c52222f
+$\frac{21}{4}.$
+66fdbcc4127bbd403ef13582
+D
+66fddfcfb3108418b8a5566a
+(a) $S_a = 1, S_b = 2, S_c = 2$ , (b) $S_b$ and $S_c$
+66fde2de0b21f205c121aca7
+G
+66fde5a291664bba6e391cb5
+$\frac{87}{4}$.
+66fde7f40b21f205c121acab
+350
+66fdecea0cc5d4963e81bb93
+β0 = 500, β1 = -5, and β2 = -1.
+66fded1fbc6d46a25c41ee8d
+D
+66fe16f4762ab58b937863b8
+G
+66fe3e4d6a914e1ed9d8c32e
+4
+66fe596c0eeb4521791d31ef
+D
+66fe75a349254a4aef6f5f25
+\frac{\pi + 3 \sqrt{3} - 3}{6}
+66fe75c0c12cbe6aeaa26e60
+9
+66fe796bc12cbe6aeaa26e69
+Infinite regress and circularity.
+66fe817115bdbb176f2e3bbd
+A
+66fe96c857c85bf9caa1766a
+12-fold rotational symmetry
+66fe97540fe93ab7e9405c9b
+C5H6=CH-CH2-CO-CH2-CHO
+66fe998c6a6869f258841e99
+E
+66fea05ccb66b0e85c55ee51
+8.06963
+66fea0c4cb66b0e85c55ee52
+2
+66fea77b5f1bc2f5916a4171
+P
+66feaaa369901fcf62a010dc
+Methylcyclopropane
+66feaec49c469dbc1c0c4ed2
+175
+66febb7d2cb8fd8d04bcce70
+F
+66fec5fbe0072219a732f0e2
+$\frac{1}{2}(N_1M_1 + N_1M_2 + N_2M_2)$
+66fec7825e6051260840e060
+Fe + 2FeCl3 = 3FeCl2
+66fecbff69d5712b5401553e
+\(Z = 4.61\), \(\langle k\rangle=1.66\)
+66fecc707183fdf40d11cb48
+5
+66fedc469c638aee1c0b6db1
+\frac{1}{2\pi r C (1 + \sqrt{3})}
+66fee1187183fdf40d11cb69
+ADEFGHIKMNO
+66fee6c39e4f456a6d2941b5
+1 hour
+66feef700e977ac289068c27
+$y(0)<\sqrt{2x(0)+1-3x^{\frac{3}{2}}(0)}$.
+66fefa971ca108e6e888e9a1
+Decreases cytokine release
+66ff063787bfb80443d02df6
+C
+66ff0a666dc4b2ab76a19db9
+\(4\pi\alpha\)
+66ff1bba3046dadaa8fd8a15
+Decrease by enhancing negative selection
+66ff2d1ccee52e636551df01
+15 moves
+66ff31e8c604a3a87b0cdf62
+Yes
+66ff35926045e9e64bbc5720
+\(5.57\text{ mol/m}^3\)
+66ff44de2cfec1499ea021dd
+(9,-3)
+66ff63baefbb8fab439cda6d
+tmesis
+66ff679163f0dbcc8b9941dd
+μεγάλων
+66ff68bec7e8ec38a6188f9c
+3
+66ffaae1068d942d32104650
+B
+66ffcfa0864258b2f971a80c
+D
+670010ff77983eff561814b2
+C
+670013827794cc36bc974f27
+B
+67001b2537deff035b73927b
+Oganesson
+670043f1cc1f72ec327be033
+0.84
+6700497e7c6e32185d473d3e
+\(\left(0.59,0.96,1.15,0.297,0\right)\)
+670064edbeb5458b701e58b9
+\(\left(4.99,15.0\right)\text{ qeV}\)
+670066b12b1a0263d6a3a79b
+6 * \sqrt{2}
+670079cb5587080e1cf67dce
+\(\frac{2E_h\alpha^2}{135}\)
+67008a05ad0fee7d7b4efb3c
+\( \langle n \rangle\approx 0.424 \)
+67008bcea2dd0155efb53f1c
+\(\Delta E= 0.0423\text{ eV}\)
+67008f17fc2c0a4040f1d352
+G
+67008f2afc2c0a4040f1d353
+\(\left(690.51, 158.55, 12)\right)\)
+670097e2d8f693f97c36c13f
+2, 4, 6, 8, 10
+67009ad56c339d61ecccb85c
+1081.6
+6700a5676c339d61ecccb86d
+40
+6700a5f67899925724a8fa81
+pterodactylane
+6700aa576c5c0e0d48330ad1
+$21.46 \text{ cm}^2$.
+6700ab4bfa64315ed5204e4d
+2, 3, 5, 6, 7, 8, 9, 10, 12
+6700ad650f36eb474047ca29
+No
+6700b20cfa64315ed5204e5d
+BD
+6700b2f1fa64315ed5204e61
+2357947691
+6700b9b6d9849868aa3fb1f9
+4
+6700bb8d01cdb8b38460e401
+3, 1, 1, infinity
+6700bde8fa64315ed5204e74
+Fairy bees, 2016
+6700c57848d1e47d3d2f74c6
+E
+670130313d571f9c39e1bea1
+11
+670147f7dc193e3fa8260419
+3
+67015a7f6a2b21f149f3aaba
+LSS SL SL LL SSL SS
+67015d62777a275ca50eb18b
+C
+6701638aed23f06e44f0e6b8
+Yes
+67016793aafba5949df10067
+Myrtilus
+67016d95a2a4300e274de8be
+6.63 \times 10^{-6} \text{e}
+670170d616077208cedb9627
+Petronius (Agamemnon)
+67018145e8c125b41caa9ee3
+D
+67019de83ec0066dfb992223
+C
+6701a951f96e98d9d4df3e02
+B
+6701c34caf50fa52ed36ff06
+cover
+6701c3cb38b706939b30cb0b
+10mg is 647 and 20mg is 648
+6701ca6bb773dec162bde23c
+\theta - \mu
+6701d2675f6691877f264511
+7
+6701d869aee3881b852d40a0
+u(t)(v_i(t) + \rho)
+6701de16d9e4cd1aa812414b
+M
+670205330fb89862bc1d87d2
+3
+6702731e2e96c956d9863f14
+A = NH2NH2, and B = CH3CH2CH2NH2
+6702780d39fbddbbfdaffdf0
+81
+670285bc39fbddbbfdaffdfe
+B
+670288dacacd044c115f0156
+NYNYYNN
+67028faea970bf7474de7db9
+V65/V with a lowered 9th (The f)
+67029d8de7ea2ce5def2f39f
+Dominique Appia
+6702b8bebb1c7fc12ef340a6
+D
+6702bc770065c2f50235a34e
+M
+6702c6251454b2a5a3a4b0a9
+\pi/2
+6702d00cabe0b372f85108c7
+8/3+sqrt(3)/pi
+6702db18a423c5b9f9c1c49c
+no
+6702df0bf9b93417fbae272c
+0.71
+67035991b36b22d6c2f535bc
+1301
+67036eec810cc41df802051d
+$\frac{c(1 + \sqrt{3})}{2}$
+6703798585e4a42e6ff10916
+P
+67038476397cc8defc4de8ff
+F
+6703a3c04a760324b0e15a30
+$3m-1$
+670402f0bae67686d8aef3e8
+F(x) = 3E(0) x / (n\ell)^2
+67041442aa877e548ccdc28d
+$2F_nF_{n-1}$
+670417b84f1cdb9711ec68d6
+{10009 \choose 10}
+67041871905f1ae093e7ac69
+$58\choose 22$
+67042519cf3319115ca0c555
+$2r \theta \cot(\theta)$
+670426b4d831bdf30d3c03cb
+126
+6704465caf0a436d92c65160
+6
+6704486baf0a436d92c65161
+diltiazem, chlorthalidone, spironolactone
+670477044580e464f8bff2a3
+Tulu and Korean
+67047b0e4580e464f8bff2aa
+79.23
+67048697ca361120eef4ae56
+B
+670489fcedc6951c9585de8f
+2/3 \sqrt{3} \coth^{-1}(\sqrt{3})
+6704ba2101d8c58fba562885
+14:11:11:858
+6704c05a8e878e59e57c7167
+829[cylinder r=6, h=16]
+6704d297f486e216becd613f
+50
+6705022feb89a47d12541a36
+One component
+67050ddbf6e4beb1922a29b2
+0.54
+670524fec62c9a55b8503379
+0.15
+67053981f8ad2742675478b4
+3/5
+67055b15222ba55ab0b88431
+Pedicare
+6705610417b54abf9a949f33
+[S,s,irr,33] [S,s,irr,3] [A,uc,6]
+6705b23880154ff607a205b5
+Abortionist
+6705b383652e52e4bf7ee416
+73
+6705b7c94ae9f2994dfaca33
+000200,011100,111111
+6705cd5f1a7f538792ca73ee
+B
+6705cf04905b3d0e4113372b
+B
+6706033749b90b396d2cb207
+$n \geq 1$
+67061eb7f88d4fc2d2f8402a
+3
+670620323fd82754d2f4cc7c
+[J,1]
+6706295df10a8c2ca9a9c288
+2067
+67065070b3df24f51a3e2914
+C18H16O3
+670663d687c53b9e6fa1dc8f
+1
+6706671e0ae45a43cc2b8e8f
+96
+6706bda4cdc5e37f6814fc00
+C
+6706c88503718618700edfbc
+D
+6706f8e219290a54d9b5b56e
+C
+67073a60c033e34a5d675f2e
+22168
+67073b43de74df1472536be3
+C_3, C_5
+6707425209b8f334446ed3e2
+15
+670777536ce55102ae56fa2c
+2
+6707791ed9cad1c3863ce734
+E
+67079b3aeb66f588bd3789ec
+10^{5 + 5\sqrt{5}} + 10^{5 - 5\sqrt{5}}
+6707b8b6700263d6945e7b18
+0.96
+6707b9264ea1e7c28b6169bc
+Akhenaten
+6707d229ce18c3c60d66c712
+1, 2, 2
+67082afe09cbab4e7c6f62aa
+D
+6708336666bc940886b27312
+B
+67083574e919041d86ac83d0
+Developing gemmae
+67083d00236665f36be9e56c
+Neckera
+67085c82e22de5e37e883351
+C
+67086f244c1d38378da9f60a
+$\log(\frac{ae^{a-1}+(a-1)e^{-a}}{2a-1})$
+670872c2f1b4c3641356feb0
+1,1':3',1''-terphenyl
+6708736b4c1d38378da9f614
+$\frac{289\cdot(24-7\pi)}{7}\approx82.937$
+67087a6a972755fe392d782e
+thiocyanatobenzene
+670880520ed68fbdc467064e
+5-methylhex-4-enal
+6708862963c4d58d76c98746
+$2^{81}$
+67089c013b511a575fc306de
+C
+6708c1dc2f33698babc6479d
+MV Celtic Horizon
+67090fa5356700b5af622ae8
+δσ/σ ~ -1/k2l(1/ντ-1/ √Dτϕ)
+6709255fd7d58adb84aa5ffb
+(E1)min=5/2Eg
+67092d14202802a1391f0d46
+1924
+67093e6ace7cd85981783949
+~5 cm^-3
+670944a7da01179cfbd24ef8
+Gustav Kirchhoff's lectures on Mechanics
+67095af56022f900e8e76028
+Strawberry Fields Forever
+670980821053a19619c30869
+510
+6709986e9a83b4ea926a3036
+329/150
+67099b940109535a956a14ab
+8
+6709a557139851f6bbbd7a5a
+E
+6709c89f2d7ed3720d4b2b61
+Guadeloupe
+6709df4c3c2174379ffee04b
+Bonaldo Giaiotti
+6709e5af41a8c7cc16f75d2a
+$d=u-u^2$.
+670a2a076973040cfd5994a7
+Beer shampoo
+670a45a0e9cd3ee2e2e3932e
+\frac{\ln(5){\ln(14) - \ln(3)}
+670a6b32b3f67b11c0799489
+Gen
+670a7e542e97a7e436a3d951
+[18,36,43]
+670aa3e255f3b29ec899f979
+D
+670ac833100f122e792a23af
+50, 58, 114, 122, 178, 186, 242, 250
+670ad3408b8d4b3af783d31a
+[1, 1, 2, 3, 3, 2, 1, 1]
+670ad4fbb4aea214feb705d3
+B
+670adb93478162075e9ffcd3
+289/36
+670b02d5560fcdf78354fad0
+log(1/\epsilon)/log((1+\delta)/(1-\delta))
+670b2be8daac77037b0e67ba
+4π conrotatory, 6π disrotatory
+670b307567eb710437409184
+1460
+670b9646e9662f03066275a7
+Tris(2,6-dimethoxyphenyl)methylium ion
+670bab0c65db6a314e14cec5
+3/2
+670bcb222407af9de8866eda
+F
+670c064227c257620553cc04
+N^{1 / \Omega(\log \log n)}
+670c1a137d9abe2d345031d4
+96497666192130
+670c1e0e47efd46fbe476752
+Space Monster
+670c23124d86f843dc5efa7e
+E
+670c23a63dac8d8a9563c206
+[2s+2s], 4π disrotatory electrocyclization
+670c2a003aa4e3c3bc4aae8e
+(R), (S), (S), (S)
+670c2d61886695e43e7c18b3
+26682
+670c47e5a1a7d61748daa200
+1+75h+2680h^2+60670h^3+975895h^4
+670c48975b505e10c0277cee
+2490840000
+670c775842b25f65425c86c2
+A
+670c83ba4aece479236947cb
+A
+670c8b10148f2a113537c8f6
+C
+670ca1456731aa001b9ba021
+$\frac{E(1+g) - d}{q}\]$
+670cbeb582bde986ee078420
+1/2
+670cfd37787b413636ae1e57
+0.286
+670d51eaa783dd0bc83b1da7
+exp(\Delta/2)*\Sigma*exp(\Delta/2)^T
+670d5ce6d57c80b4d4090cb4
+D
+670d72c4940c45ae0e301c02
+C
+670d85d1a2a7f62c1a339bc7
+(0,0,0,2,2,2)
+670d86ec56f489221087dc67
+Last Action Hero
+670d91a9ac55362ddccabea1
+1
+670d933ad54037c51abbe3ca
+(-\frac{\rho}{\phi}-\mu)(\tau_u+\tau_v)
+670daa682c5d078fa33fba12
+Boston
+670dab3f29ad02fff2ae1d9a
+$\max(t_H,t_G)+k-1$
+670db60f6f63b774df6f4daa
+C
+670dbfc042e55f85b247ba49
+84
+670dc30acfd3fc87a109a91e
+2
+670dc5bf47457fb431224bbc
+Yes
+670dc75dcfd3fc87a109a929
+No
+670df2a72f80209631f57fc2
+132
+670df2e172288739ca35e0e1
+9
+670e00c1289a73b5d2b75215
+6
+670e050d857d9fb8d0e70fde
+$2-\frac{\sqrt{n^2-n+1}(4n-2)-2n+2}{n^2}$
+670e5c2720bb63b6da63b879
+A
+670e76dbfb3b4f650fe86113
+C
+670e87009fd2a94b93cec307
+27
+670e88d674a7c40e93dd1a5c
+It would decrease.
+670e92583011a5b80bfb6c60
+B
+670e9b885d472377f6c572a2
+No
+670e9d6f5c8f745d79e8d8d1
+tan(\pi/n)/2tan(\pi/2n)
+670eb085078b44f4766922a9
+$ \frac{4b^2 -(n+3)2b + 6}{1-b^2}$
+670eb1e2d2f45b1198c87764
+1/3
+670eb27fd2f45b1198c87766
+C = (Vm*Cm + Vf*Cf*A)*(Vm*I + Vf*<A>)^{-1}
+670ebf7239f1dc9b447a9143
+K
+670ecbd2db2399d5b657405a
+D
+670ed43a812a31dfae9bf344
+(2,8), (2,7), (6,8), (6,7)
+670edc9dbddc0cfe673272c8
+B
+670edd52bddc0cfe673272cb
+1,2,3,4,0
+670ee20c997568ed42988705
+A
+670eeb9c997568ed4298871e
+-(-1)^n s(|AB|)a_nb_n-\sum_{i<=n-1}a_ib_i
+670f00dc79750a6c73259f4d
+E
+670f069bf0a2db734f219dc7
+x’ = x + (c_2*e^{k_1*t} +c_3)*\epsilon
+670f241acb7ead88385e0ca0
+B
+670f289fb671096a201efee4
+D
+670f2b7eeab97e29672ae77f
+A
+670f378873968d8e1b612745
+B
+670f39dc1dcaeb830ff6231f
+A
+670f3cc6df04c6b73aa7b5df
+1
+670f41ad793c2cc1e973ff70
+10
+670f4501dfe615f3d2f7436e
+2
+670f511063b765ce8edde772
+7
+670f72aea9f4a4bebca02b4a
+G
+670f83926933cc6600d3185d
+Nosepokes
+670f8518ffa4ea9fb0cc5fea
+C
+670f87f6f1e1079f950014e4
+E
+670f9916451a882595c8f434
+2
+670faed07ddb2771c2d214ea
+Parquet floor
+670fb58f2ca6bea76e9354a7
+H
+670fc6e308c7aaef3bd745e2
+[-1, 0; -1, 1]
+670fca712395d9134a27030e
+N = [2-s, -s; 1, 1], D = [-s, s-1; 1, s-1]
+670fce9a2395d9134a270314
+F = [-0.5, -0.5; 0, -1.5]
+670fd2a6232fc20b4433c4d7
+[-2 1; -1 2; -4 -1; 2 -1]
+670fe01af99389b3c7942185
+24
+670fe03ef99389b3c7942186
+1,1.41,1.73,2,2.24,2.65,2.74,2.83,3
+670fe86a7e294dc6ad20c1ba
+1, 5
+670ffefcdf4931d858723e36
+976251475791861661945371
+6710017a946969cdfd9a302c
+3/9/4
+6710210bc47b9b50a333dba8
+2
+671021ffd741deec4ddbfc48
+p(1-p)/(1+N-p)
+6710229bd8d5eea22faea867
+Touching the lizard on the cathedral door
+6710251d73c9583c25138ff0
+L
+6710b2cbd1af6b4823c090d4
+231
+6710be76f85b27716ff1c4ba
+San Carlos Presidio
+6710f26eaa2039046e5aea6e
+65/58
+6711410d39fb87be5f2f165d
+E
+67114acc95aeb4d1c92426a5
+C, A, B
+67115e10528102717339d851
+215000
+67116d1350b8e9f375ac3136
+0.25\Phi(\delta/2)e^(-KL(P_0^n, \Bat{P}))
+67117042d18c284f71d2d4c2
+$O(log^2 n)$
+6711751e42ab43fd77c2507b
+arccos(2 sqrt(6) /5)
+6711e5e05e64a53ed09449fd
+0.218
+6711eb4e1c08a07a8d243847
+13425
+67120c351f4769bcbeaadd5a
+$p^{k-1}+1$
+671210f6abf64d3c3404ce3b
+[cylinder r=6, h=21.5]0;41
+67121600c227d25db1c1e480
+[cylinder r=6, h=21.5]0;41
+6712208acecd80f50716f99e
+\frac{(K+14)s^2+41s-K+26}{-s^2+(6+K)s+16}
+6712290fcecd80f50716f9aa
+\max(\sqrt{BL}, \frac{L}{\log(B^{-1}L)})
+67123492a07b17fa3a1d9344
+5.4
+671257a8df2820fcc29acc37
+Empty set
+67126745df2820fcc29acc5f
+g(g(x))->g(x), h(x) -> g(x)
+6712787d0d05bc73fc008dfe
+75.6%
+67127dbf0d05bc73fc008e02
+Table 2
+67129bdccb99523d3a2b98d4
+1452
+6712a11465fc44ae631f703d
+E
+6712c2616313b64cf8499927
+$204\cdot \pi \cdot i$
+6712cb17bd5e662205bd00c0
+C3 and C4
+6712d9d097b88a1cdb76c51e
+C2
+6712f157cf58f1d947689708
+$\frac{15393}{65536}$
+67130fff5fcf1fbb43d4a687
+E
+6713127b95ce1eb050568352
+Bivona
+671316038cef0a8b30902ea7
+$\frac{5}{4}d$
+671323607fc02cf5cce975a5
+10024
+671330c663349ba0f6c822b1
+ħn(\omega_0+uħ^2/(32m^2\omega_0^2))+E_0
+671360871b12bd5183fec91a
+\mu a. \theta(1, a+\mu b.\theta(0,b+1))
+67136bf495e840a8db703aee
+$(p^n - (1-p)^n)/(p^2-(1-p)^2)$
+6713a2ac0223609143188d23
+x/x/xx/x/xx/xx/
+6713a3e61e0e03ffe2253dcd
+A: methyl 5-(2-acetamidoethyl)-2,3-dihydro-1 H-pyrrolizine-6-carboxylate, B: 7a-(2-oxopyrrolidine-1-carbonyl)-5,6,7,7a-tetrahydro-3 H-pyrrolizin-3-one, C: 1-(acetylprolyl)pyrrolidin-2-one
+6713a43b0223609143188d31
+N
+6713a4c60223609143188d32
+Names for compounds A, B, and C
+6713a7d01e0e03ffe2253dd0
+A: methyl 5-(2-acetamidoethyl)-2,3-dihydro-1 H-pyrrolizine-6-carboxylate, B: 7a-(2-oxopyrrolidine-1-carbonyl)-5,6,7,7a-tetrahydro-3 H-pyrrolizin-3-one, C: 1-(acetylprolyl)pyrrolidin-2-one
+6713b3ddffe8069e1f029185
+A: methyl 5-(2-acetamidoethyl)-2,3-dihydro-1 H-pyrrolizine-6-carboxylate, B: 7a-(2-oxopyrrolidine-1-carbonyl)-5,6,7,7a-tetrahydro-3 H-pyrrolizin-3-one, C: 1-(acetylprolyl)pyrrolidin-2-one
+6713c9a779d53f49034d45a0
+s[n - s[n - 1] - 1] + s[n - s[n - 2] - 1]
+6713cedd6978edcd74f82863
+Bucklers
+6713e7a2ab68083faeb3fc70
+$\sqrt{3} \cdot \sqrt{8} \cdot 3\pi$ m/s
+6713f6ebde9d795856a5d0d2
+247400
+6713fc1e6c34845ffef41aeb
+infinite
+6714033333410944271a1487
+225600
+6714097c845a654135e72aa5
+YNNYYN
+67142e7e7da71e9cbf55a7f9
+2,4-dimethylpent-1-ene
+671433e3e58648db5273e310
+E
+67145aa4f41c5b1591376d26
+14:11
+6714762c3a4d759a624154ff
+12:5.5
+67149cf883cc7720158c1110
+2:8:81
+67149db7352d3701e7171a01
+$\frac{10\pi}{3}+\frac{\sqrt{3}}{2}-2$
+6714b65c2b2e7f70a38b9f63
+2:8:35000
+6714e9dacbabe50aa0256711
+C
+67151b015fc8ee8feaa3538c
+Spiro[4.5]decan-6-one
+67151d27484c9a78dc508e56
+NY
+67152671c0f5fafc6365076b
+8,13,15,20,22,27,29,34,36,41,43,48,50,55
+67152ee0953411f24cd994f0
+O(1)
+67152f87953411f24cd994f1
+3 A.D.
+6715306c8f2d6bdedc0547ee
+$C_{14}H_{13}N_3OS$
+67153bd7f588f3f15b038f5b
+N\sum_l (c-1)^l (tanh(\beta J))^l
+67154c094650e5ddd384d861
+E
+67154da65a8d78b045561f82
+\frac{(-1)^{\frac{n(n-1)}{2}}}{n}
+671559d991aabe49ee46ddb2
+$C_7H_{11}ClF_3NO_2$
+67155ca2675b57d8bbc9144d
+D
+671567cd87cd585dc9f613db
+G
+671579d27c48af0286fef21b
+J
+671590d09f939ab157188104
+7.16.3.2.13 equal to December 10th 36 B.C.
+67159ba681c3e7e7c65b2e09
+(25, 40)
+6715a17ddf8f7209e373b9b0
+3, 5, 6
+6715a3ff81c3e7e7c65b2e0c
+N-(phenyl)-furo[2,3-c]pyridine-2,3-diamine
+6715a9a5b3287d3dd4db03cd
+PFOS: 1185; PFOA: 6059636
+6715b2dab3287d3dd4db03d6
+*sorted({int(x)for x in findall(
+6715bb667faaf2a75fbb0df6
+(Z)-3-(4-methoxybut-3-en-2-yl)cyclohexanon
+6715beb7b3287d3dd4db03e6
+A
+6715e455f818cdd1872c0ef0
+C
+6715f373a35b028a9e88c09f
+4.912e6
+6715fa805ba6709b4d570336
+P, NP
+6715fde1a0465674e6f0bd5a
+34
+67161821736eae9fe5949bd2
+I
+67161976e6487fdf13596bdc
+12
+67161c234a4190fbded30b8f
+L
+67162253433b031688b08f47
+G
+6716260eae3149088ed859b9
+A
+67162aae22b39b92ec5d1eaf
+D
+671641166bc44542da778ccf
+0
+67164d0b4c922006e9e93a8d
+D
+671659f129c718f03e48a198
+thirteenth
+67166e91db97533c679d4609
+D
+671681dae1099d44c53d91ef
+494
+671683479e5d26a2905120dc
+Snow Block
+671689ae68b8747c96268936
+Arthrobacter
+67169465a4566d624a446240
+$[d! V, +\infty)$
+67169906187dc7ac4a7ae1a8
+A
+671699cb0b00e84566da1812
+Justin Smoak
+6716a68fbb8539339d5d7239
+2
+6716a8d3571bba1c8889e6ee
+H
+6716aa268f636721baad8695
+1 = H, 2 = CH3, 3 = H, 4 = CH3, 5 = CH3
+6716aa92d9d8d8ddd54ad7dc
+$\infty$.
+6716ab6e8f636721baad869a
+K
+6716ab9dcc9e36a89d712828
+$\infty$.
+6716afcdb8bcd4d88c34cd1d
+F
+6716d9d79a515af7907b768b
+\[\mathcal{O}(n^2d)\]
+6716dc349a0dd17680df31df
+G
+6716e28929a01505aba1ddb5
+F
+6716e894e9b87625209506ca
+F
+6716eaa4bdd18f08a0e9bcbf
+\(\sum_{i=1}^{n}\frac{100}{2(n-i)+1}-m\)
+6716f035bab94116769c0082
+Weaker
+6716fafe2a8d9330a7f89ee5
+K
+671702c1e5b9112a7699686f
+L
+671713bc1b093535f8a6751f
+b, d, f, h, i
+67171b0d0111e9837cad75b8
+70
+67171c0c49297038d6740a23
+Y10
+67171dca583e0959a2a84f91
+392
+67d49da91dfc5429adf8e0fc
+11
+6717207a3d6d949464d26a15
+12
+671728a6382088970288d4c0
+Maximus the Confessor
+671729e6746b1c4faab7096f
+20
+67172e1baa2a71966f8c8f38
+164 kNm
+67172e73e42c7644e4f00e1f
+1/2
+67173a11ffe2e8bed48b717f
+305 mm
+67173f7947da3cb07721513b
+306
+671746ad21eec7fde8de4026
+640
+671747cb2b794168e3ad2c52
+7780 kN
+67175c6d4b3fa6d2c1eb66dd
+1.92 mm
+671761abfdbddef7c5a1197e
+(2√3) / (2 + √3), -(2√3) / (2 - √3)
+671766f3eec0ae58685ae23f
+-2.124
+671776667bd7b6b75ba31922
+yes, using Kripke's semantics
+6717766dea5b46ff20362222
+35
+67178b22b7f6dd9be2a4dd68
+B
+67179df13b2ae86833ab4b0f
+1
+6717a1346e416b6c6946ed2e
+0
+6717a17cd1f6e4b18387d6c9
+[3,7] Wrong
+6717a3b32bfc3643c75ac338
+The cyclic matrices
+6717a999128b7480180c79f8
+1
+6717aef5a5c8a6a9392b1b39
+$z=\frac{2iW_k(-\pi/2)}{\pi}, k\in$ℤ
+6717b2e1961c5de74922e610
+lqw
+6717bd1d443232c907a31720
+[0, 1, 0; 0, 1, 1]
+6717cc3a4d6b1e71cab9bc8c
+9!^2
+6717cfeee8995e9e60504f33
+3126826975036021918421449648904939195594
+6717dd20e8666ff79cdd82af
+20
+6717dd24e8666ff79cdd82b0
+E
+6717eb4518d92aa466b94d70
+$\frac{5}{3}$
+6717ebf9d1edff0614647df5
+Russia
+6717eeddd6c14a5dd1563e7c
+$\frac{1}{2n - 1}$
+6717fbb348394bb7e001a0c2
+II, IV, VI
+671800b68b88f01935b5824f
+15
+671802a3e2dff1f07a1b0508
+6
+67180400ff1b830a3dd7e9bd
+Yes,they are
+671805c78b88f01935b58255
+D
+671808958b88f01935b5825a
+F
+67180e9b814516d5f513eb3c
+F
+6718106f713d2e285effa910
+25/9*pi
+6718161735872f2136bcfc88
+11.95
+67182659782f2aff686eab73
+B
+67182dc779d13ce05adb35d9
+$\frac{23}{15}$
+67183790e7fb9838a5a6c10d
+$\varphi$
+6718487afba38eebcbc8034b
+C
+67184f90f86f5a009aa2ad5f
+0
+6718577ca88093a75026b186
+G
+671858f2dadfd75c1a4b430f
+A:no FMO bias B:non-cov unsymmetrical TS
+6718977144d804f3d0418866
+\frac{1}{2}
+6718b6f8f879f9699ffd3fbf
+$\prod_{k=1}^{n-1} \frac{Z(-k)}{q_v^k-1}$
+6718bf9c58bc11dea7f3be13
+(8, 60)
+6718c479034f8ddb2f67a346
+$100\pi - 100\pi \ln 2$
+6718d2c20bcda71f53b0fe55
+1
+6718de3228445eada31e727f
+E
+671901f58b9cbfc7b2fd9723
+B
+671906908b9cbfc7b2fd972c
+A
+67190e8172e53012645b0124
+$\frac{768}{1914625}$
+67190f1eee94d36fc7734311
+1kin. 8:66, ביום השמיני שלח את העם
+67191b3025b51504c14dd870
+B
+671922c9897dbe5d706dc802
+3393
+67192811212f1ac1f7ec4815
+1
+671929c60fa7bca6462f63a3
+30
+67192b9472c6fd14e759e369
+760
+67192d7e0fa7bca6462f63a9
+4
+67192f950fa7bca6462f63ae
+S - 7 - Bahnhofstr.|HB - 11 - E; 15
+67c7405475ac82e0c70a0cfe
+625243878951
+671963d90f87e9920aff9d11
+A
+671975e857fcd2edef6930fb
+23040
+67199159b976203dd1bab7c3
+16
+6719a83547f600be2c21b6f7
+0.009
+6719c431d5ad96a75c350fa5
+2-phenylpropan-1-amine
+6719c58cd5ad96a75c350fa6
+Y[0.075]
+6719c737e08d3c6d7fa52736
+E
+6719ca2ed5ad96a75c350fa9
+Y[0.21]
+6719e946a81614142be02bec
+210, Synergistic effect
+6719f92b62a994eccd9f964b
+17
+671a22850b52f35047c0b230
+M=−(aπ Hc/(4 b)) tanh(H/Hc); Hc = 2Jc b/π.
+671a246d8479d8185c4d4435
+5,2,2,2
+671a30c82ca56817dc566f69
+J
+671a431b2ca56817dc566f89
+6492
+671a4ff987892bd153171067
+1
+671a567961c380782c9eea17
+10
+671a58056e1db673f77905cd
+D
+671a5d9a6e1db673f77905d6
+11
+671a779a0dd354b2ced21608
+D
+671a88b29665432a8b897823
+Dihedral groups of orders 6, 10, 14 and 22
+671a93bc9665432a8b89783e
+Y[0.015]
+671a947c9deaf77048dcc8b7
+A
+671aa91f6a8e7c23ccbf902b
+Inhibition of lamotrigine glucuronidation
+671aaa82786568f1e1c39e88
+Razzle Dazzle Rose
+671aaca917615f09eab6fe37
+3,5
+671aad23ce6e97a55a4d0d47
+M
+671aad4a17615f09eab6fe3d
+H
+671ab139554dabfda724ef23
+$1-\sum_{k>0} \frac{e^{-2}}{(k!)^2}$
+671ab3b9bc29484bff69fc98
+The third cumulant for Y_{n} is undefined
+671ab94ffad7ae30b89eff8f
+B
+671abddb40e08981d8fd796a
+B
+671abf7f136758472327f840
+B
+671ac42e34dde826ba049e63
+D
+671ac641136758472327f851
+E
+671ad24cba986fde0d401865
+none,6,12
+671ad37634dde826ba049e91
+Yes
+671ad5ceed3d54e87368bc68
+21
+671ad72c9fdc33c08a784b3a
+M
+671ada4eed3d54e87368bc78
+ln(2)
+671adbf8439b8a0eaec180d3
+Felty's syndrome
+671adfc8fa568baec778580e
+D
+671ae258d2ea402783696a9f
+Antistreptolysin-O titers
+671ae4d6fa568baec7785817
+40
+671aee77ed3d54e87368bc9a
+A
+671af1baed3d54e87368bca2
+4,6-dichloropyrimidine-5-carbaldehyde
+671b0951bbaaf02d2647783f
+L-tryptophan hydroxamic acid
+671b14a6a05f8889abb23bf0
+a^2(a \omega)^2 \cos^2\theta \sin^2\theta
+671b16741c8a4560f96a3a66
+$\frac{124}{27}$.
+671b5c079296c3d8d76aaac8
+17512/25777
+671b6a72c0597e0854d18d56
+$\frac{q^{g-1}(q-1)\log q}{e^\gamma h}$
+671b7f4458b64c53882ad080
+96
+671b8934c34d9c2c760b4818
+597.3mA
+671b8b0f7bbcc321c99f44ec
+3
+671ba17047e34cf4ed747b2c
+11
+671ba19847e34cf4ed747b2d
+$-\frac{3}{4}$
+671ba37748e8f0ee7ea87318
+-6.1861
+671ba7b447e34cf4ed747b30
+37
+671bb0b0863984716ffe8850
+כִּ֗יל סָ֥ף מָ֣ה הִים נַ֣חְ נֶ֑ שַׁ֥ן,עַֽל
+671bb1348b80a27571baf0d3
+the thermal scattering law
+671bbb559a1f658e2a088aa8
+Yes
+671bbe5a85b315d9f07698a9
+Racemate of 4-phenyl-2-bromobutane
+671bc0c855449c636f4bbd36
+D
+671bd4fb69d17f19519341dc
+C
+671bdb372bb31d345b269f7d
+28
+671bdc0d90d834b821acb8b1
+E
+671be3853529bee9e3097b92
+A
+671bea6afd01315eb4f1c376
+B
+671bef23b55b44cbffbf0972
+root mean square of successive differences
+671bf02518de98fe736cc1b5
+Rotate around the N-N double bond
+671bf785fc1ad15079783d89
+$1.654 n \log_2(n)$
+671bf8222181bed4e29b4e71
+20580
+671c0a06ad75138f963f9b56
+No-regret learning from prediction errors.
+671c0ccd29d77939ea7f3bd4
+-4 and -42m
+671c0d6f66154e5cf55994de
+D
+671c1099414cc58c0f2db443
+40
+671c4c1a795af69402ddc414
+H
+671c6a1aacee876e82d4bc0e
+C
+671c6d6392388142386728ee
+Bacillus subtilis was non-viable
+671c6fb38668b9d1652a1645
+Y[1.673]
+671c967c28f032dc5fafd07f
+207383
+671ca19384c08d69293fb118
+0
+671ca6ce84c08d69293fb129
+2
+671cb22b71eb9febef83bcde
+$\frac{3d}{2} + 1$
+671cbba2784e3ba406eefb34
+D
+671cc53cd99f8e01283e9a89
+Pyrido[2′,1′:2,3]imidazo[4,5-c]isoquinolin
+671cc8c2d99f8e01283e9a90
+3
+671d16bf60ad0fe6d2494177
+9/4
+671d25bc8258d39a94ba00fb
+chi*=-chi/(1+chi)
+671d279f3f722db6ba359bd3
+$W(D) = \frac{N_0}{F^*(D^{-1})}$
+671d36032f9273fe1d43c047
+[3,none,120,none]
+671d3a7ed01a0c86488d84dd
+2
+671d3ffb3e2d1926f04e94f0
+8
+671d42b4a2d3581545c21fec
+B
+671d4bf79eff7434a89d98e0
+\frac{318281087}{8016470462}
+671d4dc4a37bbf6a4bccbd9e
+F
+671d4f8ea37bbf6a4bccbda2
+7744
+671d51ba8411174e64735f4d
+\frac{191}{192}
+67955d8d28dc0cc835a5c3c1
+2\sqrt{5}
+671d56738411174e64735f59
+821
+671d64ecb996cf9936d1afcf
+360
+671d6502b996cf9936d1afd0
+0.481769 (μF/km)
+671d6a90bdac50eb5e8d8e86
+$-6x+2+4x^2+2x\ln2+2x\ln x$
+671d70b42f937e77ea5cb0cc
+Y24
+671d91bcad7fb0793a0e93bd
+C
+671d97e729e7fde7166e4743
+A
+671d999f18a4da3122fd2118
+2-(3-oxopentyl)cyclohexanone
+671d9c62355c956ce7de5a89
+4
+671d9e9d29e7fde7166e474d
+G
+671d9eb3355c956ce7de5a90
+Magnus Carlsen
+671da0bbbb27b8f41a423e7c
+Flavodoxin
+671da6a76070b7a055069624
+Calcium
+671dacdd355c956ce7de5aa5
+Sophoridine
+671db218fe1146e348ef1266
+ethyl 2-methyl-6-oxocyclohexanecarboxylate
+671db266fe1146e348ef1267
+96
+671dba3e5102c27a58a6c501
+B
+671dc1300e30fa8a7d64db58
+0
+671dc2145167d65f41c86c58
+D
+671dd6cd91a438f6811f5108
+A
+671de7c204928e6c45fe1dc9
+F
+671dea179a50e5f7394157de
+A
+671df0f391a438f6811f5133
+0.0544
+671df94021be7c0de0c698e8
+DDDYYY
+671dfacd16b873a455cbd5e0
+D,E,L
+671dfc4d348d6bb4709de947
+$\max\limits_i (a_ia_{i+1}\sin\phi)/b_i$
+671e1b4b32a23f6634d70269
+11
+671e257023b28b50d1469683
+3
+671e3d672637abea9c147ba1
+D
+671e4ade104e72d40d15ae51
+Hexachlorbuta-1,3-dien
+671e4c2e88c7438591f287ae
+[AB, CL, DH, EK, FG, I, J]
+671e813c72825fc77bddc433
+1
+671e8c73745919354c759204
+(R)-3-methylcyclohex-1-ene
+671e8d8879b410d671a7d702
+[12]Cycloparaphenylene
+671e91503152969a09cb5ef8
+yes
+671e942d203983a0a37a90b1
+J
+671eb856c357c6b4f73592dd
+$A(r) = r^2, \quad B(r) = r
+671ebaf92a7c16b748fd2709
+Poblet
+671ebbf35cc535d3e94216ac
+$\pi_0 = \frac{\rho}{2(e^{\rho} - 1)}$
+671ec12aa695a5847b48c38d
+Jan Mone
+671ec6d8a695a5847b48c39a
+\sum_F |\sum_m \O_F^m(t_p)d_F^m|^2
+671edddb6edc2afd69958943
+rotate 120,flip through opposite midpoints
+671ee48a3b4aac040ec0bd85
+E
+671ee4d26edc2afd69958953
+J
+671ee72aec85f81abd7a2f92
+B
+671ee933019b32e00d827382
+E
+671eeb53c1a668a6c81e5993
+B
+671eefbfb6d7145231fa28e4
+B
+671ef4bd6edc2afd6995897b
+B
+671ef8426edc2afd69958982
+D
+671f05c0d0f22fd6e50482df
+5
+671f07b1d0f22fd6e50482e7
+E
+671f083dc8da11076ce9960e
+D
+671f09d6d0f22fd6e50482eb
+A
+671f0b0c7301fac39660e7a3
+E
+671f0c2578ab3005e439aeba
+A
+671f0c8fd0f22fd6e50482ef
+N[84:8]
+671f0dfd5a31c38041aa96a1
+3, 3, 3
+671f0f565a31c38041aa96a3
+290951
+671f12185a31c38041aa96a8
+1630
+671f1702e4e6b61540b0bdb4
+Function "list()" not found in base self.
+671f1b5bf1d35a8b2b3b9756
+smalles 16 and largest 19
+671f1efaf1d35a8b2b3b975c
+Harada
+671f1f0bb0b665acec70c3aa
+C
+671f1f4ae38f776acdad8a77
+F
+671f1f88e6600c2d52d9fbe6
+Book, Child
+671f20c0e38f776acdad8a7d
+0, 0, 0
+671f23ab12f081da543ed684
+A
+671f2870e38f776acdad8a93
+B
+671f2a3b6b0783bbe0457f38
+2, 4, 5
+671f2b0ee38f776acdad8aa1
+A
+671f2c7debcbc34ccb44613b
+D
+671f2d69e38f776acdad8aa2
+4, 4, 4
+671f2ef26e387421216121c3
+AD, CB, EF
+671f3099aba024667b883603
+E
+671f3210e38f776acdad8aab
+1, 3, 4,
+671f33cb75523fe63c0a8b60
+F
+671f34ddd50b0306ddc17a41
+A
+671f351f8b7ca154256661b6
+B
+671f367975523fe63c0a8b64
+D
+671f3821d579cf064f22d3bd
+D
+671f39dcd579cf064f22d3c1
+F
+671f3a628a33df76faeb71eb
+0
+671f3c368a33df76faeb71f3
+15359
+671f3d49d579cf064f22d3ce
+1, 2, 3
+671f40348b7ca154256661c6
+A
+671f449c879059a81a74468c
+D
+671f4997a2bc63fb20c63134
+1
+671f54e6a9349689d3eb65ff
+\frac{2}{3}
+671f584591addf76ff2eb254
+Fungal infection
+671f5ef82709f18025c61f15
+Fungal infection
+671f612d12bc18b3bf57dd89
+aleph_0
+671f6889490be3e9a159f485
+(a+b)\sqrt{\frac{c_fc_r}{m(I+c_fa-c_rb)}}
+671f73993e82c6b6151dbba7
+Tenerence Love
+671f7a4a1bcf902a1bca1eca
+Ha-H0 ln[sinh^2(πw/D)/sinh^2(πx/D)-1]/2
+671f7f334db66145d9e41f1f
+G
+671f84c91d893bdd9af05be5
+TTTTFT
+671f887676b11ce91b2887ce
+4
+671f8a0781665b519321d818
+13 (E||x), 9 (E||y), and 13 (E||z)
+671f8a4e7e8f160452726c81
+k=4045
+671f8aa5e8fbfa3cf02ce3b6
+777
+671f941e919b83ce036e80d9
+446
+671f99152e60076c5693554f
+40
+671f9eaa45414d0ed7ee4f88
+$5$
+671fa21cbaffee5d2f2acac0
+1-bromo-3-(1-bromopropyl)benzene
+671fadb2272218e5d336a33f
+E
+671faf8171f6aa7bd1e604cd
+B
+671fafee2e60076c5693558a
+64
+671fb0b7298c0d11670fc561
+$P(T < \infty) \leq \frac{2}{3}$
+671fb32753f9dd7511fe4d70
+294
+671fb4ddf2a13c812068cdd7
+Threshold BLS + collective random salt
+671fb84fc6abf8266c1892c8
+19
+671fb909298c0d11670fc56b
+BaCl2
+671fbb0cc6abf8266c1892ca
+B
+671fbea5326bcfd746f4d96f
+104
+671fc0c2f0bea11129a5ecdd
+91
+671fc9508c7c5056012df16a
+E
+671fc9d46c5d3903234cd391
+E
+671fcbe9f0bea11129a5ed0a
+[]
+671fd05dffd5ea2c79661486
+18
+671fd62fc40008a5a756fea4
+A e^{- \alpha L /c}
+671fd9236c5d3903234cd3aa
+Eb
+671fe4f45a0f70920ad3bd63
+2,7,13,18,37,43,67,163,1801
+671fe6ee8ff35abcfbaac4f8
+E
+671feb0424e49a0a566a7883
+E
+671fec80cee768cca0b65e5a
+E
+671fee575a0f70920ad3bd80
+C
+671fee7b3fdf9b50dcb7ca58
+D
+671ff0e5029265f239082aac
+155
+671ff43951f8a38cb737b3d4
+B:2. B and C: 3. A,B, and C: 4
+671ff58624e49a0a566a7894
+D
+671ff7a24140ffc71dfae4af
+2394
+671ffad8e46fcc9dbd54ce6e
+E
+672003491d32fc99e5c48d25
+ethyl 2,5-dihydrothiophene-3-carboxylate
+672005f73e7f561778c0c647
+D
+6720066a447f1bb0370f36b1
+B
+6720077fe15dd61079c852d0
+E
+672008fbc069a3895d1114d6
+$-25.4 \, \text{MW}$
+67200a2974329cbaaf1fba1c
+$95.55 \, \text{ MVAr}$
+67200a8a3e7f561778c0c65c
+$0.733 \, \text{MW}$
+67200b2f79e871b075407673
+$5.1 \, \text{V}$
+672011cd74329cbaaf1fba33
+$ \eta = 36.34\%$
+672012bc74329cbaaf1fba35
+$V_{\text{total}} = 3.439 \, \text{V}$
+6720175f3e7f561778c0c66b
+n-boc-guanidine
+6720204c18dac989ee5554d4
+10
+67202419dbc5086c0bdd4e0b
+3
+6720241e20239af7af582ae1
+Iridium
+67202822dbc5086c0bdd4e1c
+A
+672029348499a05383b5c883
+diethyl malonate
+672033c66a78b6e2bfcc5f30
+beta-methylstyrene and benzoic acid
+672037fcb27d565463a1dff2
+B
+6720449622c03e062e242dd2
+$70$ s
+6720450234e68233152e2cf8
+面
+672045da452d0bd5546e11e6
+带
+67204651d0ab339b4b7f9145
+$80 \, \text{MVAR}$
+67204727dab51faf6135e7e2
+$2.04 \, \text{MW}$
+67204844452d0bd5546e11ef
+B
+672049a4452d0bd5546e11f1
+$7.8 \, \text{kVAR}$
+67205943fdd1c7b924f99713
+0.7916
+672059fc2ea5966e3eddd835
+6
+672059fde8e4162530496e8f
+0,1,0,1/2,0,0
+67205ffef58a25138266a364
+28
+672065bcff30e78ae646b59c
+432
+672065f65681ce2b6f5a08a0
+C
+672067805681ce2b6f5a08a7
+25
+672068b61177432c7e500289
+$\frac{13}{21}$
+67206ac2f58a25138266a375
+$\frac{k}{k+1}$
+672072c945e7bc8f5c2dd1ba
+-\sqrt{2}
+67208aa0563d776c82113daa
+\frac{3 v_0}{16 v_r} L
+67208d2f5241ba1dad593bf5
+2^{15/16}
+67208fc7a002d6ecbf05e8ed
+infinite -- undefined
+67209100563d776c82113dba
+D
+67209433c410824c16063fc6
+music, speech, sound effects
+67209ea05425611553f598c7
+countable
+6720a7b54f57949fff72b9f3
+A
+6720a8db5425611553f598d6
+2^c
+6720a9feec461e4c6a4e2c3a
+D
+6720b19753f93bde5977a8e9
+1
+6720bde4806ce34140909a67
+5003
+6720c0cd083a628a849fcb51
+E
+6720c10ac6e0d9a4953b636f
+ceil((Tc-M)/(2L))+1
+6720c149c6e0d9a4953b6370
+\frac{5}{6}
+6720c324083a628a849fcb53
+11520
+6720c7d9831d6450ba886ff0
+\( \eta / n^2 \)
+6720ca4b696f86db458bcfe9
+$2 \sum_{k=0}^{(d-1)/2} \binom{n}{k}$
+6720cd0acf47ec0733864dd8
+C
+6720cf0221eb3705cfeb267b
+3
+6720cf9caa0f927c36a3eb71
+2.5
+6720d5455cedc02ed70dbe42
+4 5 7
+6720e064a9e1d1cc990cc8e0
+B
+6720e184a9e1d1cc990cc8e9
+0.175 m
+6720e3181eadad18da2de66c
+542 kN/m2
+6720f01e936e8e4575f4f3f4
+2
+6720fcd2198910fd26b01218
+F
+6720fda3febecf1a8b9b083d
+$\pi R^{2} \rho v E$
+6720fddce4d64797f19fbdb9
+K
+6720feb00d9c62225dd12bd5
+76
+6720ff60488fb478b942537b
+$\frac{167}{8}$
+6720ff8a198910fd26b01224
+OCR
+672102b6febecf1a8b9b0845
+5
+6721044c137d5f8ca61261a5
+181
+672104511e9aa94fc1e215da
+20 ways
+6721058a1e9aa94fc1e215dd
+1025
+67210bd65968ddcc0df3a248
+Beth_1 1 Beth_0
+67d317cab57b67a3417a4969
+B
+67210e0b44a741b2fde3c609
+53/12
+6721135a6f862f1a6ba292b3
+$Q_{\text{opt}} = 0.49 \, \text{MVAR}$
+67211367482789b0dc078880
+4,6,7,8,10,11,12
+672113f76f862f1a6ba292b9
+$Q_{\text{opt}} = 12.43 \, \text{MVAR}$
+6721154d5968ddcc0df3a25c
+0.163
+6721176ed9397a0c64dba826
+Yes
+67211894704d39bf19f80ad8
+Brooks, possibilities
+67211971d9397a0c64dba82a
+C
+672119ecd9397a0c64dba82c
+$P_{c}^{\text{opt}} = 1.5 \, \text{MW}$
+67213709fc2538200af2e939
+232
+67213cb9043b1e724244a1c6
+54
+6721408e0d97cabdbfa0ace9
+D
+672144957c855b90edbc8b3e
+B
+67214969c04654cf47135a4e
+\( O(nx) \)
+6721545d3f8c49e613c94fac
+$2^{2n-3}(63n^3+119n^2+54n+8)(n+1)^2$
+6721596dbc4ad500af47418b
+3
+672159ba5e72a826f1dcf4d6
+O(n + A \log (A))
+672162b02795580f2ee8644f
+$((a↓b) ↑ ¬(c↓b)) ↔︎ ¬(d → ¬(¬a ∨ b))$
+67216b3c8238b402204d3432
+whale
+67216d4134cd9a7f210d4100
+Maximum of 6.5mm
+67216f0abddbccdce9955e93
+12
+672170613659e79885449d5a
+(2, 2)
+6721767ddb8105efc71a7d1b
+$4\pi\varepsilon_0aV^2$
+672179e4c8cc0ac89395e8d0
+B
+67217d44c98941f2d2d343f6
+CG
+67217ea5262eafa82562cc28
+2000000
+67217f97262eafa82562cc2b
+D
+67217fba262eafa82562cc2c
+D
+672182f55e4a5b8416a1ccbe
+B
+672189d1c98941f2d2d34400
+(1-β)(1-2β)[(p-2)β(β-1)+1]/(β^3-2β^2-β+1)
+67218f865b0747ce2231d48c
+$\frac{2}{\pi}R,\frac{2}{\pi} R$
+6721998686e95ac1054387b3
+n + (\frac{\pi^2}{6} - 1)n\alpha
+67219b2486e95ac1054387bc
+M
+67219bfaa8cd9fb6c1e25d6d
+A
+67219c66a8cd9fb6c1e25d71
+$ 28 \ln 2 $
+6721a42269600ecb23a3e623
+4(10^{20} - 0.5)/(10^{40} + 1)
+6721a513823e82a699228953
+Bg4, 6
+6721ac0547bc48850f17f779
+1.5 2
+6721ad631648dda151c2a7ec
+H
+6721b01e63e02c05008905d9
+5
+6721b2171648dda151c2a7f9
+1256
+6721c8e11b5a8e4cb0e9079b
+B
+6721f74cffe59043e1a1a35e
+5
+6721fbd7b5bc9936c245bb78
+Xavier Zubiri
+6721fd0afec540182190e310
+16
+672200467408db93b36cfd02
+24
+6722039010af9c566d42b825
+24
+6722048cdcce66512a82d9e2
+q^240
+6722072ddcce66512a82d9ed
+$20.4
+6722084fdcce66512a82d9f4
+44
+67220ac44337b6721108bf83
+YYYNYN
+6722198c0628f6647e3d591e
+13
+67222f190f0526aefdf441fd
+E
+67222f4b0f0526aefdf441ff
+$\frac{\sqrt{5}}{2}$
+672235a01e36ca7369b8b157
+32
+67223944bb174709043a2641
+B
+67223ac0ca7acfa01f38c284
+Switch to High-dose Atorvastatin
+67223f9b0f0526aefdf4421b
+$\frac{2 \sqrt{3}}{\pi}$
+672241b67d612873ced61e20
+1.5
+672255e153af61d9b29732b8
+e / 2
+672257b388e407d7eb077431
+(2 − i)i + 2(1 − i) ln(1 − i)
+67225b0a9e5897be2aec5257
+I
+67225e2f53af61d9b29732c8
+$g_1=\frac{2}{1+S}, g_2​=\frac{2}{1+2M−S}$
+67225e48f657c5888f075dad
+M:={v∈C[0, 1]:v(0)=v(1)=0,v(x)≤0 x∈(0,1)}
+67225f3cf135fd983a87bc1f
+A
+6722613b4152cab57c187de5
+2 PR-Boxes and 4 bit in average
+6722618ae686ef917a142d81
+contains red clover, increases prolactin
+672262d988e407d7eb07744d
+f(n) = (n+1)!
+6722728827542064f9b14815
+B
+672275f643469364173b0c14
+1365
+67227aaf9679954247c9c0ad
+Gold (work function of 5.10), 0.518
+67227b249679954247c9c0b3
+(201, 301)
+6722809eb0e7186e733d6838
+\frac{2l_0GM}{2GM - l_0v_0^2}
+6722815c3c4f6785b07a6f49
+9
+672285d7e604c7c1efbd6af3
+X Y Z A B T H Makefile OPPS
+6722870ef7bda9406bc723ac
+$-1, 1, -1, -1, 0, 2$
+6722889086cf6075e69b96a7
+14:21:60.5
+67228be893273f2ea4d39e36
+E
+67228eb808748295331b3dfb
+3
+67228ecf93273f2ea4d39e3e
+1011101011
+672295eda223ce4156c54839
+1.03
+67229ab808748295331b3e1b
+2
+67229b1f5a95bf7d096a6319
+D
+6722a20c7c3fce9eed014fe3
+Tribromination product
+6722a52340918481038cda8e
+D
+6722a65a27a5569d0c5f5c0f
+A stinging nettle
+6722a909f1d6384da90a4a38
+n \cdot m^{k-1} - m^{k-2} \cdot (k-1) \cdo
+6722ac9945d2a9b39caeedd7
+30
+6722ae097f84054950978f61
+≈ 4 (possible answers: 3, 5)
+6722b01f7f84054950978f69
+Glucose-6-phosphate 1-dehydrogenase
+6722b1f9f3a489ee08117730
+C
+6722b2777f84054950978f74
+Xn+1 = RXn(1-ln(1 + Xn))
+6722b6a92f1a6e315f1dff3b
+N = 9
+6722c0ddd60ad77b5374fdc9
+D
+6722c2c066e4416e650d9032
+x^3 - 2x^2 - 1
+6722c4f1d60ad77b5374fdd2
+$n! \cdot 2^{n-1}$
+6722cb976bc44598e1fd09be
+$6.02 × 10^{26}$
+6722cf86c3c3c44b213a198a
+98
+6722d9de6bc44598e1fd09d6
+13
+6722dbdfb130fe3b3b76ad18
+1889 kN
+6722e21ca33cee8da62128a4
+C
+6722e2aa59f0f83e64e054ed
+B
+6722ed574ef505a6876b2a85
+5384 kN
+6722ee72a4b38ebacbde4147
+60.3%
+6722f2b2f3aeb8d4f9cf83ab
+V
+6722f749a05636887d7b529f
+[0.305, 0.556, 0.184, 0.440]
+672302bdbc9e7202ad89ccd3
+Septuply and higher.
+672302db3fe7fa5018b75c16
+E
+672308e609910d09444df92a
+C
+672309a572e4abc960be3774
+B
+67230d6e736f03c0e4c1adee
+6
+67230f05092b2c17f66c84aa
+NCL between M...[KAVC and LXVIGATR[...]A
+67231c593913fc1112f91418
+1930
+67232241f19eb2a69ee319fc
+E no
+67232c88e22b01bfa7b8f156
+21
+672333955d82e15ca8e37afb
+33
+672338c7348c6cb89bd6a7a4
+0.000008
+67233a00f0e8cb183f7c3df3
+C
+67234ef248728bb7e8175bf2
+$n \in\{2,3,4,6\}$.
+67235bc3c0ae8158005244a9
+0
+6723658569bb6b9a5a4499b0
+Plutarch, Milton and Fichte.
+672365aa71fe0b446a1eb0a2
+Four main depressions
+672368e4c08f59acd19d8353
+G
+6723755c2e0b21bf390c5a30
+364
+672378554b5264ad52901028
+E
+67238a4a22fbf3820373cb44
+C
+67238cd54b5264ad52901059
+C
+6723977a2460a4b2c86caee8
+130
+67239d8e02ee3ca40bc2034a
+$\{s \in \mathbb{R}^3| s_3 \geq 0\}$
+6723a06c2ed591ecf750d591
+$\frac{3\sqrt3}{\pi} \frac{1}{1+x+x^2}$
+6723a1419293b01661360a94
+Orthodontic and Prosthodontic management.
+6723a613f747d32c6b0b65dc
+B
+6723a99824c5cdbe41028a46
+B
+6723ac21af0a31f10468be05
+C
+6723b02aaf0a31f10468be11
+B
+6723b207610c8f282a827f3a
+2/3
+6723b44b339572beba8f91a4
+I
+6723b94c339572beba8f91af
+A and F
+6723b96ad08035d13d467d54
+\infty
+6723ba00339572beba8f91b2
+C
+6723bf036e47cec0509b5caf
+133
+6723bf0d71d8a82752075279
+3585
+67a69b0bc85a56ef94b67f1e
+No
+6723c2226e47cec0509b5cbb
+FM
+6723c5cf75ffe38ab99c4e51
+9/26 and 3/26
+6723c6ed75ffe38ab99c4e59
+Exo. 7:3,‎הا ا הو و و ا ا ا
+6723c98b325b18c34f227615
+[3+2], retro-[4+2], CO2 byproduct
+6723cc9539491a3045f62fef
+$-\frac{1}{2}$
+6723cdf07a517fb44dd35e47
+5
+6723cfdeddb9a8e96a06901a
+8
+6723d5524a5a9552dc3d8836
+2,4,5,6,7,8,9,10,13,14,15,18,19,20; 1
+6723d9a6271ddeec8bacb9b6
+1,3,6,9
+6723daed271ddeec8bacb9be
+(R2/R1)^2
+6723e2eed45a194cda34796b
+$\frac{3}{4}$
+6723e60719c334bc13515f01
+-22
+6723e67a527c0443bbbe3964
+17/2 + 1.5*10^{10/3}
+6723ebefcf4ea65226eb6f9c
+DDCDCCCDDD
+6723ec50479384d8942cca75
+C
+6723ecf396f515ab208ab187
+91
+6723ede433d757d4f7d6cad3
+S_t converges in distribution, not in L1
+6723f126acf84f9f1810b4ee
+x^5 - 7x^4 + 19x^3 - 23x^2 + 10x
+6723f1bf0b72766be93d01ae
+1/3
+6723f1d6e01c4b28f6115ce0
+D
+6723f44aabdb1dfc2b496a11
+3
+6723f4e0cd09615a3afc3d0d
+C3h
+6723f54dcd09615a3afc3d10
+1) Met 248; 2) Glu 395, Asp 396, Glu 399
+6723f7fd28eea415ba8d7af3
+7
+6723f98e95122aa6e1c63506
+6174354606
+6723fc382a5a297be25c2d79
+F
+6723fd5a1e085509e462323d
+8
+6723fd7d1e085509e462323e
+f_m=1/m[a-f_{m-1}-(2^n-m+1)f_{m-2}]
+672403a54850f72c4c930d47
+D
+672403fa5461772b24b2e651
+B
+672407521f51862e37d75208
+I
+67240e5586f4c71a70e0b498
+E
+67240e5786f4c71a70e0b499
+B
+6724102248afc025aa35bce8
+A
+6724109dab2b4ea54da1ad90
+D
+6724134c03192a89cb2296c0
+A
+672413536c2345e86ea59fe7
+yes,yes
+67241607454d2eee0ceef762
+B
+672416e85247738dfbb432fa
+A
+67241711454d2eee0ceef767
+D
+67241750cf2f76f66b81fe10
+C
+67241990a1bd6b06dafb7052
+B
+67241cbe9909a95d1bf7aa00
+A
+67241d9a1e38e5f4e7b2b183
+E
+6724217c9909a95d1bf7aa1c
+L
+672423111ebc6d08d02c7f2d
+A
+672424af1bf467697c4c699f
+M
+67242914911674ab1b5d9036
+v₀𝛼arctanh(√(2h𝛼c+h²)/(𝛼c+h), 𝛼=c𝛾₀/g
+67242a2d2a37861b051e6178
+D
+67242bb82a37861b051e617e
+-2 - 2i
+67242f1f911674ab1b5d904b
+R
+672433577fb5d24be68f010d
+{B1}
+67243887a7c5f8f463109d82
+{B1}
+67243ab4c287b71df6f486c0
+60129542144
+67244f264d59b659ef10889c
+$n - 1$
+672452ce8300e6a4b0112cff
+32400
+672455ce7a14971607e3d9f0
+E
+672458d52253026c7368902c
+\( n \leq 3 k - 2 \).
+672458e95f170d6ed834f340
+401
+672473c50c7275f41d6d1e63
+624
+67247cd2f18f2cb41cef4269
+7330000
+672481e607ba5eb2c1c53534
+(a) No; (b) \( d \in \{ n-1, n-2 \} \).
+67248cadd04b3798125682f3
+1
+6724900ad8246a7af6d54ff3
+Y[4.96]
+6724955b1dc5c59953c463ec
+A
+6724970787a3fb903b6a4663
+518
+67249b8ef14c6dca507d5e0d
+55
+67249cc8709ecff358139741
+Yes.
+67249d57d91756473725533a
+E
+67249dc1d8246a7af6d5500d
+C
+67249fe6d917564737255342
+Change anti-seizure medication
+6724a01ff14c6dca507d5e18
+24
+6724a047d917564737255345
+B
+6724a088d917564737255346
+E
+6724a2dd9138921d6f17231a
+263
+6724a338d917564737255349
+\sqrt{2}
+6724aecb2bfc260d444bc385
+4048
+6724bcf944c2c3be8ba3cf72
+10^{793} + 2*10^{398} + 1000
+6724c10df477ce1b85735d01
+yes
+6724cdd55ae9c8186f31f920
+infinite
+6724d4f2618e28a18b101158
+(a) No; (b) yes; (c) no.
+6724d70af70a476bbcaa32e1
+0.68
+6724d81d42ec04c22a24aa83
+E
+6724d9e612a8d5ea6a61936f
+(a) \( 2^{15} \); (b) yes; (c) 2.
+6724dae7f70a476bbcaa32ef
+(a) Yes; (b) yes; (c) 2.
+6724db7012a8d5ea6a619372
+D
+6724de4af5d4eb3bb83e0597
+48
+6724df023d152e09b5c5d6c1
+10
+6724e08542ec04c22a24aaa5
+(a) Yes (b) 0 (c) $-w^2(g^2 a \cdot 1_R)$
+6724e240618e28a18b10117b
+(a) $w^M\in Z(R)$ (b) $w^M\cdot r$ (c) yes
+6724e29c42ec04c22a24aab0
+\omega_s = \omega_0 * \sqrt{|\ell| + 1}
+6724e72e2e4151a53d606225
+(a) Yes; (b) yes; (c) no.
+6724ea8ca36a8ef783edc2e3
+(a) $g+1$; (b) yes; (c) no, no.
+6724ea8fef7ca78ae041e22d
+C
+6724ecebaff45cdb58582060
+$-\frac{ab}{c d^2}\int^t_0\frac{1}{r}\tau$
+6724ed87a36a8ef783edc2ec
+D
+6724f3552002c95e0b70ebc4
+(a) Yes; (b) yes; (c) 3.
+6724f5c20c7d03e5a66cce4b
+1
+6724f652efed730d1aaef326
+1-(2g/πk) [F(k)-E(k)]
+6724f79792419e4380b5686a
+J
+6724f79b262cac26e3c38360
+k,וְלֹ֖ו,k,لا,b,ولا,ps.001-041,k,ולית
+6724f8b80c7d03e5a66cce57
+O
+6724fa2d262cac26e3c38364
+Cu: 36.0° (111) 39.1° (200) V: 20.3° (001)
+6724fa4d8a668910353a6c75
+D
+6724fae6d3b58eb90d837b32
+(a) Yes, $n-1$; (b) yes; (c) 2.
+6724fe91ea5926938a631b9c
+Y[1.10]
+6724ff0dea5926938a631b9e
+A
+6724ff2892419e4380b56880
+D
+6724ffb21d07f0962c8993cf
+C
+672500151d07f0962c8993d7
+B
+672501742cc2a1349f1ffad7
+1/4 + \epsilon
+672502cc7cf2342075ca0646
+D
+672507e82cc2a1349f1ffaf1
+A
+67250fde58b17ce5905f2cfe
+7
+6725107c97743d26179494c6
+3
+6725145d97743d26179494d6
+Nam Định
+67251f8511085cbd9b25eea7
+C
+672521a56cd1b99dae47a110
+(a) Yes; (b) Yes; (c) Yes.
+672522279bdd18fefce14c6f
+A. Yes B. $3\delta+2R+3$ C. No
+6725228e097e1ef2c46767ee
+BALANCE OF POWER
+672524c7e6807ea2c8372c3b
+248832
+6725255ee6807ea2c8372c3c
+F(6)A2G(4)2Ga(3)1Sg1
+67252660e6807ea2c8372c41
+8
+6725267ae9d3782179d4a5ff
+192
+6725280ff2e932808735b2e8
+$\infty$
+672528b1fc012fdec7fc63c8
+C
+672528e739b66386e0489e89
+yes
+67252916041c0a0ef1addf6f
+(a) $d_P+d_Q+2$; (b) 7.
+6725292085b48a76ea1b5709
+4
+67252aad70e5e32e5897fa56
+(a) $2 \binom{t-1}{2}+2$; (b) 14.
+67252b9639b66386e0489e94
+B
+67252e6e825d7a6248383174
+2792.38, 2805.38, 2818.38
+67252eb05d09683709d8a5f8
+Kuzmin; barn swallow; Pontius Pilate
+67252fe0825d7a624838317d
+{0.5,1.5,0.5,1,1,0.5,1,1,1,0.5,1}
+67253382825d7a624838318c
+\( \deg{P} + \deg{Q} + 2 \)
+6725349f3e9860a3b615ce40
+y=(x^2-b^2)(x-c)(x-d)^2/(x-a)^4
+672536736bc3970bc3e12ca5
+F
+67253690bcd1c268662e77bb
+A
+672538bc6d762e2b5184b6cf
+A
+67253a0b13c1aec29d1f1841
+24 8
+67253a6aab5670ae51f28912
+CC(C)(C(=N)N)N=NC(C)(C)C(=N)N
+67253bcc94bd63ec55a66a0c
+(a) Yes; (b) HA, TW, and AS; (c) True.
+67253beb5a5d8bd389020394
+C1COCCN1CCOCCN2CCOCC2
+67253c33ad98e94b47ea3477
+C
+67253d0294bd63ec55a66a0d
+A)$\ell$ B)$(2e_1+d)\prod_{j=2}^s(2e_j+1)$
+67253d7aac6dc24f8aafbfc1
+CC(=NCCCn1ccnc1)c1ccccc1O
+67253e40cff9fdccf85f3f08
+CC1(C)OC2COC3(COC(C)(C)O3)C(=O)C2O1
+67253f2c13c1aec29d1f1849
+O=c1cc(-c2ccc(O)cc2)oc2cc(O)cc(O)c12
+67254420046774791d0f1a2e
+None
+672547a60eaf41df412479ef
+[4π+2π], [6π+4π], [8π+2π], [8π+6π]
+672547d531e4efbf27ecd1cf
+35/8
+67254a56046774791d0f1a41
+H
+67254b9b3f37dfb9cf080a95
+60%
+67254dd75a5d8bd3890203c6
+B
+672555acc27a6276611a3005
+G
+6725562814a5e4119e612733
+α+9β/5,α+β/5,α+(sqrt41*β)/5,α-(sqrt41*β)
+672556af66f8db005694c4d8
+30
+6725592b4ee96e5b68bb383b
+Ethene
+67255d0e51c2cc162e5b53e4
+A
+67255d1e100c04e9bad57694
+6
+67255df04c0e045943574e41
+C
+67255f5f8488feffb0078345
+E
+67255fa498350d726c7c9456
+D
+672562d698350d726c7c9463
+Brain tumor
+672563b098350d726c7c9467
+ii,iii
+67256656d246bf5d21d1377e
+750
+67256aab1f67ae0874429a7c
+D
+67256b14ac4f9591b137e180
+B
+67256db1afb4a043e613c929
+C
+67256e36e5e6cc87293fc3f0
+F
+6725703471b3b52354976be1
+Mount Cyllene
+67257157c16289d7e113915b
+E
+6725716480b9caf2f8f62d01
+no,no,no,no,yes,yes,yes,no,yes,2,2,2
+672572ba1b7caf96dfa80324
+C
+6725735924e0012c5eb7c4d7
+H:scoria, I:tuff, J:pumice, K:pegmatite
+67257466e173b172c061372a
+$\frac{1}{2\pi}\int_{|z|=1}h(x)z_iz_jdz$
+672578eb24e0012c5eb7c4ea
+1,3,0
+672579985c16db8f9647559c
+F
+67257a165c16db8f964755a2
+C-epidote,A-augite,B-vermiculite,D-quartz
+67257fe9be53ed439b973ff9
+E
+6725809d0ce8918bd2e788b8
+-397.47122
+67258391e0340e3face2bc7b
+C
+6725840f6681c277a5f9e487
+b = \alpha P_1
+672588e1f71812e186947615
+C
+67258bcd9fc853c16713ec17
+385
+67258c4124b290d28a9f8abe
+C
+67258d077991f4a7cd4c359c
+17
+672597fcf6ab4d803965b2e0
+42.
+6725999445be7410f926c964
+(a) True (b) True (c) Type HA, TW, or AS.
+67259a64572ac41765175909
+$(6,\frac{8}{3},-2)$
+67259a76e7601df8b19a9e2a
+\( \frac{(p+1)_2' + (p-1)_2'}{2} - 1 \)
+6725a2fa43705c76e4390cd9
+1238.2
+6725a3721da5d29be1a9a573
+$\{2, 3, 5, 7, 15\}$
+6725a4bd95dd1474c74f2904
+(a) No; (b) \( n \).
+6725a933e10373a976b7e2a2
+A
+6725adefc6537022833a1e04
+A
+6725b1b58255543498bdcbd1
+B
+6725b22cf0e7323addabf758
+get pwned!!!!1;5571337
+6725b2ba569cf0c62da64cd1
+Zirconium, H or alkyl, sulfated alumina
+6725bb338255543498bdcbec
+$(N-1)2^{N-1}$
+6725bb348255543498bdcbed
+571,41
+6725c1e0eac3991069717fda
+b*Ng/Nt *pg * 1/(γt+µt) * τ/(τ+µg) * c* pt
+6725c3719aac82ce9cf99f23
+A
+6725c97d4f347932f9a63e68
+8/(4\pi^2+5)
+6725cab34f347932f9a63e6a
+Fox the Red
+6725cb794f347932f9a63e6b
+(a) No; (b) $\{(2),(3)\}$; (c) $1-O(1/q)$.
+6725cc85569cf0c62da64d29
+7.71
+6725d1218a8e4959b13450be
+a)$(0,7)$ b)$\sum_j^b r_j=C(n,k)-a$ c) Yes
+6725dc14097c6790b292765e
+$\frac{404}{25}$
+6725e204e46049e7f2d2a192
+16/35
+6725e382086428ce4e2fa8d6
+$2\pi\sqrt{\frac{11R}{4g}}$
+6725e3a826992c47ce3a7e99
+9
+6725e3f7603864c505f3a699
+E
+6725e3f8603864c505f3a69a
+33
+6725e42052e181595c8bf328
+B
+6725e470de551b21db6a0f0d
+3
+6725e8e30a7e4f593d9c716f
+E
+6725ed2e26992c47ce3a7eb1
+B
+6725ee5d0aae355a51195c8b
+B
+6725ee9126992c47ce3a7eb5
+$\{n \;|\; n \geq 4\}$
+6725f12226992c47ce3a7ec3
+2cln(cn)
+6725f4199a1073f00ecc2312
+E
+6725f64785e54acc9a6323ed
+$-m_3 d_{c_3} cos(q_3)$
+6725f6cebbcb646b2076e64b
+(a) Yes; (b) \( n+1 \); (c) 1.
+6725f8e6aaf7cd419fd01ade
+(a) Yes; (b) Both; (c) Yes.
+6725fbd80aae355a51195cca
+CCLLLLL
+6725fe6b26992c47ce3a7ef5
+D
+6725ffa31cd77337de97422c
+202
+6725ffac1cd77337de97422d
+47377612800
+672600b226992c47ce3a7efe
+2.3
+6726012526992c47ce3a7f00
+Θ(min {15n, M + 12n} · n)
+67260355aaf7cd419fd01af6
+$\frac{\sqrt[3]{15/\pi}}2$
+672603f3fd50e2db8a0571ba
+$\frac{\sqrt{2k+1}}{(k!)^2}$
+672604100aae355a51195cdf
+18:9:3069
+672604e44ee1765ace1c8a40
+0.25
+6726054b0aae355a51195ce8
+A
+67260a2a8f9ce8a272ed4e9a
+8:1000000002000000000
+67260ae24ee1765ace1c8a54
+Fourier's heat radiation
+6726140e196c3daaab906acc
+N
+672614260019e08d7f82b2d0
+A
+6726146a09e79f4662d109bc
+\dfrac{3}{4} \ln 2 - \dfrac{1}{4} \ln 3
+67261f558ef4acce1da598d0
+14
+672626078a65c5d33e24d92c
+же, бо, бы, мя, еси
+67262ab673b4f2f18a5c631f
+17:00
+672642510078e0b26fc15845
+76
+67264341699c78200b0177e5
+D
+672643a2699c78200b0177e9
+$\sqrt{e^{t+2h(t)}}$
+67264a55cae736a4a682949a
+A
+672656a3fd560b1526278952
+36
+6726669dcb8f46f45799b5a8
+1H10,10H0,100H_,10H0,1H00,H100,H_100,H100
+672669616633802b43ad2332
+B
+67267e44d47e5c6744def124
+C
+67267eb650fff4488ec97075
+A
+6726829153c95dcb361fb495
+I
+67268b4250fff4488ec9708b
+drive slowly joanne
+6726941826b7fc6a39fbe581
+D
+67269e31f922f333ed9d695f
+$y^2=a x^2+a^2+a+9$ for any a in R
+6726b213fce0098db0df41e8
+3
+6726b934d4553efaee99c556
+$O(\rm{log}^{3}(\frac{1}{\varepsilon}))$
+6726bc54d4553efaee99c558
+42
+6726c7e9d2ad475e400669c7
+1111011011101011001101111
+67c584061122dc051c09a25a
+x2@3,not x6@3,not x6@3,x1\/x6,1
+6726dc196cd52b493ac990e4
+F
+6726e3bf4aeb5af8ca49e254
+O(d^\omega(1))
+6726ecf08825660211cd8a68
+3125/7776
+6726ee5f8825660211cd8a70
+4
+6726efce60a613901f1fdf0b
+yes
+6726f1f73958e8253ed79aed
+$-1$.
+67273bfc2df343cad1ceb83e
+0
+672743f6b2c49bf5b7cbb56d
+144
+6727716f45a3c3a9020e2732
+0 2 0
+67278a07f6750868800d5801
+$26$
+67279eea8416b7e045c83b93
+9
+6727dd5c5e987b1e8c17f8d9
+swiss
+672825849044c8a4cbd271a5
+2
+67283cfe8a55429d9a6f5a56
+142
+6728696b7c5ceb52207dc9d8
+1,88,7,-12,44,44,24
+672895e42863e798a320481b
+5482
+67289af83c117573234842fc
+39.5:11.0
+6728b69ce3c03cd66bc102fe
+A
+6728ba13fbd2af689fc469e5
+Q_8
+6728be777ed2554b747b3d65
+3ϵ/16
+6728c038c556bb2fdda61dd7
+α=−0.115
+6728cb3e2008c845d3e7e4d4
+Die Frau ohne Schatten
+6728cbe9a6734ebc93d3adff
+Z=T_r{exp(−βH)}
+6728d1e3a8053eddd7a7f24a
+4
+6728dbcfaad817387c40dbde
+31
+6728e8d695a162eb76520086
+G_0​∝1/(ϵ_k​−iη)
+6728ec2d5ab07491268f24fe
+Z=Trexp(−βH^)
+6728f1b489898f87cb5320ea
+F
+6728fa2e9024bd67851adfd9
+A
+6729035989898f87cb532106
+$\tau 𝑁^2/2\pi^2$
+672910239024bd67851ae002
+sapphic verse
+67291a9877c129a9659171a5
+No Yes
+67293085960463c6c455b9e9
+Smallest 2, largest 4
+6729361f55d6dc2a717ab6a4
+Marshfield
+6729368fd379a3ab500e65d1
+Gaylord
+67298280a5f43bd5a3870e14
+\frac{2}{3}mg+m\frac{v^2}{l}
+67d66d03067f18d4c9ef4da9
+11
+67299bb057f14fa7ce3fe4fd
+8978,80432509,$\infty$,yes
+6729b153b7eb78fd8315f689
+F
+6729d4704648ce900654fb6d
+$\frac{26}{15}$
+6729ed087c934b95927b958c
+humanitysexam
+672a26f8b4642f4105e02119
+0.5
+672a27f5d30d6f5584cde73d
+pi^2
+672a28afb4642f4105e02122
+0
+672a29a8d30d6f5584cde745
+Order ε^2
+672a2a263653e5d5e7710885
+c
+672a30472091cee6de17ebd1
+alpha = (4 - d)/2
+672a32576547c905a6e6ad2c
+Yes
+672a3b69485ba3b093402460
+$\delta,\delta + 90\degree$
+672a5b4eefd96b7e660d8ea4
+11
+672a5bd5efd96b7e660d8ea9
+51
+672a5c2bea4e7fa0183543ae
+ν = 1/(d - 2)
+672a5d27385accabb646acfe
+I-II-VI
+672a5ecf541155da3e036094
+B
+672a79431629c5c3d6933ca7
+t = √((1604(2+√3)/505) s
+672a80a432cd57d8762583e9
+3.8
+672a857f44b1b51ebe496467
+3,4,2463,13418
+672a863bf37651ebc1a89222
+thio linalool
+672aac7a78e0ab15cf86003b
+\( pq - qp = \frac{h}{2\pi i} \)
+672b2749f64de603265f9fc4
+E
+672b2ff4a7b27beaf0e7779a
+c
+672b304eddf99de9738de25d
+4 5 5
+672b60ff231c04562f3fe6c0
+1
+672b687682d2a83f881d7c5a
+C
+672b74fe3f409f61a8efbe5e
+330
+672b75530af18d6c52ca104c
+pi/2 - 1/4
+672b82cf41fc5c68b0325382
+D
+672ba16ae227dfbd739cfcc3
+E
+672bb0068162815b97a47ed2
+17
+672bb2605a3e88050ba2cef8
+C
+672bb2bbe5bc491689003908
+A
+672bc2a8267cc248707f3b18
+\sqrt{14},\sqrt{24},\sqrt{34},\sqrt{44}
+672bca9fab085c84b90e223d
+B
+672be113f0b152f5e0c9e635
+A
+672beb9f82b4db7134bff5f5
+AC0; P/poly
+672bf01199b43edbc86d142e
+O(Nd)
+672bf0d1e9ebfc8b093c1309
+coverro
+672c033ff576aed47449d75f
+A
+672c0f1d76fec97ec7555a3a
+1177
+672c2ab86195c23913d66c90
+S4
+672c3c98d6f6f7a9e29fc6e2
+$\pi\;\textrm{arcsinh}\;1$
+672c6aab9d218ddb7c620149
+A
+672c82f6cf35e2d3ab488e6f
+0
+672c84e4975ce618c77a5c49
+E
+672c8e7a86c5d04249bd338e
+E
+672c91122372b4061411e111
+Y[1.1%]
+672c973499e1076f34973bfc
+B
+672c983d4183d91499fad7c5
+0.63
+672ca51e99e1076f34973c18
+−∣s ′ −s∣(1−κ(s)^2 /24)
+672ca5b60fcde739f6450e29
+μ_A(x,u) = exp[-1/2 * ((u-u(x))/σ_u)^2]
+672caa8a948e810916427a4c
+0
+672cb7f9040d34d0d0aaff61
+3
+672cba8ce9bdca604f9e0c12
+A
+672cbcc9e9bdca604f9e0c18
+A.
+672ccc56010db734d4f3f109
+14,0,1950,12
+672cd664551c643c6fca4e28
+5
+672cdf88f01cb175ca130759
+1050625 + 10^{15}
+672ce1d6ce33946794b97a88
+Monoclinic CuO C2/c sp.gr. a = 4.7 Å b = 3
+672ce1e7ce33946794b97a89
+G#5 F#5 F#5 C#5 D5 B5 F#5 G#5
+672ce9226c70a3cd8f9e441b
+364
+672cf9ab1abdeca725a6c993
+cliff-room-both-neither-room
+672cfee1db7c79384524d9b2
+468
+672d01f582086e7db5570f4e
+(\frac{3 \sqrt{\pi }}{2}-\frac{82}{45})\pi
+672d10c7016525107cc7bdd4
+D
+672d159c841ae6e83ce51dfb
+9/8
+672d2195841ae6e83ce51e18
+10 - pi^2
+672d33eb99799bd05725ea25
+A
+672d3b378c29cb8f2bac1f31
+C23H22NO4+
+672d44d02a52b5a11753319c
+ii,iv,iii,ii,down
+672d4dbdf618de6356b2fa89
+bayt 15 - bayt 20
+672d5a80f1800d2d85750a71
+бѫдѫ
+672d6478802a6a4e9525e893
+(a) False; (b) No; (c) Yes.
+672d7be7f97c3b404d90f3c7
+(a) True; (b) $\frac{v}{2} + \mu$; (c) Yes
+672d7ebc9a32864a120253cd
+(a) True; (b) Yes; (c) No.
+672d7f16f97c3b404d90f3cc
+(a) True; (b) Yes; (c) Yes.
+672d8366f97c3b404d90f3d3
+(a) True; (b) True; (c) \(s(t+2s-2)\).
+672d8b9b504a98f0e4799ae0
+$\frac{1260n^3+21n+10}{2520n}$
+672d9a18a3ca2744fbeb434f
+333
+672da2566d1f60da4a748aca
+180
+672db13596000a062a322379
+(a) No; (b) Yes.
+672db3a88bc9e04cb09bf8f7
+(a) True; (b) Yes; (c) Yes
+672db430e9b58e3b2e97b67a
+3
+672db86596000a062a32238c
+(a) No; (b) 11; (c) Yes.
+672dbb7dca434e751d8c2a83
+3
+672dceba64a3350407a69646
+300
+672dd4a20576373e76bfcc8b
+Ahuréi
+672dd6cbc78b3d5830853a39
+c
+672ddd9bff7bf1483f564046
+G
+672dde1a9a1f996a161fbd05
+863
+672ddfdf10ab34a448a5e299
+1
+672de1afed6de72b75b8c7e6
+A
+672de9b9ed6de72b75b8c802
+There is no such speed.
+672dfdac63f8d9211905d385
+A
+672e0541604ada7a6f6735c0
+(r,t)
+672e05610a85795d0ed2d363
+0
+672e08c20a85795d0ed2d36b
+−1/2
+672e09b50a85795d0ed2d36e
+I
+672e1ba8e62456d8519fb95b
+B
+672e24f117ed86a6ef9def55
+Y7960791205542063980
+672e2ab240c7d7b0d90e0907
+$r^2$ cannot be determined uniquely.
+672e4d316ee63a5d94bf863a
+169
+672e4fe878953b9f63939501
+249
+672e50c6b9281732f28aa0f3
+B
+672e6368958c5d0efe9d037d
+B
+672e6e4a85ed85778c0fb28e
+25
+672e72082d0c14a2e7969dd5
+0
+672ec55453f431bf8d3dc928
+Dorsal and ventral vasomotor lobe
+672ecc6946f619ca9b0495c5
+Xanthenium ion
+672eff1c72cfb81d78f82cdb
+E
+672f0ac02ccf8890167533ec
+B
+672f2311db65f629cc9236ce
+0
+672f4434e9c13daba078d693
+1260
+672f54bf8e66d0d6f864f6ec
+9:18:31941
+672f585f42ac7ca22c451066
+B
+672f6cfd609b665328565e5c
+66
+672f72e3609b665328565e6b
+5
+672f74159150f3ac08f0c9f5
+30
+672f769a47d2f4c7ca9ff5f5
+7
+672f7b4d4b45f2f295a386c5
+5. Kf6
+672f7b5d47d2f4c7ca9ff600
+Kh1
+672f819789e556fe53c8af75
+ABC
+672f887789e556fe53c8af89
+[-1,-1,0,0,1,2,4],[-2,-1,0,0,1,1,4]
+672f8cf367988656535c9b1a
+yes
+672f903de8305894b6cfdc7e
+yes
+672f935ae8305894b6cfdc94
+2
+672f9b772357e1d1acd486b4
+3
+672fa2180fa0aa93e4fc789a
+Jung
+672faa45c5a8bce51676ee01
+$180,\infty,\frac{n^2-1}{2},2n-22$,yes
+672fadd93c2722c42adabef3
+\frac{-1}{48\pi^2}\int{\sqrt{g}R d^4x}
+672fb1872357e1d1acd486dc
+Angelika McPherson
+672fbc4ec2c82cf448a1a725
+Izydora Dąmbska
+672fc00e13e5fbd332372f3f
+sqrt3
+672fec044673df044daa1f34
+0.4
+672ff3458e51cc48e8cbb7fd
+1,3,4,6,8,9
+672ff71e724ca22f42c0ff85
+C
+672ff8317b5ea0144d26c82d
+0
+67300670a8a3b9c5fe76c0b8
+$(1/√2(|1⟩_A ⊗ |0⟩_B +|2⟩_A ⊗ |0⟩)$
+67300f2e4524fef4d81b65c2
+1/4096
+673025aa4524fef4d81b65d9
+Future holds noises of long dead dreams
+673029b26ad714f5469388f5
+E
+67302aea4c42a72918926160
+$0$
+6730833d5363343e7c4aefd6
+Adios muchachos, a tango from Argentina
+67308f79c5ea548175bbf9fc
+C
+67309ff3cae6d721326ee9f5
+2
+6730ab9b1c5695f59ab6a5e8
+$d-1$
+6730abc958ef965949f1faa9
+$\frac{\sinh(\sqrt{3}\pi)}{42\sqrt{3}\pi}$
+6730d8d2f51df13db2f61050
+A
+6730f3c006cd33fe46ca2dfe
+D
+6730fc7d598fcdc8858811e6
+18
+67310b7b6e2b21ba84f49060
+$1+\frac{10080n^2-1433}{7257600n^4}$
+67310e19bf74eff110261caa
+F
+67313652f659ba7b3fd1fe40
+E
+67313aab62d0ed16256c0093
+61
+67313dec45edd6d926b19c53
+Battle of Grunwald
+6731432f45edd6d926b19c65
+Tris(diethylamino)trioxatriangulenium ion
+67315c7e7fcf9ea998467bd6
+D
+673186a4d531bb7e168901a3
+F
+67319c16b68f5ac822e236b0
+C
+6731bf34cb53dd90407d12b5
+16
+6731c361932ff1e062488324
+4
+6731c87c6c74786218717a81
+2
+6731cc48b2c262fe258260db
+no
+6731ce1a5b596793cf7e6eac
+Mamillary Bodies; Wernicke-Korsakoff
+6731deb93e52c2db8f318e74
+729
+6731fa3bb08cf72258a21348
+H
+67320e338f6d9d8c50dca222
+700
+673216bc3125f3eae4e7a0bd
+Ög 155
+67321d3b492db99ed0f964d2
+$\frac{1}{2}+2c$
+67323ba02db3b4507c5bf93f
+3
+673245364fe7531d658b2750
+97
+67325538be6ffcb93ac06399
+38
+67325a61292f97f5175026dd
+𝜃 = tan⁻¹[𝜇(L²+24ℓ²)/(L²+36ℓ²)]
+67327427dd4c31644d608f5c
+10^{40}
+6732761c77e9a02e661946ac
+Nunavut
+673277a6b33b7d6a440fecdf
+M
+67327daab33b7d6a440fecf0
+(2,0,2),(2,1,0)
+6732839d5526e01108e12127
+M
+673296e70ee3440316a64763
+Father Philip Waggett.
+6732a2af28fef5271839ac29
+ABCEFGJ
+6732a917934ffe0cf439cf30
+3166
+6732ca5730bf2e525136b688
+198
+6732ce52ec2dbeda063b420b
+1.384
+6732d3b01a3f938f2274a659
+25
+6732d91a87eb8fc773aaf2c0
+C
+6732f0dac65fb3c0e912b4a9
+H
+67330386bda81b2106f720dc
+Saito
+67330f175d26efacb4819f35
+Battle of Vimy Ridge
+673312855d26efacb4819f3a
+26
+67332b7198af9f49ad5d743a
+Overlap add: 63, Overlap save: 69
+673347de7c5871632811feec
+B1B2CEFIJ
+67335820c7d8c66591e6dfc7
+C
+673364562c46590b377046dd
+13
+673376d38769963eb1f7c580
+1/3
+6733919b7f92efbfefc1d561
+813
+673393faf6478fdbbd3560aa
+D
+6733af65f1a57e239a7e7488
+13
+6733e070361b540695504b86
+6
+6733f23b731fba4902214821
+12
+6733f31c4b8994c57e7160aa
+$\Delta(G)+1$
+6733fca10a354898fb579c2e
+pleasant
+6733fe294a614b25db9b204a
+C
+673412c46358d5eb2b766533
+3.748
+67342e67f4b4302fe71048c8
+G
+6734346cf3950859f67019af
+C
+67343cda5b69aac4188acc6e
+5
+67344c306c8af1669360d38e
+$\frac{n(6L^2+4-4L)+L^3+2L(1-L)}{48n^3}$
+6734830d5fc27d3e41519741
+-6
+673484483ad1f0cf44dd1ca6
+no
+6734956467d2904eebed3a09
+E
+6734968f832777944c775cc4
+E
+673497b017a9687889930ac4
+J
+6734989917a9687889930ac9
+J
+6734af9217a9687889930afd
+C
+6734b4befaf4e6eb454c1c92
+Oncopeltus fasciatus
+6734b7eb13b86f319a8eca97
+Stictoleptura canadensis
+6734b98afaf4e6eb454c1c9d
+Phaelocalicium polyporaeum
+6734c30b0e1b25db0db98ad5
+B
+6734c9d08b7d570e8e23f646
+5
+6734d0fd45aa0757a21c4ddc
+F
+6734d8b25e3e83209aa9ebd3
+babylonian 10-16 parchment 1chr.004:009
+6734d8dc5339f30ba329709d
+500
+6734d9c868c0043c3c23a8dd
+maimonides أ بيّ لك أي في ه فصل لا حيد على
+6734e070d2fa7918dc2795bb
+CDH
+6734f24a08351f5bdfd38627
+0
+6735017deb50c7dd03fdc0b5
+E
+67350775c4454316b9ed7d67
+Menorca
+67350ad443f1d86ec88ce396
+5
+67350e81673a2dca558d3cf0
+B
+67350ec69077b07d4e32c17a
+Frullania
+673511ca392d03ca70384d19
+(a) American Dog Tick (Dermacentor variabilis) , (b) No
+67351552d450b51bdecfb997
+Leaf gall
+67351d7729ebafdd5e74c3c0
+B
+67351e0230dd1ec84db1005d
+no
+673523f85a2fa2eb62ee48b4
+Nucella lapillus
+6735268e5a2fa2eb62ee48c0
+1
+673526bb5a2fa2eb62ee48c1
+Membranipora membranacea
+67352c39a52dd47230de9a2b
+H
+67352e9911e5510fc618f619
+E
+673531cae26d0576765bd963
+162
+67353bacf5927b66a51a2e7c
+37
+67a47bc3957a497a8448ac2f
+No
+673586ad6ea2c89a57e3bfb7
+4
+673598e8e8a7a17c7004ed67
+0
+67359bd848f0d868aea133c4
+f(z) = \sqrt{\pi} \cdot 2^{1 - z} \cdot \G
+67359d62d473013adeed83e0
+0.993:8
+6735a032f947388686c608f1
+6
+6735a2d69caf928ddf5957ed
+0
+6735bafad86155d1e57160e7
+\[S(R) = \left( 1 + \zeta R + \frac{4}{9} \zeta^2 R^2 + \frac{1}{9} \zeta^3 R^3 + \frac{1}{45} \zeta^4 R^4 \right) e^{-\zeta R}\]
+6735bc5bd86155d1e57160e8
+2^c
+6735bfec24a805ed5fc0d055
+53.5:6
+6735c467e35b9d6fab20c23a
+$-\frac{3\alpha}{5}$
+6735c6e5f8dc0a94c3a3ae8e
+4
+6735cd220c703cedb6f1646a
+yes
+6735d98ca3b3423f0757c08c
+1
+6735dc4e06111f3d647d6cbd
+Little Waltz, by Ron Carter
+6735f8858d3f50a33ee9d52e
+5.2 seconds
+673602ff4859597c5ce341a2
+D
+6736102de42febe40ab150af
+26/7e15:25/7e15
+673612eaff612f83700ec41f
+Raisa Maritain
+67361668dba36cc0d595f420
+110
+67361730dba36cc0d595f422
+0
+673617895f0b0b9b83ff36f4
+1.8
+673623f4975e3df10169bceb
+A
+673627bc10ec0a5f859365ce
+YYN2
+6736289810ec0a5f859365d0
+C
+673634d36299ad951a699b97
+León Felipe. "El niño de Vallecas"
+67363709b1a97400f39cdc71
+C
+6736391e384c276d45050b3b
+D
+67364c441758ad568a4a2ac6
+Case 3
+67364d570965d02f400bb6d2
+B
+67365419b7341a55d7dc1229
+61/144
+6736562a41ab088ba14c2bc3
+136
+6736667eb5eda7e01fa935b2
+3
+673668e658bad7ba89d4ad54
+E
+67366bc5b5eda7e01fa935c6
+A
+67367227d9ae2dd73efeded6
+D
+67367af29ba049ad64182820
+linalool (p-tolyl) thiocarbonate
+67367c1af50c5f8bfc321f34
+No, the theory should hold
+67367cbd06a61a42cae30293
+18
+673681def5487e4de6e78e1e
+1-p-menthene-4-thiol
+67368bceaea0de6b58ec346a
+A,C,D
+673692233b82a7ef5d60532f
+True. There is a cross in the center above
+6736945a5a7f4f59e4731c4d
+24.75 seconds
+6736978208a8678136ad0b96
+Splitting : doublet, integration: 2 proton
+67369e8a0c523da07a8f6542
+Wings
+6736a9b0b949d548db8da965
+E
+6736ab1af0b1f35585e14f7d
+(3, 3)
+679719aeac316f89542b3581
+E
+6736acee69d6d88d06d3124a
+2,2',2''-Methanetriyltribenzoic acid
+6736b24a58f461953a97e874
+4
+6736b51358f461953a97e879
+y=-\sqrt[3]{30}(0.25 - x)^{1/3}+1.96
+6736bd0c2f3638e3bc109888
+44 bytes.
+6736bf617cb0499c96e427da
+D
+6736c1646828e4a0cd54d756
+A
+6736c2e82db9d8cc7cd8e607
+B
+6736c43123d0fb145461cc78
+1329:1729:24:100
+6736ccc7b9b2577c622e944c
+\frac{0.76}{\epsilon^{0.88}}
+6736cea8134f03c3c61391e9
+00111101
+6736cec9cad1584306eee714
+SS Emile Miguet
+6736d46462d883a670c09b5d
+-283/660
+6736d5dc278519f8b1845091
+29881.8517
+6736d6acc88ca641f5608321
+13
+6736d80ac3870d903d810cb3
+$(2\pi)^{\frac{n^2-n}{4}}(n!)^{-\frac12}$
+6736d8d1278519f8b18450a5
+N,N-diethyl-2-methyl-5-dimethylaminobenzam
+6736d98353926b38af8c204b
+12\chi + C^2 - K_S^2 - (4 - 4g)
+6736db293948fca827d45576
+B
+6736ddc7ab70ca0b4ee6a2e6
+306.7103
+6736df63b0bb13ba4f29c594
+73/128
+6736e111c3870d903d810ce2
+747
+6736e17253926b38af8c205e
+\[50 \sqrt{3} \, \text{square units}\]
+6736e1afac05181e46df9caf
+721
+6736e54a4c96e49df1036fc6
+472
+6736e9109055c436feb3f65a
+B
+6736eb1c3cb46a6e548a3a4f
+0.5(10^{5010000} - 10^{10000})
+6736ec544c96e49df1036fea
+$\omega\cdot(1+\eta)$
+6736ecc681dc32f504545aae
+$k \left( n - \frac{k}{2} \right)$
+6736edefe41312420acd05a0
+(2, 5)
+6736eead51fddf72315e793c
+$\frac{7^{2024}-1}{6}$
+6736efd7c62053058bf5eef6
+\(\gamma\)
+6736f46694e6cfc37bdae690
+D
+6736f62aafbcf9397103d22f
+H-T
+6736f655e51e5ebba186a75d
+93.6:0
+6736f7bc980211368f0f94eb
+Tommy owns Lot A and Lot B with 1234567890
+6736f9f6badaad51129ec932
+5/8
+6736fbe5670838f1f416e243
+3640000
+6736fbf13f0517b6e8a6071e
+$n^2 + n$
+6736fe88824201a362e27aa1
+$\pi_1 (SO(2k))$, $\pi_{n}(SO(2k))$
+6737006d3f0517b6e8a60733
+H
+6737016cd6feab08ed98c77d
+\frac{11}{32}
+673701a01baae2c519a9765a
+4
+6737022fa283793ef57494a3
+Heinemannomyces
+67370359930c1fd7247f3413
+$\frac{\omega_0}{16}(2+3\gamma-6\gamma^2)$
+673704af1c2083e9eaa6d732
+6 7
+6737092e3a78dbef3611f734
+1. Yes, 2. Yes, 3. Yes, 4. No, 5. Yes, 6. $L' = L \sqrt{1+v^2}$, 7. $T' = \frac{T}{\sqrt{1+v^2}}$, 8. $v' = \frac{v_1 + v_2}{1 - v_1 v_2}$
+673709d1980211368f0f952f
+$\frac{hk\cosh(kh)}{\cosh^2(kh)+(kh)^2}$
+673709de3f0517b6e8a60764
+7
+67370a1b980211368f0f9531
+$P_{m} = \frac{m^{2}+m+1}{8m^{2}+6m+1} $
+67370a26144baed9dcabbe11
+12
+67370aa83f0517b6e8a60769
+\tilde{\mathsf{S}}^{s)}_{(b)} = k \log \ti
+67371006980211368f0f954e
+$\frac{51}{55}$
+673710799f4e09ce7f83d562
+360,860,1200
+67371496e04511118435d5a4
+0.9963:6
+6737155919fe786391fedd08
+ACGH
+673716bd2773953bca4195d7
+142
+679c353fc954984d079ecfb7
+8
+67371c15d09c0e422ae36585
+BCDFIJ
+67371dc7fb093fc159cc78e8
+$-\frac{2}{\omega_0^2 Re^2}$
+67371fc1d4a812e865edf21c
+15
+67372089f362584fff2ae1f9
+37 m
+673721bf2ccb228b9d55c8ff
+$P_1\oplus P_3 \oplus I_1$
+6737224020f2fc6d8d08075c
+D
+673722a1f362584fff2ae212
+Eduardo Chillida.
+673722c82bfc8ab579ed111f
+B
+67372559fb093fc159cc790f
+$-\frac{z_1sinh(k y - k H)}{sinh(k y)}$
+67372563fb093fc159cc7912
+ABCEFGIJKLN
+6737259f2c11cb057c97911b
+8
+67372622d73437e891c14877
+36 cm
+67372744600c9c0daa5d8f3f
+C
+6737278e15a024e05742d098
+Harry Potter and the Philosopher's Stone
+67c677ac4b9355ec051c5426
+289026722411805831750717\pi/2199023255552
+67372d4af4721666334a8535
+C16-ceramide
+67372e09a90747ed09962582
+49
+6737309d1988146a57ffab18
+$\pi/2$
+6737321adadf045724637654
+D
+6737321d90a20eb348edbe03
+3
+67373220a4d09488d430f640
+11:2
+6737328119fe786391fedd8a
+ACGHLOPRTXY
+67d09fd38fd17c121c0b49ad
+1.117
+67373446bb9a786bfe928d2c
+/t͡ʃo kab 'sol β̞el/
+673735aa61f20f11eb1097d2
+E
+673735ce90a20eb348edbe16
+ACDFJMN
+673736cea562fd298787764c
+B
+6737382a90a20eb348edbe23
+$(n+1)^{n+1}-\frac{(n+2)(n+1)}{2}$
+673738b81bcb9388d8e3b31a
+5
+673744590cf254c99a9595e4
+5
+67374bd8cceb51c87c8f1925
+K
+67374c79ccee19cce9664dd5
+$G_{12}=4e^2/3h$
+673757b8673b15e8ce0a3755
+1.5, 1.5 and 3.5, 3.5
+6737591afaa3cc153fb6ddc3
+1
+67375e6f8b1cc52c211f95ce
+DIVVSEDLNGTVKFSSSLPYPNNLNSVLAERLEKW
+673761e610c7e233967eef47
+Swister
+6737697dedff89681fe75582
+phdA
+67376e4bedff89681fe75590
+*sо̄kīþī, ON sækir, OE sēcþ, OHG suohhit
+67378355cf21a88cec0f42e5
+\aleph_1
+673784c950c4b58b2154e4ef
+D
+6737883a270e3f4ddee77b7e
+A
+67378905b73b79a4008926af
+7
+673797594656f5343e5d35db
+$(C_{tg}V_{tg}-C_{bg}V_{bg})/2$
+673799cf4d349e2ed66792d2
+3.66 mL
+67379aea6c946be458900f3f
+-0.08
+67379dd995d9299b8ac8439c
+D
+6737b03e324a519fe6eaca58
+No
+6737b25181d9423817b88328
+4
+6737b422d3949406f1ed580b
+A
+6737b54897dbabee150254d9
+Yes
+567ms
+
