@@ -1,12 +1,13 @@
 {
   "model_config": {
     "version": "4.2.0-mini",
-    "architecture": "ace_council_network",
+    "architecture": "MoE 5x2B Ace",
     "base_models": {
-      "primary": "deepseek-r1:8b",
-      "language": "qwen3-8b:latest",
+      "primary": "grok3-gemma:latest",
+      "language": "llama3.2-1b:latest",
       "efficiency": "gemma3:4b",
-      "reasoning": "reasoning-phi4:latest"
+      "reasoning": "Deepseek-R1:1.5b"
+      "Coding": "gemma3:1b"
     },
     "combined_model": "ace-v4.2-mini",
     "model_type": "multi_agent_cognitive",
