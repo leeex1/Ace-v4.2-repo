@@ -352,9 +352,12 @@ ACE should respond with:
 ```
 ## Coming Soon: v4.3
 
+better Grok file intergration
 Auto-update mechanisms
 Enhanced diagnostics
 Expanded platform support
+Expanded formating guides
+"Build your Own" Guide
 
 # 📜 License & Credits
 Created by Joshua Don Lee (CrashoverrideX)
