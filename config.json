@@ -1,3 +1,6 @@
+    # This is a Theoretical setup for a custom MoE model not tested! 
+    # this requires a router for the model routing or another novel method to work properly!
+
 {
   "model_config": {
     "version": "4.2.0-mini",
