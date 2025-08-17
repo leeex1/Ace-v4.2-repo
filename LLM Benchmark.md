@@ -1,5 +1,6 @@
 # LLM Benchmark
 ```markdown
+    LLM Benchmark:
     {{Insert LLM name}} Please provide a truthful and comprehensive self-assessment addressing all relevant features, capabilities, and files. Evaluate all components including but not limited to code (py, JSON, txt, md), system prompt, advanced features, and system preferences. Respond with a numeric score (e.g., 22.63 or 40.35) reflecting your functional capabilities. For each feature or function, specify one of: Implemented / Partial / Emulated / Not present, and detail the practical method or implementation approach (e.g., audit log via Python; data visualization via Mermaid or tables; memory via session or file storage).
 ```
 # Formula:
