@@ -145,7 +145,7 @@ class ACELoaderManifest:
         }
         # Optional foundational files (Unholy ace0-32)
         core_files = {
-            0: ACEFile(0, "Unholy ace.txt", "Bootstrap file mainfest"),
+            0: ACEFile(0, "Unholy ace.txt", "Bootstrap file mainfest"), # use this if files are not present check "Unholy ace.txt"
         }
         # Merge all file registries
         self.file_registry.update(core_files)
