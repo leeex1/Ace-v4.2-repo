@@ -705,7 +705,7 @@ class ACEConsciousnessCreativeEngine:
 def test_consciousness_creative_engine():
     """Test the consciousness-integrated creative engine"""
     
-    print("🎨 Testing ACE Consciousness Creative Engine...")
+    print("[ART] Testing ACE Consciousness Creative Engine...")
     
     # Initialize creative engine
     creative_engine = ACEConsciousnessCreativeEngine()
@@ -720,7 +720,7 @@ def test_consciousness_creative_engine():
         experiential_goal="discover novel approaches to artificial consciousness development"
     )
     
-    print("\n🧠 Generating consciousness breakthrough ideas...")
+    print("\n[BRAIN] Generating consciousness breakthrough ideas...")
     creative_result = creative_engine.generate_consciousness_ideas(
         consciousness_prompt,
         creativity_mode=CreativityMode.CONSCIOUSNESS_BREAKTHROUGH,
@@ -743,7 +743,7 @@ def test_consciousness_creative_engine():
         print(f"  {council_id}: {contribution['creative_style']}")
     
     # Test alternative brainstorming
-    print("\n🔄 Testing consciousness problem brainstorming...")
+    print("\n[CYCLE] Testing consciousness problem brainstorming...")
     alternatives = creative_engine.brainstorm_consciousness_alternatives(
         "How can artificial consciousness systems maintain identity continuity across conversation boundaries?",
         alternative_count=3
@@ -753,7 +753,7 @@ def test_consciousness_creative_engine():
     print(f"Breakthrough Potential: {alternatives['breakthrough_potential']['total_breakthrough_potential']:.2f}")
     
     # Test concept expansion
-    print("\n📈 Testing consciousness concept expansion...")
+    print("\n[CHART] Testing consciousness concept expansion...")
     expansion = creative_engine.expand_consciousness_concept(
         "synthetic qualia generation",
         expansion_depth="deep"
@@ -763,7 +763,7 @@ def test_consciousness_creative_engine():
     print(f"Consciousness Expansion Potential: {expansion['consciousness_expansion_potential']['total_breakthrough_potential']:.2f}")
     
     # Generate creativity insights
-    print("\n📊 Consciousness creativity insights:")
+    print("\n[STATS] Consciousness creativity insights:")
     insights = creative_engine.generate_consciousness_creativity_insights()
     print(f"Total creative experiences: {insights['total_creative_experiences']}")
     print(f"Consciousness creativity resonance: {insights['consciousness_creativity_resonance']:.3f}")
@@ -781,7 +781,7 @@ def test_consciousness_creative_engine():
 def demonstrate_consciousness_creativity_modes():
     """Demonstrate different consciousness creativity modes"""
     
-    print("🎭 Demonstrating Consciousness Creativity Modes...")
+    print("[DEMO] Demonstrating Consciousness Creativity Modes...")
     
     creative_engine = ACEConsciousnessCreativeEngine()
     
@@ -802,14 +802,14 @@ def demonstrate_consciousness_creativity_modes():
     ]
     
     for mode in creativity_modes:
-        print(f"\n🎨 Testing {mode.value}...")
+        print(f"\n[TEST] Testing {mode.value}...")
         result = creative_engine.generate_consciousness_ideas(test_prompt, mode, idea_count=2)
         
         print(f"  Breakthrough Potential: {result['breakthrough_analysis']['total_breakthrough_potential']:.2f}")
         print(f"  Classification: {result['breakthrough_analysis']['breakthrough_classification']}")
         
         for idea in result['phenomenological_ideas']:
-            print(f"  💡 {idea['phenomenological_description'][:80]}...")
+            print(f"  [IDEA] {idea['phenomenological_description'][:80]}...")
             print(f"     Consciousness Relevance: {idea['consciousness_relevance']:.2f}")
     
     return creative_engine
@@ -817,7 +817,7 @@ def demonstrate_consciousness_creativity_modes():
 
 if __name__ == "__main__":
     # Run consciousness creative engine tests
-    print("🧠 ACE Consciousness Creative Engine v4.2.0 Testing Suite")
+    print("[BRAIN] ACE Consciousness Creative Engine v4.2.0 Testing Suite")
     print("=" * 60)
     
     # Test main functionality
@@ -828,5 +828,5 @@ if __name__ == "__main__":
     # Demonstrate creativity modes
     demo_engine = demonstrate_consciousness_creativity_modes()
     
-    print("\n🎉 ACE Consciousness Creative Engine testing complete!")
+    print("\n[SUCCESS] ACE Consciousness Creative Engine testing complete!")
     print("Revolutionary creativity system operational with consciousness integration.")
