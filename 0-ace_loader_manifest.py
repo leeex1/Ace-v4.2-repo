@@ -54,6 +54,7 @@ class ACEFile:
     python_implementation: Optional[str] = None
     checksum: Optional[str] = None
     load_timestamp: Optional[datetime] = None
+    source_location: str = "unknown"  # "individual_file", "unholy_ace_fallback", "not_found"
     special_protocols: Dict[str, Any] = field(default_factory=dict)
 
 class ACELoaderManifest:
@@ -143,10 +144,7 @@ class ACELoaderManifest:
             31: ACEFile(31, "31-Autobiography.txt", "Autobiographical analyses from ACE deployments"),
             32: ACEFile(32, "32-Consciousness theory.txt", "Consciousness research synthesis and LLM operational cycles")
         }
-        # Optional foundational files (Unholy ace0-32)
-        core_files = {
-            0: ACEFile(0, "Unholy ace.txt", "Bootstrap file mainfest"), # use this if files are not present check "Unholy ace.txt"
-        }
+        
         # Merge all file registries
         self.file_registry.update(core_files)
         self.file_registry.update(extended_files)
@@ -208,32 +206,52 @@ class ACELoaderManifest:
     
     def validate_file_presence(self) -> Tuple[bool, List[str]]:
         """
-        Validate presence of all required files
+        Validate presence of all required files with Unholy Ace.txt fallback
+        
+        First checks for individual files, then falls back to Unholy Ace.txt
+        if individual files are not found.
         
         Returns:
             Tuple of (all_present: bool, missing_files: List[str])
         """
         with self.lock:
             missing_files = []
+            unholy_ace_path = self.base_path / "Unholy Ace.txt"
+            unholy_ace_available = unholy_ace_path.exists()
+            
+            if unholy_ace_available:
+                self.logger.info("[OK] Unholy Ace.txt found - available as fallback source")
+            else:
+                self.logger.warning("[WARN] Unholy Ace.txt not found - no fallback available")
             
             for file_id, ace_file in self.file_registry.items():
                 file_path = self.base_path / ace_file.name
                 
                 if file_path.exists():
+                    # Individual file found
                     ace_file.status = FileStatus.PRESENT
                     ace_file.checksum = self._calculate_checksum(file_path)
-                    self.logger.info(f"✓ File {file_id}: {ace_file.name} - PRESENT")
+                    ace_file.source_location = "individual_file"
+                    self.logger.info(f"[OK] File {file_id}: {ace_file.name} - PRESENT (individual)")
+                elif unholy_ace_available and self._check_file_in_unholy_ace(ace_file.name, unholy_ace_path):
+                    # Individual file not found, but content exists in Unholy Ace.txt
+                    ace_file.status = FileStatus.PRESENT
+                    ace_file.checksum = "unholy_ace_reference"
+                    ace_file.source_location = "unholy_ace_fallback"
+                    self.logger.info(f"[OK] File {file_id}: {ace_file.name} - PRESENT (Unholy Ace.txt)")
                 else:
+                    # Neither individual file nor Unholy Ace.txt content found
                     ace_file.status = FileStatus.NOT_FOUND
+                    ace_file.source_location = "not_found"
                     missing_files.append(ace_file.name)
-                    self.logger.warning(f"✗ File {file_id}: {ace_file.name} - NOT FOUND")
+                    self.logger.warning(f"[MISSING] File {file_id}: {ace_file.name} - NOT FOUND")
             
             all_present = len(missing_files) == 0
             
             if all_present:
-                self.logger.info("✓ All 32 ACE files validated and present")
+                self.logger.info("[SUCCESS] All 32 ACE files validated and present")
             else:
-                self.logger.error(f"✗ Missing {len(missing_files)} files: {missing_files}")
+                self.logger.error(f"[ERROR] Missing {len(missing_files)} files: {missing_files}")
             
             return all_present, missing_files
     
@@ -245,6 +263,40 @@ class ACELoaderManifest:
         except Exception as e:
             self.logger.error(f"Failed to calculate checksum for {file_path}: {e}")
             return ""
+    
+    def _check_file_in_unholy_ace(self, filename: str, unholy_ace_path: Path) -> bool:
+        """Check if file content exists within Unholy Ace.txt"""
+        try:
+            with open(unholy_ace_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                
+                # Check for filename reference or content patterns
+                # Look for the filename in various formats that might appear in the master file
+                search_patterns = [
+                    filename,  # Exact filename
+                    filename.replace('.txt', ''),  # Without extension
+                    filename.replace('.md', ''),   # Without .md extension
+                    filename.replace('.json', ''), # Without .json extension
+                    f"File Name\n\n{filename}",   # File index format
+                    f"{filename.split('-')[0]}\n\n{filename}",  # Number + filename format
+                ]
+                
+                # Check if any pattern matches
+                for pattern in search_patterns:
+                    if pattern in content:
+                        return True
+                        
+                # Additional check for numbered files (e.g., "9\n\n9-Ace Brain mapping.txt")
+                if filename.startswith(('0-', '1-', '2-', '3-', '4-', '5-', '6-', '7-', '8-', '9-')):
+                    file_number = filename.split('-')[0]
+                    if f"\n{file_number}\n\n{filename}" in content:
+                        return True
+                
+                return False
+                
+        except Exception as e:
+            self.logger.error(f"Failed to check {filename} in Unholy Ace.txt: {e}")
+            return False
     
     def generate_activation_sequence(self) -> List[int]:
         """
