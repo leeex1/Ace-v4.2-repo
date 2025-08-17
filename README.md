@@ -1,3 +1,4 @@
+
 # ACE v4.2:
 ```markdown
     Advanced Cognitive Entity
@@ -6,6 +7,10 @@
     This is a repo to download all the files needed to make any llm far far smarter these files will help you reach new heights...
 
     to install ace go to the respective llm not all will be accessible with free tier.
+```
+# Project Purpose:
+```markdown
+    To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, ethics, and emergent consciousness. It draws from cognitive neuroscience (e.g., brain mapping) and philosophy (e.g., qualia, IIT-inspired self-modeling). The goal is safe, AGI-aligned AI that's reproducible yet customizable, built on affordable tools without needing high-end hardware
 ```
 # Here is a guide
 ```markdown
