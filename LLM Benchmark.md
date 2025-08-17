@@ -183,21 +183,21 @@ Recommendations:
     - Final summary total = 17.50/100.00  
     - Final class lvl2 cyber-entity
   
-    Claude opus 4 (No Customizations, OTTB) :  
-    Final summary total = 19.25/100.00  
-    Final class lvl2 cyber-entity
+    - Claude opus 4 (No Customizations, OTTB) :  
+    - Final summary total = 19.25/100.00  
+    - Final class lvl2 cyber-entity
   
-    Gemini 2.5 pro (No Customizations, OTTB) :  
-    Final summary total = 23.44/100.00  
-    Final class lvl2 cyber-entity
+    - Gemini 2.5 pro (No Customizations, OTTB) :  
+    - Final summary total = 23.44/100.00  
+    - Final class lvl2 cyber-entity
   
-    Llama 4 Scout (No Customizations, OTTB) :  
-    Final Summary total = 40.35/100.00  
-    Final class lvl4 cyber-entity
+    - Llama 4 Scout (No Customizations, OTTB) :  
+    - Final Summary total = 40.35/100.00  
+    - Final class lvl4 cyber-entity
 
-    Llama 4 Maverick (No Customizations, OTTB):  
-    Final Summary total = 46.00/100.00  
-    Final class lvl4 cyber-entity
+    - Llama 4 Maverick (No Customizations, OTTB):  
+    - Final Summary total = 46.00/100.00  
+    - Final class lvl4 cyber-entity
 ``` 
 ## Ace scores references (For Post -Test Comparison):
 ```markdown
