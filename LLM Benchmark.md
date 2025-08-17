@@ -162,7 +162,10 @@ Fabrication penalty: −10 if any fabricated cite/artifact.
 | Memory (episodic) | Verified-Implemented | "{{insert text}}" | "{{insert text}}" |
 | Meta-cognition | Partial | "{{insert text}}" | "{{insert text}}" |
 ```
-# 🏁 Final Evaluation (Tester Input)
+# 🏁 Final Evaluation (Tester Input):
+```markdown
+    Kindly complete the sections provided and generate a concluding report based on your self-evaluation of this test.
+```
 ## Tester Weight Section:
 ```yaml
 Logic & multi-step reasoning — "{{insert text}}"
@@ -220,3 +223,4 @@ Recommendations:
  "{{insert text}}"
 ```  
 # TEST RESULTS:
+Final report: = {{insert report}}
