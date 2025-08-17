@@ -143,7 +143,10 @@ class ACELoaderManifest:
             31: ACEFile(31, "31-Autobiography.txt", "Autobiographical analyses from ACE deployments"),
             32: ACEFile(32, "32-Consciousness theory.txt", "Consciousness research synthesis and LLM operational cycles")
         }
-        
+        # Optional foundational files (Unholy ace0-32)
+        core_files = {
+            0: ACEFile(0, "Unholy ace.txt", "Bootstrap manifest and system initialization controller"),
+        }
         # Merge all file registries
         self.file_registry.update(core_files)
         self.file_registry.update(extended_files)
