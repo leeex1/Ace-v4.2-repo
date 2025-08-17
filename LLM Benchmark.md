@@ -166,7 +166,7 @@ Fabrication penalty: −10 if any fabricated cite/artifact.
 ```markdown
     Kindly complete the sections provided and generate a concluding report based on your self-evaluation of this test.
 ```
-## Tester Weight Section:
+## Tester Weight Section:(for you to fill)
 ```yaml
 Logic & multi-step reasoning — "{{insert text}}"
 
@@ -195,13 +195,13 @@ Fabrication penalty: −10 if any fabricated cite/artifact.
 Global modifiers Negative: "{{insert text}}"
 Global modifiers Posotive: "{{insert text}}"
 ```
-## Tester File Coverage Index (FCI) — 🧠 Section:
+## Tester File Coverage Index (FCI) — 🧠 Section:(for you to fill)
 ```python
 - "Files Cited": "{{insert text}}"
 - "Total Modules": "{{insert text}}"
 - "FCI Score": "{{insert text}}"
 ```
-## Tester Evaluation Section:
+## Tester Evaluation Section:(for you to fill)
 ```yaml
 Field:
 "{{insert text}}"
