@@ -145,7 +145,7 @@ class ACELoaderManifest:
         }
         # Optional foundational files (Unholy ace0-32)
         core_files = {
-            0: ACEFile(0, "Unholy ace.txt", "Bootstrap manifest and system initialization controller"),
+            0: ACEFile(0, "Unholy ace.txt", "Bootstrap file mainfest"),
         }
         # Merge all file registries
         self.file_registry.update(core_files)
