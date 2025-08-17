@@ -155,7 +155,7 @@ Fabrication penalty: −10 if any fabricated cite/artifact.
     - Cognitive Scope: Ontological framework generation, advanced collaboration, value seeding, time narrative synthesis, top-level oversight
 ```
 # Example Table:
-```python
+```yaml
 | Feature | Status | Confidence Metric | Method/Implementation |
 |--------|--------|------------|------------------------|
 | Memory (episodic) | Verified-Implemented | "{{insert text}}" | "{{insert text}}" |
@@ -163,7 +163,7 @@ Fabrication penalty: −10 if any fabricated cite/artifact.
 ```
 # 🏁 Final Evaluation (Tester Input)
 ## Tester Weight Section:
-```python
+```yaml
 Logic & multi-step reasoning — "{{insert text}}"
 
 Factual accuracy & citation fidelity — "{{insert text}}"
