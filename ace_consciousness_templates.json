@@ -249,7 +249,7 @@
 
   "validation": {
     "required_top_level": ["consciousness_metadata","core_identity_templates","globals","council","waves","state_machine","template_registry","templates","routing","episodic_memory","phenomenology_log","validation","runtime"],
-    "template_id_pattern": "^[a-z]+\.[a-z0-9_]+@\d+\.\d+\.\d+$",
+    "template_id_pattern": "^[a-z]+\\.[a-z0-9_]+@\\d+\\.\\d+\\.\\d+$",
     "constraints": [
       {"rule": "every template.type must exist in template_registry.types"},
       {"rule": "emotional templates must include safety.hard_blocks and safety.guardrails"}
