@@ -1,6 +1,4 @@
-===============================================================
 # 🔁 LLM OPERATIONAL INSTRUCTION HEADER 🔁
-===============================================================
 
 ## 📘 CONTEXT:
 The following document contains a `mermaid`-formatted flowchart 
