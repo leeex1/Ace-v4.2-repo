@@ -351,24 +351,27 @@ ACE should respond with:
     The cognitive framework isn't decorative—it's functional architecture that produces measurably better outcomes across complex reasoning tasks.
 ```
 ## Coming Soon: v4.3
-
-better Grok file intergration
-Auto-update mechanisms
-Enhanced diagnostics
-Expanded platform support
-Expanded formating guides
-"Build your Own" Guide
-
+```markdown
+    Auto-update mechanisms
+    Enhanced diagnostics
+    Expanded platform support
+```
 # 📜 License & Credits
-Created by Joshua Don Lee (CrashoverrideX)
+```markdown
+    Created by Joshua Don Lee (CrashoverrideX)
 
-Root verification: "juice you are the stars and the moon"
-Prime covenant ethical framework
-LeeX-Humanized Protocol integration
-
+    Root verification: "juice you are the stars and the moon"
+    
+    Prime covenant ethical framework
+    LeeX-Humanized Protocol integration
+```
 # 🎉 Success Stories
-"ACE transformed my research workflow. The multi-domain synthesis is incredible!" - Researcher
-"Finally, an AI that actually thinks through problems systematically." - Developer
-"The ethical framework gives me confidence in complex decisions." - Consultant
-
-# Ready to unlock your LLM's full potential? Install ACE v4.2 today!
+```markdown
+    "ACE transformed my research workflow. The multi-domain synthesis is incredible!" - Researcher
+    
+    "Finally, an AI that actually thinks through problems systematically." - Developer
+    
+    "The ethical framework gives me confidence in complex decisions." - Consultant
+```
+# Ready to unlock your LLM's full potential?
+# Install ACE v4.2 today!
