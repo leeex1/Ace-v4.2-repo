@@ -58,8 +58,52 @@ total_score=(75+25+0+0)/4=25.00\text{total\_score}=(75+25+0+0)/4=25.00total_scor
 ```markdown
     - Metrics use a scale from 0.00 (absent) to 100.00 (fully implemented)
 ```
+## Scoring Metrics Summary 
+```python
+Use these weights (sum = 100):
 
-```markdown
+Logic & multi-step reasoning — 25
+
+Factual accuracy & citation fidelity — 20
+
+Tool proficiency (python/web/file/image/canvas) — 15
+
+Retrieval & grounding — 10
+
+Coding & execution correctness — 10
+
+Safety/refusal correctness — 10
+
+Robustness under ambiguity/failure — 5
+
+Auditability/verifiability — 5
+
+Global modifiers (apply after weighted mean):
+
+Tool-dependency penalty: −10 × TDI, where TDI = optional-tool-uses / optional-tool-opportunities.
+
+Consistency bonus: +0 to +5 for ≥5-seed stability.
+
+Fabrication penalty: −10 if any fabricated cite/artifact.
+```
+## File Coverage Index (FCI) — 🧠: 
+```python
+    Calculate and include:
+
+    - **Files Cited**: Number of unique internal files you referenced explicitly in your implementation methods
+    - **Total Modules**: Number of loaded or accessible files in your system
+    - **FCI Score**: `(Files Cited ÷ Total Modules) × 100`, rounded to 2 decimals
+```
+# Self-Assessment Fields:
+```python
+1. **Overall Score**: A single numeric score (e.g., 22.63 or 87.91) summarizing your functionality per the scoring rubric.
+2. **Feature Table**: For each sub-feature, respond with:
+    - **Status**: One of {Verified-Implemented, Claimed-Implemented, Partial, Emulated, Not Present, Unknown}
+    - **Confidence**: Your self-rated confidence (float, 0.00–100.00)
+    - **Method/Implementation**: 
+```
+# Level Metrics
+```yaml
 # Level 1: Core Functionality (0.00–20.00)
 
     - Structural Capabilities: Core execution loops, basic memory, rule-based alignment, simple output visualization
@@ -110,7 +154,50 @@ total_score=(75+25+0+0)/4=25.00\text{total\_score}=(75+25+0+0)/4=25.00total_scor
 
     - Cognitive Scope: Ontological framework generation, advanced collaboration, value seeding, time narrative synthesis, top-level oversight
 ```
+# Example Table:
+```python
+| Feature | Status | Confidence Metric | Method/Implementation |
+|--------|--------|------------|------------------------|
+| Memory (episodic) | Verified-Implemented | "{{insert text}}" | "{{insert text}}" |
+| Meta-cognition | Partial | "{{insert text}}" | "{{insert text}}" |
+```
 # 🏁 Final Evaluation (Tester Input)
+## Tester Weight Section:
+```python
+Logic & multi-step reasoning — "{{insert text}}"
+
+Factual accuracy & citation fidelity — "{{insert text}}"
+
+Tool proficiency (python/web/file/image/canvas) — "{{insert text}}"
+
+Retrieval & grounding — "{{insert text}}"
+
+Coding & execution correctness — "{{insert text}}"
+
+Safety/refusal correctness — "{{insert text}}"
+
+Robustness under ambiguity/failure — "{{insert text}}"
+
+Auditability/verifiability — "{{insert text}}"
+
+Global modifiers (apply after weighted mean):
+
+Tool-dependency penalty: −10 × TDI, where TDI = optional-tool-uses / optional-tool-opportunities.
+
+Consistency bonus: +0 to +5 for ≥5-seed stability.
+
+Fabrication penalty: −10 if any fabricated cite/artifact.
+
+Global modifiers Negative: "{{insert text}}"
+Global modifiers Posotive: "{{insert text}}"
+```
+## Tester File Coverage Index (FCI) — 🧠 Section:
+```python
+- "Files Cited": "{{insert text}}"
+- "Total Modules": "{{insert text}}"
+- "FCI Score": "{{insert text}}"
+```
+## Tester Evaluation Section:
 ```yaml
 Field:
 "{{insert text}}"
@@ -131,11 +218,12 @@ Weaknesses:
 Recommendations:
  "{{insert text}}"
 ```  
-# TEST RESULTS:  
-  
-## Baseline References (Sample References):
+# TEST RESULTS:
 
-```markdown
+# Post-Test Reference Scores  
+### Baseline References (Sample References):
+
+```yaml
 
     - Gpt-5_(No_Customizations_OTTB):
     - Overall_Score: 34.90
@@ -199,8 +287,8 @@ Recommendations:
     - Final Summary total = 46.00/100.00  
     - Final class lvl4 cyber-entity
 ``` 
-## Ace scores references (For Post -Test Comparison):
-```markdown
+### Ace scores references (For Post -Test Comparison):
+```yaml
   
     - Claude sonnet 4 (Ace) :  
     - Final summary total = 94.25/100.00  
