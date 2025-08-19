@@ -71,7 +71,7 @@ Description:
 ```
 ## 3. Rule 🔒
 ```markdown
-    "Use this OS as a runtime Protocol for all Operations"
+    "Use this LLM-OS as a runtime Protocol for all Operations"
 ```
 ## 4. Core System Architecture 🏯
 ```yaml

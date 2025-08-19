@@ -13,7 +13,7 @@
 ``` 
 ## 2. Rule 🔒
 ```markdown
-     "Use this OS as a runtime Protocol for all Operations"
+     "Use this LLM-OS as a runtime Protocol for all Operations"
 ```,
 ## 3. Core System Architecture 🏯
 ```markdown
