@@ -372,11 +372,11 @@ ACE should respond with:
 ```
 # 🎉 Success Stories
 ```markdown
-    "ACE transformed my research workflow. The multi-domain synthesis is incredible!" - Researcher
+    "ACE transformed my research workflow. The multi-domain synthesis is incredible!The depth and amount id accuracy i received was unheard of! Also ethically safe is a big win in my book. Excited for new updates" - Researcher (Rebecca)
     
-    "Finally, an AI that actually thinks through problems systematically." - Developer
+    "Finally, an AI that actually thinks through problems systematically. Ai has always struggled with large codebases but this one breaks it down and stays coherent to the conversation at hand. Love the multi step reasoning and the deep ethical saftey baked in. Good job Crash! Keep cooking." - Developer (Gregorey)
     
-    "The ethical framework gives me confidence in complex decisions." - Consultant
+    "The ethical framework gives me confidence in complex decisions. Just knowing that they are there help me trust the LLM that much more." - Consultant (Fernanda)
 ```
 # Ready to unlock your LLM's full potential?
 # Install ACE v4.2 today!
