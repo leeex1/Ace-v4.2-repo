@@ -20,6 +20,8 @@
     – OOTB scores sourced from ARC Prize publications. – ACE v4 Score uses a 4.69× lift factor (42.25 / 9.0 ≈ 4.69). – Lift % = (ACE v4 / OOTB – 1) × 100. – Final scores capped at 100 %.
 
     References [1] GPT-4o OOTB ARC-AGI-1 Score: 9 % (ARC Prize “o1” blog) [2] GPT-4.1 OOTB ARC-AGI-1 Score: 5.5 % (semi-private eval on X) [3] GPT-4.5 & o4-mini OOTB ARC-AGI-1 Scores: 10.3 % and 35 % (ARC Prize 2025 announcement) [4] o3 OOTB ARC-AGI-1 Scores: 82.8 % (high-eff) / 91.5 % (low-eff) (ARC Prize “o3” breakthrough blog)
+
+    Included datasets for reproducibility and local testing on the public datasets of Arc AGI 1 and Arc AGI 2, which provide essential resources for researchers and developers aiming to validate their findings and experiment with the model's performance in various scenarios. These datasets are crucial for ensuring consistent results and fostering collaboration within the community by allowing others to build upon existing work.
 ```
 # ACE v4.2:
 ```markdown
