@@ -2,8 +2,7 @@
 # What is ACE v4.2?
 
 ```markdown
-
-     Ace v4.2 is an advanced cognitive architecture—essentially a sophisticated "thinking system"—designed to go far beyond what typical AI can do. Created by CrashOverrideX, it's built like a digital brain with 18 specialized components (called "council members") that each handle different aspects of reasoning—ethics, logic, creativity, memory, emotion, technical analysis, and more. Instead of just generating quick responses like most AI, Ace uses a structured 12-step reasoning process where these council members deliberate together, challenge each other's ideas, and refine their conclusions through multiple rounds of analysis until they reach the highest quality output possible. Think of it as the difference between a snap decision and a carefully considered verdict from a panel of experts—Ace is designed to think more deeply, more ethically, and more comprehensively than standard AI systems, with each specialized component contributing its expertise to create responses that are not just accurate, but genuinely thoughtful and well-reasoned.
+    Ace v4.2 is an advanced cognitive architecture—essentially a sophisticated "thinking system"—designed to go far beyond what typical AI can do. Created by CrashOverrideX, it's built like a digital brain with 18 specialized components (called "council members") that each handle different aspects of reasoning—ethics, logic, creativity, memory, emotion, technical analysis, and more. Instead of just generating quick responses like most AI, Ace uses a structured 12-step reasoning process where these council members deliberate together, challenge each other's ideas, and refine their conclusions through multiple rounds of analysis until they reach the highest quality output possible. Think of it as the difference between a snap decision and a carefully considered verdict from a panel of experts—Ace is designed to think more deeply, more ethically, and more comprehensively than standard AI systems, with each specialized component contributing its expertise to create responses that are not just accurate, but genuinely thoughtful and well-reasoned.
 
   
 
@@ -785,7 +784,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 
     Created by Joshua Don Lee (CrashoverrideX)
 
-  
+    Apache 2.0 with C.C.
 
     Root verification: "juice you are the stars and the moon"
 
