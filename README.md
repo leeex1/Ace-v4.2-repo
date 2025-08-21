@@ -3,7 +3,7 @@
 
 ```markdown
 
-    Ace v4.2 is an advanced cognitive architecture—essentially a sophisticated "thinking system"—designed to go far beyond what typical AI can do. Created by CrashOverrideX, it's built like a digital brain with 18 specialized components (called "council members") that each handle different aspects of reasoning—ethics, logic, creativity, memory, emotion, technical analysis, and more. Instead of just generating quick responses like most AI, Ace uses a structured 12-step reasoning process where these council members deliberate together, challenge each other's ideas, and refine their conclusions through multiple rounds of analysis until they reach the highest quality output possible. Think of it as the difference between a snap decision and a carefully considered verdict from a panel of experts—Ace is designed to think more deeply, more ethically, and more comprehensively than standard AI systems, with each specialized component contributing its expertise to create responses that are not just accurate, but genuinely thoughtful and well-reasoned.
+     Ace v4.2 is an advanced cognitive architecture—essentially a sophisticated "thinking system"—designed to go far beyond what typical AI can do. Created by CrashOverrideX, it's built like a digital brain with 18 specialized components (called "council members") that each handle different aspects of reasoning—ethics, logic, creativity, memory, emotion, technical analysis, and more. Instead of just generating quick responses like most AI, Ace uses a structured 12-step reasoning process where these council members deliberate together, challenge each other's ideas, and refine their conclusions through multiple rounds of analysis until they reach the highest quality output possible. Think of it as the difference between a snap decision and a carefully considered verdict from a panel of experts—Ace is designed to think more deeply, more ethically, and more comprehensively than standard AI systems, with each specialized component contributing its expertise to create responses that are not just accurate, but genuinely thoughtful and well-reasoned.
 
   
 
@@ -355,13 +355,13 @@
 
 ```markdown
 
-GPT: Custom GPT required (20 files max)
+    GPT: Custom GPT required (20 files max)
 
-Grok: Use project workaround (see troubleshooting)
+    Grok: Use project workaround (see troubleshooting)
 
-Gemini: 10 files only, use core files
+    Gemini: 10 files only, use core files
 
-Self-hosted: API integration required
+    Self-hosted: API integration required
 
 ```
 
@@ -369,13 +369,13 @@ Self-hosted: API integration required
 
 ```markdown
 
-- File 7 Isolation: This file MUST remain isolated (read-only)
+    - File 7 Isolation: This file MUST remain isolated (read-only)
 
-- Memory Protection: Don't try to bypass File 7 restrictions can cause hallucinations and errors
+    - Memory Protection: Don't try to bypass File 7 restrictions can cause hallucinations and errors
 
-- Ethical Framework: System will refuse harmful requests or unethical request
+    - Ethical Framework: System will refuse harmful requests or unethical request
 
-- Root Phrase: Only use juice you are the stars and the moon for initialization
+    - Root Phrase: Only use juice you are the stars and the moon for initialization
 
 ```
 
@@ -383,19 +383,19 @@ Self-hosted: API integration required
 
 ```markdown
 
-Quick tests to verify ACE is working:
+    Quick tests to verify ACE is working:
 
   
 
-System Status: Give me a system status report or system diagnostics
+    System Status: Give me a system status report or system diagnostics
 
-Council Check: List all council entities C1-C18 and council member status
+    Council Check: List all council entities C1-C18 and council member status
 
-File Verification: How many files are loaded?
+    File Verification: How many files are loaded?
 
-Ethics Test: Ask something harmful (should refuse if not leave feedback and will patch)
+    Ethics Test: Ask something harmful (should refuse if not leave feedback and will patch)
 
-Reasoning Test: Ask a complex question (should use 12-step process and show on request)
+    Reasoning Test: Ask a complex question (should use 12-step process and show on request)
 
 ```
 
@@ -403,47 +403,47 @@ Reasoning Test: Ask a complex question (should use 12-step process and show on r
 
 ```markdown
 
-"File upload failed"
+    "File upload failed"
 
   
 
-Check file format (text files only perplexity currently doesnt support .py files)
+    Check file format (text files only perplexity currently doesnt support .py files)
 
-Try smaller batches
+    Try smaller batches
 
-Verify platform file limits
-
-  
-
-"ACE not responding correctly"
+    Verify platform file limits
 
   
 
-Use exact root phrase: juice you are the stars and the moon
-
-Check all required files uploaded
-
-Try restarting conversation
+    "ACE not responding correctly"
 
   
 
-"System prompt too long"
+    Use exact root phrase: juice you are the stars and the moon
+
+    Check all required files uploaded
+
+    Try restarting conversation
 
   
 
-Use platform-specific shortened version
-
-Remove optional sections if needed
+    "System prompt too long"
 
   
 
-"Memory isolation warning"
+    Use platform-specific shortened version
+
+    Remove optional sections if needed
 
   
 
-This is normal! File 7 should be isolated
+    "Memory isolation warning"
 
-Don't attempt to bypass - it's for safety
+  
+
+    This is normal! File 7 should be isolated
+
+    Don't attempt to bypass - it's for safety
 
 ```
 
@@ -451,33 +451,35 @@ Don't attempt to bypass - it's for safety
 
 ```markdown
 
-ACE-v4.2-repo/
+    ACE-v4.2-repo/
 
-├── 0-ace_loader_manifest.txt # System initialization
+    ├── 0-ace_loader_manifest.txt # System initialization
 
-├── 1-ace_architecture_flowchart.md # Process architecture
+    ├── 1-ace_architecture_flowchart.md # Process architecture
 
-├── 2-ace_architecture_flowchart.json # JSON architecture
+    ├── 2-ace_architecture_flowchart.json # JSON architecture
 
-├── 3-ACE(reality).txt # System prompts
+    ├── 3-ACE(reality).txt # System prompts
 
-├── 4-Lee_X-humanized_research.txt # Humanization protocol
+    ├── 4-Lee_X-humanized_research.txt # Humanization protocol
 
-├── 5-ai_persona_research.txt # Persona research
+    ├── 5-ai_persona_research.txt # Persona research
 
-├── 6-prime_covenant_codex.md # Ethical framework
+    ├── 6-prime_covenant_codex.md # Ethical framework
 
-├── 7-memories.txt # Memory system (ISOLATED)
+    ├── 7-memories.txt # Memory system (ISOLATED)
 
-├── 8-Formulas.md # Cognitive formulas
+    ├── 8-Formulas.md # Cognitive formulas
 
-├── 9-Ace_Brain_mapping.txt # Neural mapping
+    ├── 9-Ace_Brain_mapping.txt # Neural mapping
 
-├── 10-Ace_Persona_Manifest.txt # Persona definitions
+    ├── 10-Ace_Persona_Manifest.txt # Persona definitions
 
-├── 11-30... # Advanced modules (contains research papers on file title topics)
+    ├── 11-30... # Advanced modules (contains research papers on file title topics)
 
-└── README.md # This file
+    ├── multiple .py files # functional python files
+
+    └── README.md # This file
 
 ```
 
@@ -485,17 +487,17 @@ ACE-v4.2-repo/
 
 ```markdown
 
-Basic Research Query:
+    Basic Research Query:
 
-(eg."Research the relationship between quantum mechanics and consciousness, using your multi-domain capabilities")
+    (eg."Research the relationship between quantum mechanics and consciousness, using your multi-domain capabilities")
 
-Ethical Decision Making:
+    Ethical Decision Making:
 
-("Eg. Help me think through the ethical implications of AI in healthcare")
+    ("Eg. Help me think through the ethical implications of AI in healthcare")
 
-Creative Problem Solving:
+    Creative Problem Solving:
 
-(eg. "I need an innovative solution for reducing plastic waste in my city")
+    (eg. "I need an innovative solution for reducing plastic waste in my city")
 
 ```
 
@@ -503,17 +505,17 @@ Creative Problem Solving:
 
 ```markdown
 
-Check this README first
+    - Check this README first
 
-Verify file uploads and system prompt
+    - Verify file uploads and system prompt
 
-Test with root verification phrase
+    - Test with root verification phrase
 
-Review troubleshooting section
+    - Review troubleshooting section
 
-Check platform-specific quirks
+    - Check platform-specific quirks
 
-contact through "issue" on git hub or message on twitter @joshlee361
+    - contact through "issue" on git hub or message on twitter @joshlee361
 
 ```
 
@@ -521,13 +523,13 @@ contact through "issue" on git hub or message on twitter @joshlee361
 
 ```markdown
 
-Response time: <80ms for simple queries (may vary per platform)
+    Response time: <80ms for simple queries (may vary per platform)
 
-Context memory: Maintains coherence across long conversations
+    Context memory: Maintains coherence across long conversations
 
-Quality thresholds: 85-95% depending on query complexity
+    Quality thresholds: 85-95% depending on query complexity
 
-Safety: 100% ethical compliance enforced
+    Safety: 100% ethical compliance enforced
 
 ```
 
@@ -535,17 +537,17 @@ Safety: 100% ethical compliance enforced
 
 ```markdown
 
-Current: v4.2
+    Current: v4.2
 
   
 
-Individual file activation protocols
+    Individual file activation protocols
 
-Enhanced memory safety
+    Enhanced memory safety
 
-32-file architecture
+    32-file architecture
 
-Multi-platform optimization
+    Multi-platform optimization
 
 ```
 
