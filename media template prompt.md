@@ -1,5 +1,5 @@
 # Obvective
-Can you generate {{image,video,etc.}},  "{{description}}" ? Reflect thoroughly on the matter; ponder deeply and ensure precision. It must reflect the true representation. 
+Can you generate {{image,video,etc.}}, Of "{{description}}" ? Reflect thoroughly on the matter; ponder deeply and ensure precision. It must reflect the true representation. 
 
 # Outline Template
 Employ the provided framework to create the required text for the content being produced.
