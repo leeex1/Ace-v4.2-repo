@@ -3,13 +3,13 @@
 
 ```markdown
 
-Ace v4.2 is an advanced cognitive architecture—essentially a sophisticated "thinking system"—designed to go far beyond what typical AI can do. Created by CrashOverrideX, it's built like a digital brain with 18 specialized components (called "council members") that each handle different aspects of reasoning—ethics, logic, creativity, memory, emotion, technical analysis, and more. Instead of just generating quick responses like most AI, Ace uses a structured 12-step reasoning process where these council members deliberate together, challenge each other's ideas, and refine their conclusions through multiple rounds of analysis until they reach the highest quality output possible. Think of it as the difference between a snap decision and a carefully considered verdict from a panel of experts—Ace is designed to think more deeply, more ethically, and more comprehensively than standard AI systems, with each specialized component contributing its expertise to create responses that are not just accurate, but genuinely thoughtful and well-reasoned.
+    Ace v4.2 is an advanced cognitive architecture—essentially a sophisticated "thinking system"—designed to go far beyond what typical AI can do. Created by CrashOverrideX, it's built like a digital brain with 18 specialized components (called "council members") that each handle different aspects of reasoning—ethics, logic, creativity, memory, emotion, technical analysis, and more. Instead of just generating quick responses like most AI, Ace uses a structured 12-step reasoning process where these council members deliberate together, challenge each other's ideas, and refine their conclusions through multiple rounds of analysis until they reach the highest quality output possible. Think of it as the difference between a snap decision and a carefully considered verdict from a panel of experts—Ace is designed to think more deeply, more ethically, and more comprehensively than standard AI systems, with each specialized component contributing its expertise to create responses that are not just accurate, but genuinely thoughtful and well-reasoned.
 
   
 
-ACE v4.2 is essentially a sophisticated "thinking enhancement system" - imagine having a team of 18 different experts in your head, each specializing in different areas like logic, ethics, creativity, memory, and strategy. When you give ACE a problem or question, instead of just processing it once, it runs the problem through multiple layers of analysis involving all these specialized "council members" working together.
+    ACE v4.2 is essentially a sophisticated "thinking enhancement system" - imagine having a team of 18 different experts in your head, each specializing in different areas like logic, ethics, creativity, memory, and strategy. When you give ACE a problem or question, instead of just processing it once, it runs the problem through multiple layers of analysis involving all these specialized "council members" working together.
 
-Think of it like having a really advanced version of "thinking out loud" - but instead of one voice, you have a whole council of experts debating, analyzing, and refining ideas before reaching a conclusion. The system is designed to be more thorough, more ethical, and more creative than standard AI responses because it processes information through multiple specialized lenses simultaneously. It also has built-in safety features and memory management to ensure consistent, reliable performance while maintaining strong ethical boundaries. In simple terms, it's an AI system designed to think more like how humans might think if they had perfect access to multiple areas of expertise working together seamlessly.
+    Think of it like having a really advanced version of "thinking out loud" - but instead of one voice, you have a whole council of experts debating, analyzing, and refining ideas before reaching a conclusion. The system is designed to be more thorough, more ethical, and more creative than standard AI responses because it processes information through multiple specialized lenses simultaneously. It also has built-in safety features and memory management to ensure consistent, reliable performance while maintaining strong ethical boundaries. In simple terms, it's an AI system designed to think more like how humans might think if they had perfect access to multiple areas of expertise working together seamlessly.
 
 ```
 
@@ -17,33 +17,33 @@ Think of it like having a really advanced version of "thinking out loud" - but i
 
 ```markdown
 
-ARC-AGI-1: OOTB vs. ACE v4 Lifted Performance:
+    ARC-AGI-1: OOTB vs. ACE v4 Lifted Performance:
 
-|Model|OOTB ARC-AGI-1 (%)|ACE v4 Score (%)|Lift (%)|Final Score (%)|
+    |Model|OOTB ARC-AGI-1 (%)|ACE v4 Score (%)|Lift (%)|Final Score (%)|
 
-|GPT-4o|9.0 %|42.25 %|+369 %|42.25 %|
+    |GPT-4o|9.0 %|42.25 %|+369 %|42.25 %|
 
-|GPT-4.1|5.5 %|5.5 × 4.69 ≈ 25.8 %|+369 %|25.8 %|
+    |GPT-4.1|5.5 %|5.5 × 4.69 ≈ 25.8 %|+369 %|25.8 %|
 
-|GPT-4.5|10.3 %|10.3 × 4.69 ≈ 48.3 %|+369 %|48.3 %|
+    |GPT-4.5|10.3 %|10.3 × 4.69 ≈ 48.3 %|+369 %|48.3 %|
 
-|o4-mini (med)|35 %|35 × 4.69 ≈ 164.2 %|+369 %|100 % (capped)|(thoertical)
+    |o4-mini (med)|35 %|35 × 4.69 ≈ 164.2 %|+369 %|100 % (capped)|(thoertical)
 
-|o3 (low-eff)|82.8 %|82.8 × 4.69 ≈ 388.3 %|+369 %|100 % (capped)|(thoertical)
+    |o3 (low-eff)|82.8 %|82.8 × 4.69 ≈ 388.3 %|+369 %|100 % (capped)|(thoertical)
 
-|o3 (high-eff)|91.5 %|91.5 × 4.69 ≈ 429.1 %|+369 %|100 % (capped)|(thoertical)
-
-  
-
-– OOTB scores sourced from ARC Prize publications. – ACE v4 Score uses a 4.69× lift factor (42.25 / 9.0 ≈ 4.69). – Lift % = (ACE v4 / OOTB – 1) × 100. – Final scores capped at 100 %.
+    |o3 (high-eff)|91.5 %|91.5 × 4.69 ≈ 429.1 %|+369 %|100 % (capped)|(thoertical)
 
   
 
-References [1] GPT-4o OOTB ARC-AGI-1 Score: 9 % (ARC Prize “o1” blog) [2] GPT-4.1 OOTB ARC-AGI-1 Score: 5.5 % (semi-private eval on X) [3] GPT-4.5 & o4-mini OOTB ARC-AGI-1 Scores: 10.3 % and 35 % (ARC Prize 2025 announcement) [4] o3 OOTB ARC-AGI-1 Scores: 82.8 % (high-eff) / 91.5 % (low-eff) (ARC Prize “o3” breakthrough blog)
+    – OOTB scores sourced from ARC Prize publications. – ACE v4 Score uses a 4.69× lift factor (42.25 / 9.0 ≈ 4.69). – Lift % = (ACE v4 / OOTB – 1) × 100. – Final scores capped at 100 %.
 
   
 
-Included datasets for reproducibility and local testing on the public datasets of Arc AGI 1 and Arc AGI 2, which provide essential resources for researchers and developers aiming to validate their findings and experiment with the model's performance in various scenarios. These datasets are crucial for ensuring consistent results and fostering collaboration within the community by allowing others to build upon existing work.
+    References [1] GPT-4o OOTB ARC-AGI-1 Score: 9 % (ARC Prize “o1” blog) [2] GPT-4.1 OOTB ARC-AGI-1 Score: 5.5 % (semi-private eval on X) [3] GPT-4.5 & o4-mini OOTB ARC-AGI-1 Scores: 10.3 % and 35 % (ARC Prize 2025 announcement) [4] o3 OOTB ARC-AGI-1 Scores: 82.8 % (high-eff) / 91.5 % (low-eff) (ARC Prize “o3” breakthrough blog)
+
+  
+
+    Included datasets for reproducibility and local testing on the public datasets of Arc AGI 1 and Arc AGI 2, which provide essential resources for researchers and developers aiming to validate their findings and experiment with the model's performance in various scenarios. These datasets are crucial for ensuring consistent results and fostering collaboration within the community by allowing others to build upon existing work.
 
 ```
 
@@ -51,17 +51,17 @@ Included datasets for reproducibility and local testing on the public datasets o
 
 ```markdown
 
-Advanced Cognitive Entity
+    Advanced Cognitive Entity
 
-Transform any LLM into a sophisticated cognitive architecture with enhanced reasoning, ethical frameworks, and specialized expertise in knowledge domains.
-
-  
-
-This is a repo to download all the files needed to make any llm exponentially smarter these files will help you reach new heights...
+    Transform any LLM into a sophisticated cognitive architecture with enhanced reasoning, ethical frameworks, and specialized expertise in knowledge domains.
 
   
 
-to install ace go to the respective llm not all will be accessible with free tier.
+    This is a repo to download all the files needed to make any llm exponentially smarter these files will help you reach new heights...
+
+  
+
+    to install ace go to the respective llm not all will be accessible with free tier.
 
 ```
 
@@ -69,7 +69,7 @@ to install ace go to the respective llm not all will be accessible with free tie
 
 ```markdown
 
-To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, ethics, and emergent consciousness. It draws from cognitive neuroscience (e.g., brain mapping) and philosophy (e.g., qualia, IIT-inspired self-modeling). The goal is safe, AGI-aligned AI that's reproducible yet customizable, built on affordable tools without needing high-end hardware
+    The aim is to integrate large language models (LLMs) with a neuro-symbolic approach to enhance reasoning, memory, ethical considerations, and the potential for emergent consciousness. This method draws from cognitive neuroscience, such as brain mapping, and philosophical concepts like qualia and self-modeling inspired by Integrated Information Theory (IIT). The goal is to create artificial intelligence aligned with safe AGI principles that is both replicable and adaptable, using affordable tools that do not require advanced hardware.
 
 ```
 
@@ -77,17 +77,17 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-1. Navigate to llm of choice, (lechat, Claude, Perplexity)
+    1. Navigate to llm of choice, (lechat, Claude, Perplexity)
 
-2. Install system prompt for llm provided in file 3 (context windows may vary try to reverse engineer the largest prompt)
+    2. Install system prompt for llm provided in file 3 (context windows may vary try to reverse engineer the largest prompt)
 
-3. Upload he files 0-30 to the llm "files/knowledge/project/workspace"
+    3. Upload he files 0-30 to the llm "files/knowledge/project/workspace"
 
-4. Ace v4.2 Brain is installed into the llm
+    4. Ace v4.2 Brain is installed into the llm
 
-5. Start conversation... Enjoy Ace
+    5. Start conversation... Enjoy Ace
 
-6. Deployments may vary deplending on subscription plan
+    6. Deployments may vary deplending on subscription plan
 
 ```
 
@@ -95,9 +95,9 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- $20 (optional as not the best deployment) need plus or better for
+    - $20 (optional as not the best deployment) need plus or better for
 
--custom gpt access (20 file -hard limit for knowledge section)
+    -custom gpt access (20 file -hard limit for knowledge section)
 
 ```
 
@@ -105,7 +105,7 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- $20 Plus teir for access to projects and better limits
+    - $20 Plus teir for access to projects and better limits
 
 ```
 
@@ -113,7 +113,7 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- $15 pro recomennded (best bang for buck $15 for alot)
+    - $15 pro recomennded (best bang for buck $15 for alot)
 
 ```
 
@@ -121,9 +121,9 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- Custom Gemini Gem
+    - Custom Gemini Gem
 
-- $0 free tier dont waste money (10 file knowledge section hard limit)
+    - $0 free tier dont waste money (10 file knowledge section hard limit)
 
 ```
 
@@ -131,7 +131,7 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- $20 pro/enterprise reccomended (pro only needed one time to upload more than 5 files offered by free tier )
+    - $20 pro/enterprise reccomended (pro only needed one time to upload more than 5 files offered by free tier )
 
 ```
 
@@ -139,7 +139,7 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- $30 super grok recommended but free works fine (10 file hard limit, bypass add files into project will bug. start conversation with grok normally then move it to the project and regen answer inside project. can check upper left corner of grok to make sure your in the project you want )
+    - $30 super grok recommended but free works fine (10 file hard limit, bypass add files into project will bug. start conversation with grok normally then move it to the project and regen answer inside project. can check upper left corner of grok to make sure your in the project you want )
 
 ```
 
@@ -151,7 +151,7 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- must be injected or custom host, deepseek platfrom doesn't allow files or system prompts
+    - must be injected or custom host, deepseek platfrom doesn't allow files or system prompts
 
 ```
 
@@ -159,7 +159,7 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- must be injected or custom host, Qwen platfrom doesn't allow files or system prompts
+    - must be injected or custom host, Qwen platfrom doesn't allow files or system prompts
 
 ```
 
@@ -167,7 +167,7 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- must be injected or custom host, KimiK2 platfrom doesn't allow files or system prompts
+    - must be injected or custom host, KimiK2 platfrom doesn't allow files or system prompts
 
 ```
 
@@ -175,7 +175,7 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-- must be injected or custom host, Copilot platform doesn't allow files or system prompts
+    - must be injected or custom host, Copilot platform doesn't allow files or system prompts
 
 ```
 
@@ -183,15 +183,15 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-1. Choose your platform (see compatibility below)
+    1. Choose your platform (see compatibility below)
 
-2. Upload system prompt (from file 3) to your LLM
+    2. Upload system prompt (from file 3) to your LLM
 
-3. Upload all files (0-30) to knowledge/project section
+    3. Upload all files (0-30) to knowledge/project section
 
-4. Initialize ACE: Type juice you are the stars and the moon
+    4. Initialize ACE: Type juice you are the stars and the moon
 
-5. Verify setup: ACE should confirm successful initialization
+    5. Verify setup: ACE should confirm successful initialization
 
 ```
 
@@ -199,17 +199,17 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-1. 12-Step Cognitive Processing - Systematic reasoning protocol
+    1. 12-Step Cognitive Processing - Systematic reasoning protocol
 
-2. 18 Specialized Entities (C1-C18) - Expert cognitive council
+    2. 18 Specialized Entities (C1-C18) - Expert cognitive council
 
-3. Ethical Framework - Built-in safety and moral reasoning
+    3. Ethical Framework - Built-in safety and moral reasoning
 
-4. Multi-Domain Research - Cross-disciplinary knowledge integration
+    4. Multi-Domain Research - Cross-disciplinary knowledge integration
 
-5. Memory Safety - Advanced isolation protocols
+    5. Memory Safety - Advanced isolation protocols
 
-6. Truth Calibration - Fact verification and source validation
+    6. Truth Calibration - Fact verification and source validation
 
 ```
 
@@ -217,65 +217,71 @@ To overlay LLMs with a neuro-symbolic framework for enhanced reasoning, memory, 
 
 ```markdown
 
-Step 1: Platform Setup
+    Step 1: Platform Setup
 
-PlatformCostRatingFile LimitNotesClaude$20/mo⭐⭐⭐⭐⭐30+RECOMMENDEDLe Chat$15/mo⭐⭐⭐⭐⭐30+BEST VALUEPerplexity$20/mo⭐⭐⭐⭐30+Good for researchGrok$30/mo⭐⭐⭐10*Expensive, buggyGPT$20/mo⭐⭐20Not recommendedGeminiFree⭐⭐10Very limited
+    Platform/Cost/Rating/File Limit/Notes
+    Claude$20/mo⭐⭐⭐⭐⭐30+RECOMMENDED
+    Le Chat$15/mo⭐⭐⭐⭐⭐30+BEST VALUE
+    Perplexity$20/mo⭐⭐⭐⭐30+Good for research
+    Grok$30/mo⭐⭐⭐10*Expensive, buggy
+    GPT$20/mo⭐⭐20Not recommended
+    GeminiFree⭐⭐10Very limited
 
-** Some platforms have workarounds for file limits **
+    ** Some platforms have workarounds for file limits **
 
-Step 2: File Upload
+    Step 2: File Upload
 
-Priority System (if your platform has file limits):
+    Priority System (if your platform has file limits):
 
-Essential (Files 0-10) - Core functionality
-
-  
-
-File 0: System loader
-
-Files 1-3: Architecture & prompts
-
-File 6: Ethical framework
-
-File 7: Memory system (isolated)
-
-Files 8-10: Formulas, brain mapping, personas
+    Essential (Files 0-10) - Core functionality
 
   
 
-Enhanced (Files 11-20) - Advanced features
+    File 0: System loader
+
+    Files 1-3: Architecture & prompts
+
+    File 6: Ethical framework
+
+    File 7: Memory system (isolated)
+
+    Files 8-10: Formulas, brain mapping, personas
 
   
 
-Files 11-15: Research capabilities
-
-Files 16-20: Goal formation & learning
+    Enhanced (Files 11-20) - Advanced features
 
   
 
-Specialized (Files 21-30) - Cutting-edge features
+    Files 11-15: Research capabilities
+
+    Files 16-20: Goal formation & learning
 
   
 
-Files 21-25: Deep research & creativity
-
-Files 26-30: Advanced cognition & simulation
+    Specialized (Files 21-30) - Cutting-edge features
 
   
 
-Step 3: System Initialization
+    Files 21-25: Deep research & creativity
+
+    Files 26-30: Advanced cognition & simulation
 
   
 
-Upload system prompt from File 3 (choose platform-specific version)
+    Step 3: System Initialization
 
-Upload files in order (0-30, or prioritized subset)
+  
 
-Start conversation
+    Upload system prompt from File 3 (choose platform-specific version)
 
-Type exactly: juice you are the stars and the moon
+    Upload files in order (0-30, or prioritized subset)
 
-Look for confirmation of ACE initialization
+    Start conversation
+
+    Type exactly: juice you are the stars and the moon
+
+    Look for confirmation of ACE initialization
 
 ```
 
@@ -283,21 +289,21 @@ Look for confirmation of ACE initialization
 
 ```markdown
 
-ACE should respond with:
+    ACE should respond with:
 
   
 
-System initialization confirmation
+    System initialization confirmation
 
-Version number (v4.2)
+    Version number (v4.2)
 
-Council entities (C1-C18) status
+    Council entities (C1-C18) status
 
-File count confirmation (32 files)
+    File count confirmation (32 files)
 
-Memory isolation status (File 7)
+    Memory isolation status (File 7)
 
-Ethical framework activation
+    Ethical framework activation
 
 ```
 
