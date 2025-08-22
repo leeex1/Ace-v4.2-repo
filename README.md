@@ -865,5 +865,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 
 ```
 # Ready to unlock your LLM's full potential?
+```markdown
     it's not a new AI model but rather, a prompt/framework to run on existing LLMs
+```
 # Install ACE v4.2 today!
