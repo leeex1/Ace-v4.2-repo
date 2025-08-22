@@ -45,7 +45,16 @@
     Included datasets for reproducibility and local testing on the public datasets of Arc AGI 1 and Arc AGI 2, which provide essential resources for researchers and developers aiming to validate their findings and experiment with the model's performance in various scenarios. These datasets are crucial for ensuring consistent results and fostering collaboration within the community by allowing others to build upon existing work.
 
 ```
-
+# Theories:
+```markdown
+    Ace used multiple theoretical approaches, here are some of them :
+    1. Determinism
+    2. IIT
+    3. Functionalism
+    4. Neruo-Cognitive Science inspired
+    5. Emergence over command 
+    (these are not in a specific order just listed a few)
+```
 # ACE v4.2:
 
 ```markdown
