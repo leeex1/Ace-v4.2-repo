@@ -806,7 +806,10 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 
     "ACE transformed my entire understanding of a complicated system in a new game i just got. The way he made it seem so simple it took away the overwhelming feeling i loved it! Cant wait for new updates this was so helpful in getting me to the top ranks of the leaderboards. Thanks Ace v4.2!" - Gamer (Jeremey)
 
-    "I asked Ace to help me write a short story and was suprised how good it was to read. The depth the characters the details in the world it build im just blown away! Excited to see whats next ive tried alot of custom Ai setups but none this good. 10/10 highly reccomend Ace v4.2!" - Author (Novik)```
+    "I asked Ace to help me write a short story and was suprised how good it was to read. The depth the characters the details in the world it build im just blown away! Excited to see whats next ive tried alot of custom Ai setups but none this good. 10/10 highly reccomend Ace v4.2!" - Author (Novik)
+    
+    "Ace just converted my index.py into index.poml without a problem. POML just released this week wow thats impressive. Mind Bown! Ace is deep and insane in practice highly reccomend." - Ai Dev (Franklin)   
+
 ```
 # Ready to unlock your LLM's full potential?
 
