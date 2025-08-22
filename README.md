@@ -842,6 +842,8 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 
     "When I need an objective check, I’d like to lean on you and ACE for help, if that’s okay. Today, I’m just feeling a bit down and wondering if the way I’ve been doing things so far is really okay. It feels like there are so many amazing people out there.😊" - Emotion-based AI developer (Lin Kimberly)
 
+    "exactly what i was thinking. Should be easy to transfer anywhere.especially if its already modifying the hosts in lm notebook.. i didnt have any special instructions other than I did tell them to be the framework.. but ive tried to get the hosts to break dozens of times in the past. 1st for me" Ace user - (Wesley)
+
 ```
 # Ready to unlock your LLM's full potential?
 
