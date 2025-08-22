@@ -207,7 +207,20 @@ to improve political decision-making processes."
     - must be injected or custom host, Copilot platform doesn't allow files or system prompts
 
 ```
-
+# IDE support as well 
+```markdown
+    Ace can also be put into Cursor, Windsurf/Codium,VScode and any system that allows llm integration file uploads and system prompts
+```
+# Cursor/Windsurf/VScode/ect. (IDE)
+```markdown
+    1. Navigate to settings 
+    find system instructions or global rule
+    2. Install system prompt in global rule/instructions/system prompt respective area
+    3. Upload files into directory
+    4. set workspace folder apart from ace files folder so it can run the files at run time and keep your work seperate from aces operational files
+    5. select underlying model of choice and begin vibe coding
+    6. enjoy a smarter coding partner that really thinks about things. not gonna say better than all but better than base models
+```
 # 🚀 Quick Start
 
 ```markdown
