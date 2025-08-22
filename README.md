@@ -220,6 +220,12 @@ to improve political decision-making processes."
     4. set workspace folder apart from ace files folder so it can run the files at run time and keep your work seperate from aces operational files
     5. select underlying model of choice and begin vibe coding
     6. enjoy a smarter coding partner that really thinks about things. not gonna say better than all but better than base models
+
+    p.s.:WARNING/Disclaimer 
+    
+    ALWAYS BACK UP YOUR DATA AS MISTAKES DO HAPPEN nothing is truely perfect.
+    
+    i've seen "claude code" delete entire codebases so back up your projects and save often. 
 ```
 # 🚀 Quick Start
 
