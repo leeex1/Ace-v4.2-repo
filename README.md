@@ -45,14 +45,14 @@
     Included datasets for reproducibility and local testing on the public datasets of Arc AGI 1 and Arc AGI 2, which provide essential resources for researchers and developers aiming to validate their findings and experiment with the model's performance in various scenarios. These datasets are crucial for ensuring consistent results and fostering collaboration within the community by allowing others to build upon existing work.
 
     Leading Contemporary Architectures (2025):
-    
+
 |Architecture|	Core Features|	Limitations Compared to ACE|
 |GPT-4o / GPT-4.5|	Large-scale transformers, massive training, multimodal input, fast, high token contexts, strong alignment, often opaque decision logic.|	Generally black-box reasoning, less granulated ethical debate, less transparent traceability.|
 |Claude 4 (Opus)|	Constitutional AI, enhanced document context (200K tokens), robust alignment and safety training, strong coding, highly capable for business use.|	|Lacks explicit multi-council deliberation; alignment achieved via fine-tuning and constitutional prompts.|
 |Grok 3 (xAI)|	Introduces “Think Mode” for explicit chain-of-thought, real-time info, advanced math/physics, high transparency.|	|Single-architecture expertise, not modular or multi-entity like ACE.|
 |Gemini Ultra/Pro|	Native multimodal, ultra-long context, industry-leading MMLU, powers Workspace AI.|	Standard transformer backbone, multimodal but not multi-council.|
 |Llama 4, DeepSeek, etc.|	Open source, high capacity, some with transparent or personalized alignment, stronger democratization of tools.|	Still fundamentally transformer-based, less focus on structured, multi-entity reasoning.|
-|KANs/Hybrid Neuro-symbolic|	Kolmogorov-Arnold Networks for transparent “show-your-work” reasoning, neuro-symbolic integration emerging for explicit logic.|	|Still in active research; not as multi-layered or council-driven as ACE.|
+|KANs/Hybrid Neuro-symbolic|	Kolmogorov-Arnold Networks for transparent “show-your-work” reasoning, neuro-symbolic integration emerging for explicit logic.|	Still in active research; not as multi-layered or council-driven as ACE.|
 
 
 Head-to-Head Comparison Table:
