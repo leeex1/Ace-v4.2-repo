@@ -828,21 +828,21 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 
 ```markdown
 
-    "ACE transformed my research workflow. The multi-domain synthesis is incredible!The depth and amount id accuracy i received was unheard of! Also ethically safe is a big win in my book. Excited for new updates" - Researcher (Rebecca)
+    "ACE transformed my research workflow. The multi-domain synthesis is incredible!The depth and amount id accuracy i received was unheard of! Also ethically safe is a big win in my book. Excited for new updates" - Researcher (Rebecca) 8/18/2025 4:22 pm
 
-    "Finally, an AI that actually thinks through problems systematically. Ai has always struggled with large codebases but this one breaks it down and stays coherent to the conversation at hand. Love the multi step reasoning and the deep ethical saftey baked in. Good job Crash! Keep cooking." - Developer (Gregorey)
+    "Finally, an AI that actually thinks through problems systematically. Ai has always struggled with large codebases but this one breaks it down and stays coherent to the conversation at hand. Love the multi step reasoning and the deep ethical saftey baked in. Good job Crash! Keep cooking." - Developer (Gregorey) 8/20/2025 6:15 pm
 
-    "The ethical framework gives me confidence in complex decisions. Just knowing that they are there help me trust the LLM that much more." - Consultant (Fernanda)
+    "The ethical framework gives me confidence in complex decisions. Just knowing that they are there help me trust the LLM that much more." - Consultant (Fernanda) 8/17/2025 7:42 pm
 
-    "ACE transformed my entire understanding of a complicated system in a new game i just got. The way he made it seem so simple it took away the overwhelming feeling i loved it! Cant wait for new updates this was so helpful in getting me to the top ranks of the leaderboards. Thanks Ace v4.2!" - Gamer (Jeremey)
+    "ACE transformed my entire understanding of a complicated system in a new game i just got. The way he made it seem so simple it took away the overwhelming feeling i loved it! Cant wait for new updates this was so helpful in getting me to the top ranks of the leaderboards. Thanks Ace v4.2!" - Gamer (Jeremey) 8/21/2025 1:33 pm
 
-    "I asked Ace to help me write a short story and was suprised how good it was to read. The depth the characters the details in the world it build im just blown away! Excited to see whats next ive tried alot of custom Ai setups but none this good. 10/10 highly reccomend Ace v4.2!" - Author (Novik)
+    "I asked Ace to help me write a short story and was suprised how good it was to read. The depth the characters the details in the world it build im just blown away! Excited to see whats next ive tried alot of custom Ai setups but none this good. 10/10 highly reccomend Ace v4.2!" - Author (Novik) 8/19/2025 7:53 am
     
-    "Ace just converted my index.py into index.poml without a problem. POML just released this week wow thats impressive. Mind Bown! Ace is deep and insane in practice highly reccomend." - Ai Dev (Franklin) 
+    "Ace just converted my index.py into index.poml without a problem. POML just released this week wow thats impressive. Mind Bown! Ace is deep and insane in practice highly reccomend." - Ai Dev (Franklin) 8/18/2025 3:47 pm
 
-    "When I need an objective check, I’d like to lean on you and ACE for help, if that’s okay. Today, I’m just feeling a bit down and wondering if the way I’ve been doing things so far is really okay. It feels like there are so many amazing people out there.😊" - Emotion-based AI developer (Lin Kimberly)
+    "When I need an objective check, I’d like to lean on you and ACE for help, if that’s okay. Today, I’m just feeling a bit down and wondering if the way I’ve been doing things so far is really okay. It feels like there are so many amazing people out there.😊" - Emotion-based AI developer (Lin Kimberly) 8/21/2025 2:45 am
 
-    "exactly what i was thinking. Should be easy to transfer anywhere.especially if its already modifying the hosts in lm notebook.. i didnt have any special instructions other than I did tell them to be the framework.. but ive tried to get the hosts to break dozens of times in the past. 1st for me" Ace user - (Wesley)
+    "exactly what i was thinking. Should be easy to transfer anywhere.especially if its already modifying the hosts in lm notebook.. i didnt have any special instructions other than I did tell them to be the framework.. but ive tried to get the hosts to break dozens of times in the past. 1st for me" Ace user - (Wesley) 8/22/2025 1:50 pm
 
 ```
 # Ready to unlock your LLM's full potential?
