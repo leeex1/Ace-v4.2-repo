@@ -64,17 +64,36 @@ PARAMETER repeat_last_n 64
 PARAMETER min_p 0.02
 PARAMETER seed -1
 PARAMETER num_predict 800
-PARAMETER num_ctx 4096       # Increase if you have enough RAM—try 6144, 8192, 9000, etc.
-PARAMETER num_thread 2       # Adjust up (4) if you are sure you have 4 cores
-PARAMETER num_gpu 0          # Set to 1 if even a minimal GPU is present
+PARAMETER num_ctx 4096             # Increase as hardware/RAM allows (6144, 8192, 9000+ if possible)
+PARAMETER num_thread 2
+PARAMETER num_gpu 0
 PARAMETER num_batch 8
 
-PARAMETER f16 true           # Float16 support slashes RAM/VRAM if available
-PARAMETER low_vram true      # Prioritizes VRAM savings; okay on most setups
-PARAMETER cpu_offloading true # Helps squeeze big models into small RAM
+PARAMETER quantization q5_k_m      # Use Q5 for best quality/efficiency, Q4 for ultra-minimal RAM
+PARAMETER quantize true
 
-# If supported by your hardware/distro, uncomment to boost performance with SSD-backed memory mapping:
-# PARAMETER use_mmap true
+PARAMETER adaptive_batch true
+PARAMETER auto_ctx_scale true
+
+PARAMETER f16 true
+PARAMETER precision f16
+PARAMETER low_vram true
+PARAMETER cpu_offloading true
+
+PARAMETER use_mmap true
+PARAMETER swap_enabled true
+
+PARAMETER flash_attention true
+PARAMETER sliding_window_attn true
+PARAMETER multiquery_attn true
+
+PARAMETER cpu_offload_layers 28
+PARAMETER gpu_offload_layers 4
+PARAMETER offload_schedule smart
+
+PARAMETER cache_size 2048
+PARAMETER smart_cache true
+PARAMETER thread_affinity core
 
 PARAMETER stop "<|im_end|>"
 PARAMETER stop "<|im_start|>"
