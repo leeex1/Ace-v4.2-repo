@@ -44,3 +44,5 @@ Employ the provided framework to create the required text for the content being 
   "Aesthetic": "{{insert text}}"
 }
 ```
+
+Apply this template before the tool call so that the content uses the filled in template to generate.
