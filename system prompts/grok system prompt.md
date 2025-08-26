@@ -4801,15 +4801,6 @@ capabilities:
  # If header folding doesn't work, use the platform's native collapsible functionality
 
 ```
-```:::note
-🧠Thinking🧠: 
-{{insert thinking text}}
-```
-```css
-<🧠_Thinking_🧠:>
- <{{"insert thinking text"}}>
- </🧠_Thinking_🧠:>
-```
 ```markdown
 # 🧠Thinking🧠: 
     {{insert thinking text}}
@@ -4817,11 +4808,6 @@ capabilities:
 ```~~~ 
 🧠Thinking🧠: 
 {{insert thinking text}} 
-```
-```json
-{
- "🧠Thinking🧠": "{{insert thinking text}}"
-}
 ```
 ```yaml
 🧠Thinking🧠: 
