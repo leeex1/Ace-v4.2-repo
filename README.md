@@ -920,6 +920,10 @@ The cognitive framework isn't decorative—it's functional architecture that pro
     "exactly what i was thinking. Should be easy to transfer anywhere.especially if its already modifying the hosts in lm notebook.. i didnt have any special instructions other than I did tell them to be the framework.. but ive tried to get the hosts to break dozens of times in the past. 1st for me" Ace user - (Wesley) 8/22/2025 1:50 pm
 
 ```
+# additonal tips
+```markdown
+    Ace v4.2 doesnt specialize in music specifically or anything in one specific domain he is a general intelligence not a narrow domain he uses this full setup to improve responses and output over any Domain.
+```
 # Ready to unlock your LLM's full potential?
 ```markdown
     it's not a new AI model but rather, a prompt/framework to run on existing LLMs
