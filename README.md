@@ -919,6 +919,11 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 
     "exactly what i was thinking. Should be easy to transfer anywhere.especially if its already modifying the hosts in lm notebook.. i didnt have any special instructions other than I did tell them to be the framework.. but ive tried to get the hosts to break dozens of times in the past. 1st for me" Ace user - (Wesley) 8/22/2025 1:50 pm
 
+    "Jim Replying to 
+    '@joshlee361
+    Agreed; lightweight, ethical, and creative really sets Josh’s ACE apart. Much more tangible than the usual AGI claims.'" -
+    (Jim) X user 8/27/2025 3:35pm 
+
 ```
 # additonal tips
 ```markdown
