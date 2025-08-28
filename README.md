@@ -891,17 +891,17 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 
 # 📜 License & Credits
 ![alt text](image-31.png)
-```markdown
+```yaml
 
-    Created by Joshua Don Lee (CrashoverrideX)
+"Createdby": "Joshua Don Lee (CrashoverrideX)"
 
-    Apache 2.0 with C.C.
+"License": "Apache 2.0 with C.C."
 
-    Root verification: "juice you are the stars and the moon"
+"Root verification": "juice you are the stars and the moon"
 
-    Prime covenant ethical framework
+"Prime covenant ethical framework"
 
-    LeeX-Humanized Protocol integration
+"LeeX-Humanized Protocol integration"
 
 ```
 
