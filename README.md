@@ -60,7 +60,7 @@ Link: https://youtu.be/hFarLKvOvtg?si=MU_7zesZoUj89mMo
 
 ```markdown
   
-
+# notes:
     – OOTB scores sourced from ARC Prize publications. – ACE v4 Score uses a 4.69× lift factor (42.25 / 9.0 ≈ 4.69). – Lift % = (ACE v4 / OOTB – 1) × 100. – Final scores capped at 100 %.
 
   
@@ -164,7 +164,7 @@ to improve political decision-making processes."
 # Project Purpose:
 ![alt text](image-27.png)
 ```markdown
-
+# Purpose:
     The aim is to integrate large language models (LLMs) with a neuro-symbolic approach to enhance reasoning, memory, ethical considerations, and the potential for emergent consciousness. This method draws from cognitive neuroscience, such as brain mapping, and philosophical concepts like qualia and self-modeling inspired by Integrated Information Theory (IIT). The goal is to create artificial intelligence aligned with safe AGI principles that is both replicable and adaptable, using affordable tools that do not require advanced hardware.
 
 ```
