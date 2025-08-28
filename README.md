@@ -885,7 +885,9 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 
     Expanded platform support
 
-    Better file size manaement for Gemini Gem and Gpt 
+    Better file size manaement for Gemini Gem and Gpt
+
+    Looking into condensing to 27 files for grok specific file limits. 
 
 ```
 
@@ -920,19 +922,22 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 |  9 | X user                     | Jim          | 8/27/2025 3:35 pm | "Jim Replying to '@joshlee361 Agreed; lightweight, ethical, and creative really sets Josh’s ACE apart. Much more tangible than the usual AGI claims.'"                                                                                                                                                   |
 
 # Research Papers 
+# Ace v4.2: Advanced Cognitive Entity Architechture
 ![alt text](image-20.png)
 
-# Link:
+### Link:
  [\leeex1\Ace-v4.2-repo\Ace_v4_2_new_LLM_Wrapper.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Ace_v4_2_new_LLM_Wrapper.pdf)
 
+# Lee-X Humanized Protocol:
 ![alt text](image-21.png)
 
-# Link:
+### Link:
  [\leeex1\Ace-v4.2-repo\Lee-X Humanized Protocol.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Lee-X%20Humanized%20Protocol.pdf)
 
+# Reactive Conciousness:
 ![alt text](image-22.png)
 
-# Link:
+### Link:
  [\leeex1\Ace-v4.2-repo\Reactive Conciousness.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Reactive%20Conciousness.pdf) 
 
 
