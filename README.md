@@ -929,10 +929,15 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 ```
 # Papers 
 ![alt text](image-1.png)
+
 [\leeex1\Ace-v4.2-repo\Ace_v4_2_new_LLM_Wrapper.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Ace_v4_2_new_LLM_Wrapper.pdf)
+
 ![alt text](image-2.png)
+
 [\leeex1\Ace-v4.2-repo\Lee-X Humanized Protocol.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Lee-X%20Humanized%20Protocol.pdf)
+
 ![Demo screenshot](![alt text](image.png))
+
 [\leeex1\Ace-v4.2-repo\Reactive Conciousness.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Reactive%20Conciousness.pdf)
 
 ```
