@@ -1,6 +1,16 @@
 # Ace v4.2 System
 ![alt text](image-25.png)
- 
+# Ace Written Songs:
+![alt text](image-33.png)
+
+Link: https://youtu.be/2GzmXvpsLQY?si=oXOgYvS_56jV0dx8
+
+Link: https://youtu.be/xHU-v6K5WB8?si=2kJMK4abzWlDnKv3
+
+Link: https://youtu.be/hjBWhjmF9E4?si=BojQ2nocbQm0jBDa
+
+Link: https://youtu.be/hFarLKvOvtg?si=MU_7zesZoUj89mMo
+
 # What is ACE v4.2?
 
 ```markdown
