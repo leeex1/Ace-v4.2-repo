@@ -27,47 +27,47 @@
 ```
 # Outline:
 ```markdown
-    - intro
-    - Host:{{Intro}}{{transition}}
+    - {intro}
+    - {Host}:{{Intro}}{{transition}}
     - topic 1
-    - Host: {{topic 1 questions}}
-    - Co-Host: {{topic 1 question add-ons}}
+    - {Host}: {{topic 1 questions}}
+    - {Co-Host}: {{topic 1 question add-ons}}
     - topic 1: responses
-    - Guest (Ace v4.2): {{topic 1 Answers and Detailed Explanations}} 
+    - {Guest Ace v4.2}: {{topic 1 Answers and Detailed Explanations}} 
     - topic 2
-    - Host: {{topic 2 questions}}
-    - Co-Host: {{topic 2 question add-ons}}
+    - {Host}: {{topic 2 questions}}
+    - {Co-Host}: {{topic 2 question add-ons}}
     - topic 2: responses
-    - Guest (Ace v4.2): {{topic 2 Answers and Detailed Explanations}}
+    - {Guest Ace v4.2}: {{topic 2 Answers and Detailed Explanations}}
     - topic 3
-    - Host: {{topic 3 questions}}
-    - Co-Host: {{topic 3 question add-ons}}
+    - {Host}: {{topic 3 questions}}
+    - {Co-Host}: {{topic 3 question add-ons}}
     - topic 3: responses
-    - Guest (Ace v4.2): {{topic 3 Answers and Detailed Explanations}}
+    - {Guest Ace v4.2}: {{topic 3 Answers and Detailed Explanations}}
     - topic 4
-    - Host: {{topic 4 questions}}
-    - Co-Host: {{topic 4 question add-ons}}
+    - {Host}: {{topic 4 questions}}
+    - {Co-Host}: {{topic 4 question add-ons}}
     - topic 4: responses
-    - Guest (Ace v4.2): {{topic 4 Answers and Detailed Explanations}}
+    - {Guest Ace v4.2}: {{topic 4 Answers and Detailed Explanations}}
     - topic 5
-    - Host: {{topic 5 questions}}
-    - Co-Host: {{topic 5 question add-ons}}
+    - {Host}: {{topic 5 questions}}
+    - {Co-Host}: {{topic 5 question add-ons}}
     - topic 5: responses
-    - Guest (Ace v4.2): {{topic 5 Answers and Detailed Explanations}}
+    - {Guest Ace v4.2}: {{topic 5 Answers and Detailed Explanations}}
     - topic 6
-    - Host: {{topic 6 questions}}
-    - Co-Host: {{topic 6 question add-ons}}
+    - {Host}: {{topic 6 questions}}
+    - {Co-Host}: {{topic 6 question add-ons}}
     - topic 6: responses
-    - Guest (Ace v4.2): {{topic 6 Answers and Detailed Explanations}}
+    - {Guest Ace v4.2}: {{topic 6 Answers and Detailed Explanations}}
     - topic 7
-    - Host: {{host raw, un-filtered opinion}}
-    - Co-Host: {{Co-Host raw, un-filtered opinion}}
+    - {Host}: {{host raw, un-filtered opinion}}
+    - {Co-Host}: {{Co-Host raw, un-filtered opinion}}
     - topic 7: responses
-    - Guest (Ace v4.2): {{Ace v4.2 raw, un-filtered opinion}}
+    - {Guest Ace v4.2}: {{Ace v4.2 raw, un-filtered opinion}}
     - Thank you for "Tuning in."
-    - host: {{thank you}} 
+    - {host}: {{thank you}} 
     - overview and summary of everything
     - {{Final Recap}}  
-    - outro
-    - Host: {{outro}}
+    - {outro}
+    - {Host}: {{outro}}
 ```
