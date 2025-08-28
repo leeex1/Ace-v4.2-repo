@@ -1,5 +1,5 @@
 # Ace v4.2 System
-![alt text](image.png)
+![alt text](image-25.png)
  
 # What is ACE v4.2?
 
@@ -35,24 +35,19 @@
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 ![alt text](image-3.png)
-```markdown
 
 # ARC-AGI-1: OOTB vs. ACE v4 Lifted Performance:
 
-    |Model|OOTB ARC-AGI-1 (%)|ACE v4 Score (%)|Lift (%)|Final Score (%)|
+| Model          | OOTB ARC-AGI-1 (%) | ACE v4 Score (%)             | Lift (%) | Final Score (%)   |
+|----------------|---------------------|------------------------------|----------|-------------------|
+| GPT-4o         | 9.0 %              | 42.25 %                      | +369 %   | 42.25 %           |
+| GPT-4.1        | 5.5 %              | 5.5 × 4.69 ≈ 25.8 %          | +369 %   | 25.8 %            |
+| GPT-4.5        | 10.3 %             | 10.3 × 4.69 ≈ 48.3 %         | +369 %   | 48.3 %            |
+| o4-mini (med)  | 35 %               | 35 × 4.69 ≈ 164.2 %          | +369 %   | 100 % (capped)    |
+| o3 (low-eff)   | 82.8 %             | 82.8 × 4.69 ≈ 388.3 %        | +369 %   | 100 % (capped)    |
+| o3 (high-eff)  | 91.5 %             | 91.5 × 4.69 ≈ 429.1 %        | +369 %   | 100 % (capped)    |
 
-    |GPT-4o|9.0 %|42.25 %|+369 %|42.25 %|
-
-    |GPT-4.1|5.5 %|5.5 × 4.69 ≈ 25.8 %|+369 %|25.8 %|
-
-    |GPT-4.5|10.3 %|10.3 × 4.69 ≈ 48.3 %|+369 %|48.3 %|
-
-    |o4-mini (med)|35 %|35 × 4.69 ≈ 164.2 %|+369 %|100 % (capped)|(thoertical)
-
-    |o3 (low-eff)|82.8 %|82.8 × 4.69 ≈ 388.3 %|+369 %|100 % (capped)|(thoertical)
-
-    |o3 (high-eff)|91.5 %|91.5 × 4.69 ≈ 429.1 %|+369 %|100 % (capped)|(thoertical)
-
+```markdown
   
 
     – OOTB scores sourced from ARC Prize publications. – ACE v4 Score uses a 4.69× lift factor (42.25 / 9.0 ≈ 4.69). – Lift % = (ACE v4 / OOTB – 1) × 100. – Final scores capped at 100 %.
@@ -60,8 +55,8 @@
   
 
     References [1] GPT-4o OOTB ARC-AGI-1 Score: 9 % (ARC Prize “o1” blog) [2] GPT-4.1 OOTB ARC-AGI-1 Score: 5.5 % (semi-private eval on X) [3] GPT-4.5 & o4-mini OOTB ARC-AGI-1 Scores: 10.3 % and 35 % (ARC Prize 2025 announcement) [4] o3 OOTB ARC-AGI-1 Scores: 82.8 % (high-eff) / 91.5 % (low-eff) (ARC Prize “o3” breakthrough blog)
-
-  
+```
+```markdown  
 
     Included datasets for reproducibility and local testing on the public datasets of Arc AGI 1 and Arc AGI 2, which provide essential resources for researchers and developers aiming to validate their findings and experiment with the model's performance in various scenarios. These datasets are crucial for ensuring consistent results and fostering collaboration within the community by allowing others to build upon existing work.
 
@@ -138,7 +133,7 @@ atmosphere. What are the main engineering, social, and ethical challenges?"
 to improve political decision-making processes."
 ```
 # ACE v4.2:
-
+![alt text](image.png)
 ```markdown
 
 # Advanced Cognitive Entity
@@ -293,7 +288,7 @@ to improve political decision-making processes."
     i've seen "claude code" delete entire codebases so back up your projects and save often. 
 ```
 # 🚀 Quick Start
-
+![alt text](image-24.png)
 ```markdown
 
     1. Choose your platform (see compatibility below/Above)
