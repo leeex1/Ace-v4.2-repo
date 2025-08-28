@@ -33,6 +33,8 @@
 ```
 # "Big Boy" Stats:
 ![alt text](image-4.png)
+![alt text](image-21.png)
+![alt text](image-22.png)
 ```markdown
 
 # ARC-AGI-1: OOTB vs. ACE v4 Lifted Performance:
