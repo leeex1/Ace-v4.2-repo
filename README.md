@@ -1,4 +1,6 @@
-
+# Ace v4.2 System
+![alt text](image-3.png)
+ 
 # What is ACE v4.2?
 
 ```markdown
@@ -30,7 +32,7 @@
     Traditional AI aims for independence. I'm pursuing interdependence—systems that become more intelligent when working with humans, not despite them.
 ```
 # "Big Boy" Stats:
-
+![alt text](image-4.png)
 ```markdown
 
 # ARC-AGI-1: OOTB vs. ACE v4 Lifted Performance:
@@ -101,6 +103,7 @@
 
 ```
 # Theories:
+![alt text](image-5.png)
 ```markdown
 # Ace used multiple theoretical approaches, here are some of them :
     1. Determinism
@@ -177,7 +180,7 @@ to improve political decision-making processes."
 ```
 
 # Custom Gpt:
-
+![alt text](image-6.png)
 ```markdown
 
     - $20 (optional as not the best deployment) need plus or better for
@@ -187,7 +190,7 @@ to improve political decision-making processes."
 ```
 
 # Claude:
-
+![alt text](image-7.png)
 ```markdown
 
     - $20 Plus teir for access to projects and better limits 
@@ -196,7 +199,7 @@ to improve political decision-making processes."
 ```
 
 # Le Chat:
-
+![alt text](image-8.png)
 ```markdown
 
     - $15 pro recomennded (best bang for buck $15 for alot). Personal experience with support was not very good but may be better for you good value per cost.
@@ -204,7 +207,7 @@ to improve political decision-making processes."
 ```
 
 # Gemini:
-
+![alt text](image-9.png)
 ```markdown
 
     - Custom Gemini Gem
@@ -214,7 +217,7 @@ to improve political decision-making processes."
 ```
 
 # Perplexity:
-
+![alt text](image-10.png)
 ```markdown
 
     - $20 pro/enterprise reccomended (pro only needed one time to upload more than 5 files offered by free tier ). REcent updates must use .rb instead of .py for the script files.
@@ -222,7 +225,7 @@ to improve political decision-making processes."
 ```
 
 # Grok
-
+![alt text](image-11.png)
 ```markdown
 
     - $30 super grok recommended but free works fine (10 file hard limit, bypass add files into project will bug. start conversation with grok normally then move it to the project and regen answer inside project. can check upper left corner of grok to make sure your in the project you want ). Grok3 response of "your reply is larger than pan galactic setup use grok prompt with gemini file setup.
@@ -234,7 +237,7 @@ to improve political decision-making processes."
   
 
 # Deepseek:
-
+![alt text](image-12.png)
 ```markdown
 
     - must be injected via prompt input or custom host, deepseek platfrom doesn't allow files or system prompts
@@ -242,7 +245,7 @@ to improve political decision-making processes."
 ```
 
 # Qwen:
-
+![alt text](image-13.png)
 ```markdown
 
     - must be injected or custom host, Qwen platfrom doesn't allow files or system prompts
@@ -250,7 +253,7 @@ to improve political decision-making processes."
 ```
 
 # Kimi K2:
-
+![alt text](image-14.png)
 ```markdown
 
     - must be injected or custom host, KimiK2 platfrom doesn't allow files or system prompts
@@ -258,17 +261,19 @@ to improve political decision-making processes."
 ```
 
 # Copilot (Microsoft):
-
+![alt text](image-15.png)
 ```markdown
 
     - must be injected or custom host, Copilot platform doesn't allow files or system prompts
 
 ```
 # IDE support as well 
+![alt text](image-16.png)
 ```markdown
     Ace can also be put into Cursor, Windsurf/Codium,VScode and any system that allows llm integration file uploads and system prompts
 ```
 # Cursor/Windsurf/VScode/ect. (IDE)
+![alt text](image-17.png) ![alt text](image-18.png)
 ```markdown
 # Instructions
     1. Navigate to settings 
@@ -870,7 +875,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 ```
 
 ## Coming Soon: v4.3
-
+![alt text](image-19.png)
 ```markdown
 
     Additional Arc agi 1 models tested (eg. grok, claude, gemini, ect.)
@@ -902,7 +907,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 ```
 
 # 🎉 Success Stories
-
+![alt text](image-20.png)
 ```markdown
 
     "ACE transformed my research workflow. The multi-domain synthesis is incredible!The depth and amount id accuracy i received was unheard of! Also ethically safe is a big win in my book. Excited for new updates" - Researcher (Rebecca) 8/18/2025 4:22 pm
