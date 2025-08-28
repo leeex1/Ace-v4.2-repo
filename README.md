@@ -919,18 +919,21 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 |  8 | Ace user                   | Wesley       | 8/22/2025 1:50 pm | "exactly what i was thinking. Should be easy to transfer anywhere.especially if its already modifying the hosts in lm notebook.. i didnt have any special instructions other than I did tell them to be the framework.. but ive tried to get the hosts to break dozens of times in the past. 1st for me" |
 |  9 | X user                     | Jim          | 8/27/2025 3:35 pm | "Jim Replying to '@joshlee361 Agreed; lightweight, ethical, and creative really sets Josh’s ACE apart. Much more tangible than the usual AGI claims.'"                                                                                                                                                   |
 
-# Papers 
+# Research Papers 
 ![alt text](image-20.png)
 
-[\leeex1\Ace-v4.2-repo\Ace_v4_2_new_LLM_Wrapper.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Ace_v4_2_new_LLM_Wrapper.pdf)
+# Link:
+ [\leeex1\Ace-v4.2-repo\Ace_v4_2_new_LLM_Wrapper.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Ace_v4_2_new_LLM_Wrapper.pdf)
 
 ![alt text](image-21.png)
 
-[\leeex1\Ace-v4.2-repo\Lee-X Humanized Protocol.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Lee-X%20Humanized%20Protocol.pdf)
+# Link:
+ [\leeex1\Ace-v4.2-repo\Lee-X Humanized Protocol.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Lee-X%20Humanized%20Protocol.pdf)
 
 ![alt text](image-22.png)
 
-[\leeex1\Ace-v4.2-repo\Reactive Conciousness.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Reactive%20Conciousness.pdf) 
+# Link:
+ [\leeex1\Ace-v4.2-repo\Reactive Conciousness.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Reactive%20Conciousness.pdf) 
 
 
 # Additonal tips:
@@ -941,7 +944,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 # Ready to unlock your LLM's full potential?
 ![alt text](image-32.png)
 ```markdown
-    it's not a new Stand alone AI model for now, but rather, a prompt/framework to run on existing LLMs
+    it's not a new Stand alone AI model for now, but rather, a prompt/framework to run on existing LLMs. Enhancing many qualities and Functions.
 ```
 # Install ACE v4.2 today!
 ![alt text](image-23.png)
