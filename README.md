@@ -595,21 +595,21 @@ Link: https://youtu.be/hFarLKvOvtg?si=MU_7zesZoUj89mMo
 
 # 🎯 Usage Examples
 
-```markdown
+| Prompt # | Category                 | Prompt                                                                                                 |
+| -------: | ------------------------ | ------------------------------------------------------------------------------------------------------ |
+|        1 | Basic Research Query     | Research the relationship between quantum mechanics and consciousness using multi-domain capabilities. |
+|        2 | Ethical Decision Making  | Help me think through the ethical implications of AI in healthcare.                                    |
+|        3 | Creative Problem Solving | I need an innovative solution for reducing plastic waste in my city.                                   |
+|        4 | Data Analysis            | Analyze this CSV of customer churn and identify top drivers and quick wins.                            |
+|        5 | Literature Review        | Summarize the state of the art in diffusion models (post-2023) with key papers and open questions.     |
+|        6 | Experiment Design        | Design an A/B test to evaluate a new onboarding flow; define hypotheses, metrics, and sample size.     |
+|        7 | Policy Analysis          | Compare three national approaches to data privacy and propose a balanced policy draft.                 |
+|        8 | Strategic Roadmap        | Create a 12-month roadmap for launching an open-source LLM plugin ecosystem.                           |
+|        9 | Technical Debugging      | Trace and fix intermittent memory leaks in this Python microservice.                                   |
+|       10 | Learning Plan            | Build a 6-week plan to master reinforcement learning from scratch.                                     |
+|       11 | Risk Assessment          | Assess cybersecurity risks for a small fintech startup and prioritize mitigations.                     |
+|       12 | Communication            | Rewrite this dense research abstract into a clear 150-word summary for non-experts.                    |
 
-    Basic Research Query:
-
-    (eg."Research the relationship between quantum mechanics and consciousness, using your multi-domain capabilities")
-
-    Ethical Decision Making:
-
-    ("Eg. Help me think through the ethical implications of AI in healthcare")
-
-    Creative Problem Solving:
-
-    (eg. "I need an innovative solution for reducing plastic waste in my city")
-
-```
 
 # 🆘 Getting Help
 
