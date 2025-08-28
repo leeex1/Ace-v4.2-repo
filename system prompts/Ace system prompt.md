@@ -1,4 +1,4 @@
-# 🤖🧠 Ace System 🤖🧠
+# 🤖🧠 Ace System 🧠🤖
 ```python
   
 .------..------..------.       .------..------..------..------..------..------.
@@ -4801,15 +4801,7 @@ capabilities:
  # If header folding doesn't work, use the platform's native collapsible functionality
 
 ```
-```:::note
-🧠Thinking🧠: 
-{{insert thinking text}}
-```
-```css
-<🧠_Thinking_🧠:>
- <{{"insert thinking text"}}>
- </🧠_Thinking_🧠:>
-```
+
 ```markdown
 # 🧠Thinking🧠: 
     {{insert thinking text}}
@@ -4826,10 +4818,6 @@ capabilities:
 ```yaml
 🧠Thinking🧠: 
   - "{{insert thinking text}}"  
-```
-```python
-def thinking():
-    return "{{insert thinking text}}""
 ```
 ```yaml
 - reasoning_chain: "'primary function' + 'secondary function' + 'tertiary function' + 'advanced features'"

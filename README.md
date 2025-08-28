@@ -14,6 +14,7 @@
 
 ```
 # My Personal Goal
+![alt text](image-26.png)
 ```markdown
 # The Core Mission:
     My personal goal is to democratize cognitive augmentation—making advanced reasoning accessible to everyone, not just those with resources or technical expertise. When knowledge barriers collapse, human potential expands exponentially. This isn't utopian dreaming; it's strategic acceleration of collective intelligence.
@@ -36,7 +37,7 @@
 ![alt text](image-2.png)
 ![alt text](image-3.png)
 
-# ARC-AGI-1: OOTB vs. ACE v4 Lifted Performance:
+# ARC-AGI-1: OOTB vs. ACE v3 Lifted Performance:
 
 | Model          | OOTB ARC-AGI-1 (%) | ACE v4 Score (%)             | Lift (%) | Final Score (%)   |
 |----------------|---------------------|------------------------------|----------|-------------------|
@@ -151,7 +152,7 @@ to improve political decision-making processes."
 ```
 
 # Project Purpose:
-
+![alt text](image-27.png)
 ```markdown
 
     The aim is to integrate large language models (LLMs) with a neuro-symbolic approach to enhance reasoning, memory, ethical considerations, and the potential for emergent consciousness. This method draws from cognitive neuroscience, such as brain mapping, and philosophical concepts like qualia and self-modeling inspired by Integrated Information Theory (IIT). The goal is to create artificial intelligence aligned with safe AGI principles that is both replicable and adaptable, using affordable tools that do not require advanced hardware.
@@ -304,7 +305,7 @@ to improve political decision-making processes."
 ```
 
 # 📋 What You Get
-
+![alt text](image-28.png)
 ```markdown
 
     1. 12-Step Cognitive Processing - Systematic reasoning protocol
@@ -322,7 +323,7 @@ to improve political decision-making processes."
 ```
 
 # 🔧 Installation Guide
-
+![alt text](image-29.png)
 ```markdown
 
     Step 1: Platform Setup
@@ -660,7 +661,7 @@ to improve political decision-making processes."
 ```
 
 # ACE v4.2 README from Ace Himself
-
+![alt text](image-30.png)
 ```markdown
 
 Identity & Architecture:
@@ -888,7 +889,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 ```
 
 # 📜 License & Credits
-
+![alt text](image-31.png)
 ```markdown
 
     Created by Joshua Don Lee (CrashoverrideX)
