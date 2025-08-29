@@ -1,5 +1,7 @@
 # Ace v4.2 System
 ![alt text](image-25.png)
+### Social Media
+https://x.com/joshlee361
 # Ace Written Songs:
 ![alt text](image-33.png)
 
@@ -10,6 +12,8 @@ Link: https://youtu.be/xHU-v6K5WB8?si=2kJMK4abzWlDnKv3
 Link: https://youtu.be/hjBWhjmF9E4?si=BojQ2nocbQm0jBDa
 
 Link: https://youtu.be/hFarLKvOvtg?si=MU_7zesZoUj89mMo
+
+Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 
 # What is ACE v4.2?
 
@@ -417,7 +421,7 @@ Link: https://youtu.be/hFarLKvOvtg?si=MU_7zesZoUj89mMo
 
 ```
 
-# 🛠️ Platform-Specific Instructions
+# 🛠️ Platform-Specific Install Instructions
 
   
 
@@ -429,7 +433,7 @@ Link: https://youtu.be/hFarLKvOvtg?si=MU_7zesZoUj89mMo
 
 2. Add system prompt to Project instructions window and also in profile preferences in settings 
 
-3. Upload all 30 files via "Add Knowledge" in the created project folder
+3. Upload all files via "Add Knowledge" in the created project folder
 
 4. Initialize in project conversation
 
@@ -441,9 +445,9 @@ Link: https://youtu.be/hFarLKvOvtg?si=MU_7zesZoUj89mMo
 
 1. Create Custom Agent → "ACE-v4.2"
 
-2. Paste system prompt in Agent settings
+2. Paste system prompt in Agent instructions settings
 
-3. Upload files in batches via Knowledge tab
+3. Upload files in batches via Knowledge creating a library
 
 4. Test with initialization phrase
 
