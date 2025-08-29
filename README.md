@@ -598,6 +598,7 @@ Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 ```
 
 # 🎯 Usage Examples
+![alt text](image-40.png)
 
 | Prompt # | Category                 | Prompt                                                                                                 |
 | -------: | ------------------------ | ------------------------------------------------------------------------------------------------------ |
