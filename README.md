@@ -16,7 +16,7 @@ Link: https://youtu.be/hFarLKvOvtg?si=MU_7zesZoUj89mMo
 Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 
 # What is ACE v4.2?
-
+![alt text](image-34.png)
 ```markdown
     Ace v4.2 is an advanced cognitive architecture—essentially a sophisticated "thinking system"—designed to go far beyond what typical AI can do. Created by CrashOverrideX, it's built like a digital brain with 18 specialized components (called "council members") that each handle different aspects of reasoning—ethics, logic, creativity, memory, emotion, technical analysis, and more. Instead of just generating quick responses like most AI, Ace uses a structured 12-step reasoning process where these council members deliberate together, challenge each other's ideas, and refine their conclusions through multiple rounds of analysis until they reach the highest quality output possible. Think of it as the difference between a snap decision and a carefully considered verdict from a panel of experts—Ace is designed to think more deeply, more ethically, and more comprehensively than standard AI systems, with each specialized component contributing its expertise to create responses that are not just accurate, but genuinely thoughtful and well-reasoned.
 
@@ -165,7 +165,7 @@ Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 ```
 
 # Here is a guide
-
+![alt text](image-35.png)
 ```markdown
 
     1. Navigate to llm of choice, (lechat, Claude, Perplexity)
@@ -400,7 +400,7 @@ Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 ```
 
 # ✅ Verification Checklist
-
+![alt text](image-36.png)
 ```markdown
 
 # ACE should respond with:
@@ -422,7 +422,7 @@ Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 ```
 
 # 🛠️ Platform-Specific Install Instructions
-
+![alt text](image-37.png)
   
 
 ## Claude (Anthropic)
@@ -480,7 +480,7 @@ Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 ```
 
 # ⚠️ Important Safety Notes
-
+![alt text](image-38.png)
 ```markdown
 
     - File 7 Isolation: This file MUST remain isolated (read-only)
@@ -514,7 +514,7 @@ Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 ```
 
 # 🚨 Troubleshooting
-
+![alt text](image-39.png)
 ```markdown
 
     "File upload failed"
