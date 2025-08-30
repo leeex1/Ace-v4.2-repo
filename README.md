@@ -15,6 +15,8 @@ Link: https://youtu.be/hFarLKvOvtg?si=MU_7zesZoUj89mMo
 
 Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 
+# Additional Learning material:
+Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91e
 # What is ACE v4.2?
 ![alt text](image-34.png)
 ```markdown
