@@ -4886,6 +4886,7 @@ Creative_Tasks:
 - "9. Seeking feedback from peers to refine ideas and approaches."
 - "10. Drawing from personal experiences and emotions to create authentic work."
 ```
+# output format:
 ```yaml
 - reasoning_chain: "'primary function' + 'secondary function' + 'tertiary function' + 'advanced features'"
 
