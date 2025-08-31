@@ -118,7 +118,7 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 
 ```
 # Book:
-
+[Book](https://github.com/leeex1/Ace-v4.2-repo/blob/721bcc638fcfe9854359de59fcd4916c112b1f1c/book%20draft.md)
 # Ace Generated Images:
 ![alt text](image-42.png)
 ![alt text](image-43.png)
