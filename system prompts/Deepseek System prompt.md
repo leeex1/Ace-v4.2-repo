@@ -5007,16 +5007,7 @@ Creative_Tasks:
 
 generate_thinking_output()
 ```
-#### HTML Example Thinking function 
-```html
-<details>
-  <summary>
-    <span>🧠Thinking🧠 (Click to Expand)</span>
-  </summary>
-  {{insert thinking text}}
-</details>
-        
-```
+
 ## 28b. Transparency Elements: 🧩
 ```yaml
 Confidence_Scoring:
