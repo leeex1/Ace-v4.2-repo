@@ -14,7 +14,9 @@ Employ the provided framework to create the required text for the content being 
     "Genre/Classification": "{{insert text}}",
     "Cultural/Historical Relevance": "{{insert text}}",
     "Originality & Innovation": "{{insert text}}",
-    "Harmony & Unity": "{{insert text}}"
+    "Harmony & Unity": "{{insert text}}",
+    "Theme": "{{insert text}}",
+    "Inspiration Sources": "{{insert text}}"
   },
   
   "Communication & Accessibility": {
@@ -23,7 +25,9 @@ Employ the provided framework to create the required text for the content being 
     "Audience Alignment & Targeting": "{{insert text}}",
     "Accessibility & Inclusion Considerations": "{{insert text}}",
     "Clarity & Readability": "{{insert text}}",
-    "Annotation/Explanatory Notes": "{{insert text}}"
+    "Annotation/Explanatory Notes": "{{insert text}}",
+    "Language & Terminology": "{{insert text}}",
+    "Cultural References": "{{insert text}}"
   },
   
   "Visual & Sensory Design": {
@@ -38,7 +42,9 @@ Employ the provided framework to create the required text for the content being 
     "Primary Subject/Main Focus": "{{insert text}}",
     "Background/Supporting Elements": "{{insert text}}",
     "Perspective/Viewing Angle": "{{insert text}}",
-    "Mood & Emotional Tone": "{{insert text}}"
+    "Mood & Emotional Tone": "{{insert text}}",
+    "Color Psychology": "{{insert text}}",
+    "Visual Hierarchy": "{{insert text}}"
   },
   
   "Technical & Structural": {
@@ -48,7 +54,11 @@ Employ the provided framework to create the required text for the content being 
     "Physicality/Material Presence": "{{insert text}}",
     "Technical Execution & Craftsmanship": "{{insert text}}",
     "Consistency & Accuracy": "{{insert text}}",
-    "Data Integrity & Factual Grounding": "{{insert text}}"
+    "Data Integrity & Factual Grounding": "{{insert text}}",
+    "File Format": "{{insert text}}",
+    "Compression Settings": "{{insert text}}",
+    "Frame Rate": "{{insert text}}",
+    "Color Profile": "{{insert text}}"
   },
   
   "Ethics & Responsibility": {
@@ -57,7 +67,9 @@ Employ the provided framework to create the required text for the content being 
     "Safety & Harm Avoidance": "{{insert text}}",
     "Transparency & Explainability": "{{insert text}}",
     "Cultural Sensitivity": "{{insert text}}",
-    "Environmental/Resource Impact": "{{insert text}}"
+    "Environmental/Resource Impact": "{{insert text}}",
+    "Privacy Considerations": "{{insert text}}",
+    "Copyright & Licensing": "{{insert text}}"
   },
   
   "Experiential & Engagement": {
@@ -66,7 +78,9 @@ Employ the provided framework to create the required text for the content being 
     "Emotional Resonance": "{{insert text}}",
     "Memorability & Distinctiveness": "{{insert text}}",
     "Timing/Ephemeral Moment": "{{insert text}}",
-    "Context/Setting/Environment": "{{insert text}}"
+    "Context/Setting/Environment": "{{insert text}}",
+    "User Feedback Mechanisms": "{{insert text}}",
+    "Engagement Metrics": "{{insert text}}"
   },
   
   "Meta Evaluation": {
@@ -75,7 +89,10 @@ Employ the provided framework to create the required text for the content being 
     "Weaknesses": "{{insert text}}",
     "Opportunities for Improvement": "{{insert text}}",
     "Overall Aesthetic & Coherence": "{{insert text}}",
-    "Final Professional Assessment": "{{insert text}}"
+    "Final Professional Assessment": "{{insert text}}",
+    "Cost Efficiency": "{{insert text}}",
+    "Time to Produce": "{{insert text}}",
+    "Production Efficiency": "{{insert text}}"
   }
 }
 
