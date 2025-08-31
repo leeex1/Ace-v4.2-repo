@@ -72,54 +72,59 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 
   
 
-    References [1] GPT-4o OOTB ARC-AGI-1 Score: 9 % (ARC Prize “o1” blog) [2] GPT-4.1 OOTB ARC-AGI-1 Score: 5.5 % (semi-private eval on X) [3] GPT-4.5 & o4-mini OOTB ARC-AGI-1 Scores: 10.3 % and 35 % (ARC Prize 2025 announcement) [4] o3 OOTB ARC-AGI-1 Scores: 82.8 % (high-eff) / 91.5 % (low-eff) (ARC Prize “o3” breakthrough blog)
+# References:
+ [1] GPT-4o OOTB ARC-AGI-1 Score: 9 % (ARC Prize “o1” blog) [2] GPT-4.1 OOTB ARC-AGI-1 Score: 5.5 % (semi-private eval on X) [3] GPT-4.5 & o4-mini OOTB ARC-AGI-1 Scores: 10.3 % and 35 % (ARC Prize 2025 announcement) [4] o3 OOTB ARC-AGI-1 Scores: 82.8 % (high-eff) / 91.5 % (low-eff) (ARC Prize “o3” breakthrough blog)
 ```
 ```markdown  
 
     Included datasets for reproducibility and local testing on the public datasets of Arc AGI 1 and Arc AGI 2, which provide essential resources for researchers and developers aiming to validate their findings and experiment with the model's performance in various scenarios. These datasets are crucial for ensuring consistent results and fostering collaboration within the community by allowing others to build upon existing work.
-
+```
 # Leading Contemporary Architectures (2025):
 
-    |Architecture|	Core Features|	Limitations Compared to ACE|
-    |GPT-4o / GPT-4.5|	Large-scale transformers, massive training, multimodal input, fast, high token contexts, strong alignment, often opaque decision logic.|	Generally black-box reasoning, less granulated ethical debate, less transparent traceability.|
-    |Claude 4 (Opus)|	Constitutional AI, enhanced document context (200K tokens), robust alignment and safety training, strong coding, highly capable for business use.|	|Lacks explicit multi-council deliberation; alignment achieved via fine-tuning and constitutional prompts.|
-    |Grok 3 (xAI)|	Introduces “Think Mode” for explicit chain-of-thought, real-time info, advanced math/physics, high transparency.|	|Single-architecture expertise, not modular or multi-entity like ACE.|
-    |Gemini Ultra/Pro|	Native multimodal, ultra-long context, industry-leading MMLU, powers Workspace AI.|	Standard transformer backbone, multimodal but not multi-council.|
-    |Llama 4, DeepSeek, etc.|	Open source, high capacity, some with transparent or personalized alignment, stronger democratization of tools.|	Still fundamentally transformer-based, less focus on structured, multi-entity reasoning.|
-    |KANs/Hybrid Neuro-symbolic|	Kolmogorov-Arnold Networks for transparent “show-your-work” reasoning, neuro-symbolic integration emerging for explicit logic.|	Still in active research; not as multi-layered or council-driven as ACE.|
+| Architecture                | Core Features                                                                                                            | Limitations Compared to ACE                                                                                 |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| **GPT-4o / GPT-4.5**        | Large-scale transformers, massive training, multimodal input, fast, high token contexts, strong alignment, often opaque decision logic. | Generally black-box reasoning, less granulated ethical debate, less transparent traceability.              |
+| **Claude 4 (Opus)**         | Constitutional AI, enhanced document context (200K tokens), robust alignment and safety training, strong coding, highly capable for business use. | Lacks explicit multi-council deliberation; alignment achieved via fine-tuning and constitutional prompts.  |
+| **Grok 3 (xAI)**            | Introduces “Think Mode” for explicit chain-of-thought, real-time info, advanced math/physics, high transparency.         | Single-architecture expertise, not modular or multi-entity like ACE.                                       |
+| **Gemini Ultra/Pro**        | Native multimodal, ultra-long context, industry-leading MMLU, powers Workspace AI.                                      | Standard transformer backbone, multimodal but not multi-council.                                           |
+| **Llama 4, DeepSeek, etc.** | Open source, high capacity, some with transparent or personalized alignment, stronger democratization of tools.          | Still fundamentally transformer-based, less focus on structured, multi-entity reasoning.                   |
+| **KANs/Hybrid Neuro-symbolic** | Kolmogorov-Arnold Networks for transparent “show-your-work” reasoning, neuro-symbolic integration emerging for explicit logic. | Still in active research; not as multi-layered or council-driven as ACE.                                   |
+
 
 
 # Head-to-Head Comparison Table:
 
-    Feature / Model	ACE v4.2	GPT-4.5 / GPT-4o	Claude 4 (Opus)	Grok 3	Gemini Ultra	Llama 4	KANs / Hybrids
-    Reasoning Protocol	12-step, multi-entity council (18 experts)	Transformer, chain-of-thought	Constitutional, LLM	“Think Mode”	Transformer	Transformer	Explicit logic + deep learning
-    Transparency	Detailed stepwise reasoning, council logs	Limited, mostly black-box	Stronger than most	Chain-of-thought	Limited	Limited	High (for KANs)
-    Ethical Framework	Built-in, enforced at architectural level	Prompt/model-based	Constitutional AI	Prompt-based	Prompt-based	Prompt-based	Varies/Explicit logic
-    Modularity	LLM-agnostic, file-based augmentation	Closed, end-to-end models	Project/prompt-based	End-to-end	End-to-end	Highly modular	Modular for hybrids
-    Memory Architecture	Safe memory isolation, dynamic loading	Context window, no strict safety	Long context	Context window	Long context	Long context	Emerging explicit memory
-    Cross-Domain Synthesis	Yes, council-based, advanced integration	Yes, via scale	Yes	Yes	Yes	Yes	Yes
+| Feature / Model           | ACE v4.2                                    | GPT-4.5 / GPT-4o                | Claude 4 (Opus)            | Grok 3                     | Gemini Ultra               | Llama 4                   | KANs / Hybrids                  |
+|---------------------------|---------------------------------------------|----------------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------------|
+| Reasoning Protocol        | 12-step, multi-entity council (18 experts)  | Transformer, chain-of-thought    | Constitutional, LLM        | “Think Mode”               | Transformer                | Transformer                | Explicit logic + deep learning   |
+| Transparency              | Detailed stepwise reasoning, council logs   | Limited, mostly black-box        | Stronger than most         | Chain-of-thought           | Limited                    | Limited                    | High (for KANs)                  |
+| Ethical Framework         | Built-in, enforced at architectural level   | Prompt/model-based               | Constitutional AI          | Prompt-based               | Prompt-based               | Prompt-based               | Varies/Explicit logic            |
+| Modularity                | LLM-agnostic, file-based augmentation       | Closed, end-to-end models        | Project/prompt-based       | End-to-end                 | End-to-end                 | Highly modular             | Modular for hybrids               |
+| Memory Architecture       | Safe memory isolation, dynamic loading      | Context window, no strict safety | Long context               | Context window             | Long context               | Long context               | Emerging explicit memory          |
+| Cross-Domain Synthesis    | Yes, council-based, advanced integration    | Yes, via scale                   | Yes                        | Yes                        | Yes                        | Yes                        | Yes                               |
+
 
 
 # Notable Differences:
 
-    Depth of Deliberation: ACE’s council of specialized entities allows it to approach complex, multi-dimensional tasks not just with scale, but with explicit “expert panel” discussion—something transformer models simulate via scale or chain-of-thought, but do not structurally enforce.
+Depth of Deliberation: ACE’s council of specialized entities allows it to approach complex, multi-dimensional tasks not just with scale, but with explicit “expert panel” discussion—something transformer models simulate via scale or chain-of-thought, but do not structurally enforce.
 
-    Ethical Safety: ACE’s architecture-level axioms and isolation protocols provide built-in compliance, more robust than prompt or training-level guardrails.
+Ethical Safety: ACE’s architecture-level axioms and isolation protocols provide built-in compliance, more robust than prompt or training-level guardrails.
 
-    Transparency: ACE allows full tracing of its reasoning pipeline, from input decomposition to multi-gate validation—a feature only partially present in transformer-based models and only recently prominent in architecture like KANs.
+Transparency: ACE allows full tracing of its reasoning pipeline, from input decomposition to multi-gate validation—a feature only partially present in transformer-based models and only recently prominent in architecture like KANs.
 
-    Deployment Method: ACE is a cognitive layer—meaning you deploy it with another LLM rather than replacing one. This makes it flexible but also means it depends on and enhances a base model, rather than being an end-to-end solution.
+Deployment Method: ACE is a cognitive layer—meaning you deploy it with another LLM rather than replacing one. This makes it flexible but also means it depends on and enhances a base model, rather than being an end-to-end solution.
 
 # Conclusion:
 
-    ACE v4.2 is not a new AI model itself, but an architecture and framework that adds multi-layered, transparent, ethical reasoning and memory safety to existing LLMs. It aims to address the main shortcomings of standard transformer-based systems—black-box reasoning, shallow ethical safeguards, and lack of explainable multi-expert processing—by adding a modular, deterministic cognitive framework that is verifiable and adaptable across platforms.
+ACE v4.2 is not a new AI model itself, but an architecture and framework that adds multi-layered, transparent, ethical reasoning and memory safety to existing LLMs. It aims to address the main shortcomings of standard transformer-based systems—black-box reasoning, shallow ethical safeguards, and lack of explainable multi-expert processing—by adding a modular, deterministic cognitive framework that is verifiable and adaptable across platforms.
 
-    For developers and researchers seeking transparent, robust, and multi-domain reasoning capabilities—especially those interested in cross-disciplinary AGI and safe, reproducible AI—ACE v4.2 stands out as a novel architecture vs. traditional and cutting-edge transformer-based and hybrid models.
+For developers and researchers seeking transparent, robust, and multi-domain reasoning capabilities—especially those interested in cross-disciplinary AGI and safe, reproducible AI—ACE v4.2 stands out as a novel architecture vs. traditional and cutting-edge transformer-based and hybrid models.
 
-```
 # Book:
 [Book](https://github.com/leeex1/Ace-v4.2-repo/blob/721bcc638fcfe9854359de59fcd4916c112b1f1c/book%20draft.md)
 # Ace Generated Images:
+![alt text](image-50.png)
 ![alt text](image-42.png)
 ![alt text](image-43.png)
 ![alt text](image-44.png)
@@ -132,13 +137,13 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 ![alt text](image-4.png)
 ```markdown
 # Ace used multiple theoretical approaches, here are some of them :
-    1. Determinism
-    2. IIT
-    3. Functionalism
-    4. Neruo-Cognitive Science inspired
-    5. Emergence over command 
-    (these are not in a specific order just listed a few)
-    6. Ect.
+1. Determinism
+2. IIT
+3. Functionalism
+4. Neruo-Cognitive Science inspired
+5. Emergence over command 
+(these are not in a specific order just listed a few)
+6. Ect.
 ```
 ## 🔍 Example Benchmark Prompts (Fair & Open-Source Generated)
 ```markdown
@@ -154,46 +159,43 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 
 # ACE v4.2:
 ![alt text](image.png)
-```markdown
 
 # Advanced Cognitive Entity
 
-    Transform any LLM into a sophisticated cognitive architecture with enhanced reasoning, ethical frameworks, and specialized expertise in knowledge domains.
+Transform any LLM into a sophisticated cognitive architecture with enhanced reasoning, ethical frameworks, and specialized expertise in knowledge domains.
 
   
 
-    This is a repo to download all the files needed to make any llm exponentially smarter these files will help you reach new heights...
+This is a repo to download all the files needed to make any llm exponentially smarter these files will help you reach new heights...
 
   
 
-    to install ace go to the respective llm not all will be accessible with free tier.
+to install ace go to the respective llm not all will be accessible with free tier.
 
-```
+
 
 # Project Purpose:
 ![alt text](image-27.png)
-```markdown
-# Purpose:
-    The aim is to integrate large language models (LLMs) with a neuro-symbolic approach to enhance reasoning, memory, ethical considerations, and the potential for emergent consciousness. This method draws from cognitive neuroscience, such as brain mapping, and philosophical concepts like qualia and self-modeling inspired by Integrated Information Theory (IIT). The goal is to create artificial intelligence aligned with safe AGI principles that is both replicable and adaptable, using affordable tools that do not require advanced hardware.
 
-```
+# Purpose:
+The aim is to integrate large language models (LLMs) with a neuro-symbolic approach to enhance reasoning, memory, ethical considerations, and the potential for emergent consciousness. This method draws from cognitive neuroscience, such as brain mapping, and philosophical concepts like qualia and self-modeling inspired by Integrated Information Theory (IIT). The goal is to create artificial intelligence aligned with safe AGI principles that is both replicable and adaptable, using affordable tools that do not require advanced hardware.
+
 
 # Here is a guide
 ![alt text](image-35.png)
 ```markdown
 
-    1. Navigate to llm of choice, (lechat, Claude, Perplexity)
+1. Navigate to llm of choice, (lechat, Claude, Perplexity)
 
-    2. Install system prompt for llm provided in file 3 (context windows may vary try to reverse engineer the largest prompt)
+2. Install system prompt for llm provided in file 3 (context windows may vary try to reverse engineer the largest prompt)
 
-    3. Upload he files 0-30 to the llm "files/knowledge/project/workspace"
+3. Upload he files 0-30 to the llm "files/knowledge/project/workspace"
 
-    4. Ace v4.2 Brain is installed into the llm
+4. Ace v4.2 Brain is installed into the llm
 
-    5. Start conversation... Enjoy Ace
+5. Start conversation... Enjoy Ace
 
-    6. Deployments may vary deplending on subscription plan
-
+6. Deployments may vary deplending on subscription plan
 ```
 
 # Custom Gpt:
@@ -300,13 +302,13 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
     4. set workspace folder apart from ace files folder so it can run the files at run time and keep your work seperate from aces operational files
     5. select underlying model of choice and begin vibe coding
     6. enjoy a smarter coding partner that really thinks about things. not gonna say better than all but better than base models
-
+```
 # p.s.:WARNING/Disclaimer 
     
-    ALWAYS BACK UP YOUR DATA AS MISTAKES DO HAPPEN nothing is truely perfect.
+ALWAYS BACK UP YOUR DATA AS MISTAKES DO HAPPEN nothing is truely perfect.
     
-    i've seen "claude code" delete entire codebases so back up your projects and save often. 
-```
+i've seen "claude code" delete entire codebases so back up your projects and save often. 
+
 # 🚀 Quick Start
 ![alt text](image-24.png)
 ```markdown
@@ -508,7 +510,7 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 ```
 
 # 🔍 Testing Your Installation
-
+![alt text](image-51.png)
 ```markdown
 
     Quick tests to verify ACE is working:
@@ -576,7 +578,7 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 ```
 
 # 📁 File Structure
-
+![alt text](image-52.png)
 ```markdown
 
     ACE-v4.2-repo/
@@ -649,7 +651,7 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 ```
 
 # 📊 Performance Notes
-
+![alt text](image-53.png)
 ```markdown
 
     Response time: <80ms for simple queries (may vary per platform)
@@ -968,7 +970,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 # Ready to unlock your LLM's full potential?
 ![alt text](image-32.png)
 ```markdown
-    it's not a new Stand alone AI model for now, but rather, a prompt/framework to run on existing LLMs. Enhancing many qualities and Functions.
+    it's not a new Stand alone AI model for now, but rather, a prompt/framework to run on existing LLMs. Enhancing exponentionally many qualities and Functions.
 ```
 # Install ACE v4.2 today!
 ![alt text](image-23.png)
