@@ -52,7 +52,7 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 # Why This Matters:
     Traditional AI aims for independence. I'm pursuing interdependence—systems that become more intelligent when working with humans, not despite them.
 ```
-# Physics Sim
+# 2D Physics Sim
 
 ```html
 <!DOCTYPE html>
