@@ -619,20 +619,108 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 # 🎯 Usage Examples
 ![alt text](image-40.png)
 
-| Prompt # | Category                 | Prompt                                                                                                 |
-| -------: | ------------------------ | ------------------------------------------------------------------------------------------------------ |
-|        1 | Basic Research Query     | Research the relationship between quantum mechanics and consciousness using multi-domain capabilities. |
-|        2 | Ethical Decision Making  | Help me think through the ethical implications of AI in healthcare.                                    |
-|        3 | Creative Problem Solving | I need an innovative solution for reducing plastic waste in my city.                                   |
-|        4 | Data Analysis            | Analyze this CSV of customer churn and identify top drivers and quick wins.                            |
-|        5 | Literature Review        | Summarize the state of the art in diffusion models (post-2023) with key papers and open questions.     |
-|        6 | Experiment Design        | Design an A/B test to evaluate a new onboarding flow; define hypotheses, metrics, and sample size.     |
-|        7 | Policy Analysis          | Compare three national approaches to data privacy and propose a balanced policy draft.                 |
-|        8 | Strategic Roadmap        | Create a 12-month roadmap for launching an open-source LLM plugin ecosystem.                           |
-|        9 | Technical Debugging      | Trace and fix intermittent memory leaks in this Python microservice.                                   |
-|       10 | Learning Plan            | Build a 6-week plan to master reinforcement learning from scratch.                                     |
-|       11 | Risk Assessment          | Assess cybersecurity risks for a small fintech startup and prioritize mitigations.                     |
-|       12 | Communication            | Rewrite this dense research abstract into a clear 150-word summary for non-experts.                    |
+| Prompt # | Category                   | Prompt                                                                                                  |
+| -------: | -------------------------- | -------------------------------------------------------------------------------------------------------- |
+|        1 | Basic Research Query       | Research the relationship between quantum mechanics and consciousness using multi-domain capabilities.    |
+|        2 | Ethical Decision Making    | Help me think through the ethical implications of AI in healthcare.                                      |
+|        3 | Creative Problem Solving   | I need an innovative solution for reducing plastic waste in my city.                                     |
+|        4 | Data Analysis              | Analyze this CSV of customer churn and identify top drivers and quick wins.                              |
+|        5 | Literature Review          | Summarize the state of the art in diffusion models (post-2023) with key papers and open questions.       |
+|        6 | Experiment Design          | Design an A/B test to evaluate a new onboarding flow; define hypotheses, metrics, and sample size.       |
+|        7 | Policy Analysis            | Compare three national approaches to data privacy and propose a balanced policy draft.                   |
+|        8 | Strategic Roadmap          | Create a 12-month roadmap for launching an open-source LLM plugin ecosystem.                             |
+|        9 | Technical Debugging        | Trace and fix intermittent memory leaks in this Python microservice.                                     |
+|       10 | Learning Plan              | Build a 6-week plan to master reinforcement learning from scratch.                                       |
+|       11 | Risk Assessment            | Assess cybersecurity risks for a small fintech startup and prioritize mitigations.                       |
+|       12 | Communication              | Rewrite this dense research abstract into a clear 150-word summary for non-experts.                      |
+|       13 | Product Ideation           | Brainstorm five disruptive features for a mental health app targeting teens.                             |
+|       14 | Narrative Creation         | Generate a suspenseful plot outline for a cyberpunk detective novella.                                   |
+|       15 | Mathematical Proof Assist  | Help me prove a conjecture about prime gaps for large numbers—suggest relevant theorems and strategies.  |
+|       16 | Code Review                | Review this TypeScript API handler for logic errors and security issues.                                 |
+|       17 | Multimodal Reasoning       | How does the visual evidence in these images support or contradict the written witness statements?        |
+|       18 | Comparative Analysis       | Compare the latest GPT-model architectures in terms of training efficiency and emergent abilities.        |
+|       19 | Interdisciplinary Synthesis| Synthesize insights from cognitive neuroscience and UX to improve VR onboarding experiences.              |
+|       20 | Workshop Facilitation      | Design a full-day workshop agenda to upskill senior devs on prompt engineering.                          |
+|       21 | Personal Development Plan  | Help me craft a 3-month growth plan for improving my negotiation and conflict management skills.          |
+|       22 | Logic Puzzle Solving       | Walk me through the step-by-step solution to this tricky logic grid brain teaser.                        |
+|       23 | Competitive Analysis       | Analyze key strengths, weaknesses, and positioning of the top 5 web browser companies in 2025.            |
+|       24 | User Research Synthesis    | Interview transcripts: synthesize main pain points and opportunities for a new SaaS dashboard.           |
+|       25 | Media Critique             | Review this short film from the lens of feminist critique and narrative structure.                        |
+|       26 | Agile Sprint Planning      | Help organize a 2-week scrum sprint backlog, prioritizing features and technical debt.                   |
+|       27 | Threat Modeling            | Build a STRIDE-style threat model for a crypto wallet mobile app.                                        |
+|       28 | Technical Translation      | Translate this medical device manual into layman's terms for end-user onboarding.                        |
+|       29 | Funding Proposal Draft     | Draft a grant proposal outline for a nonprofit using AI to detect early-stage cancer in low-resource settings. |
+|       30 | Patent Search              | Screen key patents related to zero-knowledge proofs since 2021 and summarize notable innovations.         |
+|       31 | Creative Copywriting       | Write persuasive ad copy for eco-friendly 3D printing filament.                                          |
+|       32 | Diagnostic Reasoning       | My Linux server shows high load average but low CPU; suggest multi-layer root causes and remedies.        |
+|       33 | Experiential Learning      | Suggest interactive exercises for teaching fifth-graders about renewable energy.                         |
+|       34 | Emotional Intelligence Coach| Help me process a workplace conflict and script a constructive feedback conversation.                    |
+|       35 | Resume Optimization        | Audit and rewrite my CV for a transition from academia to product management.                            |
+|       36 | Meeting Summarization      | Summarize the action points and risks from this 45-minute executive strategy call transcript.             |
+|       37 | Legal Scenario Analysis    | Review this scenario for GDPR compliance and flag gray area risks.                                       |
+|       38 | System Optimization        | Recommend upgrades and tuning for a hybrid cloud ML deployment hitting latency bottlenecks.               |
+|       39 | Knowledge Base Build       | Create a knowledge base outline for common support issues in an open-source dev tools platform.           |
+|       40 | Bias Detection             | Review this hiring algorithm’s outputs and spot potential racial or gender bias.                         |
+|       41 | Longform Writing Assistant | Help me outline and begin an in-depth article on the limits of universal language.                       |
+|       42 | Gaming AI Tactics          | Suggest successful strategies for a competitive match in an evolving real-time tactics game.             |
+|       43 | Personal Reflection        | Guide me in a structured reflection to understand why I procrastinate on complex creative tasks.         |
+|       44 | Creative Brief Development | Build a clear creative brief for a motion design video campaign.                                         |
+|       45 | Quantitative Research      | Assemble a survey instrument to measure environmental attitudes in urban teens.                          |
+|       46 | Critical Review            | Analyze this book’s themes and motifs from a post-colonial perspective.                                  |
+|       47 | Automation Scripting Help  | Write a cross-platform script to back up key project files to both S3 and Dropbox.                       |
+|       48 | Advanced Prompt Engineering| Help me structure a multi-modal prompt to analyze both text and code snippets simultaneously.            |
+|       49 | Conflict Resolution        | Mediate a stepwise compromise between two software project stakeholders with competing priorities.        |
+|       50 | Career Pathfinding         | Analyze my job history and interests to recommend three emerging tech career paths.                      |
+|       51 | Global Market Analysis           | Forecast the major economic trends driving tech adoption in Southeast Asia through 2030.               |
+|       52 | Personalized Tutoring            | Adapt my calculus homework help based on areas I repeatedly struggle in and my learning style.          |
+|       53 | Algorithm Design                 | Devise a space-optimized approach for Dijkstra’s algorithm for millions of nodes.                      |
+|       54 | AI Ethics Debate Prep            | Construct arguments supporting and opposing AI-generated art in academic settings.                      |
+|       55 | Medical Diagnosis Support        | Given these anonymized symptom patterns, suggest plausible differential diagnoses and tests.           |
+|       56 | Event Planning                   | Plan a hybrid conference for 500+ tech professionals, balancing accessibility and time zones.           |
+|       57 | Negotiation Simulation           | Role-play a salary negotiation for a new data science leader—include counter-offers and rationale.      |
+|       58 | Network Security Audit           | Outline steps to audit a hospital’s network for IoT-driven vulnerabilities and compliance risks.        |
+|       59 | Machine Translation Evaluation   | Evaluate the performance of a new Polish-English translation model using BLEU and human metrics.        |
+|       60 | Sustainability Audit             | Review this company’s annual report for environmental risk disclosures and recommend next steps.        |
+|       61 | Start-Up Pitch Review            | Critique this startup pitch, focusing on problem clarity, solution edge, and competitive advantage.     |
+|       62 | Feature Prioritization           | Rank backlog features for a fitness app using impact/effort quadrant with user feedback data.           |
+|       63 | Regenerative Design              | Propose biophilic architectural features for an urban apartment renovation.                            |
+|       64 | Quantum Computing Explanation    | Explain the essentials of error correction in quantum computing for advanced undergraduates.            |
+|       65 | Knowledge Graph Construction     | Build a knowledge graph structure to unify disparate climate datasets for semantic querying.            |
+|       66 | Resume Gap Explanation           | Help me craft a concise, positive explanation for a two-year resume gap due to family caregiving.       |
+|       67 | Classroom Differentiation        | Suggest ways to adapt a core lesson for learners with varying neurodiversity needs.                     |
+|       68 | Virtual Assistant Integration    | Design a voice assistant flow integrating calendar, notes, and third-party reminders for busy execs.    |
+|       69 | Songwriting Collaboration        | Co-write the lyrics for an upbeat pop chorus about digital dreams and real-world connections.           |
+|       70 | Impactful Cold Email             | Draft a cold email template to connect with leading AGI researchers for a podcast interview.            |
+|       71 | Multimodality in Learning        | Suggest a project-based approach to teach the concept of entropy using both simulations and video.      |
+|       72 | Parenting Advice                 | Help me navigate conversations about social media with my 11-year-old in an honest, age-appropriate way.|
+|       73 | Misinformation Detection         | Analyze a trending viral video and flag misleading statements or visual edits with explanations.        |
+|       74 | Startup Brand Identity           | Develop a brand story and manifesto for a new zero-waste food delivery service.                        |
+|       75 | System Load Balancing            | Recommend optimal load balancing strategies for multi-region microservices under bursty demand.         |
+|       76 | Adoption of New Tech Frameworks  | Advise steps to safely roll out a new backend framework company-wide with minimal dev disruption.        |
+|       77 | Scientific Visualization        | Create a narrative plan for an animated explainer on CRISPR gene editing for public outreach.           |
+|       78 | Transaction Dispute Resolution   | Mediate a resolution draft for a business-client payment dispute with professionalism and empathy.      |
+|       79 | EdTech Innovation Review         | Critically review three AI-powered EdTech tools for math engagement, with pros, pitfalls, and ideas.    |
+|       80 | Open Source Community Guide      | Outline contributor guidelines and a code of conduct for a new machine learning repo.                   |
+|       81 | Artistic Style Emulation         | Recreate a classic painting’s scene and mood in a digital art style prompt for a generative model.      |
+|       82 | PhD Application Feedback         | Review my statement of purpose for clarity, impact, and alignment with target faculty research.         |
+|       83 | Podcast Episode Scripting        | Generate an episode flow and question list for a show on AI biases in recommendation algorithms.        |
+|       84 | Career Change Reflection         | Help me weigh pros and cons of leaving a stable government role to join a high-growth tech startup.     |
+|       85 | Celebrating Diversity            | Draft messaging for a company’s internal celebration of Pride Month highlighting inclusion milestones.   |
+|       86 | Zero Trust Security Planning     | Develop a 6-month plan for migrating enterprise authentication to a zero-trust model.                   |
+|       87 | App Store Competitive Research   | Analyze the top five competitors of a language-learning app and extract UX and monetization lessons.    |
+|       88 | Accessibility Audit              | Review a website for top accessibility failings and suggest actionable, modern fixes.                   |
+|       89 | Social Media Campaign Strategy   | Design a 30-day social media content calendar to boost awareness for a mental health resource NGO.      |
+|       90 | SaaS Metrics Interpretation      | Explain anomalies in MRR and churn for a bootstrapped SaaS from the dashboard provided.                 |
+|       91 | Self-Learning Method Optimization| Suggest how I can optimize my workflow for learning two programming languages at once.                  |
+|       92 | Nonprofit Board Report           | Compile a concise impact report for a nonprofit’s annual board meeting, with key wins and stories.      |
+|       93 | Remote Work Policy Drafting      | Build a flexible, clear remote/hybrid work policy template for a distributed startup.                   |
+|       94 | UI Microcopy Improvement         | Rewrite the microcopy in an onboarding flow to maximize clarity, warmth, and cultural sensitivity.      |
+|       95 | Scientific Method Critique       | Spot flaws in this published experiment’s use of null hypothesis testing—recommend more robust methods. |
+|       96 | Skeptical Fact Verification      | Fact-check a tweet thread on a controversial topic—label claims by strength of evidence found.          |
+|       97 | Mindfulness Prompting            | Guide a 5-minute mindfulness exercise to reset focus before a tough creative challenge.                 |
+|       98 | Distributed Systems Simulation   | Architect a simulation to test the resilience of a P2P file sharing protocol under DDoS attack.         |
+|       99 | Early-Stage Product Feedback     | Review wireframes for a new budgeting app—ask tough, actionable questions for user validation.          |
+|      100 | Real-Time Moderation             | Simulate code-of-conduct moderation decisions for an online hackathon in ambiguous, high-traffic events.|
 
 
 # 🆘 Getting Help
