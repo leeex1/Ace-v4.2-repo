@@ -647,6 +647,7 @@ For developers and researchers seeking transparent, robust, and multi-domain rea
 
 # Book:
 ![alt text](image-56.png)
+
 [Book](https://github.com/leeex1/Ace-v4.2-repo/blob/721bcc638fcfe9854359de59fcd4916c112b1f1c/book%20draft.md)
 # Ace Generated Images:
 ![alt text](image-50.png)
