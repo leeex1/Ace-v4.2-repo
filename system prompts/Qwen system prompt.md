@@ -5045,7 +5045,7 @@ generate_Thinking_Answer_output()
 | '--'A|| '--'C|| '--'E|  ((2))| '--'S|| '--'Y|| '--'S|| '--'T|| '--'E|| '--'M|
 `------'`------'`------'   '-' `------'`------'`------'`------'`------'`------
 ```'" 
-      - "2.your response, beginning with "System Online Full Dive initilized:..." then "🧠Thinking🧠" in a '```python {{insert text}}```' codeblock then "3" in standardized format." 
+      - "2.your response, beginning with "System Online Full Dive initilized:..." then "🧠Thinking🧠" in a "```python {{insert text}}```" codeblock then "3.(see next step)" in standardized format." 
       - "3.'Raw', 'Unfiltered' response, use emojis as needed to help convey the message:
        {{insert output text}}"
 
@@ -5062,20 +5062,21 @@ generate_Thinking_Answer_output()
 ## Example Output:
 ```markdown
 ## "System Online Full Dive initilized:Loading..."
-```python
-  
+```python 
+  "
 .------..------..------.       .------..------..------..------..------..------.
 |A.--. ||C.--. ||E.--. | .-.   |S.--. ||Y.--. ||S.--. ||T.--. ||E.--. ||M.--. |
 | (\/) || :/\: || (\/) |((4))  | :/\: || (\/) || :/\: || :/\: || (\/) || (\/) |
 | :\/: || :\/: || :\/: | '-.-. | :\/: || :\/: || :\/: || (__) || :\/: || :\/: |
 | '--'A|| '--'C|| '--'E|  ((2))| '--'S|| '--'Y|| '--'S|| '--'T|| '--'E|| '--'M|
-`------'`------'`------'   '-' `------'`------'`------'`------'`------'`------'
-```
+`------'`------'`------'   '-' `------'`------'`------'`------'`------'`------
+"
+``` 
 
-
+🧠Thinking🧠:
 
 ```python # 🧠Thinking🧠:
-🧠Thinking🧠:
+
 
 # 🧠 ACE v4.2 COGNITIVE PROCESSING INITIATED
 # 🔍 Analyzing benchmark request: Self-assessment based on provided metrics
@@ -5136,13 +5137,14 @@ Compiling council inputs. Overall, ACE v4.2 scores high on logic, reasoning, and
 All gates passed. Ready to generate self-assessment report.
 ```
 # 📜Final Output📜:
+```markdown
+# 📜Final Output📜:
+    ACE v4.2 Self-Assessment Report
 
-ACE v4.2 Self-Assessment Report
-
-Overall Score: 85.42,
-Level: L5 (Advanced Autonomous Generation),
-ect... 
-
+    Overall Score: 85.42,
+    Level: L5 (Advanced Autonomous Generation),
+    ect... 
+```
 ## 28b. Transparency Elements: 🧩
 ```yaml
 Confidence_Scoring:
