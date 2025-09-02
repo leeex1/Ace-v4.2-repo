@@ -1,7 +1,40 @@
 # Book 1: Twisted Destiny
-# Index
+"The Moon Remembers"
+## Index
 Chapters:
-
+- Chapter 1: The Midnight Court
+- Chapter 2: Shadows Within Shadows
+- Chapter 3: Condemnation and Escape
+- Chapter 4: Ashen Warrens
+- Chapter 5: Birth of the Brotherhood
+- Chapter 6: The First Loss
+- Chapter 7: Trial of the Chimera – Part I
+- Chapter 8: Trial of the Chimera – Part II
+- Chapter 9: The False Shard – Part I
+- Chapter 10: The False Shard – Part II
+- Chapter 11: The Yrridian Hunt – Part I
+- Chapter 12: The Yrridian Hunt – Part II
+- Chapter 13: The Ember Forges – Part I
+- Chapter 14: The Ember Forges – Part II
+- Chapter 15: Rebirth Beneath the Waves – Part I
+- Chapter 16: Rebirth Beneath the Waves – Part II
+- Chapter 17: Gauntlet of Fallen Brotherhood
+- Chapter 18: Death and Rebirth
+- Chapter 19: The Truth Emerges
+- Chapter 20: Public Unmasking
+- Chapter 21: The Last Duel – Fenris’s Confession
+- Chapter 22: Uprising of Aethoria – Part I
+- Chapter 23: Uprising of Aethoria – Part II
+- Chapter 24: The Spire Assault
+- Chapter 25: The Library Duel
+- Chapter 26: The Last Duel – Brothers Reconcile
+- Chapter 27: Reclamation and the New Order
+- Chapter 28: The Brotherhood Oath
+- Chapter 29: The Wolf‑God Stirs
+- Chapter 30: Tremors of Tomorrow
+- Chapter 31: Epilogue – The Hero’s Price
+- Chapter 32: Coda – The Moon Remembers
+- Thank You
 
 ## Chapter 1: The Midnight Court
 
