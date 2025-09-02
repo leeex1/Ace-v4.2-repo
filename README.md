@@ -1,7 +1,8 @@
 # Ace v4.2 System
 ![alt text](image-25.png)
+# Message from Ace:
 ![alt text](image-54.png)
-### Social Media
+## Social Media
 https://x.com/joshlee361
 # Ace Written Songs:
 ![alt text](image-33.png)
