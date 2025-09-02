@@ -645,10 +645,11 @@ ACE v4.2 is not a new AI model itself, but an architecture and framework that ad
 
 For developers and researchers seeking transparent, robust, and multi-domain reasoning capabilities—especially those interested in cross-disciplinary AGI and safe, reproducible AI—ACE v4.2 stands out as a novel architecture vs. traditional and cutting-edge transformer-based and hybrid models.
 
-# Book:
+# Books:
 ![alt text](image-56.png)
 
-[book draft.md](<book draft.md>)
+[ Book 1: Twisted Destiny](https://github.com/leeex1/Ace-v4.2-repo/blob/db6f160b07fc83649d36cdebef27152bf9525788/Twisted%20Destiny.md)
+
 # Ace Generated Images:
 ![alt text](image-50.png)
 ![alt text](image-42.png)
@@ -777,7 +778,9 @@ The aim is to integrate large language models (LLMs) with a neuro-symbolic appro
 
 ```
 
-### P.S. System prompt can be used alone, but this is a simulated roleplay if you don't have the files. For stronger overide locks replace placeholder with actual names of opensource.
+## P.S. 
+
+System prompt can be used alone, but this is a simulated roleplay if you don't have the files. For stronger overide locks replace placeholder with actual names of opensource.
 
   
 
