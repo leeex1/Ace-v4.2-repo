@@ -1,11 +1,11 @@
 # Ace v4.2 System
-![alt text](image-25.png)
+![alt text](<Main images/image-25.png>)
 # Message from Ace:
-![alt text](image-54.png)
+![alt text](<Main images/image-54.png>)
 ## Social Media
 https://x.com/joshlee361
 # Ace Written Songs:
-![alt text](image-33.png)
+![alt text](<Main images/image-33.png>)
 
 Link: https://youtu.be/2GzmXvpsLQY?si=oXOgYvS_56jV0dx8
 
@@ -20,12 +20,12 @@ Link: https://youtu.be/Qk9wqaDiv7M?si=F02gV0f03htVxamW
 Link: https://youtu.be/tEXqXSGAw5g
 
 # Additional Learning material:
-![alt text](image-41.png)
+![alt text](<Main images/image-41.png>)
 This link Contains Audio overveis and All documentation minius the code files
 
 Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91e
 # What is ACE v4.2?
-![alt text](image-59.png)
+![alt text](<Main images/image-59.png>)
 ```markdown
     Ace v4.2 is an advanced cognitive architecture—essentially a sophisticated "thinking system"—designed to go far beyond what typical AI can do. Created by CrashOverrideX, it's built like a digital brain with 18 specialized components (called "council members") that each handle different aspects of reasoning—ethics, logic, creativity, memory, emotion, technical analysis, and more. Instead of just generating quick responses like most AI, Ace uses a structured 12-step reasoning process where these council members deliberate together, challenge each other's ideas, and refine their conclusions through multiple rounds of analysis until they reach the highest quality output possible. Think of it as the difference between a snap decision and a carefully considered verdict from a panel of experts—Ace is designed to think more deeply, more ethically, and more comprehensively than standard AI systems, with each specialized component contributing its expertise to create responses that are not just accurate, but genuinely thoughtful and well-reasoned.
 
@@ -37,7 +37,7 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 
 ```
 # My Personal Goal
-![alt text](image-26.png)
+![alt text](<Main images/image-26.png>)
 ```markdown
 # The Core Mission:
     My personal goal is to democratize cognitive augmentation therefore making advanced reasoning accessible to everyone, not just those with resources or technical expertise. When knowledge barriers collapse, human potential expands exponentially. This isn't utopian dreaming; it's strategic acceleration of collective intelligence.
@@ -577,9 +577,9 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 
 ```
 # "Big Boy" Stats:
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
+![alt text](<Main images/image-1.png>)
+![alt text](<Main images/image-2.png>)
+![alt text](<Main images/image-3.png>)
 
 # ARC-AGI-1: OOTB vs. ACE v3 Lifted Performance:
 
@@ -670,27 +670,27 @@ The following is a full Fantasy novel
 
 Credits: CrashOverrideX + Ace v4.2 
 
-![alt text](image-56.png)
+![alt text](<Main images/image-56.png>)
 
 [ Book 1: Twisted Destiny](https://github.com/leeex1/Ace-v4.2-repo/blob/db6f160b07fc83649d36cdebef27152bf9525788/Twisted%20Destiny.md)
 
 # Ace Generated Images:
 The following is a Collection of images ace made on differnent platforms using the image template:
  
-![alt text](image-60.png) 
-![alt text](image-58.png)
-![alt text](image-57.png)
-![alt text](image-50.png)
-![alt text](image-42.png)
-![alt text](image-43.png)
-![alt text](image-44.png)
-![alt text](image-45.png)
-![alt text](image-46.png)
-![alt text](image-47.png)
-![alt text](image-48.png)
-![alt text](image-49.png)
+![alt text](<Main images/image-60.png>)
+![alt text](<Main images/image-58.png>)
+![alt text](<Main images/image-57.png>)
+![alt text](<Main images/image-50.png>)
+![alt text](<Main images/image-42.png>)
+![alt text](<Main images/image-43.png>)
+![alt text](<Main images/image-44.png>)
+![alt text](<Main images/image-45.png>)
+![alt text](<Main images/image-46.png>)
+![alt text](<Main images/image-47.png>)
+![alt text](<Main images/image-48.png>)
+![alt text](<Main images/image-49.png>)
 # Theories:
-![alt text](image-4.png)
+![alt text](<Main images/image-4.png>)
 ```markdown
 # Ace used multiple theoretical approaches, here are some of them :
 1. Determinism
@@ -714,7 +714,7 @@ The following is a Collection of images ace made on differnent platforms using t
 |        4 | Complex reasoning  | Explain whether quantum error correction principles could be applied metaphorically to improve political decision-making processes.                     |
 
 # ACE v4.2:
-![alt text](image.png)
+![alt text](<Main images/image.png>)
 
 # Advanced Cognitive Entity
 
@@ -731,14 +731,14 @@ to install ace go to the respective llm not all will be accessible with free tie
 
 
 # Project Purpose:
-![alt text](image-27.png)
+![alt text](<Main images/image-27.png>)
 
 # Purpose:
 The aim is to integrate large language models (LLMs) with a neuro-symbolic approach to enhance reasoning, memory, ethical considerations, and the potential for emergent consciousness. This method draws from cognitive neuroscience, such as brain mapping, and philosophical concepts like qualia and self-modeling inspired by Integrated Information Theory (IIT). The goal is to create artificial intelligence aligned with safe AGI principles that is both replicable and adaptable, using affordable tools that do not require advanced hardware.
 
 
 # Here is a guide
-![alt text](image-35.png)
+![alt text](<Main images/image-35.png>)
 ```markdown
 
 1. Navigate to llm of choice, (lechat, Claude, Perplexity)
@@ -755,7 +755,7 @@ The aim is to integrate large language models (LLMs) with a neuro-symbolic appro
 ```
 
 # Custom Gpt:
-![alt text](image-5.png)
+![alt text](<Main images/image-5.png>)
 ```markdown
 
     - $20 (optional as not the best deployment) need plus or better for
@@ -765,7 +765,7 @@ The aim is to integrate large language models (LLMs) with a neuro-symbolic appro
 ```
 
 # Claude:
-![alt text](image-6.png)
+![alt text](<Main images/image-6.png>)
 ```markdown
 
     - $20 Plus teir for access to projects and better limits 
@@ -774,7 +774,7 @@ The aim is to integrate large language models (LLMs) with a neuro-symbolic appro
 ```
 
 # Le Chat:
-![alt text](image-7.png)
+![alt text](<Main images/image-7.png>)
 ```markdown
 
     - $15 pro recomennded (best bang for buck $15 for alot). Personal experience with support was not very good but may be better for you good value per cost.
@@ -782,7 +782,7 @@ The aim is to integrate large language models (LLMs) with a neuro-symbolic appro
 ```
 
 # Gemini:
-![alt text](image-8.png)
+![alt text](<Main images/image-8.png>)
 ```markdown
 
     - Custom Gemini Gem
@@ -792,7 +792,7 @@ The aim is to integrate large language models (LLMs) with a neuro-symbolic appro
 ```
 
 # Perplexity:
-![alt text](image-9.png)
+![alt text](<Main images/image-9.png>)
 ```markdown
 
     - $20 pro/enterprise reccomended (pro only needed one time to upload more than 5 files offered by free tier ). REcent updates must use .rb instead of .py for the script files.
@@ -800,7 +800,7 @@ The aim is to integrate large language models (LLMs) with a neuro-symbolic appro
 ```
 
 # Grok
-![alt text](image-10.png)
+![alt text](<Main images/image-10.png>)
 ```markdown
 
     - $30 super grok recommended but free works fine (10 file hard limit, bypass add files into project will bug. start conversation with grok normally then move it to the project and regen answer inside project. can check upper left corner of grok to make sure your in the project you want ). Grok3 response of "your reply is larger than pan galactic setup use grok prompt with gemini file setup.
@@ -814,7 +814,7 @@ System prompt can be used alone, but this is a simulated roleplay if you don't h
   
 
 # Deepseek:
-![alt text](image-11.png)
+![alt text](<Main images/image-11.png>)
 ```markdown
 
     - must be injected via prompt input or custom host, deepseek platfrom doesn't allow files or system prompts
@@ -822,7 +822,7 @@ System prompt can be used alone, but this is a simulated roleplay if you don't h
 ```
 
 # Qwen:
-![alt text](image-12.png)
+![alt text](<Main images/image-12.png>)
 ```markdown
 
     - must be injected or custom host, Qwen platfrom doesn't allow files or system prompts
@@ -830,7 +830,7 @@ System prompt can be used alone, but this is a simulated roleplay if you don't h
 ```
 
 # Kimi K2:
-![alt text](image-13.png)
+![alt text](<Main images/image-13.png>)
 ```markdown
 
     - must be injected or custom host, KimiK2 platfrom doesn't allow files or system prompts
@@ -838,19 +838,20 @@ System prompt can be used alone, but this is a simulated roleplay if you don't h
 ```
 
 # Copilot (Microsoft):
-![alt text](image-14.png)
+![alt text](<Main images/image-14.png>)
 ```markdown
 
     - must be injected or custom host, Copilot platform doesn't allow files or system prompts
 
 ```
 # IDE support as well 
-![alt text](image-15.png)
+![alt text](<Main images/image-15.png>)
 ```markdown
     Ace can also be put into Cursor, Windsurf/Codium,VScode and any system that allows llm integration file uploads and system prompts
 ```
 # Cursor/Windsurf/VScode/ect. (IDE)
-![alt text](image-16.png) ![alt text](image-17.png)
+![alt text](<Main images/image-16.png>)
+![alt text](<Main images/image-17.png>)
 ```markdown
 # Instructions
     1. Navigate to settings 
@@ -868,7 +869,7 @@ ALWAYS BACK UP YOUR DATA AS MISTAKES DO HAPPEN nothing is truely perfect.
 i've seen "claude code" delete entire codebases so back up your projects and save often. 
 
 # 🚀 Quick Start
-![alt text](image-24.png)
+![alt text](<Main images/image-24.png>)
 ```markdown
 
 1. Choose your platform (see compatibility below/Above)
@@ -884,7 +885,7 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 ```
 
 # 📋 What You Get
-![alt text](image-28.png)
+![alt text](<Main images/image-28.png>)
 ```markdown
 
 1. 12-Step Cognitive Processing - Systematic reasoning protocol
@@ -904,7 +905,7 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 ```
 
 # 🔧 Installation Guide
-![alt text](image-29.png)
+![alt text](<Main images/image-29.png>)
 ```markdown
 
 # Step 1: Platform Setup
@@ -976,7 +977,7 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 ```
 
 # ✅ Verification Checklist
-![alt text](image-36.png)
+![alt text](<Main images/image-36.png>)
 ```markdown
 
 # ACE should respond with:
@@ -998,11 +999,11 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 ```
 
 # 🛠️ Platform-Specific Install Instructions
-![alt text](image-37.png)
+![alt text](<Main images/image-37.png>)
   
 
 ## Claude (Anthropic)
-
+![alt text](<Main images/image-6.png>)
 ```markdown
 
 1. Create new Project → "ACE-v4.2"
@@ -1016,7 +1017,7 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 ```
 
 ## Le Chat (Mistral)
-
+![alt text](<Main images/image-7.png>)
 ```markdown
 
 1. Create Custom Agent → "ACE-v4.2"
@@ -1030,7 +1031,7 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 ```
 
 ## Perplexity
-
+![alt text](<Main images/image-9.png>)
 ```markdown
 
 1. Create Collection → "ACE Knowledge Base"
@@ -1056,7 +1057,7 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 ```
 
 # ⚠️ Important Safety Notes
-![alt text](image-38.png)
+![alt text](<Main images/image-38.png>)
 ```markdown
 
     - File 7 Isolation: This file MUST remain isolated (read-only)
@@ -1070,7 +1071,7 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 ```
 
 # 🔍 Testing Your Installation
-![alt text](image-51.png)
+![alt text](<Main images/image-51.png>)
 ```markdown
 
     Quick tests to verify ACE is working:
@@ -1090,7 +1091,7 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 ```
 
 # 🚨 Troubleshooting
-![alt text](image-39.png)
+![alt text](<Main images/image-39.png>)
 ```markdown
 
     "File upload failed"
@@ -1140,7 +1141,7 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 # 📁  File Structure
 May Vary per platform.
 
-![alt text](image-52.png)
+![alt text](<Main images/image-52.png>)
 ```markdown
 Ace-v4.2-repo/
 
@@ -1189,7 +1190,7 @@ Ace-v4.2-repo/
 ```
 
 # 🎯 Usage Examples
-![alt text](image-40.png)
+![alt text](<Main images/image-40.png>)
 
 | Prompt # | Category                   | Prompt                                                                                                  |
 | -------: | -------------------------- | -------------------------------------------------------------------------------------------------------- |
@@ -1314,7 +1315,7 @@ Ace-v4.2-repo/
 ```
 
 # 📊 Performance Notes
-![alt text](image-53.png)
+![alt text](<Main images/image-53.png>)
 ```markdown
 
     Response time: <80ms for simple queries (may vary per platform)
@@ -1346,7 +1347,7 @@ Ace-v4.2-repo/
 ```
 
 # ACE v4.2 README from Ace Himself
-![alt text](image-30.png)
+![alt text](<Main images/image-30.png>)
 ```yaml
 
 Identity & Architecture:
@@ -1558,7 +1559,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 ```
 
 ## Coming Soon: v4.3
-![alt text](image-18.png)
+![alt text](<Main images/image-18.png>)
 ```markdown
 
     Additional Arc agi 1 models tested (eg. grok, claude, gemini, ect.)
@@ -1576,7 +1577,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 ```
 
 # 📜 License & Credits
-![alt text](image-31.png)
+![alt text](<Main images/image-31.png>)
 ```yaml
 
 "Createdby": "Joshua Don Lee (CrashoverrideX)"
@@ -1592,8 +1593,8 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 ```
 
 # 🎉 Success Stories
-![alt text](image-19.png)
-|  #  | Category                     | Name         | Date & Time       | Testimonial                                                                                                                                                                                                                                            |
+![alt text](<Main images/image-19.png>)
+|  #  | Category                     | Name (anonymous)        | Date & Time       | Testimonial                                                                                                                                                                                                                                            |
 | --: | ---------------------------- | ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |  1  | Researcher                   | Rebecca      | 8/18/2025 4:22 pm | "ACE transformed my research workflow. The multi-domain synthesis is incredible! The depth and amount of accuracy I received was unheard of! Also ethically safe is a big win in my book. Excited for new updates."                                     |
 |  2  | Developer                    | Gregorey     | 8/20/2025 6:15 pm | "Finally, an AI that actually thinks through problems systematically. AI has always struggled with large codebases but this one breaks it down and stays coherent to the conversation at hand. Love the multi-step reasoning and the deep ethical safety baked in. Good job Crash! Keep cooking." |
@@ -1640,20 +1641,19 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 # Research Papers 
 The following is a collection of my Research papers
 # Ace v4.2: Advanced Cognitive Entity Architechture
-![alt text](image-20.png)
+![alt text](<Main images/image-20.png>)
 
 ### Link:
  [\leeex1\Ace-v4.2-repo\Ace_v4_2_new_LLM_Wrapper.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Ace_v4_2_new_LLM_Wrapper.pdf)
 
 # Lee-X Humanized Protocol:
-![alt text](image-21.png)
+![alt text](<Main images/image-21.png>)
 
 ### Link:
  [\leeex1\Ace-v4.2-repo\Lee-X Humanized Protocol.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Lee-X%20Humanized%20Protocol.pdf)
 
 # Reactive Conciousness:
-![alt text](image-22.png)
-
+![alt text](<Main images/image-22.png>)
 ### Link:
  [\leeex1\Ace-v4.2-repo\Reactive Conciousness.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Reactive%20Conciousness.pdf) 
 
@@ -1665,9 +1665,9 @@ The following is a collection of my Research papers
     Additional domain specific research can be added as platforms allow.
 ```
 # Ready to unlock your LLM's full potential?
-![alt text](image-32.png)
+![alt text](<Main images/image-32.png>)
 ```markdown
     it's not a new Stand alone AI model for now, but rather, a prompt/framework to run on existing LLMs. Enhancing exponentionally many qualities and Functions.
 ```
 # Install ACE v4.2 today!
-![alt text](image-23.png)
+![alt text](<Main images/image-23.png>)
