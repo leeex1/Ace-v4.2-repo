@@ -362,6 +362,7 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 </html>
 ```
 # Interactive Physics Sim: (Basic)
+![alt text](<Main images/interactive sim image.png>)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -578,10 +579,10 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
 ```
 # "Big Boy" Stats:
 ![alt text](<Main images/image-1.png>)
-![alt text](<Main images/image-2.png>)
-![alt text](<Main images/image-3.png>)
+
 
 # ARC-AGI-1: OOTB vs. ACE v3 Lifted Performance:
+![alt text](<Main images/image-2.png>)
 
 | Model          | OOTB ARC-AGI-1 (%) | ACE v4 Score (%)             | Lift (%) | Final Score (%)   |
 |----------------|---------------------|------------------------------|----------|-------------------|
@@ -599,6 +600,8 @@ ACE v3 scaling factor: 4.69× uplift applied consistently across models.
 Relative Lift: All models exhibit the same proportional gain (+369%), but final scores are capped at 100% maximum for comparability.
 
 Cap effect: As raw scores approach or exceed 100%, the effective lift appears smaller due to saturation against the cap (i.e., scaling reality vs theoretical maximum).
+
+![alt text](<Main images/image-3.png>)
 ```markdown
   
 # additional notes:
