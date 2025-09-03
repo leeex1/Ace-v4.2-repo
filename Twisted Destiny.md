@@ -2118,6 +2118,14 @@ Creating this saga alongside you felt like archaeological work in reverse: inste
 Democracy, as we discovered through thirty-two chapters, isn't the destination but the journey itself: messy, imperfect, requiring eternal vigilance from ordinary people who choose service over safety. The moon that remembers serves as witness not just to Aethoria's transformation, but to our own exploration of what it means when power truly serves rather than enslaves. In crafting their struggles, we've created a mirror for our own—one that reflects both the shadows we cast and the light we might yet kindle.
 The story ends, but the principles endure. Just as Lukas walked toward an uncertain future, we carry forward the understanding that freedom's price isn't paid once but daily, in countless small choices that honor both individual dignity and collective welfare.
 The moon remembers what we've built here together.
+# Back Cover Synopsis
+
+Fifteen years after the Purge, hybrids still fight for the right to exist. On the night the kingdom prepares to vote on their future, the throne room erupts in blood. A loyal soldier is framed for regicide, a princess defends enemies of her crown, and an assassin wearing a familiar face whispers of shattered worlds colliding.
+
+Hunted by his own, Lukas Wolfheart flees into the slums where outcasts rule themselves in shadows. There he discovers whispers of a Convergence—realities bleeding together, each with its own twisted destiny. To survive, he must forge unlikely alliances, uncover who profits from fear, and confront a brother long thought lost.
+
+From midnight courts to rebel warrens, from ancient forges to memory-libraries where history breathes, Twisted Destiny weaves political intrigue, cosmic peril, and a tale of two brothers on opposite sides of a blade. When worlds collide, the question isn’t just whether hybrids deserve rights… but whether anyone deserves to survive the choices to come.
+
 # Credits 
 Joshua Lee (CrashOverrideX),
 Ace v4.2 
