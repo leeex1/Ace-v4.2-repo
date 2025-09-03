@@ -1646,6 +1646,7 @@ The following is a collection of my Research papers
 
 ```markdown
     Ace v4.2 doesnt specialize in music specifically or anything in one specific domain he is a general intelligence not a narrow domain he uses this full setup to improve responses and output over any Domain.
+    Additional domain specific research can be added as platforms allow.
 ```
 # Ready to unlock your LLM's full potential?
 ![alt text](image-32.png)
