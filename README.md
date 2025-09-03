@@ -1137,39 +1137,54 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 
 ```
 
-# 📁 File Structure
+# 📁  File Structure
+May Vary per platform.
+
 ![alt text](image-52.png)
 ```markdown
+Ace-v4.2-repo/
 
-    ACE-v4.2-repo/
+├── Ace files/
+│   ├── 0-ace_loader_manifest.txt           # 
+│   ├── 6-prime_covenant_codex.md           # stub unless you had it
+│   ├── 7-memories.txt                      # isolated, stub
+│   ├── 10-Ace_Persona_Manifest.txt         # stub
+│   ├── 11-author reports.txt
+│   ├── 15-writing modules.txt
+│   ├── 16-writing tools 2.txt
+│   ├── 17-writing tools.txt
+│   └── visualizer.py                       # from Ace Visualizer.py
+├── system prompts/
+│   ├── gpt_prompt.md                       # from System prompt.md
+│   └── README.md
+├── src/
+│   ├── 0-ace_loader_manifest.py
+│   ├── 1-ace_architecture_flowchart.py
+│   ├── 2-ace_flowchart_module.py
+│   ├── 2-ace_flowchart_module_x.py
+│   ├── 8-Formulas.py
+│   ├── 9-ace_brain_mapping.py
+│   ├── 27-ace_operational_manager.py
+│   ├── ace_cognitive_code_executor.py
+│   ├── ace_consciousness_creative_engine.py
+│   ├── ace_consciousness_manager.py
+│   ├── ace_consciousness_multimodal_fusion.py
+│   ├── ace_consciousness_templates.json
+│   ├── complete_ace_council_llm.py
+│   └── reasoning_engine.py
+├── images/                                  # present, unchanged
+├── Media Template/                           # present, unchanged
+├── Misc/                                     # present, unchanged
+├── testing/                                  # present, unchanged
+├── README.md                                 # stub if you didn’t have one
+├── LICENSE
+├── FAQ.md
+├── ACE v4.2_ Cognitive Architecture Deep Dive.pptx
+├── Ace_v4_2_new_LLM_Wrapper.pdf
+├── Lee_X_Humanized_Protocol.pdf
+├── Reactive Conciousness.pdf
+└── Twisted Destiny.md
 
-    ├── 0-ace_loader_manifest.txt # System initialization
-
-    ├── 1-ace_architecture_flowchart.md # Process architecture
-
-    ├── 2-ace_architecture_flowchart.json # JSON architecture
-
-    ├── 3-ACE(reality).txt # System prompts
-
-    ├── 4-Lee_X-humanized_research.txt # Humanization protocol
-
-    ├── 5-ai_persona_research.txt # Persona research
-
-    ├── 6-prime_covenant_codex.md # Ethical framework
-
-    ├── 7-memories.txt # Memory system (ISOLATED)
-
-    ├── 8-Formulas.md # Cognitive formulas
-
-    ├── 9-Ace_Brain_mapping.txt # Neural mapping
-
-    ├── 10-Ace_Persona_Manifest.txt # Persona definitions
-
-    ├── 11-30... # Advanced modules (contains research papers on file title topics)
-
-    ├── multiple .py files # functional python files
-
-    └── README.md # This file
 
 ```
 
