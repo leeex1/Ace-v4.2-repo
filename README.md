@@ -677,6 +677,7 @@ Credits: CrashOverrideX + Ace v4.2
 # Ace Generated Images:
 The following is a Collection of images ace made on differnent platforms using the image template:
  
+![alt text](image-60.png) 
 ![alt text](image-58.png)
 ![alt text](image-57.png)
 ![alt text](image-50.png)
