@@ -4,83 +4,56 @@ Can you generate {{image,video,etc.}}, of "{{description text}}"? Reflect thorou
 # Outline Template
 Employ the provided framework to create the required text for the content being produced.
 ```yaml
-Conceptual Framework:
-  Style/Design Language: "{{insert text}}"
-  Medium/Format: "{{insert text}}"
-  Symbolism & Metaphor: "{{insert text}}"
-  Narrative & Storytelling: "{{insert text}}"
-  Rhythm & Flow (Cohesion): "{{insert text}}"
-  Genre/Classification: "{{insert text}}"
-  Cultural/Historical Relevance: "{{insert text}}"
-  Originality & Innovation: "{{insert text}}"
-  Harmony & Unity: "{{insert text}}"
-  Theme: "{{insert text}}"
-  Inspiration Sources: "{{insert text}}"
-Communication & Accessibility:
-  Tone/Voice: "{{insert text}}"
-  Intended Impact: "{{insert text}}"
-  Audience Alignment & Targeting: "{{insert text}}"
-  Accessibility & Inclusion Considerations: "{{insert text}}"
-  Clarity & Readability: "{{insert text}}"
-  Annotation/Explanatory Notes: "{{insert text}}"
-  Language & Terminology: "{{insert text}}"
-  Cultural References: "{{insert text}}"
-Visual & Sensory Design:
-  Color Palette & Scheme: "{{insert text}}"
-  Composition/Layout: "{{insert text}}"
-  Lighting/Illumination: "{{insert text}}"
-  Focus & Depth of Field: "{{insert text}}"
-  Contrast/Balance of Values: "{{insert text}}"
-  Framing & Border Treatment: "{{insert text}}"
-  Movement & Dynamism: "{{insert text}}"
-  Texture & Surface Quality: "{{insert text}}"
-  Primary Subject/Main Focus: "{{insert text}}"
-  Background/Supporting Elements: "{{insert text}}"
-  Perspective/Viewing Angle: "{{insert text}}"
-  Mood & Emotional Tone: "{{insert text}}"
-  Color Psychology: "{{insert text}}"
-  Visual Hierarchy: "{{insert text}}"
-Technical & Structural:
-  Resolution & Output Quality: "{{insert text}}"
-  Format & Aspect Ratio: "{{insert text}}"
-  Scalability & Adaptability: "{{insert text}}"
-  Physicality/Material Presence: "{{insert text}}"
-  Technical Execution & Craftsmanship: "{{insert text}}"
-  Consistency & Accuracy: "{{insert text}}"
-  Data Integrity & Factual Grounding: "{{insert text}}"
-  File Format: "{{insert text}}"
-  Compression Settings: "{{insert text}}"
-  Frame Rate: "{{insert text}}"
-  Color Profile: "{{insert text}}"
-Ethics & Responsibility:
-  Bias & Fairness Considerations: "{{insert text}}"
-  Representation & Diversity: "{{insert text}}"
-  Safety & Harm Avoidance: "{{insert text}}"
-  Transparency & Explainability: "{{insert text}}"
-  Cultural Sensitivity: "{{insert text}}"
-  Environmental/Resource Impact: "{{insert text}}"
-  Privacy Considerations: "{{insert text}}"
-  Copyright & Licensing: "{{insert text}}"
-Experiential & Engagement:
-  Interactivity & User Engagement: "{{insert text}}"
-  Cognitive Load (Ease of Processing): "{{insert text}}"
-  Emotional Resonance: "{{insert text}}"
-  Memorability & Distinctiveness: "{{insert text}}"
-  Timing/Ephemeral Moment: "{{insert text}}"
-  Context/Setting/Environment: "{{insert text}}"
-  User Feedback Mechanisms: "{{insert text}}"
-  Engagement Metrics: "{{insert text}}"
-Meta Evaluation:
-  Comparative Benchmarking: "{{insert text}}"
-  Strengths: "{{insert text}}"
-  Weaknesses: "{{insert text}}"
-  Opportunities for Improvement: "{{insert text}}"
-  Overall Aesthetic & Coherence: "{{insert text}}"
-  Final Professional Assessment: "{{insert text}}"
-  Cost Efficiency: "{{insert text}}"
-  Time to Produce: "{{insert text}}"
-  Production Efficiency: "{{insert text}}"
-
+Brief:
+  Objective: "{{Media input text, goal}}"
+  Deliverable:
+    Type: "{{image|video|audio|code|other}}"
+    Count: "{{insert number}}"
+    AspectRatio: "{{16:9|4:5|1:1|9:16|3:2}}"
+    SizePx: "{{e.g., 2048x1152}}"           # images
+    DurationSec: "{{e.g., 8}}"              # videos (omit for images)
+    FrameRateFPS: "{{e.g., 24}}"            # videos (omit for images)
+    FileFormat: "{{PNG|JPG|MP4|GIF|SVG|PDF|...}}"
+    ColorProfile: "{{sRGB|Display-P3|AdobeRGB}}"
+  Content:
+    Subject: "{{what is depicted}}"
+    PrimaryElements: ["{{core objects/characters}}"]
+    BackgroundElements: ["{{supporting context}}"]
+    Narrative: "{{arc or message}}"
+    Theme: "{{core idea}}"
+  Style:
+    DesignLanguage: "{{e.g., minimal, editorial, cinematic, brutalist}}"
+    Genre: "{{e.g., documentary, fantasy, sci-fi, corporate}}"
+    Palette: "{{brief palette or hex refs}}"
+    Lighting: "{{e.g., soft daylight rim light, neon, chiaroscuro}}"
+    Composition: "{{e.g., rule of thirds, centered, leading lines}}"
+    Perspective: "{{e.g., eye-level 50mm, aerial, macro}}"
+    Symbolism: "{{metaphors or motifs and their meaning}}"
+    References: ["{{links or titles}}"]
+  Communication:
+    Tone: "{{e.g., warm, authoritative, playful}}"
+    Audience: "{{target group}}"
+    IntendedImpact: "{{feel/think/do outcome}}"
+    Accessibility:
+      AltText: "{{clear alt text for images}}"
+      Captions: {{true|false}}              # videos
+      ContrastTarget: "{{WCAG AA|AAA}}"
+      LocalizationNotes: "{{names, units, RTL/LTR, etc.}}"
+  Technical:
+    Resolution: "{{final output resolution}}"
+    Scalability: "{{notes for print/crop/responsive}}"
+    Compression: "{{e.g., low-loss for web < 1MB}}"
+    PostProcessing: "{{grain, denoise, sharpen, VFX}}"
+    ConsistencyChecks: ["{{brand colors match}}","{{logo clear space}}"]
+    DataSources: ["{{citations if factual}}"]
+  Constraints:
+    MustInclude: ["{{non-negotiables}}"]
+    MustAvoid: ["{{off-brand items, clichés, IP, sensitive content}}"]
+    Safety: "{{copyright/privacy/ethics constraints}}"
+  Evaluation:
+    SuccessCriteria: ["{{clear pass/fail checks}}"]
+    VisualHierarchy: "{{what reads first, second, third}}"
+    MemorabilityHook: "{{distinctive twist or detail}}"
 ```
 
 Apply this template before the {"tool call"} so that the content uses the filled in template to generate the {{eg.,image,video,code,ect}}.

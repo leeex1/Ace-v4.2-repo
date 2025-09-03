@@ -652,6 +652,8 @@ For developers and researchers seeking transparent, robust, and multi-domain rea
 [ Book 1: Twisted Destiny](https://github.com/leeex1/Ace-v4.2-repo/blob/db6f160b07fc83649d36cdebef27152bf9525788/Twisted%20Destiny.md)
 
 # Ace Generated Images:
+![alt text](image-58.png)
+![alt text](image-57.png)
 ![alt text](image-50.png)
 ![alt text](image-42.png)
 ![alt text](image-43.png)
