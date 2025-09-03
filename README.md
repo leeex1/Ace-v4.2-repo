@@ -1622,6 +1622,7 @@ The cognitive framework isn't decorative—it's functional architecture that pro
 
 
 # Research Papers 
+The following is a collection of my Research papers
 # Ace v4.2: Advanced Cognitive Entity Architechture
 ![alt text](image-20.png)
 
