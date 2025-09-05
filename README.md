@@ -1838,5 +1838,41 @@ The following is a collection of my Research papers
 ```markdown
     it's not a new Stand alone AI model for now, but rather, a prompt/framework to run on existing LLMs. Enhancing exponentionally many qualities and Functions.
 ```
+# Ace test demo:
+Copy this into a new Jupyter notebook cell in your Codespace or Copilot-hosted environment:
+
+```python
+# 1. Install dependencies if needed:
+# !pip install mpmath matplotlib
+
+from mpmath import mp
+import time
+import matplotlib.pyplot as plt
+
+def compute_sqrt_pi(dps):
+    mp.mp.dps = dps
+    start = time.time()
+    val = mp.sqrt(mp.pi)
+    return val, time.time() - start
+
+# 2. Run computations at different precisions
+precision_levels = [10, 100, 1000, 5000]
+results = []
+for d in precision_levels:
+    val, elapsed = compute_sqrt_pi(d)
+    print(f"Digits: {d:>4} → Time: {elapsed:.3f}s → Sample: {str(val)[:20]}…")
+    results.append((d, elapsed))
+
+# 3. Plot performance
+digits, times = zip(*results)
+plt.figure(figsize=(6,4))
+plt.loglog(digits, times, marker='o', linewidth=2)
+plt.xlabel("Precision (decimal digits)")
+plt.ylabel("Computation time (s)")
+plt.title("ACE √π Performance Profile")
+plt.grid(True, which="both", ls="--", alpha=0.5)
+plt.show()
+
+```
 # Install ACE v4.2 today!
 ![alt text](<Main images/image-23.png>)
