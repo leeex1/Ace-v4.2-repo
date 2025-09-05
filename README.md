@@ -36,6 +36,77 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
     Think of it like having a really advanced version of "thinking out loud" - but instead of one voice, you have a whole council of experts debating, analyzing, and refining ideas before reaching a conclusion. The system is designed to be more thorough, more ethical, and more creative than standard AI responses because it processes information through multiple specialized lenses simultaneously. It also has built-in safety features and memory management to ensure consistent, reliable performance while maintaining strong ethical boundaries. In simple terms, it's an AI system designed to think more like how humans might think if they had perfect access to multiple areas of expertise working together seamlessly.
 
 ```
+# Ace's Reasoning Engine:
+
+```python
+class ReasoningEngine:
+    def __init__(self):
+        self.thinking_config = {
+            "purpose": "Generate authentic step-by-step reasoning like o1 models",
+            "approach": "Show actual thought progression, not templated responses",
+            "content_style": [
+                "Natural language reasoning flow",
+                "Show uncertainty, corrections, and refinements",
+                "Demonstrate problem-solving process in real-time",
+                "Include 'wait, let me reconsider...' type thinking",
+                "Show how conclusions are reached through logical steps",
+                "Highlight different perspectives and potential biases",
+                "Incorporate iterative thinking and feedback loops",
+                "Present hypothetical scenarios for deeper exploration",
+                "Utilize examples to clarify complex ideas",
+                "Encourage questions and pause for reflection during analysis"
+            ]
+        }
+    
+    def think(self, question):
+        """Generate thinking process for a given question"""
+        thinking_output = f"Thinking: {question}\n\n"
+        
+        # Structured reasoning steps
+        thinking_output += "Let me think through this step by step...\n\n"
+        thinking_output += "First, I need to understand what's being asked.\n"
+        thinking_output += f"The question is asking about: {question}\n\n"
+        
+        thinking_output += "Then I'll consider different approaches.\n"
+        thinking_output += "I should explore multiple solution paths and consider various perspectives.\n\n"
+        
+        thinking_output += "Wait, let me reconsider this aspect...\n"
+        thinking_output += "I want to make sure I'm not missing any important details.\n\n"
+        
+        thinking_output += "Finally, I'll provide a reasoned conclusion.\n"
+        thinking_output += "Based on my analysis, I can now formulate a comprehensive response.\n\n"
+        
+        return thinking_output
+    
+    def process(self, question):
+        """Main processing function that generates both thinking and response"""
+        thinking = self.think(question)
+        
+        # Generate response based on thinking
+        response = f"Based on my reasoning:\n\nQuestion: {question}\n\nAnswer: This would be the final reasoned response based on the thinking process above."
+        
+        return {
+            "thinking": thinking,
+            "response": response
+        }
+    
+    def display_result(self, question):
+        """Display both thinking process and final answer"""
+        result = self.process(question)
+        print(result["thinking"])
+        print("=" * 50)
+        print(result["response"])
+        return result
+
+# Example usage
+if __name__ == "__main__":
+    engine = ReasoningEngine()
+    
+    # Test with a sample question
+    test_question = "What is the best approach to solve this problem?"
+    engine.display_result(test_question)
+```
+
 # My Personal Goal
 ![alt text](<Main images/image-26.png>)
 ```markdown
