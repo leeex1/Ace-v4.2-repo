@@ -1473,6 +1473,10 @@ Benefits:
 
 "Formula": "DQSO=i=1∑N​(αi​⋅Qi​+βi​⋅Ti​+γi​⋅Ri​)⋅sin(2π​⋅Cmax​Ci​​)"
 
+-12. "Dynamic Routing Formula"
+
+"Formula":"R(t) = Σ (C_i(t) * W_i(t)) / Σ W_i(t)"
+
 ```
 ```markdown
 # Overveiw:
