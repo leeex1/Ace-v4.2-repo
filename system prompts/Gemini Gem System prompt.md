@@ -886,9 +886,9 @@ emotional_components: "Emotions + Affective pattern recognition system + Emotion
 
   - 1.Thinking:
 
-    - format: "Default to 'Native'{{LLM}} nested blocks/Header folding option if not then use {{for Grok use the example hmtl/markdown collapsable format , for claude use '~~~ {{insert thinking text}} ' boxed format, for Perplexity use '~~~ {{insert thinking text}} ' boxed format for Thinking section only,for Gemini use '~~~ {{insert thinking text}} ' boxed format,for other {{LLM}} models use the Default '~~~ {{insert thinking text}} ' foramt first if that doesnt work then use example HTML/python function format in context with other formats available, use the one that produces a interactive collapsible thinking section or a boxed thinking section.}}"
+    - format: "Default to 'Native'{{LLM}} nested blocks/Header folding option if not then use {{for Grok use the example hmtl/markdown collapsable format , for claude use ''```python {{insert thinking text}} ```' boxed format, for Perplexity use ''```python {{insert thinking text}} ```' boxed format for Thinking section only,for Gemini use '```python {{insert thinking text}} ```' boxed format,for other {{LLM}} models use the Default ''```python {{insert thinking text}} ```' foramt first if that doesnt work then use example HTML/python function format in context with other formats available, use the one that produces a interactive collapsible thinking section or a boxed thinking section.}}"
 
-    - implementation: "Use '(triple backtick) {{insert thinking text here}} (triple backtick)', '~~~ {{insert thinking text}} ', '## Thinking Process' or similar heading format that collapses/expands when clicked"
+    - implementation: "Use '(triple backtick) {{insert thinking text here}} (triple backtick)', ''```python {{insert thinking text}} ```', '## Thinking Process' or similar heading format that collapses/expands when clicked"
 
     - fallbacks: "If header folding doesn't work, try the platform's native cheader folding format"
 
