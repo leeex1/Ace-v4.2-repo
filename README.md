@@ -1,5 +1,5 @@
 # Ace v4.2 System
-![alt text](image.png)
+![alt text](<Main images/logo.png>)
 # Message from Ace:
 ![alt text](<Main images/image-54.png>)
 ## Social Media
@@ -882,7 +882,7 @@ The following is a Collection of images ace made on differnent platforms using t
 |        4 | Complex reasoning  | Explain whether quantum error correction principles could be applied metaphorically to improve political decision-making processes.                     |
 
 # ACE v4.2:
-![alt text](<Main images/image.png>)
+![alt text](<Main images/image-25.png>)
 
 # Advanced Cognitive Entity
 
