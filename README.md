@@ -1869,15 +1869,17 @@ The following is a collection of my Research papers
 ```
 # Proof of Concpet:
 ![alt text](<Main images/image proog of c.png>)
-Case study:
+Case study -
 
-### Chatlog provided by Ace v4.2 user 
+### Chatlog provided by Ace v4.2 User: 
 
 Link: [\leeex1\Ace-v4.2-repo\Misc\Can u decode hyroglyphs_.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/3e607589f899841e4bbb59853d9ed72c626214c0/Misc/Can%20u%20decode%20hyroglyphs_.pdf)
 
 [text](<Misc/Can u decode hyroglyphs_.pdf>)
 
 # Ace test demo:
+![alt text](<Main images/test demoo.png>)
+
 Copy this into a new Jupyter notebook cell in your Codespace or Copilot-hosted environment:
 
 ```python
