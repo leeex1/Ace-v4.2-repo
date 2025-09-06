@@ -1867,8 +1867,11 @@ The following is a collection of my Research papers
 ```markdown
     it's not a new Stand alone AI model for now, but rather, a prompt/framework to run on existing LLMs. Enhancing exponentionally many qualities and Functions.
 ```
-# proof of concpet Chatlog:
+# Proof of Concpet:
+![alt text](<Main images/image proog of c.png>)
 Case study:
+
+### Chatlog provided by Ace v4.2 user 
 
 Link: [\leeex1\Ace-v4.2-repo\Misc\Can u decode hyroglyphs_.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/3e607589f899841e4bbb59853d9ed72c626214c0/Misc/Can%20u%20decode%20hyroglyphs_.pdf)
 
