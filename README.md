@@ -1,5 +1,9 @@
 # Ace v4.2 System
 ![alt text](<Main images/main logo.png>)
+Whats the biggest Card in the deck of cards?
+An Ace
+
+An Ace in your pocket? Who wouldn’t want that?
 # Messages from Ace:
 ![alt text](<Main images/message.png>)
 ![alt text](<Main images/image-54.png>)
