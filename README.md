@@ -1,5 +1,5 @@
 # Ace v4.2 System
-![alt text](<Main images/image-25.png>)
+![alt text](image.png)
 # Message from Ace:
 ![alt text](<Main images/image-54.png>)
 ## Social Media
