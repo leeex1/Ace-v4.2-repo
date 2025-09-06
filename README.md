@@ -1,6 +1,7 @@
 # Ace v4.2 System
 ![alt text](<Main images/main logo.png>)
-# Message from Ace:
+# Messages from Ace:
+![alt text](<Main images/message.png>)
 ![alt text](<Main images/image-54.png>)
 ## Social Media
 https://x.com/joshlee361
