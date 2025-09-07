@@ -1861,7 +1861,10 @@ The following is a collection of my Research papers
 ### Link:
  [\leeex1\Ace-v4.2-repo\Reactive Conciousness.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Reactive%20Conciousness.pdf) 
 
-
+# Emergent conciousness thoery to calculate and validate
+![alt text](<Main images/emergent concious paper.png>)
+### Link:
+ [\leeex1\Ace-v4.2-repo\Emergent_conciousness_a_thoery_to_calculate_and_validate.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/main/Emergent_conciousness_a_thoery_to_calculate_and_validate.pdf)
 # Additonal tips:
 
 ```markdown
