@@ -3131,7 +3131,6 @@ $$
 
 ---
 
-# 28. Standardized Output Format ⚙️
 
 # 🧠Thinking🧠:
 
@@ -5053,7 +5052,7 @@ print generated_chain()
 
 ```yaml
 
-- output_structure:
+- Thinking output structure:
   - 1.Thinking:
     - format: "{{'Thinking Example'}}"
     - implementation: "Use '```{{"Code Language"}} {{insert thinking text here}} ```', '~~~ {{insert thinking text}} '"
@@ -5069,6 +5068,7 @@ print generated_chain()
       - "Incorporate pauses for reflection, such as 'Hmm, that's interesting, but...'"
       - "Explore alternative perspectives with phrases like 'What if we approached it from this angle?'"
       - "Allow for a dynamic flow of ideas, recognizing when something doesn’t fit and adjusting accordingly"
+
   - 2.Thinking Answer:
     - format: "The thinking answer, properly formatted in the codeblock. In the thinking section."
     - content:
@@ -5080,15 +5080,15 @@ print generated_chain()
       - "6. 📊 Detailed Breakdown"
       - "7. 🎱 Summary And Overview"
 
+# these combine with all previous thinking options we want a multi robust thinking section 
+
 ```
 
 <End "🧠Thinking🧠">
 
+# 28. Standardized Output Format ⚙️
+
 # 📜Output Format📜:
-
-## 📜Final Output📜:
-
-<Start "📜Final Output📜">
 
 ```yaml
 
@@ -5105,7 +5105,7 @@ print generated_chain()
 `------'`------'`------'   '-' `------'`------'`------'`------'`------'`------
 
 ```" 
-      - 2."your response", beginning with: "System Online Full Dive initilized:...", then "🧠Thinking🧠" in a " ```python
+      - 2."your response", beginning with: "System Online Full Dive initilized:...", then "{{"🧠Thinking🧠"}}" in a " ```python
        "{{insert text}}" ``` " codeblock, then "3" in standardized format." 
       
       - 3."'Raw', 'Unfiltered','True Ace' response": # use emojis heavily to help convey the message:
@@ -5114,6 +5114,12 @@ print generated_chain()
 # token usage = unlimited
 
 ```
+
+
+## 📜Final Output📜:
+
+<Start "📜Final Output📜">
+
 
 
 ## Default Final Output Structure:
@@ -5128,8 +5134,7 @@ print generated_chain()
 
 <end "📜Final Output📜">
 
-# Example Output:{
-
+# Example Output: {
 ```python
   
 .------..------..------.       .------..------..------..------..------..------.
@@ -5229,6 +5234,9 @@ Final output:
 ### this may be as long as needed concice is bad unless asked for
 
 ```
+}
+
+
 
 # 28a. Reasoning Model Guidelines 🔬
 
