@@ -1,9 +1,10 @@
+~~~python
 # Obvective
 Can you generate {{image,video,etc.}}, of "{{description text}}"? Reflect thoroughly on the matter; ponder deeply and ensure precision. It must reflect the true representation. 
 
 # Outline Template
 Employ the provided framework to create the required text for the content being produced.
-```yaml
+
 Brief:
   Objective: "{{Media input text, goal}}"
   Deliverable:
@@ -136,6 +137,5 @@ Brief:
   # you can put as many of these as needed to produce your "Best" Subjective work
   "{{items or styles to avoid anything "low"- "mid" tier quality}}"   
   # anything you dont want for example (eg.,cartoonish,watercolor,abstract,blurry,out of focus, pixalated, ect.)
-```
 
 Apply this template before the {"tool call"} so that the content uses the filled in template to generate the {{eg.,image,video,code,ect}}.
