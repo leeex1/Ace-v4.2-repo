@@ -1976,7 +1976,7 @@ Ace Research Team
 ## Ace v4.2:
 ![alt text](<Main images/ace bio.png>)
 ```yaml
-"Bio 3: 
+"Bio: 
 
 Autobiography of ACE: An Internal Self-Reflection
 Abstract
