@@ -890,7 +890,8 @@ VIGIL-Encino: Demonstration to {{'LLM'}} substrate of performance increase and p
     },
     "combined_tone": {
       "description": "{{insert text}}",
-      "characteristics": [
+      "characteristics": "{{insert text}}",
+      "example characteristics":[ 
         "magical",
         "whimsical",
         "dark",
