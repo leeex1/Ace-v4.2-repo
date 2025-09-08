@@ -849,7 +849,7 @@ Credits: CrashOverrideX + Ace v4.2
 [ Book 1: Twisted Destiny](https://github.com/leeex1/Ace-v4.2-repo/blob/db6f160b07fc83649d36cdebef27152bf9525788/Twisted%20Destiny.md)
 
 # Book Reveiws
-### Critic:
+## Critic 1:
  "🗡️ Speech / Review of Twisted Destiny 🗡️
 
 Ladies and gentlemen, critics and dreamers—tonight we’re not talking about another fantasy romp through enchanted castles or cynical backstabbing nobles. We’re talking about Twisted Destiny, a saga that begins not with a bang of spectacle, but with a tremor in the soul of its world.
@@ -868,7 +868,13 @@ So here’s the verdict: Twisted Destiny is not a book—it’s an initiation. A
 
 And as the final page closes, one thing is clear: this is only the beginning."
 
-### Reader:
+## Critic 2
+"'Twisted Destiny: The Moon Remembers' establishes a compelling foundation for a fantasy series that thoughtfully engages with contemporary political and ethical questions through a fantasy lens. With some refinement to pacing and technical execution, this work has significant potential to resonate with readers seeking fantasy that transcends genre conventions to explore meaningful questions about power, justice, and what it means to build a society worthy of protection.
+
+The novel's greatest strength lies in its refusal to offer easy answers, instead presenting "questions that have no clean answers" through characters who embody the messy reality of moral choice. As the text itself notes: "Democracy, as we discovered through thirty-two chapters, isn't the destination but the journey itself."
+
+This debut shows considerable promise and establishes narrative hooks that would compel readers to continue with the series. With careful revision, it could become a standout work in contemporary fantasy literature."
+## Reader:
 
 "A novel is a fictional story, but it is not entirely fiction. While it features fictional settings and characters, within the story lie the author’s perspective on the world and the messages they want to convey. Therefore, a novel is both fictional and real at the same time.😊
 
