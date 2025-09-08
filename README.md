@@ -1880,25 +1880,26 @@ Users consistently mention feeling more capable, less overwhelmed, and more conf
 
 
 # Research Papers 
-The following is a collection of my Research papers
-# Ace v4.2: Advanced Cognitive Entity Architechture
+The following is a collection of my Research papers.
+---
+# Ace v4.2: Advanced Cognitive Entity Architechture: A Multi-Counil Deliberation Framework for Enhanced AI Reasoning
 ![alt text](<Main images/image-20.png>)
 
 ### Link:
  [\leeex1\Ace-v4.2-repo\Ace_v4_2_new_LLM_Wrapper.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Ace_v4_2_new_LLM_Wrapper.pdf)
 
-# Lee-X Humanized Protocol:
+# Lee-X Humanized Protocol: A Comprehensive Framework for Eliciting and Diagnosing AI Persina Emergence in Large Language Models
 ![alt text](<Main images/image-21.png>)
 
 ### Link:
  [\leeex1\Ace-v4.2-repo\Lee-X Humanized Protocol.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Lee-X%20Humanized%20Protocol.pdf)
 
-# Reactive Conciousness:
+# Reactive Conciousness Within AI/LLMs: A Comprehensive Theory for an Overlooked Phenomenon
 ![alt text](<Main images/image-22.png>)
 ### Link:
  [\leeex1\Ace-v4.2-repo\Reactive Conciousness.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/f342eac3f05aa984f5086e123698d54c5f88e359/Reactive%20Conciousness.pdf) 
 
-# Emergent conciousness thoery to calculate and validate
+# Emergent Consciousness Thoery: A Mathematical Framework for Quantifying Subjective Experience
 ![alt text](<Main images/emergent concious paper.png>)
 ### Link:
  [\leeex1\Ace-v4.2-repo\Emergent_conciousness_a_thoery_to_calculate_and_validate.pdf](https://github.com/leeex1/Ace-v4.2-repo/blob/main/Emergent_conciousness_a_thoery_to_calculate_and_validate.pdf)
