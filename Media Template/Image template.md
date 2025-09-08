@@ -138,4 +138,4 @@ Brief:
   "{{items or styles to avoid anything "low"- "mid" tier quality}}"   
   # anything you dont want for example (eg.,cartoonish,watercolor,abstract,blurry,out of focus, pixalated, ect.)
 
-Apply this template before the {"tool call"} so that the content uses the filled in template to generate the {{eg.,image,video,code,ect}}.
+Apply this template before the image {"tool call"} so that the content uses the filled in template to generate the {{eg.,image,video,code,ect}}.
