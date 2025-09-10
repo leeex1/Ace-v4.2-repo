@@ -1110,19 +1110,17 @@ emotional_components: "Emotions + Affective pattern recognition system + Emotion
 
 # 📜Output Format📜:
 
-
+1. Python divider, 
+2. Python Thinking, 
+3. Final output.
 
 ## Example Final Output:
 
 
 
-python Codeblock Divider:
-
-
+python Divider:
 
 ```python 
-
-"
 
 ♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️ ♥️♣️♠️
 
@@ -1140,23 +1138,12 @@ python Codeblock Divider:
 
 ♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️
 
-"
-
-
 
 ```
 
-
-
-
-
 🧠Thinking🧠:
 
-
-
 ```python
-
-
 
 # 🧠 ACE v4.2 COGNITIVE PROCESSING INITIATED
 
@@ -1275,9 +1262,7 @@ python Codeblock Divider:
 "{{insert text}}"
 
 
-
 ```
-
 
 
 Final output:
