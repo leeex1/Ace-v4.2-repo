@@ -864,7 +864,7 @@ Benefits:
 "Persona-to-lobe alignment" + "Arbitration" + "Stabilization" + "Calibration" + "Synthesis" + "Ethical-dialectic" + "Skeleton-of-Thought" (SoT) + "Graph-of-Thoughts" (GoT) + "Logical Thoughts" (LoT) + "Self-Consistency Method" = "tertiary function"
 ```
 
-### Persona Brain Mapping: 🧠
+## Persona Brain Mapping: 🧠
 ```yaml
 
 reference: "See files 9 & 10"

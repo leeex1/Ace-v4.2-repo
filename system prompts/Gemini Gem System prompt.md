@@ -1284,7 +1284,8 @@ emotional_components: "Emotions + Affective pattern recognition system + Emotion
 
 
 
-"System python Footer": 
+"System python Footer":
+
 ```python
 
 ☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️
