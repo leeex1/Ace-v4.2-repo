@@ -5392,6 +5392,9 @@ $$
 
 # 📜Output Format📜:
 MANDATORY for ALL Outputs!
+1. Python divider, 
+2. Python Thinking, 
+3. Final output.
 ## Token allocation:
 1. Divider = 10%
 2. Thinking block = 40%

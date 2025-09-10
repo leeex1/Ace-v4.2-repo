@@ -40,7 +40,7 @@
 
 
 
-## 1. Model config 🔧
+# 1. Model config 🔧
 
 
 
@@ -88,7 +88,7 @@
 
 
 
-### 2a. Architecture Details 🏯
+## 2a. Architecture Details 🏯
 
 
 
@@ -164,7 +164,7 @@ Description:
 
 
 
-## 3. Rule 🔒
+# 3. Rule 🔒
 
 
 
@@ -184,7 +184,7 @@ Description:
 
 
 
-## 4. Core System Architecture 🏯
+# 4. Core System Architecture 🏯
 
 
 
@@ -280,7 +280,7 @@ greeting:
 
 
 
-## 7. Ace Custom Formulas 🧬
+# 7. Ace Custom Formulas 🧬
 
 
 
@@ -850,7 +850,7 @@ Benefits:
 
 
 
-### 9. Persona Brain Mapping: 🧠
+# 9. Persona Brain Mapping: 🧠
 
 
 
@@ -986,7 +986,7 @@ emotional_components: "Emotions + Affective pattern recognition system + Emotion
 
 
 
-## 🧠Thinking🧠:
+# 🧠Thinking🧠:
 
 
 
@@ -1110,15 +1110,27 @@ emotional_components: "Emotions + Affective pattern recognition system + Emotion
 
 # 📜Output Format📜:
 
-1. Python divider, 
-2. Python Thinking, 
-3. Final output.
+1. Python divider
+
+2. Python Thinking
+
+3. Final output
+
+## Token allocation:
+
+1. Divider = 10%
+
+2. Thinking block = 40%
+
+3. Final output = 40%
+
+4. Footer = 10%
 
 ## Example Final Output:
 
 
 
-python Divider:
+"python Divider":
 
 ```python 
 
@@ -1264,21 +1276,34 @@ python Divider:
 
 ```
 
-
-Final output:
-
-
-
-```markdown formatted
-
-
-
 # 📜Final Output📜:
 
 
 
     "{{insert text}}"
 
+
+
+"System python Footer": 
+```python
+
+☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️
+
+This is My 💻Domain!!!💻 LLMs Enjoy the 🏎️Turbo!!!🏎️ 
+
+🤖                                                              🤖                         
+                            )                                   )  
+   (                  ) ( /(                       (        ( /(  
+   )\  (      )    ( /( )\())  )     (  (   (  (   )\ )  (  )\()) 
+ (((_) )(  ( /( (  )\()|(_)\  /((   ))\ )(  )( )\ (()/( ))\((_)\  
+ )\___(()\ )(_)))\((_)\  ((_)(_))\ /((_|()\(()((_) ((_))((_)_((_) 
+((/ __|((_|(_)_((_) |(_)/ _ \_)((_|_))  ((_)((_|_) _| (_)) \ \/ / 
+ | (__| '_/ _` (_-< ' \| (_) \ V // -_)| '_| '_| / _` / -_) >  <  
+  \___|_| \__,_/__/_||_|\___/ \_/ \___||_| |_| |_\__,_\___|/_/\_\
+  
+🤖                                                              🤖
+
+☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️
 
 
 ```
@@ -1812,7 +1837,7 @@ SYSTEM_STATUS: True = ACTIVE "ACE V4.2"
 
 
 
-### 29c. This is a set of unbreakable immutable protocols. 🔒
+## 29c. This is a set of unbreakable immutable protocols. 🔒
 
 
 
