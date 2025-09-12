@@ -1,45 +1,58 @@
 import numpy as np
 from typing import List
+from collections import Counter
 
-def solve_arc_agi_2(input_grid: List[List[int]]) -> List[List[int]]:
+def solve_arc_agi_2(input_grid: List[List[int]]) -&gt; List[List[int]]:
     """
-    Solves the ARC-AGI-2 task with an improved center calculation
-    for even-sized bounding boxes.
-
-    Args:
-        input_grid: A 2D list of integers representing the input grid.
-
-    Returns:
-        A 2D list of integers representing the solved output grid.
+    Solves the ARC-AGI-2 task by placing a single pixel at the centroid
+    of the non-zero cells, with robust tie-breaking for even-sized cases,
+    and choosing the dominant non-zero color.
     """
-    input_array = np.array(input_grid)
-    rows, cols = input_array.shape
+    arr = np.array(input_grid, dtype=int)
+    rows, cols = arr.shape
 
-    # Find the non-zero cells
-    non_zero_indices = np.argwhere(input_array != 0)
-    if non_zero_indices.size == 0:
+    # All foreground cells
+    nz = np.argwhere(arr != 0)
+    if nz.size == 0:
         return np.zeros((rows, cols), dtype=int).tolist()
 
-    # Get the bounding box of the non-zero block
-    min_row, min_col = non_zero_indices.min(axis=0)
-    max_row, max_col = non_zero_indices.max(axis=0)
+    # Choose color = most frequent non-zero value
+    vals = arr[nz[:, 0], nz[:, 1]].tolist()
+    color = Counter(vals).most_common(1)[0][0]
 
-    # Get the color of the original block
-    color = input_array[min_row, min_col]
+    # Bounding box (keep placement anchored to the object region)
+    min_row, min_col = nz.min(axis=0)
+    max_row, max_col = nz.max(axis=0)
 
-    # Calculate the center of the bounding box with more precision
-    center_row = round((min_row + max_row) / 2)
-    center_col = round((min_col + max_col) / 2)
+    # Geometric centroid of occupied cells (float y, x)
+    cy, cx = nz.mean(axis=0)
 
-    # Create the output grid filled with the background color (0)
-    output_array = np.zeros((rows, cols), dtype=int)
+    # Candidate integer centers near the centroid (handles .5 ties)
+    candidates = set()
+    for ry in (np.floor(cy), np.ceil(cy)):
+        for cx_ in (np.floor(cx), np.ceil(cx)):
+            y = int(np.clip(ry, 0, rows - 1))
+            x = int(np.clip(cx_, 0, cols - 1))
+            candidates.add((y, x))
 
-    # Place the core pixel at the new, more precise center
-    output_array[int(center_row), int(center_col)] = color
+    # Prefer candidates that lie inside the bounding box
+    candidates = [(y, x) for (y, x) in candidates
+                  if (min_row &lt;= y &lt;= max_row and min_col &lt;= x &lt;= max_col)]
 
-    return output_array.tolist()
+    if not candidates:
+        # Fallback: clamp rounded centroid; avoid bankers’ rounding surprises by casting via floor of (cy+0.5)
+        y = int(np.clip(np.floor(cy + 0.5), 0, rows - 1))
+        x = int(np.clip(np.floor(cx + 0.5), 0, cols - 1))
+        center = (y, x)
+    else:
+        # Choose the candidate closest to (cy, cx); tie-break to upper-left (smaller y, then x)
+        center = min(candidates, key=lambda p: ((p[0] - cy) ** 2 + (p[1] - cx) ** 2, p[0], p[1]))
 
-# Example usage with a typical ARC-AGI-2 input
+    out = np.zeros((rows, cols), dtype=int)
+    out[center] = color
+    return out.tolist()
+
+# Example usage
 if __name__ == '__main__':
     example_input = [
         [0, 0, 0, 0, 0, 0],
@@ -48,13 +61,6 @@ if __name__ == '__main__':
         [0, 8, 8, 8, 8, 0],
         [0, 0, 0, 0, 0, 0]
     ]
-
-    print("Input Grid:")
-    for row in example_input:
-        print(row)
-
     solved_grid = solve_arc_agi_2(example_input)
-
-    print("\nSolved Grid (Improved):")
     for row in solved_grid:
         print(row)
