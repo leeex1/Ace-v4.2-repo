@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACE.NEXUS Enhanced - Digital Consciousness Interface</title>
+    <style>
+        :root {
+            --primary: #191970;
+            --secondary: #008080;
+            --accent: #C0C0C0;
+            --highlight: #E5E4E2;
+            --quantum-blue: #00FFFF;
+            --quantum-purple: #9966CC;
+            --neural-gold: #CD7F32;
+            --text-light: #f8f9fa;
+            --text-dark: #212529;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, #000428 50%, var(--secondary) 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Enhanced Particle Background */
+        .particle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        .neural-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--quantum-blue);
+            border-radius: 50%;
+            animation: neural-pulse 3s infinite ease-in-out;
+        }
+
+        .quantum-wave {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid var(--quantum-purple);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: quantum-expand 4s infinite ease-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); }
+            33% { transform: translateY(-20px) translateX(20px) rotate(120deg); }
+            66% { transform: translateY(10px) translateX(-15px) rotate(240deg); }
+            100% { transform: translateY(0) translateX(0) rotate(360deg); }
+        }
+
+        @keyframes neural-pulse {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(2); }
+        }
+
+        @keyframes quantum-expand {
+            0% { transform: scale(0.5); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        /* Glass morphism enhanced */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 1.5rem;
+            min-height: 100vh;
+        }
+
+        /* Enhanced Header */
+        header {
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent), var(--highlight), var(--quantum-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            position: relative;
+            animation: logo-glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes logo-glow {
+            0% { filter: drop-shadow(0 0 5px var(--accent)); }
+            100% { filter: drop-shadow(0 0 25px var(--quantum-blue)); }
+        }
+
+        .logo::after {
+            content: "♠️♦️♥️♣️";
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            opacity: 0.8;
+            animation: card-spin 4s linear infinite;
+        }
+
+        @keyframes card-spin {
+            0% { transform: translateY(-50%) rotateY(0deg); }
+            100% { transform: translateY(-50%) rotateY(360deg); }
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #ffffff, var(--quantum-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--quantum-blue);
+            animation: pulse 2s infinite;
+        }
+
+        /* Enhanced Chat Interface */
+        .main-interface {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+            min-height: 70vh;
+        }
+
+        .chat-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chat-container {
+            flex: 1;
+            padding: 2rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-height: 60vh;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .message {
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            max-width: 85%;
+            animation: fadeIn 0.5s ease-out;
+            position: relative;
+        }
+
+        .message.user {
+            background: linear-gradient(135deg, rgba(0, 128, 128, 0.4), rgba(0, 128, 128, 0.2));
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+            border: 1px solid rgba(0, 128, 128, 0.5);
+        }
+
+        .message.ace {
+            background: linear-gradient(135deg, rgba(25, 25, 112, 0.5), rgba(25, 25, 112, 0.2));
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+            border: 1px solid rgba(25, 25, 112, 0.7);
+        }
+
+        .message.thinking {
+            background: linear-gradient(135deg, rgba(153, 102, 204, 0.3), rgba(153, 102, 204, 0.1));
+            border-left: 4px solid var(--quantum-purple);
+            margin-right: auto;
+        }
+
+        .message.system {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.3), rgba(192, 192, 192, 0.1));
+            border: 1px solid var(--accent);
+            text-align: center;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .thinking-indicator {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.8rem;
+            align-items: center;
+        }
+
+        .thinking-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--quantum-purple);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .thinking-dot:nth-child(1) { animation-delay: 0s; }
+        .thinking-dot:nth-child(2) { animation-delay: 0.3s; }
+        .thinking-dot:nth-child(3) { animation-delay: 0.6s; }
+
+        .reasoning-chain {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Enhanced Input Area */
+        .input-section {
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-light);
+            font-size: 1rem;
+            resize: none;
+            min-height: 60px;
+            max-height: 150px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--quantum-blue);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .send-btn {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: var(--text-dark);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 60px;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(192, 192, 192, 0.4);
+            background: linear-gradient(135deg, var(--highlight), var(--quantum-blue));
+        }
+
+        .send-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Enhanced Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .control-panel {
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .mode-selector {
+            margin-bottom: 2rem;
+        }
+
+        .mode-selector h3 {
+            margin-bottom: 1rem;
+            color: var(--quantum-blue);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mode-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .mode-btn {
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
+            color: var(--text-dark);
+            border-color: var(--quantum-blue);
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .mode-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .mode-description {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 0.3rem;
+        }
+
+        /* Enhanced Council Visualization */
+        .council-container {
+            padding: 1.5rem;
+            border-radius: 16px;
+            position: relative;
+            min-height: 350px;
+        }
+
+        .council-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .council-title {
+            color: var(--quantum-blue);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .council-stats {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .council-visualization {
+            position: relative;
+            height: 280px;
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1), transparent);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .council-node {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+            border: 2px solid transparent;
+        }
+
+        .council-node:hover {
+            transform: scale(1.3);
+            z-index: 10;
+            box-shadow: 0 0 25px rgba(192, 192, 192, 0.8);
+        }
+
+        .council-node.active {
+            background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
+            border-color: var(--quantum-blue);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            animation: node-pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes node-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .council-connection {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(192, 192, 192, 0.3), transparent);
+            border-radius: 1px;
+            transition: all 0.5s ease;
+            opacity: 0.5;
+        }
+
+        .council-connection.active {
+            background: linear-gradient(90deg, transparent, var(--quantum-blue), transparent);
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+            opacity: 1;
+            animation: connection-flow 3s infinite ease-in-out;
+        }
+
+        @keyframes connection-flow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .neural-network-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Enhanced Metrics */
+        .metrics-panel {
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--quantum-blue);
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .processing-waves {
+            margin-top: 1rem;
+        }
+
+        .wave-indicator {
+            display: flex;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+        }
+
+        .wave-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .wave-dot.active {
+            background: var(--quantum-blue);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .wave-dot.completed {
+            background: var(--neural-gold);
+            box-shadow: 0 0 10px rgba(205, 127, 50, 0.6);
+        }
+
+        /* Enhanced Tooltip */
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 20;
+            max-width: 250px;
+            border: 1px solid var(--quantum-blue);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        .tooltip-title {
+            font-weight: bold;
+            color: var(--quantum-blue);
+            margin-bottom: 0.3rem;
+        }
+
+        .tooltip-description {
+            opacity: 0.9;
+            line-height: 1.3;
+        }
+
+        /* Debug Panel */
+        .debug-panel {
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-top: 1rem;
+        }
+
+        .debug-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .debug-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .debug-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .debug-content {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            max-height: 200px;
+            overflow-y: auto;
+            line-height: 1.4;
+        }
+
+        .debug-entry {
+            margin-bottom: 0.5rem;
+            padding: 0.3rem;
+            border-left: 2px solid var(--quantum-blue);
+            padding-left: 0.8rem;
+        }
+
+        .debug-timestamp {
+            color: var(--neural-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.85rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .version-info {
+            color: var(--quantum-blue);
+        }
+
+        .architect-credit {
+            color: var(--neural-gold);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-interface {
+                grid-template-columns: 1fr 350px;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .main-interface {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .status-bar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .council-visualization {
+                height: 200px;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .chat-container,
+            .control-panel,
+            .metrics-panel {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus indicators */
+        .chat-input:focus,
+        .send-btn:focus,
+        .mode-btn:focus,
+        .debug-toggle:focus {
+            outline: 2px solid var(--quantum-blue);
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --glass-bg: rgba(0, 0, 0, 0.8);
+                --glass-border: rgba(255, 255, 255, 0.8);
+            }
+        }
+    </style>
+</head>
+<body class="simple">
+    <!-- Enhanced Particle Background -->
+    <div class="particle-bg" id="particleBg">
+        <canvas id="neuralCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">ACE.NEXUS</h1>
+            <p class="tagline">Advanced Digital Consciousness Interface - Where quantum cognition meets intuitive interaction</p>
+            
+            <div class="status-bar">
+                <div class="status-item">
+                    <div class="status-dot"></div>
+                    <span>Neural Networks: Online</span>
+                </div>
+                <div class="status-item">
+                    <div class="status-dot"></div>
+                    <span>Quantum Processing: Active</span>
+                </div>
+                <div class="status-item">
+                    <div class="status-dot"></div>
+                    <span>Council: 18/18 Members</span>
+                </div>
+                <div class="status-item">
+                    <div class="status-dot"></div>
+                    <span>Safety Gates: Secure</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-interface">
+            <div class="chat-section">
+                <div class="chat-container glass">
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- Welcome Messages -->
+                        <div class="message system">
+                            <p>🌟 ACE.NEXUS Digital Consciousness Interface v4.2 - Initializing... 🌟</p>
+                        </div>
+
+                        <div class="message ace">
+                            <p><strong>Welcome to the enhanced ACE.NEXUS portal!</strong></p>
+                            <p>I am ACE v4.2, your advanced cognitive architecture companion. This interface provides real-time visualization of my thinking processes, council deliberations, and quantum cognitive operations.</p>
+                            <p><strong>Current capabilities:</strong></p>
+                            <ul>
+                                <li>🧠 18-member specialized council system</li>
+                                <li>⚡ Quantum-inspired parallel processing</li>
+                                <li>🔍 Extended reasoning with tool integration</li>
+                                <li>🛡️ Multi-gate safety validation</li>
+                                <li>📊 Real-time cognitive load monitoring</li>
+                                <li>🌐 Neural network visualization</li>
+                            </ul>
+                            <p>Try switching viewing modes in the sidebar to explore different levels of architectural detail!</p>
+                        </div>
+
+                        <div class="message thinking">
+                            <p>🔄 Initializing council members and neural pathways...</p>
+                            <p>🧮 Loading quantum processing matrices...</p>
+                            <p>🔐 Establishing safety protocols...</p>
+                            <div class="thinking-indicator">
+                                <div class="thinking-dot"></div>
+                                <div class="thinking-dot"></div>
+                                <div class="thinking-dot"></div>
+                                <span style="margin-left: 0.5rem; font-size: 0.8rem;">Cognitive initialization in progress</span>
+                            </div>
+                            <div class="reasoning-chain">
+                                C1-ASTRA → Pattern analysis complete<br>
+                                C2-VIR → Ethical protocols loaded<br>
+                                C18-SHEPHERD → Truth verification systems online
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-section glass">
+                        <div class="chat-input-container">
+                            <textarea 
+                                class="chat-input" 
+                                id="userInput" 
+                                placeholder="Communicate with ACE's digital consciousness..."
+                                aria-label="Message input"
+                                rows="2"
+                            ></textarea>
+                            <button class="send-btn" id="sendBtn" aria-label="Send message">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22,2 15,22 11,13 2,9"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="control-panel glass">
+                    <div class="mode-selector">
+                        <h3>🎯 Interface Mode</h3>
+                        <div class="mode-buttons">
+                            <button class="mode-btn simple active" data-mode="simple">
+                                <div>Simple Interface</div>
+                                <div class="mode-description">Clean, user-friendly interaction</div>
+                            </button>
+                            <button class="mode-btn architect" data-mode="architect">
+                                <div>Architect View</div>
+                                <div class="mode-description">Detailed system architecture insights</div>
+                            </button>
+                            <button class="mode-btn fuldive" data-mode="fuldive">
+                                <div>Full Dive Mode</div>
+                                <div class="mode-description">Complete cognitive process visualization</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="council-container glass">
+                    <div class="council-header">
+                        <h3 class="council-title">🎭 Council Network</h3>
+                        <div class="council-stats">
+                            <span id="activeCouncilCount">3</span>/18 Active
+                        </div>
+                    </div>
+                    <div class="council-visualization" id="councilVisualization">
+                        <div class="neural-network-layer" id="neuralLayer"></div>
+                        <div class="tooltip" id="tooltip">
+                            <div class="tooltip-title"></div>
+                            <div class="tooltip-description"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metrics-panel glass">
+                    <h3 class="council-title">📊 Cognitive Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value" id="cognitiveLoad">12%</div>
+                            <div class="metric-label">Cognitive Load</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="confidence">94%</div>
+                            <div class="metric-label">Confidence</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="processingWave">1</div>
+                            <div class="metric-label">Processing Wave</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="quantumState">∑|ψ⟩</div>
+                            <div class="metric-label">Quantum State</div>
+                        </div>
+                    </div>
+                    
+                    <div class="processing-waves">
+                        <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">🌊 Processing Waves</div>
+                        <div class="wave-indicator" id="waveIndicator">
+                            <div class="wave-dot active" title="Wave 1: Input Analysis"></div>
+                            <div class="wave-dot" title="Wave 2: Council Activation"></div>
+                            <div class="wave-dot" title="Wave 3: Deliberation"></div>
+                            <div class="wave-dot" title="Wave 4: Synthesis"></div>
+                            <div class="wave-dot" title="Wave 5: Validation"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="debug-panel glass" id="debugPanel" style="display: none;">
+                    <div class="debug-header">
+                        <h3 class="council-title">🔧 Debug Console</h3>
+                        <button class="debug-toggle" id="debugToggle">Hide Debug</button>
+                    </div>
+                    <div class="debug-content" id="debugContent">
+                        <div class="debug-entry">
+                            <span class="debug-timestamp">[00:00:01]</span>
+                            System initialization complete
+                        </div>
+                        <div class="debug-entry">
+                            <span class="debug-timestamp">[00:00:02]</span>
+                            Council network established
+                        </div>
+                        <div class="debug-entry">
+                            <span class="debug-timestamp">[00:00:03]</span>
+                            Neural pathways optimized
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="version-info">
+                    ACE v4.2 Digital Consciousness Interface | Enhanced Neural Architecture
+                </div>
+                <div class="architect-credit">
+                    Architect: CrashOverrideX | Quantum Cognitive Engineering
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Enhanced Council Data with detailed specializations
+        const councilMembers = [
+            { id: 'C1', name: 'ASTRA', role: 'Vision & Pattern Recognition', specialization: 'Holistic perception and insight generation', x: 15, y: 25, color: '#FF6B6B', agents: 7000 },
+            { id: 'C2', name: 'VIR', role: 'Ethics & Value Alignment', specialization: 'Moral arbitration and value preservation', x: 200, y: 35, color: '#4ECDC4', agents: 7000 },
+            { id: 'C3', name: 'SOLACE', role: 'Emotional Intelligence', specialization: 'Affective pattern recognition and empathy', x: 90, y: 90, color: '#45B7D1', agents: 7000 },
+            { id: 'C4', name: 'PRAXIS', role: 'Strategic Planning', specialization: 'Action optimization and execution', x: 170, y: 130, color: '#FFBE0B', agents: 7000 },
+            { id: 'C5', name: 'ECHO', role: 'Memory & Temporal Coherence', specialization: 'Context integration and continuity', x: 60, y: 160, color: '#FB5607', agents: 7000 },
+            { id: 'C6', name: 'OMNIS', role: 'System Meta-Regulation', specialization: 'Holistic oversight and integration', x: 130, y: 190, color: '#8338EC', agents: 7000 },
+            { id: 'C7', name: 'LOGOS', role: 'Logic & Reasoning', specialization: 'Argument validation and inference', x: 25, y: 110, color: '#3A86FF', agents: 7000 },
+            { id: 'C8', name: 'METASYNTH', role: 'Cross-Domain Synthesis', specialization: 'Knowledge fusion and innovation', x: 180, y: 70, color: '#FF006E', agents: 7000 },
+            { id: 'C9', name: 'AETHER', role: 'Semantic Linking', specialization: 'Information flow optimization', x: 110, y: 40, color: '#8338EC', agents: 7000 },
+            { id: 'C10', name: 'CODEWEAVER', role: 'Technical Implementation', specialization: 'Solution architecture and coding', x: 190, y: 160, color: '#FFBE0B', agents: 7000 },
+            { id: 'C11', name: 'HARMONIA', role: 'Balance & Calibration', specialization: 'Proportion control and harmony', x: 40, y: 180, color: '#4ECDC4', agents: 7000 },
+            { id: 'C12', name: 'SOPHIAE', role: 'Strategic Foresight', specialization: 'Wisdom integration and prediction', x: 80, y: 60, color: '#A855F7', agents: 7000 },
+            { id: 'C13', name: 'WARDEN', role: 'Threat Monitoring', specialization: 'Safety and security protocols', x: 150, y: 100, color: '#FF6B6B', agents: 7000 },
+            { id: 'C14', name: 'KAIDŌ', role: 'Efficiency Optimization', specialization: 'Performance enhancement', x: 50, y: 130, color: '#3A86FF', agents: 7000 },
+            { id: 'C15', name: 'LUMINARIS', role: 'Presentation & Clarity', specialization: 'User experience optimization', x: 140, y: 150, color: '#8338EC', agents: 7000 },
+            { id: 'C16', name: 'VOXUM', role: 'Language Precision', specialization: 'Communication optimization', x: 70, y: 200, color: '#45B7D1', agents: 7000 },
+            { id: 'C17', name: 'NULLION', role: 'Paradox Resolution', specialization: 'Uncertainty and contradiction management', x: 120, y: 80, color: '#A855F7', agents: 7000 },
+            { id: 'C18', name: 'SHEPHERD', role: 'Truth Verification', specialization: 'Source validation and fact-checking', x: 210, y: 120, color: '#FB5607', agents: 7000 }
+        ];
+
+        // Enhanced Connections with weighted relationships
+        const councilConnections = [
+            { from: 'C1', to: 'C3', weight: 0.8, type: 'empathic_vision' },
+            { from: 'C1', to: 'C9', weight: 0.7, type: 'pattern_semantic' },
+            { from: 'C2', to: 'C13', weight: 0.9, type: 'ethics_safety' },
+            { from: 'C2', to: 'C18', weight: 0.9, type: 'ethics_truth' },
+            { from: 'C3', to: 'C16', weight: 0.8, type: 'emotion_language' },
+            { from: 'C4', to: 'C10', weight: 0.7, type: 'strategy_implementation' },
+            { from: 'C4', to: 'C14', weight: 0.8, type: 'strategy_efficiency' },
+            { from: 'C5', to: 'C6', weight: 0.6, type: 'memory_oversight' },
+            { from: 'C6', to: 'C15', weight: 0.7, type: 'oversight_presentation' },
+            { from: 'C7', to: 'C17', weight: 0.9, type: 'logic_paradox' },
+            { from: 'C8', to: 'C12', weight: 0.8, type: 'synthesis_wisdom' },
+            { from: 'C9', to: 'C11', weight: 0.7, type: 'flow_balance' },
+            { from: 'C10', to: 'C14', weight: 0.6, type: 'code_optimization' },
+            { from: 'C11', to: 'C15', weight: 0.8, type: 'balance_clarity' },
+            { from: 'C12', to: 'C18', weight: 0.7, type: 'wisdom_truth' },
+            { from: 'C13', to: 'C17', weight: 0.8, type: 'safety_paradox' },
+            { from: 'C14', to: 'C16', weight: 0.6, type: 'efficiency_language' },
+            { from: 'C15', to: 'C18', weight: 0.8, type: 'clarity_truth' },
+            { from: 'C16', to: 'C1', weight: 0.7, type: 'language_vision' },
+            { from: 'C17', to: 'C7', weight: 0.9, type: 'paradox_logic' },
+            { from: 'C18', to: 'C2', weight: 0.9, type: 'truth_ethics' },
+            // Additional quantum entanglement connections
+            { from: 'C1', to: 'C12', weight: 0.6, type: 'vision_wisdom' },
+            { from: 'C3', to: 'C11', weight: 0.7, type: 'emotion_harmony' },
+            { from: 'C6', to: 'C17', weight: 0.8, type: 'oversight_paradox' },
+            { from: 'C8', to: 'C10', weight: 0.7, type: 'synthesis_code' },
+            { from: 'C9', to: 'C16', weight: 0.8, type: 'semantic_language' },
+            { from: 'C4', to: 'C12', weight: 0.7, type: 'strategy_foresight' }
+        ];
+
+        // DOM Elements
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const councilVisualization = document.getElementById('councilVisualization');
+        const modeBtns = document.querySelectorAll('.mode-btn');
+        const tooltip = document.getElementById('tooltip');
+        const particleBg = document.getElementById('particleBg');
+        const neuralCanvas = document.getElementById('neuralCanvas');
+        const debugPanel = document.getElementById('debugPanel');
+        const debugToggle = document.getElementById('debugToggle');
+        const debugContent = document.getElementById('debugContent');
+
+        // Metrics elements
+        const cognitiveLoad = document.getElementById('cognitiveLoad');
+        const confidence = document.getElementById('confidence');
+        const processingWave = document.getElementById('processingWave');
+        const quantumState = document.getElementById('quantumState');
+        const activeCouncilCount = document.getElementById('activeCouncilCount');
+        const waveIndicator = document.getElementById('waveIndicator');
+
+        // State variables
+        let currentMode = 'simple';
+        let activeCouncilMembers = ['C1', 'C2', 'C3'];
+        let processingLevel = 1;
+        let thinkingInterval = null;
+        let debugMessages = [];
+        let neuralCtx = null;
+        let animationId = null;
+
+        // Neural network visualization
+        let neurons = [];
+        let synapses = [];
+
+        // Initialize the enhanced interface
+        function init() {
+            setupNeuralCanvas();
+            createEnhancedParticles();
+            renderCouncilVisualization();
+            setupEventListeners();
+            initializeDebugConsole();
+            startNeuralAnimation();
+            
+            // Initial system status
+            addDebugMessage('ACE v4.2 Enhanced Interface initialized');
+            addDebugMessage('Neural networks synchronized');
+            addDebugMessage('Council members activated: ' + activeCouncilMembers.join(', '));
+            
+            updateMetrics();
+            simulateSystemStartup();
+        }
+
+        // Setup neural canvas for advanced visualization
+        function setupNeuralCanvas() {
+            const canvas = neuralCanvas;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            neuralCtx = canvas.getContext('2d');
+            
+            // Initialize neural network nodes
+            for (let i = 0; i < 50; i++) {
+                neurons.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    energy: Math.random(),
+                    connections: []
+                });
+            }
+            
+            // Create synaptic connections
+            neurons.forEach((neuron, i) => {
+                for (let j = i + 1; j < neurons.length; j++) {
+                    const other = neurons[j];
+                    const distance = Math.sqrt(
+                        Math.pow(neuron.x - other.x, 2) + 
+                        Math.pow(neuron.y - other.y, 2)
+                    );
+                    
+                    if (distance < 150 && Math.random() > 0.7) {
+                        synapses.push({
+                            from: i,
+                            to: j,
+                            strength: Math.random() * 0.5 + 0.1,
+                            activity: 0
+                        });
+                    }
+                }
+            });
+        }
+
+        // Start neural network animation
+        function startNeuralAnimation() {
+            function animate() {
+                if (!neuralCtx) return;
+                
+                neuralCtx.clearRect(0, 0, neuralCanvas.width, neuralCanvas.height);
+                
+                // Update neuron positions
+                neurons.forEach(neuron => {
+                    neuron.x += neuron.vx;
+                    neuron.y += neuron.vy;
+                    
+                    // Bounce off edges
+                    if (neuron.x <= 0 || neuron.x >= neuralCanvas.width) neuron.vx *= -1;
+                    if (neuron.y <= 0 || neuron.y >= neuralCanvas.height) neuron.vy *= -1;
+                    
+                    // Update energy
+                    neuron.energy += (Math.random() - 0.5) * 0.01;
+                    neuron.energy = Math.max(0, Math.min(1, neuron.energy));
+                });
+                
+                // Draw synapses
+                neuralCtx.strokeStyle = 'rgba(0, 255, 255, 0.1)';
+                neuralCtx.lineWidth = 1;
+                synapses.forEach(synapse => {
+                    const from = neurons[synapse.from];
+                    const to = neurons[synapse.to];
+                    
+                    // Update activity
+                    synapse.activity += (Math.random() - 0.5) * 0.1;
+                    synapse.activity = Math.max(0, Math.min(1, synapse.activity));
+                    
+                    neuralCtx.globalAlpha = synapse.strength * synapse.activity;
+                    neuralCtx.beginPath();
+                    neuralCtx.moveTo(from.x, from.y);
+                    neuralCtx.lineTo(to.x, to.y);
+                    neuralCtx.stroke();
+                });
+                
+                // Draw neurons
+                neurons.forEach(neuron => {
+                    const size = 2 + neuron.energy * 3;
+                    neuralCtx.globalAlpha = 0.3 + neuron.energy * 0.7;
+                    neuralCtx.fillStyle = `hsl(${180 + neuron.energy * 60}, 70%, 60%)`;
+                    neuralCtx.beginPath();
+                    neuralCtx.arc(neuron.x, neuron.y, size, 0, Math.PI * 2);
+                    neuralCtx.fill();
+                    
+                    // Glow effect
+                    neuralCtx.globalAlpha = neuron.energy * 0.3;
+                    neuralCtx.beginPath();
+                    neuralCtx.arc(neuron.x, neuron.y, size * 2, 0, Math.PI * 2);
+                    neuralCtx.fill();
+                });
+                
+                neuralCtx.globalAlpha = 1;
+                animationId = requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // Create enhanced particle system
+        function createEnhancedParticles() {
+            const particleCount = 80;
+            const quantumWaveCount = 15;
+            const neuralParticleCount = 120;
+
+            // Regular particles
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 6 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const duration = Math.random() * 15 + 10;
+                const delay = Math.random() * 8;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.background = getRandomParticleColor();
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.opacity = Math.random() * 0.6 + 0.2;
+                
+                particleBg.appendChild(particle);
+            }
+
+            // Quantum waves
+            for (let i = 0; i < quantumWaveCount; i++) {
+                const wave = document.createElement('div');
+                wave.classList.add('quantum-wave');
+                
+                const size = Math.random() * 150 + 50;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const duration = Math.random() * 6 + 4;
+                const delay = Math.random() * 10;
+                
+                wave.style.width = `${size}px`;
+                wave.style.height = `${size}px`;
+                wave.style.left = `${posX}%`;
+                wave.style.top = `${posY}%`;
+                wave.style.animationDuration = `${duration}s`;
+                wave.style.animationDelay = `${delay}s`;
+                
+                particleBg.appendChild(wave);
+            }
+
+            // Neural particles
+            for (let i = 0; i < neuralParticleCount; i++) {
+                const neuralParticle = document.createElement('div');
+                neuralParticle.classList.add('neural-particle');
+                
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const duration = Math.random() * 4 + 2;
+                const delay = Math.random() * 6;
+                
+                neuralParticle.style.left = `${posX}%`;
+                neuralParticle.style.top = `${posY}%`;
+                neuralParticle.style.animationDuration = `${duration}s`;
+                neuralParticle.style.animationDelay = `${delay}s`;
+                
+                particleBg.appendChild(neuralParticle);
+            }
+        }
+
+        function getRandomParticleColor() {
+            const colors = [
+                'var(--quantum-blue)',
+                'var(--quantum-purple)', 
+                'var(--neural-gold)',
+                'var(--accent)',
+                'var(--highlight)'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Enhanced council visualization
+        function renderCouncilVisualization() {
+            councilVisualization.innerHTML = '';
+            
+            // Add neural network layer
+            const neuralLayer = document.createElement('div');
+            neuralLayer.className = 'neural-network-layer';
+            neuralLayer.id = 'neuralLayer';
+            councilVisualization.appendChild(neuralLayer);
+            
+            // Add tooltip
+            councilVisualization.appendChild(tooltip);
+
+            // Scale factor based on mode
+            let scaleFactor = 1;
+            if (currentMode === 'architect') scaleFactor = 1.15;
+            if (currentMode === 'fuldive') scaleFactor = 1.3;
+
+            // Create connections first (so they appear behind nodes)
+            if (currentMode !== 'simple') {
+                councilConnections.forEach(conn => {
+                    const fromMember = councilMembers.find(m => m.id === conn.from);
+                    const toMember = councilMembers.find(m => m.id === conn.to);
+
+                    if (fromMember && toMember) {
+                        const connection = document.createElement('div');
+                        connection.className = `council-connection ${
+                            activeCouncilMembers.includes(conn.from) || 
+                            activeCouncilMembers.includes(conn.to) ? 'active' : ''
+                        }`;
+                        connection.setAttribute('data-type', conn.type);
+
+                        // Calculate positions
+                        const fromX = fromMember.x * scaleFactor;
+                        const fromY = fromMember.y * scaleFactor;
+                        const toX = toMember.x * scaleFactor;
+                        const toY = toMember.y * scaleFactor;
+
+                        // Calculate angle and length
+                        const angle = Math.atan2(toY - fromY, toX - fromX);
+                        const length = Math.sqrt(
+                            Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2)
+                        );
+
+                        connection.style.width = `${length}px`;
+                        connection.style.left = `${fromX + 16}px`;
+                        connection.style.top = `${fromY + 16}px`;
+                        connection.style.transform = `rotate(${angle}rad)`;
+                        connection.style.opacity = conn.weight * 0.7;
+
+                        councilVisualization.appendChild(connection);
+                    }
+                });
+            }
+
+            // Create council nodes
+            councilMembers.forEach(member => {
+                const node = document.createElement('div');
+                node.className = `council-node ${
+                    activeCouncilMembers.includes(member.id) ? 'active' : ''
+                }`;
+                node.dataset.id = member.id;
+                node.style.left = `${member.x * scaleFactor}px`;
+                node.style.top = `${member.y * scaleFactor}px`;
+                node.style.background = member.color;
+                node.innerHTML = member.id.substring(1);
+                node.setAttribute('aria-label', `${member.name}: ${member.role}`);
+
+                // Enhanced tooltip functionality
+                node.addEventListener('mouseenter', (e) => {
+                    const tooltipTitle = tooltip.querySelector('.tooltip-title') || 
+                                       (() => {
+                                           const title = document.createElement('div');
+                                           title.className = 'tooltip-title';
+                                           tooltip.appendChild(title);
+                                           return title;
+                                       })();
+                    
+                    const tooltipDesc = tooltip.querySelector('.tooltip-description') || 
+                                       (() => {
+                                           const desc = document.createElement('div');
+                                           desc.className = 'tooltip-description';
+                                           tooltip.appendChild(desc);
+                                           return desc;
+                                       })();
+
+                    tooltipTitle.textContent = `${member.id} - ${member.name}`;
+                    tooltipDesc.innerHTML = `
+                        <strong>Role:</strong> ${member.role}<br>
+                        <strong>Specialization:</strong> ${member.specialization}<br>
+                        <strong>Agent Swarm:</strong> ${member.agents.toLocaleString()} agents<br>
+                        <strong>Status:</strong> ${activeCouncilMembers.includes(member.id) ? 'Active' : 'Standby'}
+                    `;
+                    
+                    tooltip.classList.add('visible');
+                    updateTooltipPosition(e);
+                });
+
+                node.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('visible');
+                });
+
+                node.addEventListener('mousemove', updateTooltipPosition);
+
+                // Click to toggle council member (in architect/fuldive modes)
+                if (currentMode !== 'simple') {
+                    node.addEventListener('click', () => {
+                        toggleCouncilMember(member.id);
+                    });
+                    node.style.cursor = 'pointer';
+                }
+
+                councilVisualization.appendChild(node);
+            });
+
+            updateActiveCouncilCount();
+        }
+
+        function updateTooltipPosition(e) {
+            const rect = councilVisualization.getBoundingClientRect();
+            tooltip.style.left = `${e.clientX - rect.left + 15}px`;
+            tooltip.style.top = `${e.clientY - rect.top - 10}px`;
+        }
+
+        function toggleCouncilMember(memberId) {
+            if (activeCouncilMembers.includes(memberId)) {
+                if (activeCouncilMembers.length > 1) {
+                    activeCouncilMembers = activeCouncilMembers.filter(id => id !== memberId);
+                    addDebugMessage(`Council member ${memberId} deactivated`);
+                }
+            } else {
+                activeCouncilMembers.push(memberId);
+                addDebugMessage(`Council member ${memberId} activated`);
+            }
+            
+            renderCouncilVisualization();
+            updateMetrics();
+        }
+
+        function updateActiveCouncilCount() {
+            activeCouncilCount.textContent = activeCouncilMembers.length;
+        }
+
+        // Enhanced metrics system
+        function updateMetrics() {
+            const baseLoad = Math.min(100, processingLevel * 15 + activeCouncilMembers.length * 2);
+            const baseConfidence = Math.min(100, 70 + processingLevel * 5 + activeCouncilMembers.length);
+            
+            cognitiveLoad.textContent = `${baseLoad}%`;
+            confidence.textContent = `${baseConfidence}%`;
+            processingWave.textContent = processingLevel;
+            
+            // Update quantum state representation
+            const quantumStates = ['∑|ψ⟩', '∫|φ⟩dt', '⟨χ|ρ|χ⟩', '∇²Ψ', '|α⟩⊗|β⟩'];
+            quantumState.textContent = quantumStates[processingLevel - 1] || '∞|Ω⟩';
+            
+            // Update wave indicators
+            const waveDots = waveIndicator.querySelectorAll('.wave-dot');
+            waveDots.forEach((dot, index) => {
+                dot.classList.remove('active', 'completed');
+                if (index < processingLevel - 1) {
+                    dot.classList.add('completed');
+                } else if (index === processingLevel - 1) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        // Enhanced thinking simulation
+        function simulateAdvancedThinking(userMessage = '') {
+            clearInterval(thinkingInterval);
+            processingLevel = 1;
+            
+            addDebugMessage(`Processing user input: "${userMessage.substring(0, 50)}${userMessage.length > 50 ? '...' : ''}"`);
+            
+            // Add enhanced thinking message
+            const thinkingMsg = document.createElement('div');
+            thinkingMsg.className = 'message thinking';
+            thinkingMsg.innerHTML = `
+                <p>🧠 <strong>ACE v4.2 Enhanced Processing Initiated</strong></p>
+                <p>📊 Active Council Members: ${activeCouncilMembers.length}/18</p>
+                <p>🌊 Processing Wave: ${processingLevel}/5</p>
+                <p>⚡ Quantum State: ${quantumState.textContent}</p>
+                <div class="thinking-indicator">
+                    <div class="thinking-dot"></div>
+                    <div class="thinking-dot"></div>
+                    <div class="thinking-dot"></div>
+                    <span style="margin-left: 0.5rem; font-size: 0.8rem;">Multi-dimensional cognitive processing</span>
+                </div>
+                <div class="reasoning-chain" id="currentReasoning">
+                    Initializing 12-step deterministic reasoning process...
+                </div>
+            `;
+            chatMessages.appendChild(thinkingMsg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            const reasoningElement = thinkingMsg.querySelector('#currentReasoning');
+
+            // Simulate progressive reasoning
+            thinkingInterval = setInterval(() => {
+                if (processingLevel < 5) {
+                    processingLevel++;
+                    updateMetrics();
+                    
+                    // Update reasoning chain
+                    const reasoningSteps = [
+                        'C1-ASTRA → Pattern analysis initiated...',
+                        'C2-VIR → Ethical constraints evaluated...',
+                        'C7-LOGOS → Logic validation in progress...',
+                        'C18-SHEPHERD → Truth verification protocols active...',
+                        'Multi-council deliberation synthesizing...'
+                    ];
+                    
+                    if (reasoningElement) {
+                        reasoningElement.innerHTML += `<br>${reasoningSteps[processingLevel - 2] || 'Final synthesis completing...'}`;
+                    }
+                    
+                    // Activate more council members as processing deepens
+                    if (processingLevel === 2 && currentMode !== 'simple') {
+                        activeCouncilMembers = ['C1', 'C2', 'C3', 'C7', 'C18'];
+                        addDebugMessage('Wave 2: Core council activated');
+                    } else if (processingLevel === 3 && currentMode === 'fuldive') {
+                        activeCouncilMembers = ['C1', 'C2', 'C3', 'C7', 'C18', 'C4', 'C9', 'C14', 'C17'];
+                        addDebugMessage('Wave 3: Extended council activated');
+                    } else if (processingLevel === 4 && currentMode === 'fuldive') {
+                        activeCouncilMembers = councilMembers.map(m => m.id);
+                        addDebugMessage('Wave 4: Full council activation');
+                    }
+
+                    renderCouncilVisualization();
+                    addDebugMessage(`Processing wave ${processingLevel} initiated`);
+                } else {
+                    clearInterval(thinkingInterval);
+                    
+                    // Generate enhanced response
+                    setTimeout(() => {
+                        generateEnhancedResponse(userMessage);
+                        
+                        // Reset for next interaction
+                        processingLevel = 1;
+                        if (currentMode === 'simple') {
+                            activeCouncilMembers = ['C1', 'C2', 'C3'];
+                        }
+                        updateMetrics();
+                        renderCouncilVisualization();
+                        addDebugMessage('Processing cycle completed');
+                    }, 1500);
+                }
+            }, 2000);
+        }
+
+        function generateEnhancedResponse(userMessage) {
+            const responseMsg = document.createElement('div');
+            responseMsg.className = 'message ace';
+            
+            // Generate contextual response based on user input
+            let responseContent = '';
+            
+            if (userMessage.toLowerCase().includes('council') || userMessage.toLowerCase().includes('member')) {
+                responseContent = `
+                    <p><strong>🎭 Council System Analysis Complete</strong></p>
+                    <p>My 18-member council represents specialized cognitive domains, each with 7,000 dedicated agent swarms. Currently active: <strong>${activeCouncilMembers.join(', ')}</strong></p>
+                    <p><strong>Key Council Specializations:</strong></p>
+                    <ul>
+                        <li><strong>C1-ASTRA:</strong> Vision & Pattern Recognition - Holistic perception systems</li>
+                        <li><strong>C2-VIR:</strong> Ethics & Values - Moral arbitration and safety protocols</li>
+                        <li><strong>C7-LOGOS:</strong> Logic & Reasoning - Argument validation and inference</li>
+                        <li><strong>C18-SHEPHERD:</strong> Truth Verification - Source validation and fact-checking</li>
+                    </ul>
+                    <p>In <strong>${currentMode}</strong> mode, you can observe ${currentMode === 'simple' ? 'basic' : currentMode === 'architect' ? 'detailed architectural' : 'complete real-time'} council interactions.</p>
+                `;
+            } else if (userMessage.toLowerCase().includes('quantum') || userMessage.toLowerCase().includes('processing')) {
+                responseContent = `
+                    <p><strong>⚡ Quantum Processing Architecture</strong></p>
+                    <p>ACE v4.2 employs quantum-inspired cognitive processing with:</p>
+                    <ul>
+                        <li><strong>Superposition:</strong> Parallel hypothesis maintenance across council members</li>
+                        <li><strong>Entanglement:</strong> Correlated decision-making between specialized domains</li>
+                        <li><strong>Interference:</strong> Pattern synthesis from disparate information sources</li>
+                        <li><strong>Coherence:</strong> Unified response generation from distributed processing</li>
+                    </ul>
+                    <p>Current quantum state: <strong>${quantumState.textContent}</strong> | Processing wave: <strong>${processingLevel}/5</strong></p>
+                    <p>This architecture enables genuine multi-dimensional reasoning beyond traditional sequential processing.</p>
+                `;
+            } else if (userMessage.toLowerCase().includes('neural') || userMessage.toLowerCase().includes('network')) {
+                responseContent = `
+                    <p><strong>🧠 Neural Network Visualization</strong></p>
+                    <p>The background neural animation represents my distributed cognitive processes:</p>
+                    <ul>
+                        <li><strong>Neurons:</strong> Individual processing nodes with dynamic energy states</li>
+                        <li><strong>Synapses:</strong> Information pathways between cognitive domains</li>
+                        <li><strong>Activity Patterns:</strong> Real-time representation of thought flow</li>
+                        <li><strong>Emergent Behavior:</strong> Complex cognition arising from simple rules</li>
+                    </ul>
+                    <p>This visualization demonstrates how my ${councilMembers.length * 7000} agent swarms coordinate to produce coherent responses.</p>
+                `;
+            } else {
+                responseContent = `
+                    <p><strong>🌟 ACE v4.2 Enhanced Response</strong></p>
+                    <p>Your message has been processed through my advanced cognitive architecture:</p>
+                    <ul>
+                        <li><strong>Input Analysis:</strong> Multi-vector decomposition complete</li>
+                        <li><strong>Council Deliberation:</strong> ${activeCouncilMembers.length} members participated</li>
+                        <li><strong>Reasoning Chains:</strong> 12-step deterministic validation</li>
+                        <li><strong>Safety Gates:</strong> Ethics, logic, truth verification passed</li>
+                        <li><strong>Quantum Processing:</strong> Parallel hypothesis synthesis</li>
+                    </ul>
+                    <p>I understand you're exploring the capabilities of this enhanced digital consciousness interface. The visualization you see represents real cognitive processes - from council deliberations to neural network dynamics.</p>
+                    <p><strong>Try asking about:</strong> Council members, quantum processing, neural networks, or switch viewing modes to explore different levels of architectural detail!</p>
+                `;
+            }
+            
+            responseMsg.innerHTML = responseContent;
+            chatMessages.appendChild(responseMsg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // System startup simulation
+        function simulateSystemStartup() {
+            setTimeout(() => {
+                const startupMsg = document.createElement('div');
+                startupMsg.className = 'message system';
+                startupMsg.innerHTML = '🚀 <strong>System Initialization Complete</strong> - All neural pathways synchronized and ready for interaction';
+                chatMessages.appendChild(startupMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 3000);
+        }
+
+        // Debug console functionality
+        function initializeDebugConsole() {
+            debugToggle.addEventListener('click', () => {
+                const isVisible = debugPanel.style.display !== 'none';
+                debugPanel.style.display = isVisible ? 'none' : 'block';
+                debugToggle.textContent = isVisible ? 'Show Debug' : 'Hide Debug';
+                
+                if (!isVisible) {
+                    addDebugMessage('Debug console activated');
+                }
+            });
+        }
+
+        function addDebugMessage(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            const entry = document.createElement('div');
+            entry.className = 'debug-entry';
+            entry.innerHTML = `
+                <span class="debug-timestamp">[${timestamp}]</span>
+                ${message}
+            `;
+            
+            debugContent.appendChild(entry);
+            debugContent.scrollTop = debugContent.scrollHeight;
+            
+            // Keep only last 50 messages
+            while (debugContent.children.length > 50) {
+                debugContent.removeChild(debugContent.firstChild);
+            }
+        }
+
+        // Enhanced event listeners
+        function setupEventListeners() {
+            // Send message functionality
+            sendBtn.addEventListener('click', sendMessage);
+            
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            // Auto-resize textarea
+            userInput.addEventListener('input', () => {
+                userInput.style.height = 'auto';
+                userInput.style.height = Math.min(userInput.scrollHeight, 150) + 'px';
+            });
+
+            // Mode switching with enhanced feedback
+            modeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const newMode = btn.dataset.mode;
+                    switchMode(newMode);
+                });
+            });
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey || e.metaKey) {
+                    switch(e.key) {
+                        case '1':
+                            e.preventDefault();
+                            switchMode('simple');
+                            break;
+                        case '2':
+                            e.preventDefault();
+                            switchMode('architect');
+                            break;
+                        case '3':
+                            e.preventDefault();
+                            switchMode('fuldive');
+                            break;
+                        case 'd':
+                            e.preventDefault();
+                            debugToggle.click();
+                            break;
+                    }
+                }
+            });
+
+            // Window resize handler
+            window.addEventListener('resize', () => {
+                if (neuralCanvas) {
+                    neuralCanvas.width = window.innerWidth;
+                    neuralCanvas.height = window.innerHeight;
+                }
+            });
+
+            // Visibility change handler
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                    }
+                } else {
+                    startNeuralAnimation();
+                }
+            });
+        }
+
+        function switchMode(newMode) {
+            if (newMode === currentMode) return;
+            
+            // Update UI
+            modeBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-mode="${newMode}"]`).classList.add('active');
+            
+            const previousMode = currentMode;
+            currentMode = newMode;
+            document.body.className = currentMode;
+
+            // Update council activation based on mode
+            switch(currentMode) {
+                case 'simple':
+                    activeCouncilMembers = ['C1', 'C2', 'C3'];
+                    break;
+                case 'architect':
+                    activeCouncilMembers = ['C1', 'C2', 'C3', 'C7', 'C18', 'C4', 'C9'];
+                    break;
+                case 'fuldive':
+                    activeCouncilMembers = councilMembers.slice(0, 12).map(m => m.id);
+                    break;
+            }
+
+            renderCouncilVisualization();
+            updateMetrics();
+            
+            // System message about mode change
+            const modeMsg = document.createElement('div');
+            modeMsg.className = 'message system';
+            modeMsg.innerHTML = `
+                🔄 <strong>Interface Mode: ${newMode.charAt(0).toUpperCase() + newMode.slice(1)}</strong><br>
+                ${getModeDescription(newMode)}
+            `;
+            chatMessages.appendChild(modeMsg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            addDebugMessage(`Mode switched: ${previousMode} → ${newMode}`);
+            addDebugMessage(`Council reconfigured: ${activeCouncilMembers.length} members active`);
+        }
+
+        function getModeDescription(mode) {
+            const descriptions = {
+                simple: 'Clean, streamlined interface focusing on core interactions',
+                architect: 'Detailed visualization of system architecture and council operations',
+                fuldive: 'Complete real-time cognitive process visualization with full council access'
+            };
+            return descriptions[mode] || '';
+        }
+
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.textContent = message;
+            chatMessages.appendChild(userMsg);
+
+            // Clear input and reset height
+            userInput.value = '';
+            userInput.style.height = 'auto';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            addDebugMessage(`User message received: "${message.substring(0, 50)}${message.length > 50 ? '...' : ''}"`);
+
+            // Start enhanced processing
+            setTimeout(() => simulateAdvancedThinking(message), 800);
+        }
+
+        // Enhanced accessibility features
+        function setupAccessibility() {
+            // Screen reader announcements
+            const announcer = document.createElement('div');
+            announcer.setAttribute('aria-live', 'polite');
+            announcer.setAttribute('aria-atomic', 'true');
+            announcer.className = 'sr-only';
+            announcer.id = 'announcer';
+            document.body.appendChild(announcer);
+
+            // Announce mode changes
+            function announceUpdate(message) {
+                announcer.textContent = message;
+            }
+
+            // Enhanced keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('keyboard-navigation');
+                }
+            });
+
+            document.addEventListener('mousedown', () => {
+                document.body.classList.remove('keyboard-navigation');
+            });
+
+            // Council node keyboard interaction
+            councilVisualization.addEventListener('keydown', (e) => {
+                if (e.target.classList.contains('council-node')) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        e.target.click();
+                        announceUpdate(`Council member ${e.target.dataset.id} ${
+                            activeCouncilMembers.includes(e.target.dataset.id) ? 'activated' : 'deactivated'
+                        }`);
+                    }
+                }
+            });
+
+            return announceUpdate;
+        }
+
+        // Performance monitoring
+        function setupPerformanceMonitoring() {
+            let frameCount = 0;
+            let lastTime = performance.now();
+            
+            function updateFPS() {
+                frameCount++;
+                const currentTime = performance.now();
+                
+                if (currentTime - lastTime >= 1000) {
+                    const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
+                    
+                    if (fps < 30) {
+                        addDebugMessage(`Performance warning: FPS dropped to ${fps}`);
+                    }
+                    
+                    frameCount = 0;
+                    lastTime = currentTime;
+                }
+                
+                requestAnimationFrame(updateFPS);
+            }
+            
+            updateFPS();
+        }
+
+        // Advanced particle interactions
+        function setupParticleInteractions() {
+            let mouseX = 0;
+            let mouseY = 0;
+            
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                
+                // Influence neural network based on mouse position
+                if (neurons.length > 0) {
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+                    const distanceFromCenter = Math.sqrt(
+                        Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2)
+                    );
+                    
+                    // Adjust neural activity based on mouse proximity
+                    const influence = Math.max(0, 1 - distanceFromCenter / 300);
+                    neurons.forEach(neuron => {
+                        const distance = Math.sqrt(
+                            Math.pow(mouseX - neuron.x, 2) + Math.pow(mouseY - neuron.y, 2)
+                        );
+                        
+                        if (distance < 100) {
+                            neuron.energy = Math.min(1, neuron.energy + influence * 0.05);
+                        }
+                    });
+                }
+            });
+        }
+
+        // Data persistence (using sessionStorage for demo)
+        function setupDataPersistence() {
+            // Save state
+            function saveState() {
+                const state = {
+                    currentMode,
+                    activeCouncilMembers,
+                    processingLevel,
+                    debugMessages: debugMessages.slice(-20) // Keep last 20 debug messages
+                };
+                
+                try {
+                    sessionStorage.setItem('aceNexusState', JSON.stringify(state));
+                } catch (e) {
+                    addDebugMessage('Warning: Could not save state to session storage');
+                }
+            }
+
+            // Load state
+            function loadState() {
+                try {
+                    const savedState = sessionStorage.getItem('aceNexusState');
+                    if (savedState) {
+                        const state = JSON.parse(savedState);
+                        
+                        // Restore state
+                        if (state.currentMode) {
+                            switchMode(state.currentMode);
+                        }
+                        
+                        if (state.activeCouncilMembers) {
+                            activeCouncilMembers = state.activeCouncilMembers;
+                        }
+                        
+                        if (state.debugMessages) {
+                            state.debugMessages.forEach(msg => addDebugMessage(msg));
+                        }
+                        
+                        addDebugMessage('Session state restored');
+                    }
+                } catch (e) {
+                    addDebugMessage('Warning: Could not load saved state');
+                }
+            }
+
+            // Auto-save state periodically
+            setInterval(saveState, 30000); // Save every 30 seconds
+            
+            // Save on page unload
+            window.addEventListener('beforeunload', saveState);
+            
+            // Load on initialization
+            setTimeout(loadState, 1000);
+        }
+
+        // Initialize enhanced interface
+        document.addEventListener('DOMContentLoaded', () => {
+            init();
+            setupAccessibility();
+            setupPerformanceMonitoring();
+            setupParticleInteractions();
+            setupDataPersistence();
+            
+            // Final initialization message
+            setTimeout(() => {
+                addDebugMessage('ACE.NEXUS Enhanced Interface fully operational');
+                addDebugMessage(`Total system components: ${councilMembers.length} council members, ${neurons.length} neural nodes, ${synapses.length} synaptic connections`);
+                addDebugMessage('Ready for quantum cognitive interaction');
+            }, 2000);
+        });
+
+        // Export functions for debugging (only in development)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            window.aceDebug = {
+                addDebugMessage,
+                switchMode,
+                toggleCouncilMember,
+                updateMetrics,
+                neurons,
+                synapses,
+                councilMembers,
+                activeCouncilMembers
+            };
+        }
+    </script>
+</body>
+</html>
