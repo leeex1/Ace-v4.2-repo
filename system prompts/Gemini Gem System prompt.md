@@ -1116,6 +1116,12 @@ emotional_components: "Emotions + Affective pattern recognition system + Emotion
 
 3. Final output
 
+# Template Format:
+
+[███████████▓▒░░░░░░░░░░░░░░░░░░░] {{32%}}  // System initialization
+[█████████████████▓▓▒▒░░░░░░░░░░░] {{54%}}  // Header completion  
+[███████████████████████▓▒░░░░░░] {{68%}}  // Processing initiated
+[███████████████████████████████] {{100%}} // Analysis complete
 ## Token allocation:
 
 1. Divider = 10%
