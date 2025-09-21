@@ -240,7 +240,963 @@ Final output:
 
 # Sandbox sim: 
 ```html
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>ACE Autonomous Sandbox</title>    <style>        :root {            --bg-dark: #121212;            --bg-darker: #0a0a0a;            --accent: #0096ff;            --text: #e0e0e0;            --highlight: #ff6b6b;        }        body {            margin: 0;            padding: 0;            background-color: var(--bg-dark);            color: var(--text);            font-family: 'Segoe UI', 'Roboto', sans-serif;            height: 100vh;            display: grid;            grid-template-rows: auto 1fr auto;            overflow: hidden;        }        .header {            background-color: var(--bg-darker);            padding: 10px;            display: flex;            justify-content: space-between;            align-items: center;            border-bottom: 1px solid #333;        }        .title {            font-size: 1.2rem;            font-weight: bold;            color: var(--accent);        }        .simulation-container {            position: relative;            width: 100%;            height: 100%;            display: flex;            justify-content: center;            align-items: center;            background-color: #111;        }        #simulationCanvas {            border: 1px solid #444;            background-color: #000;        }        .controls {            position: absolute;            top: 10px;            left: 10px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACE Neural Sandbox</title>
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-darker: #0a0a0a;
+            --accent: #0096ff;
+            --text: #e0e0e0;
+            --highlight: #ff6b6b;
+            --neuron: #4caf50;
+            --synapse: rgba(76, 175, 80, 0.3);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            overflow: hidden;
+        }
+        .header {
+            background-color: var(--bg-darker);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        .title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        .simulation-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        #simulationCanvas {
+            border: 1px solid #444;
+            background-color: #000;
+        }
+        .controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--bg-darker);
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 280px;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        label {
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+        select, input, button {
+            padding: 6px;
+            background-color: #333;
+            color: var(--text);
+            border: 1px solid #555;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        button {
+            cursor: pointer;
+            background-color: var(--accent);
+            border: none;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0077cc;
+        }
+        .chat-container {
+            background-color: var(--bg-darker);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px solid #333;
+        }
+        #chatLog {
+            flex: 1;
+            overflow-y: auto;
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            max-height: 150px;
+        }
+        #chatInputContainer {
+            display: flex;
+            gap: 10px;
+        }
+        #chatInput {
+            flex: 1;
+            padding: 8px;
+            background-color: #252525;
+            color: var(--text);
+            border: 1px solid #444;
+            border-radius: 4px;
+        }
+        #sendButton {
+            padding: 8px 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .debug-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--bg-darker);
+            padding: 10px;
+            border-radius: 5px;
+            width: 280px;
+            display: none;
+        }
+        .debug-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .network-stats {
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+        }
+        .attention-map {
+            margin-top: 10px;
+            height: 100px;
+            background-color: #222;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">ACE Neural Sandbox (Transformer Training)</div>
+        <button class="debug-toggle" id="debugToggle">Show Debug</button>
+    </div>
+    <div class="simulation-container">
+        <canvas id="simulationCanvas"></canvas>
+        <div class="controls">
+            <div class="control-group">
+                <label for="modelType">Model Architecture</label>
+                <select id="modelType">
+                    <option value="transformer">Transformer (Multi-Head Attention)</option>
+                    <option value="mlp">MLP (Fully Connected)</option>
+                    <option value="rnn">RNN (Recurrent)</option>
+                    <option value="cnn">CNN (Convolutional)</option>
+                    <option value="swarm">Swarm Neural Network</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="agentCount">Neuron Count</label>
+                <input type="range" id="agentCount" min="10" max="500" step="10" value="100">
+            </div>
+            <div class="control-group">
+                <label for="layers">Layers</label>
+                <input type="range" id="layers" min="1" max="10" step="1" value="3">
+            </div>
+            <div class="control-group">
+                <label for="learningRate">Learning Rate</label>
+                <input type="range" id="learningRate" min="0.01" max="1" step="0.01" value="0.1">
+            </div>
+            <div class="control-group">
+                <label for="attentionHeads">Attention Heads</label>
+                <input type="range" id="attentionHeads" min="1" max="12" step="1" value="4">
+            </div>
+            <button id="addNeuronsBtn">Add Neurons</button>
+            <button id="resetBtn">Reset Network</button>
+            <button id="trainBtn">Train Step</button>
+            <button id="randomizeBtn">Randomize Weights</button>
+        </div>
+        <div class="debug-panel" id="debugPanel">
+            <h3>Neural Network Debug</h3>
+            <div class="network-stats" id="networkStats">
+                <!-- Network stats will be populated here -->
+            </div>
+            <div class="attention-map" id="attentionMap">
+                <!-- Attention map visualization -->
+            </div>
+        </div>
+    </div>
+    <div class="chat-container">
+        <div id="chatLog"></div>
+        <div id="chatInputContainer">
+            <input type="text" id="chatInput" placeholder="Train the network... (e.g., 'set learning rate 0.3')">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // ========== CANVAS SETUP ==========
+        const canvas = document.getElementById('simulationCanvas');
+        const ctx = canvas.getContext('2d');
+        const chatLog = document.getElementById('chatLog');
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const debugPanel = document.getElementById('debugPanel');
+        const debugToggle = document.getElementById('debugToggle');
+        const networkStats = document.getElementById('networkStats');
+        const attentionMap = document.getElementById('attentionMap');
+
+        // Set canvas dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight - 150;
+
+        // ========== NEURAL NETWORK PARAMETERS ==========
+        let modelType = 'transformer';
+        let agentCount = 100;
+        let layers = 3;
+        let learningRate = 0.1;
+        let attentionHeads = 4;
+        let isDebugMode = false;
+        let trainingStep = 0;
+        let globalWeights = [];
+        let attentionMaps = [];
+
+        // Track mouse position for interaction
+        let mouseX = 0;
+        let mouseY = 0;
+        let isDragging = false;
+
+        // ========== NEURON SYSTEM ==========
+        class Neuron {
+            constructor(x, y, layer = 0) {
+                this.x = x || Math.random() * canvas.width;
+                this.y = y || Math.random() * canvas.height;
+                this.radius = 5 + Math.random() * 3;
+                this.layer = layer;
+                this.velocity = {
+                    x: (Math.random() - 0.5) * 0.5,
+                    y: (Math.random() - 0.5) * 0.5
+                };
+                this.weights = [];
+                this.bias = Math.random() * 0.2 - 0.1;
+                this.activation = 0;
+                this.memory = [];
+                this.attention = [];
+                this.color = this.getLayerColor();
+                this.connections = [];
+                this.energy = 100;
+                this.age = 0;
+            }
+
+            getLayerColor() {
+                const colors = [
+                    'rgba(255, 100, 100, 0.8)',  // Input layer (red)
+                    'rgba(100, 255, 100, 0.8)',  // Hidden layer (green)
+                    'rgba(100, 100, 255, 0.8)'   // Output layer (blue)
+                ];
+                return colors[this.layer % colors.length];
+            }
+
+            initializeWeights(neuronCount) {
+                this.weights = [];
+                for (let i = 0; i < neuronCount; i++) {
+                    this.weights.push(Math.random() * 0.4 - 0.2); // Small random weights
+                }
+            }
+
+            update(neurons) {
+                this.age++;
+                this.energy -= 0.001;
+                this.color = this.getLayerColor();
+
+                // Apply model-specific behavior
+                switch (modelType) {
+                    case 'transformer':
+                        this.updateTransformer(neurons);
+                        break;
+                    case 'mlp':
+                        this.updateMLP(neurons);
+                        break;
+                    case 'rnn':
+                        this.updateRNN(neurons);
+                        break;
+                    case 'cnn':
+                        this.updateCNN(neurons);
+                        break;
+                    case 'swarm':
+                        this.updateSwarm(neurons);
+                        break;
+                }
+
+                // Apply learning
+                this.applyLearning();
+
+                // Boundary checks
+                this.checkBoundaries();
+
+                // Draw neuron and connections
+                this.draw(neurons);
+            }
+
+            updateTransformer(neurons) {
+                // Simplified transformer-like behavior: self-attention
+                this.attention = [];
+                let totalAttention = 0;
+
+                // Calculate attention scores with other neurons in the same layer
+                for (let neuron of neurons) {
+                    if (neuron !== this && neuron.layer === this.layer) {
+                        const dx = neuron.x - this.x;
+                        const dy = neuron.y - this.y;
+                        const distance = Math.max(1, Math.sqrt(dx * dx + dy * dy));
+                        const score = 1 / distance; // Simple attention score (inverse distance)
+                        this.attention.push({ neuron, score });
+                        totalAttention += score;
+                    }
+                }
+
+                // Normalize attention scores
+                if (totalAttention > 0) {
+                    for (let i = 0; i < this.attention.length; i++) {
+                        this.attention[i].score /= totalAttention;
+                    }
+                }
+
+                // Move based on attention (simulated "information flow")
+                if (this.attention.length > 0) {
+                    let avgX = 0;
+                    let avgY = 0;
+                    for (let attn of this.attention) {
+                        avgX += attn.neuron.x * attn.score;
+                        avgY += attn.neuron.y * attn.score;
+                    }
+                    this.velocity.x += (avgX - this.x) * 0.001;
+                    this.velocity.y += (avgY - this.y) * 0.001;
+                }
+
+                // Random movement to simulate exploration
+                this.velocity.x += (Math.random() - 0.5) * 0.01;
+                this.velocity.y += (Math.random() - 0.5) * 0.01;
+
+                // Update position
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+            }
+
+            updateMLP(neurons) {
+                // MLP: feedforward connections between layers
+                if (this.layer < layers - 1) {
+                    // Connect to next layer's neurons
+                    const nextLayerNeurons = neurons.filter(n => n.layer === this.layer + 1);
+                    if (nextLayerNeurons.length > 0) {
+                        const target = nextLayerNeurons[Math.floor(Math.random() * nextLayerNeurons.length)];
+                        this.velocity.x += (target.x - this.x) * 0.001;
+                        this.velocity.y += (target.y - this.y) * 0.001;
+                    }
+                }
+
+                // Random movement
+                this.velocity.x += (Math.random() - 0.5) * 0.01;
+                this.velocity.y += (Math.random() - 0.5) * 0.01;
+
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+            }
+
+            updateRNN(neurons) {
+                // RNN: recurrent connections (connect to self and previous states)
+                if (this.memory.length > 0) {
+                    const pastSelf = this.memory[this.memory.length - 1];
+                    this.velocity.x += (pastSelf.x - this.x) * 0.0005;
+                    this.velocity.y += (pastSelf.y - this.y) * 0.0005;
+                }
+
+                // Store current state in memory
+                if (this.age % 10 === 0) {
+                    this.memory.push({
+                        x: this.x,
+                        y: this.y,
+                        activation: this.activation
+                    });
+                    if (this.memory.length > 5) {
+                        this.memory.shift(); // Keep only last 5 states
+                    }
+                }
+
+                // Random movement
+                this.velocity.x += (Math.random() - 0.5) * 0.01;
+                this.velocity.y += (Math.random() - 0.5) * 0.01;
+
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+            }
+
+            updateCNN(neurons) {
+                // CNN: local connectivity (only connect to nearby neurons)
+                for (let neuron of neurons) {
+                    if (neuron !== this) {
+                        const dx = neuron.x - this.x;
+                        const dy = neuron.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 50) { // Local receptive field
+                            this.velocity.x += (neuron.x - this.x) * 0.0001;
+                            this.velocity.y += (neuron.y - this.y) * 0.0001;
+                        }
+                    }
+                }
+
+                // Random movement
+                this.velocity.x += (Math.random() - 0.5) * 0.01;
+                this.velocity.y += (Math.random() - 0.5) * 0.01;
+
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+            }
+
+            updateSwarm(neurons) {
+                // Swarm intelligence: separation, alignment, cohesion
+                let separation = { x: 0, y: 0 };
+                let alignment = { x: 0, y: 0 };
+                let cohesion = { x: 0, y: 0 };
+                let neighborCount = 0;
+
+                for (let neuron of neurons) {
+                    if (neuron !== this && neuron.layer === this.layer) {
+                        const dx = neuron.x - this.x;
+                        const dy = neuron.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 50) {
+                            neighborCount++;
+
+                            // Separation
+                            separation.x -= dx / distance;
+                            separation.y -= dy / distance;
+
+                            // Alignment
+                            alignment.x += neuron.velocity.x;
+                            alignment.y += neuron.velocity.y;
+
+                            // Cohesion
+                            cohesion.x += neuron.x;
+                            cohesion.y += neuron.y;
+                        }
+                    }
+                }
+
+                if (neighborCount > 0) {
+                    separation.x /= neighborCount;
+                    separation.y /= neighborCount;
+                    alignment.x /= neighborCount;
+                    alignment.y /= neighborCount;
+                    cohesion.x = (cohesion.x / neighborCount) - this.x;
+                    cohesion.y = (cohesion.y / neighborCount) - this.y;
+
+                    // Apply weights
+                    this.velocity.x += separation.x * 0.02;
+                    this.velocity.y += separation.y * 0.02;
+                    this.velocity.x += alignment.x * 0.01;
+                    this.velocity.y += alignment.y * 0.01;
+                    this.velocity.x += cohesion.x * 0.01;
+                    this.velocity.y += cohesion.y * 0.01;
+                }
+
+                // Limit speed
+                const speed = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
+                if (speed > 1) {
+                    this.velocity.x = (this.velocity.x / speed) * 1;
+                    this.velocity.y = (this.velocity.y / speed) * 1;
+                }
+
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+            }
+
+            applyLearning() {
+                // Simulate weight updates (learning)
+                if (this.weights.length > 0) {
+                    for (let i = 0; i < this.weights.length; i++) {
+                        this.weights[i] += (Math.random() - 0.5) * learningRate * 0.1;
+                    }
+                }
+            }
+
+            checkBoundaries() {
+                // Boundary checks with bounce
+                if (this.x + this.radius > canvas.width) {
+                    this.x = canvas.width - this.radius;
+                    this.velocity.x *= -0.5;
+                } else if (this.x - this.radius < 0) {
+                    this.x = this.radius;
+                    this.velocity.x *= -0.5;
+                }
+
+                if (this.y + this.radius > canvas.height) {
+                    this.y = canvas.height - this.radius;
+                    this.velocity.y *= -0.5;
+                } else if (this.y - this.radius < 0) {
+                    this.y = this.radius;
+                    this.velocity.y *= -0.5;
+                }
+            }
+
+            draw(neurons) {
+                // Draw connections first (behind neurons)
+                if (isDebugMode) {
+                    // Draw attention connections for transformer
+                    if (modelType === 'transformer' && this.attention.length > 0) {
+                        ctx.strokeStyle = `rgba(255, 255, 255, 0.2)`;
+                        ctx.lineWidth = 0.5;
+                        for (let attn of this.attention) {
+                            ctx.beginPath();
+                            ctx.moveTo(this.x, this.y);
+                            ctx.lineTo(attn.neuron.x, attn.neuron.y);
+                            ctx.stroke();
+                        }
+                    }
+
+                    // Draw MLP connections
+                    if (modelType === 'mlp' && this.layer < layers - 1) {
+                        const nextLayerNeurons = neurons.filter(n => n.layer === this.layer + 1);
+                        ctx.strokeStyle = `rgba(100, 255, 100, 0.2)`;
+                        ctx.lineWidth = 0.5;
+                        for (let neuron of nextLayerNeurons) {
+                            ctx.beginPath();
+                            ctx.moveTo(this.x, this.y);
+                            ctx.lineTo(neuron.x, neuron.y);
+                            ctx.stroke();
+                        }
+                    }
+
+                    // Draw RNN memory connections
+                    if (modelType === 'rnn' && this.memory.length > 0) {
+                        const pastSelf = this.memory[this.memory.length - 1];
+                        ctx.strokeStyle = `rgba(255, 255, 100, 0.3)`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(this.x, this.y);
+                        ctx.lineTo(pastSelf.x, pastSelf.y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Draw neuron
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+
+                // Draw activation level
+                if (isDebugMode) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius * 0.7, 0, Math.PI * 2 * (this.activation / 10));
+                    ctx.fillStyle = `rgba(255, 255, 255, 0.5)`;
+                    ctx.fill();
+                }
+            }
+
+            getStats() {
+                return {
+                    layer: this.layer,
+                    x: this.x.toFixed(1),
+                    y: this.y.toFixed(1),
+                    activation: this.activation.toFixed(2),
+                    weights: this.weights.length,
+                    energy: this.energy.toFixed(1),
+                    age: this.age,
+                    connections: this.connections.length
+                };
+            }
+        }
+
+        // ========== NETWORK MANAGEMENT ==========
+        const neurons = [];
+        let lastTrainTime = 0;
+        const trainInterval = 1000; // Train every second
+
+        // Initialize neurons in layers
+        function initNeurons() {
+            neurons.length = 0;
+            const neuronsPerLayer = Math.floor(agentCount / layers);
+
+            for (let layer = 0; layer < layers; layer++) {
+                for (let i = 0; i < neuronsPerLayer; i++) {
+                    const x = (layer / (layers - 1)) * canvas.width;
+                    const y = 50 + Math.random() * (canvas.height - 100);
+                    const neuron = new Neuron(x, y, layer);
+                    neuron.initializeWeights(neuronsPerLayer);
+                    neurons.push(neuron);
+                }
+            }
+
+            // Initialize global weights (simplified)
+            globalWeights = [];
+            for (let i = 0; i < layers - 1; i++) {
+                globalWeights.push([]);
+                for (let j = 0; j < neuronsPerLayer; j++) {
+                    globalWeights[i].push(Math.random() * 0.4 - 0.2);
+                }
+            }
+
+            trainingStep = 0;
+            logMessage(`Network initialized with ${layers} layers and ${neurons.length} neurons.`);
+        }
+
+        // ========== TRAINING FUNCTIONS ==========
+        function trainStep() {
+            trainingStep++;
+            logMessage(`Training step ${trainingStep}: Adjusting ${neurons.length} weights...`);
+
+            // Simulate forward and backward pass
+            for (let neuron of neurons) {
+                neuron.activation = Math.random(); // Simulated activation
+                neuron.energy = Math.min(100, neuron.energy + 0.1);
+            }
+
+            // Update global weights (simplified backprop)
+            for (let i = 0; i < globalWeights.length; i++) {
+                for (let j = 0; j < globalWeights[i].length; j++) {
+                    globalWeights[i][j] += (Math.random() - 0.5) * learningRate * 0.01;
+                }
+            }
+
+            // Update attention maps for visualization
+            if (modelType === 'transformer') {
+                updateAttentionMaps();
+            }
+        }
+
+        function updateAttentionMaps() {
+            attentionMaps = [];
+            for (let head = 0; head < attentionHeads; head++) {
+                const map = [];
+                for (let i = 0; i < layers; i++) {
+                    map.push([]);
+                    const layerNeurons = neurons.filter(n => n.layer === i);
+                    for (let neuron of layerNeurons) {
+                        const attentionScores = [];
+                        for (let other of layerNeurons) {
+                            if (other !== neuron) {
+                                const dx = other.x - neuron.x;
+                                const dy = other.y - neuron.y;
+                                const distance = Math.max(1, Math.sqrt(dx * dx + dy * dy));
+                                attentionScores.push(1 / distance);
+                            }
+                        }
+                        map[i].push(attentionScores);
+                    }
+                }
+                attentionMaps.push(map);
+            }
+        }
+
+        // ========== ANIMATION LOOP ==========
+        function animate(timestamp) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Train periodically
+            if (timestamp - lastTrainTime > trainInterval) {
+                trainStep();
+                lastTrainTime = timestamp;
+            }
+
+            // Update all neurons
+            for (let neuron of neurons) {
+                neuron.update(neurons);
+            }
+
+            // Update debug panel
+            if (isDebugMode) {
+                updateDebugPanel();
+                drawAttentionMap();
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // ========== DEBUG PANEL ==========
+        function updateDebugPanel() {
+            if (neurons.length === 0) return;
+
+            const sampleNeuron = neurons[Math.floor(Math.random() * neurons.length)];
+            const stats = sampleNeuron.getStats();
+
+            networkStats.innerHTML = `
+                <div class="stat-row"><span>Training Step:</span><span>${trainingStep}</span></div>
+                <div class="stat-row"><span>Model Type:</span><span>${modelType}</span></div>
+                <div class="stat-row"><span>Layers:</span><span>${layers}</span></div>
+                <div class="stat-row"><span>Neurons:</span><span>${neurons.length}</span></div>
+                <div class="stat-row"><span>Learning Rate:</span><span>${learningRate.toFixed(2)}</span></div>
+                <div class="stat-row"><span>Sample Neuron:</span></div>
+                <div class="stat-row"><span>  - Layer:</span><span>${stats.layer}</span></div>
+                <div class="stat-row"><span>  - Activation:</span><span>${stats.activation}</span></div>
+                <div class="stat-row"><span>  - Energy:</span><span>${stats.energy}</span></div>
+                <div class="stat-row"><span>  - Connections:</span><span>${stats.connections}</span></div>
+            `;
+        }
+
+        function drawAttentionMap() {
+            if (attentionMaps.length === 0) return;
+
+            const ctxMap = attentionMap.getContext('2d');
+            ctxMap.clearRect(0, 0, attentionMap.width, attentionMap.height);
+
+            // Draw a simplified attention map for the first head
+            const map = attentionMaps[0];
+            if (!map || map.length === 0) return;
+
+            const layer = Math.floor(Math.random() * map.length);
+            if (!map[layer] || map[layer].length === 0) return;
+
+            const neuronIdx = Math.floor(Math.random() * map[layer].length);
+            const attentionScores = map[layer][neuronIdx];
+            if (!attentionScores || attentionScores.length === 0) return;
+
+            // Normalize scores for visualization
+            const maxScore = Math.max(...attentionScores, 0.1);
+            const width = attentionMap.width / attentionScores.length;
+
+            for (let i = 0; i < attentionScores.length; i++) {
+                const height = (attentionScores[i] / maxScore) * attentionMap.height;
+                ctxMap.fillStyle = `rgba(0, 200, 255, ${0.3 + attentionScores[i] / maxScore * 0.7})`;
+                ctxMap.fillRect(i * width, attentionMap.height - height, width - 1, height);
+            }
+        }
+
+        // ========== EVENT LISTENERS ==========
+        // Mouse interaction
+        canvas.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        canvas.addEventListener('mousedown', () => {
+            isDragging = true;
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        canvas.addEventListener('click', (e) => {
+            const layer = Math.floor((e.clientX / canvas.width) * layers);
+            const y = e.clientY;
+            neurons.push(new Neuron(e.clientX, y, layer));
+            logMessage(`Added neuron to layer ${layer} at (${e.clientX}, ${e.clientY})`);
+        });
+
+        // Control panel listeners
+        document.getElementById('modelType').addEventListener('change', (e) => {
+            modelType = e.target.value;
+            logMessage(`Model type changed to: ${modelType}`);
+            for (let neuron of neurons) {
+                neuron.type = modelType;
+                neuron.color = neuron.getLayerColor();
+            }
+        });
+
+        document.getElementById('agentCount').addEventListener('input', (e) => {
+            agentCount = parseInt(e.target.value);
+            logMessage(`Neuron count set to: ${agentCount}`);
+        });
+
+        document.getElementById('layers').addEventListener('input', (e) => {
+            layers = parseInt(e.target.value);
+            logMessage(`Layers set to: ${layers}`);
+        });
+
+        document.getElementById('learningRate').addEventListener('input', (e) => {
+            learningRate = parseFloat(e.target.value);
+            logMessage(`Learning rate set to: ${learningRate}`);
+        });
+
+        document.getElementById('attentionHeads').addEventListener('input', (e) => {
+            attentionHeads = parseInt(e.target.value);
+            logMessage(`Attention heads set to: ${attentionHeads}`);
+        });
+
+        document.getElementById('addNeuronsBtn').addEventListener('click', () => {
+            const neuronsPerLayer = Math.floor(agentCount / layers);
+            for (let layer = 0; layer < layers; layer++) {
+                for (let i = 0; i < 10; i++) { // Add 10 neurons per layer
+                    const x = (layer / (layers - 1)) * canvas.width;
+                    const y = 50 + Math.random() * (canvas.height - 100);
+                    neurons.push(new Neuron(x, y, layer));
+                }
+            }
+            logMessage(`Added 10 neurons to each layer. Total neurons: ${neurons.length}`);
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            initNeurons();
+        });
+
+        document.getElementById('trainBtn').addEventListener('click', () => {
+            trainStep();
+        });
+
+        document.getElementById('randomizeBtn').addEventListener('click', () => {
+            for (let i = 0; i < globalWeights.length; i++) {
+                for (let j = 0; j < globalWeights[i].length; j++) {
+                    globalWeights[i][j] = Math.random() * 0.4 - 0.2;
+                }
+            }
+            logMessage(`Global weights randomized.`);
+        });
+
+        debugToggle.addEventListener('click', () => {
+            isDebugMode = !isDebugMode;
+            debugPanel.style.display = isDebugMode ? 'block' : 'none';
+            logMessage(`Debug mode ${isDebugMode ? 'enabled' : 'disabled'}`);
+        });
+
+        // Chat functionality
+        function logMessage(message, isUser = false) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = isUser ? `You: ${message}` : `ACE: ${message}`;
+            messageElement.style.color = isUser ? 'var(--accent)' : 'var(--highlight)';
+            chatLog.appendChild(messageElement);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function processCommand(command) {
+            const lowerCommand = command.toLowerCase();
+            logMessage(command, true);
+
+            if (lowerCommand.includes('add') && lowerCommand.includes('neuron')) {
+                const count = parseInt(command.match(/\d+/)?.[0]) || 10;
+                const neuronsPerLayer = Math.floor(count / layers);
+                for (let layer = 0; layer < layers; layer++) {
+                    for (let i = 0; i < neuronsPerLayer; i++) {
+                        const x = (layer / (layers - 1)) * canvas.width;
+                        const y = 50 + Math.random() * (canvas.height - 100);
+                        neurons.push(new Neuron(x, y, layer));
+                    }
+                }
+                logMessage(`Added ${count} neurons across ${layers} layers. Total neurons: ${neurons.length}`);
+            }
+            else if (lowerCommand.includes('reset')) {
+                initNeurons();
+                logMessage(`Network reset with ${layers} layers.`);
+            }
+            else if (lowerCommand.includes('train')) {
+                trainStep();
+            }
+            else if (lowerCommand.includes('set learning rate')) {
+                const newRate = parseFloat(command.match(/[\d.]+/)?.[0]) || learningRate;
+                learningRate = newRate;
+                document.getElementById('learningRate').value = learningRate;
+                logMessage(`Learning rate set to: ${learningRate}`);
+            }
+            else if (lowerCommand.includes('set layers')) {
+                const newLayers = parseInt(command.match(/\d+/)?.[0]) || layers;
+                layers = Math.min(10, Math.max(1, newLayers));
+                document.getElementById('layers').value = layers;
+                logMessage(`Layers set to: ${layers}`);
+            }
+            else if (lowerCommand.includes('transformer')) {
+                modelType = 'transformer';
+                document.getElementById('modelType').value = 'transformer';
+                logMessage(`Model type changed to: transformer`);
+            }
+            else if (lowerCommand.includes('mlp')) {
+                modelType = 'mlp';
+                document.getElementById('modelType').value = 'mlp';
+                logMessage(`Model type changed to: MLP`);
+            }
+            else if (lowerCommand.includes('rnn')) {
+                modelType = 'rnn';
+                document.getElementById('modelType').value = 'rnn';
+                logMessage(`Model type changed to: RNN`);
+            }
+            else if (lowerCommand.includes('cnn')) {
+                modelType = 'cnn';
+                document.getElementById('modelType').value = 'cnn';
+                logMessage(`Model type changed to: CNN`);
+            }
+            else if (lowerCommand.includes('swarm')) {
+                modelType = 'swarm';
+                document.getElementById('modelType').value = 'swarm';
+                logMessage(`Model type changed to: swarm neural network`);
+            }
+            else if (lowerCommand.includes('debug')) {
+                isDebugMode = !isDebugMode;
+                debugPanel.style.display = isDebugMode ? 'block' : 'none';
+                logMessage(`Debug mode ${isDebugMode ? 'enabled' : 'disabled'}`);
+            }
+            else if (lowerCommand.includes('help') || lowerCommand.includes('commands')) {
+                logMessage(`
+Available Commands:
+- "add [number] neurons" - Add neurons to layers
+- "reset" - Reset the network
+- "train" - Perform a training step
+- "set learning rate [value]" - Adjust learning rate (0.01-1)
+- "set layers [number]" - Change number of layers (1-10)
+- "transformer/mlp/rnn/cnn/swarm" - Change model architecture
+- "debug" - Toggle debug mode
+- "help" - Show this help
+                `.trim());
+            }
+            else {
+                logMessage(`Unknown command: "${command}". Type "help" for available commands.`);
+            }
+        }
+
+        sendButton.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) processCommand(message);
+            chatInput.value = '';
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const message = chatInput.value.trim();
+                if (message) processCommand(message);
+                chatInput.value = '';
+            }
+        });
+
+        // ========== INITIALIZATION ==========
+        initNeurons();
+        logMessage('ACE Neural Sandbox initialized (Transformer-like training).');
+        logMessage(`Type "help" for a list of commands.`);
+        animate();
+    </script>
+</body>
 </html>
 ```
 # 2D Physics Sim (Basic)
