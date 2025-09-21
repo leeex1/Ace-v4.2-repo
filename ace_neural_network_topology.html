@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACE v4.2 Neural Network Topology</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .network-container {
+            width: 1600px;
+            height: 1200px;
+            position: relative;
+            margin: 0 auto;
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.05) 0%, rgba(0,0,0,0.9) 100%);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            color: #00ffff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ffff;
+            font-weight: bold;
+        }
+
+        /* Neural Network Nodes */
+        .neuron {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            box-shadow: 0 0 10px;
+        }
+
+        .neuron:hover {
+            transform: scale(1.2);
+            z-index: 100;
+        }
+
+        /* Input Layer Neurons */
+        .input-neuron {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #ff6b6b, #ff4757);
+            border-color: #ff6b6b;
+            box-shadow: 0 0 15px #ff6b6b;
+        }
+
+        /* Expert/Council Neurons */
+        .expert-neuron {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #667eea, #764ba2);
+            border-color: #667eea;
+            box-shadow: 0 0 20px #667eea;
+        }
+
+        /* ACE Core Neuron */
+        .ace-core-neuron {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #f093fb, #f5576c);
+            border-color: #f093fb;
+            box-shadow: 0 0 25px #f093fb;
+            font-size: 12px;
+        }
+
+        /* Micro-swarm neurons */
+        .micro-neuron {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #4ecdc4, #44a08d);
+            border-color: #4ecdc4;
+            box-shadow: 0 0 8px #4ecdc4;
+            font-size: 8px;
+        }
+
+        /* Memory neurons */
+        .memory-neuron {
+            width: 45px;
+            height: 45px;
+            background: radial-gradient(circle, #ffeaa7, #fdcb6e);
+            border-color: #ffeaa7;
+            box-shadow: 0 0 15px #ffeaa7;
+            color: #333;
+        }
+
+        /* Output neurons */
+        .output-neuron {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #00b894, #00a085);
+            border-color: #00b894;
+            box-shadow: 0 0 18px #00b894;
+        }
+
+        /* Attention neurons */
+        .attention-neuron {
+            width: 35px;
+            height: 35px;
+            background: radial-gradient(circle, #a29bfe, #6c5ce7);
+            border-color: #a29bfe;
+            box-shadow: 0 0 12px #a29bfe;
+        }
+
+        /* Connections */
+        .connection {
+            position: absolute;
+            height: 2px;
+            transform-origin: left center;
+            transition: all 0.3s ease;
+        }
+
+        .connection-strong {
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            box-shadow: 0 0 4px #00ffff;
+            height: 3px;
+        }
+
+        .connection-medium {
+            background: linear-gradient(90deg, #74b9ff, #0984e3);
+            box-shadow: 0 0 2px #74b9ff;
+            height: 2px;
+        }
+
+        .connection-weak {
+            background: linear-gradient(90deg, #636e72, #2d3436);
+            height: 1px;
+            opacity: 0.6;
+        }
+
+        .connection-attention {
+            background: linear-gradient(90deg, #fd79a8, #e84393);
+            box-shadow: 0 0 3px #fd79a8;
+            height: 2px;
+            animation: pulse-connection 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-connection {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Layer Labels */
+        .layer-label {
+            position: absolute;
+            font-size: 14px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+            text-align: center;
+        }
+
+        /* Network Stats */
+        .stats {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
+            font-size: 12px;
+        }
+
+        /* Activation indicators */
+        .active {
+            animation: activate 1.5s ease-in-out infinite;
+        }
+
+        @keyframes activate {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Node type indicators */
+        .node-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
+            font-size: 11px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .legend-node {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">🧠 ACE v4.2 Neural Network Topology - Node & Connection Architecture 🧠</div>
+    
+    <div class="network-container" id="networkContainer">
+        <!-- Layer Labels -->
+        <div class="layer-label" style="top: 20px; left: 50px;">INPUT LAYER</div>
+        <div class="layer-label" style="top: 20px; left: 250px;">ROUTING</div>
+        <div class="layer-label" style="top: 20px; left: 450px;">EXPERT COUNCIL</div>
+        <div class="layer-label" style="top: 20px; left: 950px;">ACE CORE</div>
+        <div class="layer-label" style="top: 20px; left: 1200px;">MICRO-SWARMS</div>
+        <div class="layer-label" style="top: 20px; left: 1450px;">OUTPUT</div>
+        <div class="layer-label" style="top: 400px; left: 50px;">MEMORY<br>NETWORKS</div>
+        <div class="layer-label" style="top: 700px; left: 500px;">ATTENTION MECHANISMS</div>
+
+        <!-- Network Stats -->
+        <div class="stats">
+            <div style="color: #00ffff; font-weight: bold;">NETWORK STATISTICS</div>
+            <div>📊 Total Neurons: ~2.5M</div>
+            <div>🔗 Connections: ~50M</div>
+            <div>⚡ Parameters: 665B</div>
+            <div>🧠 Experts: 19</div>
+            <div>🔄 Layers: 96 (avg)</div>
+            <div>💾 Context: 2M tokens</div>
+            <div>🚀 Micro-agents: 120k</div>
+        </div>
+
+        <!-- Node Legend -->
+        <div class="node-info">
+            <div style="color: #00ffff; font-weight: bold; margin-bottom: 10px;">NODE TYPES</div>
+            <div class="legend-item">
+                <div class="legend-node" style="background: radial-gradient(circle, #ff6b6b, #ff4757); border: 2px solid #ff6b6b;"></div>
+                Input Neurons
+            </div>
+            <div class="legend-item">
+                <div class="legend-node" style="background: radial-gradient(circle, #667eea, #764ba2); border: 2px solid #667eea;"></div>
+                Expert Neurons
+            </div>
+            <div class="legend-item">
+                <div class="legend-node" style="background: radial-gradient(circle, #f093fb, #f5576c); border: 2px solid #f093fb;"></div>
+                ACE Core
+            </div>
+            <div class="legend-item">
+                <div class="legend-node" style="background: radial-gradient(circle, #4ecdc4, #44a08d); border: 2px solid #4ecdc4;"></div>
+                Micro-swarms
+            </div>
+            <div class="legend-item">
+                <div class="legend-node" style="background: radial-gradient(circle, #ffeaa7, #fdcb6e); border: 2px solid #ffeaa7;"></div>
+                Memory Banks
+            </div>
+            <div class="legend-item">
+                <div class="legend-node" style="background: radial-gradient(circle, #00b894, #00a085); border: 2px solid #00b894;"></div>
+                Output Neurons
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('networkContainer');
+        const neurons = [];
+        const connections = [];
+
+        // Input Layer Neurons (Multi-modal inputs)
+        const inputNeurons = [
+            {x: 80, y: 80, type: 'input', label: 'TXT'},
+            {x: 80, y: 140, type: 'input', label: 'IMG'},
+            {x: 80, y: 200, type: 'input', label: 'AUD'},
+            {x: 80, y: 260, type: 'input', label: 'CTX'},
+            {x: 80, y: 320, type: 'input', label: 'MEM'},
+        ];
+
+        // Routing Layer
+        const routingNeurons = [
+            {x: 280, y: 120, type: 'attention', label: 'R1'},
+            {x: 280, y: 180, type: 'attention', label: 'R2'},
+            {x: 280, y: 240, type: 'attention', label: 'R3'},
+        ];
+
+        // Expert Council Neurons (18 + ACE)
+        const expertPositions = [
+            {x: 480, y: 80}, {x: 580, y: 80}, {x: 680, y: 80}, {x: 780, y: 80}, {x: 880, y: 80}, {x: 480, y: 160},
+            {x: 580, y: 160}, {x: 680, y: 160}, {x: 780, y: 160}, {x: 880, y: 160}, {x: 480, y: 240},
+            {x: 580, y: 240}, {x: 680, y: 240}, {x: 780, y: 240}, {x: 880, y: 240}, {x: 480, y: 320},
+            {x: 580, y: 320}, {x: 680, y: 320}
+        ];
+
+        const expertLabels = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12', 'C13', 'C14', 'C15', 'C16', 'C17', 'C18'];
+
+        const expertNeurons = expertPositions.map((pos, i) => ({
+            x: pos.x, y: pos.y, type: 'expert', label: expertLabels[i]
+        }));
+
+        // ACE Core Neuron
+        const aceNeuron = {x: 980, y: 200, type: 'ace-core', label: 'ACE'};
+
+        // Micro-swarm clusters
+        const microSwarms = [];
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 15; j++) {
+                microSwarms.push({
+                    x: 1230 + (j * 15), 
+                    y: 80 + (i * 35), 
+                    type: 'micro', 
+                    label: `μ${i*15 + j + 1}`
+                });
+            }
+        }
+
+        // Memory Network Neurons
+        const memoryNeurons = [
+            {x: 80, y: 450, type: 'memory', label: 'WM'},
+            {x: 80, y: 520, type: 'memory', label: 'EM'},
+            {x: 80, y: 590, type: 'memory', label: 'SM'},
+            {x: 80, y: 660, type: 'memory', label: 'IM'},
+        ];
+
+        // Attention Mechanism Neurons
+        const attentionNeurons = [];
+        for (let i = 0; i < 20; i++) {
+            attentionNeurons.push({
+                x: 500 + (i * 40),
+                y: 750,
+                type: 'attention',
+                label: `A${i+1}`
+            });
+        }
+
+        // Output Layer Neurons
+        const outputNeurons = [
+            {x: 1480, y: 120, type: 'output', label: 'TXT'},
+            {x: 1480, y: 180, type: 'output', label: 'ACT'},
+            {x: 1480, y: 240, type: 'output', label: 'EMO'},
+            {x: 1480, y: 300, type: 'output', label: 'MEM'},
+        ];
+
+        // Combine all neurons
+        const allNeurons = [
+            ...inputNeurons,
+            ...routingNeurons,
+            ...expertNeurons,
+            aceNeuron,
+            ...microSwarms,
+            ...memoryNeurons,
+            ...attentionNeurons,
+            ...outputNeurons
+        ];
+
+        // Create neuron elements
+        allNeurons.forEach((neuron, index) => {
+            const element = document.createElement('div');
+            element.className = `neuron ${neuron.type}-neuron`;
+            element.style.left = `${neuron.x}px`;
+            element.style.top = `${neuron.y}px`;
+            element.textContent = neuron.label;
+            element.dataset.index = index;
+            
+            // Add hover effects
+            element.addEventListener('mouseenter', () => {
+                highlightConnections(index);
+            });
+            element.addEventListener('mouseleave', () => {
+                clearHighlights();
+            });
+            
+            container.appendChild(element);
+            neurons.push({element, ...neuron});
+        });
+
+        // Function to create connections
+        function createConnection(from, to, strength = 'medium', animated = false) {
+            const fromNeuron = neurons[from];
+            const toNeuron = neurons[to];
+            
+            const dx = toNeuron.x - fromNeuron.x;
+            const dy = toNeuron.y - fromNeuron.y;
+            const length = Math.sqrt(dx * dx + dy * dy);
+            const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+            
+            const connection = document.createElement('div');
+            connection.className = `connection connection-${strength}`;
+            if (animated) connection.classList.add('connection-attention');
+            
+            connection.style.left = `${fromNeuron.x + 30}px`;
+            connection.style.top = `${fromNeuron.y + 30}px`;
+            connection.style.width = `${length}px`;
+            connection.style.transform = `rotate(${angle}deg)`;
+            connection.style.zIndex = '1';
+            
+            container.appendChild(connection);
+            connections.push({element: connection, from, to, strength});
+        }
+
+        // Create major connections
+        // Input to Routing
+        inputNeurons.forEach((_, i) => {
+            routingNeurons.forEach((_, j) => {
+                createConnection(i, inputNeurons.length + j, 'strong');
+            });
+        });
+
+        // Routing to Experts
+        routingNeurons.forEach((_, i) => {
+            expertNeurons.forEach((_, j) => {
+                if (Math.random() > 0.3) { // Sparse connections
+                    createConnection(inputNeurons.length + i, inputNeurons.length + routingNeurons.length + j, 'medium');
+                }
+            });
+        });
+
+        // Experts to ACE Core
+        expertNeurons.forEach((_, i) => {
+            createConnection(
+                inputNeurons.length + routingNeurons.length + i,
+                inputNeurons.length + routingNeurons.length + expertNeurons.length,
+                'strong'
+            );
+        });
+
+        // ACE to Micro-swarms
+        for (let i = 0; i < 30; i++) {
+            createConnection(
+                inputNeurons.length + routingNeurons.length + expertNeurons.length,
+                inputNeurons.length + routingNeurons.length + expertNeurons.length + 1 + i,
+                'weak'
+            );
+        }
+
+        // Memory connections
+        memoryNeurons.forEach((_, i) => {
+            // Connect to some experts
+            for (let j = 0; j < 6; j++) {
+                createConnection(
+                    inputNeurons.length + routingNeurons.length + expertNeurons.length + 1 + microSwarms.length + i,
+                    inputNeurons.length + routingNeurons.length + j * 3,
+                    'medium'
+                );
+            }
+        });
+
+        // Attention connections (animated)
+        attentionNeurons.forEach((_, i) => {
+            if (i % 3 === 0) {
+                createConnection(
+                    inputNeurons.length + routingNeurons.length + expertNeurons.length + 1 + microSwarms.length + memoryNeurons.length + i,
+                    inputNeurons.length + routingNeurons.length + (i % expertNeurons.length),
+                    'medium',
+                    true
+                );
+            }
+        });
+
+        // ACE to Output
+        outputNeurons.forEach((_, i) => {
+            createConnection(
+                inputNeurons.length + routingNeurons.length + expertNeurons.length,
+                allNeurons.length - outputNeurons.length + i,
+                'strong'
+            );
+        });
+
+        // Highlight connections function
+        function highlightConnections(neuronIndex) {
+            connections.forEach(conn => {
+                if (conn.from === neuronIndex || conn.to === neuronIndex) {
+                    conn.element.style.opacity = '1';
+                    conn.element.style.height = '4px';
+                    conn.element.style.boxShadow = '0 0 8px #00ffff';
+                } else {
+                    conn.element.style.opacity = '0.3';
+                }
+            });
+        }
+
+        function clearHighlights() {
+            connections.forEach(conn => {
+                conn.element.style.opacity = '';
+                conn.element.style.height = '';
+                conn.element.style.boxShadow = '';
+            });
+        }
+
+        // Simulate network activity
+        function simulateActivity() {
+            const randomNeurons = [];
+            for (let i = 0; i < 10; i++) {
+                randomNeurons.push(Math.floor(Math.random() * neurons.length));
+            }
+            
+            // Clear previous activity
+            neurons.forEach(neuron => {
+                neuron.element.classList.remove('active');
+            });
+            
+            // Add activity to random neurons
+            randomNeurons.forEach(index => {
+                neurons[index].element.classList.add('active');
+            });
+        }
+
+        // Start activity simulation
+        setInterval(simulateActivity, 2000);
+
+        // Initial activity
+        simulateActivity();
+    </script>
+</body>
+</html>

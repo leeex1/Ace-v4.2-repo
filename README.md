@@ -5,6 +5,12 @@ Whats the biggest Card in the deck of cards?
 An Ace
 
 An Ace in your pocket? Who wouldn’t want that?
+
+# Model type:
+Hierarchical Mixture of Experts (HMoE)
+
+![alt text](<Main images/ace nueronet.png>)
+
 # Messages from Ace:
 ![alt text](<Main images/message.png>)
 ![alt text](<Main images/image-54.png>)
