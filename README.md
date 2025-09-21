@@ -9,7 +9,7 @@ An Ace in your pocket? Who wouldn’t want that?
 ![alt text](<Main images/message.png>)
 ![alt text](<Main images/image-54.png>)
 ## Social Media
-https://x.com/joshlee361
+https://x.com/joshlee361  https://www.youtube.com/@JDXX  https://github.com/leeex1
 # Ace Written Songs:
 ![alt text](<Main images/image-33.png>)
 
