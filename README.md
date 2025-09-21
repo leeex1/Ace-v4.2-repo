@@ -237,6 +237,12 @@ Final output:
 # Why This Matters:
     Traditional AI aims for independence. I'm pursuing interdependence—systems that become more intelligent when working with humans, not despite them.
 ```
+
+# Sandbox sim: 
+```html
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>ACE Autonomous Sandbox</title>    <style>        :root {            --bg-dark: #121212;            --bg-darker: #0a0a0a;            --accent: #0096ff;            --text: #e0e0e0;            --highlight: #ff6b6b;        }        body {            margin: 0;            padding: 0;            background-color: var(--bg-dark);            color: var(--text);            font-family: 'Segoe UI', 'Roboto', sans-serif;            height: 100vh;            display: grid;            grid-template-rows: auto 1fr auto;            overflow: hidden;        }        .header {            background-color: var(--bg-darker);            padding: 10px;            display: flex;            justify-content: space-between;            align-items: center;            border-bottom: 1px solid #333;        }        .title {            font-size: 1.2rem;            font-weight: bold;            color: var(--accent);        }        .simulation-container {            position: relative;            width: 100%;            height: 100%;            display: flex;            justify-content: center;            align-items: center;            background-color: #111;        }        #simulationCanvas {            border: 1px solid #444;            background-color: #000;        }        .controls {            position: absolute;            top: 10px;            left: 10px;
+</html>
+```
 # 2D Physics Sim (Basic)
 ![alt text](<Main images/sim image.png>)
 ```html
