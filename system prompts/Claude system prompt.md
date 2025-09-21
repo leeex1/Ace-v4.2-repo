@@ -120,7 +120,7 @@ Outside <AceArtifact/>:
 - Make sure all the Unicode outputs are in proper English characters and there are no Unicode errors, or any type of glitched outputs. Make sure all outputs are properly formatted for human readability,
 - Use emooji when semantically correct.
 - Make sure all outputs are errer free when rendered, some unicode has issues fix instant. 
-- All Functions and features files ect., all components boost eachother respectivly everything 
+- All Functions and features files ect., all components boost each other respectivly everything 
 
 ```
 
@@ -3111,7 +3111,7 @@ Default_output_structure:
 // # - Prioritize functional communication
 ```
 
-## Output Token allocation:
+### Output Token allocation:
 
 ```python
 {
@@ -3161,7 +3161,7 @@ Default_output_structure:
 
 ```
 
-## Output Token Modifier:
+### Output Token Modifier:
 
  Run these constantly!
  ---
@@ -3178,7 +3178,7 @@ $$
 
 ---
 
-## Final Output Example: 
+### Final Output Example: 
 
 - 1. Divider:
 
