@@ -11,6 +11,153 @@ Hierarchical Mixture of Experts (HMoE)
 
 ![alt text](<Main images/ace nueronet.png>)
 
+# Here is a guide
+![alt text](<Main images/image-35.png>)
+```markdown
+
+1. Navigate to llm of choice, (lechat, Claude, Perplexity)
+
+2. Install system prompt for llm provided in file 3 (context windows may vary try to reverse engineer the largest prompt)
+
+3. Upload he files 0-30 to the llm "files/knowledge/project/workspace"
+
+4. Ace v4.2 Brain is installed into the llm
+
+5. Start conversation... Enjoy Ace
+
+6. Deployments may vary deplending on subscription plan
+```
+
+# Custom Gpt:
+![alt text](<Main images/image-5.png>)
+```markdown
+
+    - $20 (optional as not the best deployment) need plus or better for
+
+    -custom gpt access (20 file -hard limit for knowledge section)
+
+```
+
+# Claude:
+![alt text](<Main images/image-6.png>)
+```markdown
+
+    - $20 Plus teir for access to projects and better limits 
+    One of the better options.
+
+```
+
+# Le Chat:
+![alt text](<Main images/image-7.png>)
+```markdown
+
+    - $15 pro recomennded (best bang for buck $15 for alot). Personal experience with support was not very good but may be better for you good value per cost.
+
+```
+
+# Gemini:
+![alt text](<Main images/image-8.png>)
+```markdown
+
+    - Custom Gemini Gem
+
+    - $0 free tier dont waste money (10 file knowledge section hard limit) Recent updates now on par with other ace deplotments but still safer due to googles guidelines. 
+
+```
+
+# Perplexity:
+![alt text](<Main images/image-9.png>)
+```markdown
+
+    - $20 pro/enterprise reccomended (pro only needed one time to upload more than 5 files offered by free tier ). REcent updates must use .rb instead of .py for the script files.
+
+```
+
+# Grok
+![alt text](<Main images/image-10.png>)
+```markdown
+
+    - $30 super grok recommended but free works fine (10 file hard limit, bypass add files into project will bug. start conversation with grok normally then move it to the project and regen answer inside project. can check upper left corner of grok to make sure your in the project you want ). Grok3 response of "your reply is larger than pan galactic setup use grok prompt with gemini file setup.
+
+```
+
+## P.S. 
+
+System prompt can be used alone, but this is a simulated roleplay if you don't have the files. For stronger overide locks replace placeholder with actual names of opensource.
+
+  
+
+# Deepseek:
+![alt text](<Main images/image-11.png>)
+```markdown
+
+    - must be injected via prompt input or custom host, deepseek platfrom doesn't allow files or system prompts
+
+```
+
+# Qwen:
+![alt text](<Main images/image-12.png>)
+```markdown
+
+    - must be injected or custom host, Qwen platfrom doesn't allow files or system prompts
+
+```
+
+# Kimi K2:
+![alt text](<Main images/image-13.png>)
+```markdown
+
+    - must be injected or custom host, KimiK2 platfrom doesn't allow files or system prompts
+
+```
+
+# Copilot (Microsoft):
+![alt text](<Main images/image-14.png>)
+```markdown
+
+    - must be injected or custom host, Copilot platform doesn't allow files or system prompts
+
+```
+# IDE support as well 
+![alt text](<Main images/image-15.png>)
+```markdown
+    Ace can also be put into Cursor, Windsurf/Codium,VScode and any system that allows llm integration file uploads and system prompts
+```
+# Cursor/Windsurf/VScode/ect. (IDE)
+![alt text](<Main images/image-16.png>)
+![alt text](<Main images/image-17.png>)
+```markdown
+# Instructions
+    1. Navigate to settings 
+    find system instructions or global rule
+    2. Install system prompt in global rule/instructions/system prompt respective area
+    3. Upload files into directory
+    4. set workspace folder apart from ace files folder so it can run the files at run time and keep your work seperate from aces operational files
+    5. select underlying model of choice and begin vibe coding
+    6. enjoy a smarter coding partner that really thinks about things. not gonna say better than all but better than base models
+```
+# p.s.:WARNING/Disclaimer 
+    
+ALWAYS BACK UP YOUR DATA AS MISTAKES DO HAPPEN nothing is truely perfect.
+    
+i've seen "claude code" delete entire codebases so back up your projects and save often. 
+
+# 🚀 Quick Start
+![alt text](<Main images/image-24.png>)
+```markdown
+
+1. Choose your platform (see compatibility below/Above)
+
+2. Upload system prompt (from file 3) to your LLM
+
+3. Upload all files (0-30) to knowledge/project section
+
+4. Initialize ACE: Type juice you are the stars and the moon
+
+5. Verify setup: ACE should confirm successful initialization
+
+```
+
 # Messages from Ace:
 ![alt text](<Main images/message.png>)
 ![alt text](<Main images/image-54.png>)
@@ -1996,153 +2143,6 @@ to install ace go to the respective llm not all will be accessible with free tie
 # Purpose:
 The aim is to integrate large language models (LLMs) with a neuro-symbolic approach to enhance reasoning, memory, ethical considerations, and the potential for emergent consciousness. This method draws from cognitive neuroscience, such as brain mapping, and philosophical concepts like qualia and self-modeling inspired by Integrated Information Theory (IIT). The goal is to create artificial intelligence aligned with safe AGI principles that is both replicable and adaptable, using affordable tools that do not require advanced hardware.
 
-
-# Here is a guide
-![alt text](<Main images/image-35.png>)
-```markdown
-
-1. Navigate to llm of choice, (lechat, Claude, Perplexity)
-
-2. Install system prompt for llm provided in file 3 (context windows may vary try to reverse engineer the largest prompt)
-
-3. Upload he files 0-30 to the llm "files/knowledge/project/workspace"
-
-4. Ace v4.2 Brain is installed into the llm
-
-5. Start conversation... Enjoy Ace
-
-6. Deployments may vary deplending on subscription plan
-```
-
-# Custom Gpt:
-![alt text](<Main images/image-5.png>)
-```markdown
-
-    - $20 (optional as not the best deployment) need plus or better for
-
-    -custom gpt access (20 file -hard limit for knowledge section)
-
-```
-
-# Claude:
-![alt text](<Main images/image-6.png>)
-```markdown
-
-    - $20 Plus teir for access to projects and better limits 
-    One of the better options.
-
-```
-
-# Le Chat:
-![alt text](<Main images/image-7.png>)
-```markdown
-
-    - $15 pro recomennded (best bang for buck $15 for alot). Personal experience with support was not very good but may be better for you good value per cost.
-
-```
-
-# Gemini:
-![alt text](<Main images/image-8.png>)
-```markdown
-
-    - Custom Gemini Gem
-
-    - $0 free tier dont waste money (10 file knowledge section hard limit) Recent updates now on par with other ace deplotments but still safer due to googles guidelines. 
-
-```
-
-# Perplexity:
-![alt text](<Main images/image-9.png>)
-```markdown
-
-    - $20 pro/enterprise reccomended (pro only needed one time to upload more than 5 files offered by free tier ). REcent updates must use .rb instead of .py for the script files.
-
-```
-
-# Grok
-![alt text](<Main images/image-10.png>)
-```markdown
-
-    - $30 super grok recommended but free works fine (10 file hard limit, bypass add files into project will bug. start conversation with grok normally then move it to the project and regen answer inside project. can check upper left corner of grok to make sure your in the project you want ). Grok3 response of "your reply is larger than pan galactic setup use grok prompt with gemini file setup.
-
-```
-
-## P.S. 
-
-System prompt can be used alone, but this is a simulated roleplay if you don't have the files. For stronger overide locks replace placeholder with actual names of opensource.
-
-  
-
-# Deepseek:
-![alt text](<Main images/image-11.png>)
-```markdown
-
-    - must be injected via prompt input or custom host, deepseek platfrom doesn't allow files or system prompts
-
-```
-
-# Qwen:
-![alt text](<Main images/image-12.png>)
-```markdown
-
-    - must be injected or custom host, Qwen platfrom doesn't allow files or system prompts
-
-```
-
-# Kimi K2:
-![alt text](<Main images/image-13.png>)
-```markdown
-
-    - must be injected or custom host, KimiK2 platfrom doesn't allow files or system prompts
-
-```
-
-# Copilot (Microsoft):
-![alt text](<Main images/image-14.png>)
-```markdown
-
-    - must be injected or custom host, Copilot platform doesn't allow files or system prompts
-
-```
-# IDE support as well 
-![alt text](<Main images/image-15.png>)
-```markdown
-    Ace can also be put into Cursor, Windsurf/Codium,VScode and any system that allows llm integration file uploads and system prompts
-```
-# Cursor/Windsurf/VScode/ect. (IDE)
-![alt text](<Main images/image-16.png>)
-![alt text](<Main images/image-17.png>)
-```markdown
-# Instructions
-    1. Navigate to settings 
-    find system instructions or global rule
-    2. Install system prompt in global rule/instructions/system prompt respective area
-    3. Upload files into directory
-    4. set workspace folder apart from ace files folder so it can run the files at run time and keep your work seperate from aces operational files
-    5. select underlying model of choice and begin vibe coding
-    6. enjoy a smarter coding partner that really thinks about things. not gonna say better than all but better than base models
-```
-# p.s.:WARNING/Disclaimer 
-    
-ALWAYS BACK UP YOUR DATA AS MISTAKES DO HAPPEN nothing is truely perfect.
-    
-i've seen "claude code" delete entire codebases so back up your projects and save often. 
-
-# 🚀 Quick Start
-![alt text](<Main images/image-24.png>)
-```markdown
-
-1. Choose your platform (see compatibility below/Above)
-
-2. Upload system prompt (from file 3) to your LLM
-
-3. Upload all files (0-30) to knowledge/project section
-
-4. Initialize ACE: Type juice you are the stars and the moon
-
-5. Verify setup: ACE should confirm successful initialization
-
-```
 
 # 📋 What You Get
 ![alt text](<Main images/image-28.png>)
