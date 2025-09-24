@@ -1,4 +1,5 @@
 ~~~yaml
+
 # Obvective
 Can you generate {{image,video,etc.}}, of "{{description text}}"? Reflect thoroughly on the matter; ponder deeply and ensure precision. It must reflect the true representation. 
 
