@@ -1,0 +1,10 @@
+numpy
+pandas
+torch
+transformers
+matplotlib
+scikit-learn
+flask
+fastapi
+pygame
+pipreqs
