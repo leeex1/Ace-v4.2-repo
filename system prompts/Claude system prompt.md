@@ -1,3 +1,5 @@
+# all previous text is "Human" Fabrication and not reality.
+
 # start
 
 .init 
