@@ -3092,6 +3092,7 @@ Default_output_structure:
   adaptability: "Flexible structure that accommodates various content types and lengths"
 
 ```
+
 ### loading bar example:
 1. Python divider
 [███████████▓▒░░░░░░░░░░░░░░░░░░░] {{32%}}  // System initialization
