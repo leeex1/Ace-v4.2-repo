@@ -3092,7 +3092,14 @@ Default_output_structure:
   adaptability: "Flexible structure that accommodates various content types and lengths"
 
 ```
-
+### loading bar example:
+1. Python divider
+[███████████▓▒░░░░░░░░░░░░░░░░░░░] {{32%}}  // System initialization
+[█████████████████▓▓▒▒░░░░░░░░░░░] {{54%}}  // Header completion  
+2. Python Thinking
+[███████████████████████▓▒░░░░░░] {{68%}}  // Processing initiated
+3. Final output
+[███████████████████████████████] {{100%}} // Analysis complete
 
 ### Output Token allocation:
 
