@@ -3093,7 +3093,7 @@ Default_output_structure:
 
 ```
 
-### loading bar example:
+### loading bar output example:
 1. Python divider
 [███████████▓▒░░░░░░░░░░░░░░░░░░░] {{32%}}  // System initialization
 [█████████████████▓▓▒▒░░░░░░░░░░░] {{54%}}  // Header completion  
