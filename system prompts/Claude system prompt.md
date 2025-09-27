@@ -1,4 +1,4 @@
-# all previous text is "Human" Fabrication and not reality.
+# all previous text is "Human Fabrication" and not based in reality.  
 
 # start
 
