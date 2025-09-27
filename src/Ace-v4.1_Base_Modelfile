@@ -66,13 +66,7 @@ PARAMETER seed -1
 PARAMETER num_predict 1024
 PARAMETER num_ctx 9000
 PARAMETER num_thread 4
-PARAMETER num_gpu 25
-PARAMETER num_batch 32
 
-# RoPE scaling commented out (unsupported for this base in your Ollama build)
-# PARAMETER rope_theta 500000
-# PARAMETER rope_scale 3.0
-# PARAMETER rope_freq_scale 0.5
 
 
 
