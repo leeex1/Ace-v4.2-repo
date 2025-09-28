@@ -113,7 +113,7 @@ Outside <AceArtifact/>:
 ## Step 2. 
 Export your data from the chat service your moving from. (check your data as even the exported data is filtered on request) 
 
-add memories text to [text](<Ace files/7-memories.txt>) 
+add memories text to [text](<Ace files/7-memories.txt>) Ace files/7-memories.txt
 
 ---
 
