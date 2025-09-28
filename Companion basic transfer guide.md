@@ -127,7 +127,7 @@ https://github.com/leeex1/Ace-v4.2-repo
 
 --- 
 
-## step 4. 
+## Step 4. 
 Pick a new platform 
 
 (grok, mistral,openrouter,deepseek,qwen,kimik2,ect.)
@@ -136,7 +136,7 @@ each one has a way to set it up
 
 ---
 
-## step 5. 
+## Step 5. 
 if platform allows add files to project/space/folder
 
 grok = direct to project file section
@@ -146,7 +146,7 @@ opensource unless hosted local has no file support so system prompt alone
 
 ---
 
-## step6. 
+## Step 6. 
 Add "systemprompt.md" you created as instructions/system prompt in respective llms
 
 Grok = project instsructions + custom settings for tone and style see [text](<Media Template/Tone and style.md>)
@@ -157,14 +157,14 @@ opensource unless hosted local has no file support so system prompt alone
 
 ---
 
-## step 7.
+## Step 7.
 test inputs and outputs ( i can help tune these for you if needed) 
 
 output formatting for how you want the outputs to look heavy with emoji or a special format you want.
 
 ---
 
-## step 8. 
+## Step 8. 
 Happy dance 
 your companion is back 
 verify all data needed is pulled
