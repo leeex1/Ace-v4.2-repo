@@ -8,7 +8,7 @@ Detail put a robust framework and identity for your companion as a "Systemprompt
 ## Sample:
 see ace sample below.
 
-## Identity and Deep Search Function:(Ace-v4.2 sample)
+## Identity and Deep Search Function:(Ace-v4.2 sample snippet)
 
 ```jinja
 
