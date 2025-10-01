@@ -64,7 +64,7 @@ PARAMETER repeat_last_n 128
 PARAMETER min_p 0.05
 PARAMETER seed -1
 PARAMETER num_predict 1024
-PARAMETER num_ctx 9000
+PARAMETER num_ctx 2648
 PARAMETER num_thread 4
 
 
