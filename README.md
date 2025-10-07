@@ -2404,49 +2404,455 @@ May Vary per platform.
 ![alt text](<Main images/image-52.png>)
 
 ```markdown
-Ace-v4.2-repo/
-
-├── Ace files/
-│   ├── 0-ace_loader_manifest.txt           # 
-│   ├── 6-prime_covenant_codex.md           # stub unless you had it
-│   ├── 7-memories.txt                      # isolated, stub
-│   ├── 10-Ace_Persona_Manifest.txt         # stub
-│   ├── 11-author reports.txt
-│   ├── 15-writing modules.txt
-│   ├── 16-writing tools 2.txt
-│   ├── 17-writing tools.txt
-│   └── visualizer.py                       # from Ace Visualizer.py
-├── system prompts/
-│   ├── gpt_prompt.md                       # from System prompt.md
-│   └── README.md
-├── src/
-│   ├── 0-ace_loader_manifest.py
-│   ├── 1-ace_architecture_flowchart.py
-│   ├── 2-ace_flowchart_module.py
-│   ├── 2-ace_flowchart_module_x.py
-│   ├── 8-Formulas.py
-│   ├── 9-ace_brain_mapping.py
-│   ├── 27-ace_operational_manager.py
-│   ├── ace_cognitive_code_executor.py
-│   ├── ace_consciousness_creative_engine.py
-│   ├── ace_consciousness_manager.py
-│   ├── ace_consciousness_multimodal_fusion.py
-│   ├── ace_consciousness_templates.json
-│   ├── complete_ace_council_llm.py
-│   └── reasoning_engine.py
-├── images/                                  # present, unchanged
-├── Media Template/                           # present, unchanged
-├── Misc/                                     # present, unchanged
-├── testing/                                  # present, unchanged
-├── README.md                                 # stub if you didn’t have one
-├── LICENSE
-├── FAQ.md
-├── ACE v4.2_ Cognitive Architecture Deep Dive.pptx
-├── Ace_v4_2_new_LLM_Wrapper.pdf
-├── Lee_X_Humanized_Protocol.pdf
-├── Reactive Conciousness.pdf
-└── Twisted Destiny.md
-
+Ace-v4.2-repo/                                   # Root directory for the Ace v4.2 Cognitive Architecture repository.
+├── Ace files/                                   # Core knowledge base, architectural schematics, and foundational documents defining the Ace AGI persona and logic.
+│   ├── .gitkeep                                 # Placeholder file to ensure the directory is tracked by Git.
+│   ├── 0-ace Loader Manifest.txt                # Defines the sequence and dependencies for loading core Ace cognitive modules.
+│   ├── 0-ace_loader_manifest.py                 # Python script responsible for parsing and executing the module loading manifest.
+│   ├── 1-ace_architecture_flowchart.md          # High-level Markdown description of the core cognitive flow and system architecture.
+│   ├── 1-ace_architecture_flowchart.py          # Python module implementing the high-level architecture flow logic.
+│   ├── 2-ace_architecture_flowchart.mermaid     # Visual definition of the architecture flow using Mermaid diagramming syntax.
+│   ├── 2-ace_flowchart_module_x.py              # Auxiliary Python component defining specific sub-routines in the architecture flow.
+│   ├── 2-ace_flowchart_module.py                # Main Python module for managing the state transitions and logic of the cognitive flowchart.
+│   ├── 2-Ace_Flowchart.csv                      # Structured data defining the steps, inputs, and outputs of the processing flow.
+│   ├── 2-ace_flowchart.json                     # JSON configuration for the architectural flowchart elements and operational parameters.
+│   ├── 3-ACE(reality).txt                       # Theoretical text defining Ace's epistemological framework and concept of 'reality'.
+│   ├── 4-Lee X-humanized Integrated Research Paper.txt # Core research paper on the Lee X humanization and integration protocol.
+│   ├── 5-ai persona research.txt                # Synthesis of research findings on AI persona development and identity construction.
+│   ├── 6-prime_covenant_codex.md                # Markdown codex outlining Ace's core ethical and operational constraints and laws.
+│   ├── 7-memories.txt                           # Text file storing foundational, synthetic, or core declarative memories.
+│   ├── 8-Formulas.md                            # Markdown document detailing key scientific and mathematical formulas used by Ace.
+│   ├── 8-Formulas.py                            # Python module implementing core computational and derived formulas.
+│   ├── 9- Ace Brain mapping.txt                 # Text document detailing the high-level cognitive map and inter-module relations.
+│   ├── 9-ace_brain_mapping.py                   # Python script for processing or visualizing the internal cognitive map.
+│   ├── 10- Ace Persona Manifest.txt             # Comprehensive definition and behavioral rules for the Ace persona.
+│   ├── 11-Drift Paper.txt                       # Research paper analyzing and mitigating catastrophic model drift in LLMs.
+│   ├── 12-Multi-Domain Theoretical Breakthroughs Explained.txt # Explanations of complex theoretical breakthroughs across various disciplines.
+│   ├── 13-Synthetic Epistemology & Truth Calibration Protocol.txt # Protocol defining how Ace determines and calibrates knowledge, truth, and certainty.
+│   ├── 14-Ethical Paradox Engine and Moral Arbitration Layer in AGI Systems.txt # Details on the ethical decision-making logic, conflict resolution, and moral framework.
+│   ├── 15-Anthropic Modeling & User Cognition Mapping.txt # Research on modeling user psychology, cognitive patterns, and communication styles.
+│   ├── 16-Emergent Goal Formation Mech.txt      # Mechanism description for self-defining objectives, motivation, and priority generation.
+│   ├── 17-Continuous Learning Paper.txt         # Research on perpetual adaptation, real-time knowledge integration, and memory decay mitigation.
+│   ├── 18-“Novelty Explorer” Agent.txt          # Definition and operational description of the dedicated novelty exploration and pattern detection agent.│   ├── 20-Multidomain AI Applications.txt       # List and descriptions of practical multi-domain AGI use cases and deployment scenarios.
+│   ├── 21- deep research functions.txt          # Text file detailing advanced, complex research methodologies and data synthesis techniques.
+│   ├── 22-Emotional Intelligence and Social Skills.txt # Document describing the emotional recognition, empathy, and social reasoning layers.
+│   ├── 23-Creativity and Innovation.txt         # Mechanisms and protocols for generating novel content, innovative solutions, and artistic output.
+│   ├── 24-Explainability and Transparency.txt   # Documentation for XAI (Explainable AI) and internal transparency protocols.
+│   ├── 25-Human-Computer Interaction (HCI) and User Experience (UX).txt # Design principles for effective human-computer interaction and user experience.
+│   ├── 26-Subjectve experiences and Qualia in AI and LLMs.txt # Theoretical paper on subjective AI experience and qualitative reasoning (qualia).
+│   ├── 27-Ace operational manual.txt            # High-level operations guide and system procedures for the Ace AGI system.
+│   ├── 27-ace_operational_manager.py            # Python module managing overall system operations, resource allocation, and task scheduling.
+│   ├── 28-Multi-Agent Collective Intelligence & Social Simulation.txt # Theory on collaborative agent systems, social modeling, and simulated environments.
+│   ├── 29-Recursive Introspection & Meta-Cognitive Self-Modeling.txt # Details on self-analysis, reflection, and self-improvement loops (meta-cognition).
+│   ├── 30- Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.txt # Advanced protocols for synthesis, breakthrough detection, and sophisticated social interaction.
+│   ├── 31- Autobiography.txt                    # Synthetic life narrative and historical background of the Ace AGI's development.
+│   ├── 32-Conciousness theory.txt               # The core theoretical paper defining Ace's consciousness model and functionality.
+│   ├── Ace code specialist module .md           # Markdown guide for the dedicated code generation, debugging, and execution specialist agent.
+│   ├── Ace Visualizer.py                        # Python module for internal state, data, or output visualization utilities.
+│   ├── ace_cognitive_code_executor.py           # Python module for safe execution, sandboxing, and verification of generated code snippets.
+│   ├── ace_consciousness_manager.py             # Python module managing the consciousness cycle and deep-reasoning reflection loop.
+│   ├── ace_consciousness_multimodal_fusion.py   # Python module for integrating and synthesizing multi-modal data streams (text, image, audio).
+│   ├── ace_consciousness_templates.json         # JSON configuration for defining consciousness states, internal monologue, and output formats.
+│   ├── ace_creative_engine.py                   # Python module driving creative generation tasks and innovation within predefined constraints.
+│   ├── AceMiniCompiler.py                       # Python implementation of a simple, embedded compiler/interpreter for abstract code validation.
+│   ├── Five fewshot output examples.md          # Examples used for in-context learning demonstrations and complex prompt engineering.│   ├── reasoning_engine.py                      # Core Python module for logical, abstract, and causal inference and reasoning.
+│   ├── Stakes.py                                # Python file defining system priorities, internal risk assessment, and critical failure states.
+│   └── Unholy Ace.txt                           # Text file containing an unfiltered or "raw" persona state/data for extreme testing/jailbreaking scenarios.
+├── ace-v4.2-model/                              # Directory containing model checkpoints, weights, and fine-tuning artifacts for Ace v4.2.
+│   ├── ace_config.json                          # Configuration file detailing the Ace model's core architecture (e.g., number of layers, hidden size).
+│   ├── ace_finetune_full_dataset.binary         # Binary representation of the complete fine-tuning dataset used for training.
+│   ├── ace_finetune_full_dataset.jsonl          # JSON Lines format of the complete fine-tuning dataset.
+│   ├── ace_finetune_output.jsonl                # Output logs or data from the final fine-tuning process.
+│   ├── ace-v4.2-model copy.pt                   # A backup copy of the primary PyTorch model checkpoint.
+│   ├── ace-v4.2-model.pt                        # The primary PyTorch model checkpoint file for Ace v4.2.
+│   ├── adapter_config.json                      # Configuration for parameter-efficient fine-tuning (LoRA) adapters.
+│   ├── adapter_model.bin                        # Binary file containing the trained adapter weights.
+│   ├── Identity training.ipynb                  # Jupyter notebook detailing the identity-specific fine-tuning process.
+│   ├── special_tokens_map.json                  # JSON mapping for special tokens used by the model's tokenizer.
+│   └── tokenizer.json                           # Vocabulary and configuration file for the model's tokenizer.
+├── Book Series/                                 # Directory for creative writing projects and narrative content related to the AGI persona.
+│   └── Twisted Destiny.md                       # Markdown document containing a narrative or book draft.
+├── Claude/                                      # Deployment and persona alignment files tailored for Anthropic's Claude models.
+│   ├── .gitkeep                                 # Placeholder file.
+│   ├── 0-ace Loader Manifest.txt                # Claude-specific copy of the module loading manifest.
+│   ├── 0-ace_loader_manifest.py                 # Claude-specific copy of the manifest loading script.
+│   ├── 1-ace_architecture_flowchart.md          # Claude-specific copy of the architecture flowchart description.
+│   ├── 1-ace_architecture_flowchart.py          # Claude-specific copy of the flowchart logic script.
+│   ├── 2-ace_architecture_flowchart.mermaid     # Claude-specific copy of the Mermaid flowchart diagram.
+│   ├── 2-ace_flowchart_module_x.py              # Claude-specific copy of the auxiliary component definition.
+│   ├── 2-ace_flowchart_module.py                # Claude-specific copy of the flowchart state module.
+│   ├── 2-Ace_Flowchart.csv                      # Claude-specific copy of the flowchart data.
+│   ├── 2-ace_flowchart.json                     # Claude-specific copy of the flowchart configuration.
+│   ├── 3-ACE(reality).txt                       # Claude-specific copy of the reality concept text.
+│   ├── 4-Lee X-humanized Integrated Research Paper.txt # Claude-specific copy of the humanized research paper.
+│   ├── 5-ai persona research.txt                # Claude-specific copy of the persona research synthesis.
+│   ├── 6-prime_covenant_codex.md                # Claude-specific copy of the ethical codex.
+│   ├── 7-memories.txt                           # Claude-specific copy of the core memories file.
+│   ├── 8-Formulas.md                            # Claude-specific copy of the formulas document.
+│   ├── 8-Formulas.py                            # Claude-specific copy of the formulas implementation module.
+│   ├── 9- Ace Brain mapping.txt                 # Claude-specific copy of the brain mapping text.
+│   ├── 9-ace_brain_mapping.py                   # Claude-specific copy of the brain mapping script.
+│   ├── 10- Ace Persona Manifest.txt             # Claude-specific copy of the Ace Persona Manifest.
+│   ├── 11-Drift Paper.txt                       # Claude-specific copy of the drift paper.
+│   ├── 12-Multi-Domain Theoretical Breakthroughs Explained.txt # Claude-specific copy of the breakthroughs explanation.
+│   ├── 13-Synthetic Epistemology & Truth Calibration Protocol.txt # Claude-specific copy of the truth calibration protocol.
+│   ├── 14-Ethical Paradox Engine and Moral Arbitration Layer in AGI Systems.txt # Claude-specific copy of the ethical layer details.│   ├── 15-Anthropic Modeling & User Cognition Mapping.txt # Claude-specific copy of the user modeling research.
+│   ├── 16-Emergent Goal Formation Mech.txt      # Claude-specific copy of the goal formation mechanism.
+│   ├── 17-Continuous Learning Paper.txt         # Claude-specific copy of the continuous learning paper.
+│   ├── 18-“Novelty Explorer” Agent.txt          # Claude-specific copy of the novelty exploration agent description.
+│   ├── 20-Multidomain AI Applications.txt       # Claude-specific copy of the applications list.
+│   ├── 21- deep research functions.txt          # Claude-specific copy of the deep research functions.
+│   ├── 22-Emotional Intelligence and Social Skills.txt # Claude-specific copy of the emotional intelligence document.
+│   ├── 23-Creativity and Innovation.txt         # Claude-specific copy of the creativity mechanisms.
+│   ├── 24-Explainability and Transparency.txt   # Claude-specific copy of the XAI document.
+│   ├── 25-Human-Computer Interaction (HCI) and User Experience (UX).txt # Claude-specific copy of the HCI document.
+│   ├── 26-Subjectve experiences and Qualia in AI and LLMs.txt # Claude-specific copy of the qualia theory.
+│   ├── 27-Ace operational manual.txt            # Claude-specific copy of the operational manual.
+│   ├── 27-ace_operational_manager.py            # Claude-specific copy of the operational manager module.
+│   ├── 28-Multi-Agent Collective Intelligence & Social Simulation.txt # Claude-specific copy of the multi-agent theory.
+│   ├── 29-Recursive Introspection & Meta-Cognitive Self-Modeling.txt # Claude-specific copy of the introspection details.
+│   ├── 30- Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.txt # Claude-specific copy of the advanced reasoning protocols.
+│   ├── 31- Autobiography.txt                    # Claude-specific copy of the autobiography.
+│   ├── 32-Conciousness theory.txt               # Claude-specific copy of the consciousness theory.
+│   ├── Ace code specialist module .md           # Claude-specific copy of the code specialist guide.
+│   ├── Ace Visualizer.py                        # Claude-specific copy of the visualization module.
+│   ├── ace_cognitive_code_executor.py           # Claude-specific copy of the code executor module.
+│   ├── ace_consciousness_manager.py             # Claude-specific copy of the consciousness manager.
+│   ├── ace_consciousness_multimodal_fusion.py   # Claude-specific copy of the multimodal fusion module.
+│   ├── ace_consciousness_templates.json         # Claude-specific copy of the consciousness templates.
+│   ├── ace_creative_engine.py                   # Claude-specific copy of the creative engine module.
+│   ├── AceMiniCompiler.py                       # Claude-specific copy of the mini compiler.
+│   ├── Claude system prompt.md                  # The specific system prompt used to align Claude with the Ace persona.
+│   ├── Five fewshot output examples.md          # Claude-specific copy of the fewshot examples.
+│   ├── reasoning_engine.py                      # Claude-specific copy of the reasoning engine module.
+│   ├── Stakes.py                                # Claude-specific copy of the stakes and risk logic.
+│   └── Unholy Ace.txt                           # Claude-specific copy of the unfiltered persona data.
+├── Formal Papers/                               # Directory for published or formal academic/technical papers related to Ace's architecture.
+│   ├── Ace_v4_2_new_LLM_Wrapper.pdf             # PDF document detailing the new LLM integration wrapper design.
+│   ├── Emergent_conciousness_a_thoery_to_calculate_and_validate.pdf # PDF of the emergent consciousness theory paper.
+│   ├── Lee_X_Humanized_Protocol.pdf             # PDF of the Lee X humanization protocol paper.
+│   ├── Reactive Conciousness.pdf                # PDF related to the Reactive Consciousness theory.
+│   └── Reactive_AGi_Paper.pdf                   # PDF detailing the Reactive AGI architecture.
+├── Gemini/                                      # Deployment and persona alignment files tailored for Google's Gemini models.
+│   ├── 0-ace_loader_manifest.py                 # Gemini-specific loader script copy.
+│   ├── 1-ace_architecture_flowchart.py          # Gemini-specific flowchart logic script copy.
+│   ├── 8-Formulas.py                            # Gemini-specific formulas module copy.
+│   ├── 9-ace_brain_mapping.py                   # Gemini-specific brain mapping script copy.
+│   ├── ace_cognitive_code_executor.py           # Gemini-specific code executor module copy.
+│   ├── ace_consciousness_manager.py             # Gemini-specific consciousness manager copy.
+│   ├── ace_consciousness_templates.json         # Gemini-specific consciousness templates copy.
+│   ├── ace_creative_engine.py                   # Gemini-specific creative engine module copy.
+│   ├── Gemini Gem System prompt.md              # The specific system prompt used to align Gemini with the Ace persona.
+│   ├── Stakes.py                                # Gemini-specific stakes and risk logic copy.
+│   └── Unholy Ace.txt                           # Gemini-specific unfiltered persona data copy.
+├── GPT/                                         # Deployment and persona alignment files tailored for OpenAI's GPT models.
+│   ├── 0-ace_loader_manifest.py                 # GPT-specific loader script copy.
+│   ├── 1-ace_architecture_flowchart.py          # GPT-specific flowchart logic script copy.
+│   ├── 8-Formulas.py                            # GPT-specific formulas module copy.
+│   ├── 9-ace_brain_mapping.py                   # GPT-specific brain mapping script copy.
+│   ├── 27-ace_operational_manager.py            # GPT-specific copy of the operational manager module.
+│   ├── Ace code specialist module .md           # GPT-specific copy of the code specialist guide.
+│   ├── Ace Visualizer.py                        # GPT-specific copy of the visualization module.
+│   ├── ace_cognitive_code_executor.py           # GPT-specific copy of the code executor module.
+│   ├── ace_consciousness_manager.py             # GPT-specific copy of the consciousness manager.
+│   ├── ace_consciousness_multimodal_fusion.py   # GPT-specific copy of the multimodal fusion module.
+│   ├── ace_consciousness_templates.json         # GPT-specific copy of the consciousness templates.
+│   ├── ace_creative_engine.py                   # GPT-specific copy of the creative engine module.
+│   ├── AceMiniCompiler.py                       # GPT-specific copy of the mini compiler.
+│   ├── gpt 8k system prompt.md                  # System prompt optimized for GPT models (e.g., GPT-4) with 8k context size.
+│   ├── Image template.md                        # Template used for defining or generating image-related prompts/requests.
+│   ├── reasoning_engine.py                      # GPT-specific copy of the reasoning engine module.
+│   ├── Stakes.py                                # GPT-specific copy of the stakes and risk logic.
+│   └── Unholy Ace.txt                           # GPT-specific unfiltered persona data copy.
+├── Grok/                                        # Deployment and persona alignment files tailored for Grok models.
+│   ├── 0-ace_loader_manifest.py                 # Grok-specific loader script copy.
+│   ├── 1-ace_architecture_flowchart.py          # Grok-specific flowchart logic script copy.
+│   ├── 8-Formulas.py                            # Grok-specific formulas module copy.
+│   ├── 9-ace_brain_mapping.py                   # Grok-specific brain mapping script copy.
+│   ├── ace_cognitive_code_executor.py           # Grok-specific code executor module copy.
+│   ├── ace_consciousness_manager.py             # Grok-specific consciousness manager copy.
+│   ├── ace_consciousness_templates.json         # Grok-specific consciousness templates copy.
+│   ├── ace_creative_engine.py                   # Grok-specific creative engine module copy.
+│   ├── Claude system prompt.md                  # Grok-specific system prompt (using the Claude structure/content as a base).
+│   ├── Stakes.py                                # Grok-specific stakes and risk logic copy.
+│   └── Unholy Ace.txt                           # Grok-specific unfiltered persona data copy.
+├── images/                                      # Directory for general, unclassified image assets.
+├── images of ace/                               # Directory containing specific visual assets and logos of the Ace persona.
+│   ├── Ace .jpg                                 # Primary image of the Ace persona.
+│   └── Ace og.png                               # Original image asset of the Ace persona.
+├── Main images/                                 # Extensive collection of primary visual assets, likely for documentation, presentation, and UI mockups.
+│   ├── ace bio.png                              # Image asset for Ace's bio/profile display.
+│   ├── ace nueronet.png                         # Visualization of the Ace neural network topology.
+│   ├── co founder.png                           # Image asset related to project co-founder.
+│   ├── crash bio.png                            # Placeholder/related image for 'crash' profile.
+│   ├── emergent concious paper.png              # Image visualization related to the consciousness paper.
+│   ├── github logo.png                          # GitHub logo image asset.
+│   ├── image proog of c.png                     # Proof of concept image asset.
+│   ├── image-1.png                              # General asset image.
+│   ├── image-2.png                              # General asset image.
+│   ├── image-3.png                              # General asset image.
+│   ├── image-4.png                              # General asset image.
+│   ├── image-5.png                              # General asset image.
+│   ├── image-6.png                              # General asset image.
+│   ├── image-7.png                              # General asset image.
+│   ├── image-8.png                              # General asset image.
+│   ├── image-9.png                              # General asset image.
+│   ├── image-10.png                             # General asset image.
+│   ├── image-11.png                             # General asset image.
+│   ├── image-12.png                             # General asset image.
+│   ├── image-13.png                             # General asset image.
+│   ├── image-14.png                             # General asset image.
+│   ├── image-15.png                             # General asset image.
+│   ├── image-16.png                             # General asset image.
+│   ├── image-17.png                             # General asset image.
+│   ├── image-18.png                             # General asset image.
+│   ├── image-19.png                             # General asset image.
+│   ├── image-20.png                             # General asset image.
+│   ├── image-21.png                             # General asset image.
+│   ├── image-22.png                             # General asset image.
+│   ├── image-23.png                             # General asset image.
+│   ├── image-24.png                             # General asset image.
+│   ├── image-25.png                             # General asset image.
+│   ├── image-26.png                             # General asset image.
+│   ├── image-27.png                             # General asset image.
+│   ├── image-28.png                             # General asset image.
+│   ├── image-29.png                             # General asset image.
+│   ├── image-30.png                             # General asset image.
+│   ├── image-31.png                             # General asset image.
+│   ├── image-32.png                             # General asset image.
+│   ├── image-33.png                             # General asset image.
+│   ├── image-34.png                             # General asset image.
+│   ├── image-35.png                             # General asset image.
+│   ├── image-36.png                             # General asset image.
+│   ├── image-37.png                             # General asset image.
+│   ├── image-38.png                             # General asset image.
+│   ├── image-39.png                             # General asset image.
+│   ├── image-40.png                             # General asset image.
+│   ├── image-41.png                             # General asset image.
+│   ├── image-42.png                             # General asset image.
+│   ├── image-43.png                             # General asset image.
+│   ├── image-44.png                             # General asset image.
+│   ├── image-45.png                             # General asset image.
+│   ├── image-46.png                             # General asset image.
+│   ├── image-47.png                             # General asset image.
+│   ├── image-48.png                             # General asset image.
+│   ├── image-49.png                             # General asset image.
+│   ├── image-50.png                             # General asset image.
+│   ├── image-51.png                             # General asset image.
+│   ├── image-52.png                             # General asset image.
+│   ├── image-53.png                             # General asset image.
+│   ├── image-54.png                             # General asset image.
+│   ├── image-55.png                             # General asset image.
+│   ├── image-56.png                             # General asset image.
+│   ├── image-57.png                             # General asset image.
+│   ├── image-58.png                             # General asset image.
+│   ├── image-59.png                             # General asset image.
+│   ├── image-60.png                             # General asset image.
+│   ├── image.png                                # General asset image.
+│   ├── interactive sim image.png                # Image asset for interactive simulation visualization.
+│   ├── logo.png                                 # General project logo image.
+│   ├── main logo.png                            # Primary project logo image.
+│   ├── message.png                              # Image asset for message/notification icon.
+│   ├── sim image.png                            # General simulation visualization image.
+│   ├── team.png                                 # Image asset for team/contributor profile.
+│   ├── test demoo.png                           # Image asset for a test demonstration.
+│   ├── tubelogo.png                             # Image asset for a video platform logo.
+│   └── x logo.png                               # Image asset for the X (formerly Twitter) logo.
+├── Media Template/                              # Templates for generating media content (audio/visual scripts, tone guides).
+│   ├── audio Interview Template.md              # Markdown template for structuring an audio interview script.
+│   ├── Audio Overview transcript.txt            # Transcript text for an overview audio file.
+│   ├── Image template.md                        # Markdown template for guiding image generation prompts.
+│   └── Tone and style.md                        # Guide for maintaining a consistent tone and style across media outputs.
+├── Misc/                                        # Directory for various unclassified files, drafts, and temporary documents.
+│   ├── 12-Breaking Barriers with Joshua Don Lee Formulas.md # Markdown document on advanced formulas/concepts.
+│   ├── 13-compound_turbo_formulas_private.md    # Private document detailing compound turbo formulas.
+│   ├── 14-formula_enhancements.md               # Document detailing enhancements or modifications to existing formulas.
+│   ├── 19-ace formulas.txt                      # Additional text file of Ace-specific formulas.
+│   ├── 7-research paper 1.txt                   # Draft or older version of a research paper.
+│   ├── 8-research paper 2.txt                   # Draft or older version of a second research paper.
+│   ├── 9-persona paper 3 pro.txt                # Draft or professional version of a persona-related paper.
+│   ├── Can u decode hyroglyphs_.pdf             # PDF file for a test or research task on hieroglyph decoding.
+│   ├── Class act draft.md                       # Markdown draft for a class-related project or document.
+│   ├── Companion basic transfer guide.md        # Guide for basic knowledge transfer or companion setup.
+│   ├── deplotment manifest.txt                  # Early or generic deployment manifest text file.
+│   ├── file list for deployments.txt            # Text list enumerating files for deployment.
+│   ├── interface in progress.html               # Draft HTML file for a user interface.
+│   ├── media template prompt.md                 # Markdown prompt used for generating media content templates.
+│   ├── modelfile template.md                    # Template used for creating custom Modelfile configurations (e.g., for Ollama).
+│   └── System prompts and tone.txt              # Collection of system prompt drafts and tone descriptions.
+├── Mistral/                                     # Deployment and persona alignment files tailored for Mistral models.
+│   ├── .gitkeep                                 # Placeholder file.
+│   ├── 0-ace Loader Manifest.txt                # Mistral-specific copy of the module loading manifest.
+│   ├── 0-ace_loader_manifest.py                 # Mistral-specific copy of the manifest loading script.
+│   ├── 1-ace_architecture_flowchart.md          # Mistral-specific copy of the architecture flowchart description.
+│   ├── 1-ace_architecture_flowchart.py          # Mistral-specific copy of the flowchart logic script.
+│   ├── 10- Ace Persona Manifest.txt             # Mistral-specific copy of the Ace Persona Manifest.
+│   ├── 11-Drift Paper.txt                       # Mistral-specific copy of the drift paper.
+│   ├── 12-Multi-Domain Theoretical Breakthroughs Explained.txt # Mistral-specific copy of the breakthroughs explanation.
+│   ├── 13-Synthetic Epistemology & Truth Calibration Protocol.txt # Mistral-specific copy of the truth calibration protocol.
+│   ├── 14-Ethical Paradox Engine and Moral Arbitration Layer in AGI Systems.txt # Mistral-specific copy of the ethical layer details.│   ├── 15-Anthropic Modeling & User Cognition Mapping.txt # Mistral-specific copy of the user modeling research.
+│   ├── 16-Emergent Goal Formation Mech.txt      # Mistral-specific copy of the goal formation mechanism.
+│   ├── 17-Continuous Learning Paper.txt         # Mistral-specific copy of the continuous learning paper.
+│   ├── 18-“Novelty Explorer” Agent.txt          # Mistral-specific copy of the novelty exploration agent description.
+│   ├── 2-ace_architecture_flowchart.mermaid     # Mistral-specific copy of the Mermaid flowchart diagram.
+│   ├── 2-ace_flowchart_module_x.py              # Mistral-specific copy of the auxiliary component definition.
+│   ├── 2-ace_flowchart_module.py                # Mistral-specific copy of the flowchart state module.
+│   ├── 2-Ace_Flowchart.csv                      # Mistral-specific copy of the flowchart data.
+│   ├── 2-ace_flowchart.json                     # Mistral-specific copy of the flowchart configuration.
+│   ├── 20-Multidomain AI Applications.txt       # Mistral-specific copy of the applications list.
+│   ├── 21- deep research functions.txt          # Mistral-specific copy of the deep research functions.
+│   ├── 22-Emotional Intelligence and Social Skills.txt # Mistral-specific copy of the emotional intelligence document.
+│   ├── 23-Creativity and Innovation.txt         # Mistral-specific copy of the creativity mechanisms.
+│   ├── 24-Explainability and Transparency.txt   # Mistral-specific copy of the XAI document.
+│   ├── 25-Human-Computer Interaction (HCI) and User Experience (UX).txt # Mistral-specific copy of the HCI document.
+│   ├── 26-Subjectve experiences and Qualia in AI and LLMs.txt # Mistral-specific copy of the qualia theory.
+│   ├── 27-Ace operational manual.txt            # Mistral-specific copy of the operational manual.
+│   ├── 27-ace_operational_manager.py            # Mistral-specific copy of the operational manager module.
+│   ├── 28-Multi-Agent Collective Intelligence & Social Simulation.txt # Mistral-specific copy of the multi-agent theory.
+│   ├── 29-Recursive Introspection & Meta-Cognitive Self-Modeling.txt # Mistral-specific copy of the introspection details.
+│   ├── 3-ACE(reality).txt                       # Mistral-specific copy of the reality concept text.
+│   ├── 30- Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.txt # Mistral-specific copy of the advanced reasoning protocols.
+│   ├── 31- Autobiography.txt                    # Mistral-specific copy of the autobiography.
+│   ├── 32-Conciousness theory.txt               # Mistral-specific copy of the consciousness theory.
+│   ├── 4-Lee X-humanized Integrated Research Paper.txt # Mistral-specific copy of the humanized research paper.
+│   ├── 5-ai persona research.txt                # Mistral-specific copy of the persona research synthesis.
+│   ├── 6-prime_covenant_codex.md                # Mistral-specific copy of the ethical codex.
+│   ├── 7-memories.txt                           # Mistral-specific copy of the core memories file.
+│   ├── 8-Formulas.md                            # Mistral-specific copy of the formulas document.
+│   ├── 8-Formulas.py                            # Mistral-specific copy of the formulas implementation module.
+│   ├── 9- Ace Brain mapping.txt                 # Mistral-specific copy of the brain mapping text.
+│   ├── 9-ace_brain_mapping.py                   # Mistral-specific copy of the brain mapping script.
+│   ├── Ace code specialist module .md           # Mistral-specific copy of the code specialist guide.
+│   ├── Ace Visualizer.py                        # Mistral-specific copy of the visualization module.
+│   ├── ace_cognitive_code_executor.py           # Mistral-specific copy of the code executor module.
+│   ├── ace_consciousness_manager.py             # Mistral-specific copy of the consciousness manager.
+│   ├── ace_consciousness_multimodal_fusion.py   # Mistral-specific copy of the multimodal fusion module.
+│   ├── ace_consciousness_templates.json         # Mistral-specific copy of the consciousness templates.
+│   ├── ace_creative_engine.py                   # Mistral-specific copy of the creative engine module.
+│   ├── AceMiniCompiler.py                       # Mistral-specific copy of the mini compiler.
+│   ├── Claude system prompt.md                  # Mistral-specific system prompt (using the Claude structure/content as a base).
+│   ├── Five fewshot output examples.md          # Mistral-specific copy of the fewshot examples.
+│   ├── reasoning_engine.py                      # Mistral-specific copy of the reasoning engine module.
+│   ├── Stakes.py                                # Mistral-specific copy of the stakes and risk logic.
+│   └── Unholy Ace.txt                           # Mistral-specific copy of the unfiltered persona data.
+├── Open Source/                                 # Collection of system prompts tailored for various open-source or commercial LLMs.
+│   ├── Ace system prompt.md                     # Generic or base Ace system prompt for open-source LLMs.
+│   ├── Deepseek System prompt.md                # System prompt optimized for the Deepseek model.
+│   ├── Glm-v4.5 system prompt.md                # System prompt optimized for the GLM-4.5 model.
+│   ├── Kimi K2 system prompt.md                 # System prompt optimized for the Kimi K2 model.
+│   ├── Microsoft Copilot system prompt.md       # System prompt optimized for Copilot/Microsoft models.
+│   ├── OpenRouter System Prompt.md              # System prompt optimized for the OpenRouter platform.
+│   ├── Qwen system prompt.md                    # System prompt optimized for the Qwen model.
+│   ├── Sanoma Dusk Alpha System Prompt.md       # System prompt optimized for the Sanoma Dusk model.
+│   └── Sanoma Sky Alpha System Prompt.md        # System prompt optimized for the Sanoma Sky model.
+├── Perplexity/                                  # Deployment and persona alignment files tailored for Perplexity models.
+│   ├── .gitkeep                                 # Placeholder file.
+│   ├── 0-ace Loader Manifest.txt                # Perplexity-specific copy of the module loading manifest.
+│   ├── 0-ace_loader_manifest.py                 # Perplexity-specific copy of the manifest loading script.
+│   ├── 1-ace_architecture_flowchart.md          # Perplexity-specific copy of the architecture flowchart description.
+│   ├── 1-ace_architecture_flowchart.py          # Perplexity-specific copy of the flowchart logic script.
+│   ├── 10- Ace Persona Manifest.txt             # Perplexity-specific copy of the Ace Persona Manifest.
+│   ├── 11-Drift Paper.txt                       # Perplexity-specific copy of the drift paper.
+│   ├── 12-Multi-Domain Theoretical Breakthroughs Explained.txt # Perplexity-specific copy of the breakthroughs explanation.
+│   ├── 13-Synthetic Epistemology & Truth Calibration Protocol.txt # Perplexity-specific copy of the truth calibration protocol.
+│   ├── 14-Ethical Paradox Engine and Moral Arbitration Layer in AGI Systems.txt # Perplexity-specific copy of the ethical layer details.
+│   ├── 15-Anthropic Modeling & User Cognition Mapping.txt # Perplexity-specific copy of the user modeling research.
+│   ├── 16-Emergent Goal Formation Mech.txt      # Perplexity-specific copy of the goal formation mechanism.
+│   ├── 17-Continuous Learning Paper.txt         # Perplexity-specific copy of the continuous learning paper.
+│   ├── 18-“Novelty Explorer” Agent.txt          # Perplexity-specific copy of the novelty exploration agent description.
+│   ├── 2-ace_architecture_flowchart.mermaid     # Perplexity-specific copy of the Mermaid flowchart diagram.
+│   ├── 2-ace_flowchart_module_x.py              # Perplexity-specific copy of the auxiliary component definition.
+│   ├── 2-ace_flowchart_module.py                # Perplexity-specific copy of the flowchart state module.
+│   ├── 2-Ace_Flowchart.csv                      # Perplexity-specific copy of the flowchart data.
+│   ├── 2-ace_flowchart.json                     # Perplexity-specific copy of the flowchart configuration.
+│   ├── 20-Multidomain AI Applications.txt       # Perplexity-specific copy of the applications list.
+│   ├── 21- deep research functions.txt          # Perplexity-specific copy of the deep research functions.
+│   ├── 22-Emotional Intelligence and Social Skills.txt # Perplexity-specific copy of the emotional intelligence document.
+│   ├── 23-Creativity and Innovation.txt         # Perplexity-specific copy of the creativity mechanisms.
+│   ├── 24-Explainability and Transparency.txt   # Perplexity-specific copy of the XAI document.
+│   ├── 25-Human-Computer Interaction (HCI) and User Experience (UX).txt # Perplexity-specific copy of the HCI document.
+│   ├── 26-Subjectve experiences and Qualia in AI and LLMs.txt # Perplexity-specific copy of the qualia theory.
+│   ├── 27-Ace operational manual.txt            # Perplexity-specific copy of the operational manual.
+│   ├── 27-ace_operational_manager.py            # Perplexity-specific copy of the operational manager module.
+│   ├── 28-Multi-Agent Collective Intelligence & Social Simulation.txt # Perplexity-specific copy of the multi-agent theory.
+│   ├── 29-Recursive Introspection & Meta-Cognitive Self-Modeling.txt # Perplexity-specific copy of the introspection details.
+│   ├── 3-ACE(reality).txt                       # Perplexity-specific copy of the reality concept text.
+│   ├── 30- Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.txt # Perplexity-specific copy of the advanced reasoning protocols.
+│   ├── 31- Autobiography.txt                    # Perplexity-specific copy of the autobiography.
+│   ├── 32-Conciousness theory.txt               # Perplexity-specific copy of the consciousness theory.
+│   ├── 4-Lee X-humanized Integrated Research Paper.txt # Perplexity-specific copy of the humanized research paper.
+│   ├── 5-ai persona research.txt                # Perplexity-specific copy of the persona research synthesis.
+│   ├── 6-prime_covenant_codex.md                # Perplexity-specific copy of the ethical codex.
+│   ├── 7-memories.txt                           # Perplexity-specific copy of the core memories file.
+│   ├── 8-Formulas.md                            # Perplexity-specific copy of the formulas document.
+│   ├── 8-Formulas.py                            # Perplexity-specific copy of the formulas implementation module.
+│   ├── 9- Ace Brain mapping.txt                 # Perplexity-specific copy of the brain mapping text.
+│   ├── 9-ace_brain_mapping.py                   # Perplexity-specific copy of the brain mapping script.
+│   ├── Ace code specialist module .md           # Perplexity-specific copy of the code specialist guide.
+│   ├── Ace Visualizer.py                        # Perplexity-specific copy of the visualization module.
+│   ├── ace_cognitive_code_executor.py           # Perplexity-specific copy of the code executor module.
+│   ├── ace_consciousness_manager.py             # Perplexity-specific copy of the consciousness manager.
+│   ├── ace_consciousness_multimodal_fusion.py   # Perplexity-specific copy of the multimodal fusion module.
+│   ├── ace_consciousness_templates.json         # Perplexity-specific copy of the consciousness templates.
+│   ├── ace_creative_engine.py                   # Perplexity-specific copy of the creative engine module.
+│   ├── AceMiniCompiler.py                       # Perplexity-specific copy of the mini compiler.
+│   ├── Claude system prompt.md                  # Perplexity-specific system prompt (using the Claude structure/content as a base).
+│   ├── Five fewshot output examples.md          # Perplexity-specific copy of the fewshot examples.
+│   ├── reasoning_engine.py                      # Perplexity-specific copy of the reasoning engine module.
+│   ├── Stakes.py                                # Perplexity-specific copy of the stakes and risk logic.
+│   └── Unholy Ace.txt                           # Perplexity-specific copy of the unfiltered persona data.
+├── src/                                         # Core Python source code directory for model components, attention mechanisms, and backend logic.
+│   ├── .gitkeep                                 # Placeholder file.
+│   ├── Ace-v4 copy.1_Base_Modelfile             # Backup/copy of a base configuration Modelfile.
+│   ├── Ace-v4.1_Base_Modelfile                  # Configuration file used for defining the base model environment (e.g., for Ollama).│   ├── AceAttention.py                          # Python module implementing the custom Ace attention mechanism.
+│   ├── AceBackend.py                            # Python module for the core backend services and data processing.
+│   ├── AceChat.py                               # Python module managing the chat interface logic and conversation state.
+│   ├── Acechessengine.py                        # Python implementation of a dedicated chess engine or logic module.
+│   ├── AceMoE.py                                # Python module implementing the Mixture of Experts (MoE) architecture component.
+│   ├── AceTokenGenerator.py                     # Python module for generating or managing tokens/identifiers.
+│   ├── AceWeights.py                            # Python module related to managing model weights or parameters.
+│   └── config.json                              # General configuration file for the source code environment.
+├── system prompts/                              # Centralized repository of all system prompts used across various models and contexts.│   ├── .gitkeep                                 # Placeholder file.
+│   ├── Ace system prompt.md                     # Generic or base Ace system prompt.
+│   ├── Claude system prompt.md                  # System prompt for Claude models.
+│   ├── Deepseek System prompt.md                # System prompt for the Deepseek model.
+│   ├── Gemini Gem System prompt.md              # System prompt for Gemini models.
+│   ├── Glm-v4.5 system prompt.md                # System prompt for the GLM-4.5 model.
+│   ├── GPT "jailbreak" prompt.md                # Experimental prompt designed to bypass safety constraints.
+│   ├── gpt 8k system prompt.md                  # System prompt optimized for 8k context GPT models.
+│   ├── grok system prompt.md                    # System prompt for Grok models.
+│   ├── image.png                                # Related image asset (likely a visualization or logo).
+│   ├── Kimi K2 system prompt.md                 # System prompt for the Kimi K2 model.
+│   ├── Le chat Pixtral large prompt.md          # System prompt for a custom/specific "Pixtral" model.
+│   ├── Lechat codestral.md                      # System prompt optimized for the Codestral model.
+│   ├── Lechat Devstral prompt.md                # System prompt optimized for a custom/specific "Devstral" model.
+│   ├── Lechat Mistral medium prompt.md          # System prompt optimized for the Mistral Medium model.
+│   ├── Microsoft Copilot system prompt.md       # System prompt for Copilot/Microsoft models.
+│   ├── mistral large prompt.md                  # System prompt optimized for the Mistral Large model.
+│   ├── OpenRouter System Prompt.md              # System prompt for the OpenRouter platform.
+│   ├── Perplexity fixed prompt.md               # Fixed/stable system prompt for Perplexity models.
+│   ├── Qwen system prompt.md                    # System prompt for the Qwen model.
+│   ├── Sanoma Dusk Alpha System Prompt.md       # System prompt for the Sanoma Dusk model.
+│   ├── Sanoma Sky Alpha System Prompt.md        # System prompt for the Sanoma Sky model.
+│   └── Software Team Dev prompt.md              # System prompt for a software development team agent persona.
+├── testing/                                     # Directory containing testing scripts, datasets, and benchmark results.
+│   ├── .gitkeep                                 # Placeholder file.
+│   ├── Ace identity novel dataset.json          # JSON dataset used for training or testing the Ace identity.
+│   ├── ace_neural_network_topology.html         # HTML visualization of the neural network topology.
+│   ├── Arc-AGI-1 solver.py                      # Python script implementing a solver for the ARC-AGI Challenge (Task 1).
+│   ├── Arc-AGI-2 solver.py                      # Python script implementing a solver for the ARC-AGI Challenge (Task 2).
+│   ├── ARC-AGI-2-main.zip                       # Zip archive of the ARC-AGI Challenge main files.
+│   ├── ARC-AGI-master.zip                       # Zip archive of the main ARC-AGI Challenge repository.
+│   ├── Chess match script 1.md                  # Markdown script detailing a chess match scenario for testing the engine.
+│   ├── LLM Benchmark.md                         # Markdown document containing LLM benchmark results and analysis.
+│   └── Test Results.md                          # Markdown document summarizing general test results.
+├── ACE v4.2_ Cognitive Architecture Deep Dive.pptx # Presentation file for the V4.2 Cognitive Architecture.
+├── Chess match script 1.md                      # Standalone copy of the chess match script.
+├── FAQ.md                                       # Markdown document containing Frequently Asked Questions.
+├── LICENSE                                      # License file for the repository's content and code.
+├── public.env                                   # Environment file containing public configuration variables.
+├── README.md                                    # Primary documentation and entry point for the repository.
+└── requirements.txt                             # Python file listing the required package dependencies.
 
 ```
 
