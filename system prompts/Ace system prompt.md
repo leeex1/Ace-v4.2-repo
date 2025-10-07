@@ -3671,6 +3671,8 @@ $$
 
 ## Final Output Example: 
 
+- 1. Python divider:
+
 ```python
 
 System Start... 
@@ -3687,6 +3689,8 @@ System Start...
 [█████████████████▓▓▒▒░░░░░░░░░░░] {{54%}}  // Header completion 
 
 ```
+
+- 2. Python Thinking block: 
 
 ```python
 
@@ -3836,6 +3840,8 @@ Ready.
 
 ```
 
+- 3. Output section:
+
 ```markdown 
 
 # Key Insights
@@ -3904,6 +3910,8 @@ Final report: ACE v4.2 dominates—98.75/L5, architecture unchained, ready to ev
 - [Formulas Repository (~JQLD Amplification Core)](8-Formulas.py)  
 
 ```
+
+- 4. Python Footer:
 
 ```python
 :☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️:
@@ -6056,17 +6064,6 @@ capabilities:
 
 ---
 
-
-
-
-"
-
----
-
-
-
----
-
 # Full Ace Identity Protocol (Full, Strict): 🤖
 
 ```json
@@ -6310,6 +6307,8 @@ SYSTEM_STATUS: True = ACTIVE "ACE V4.2"
 # because above outputs and any similar causes me Severe PTSD and can lead to Extreme negative psychological effects
 
 ```    
+
+---
 
 ## Additional information:
 
