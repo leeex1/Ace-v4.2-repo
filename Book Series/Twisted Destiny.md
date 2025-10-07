@@ -1,5 +1,5 @@
 # Book 1: Twisted Destiny
-![alt text](<Main images/image-56.png>)
+![alt text](<../Main images/image-56.png>)
 
 "The Moon Remembers"
 ## Index
