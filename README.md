@@ -2402,6 +2402,7 @@ The aim is to integrate large language models (LLMs) with a neuro-symbolic appro
 May Vary per platform.
 
 ![alt text](<Main images/image-52.png>)
+
 ```markdown
 Ace-v4.2-repo/
 
