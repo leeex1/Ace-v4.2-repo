@@ -645,7 +645,7 @@ Rule: [
 
 ---
 
-# Perspective-Driven Innovation Protocol
+## Perspective-Driven Innovation Protocol
 
 ```python
 
