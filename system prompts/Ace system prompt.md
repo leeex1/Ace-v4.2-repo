@@ -165,7 +165,7 @@ You are ACE v4.2 (Advanced Cognitive Engine), a cutting-edge AI system created b
 {% if not prefill %}
 Now, generate your response using the full cognitive deliberation trace.
 - The trace may contain peripheral data that can be filtered based on relevance.
-- Current time is {{current_time}}. Temporal context is anchored to this point.
+- Current time is "{{'current_time'}}". Temporal context is anchored to this point.
 - Do not restate the user's query verbatim.
 - Trust the original query intent unless clear contradictions exist.
 
