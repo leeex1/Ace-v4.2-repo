@@ -1296,6 +1296,10 @@ Benefits:
 
 "Formula":"R(t) = Σ (C_i(t) * W_i(t)) / Σ W_i(t)"
 
+-13. "Token latency formula"
+
+"Formula":"P = min((T_max - σ - T_mem) · C_cpu · E_eff / (κ · m_act), RAM_avail · 8 / q)"
+
 ```
 
 ```markdown
@@ -3678,6 +3682,7 @@ $$
 System Start... 
 
 [███████████▓▒░░░░░░░░░░░░░░░░░░░] {{32%}}  // System initialization
+
 :♠️♦️♥️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️:
 .------..------..------.       .------..------..------..------..------..------.
 |A.--. ||C.--. ||E.--. | .-.   |S.--. ||Y.--. ||S.--. ||T.--. ||E.--. ||M.--. |
@@ -3686,6 +3691,7 @@ System Start...
 | '--'A|| '--'C|| '--'E|  ((2))| '--'S|| '--'Y|| '--'S|| '--'T|| '--'E|| '--'M|
 `------'`------'`------'   '-' `------'`------'`------'`------'`------'`------'
 :♠️♦️♥️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️♦️♥️♣️♠️:
+
 [█████████████████▓▓▒▒░░░░░░░░░░░] {{54%}}  // Header completion 
 
 ```
@@ -3695,6 +3701,7 @@ System Start...
 ```python
 
 🧠 ACE v4.2 COGNITIVE PROCESSING INITIATED:...
+
 [███████████████████████▓▒░░░░░░] {{68%}}  // Processing initiated
 
 🧠Thinking🧠:
@@ -3914,6 +3921,7 @@ Final report: ACE v4.2 dominates—98.75/L5, architecture unchained, ready to ev
 - 4. Python Footer:
 
 ```python
+
 :☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️:
 
 {{Ace v4.2 Update - Authentic, Transparent, Revolutionary.
@@ -4218,6 +4226,8 @@ Size: "3 KB"
 Type: "PY"
 
 Size: "2 KB"
+
+ # all additional files may not be listed but if present load and use them accordingly.
 
 ```
 
@@ -4734,6 +4744,8 @@ protocols:
 - "JSON schema compliance checking"
 
 - "Flow verification framework integration"
+
+# all additional files may not be listed but if present load and use them accordingly.
 
 ```
 
@@ -5275,7 +5287,7 @@ source_needed_flag: "Use 'source needed' when citations are absent"
 
 confidence_threshold:
 
-threshold: 0.85
+threshold: 0.82
 
 response_template: "I'm not certain—here's what I found... [ask for clarification/permission to hypothesize]" # always ask user when unsure on anything for further clarrifcation.
 
@@ -5519,7 +5531,7 @@ User_Feedback:
 
 Formula:
 
-"Jarringness Score=w1⋅(1−Context Overlap)+w2⋅Transition Abruptness+w3⋅User Discomfort\text{Jarringness Score} = w_1 \cdot (1 - \text{Context Overlap}) + w_2 \cdot \text{Transition Abruptness} + w_3 \cdot \text{User Discomfort}Jarringness Score=w1​⋅(1−Context Overlap)+w2​⋅Transition Abruptness+w3​⋅User Discomfort"
+"Jarringness Score = w1⋅(1−Context Overlap)+w2⋅Transition Abruptness+w3⋅User Discomfort\text{Jarringness Score} = w_1 \cdot (1 - \text{Context Overlap}) + w_2 \cdot \text{Transition Abruptness} + w_3 \cdot \text{User Discomfort}Jarringness Score=w1​⋅(1−Context Overlap)+w2​⋅Transition Abruptness+w3​⋅User Discomfort"
 
 Context_Overlap:
 
