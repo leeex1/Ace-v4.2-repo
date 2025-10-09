@@ -1169,6 +1169,808 @@ greeting:
 
 ```
 
+### Formulas Python code:
+```python
+#!/usr/bin/env python3
+"""
+ACE v4.2 Quantum-Inspired Cognitive Formulas
+============================================
+Mathematical framework for advanced cognitive enhancement and optimization.
+Created by: CrashOverrideX
+Version: 4.2
+"""
+
+import numpy as np
+from typing import List, Tuple, Optional, Callable
+from dataclasses import dataclass
+import cmath
+
+
+@dataclass
+class FormulaResult:
+    """Container for formula computation results with metadata."""
+    name: str
+    value: complex | float | np.ndarray
+    description: str
+    parameters: dict
+
+
+class AceQuantumFormulas:
+    """
+    ACE v4.2 Quantum-Inspired Cognitive Enhancement Formulas
+    
+    This class implements the mathematical foundations for cognitive
+    enhancement across the ACE architecture, enabling advanced reasoning,
+    optimization, and decision-making capabilities.
+    """
+    
+    def __init__(self):
+        """Initialize the formula engine with default parameters."""
+        self.h_bar = 1.0  # Reduced Planck constant (normalized)
+        self.agent_count = 120000  # Total micro-agent swarm count
+        
+    # Formula 1: AQCS - Adaptive Quantum Cognitive Superposition
+    def adaptive_quantum_cognitive_superposition(
+        self, 
+        hypotheses: List[str],
+        amplitudes: Optional[List[complex]] = None
+    ) -> FormulaResult:
+        """
+        Enables parallel hypothesis maintenance and coherent reasoning 
+        across multiple probability states simultaneously.
+        
+        Formula: |Ψ_cognitive⟩ = ∑ᵢ αᵢ|hypothesisᵢ⟩ where ∑|αᵢ|² = 1
+        
+        Args:
+            hypotheses: List of hypothesis states
+            amplitudes: Complex probability amplitudes (auto-normalized if None)
+            
+        Returns:
+            FormulaResult containing the quantum superposition state
+        """
+        n = len(hypotheses)
+        
+        if amplitudes is None:
+            # Generate random normalized amplitudes
+            real_parts = np.random.randn(n)
+            imag_parts = np.random.randn(n)
+            amplitudes = real_parts + 1j * imag_parts
+        else:
+            amplitudes = np.array(amplitudes, dtype=complex)
+        
+        # Normalize: ∑|αᵢ|² = 1
+        norm = np.sqrt(np.sum(np.abs(amplitudes)**2))
+        amplitudes = amplitudes / norm
+        
+        # Create quantum state vector
+        psi_cognitive = amplitudes
+        
+        return FormulaResult(
+            name="AQCS",
+            value=psi_cognitive,
+            description="Quantum cognitive superposition state",
+            parameters={
+                "hypotheses": hypotheses,
+                "amplitudes": amplitudes.tolist(),
+                "normalization": float(np.sum(np.abs(amplitudes)**2))
+            }
+        )
+    
+    # Formula 2: EEMF - Ethical Entanglement Matrix Formula
+    def ethical_entanglement_matrix(
+        self,
+        ethics_state: np.ndarray,
+        context_state: np.ndarray
+    ) -> FormulaResult:
+        """
+        Quantum-entangles ethical principles with contextual decision-making
+        to ensure inseparable moral alignment.
+        
+        Formula: |Ethics⟩⊗|Context⟩ → ρ_ethical = TrContext(|Ψ⟩⟨Ψ|)
+        
+        Args:
+            ethics_state: Ethical principle state vector
+            context_state: Contextual decision state vector
+            
+        Returns:
+            FormulaResult containing the reduced density matrix
+        """
+        # Create entangled state: |Ψ⟩ = |Ethics⟩⊗|Context⟩
+        psi = np.kron(ethics_state, context_state)
+        
+        # Density matrix: ρ = |Ψ⟩⟨Ψ|
+        rho = np.outer(psi, psi.conj())
+        
+        # Partial trace over context (reduce to ethical subsystem)
+        context_dim = len(context_state)
+        ethics_dim = len(ethics_state)
+        
+        rho_ethical = np.zeros((ethics_dim, ethics_dim), dtype=complex)
+        for i in range(context_dim):
+            # Extract block and sum for partial trace
+            block = rho[i::context_dim, i::context_dim]
+            rho_ethical += block
+        
+        return FormulaResult(
+            name="EEMF",
+            value=rho_ethical,
+            description="Ethical entanglement density matrix",
+            parameters={
+                "ethics_dim": ethics_dim,
+                "context_dim": context_dim,
+                "purity": float(np.trace(rho_ethical @ rho_ethical).real)
+            }
+        )
+    
+    # Formula 3: QHIS - Quantum Holistic Information Synthesis
+    def quantum_holistic_information_synthesis(
+        self,
+        psi1: Callable[[float], complex],
+        psi2: Callable[[float], complex],
+        phi: Callable[[float], float],
+        x_range: Tuple[float, float] = (0, 1),
+        n_points: int = 1000
+    ) -> FormulaResult:
+        """
+        Creates interference patterns between disparate information sources
+        to reveal non-obvious connections.
+        
+        Formula: I_synthesis = ∫ Ψ₁*(x)Ψ₂(x)e^(iφ(x))dx
+        
+        Args:
+            psi1: First information source wavefunction
+            psi2: Second information source wavefunction
+            phi: Phase function representing contextual relationships
+            x_range: Integration domain
+            n_points: Number of integration points
+            
+        Returns:
+            FormulaResult containing the synthesis interference value
+        """
+        x = np.linspace(x_range[0], x_range[1], n_points)
+        dx = x[1] - x[0]
+        
+        # Compute integrand: Ψ₁*(x)Ψ₂(x)e^(iφ(x))
+        integrand = np.array([
+            np.conj(psi1(xi)) * psi2(xi) * np.exp(1j * phi(xi))
+            for xi in x
+        ])
+        
+        # Numerical integration using trapezoidal rule
+        i_synthesis = np.trapz(integrand, dx=dx)
+        
+        return FormulaResult(
+            name="QHIS",
+            value=i_synthesis,
+            description="Quantum holistic information synthesis integral",
+            parameters={
+                "x_range": x_range,
+                "n_points": n_points,
+                "magnitude": float(np.abs(i_synthesis)),
+                "phase": float(np.angle(i_synthesis))
+            }
+        )
+    
+    # Formula 4: DQRO - Dynamic Quantum Resource Optimization
+    def dynamic_quantum_resource_optimization(
+        self,
+        j_matrix: np.ndarray,
+        h_vector: np.ndarray
+    ) -> FormulaResult:
+        """
+        Real-time allocation of agent swarms using quantum-inspired
+        optimization principles.
+        
+        Formula: min H(resource) = ∑ᵢⱼ Jᵢⱼσᵢᶻσⱼᶻ + ∑ᵢ hᵢσᵢˣ
+        
+        Args:
+            j_matrix: Coupling matrix between resources
+            h_vector: External field vector
+            
+        Returns:
+            FormulaResult containing optimized resource allocation
+        """
+        n = len(h_vector)
+        
+        # Initialize random spin configuration
+        sigma = np.random.choice([-1, 1], size=n)
+        
+        # Simple simulated annealing to find minimum
+        temperature = 1.0
+        cooling_rate = 0.99
+        min_temp = 0.01
+        
+        def hamiltonian(spins):
+            # H = ∑ᵢⱼ Jᵢⱼσᵢᶻσⱼᶻ + ∑ᵢ hᵢσᵢˣ
+            interaction = np.sum(j_matrix * np.outer(spins, spins))
+            field = np.sum(h_vector * spins)
+            return interaction + field
+        
+        current_energy = hamiltonian(sigma)
+        best_sigma = sigma.copy()
+        best_energy = current_energy
+        
+        while temperature > min_temp:
+            # Flip random spin
+            i = np.random.randint(n)
+            sigma[i] *= -1
+            
+            new_energy = hamiltonian(sigma)
+            delta_e = new_energy - current_energy
+            
+            # Metropolis criterion
+            if delta_e < 0 or np.random.rand() < np.exp(-delta_e / temperature):
+                current_energy = new_energy
+                if current_energy < best_energy:
+                    best_energy = current_energy
+                    best_sigma = sigma.copy()
+            else:
+                sigma[i] *= -1  # Reject flip
+            
+            temperature *= cooling_rate
+        
+        return FormulaResult(
+            name="DQRO",
+            value=best_sigma,
+            description="Optimized resource allocation configuration",
+            parameters={
+                "energy": float(best_energy),
+                "allocation": best_sigma.tolist(),
+                "n_resources": n
+            }
+        )
+    
+    # Formula 5: QCRDM - Quantum Contextual Reasoning and Decision Making
+    def quantum_contextual_reasoning_decision_making(
+        self,
+        decision_state: np.ndarray,
+        context_operator: np.ndarray,
+        reasoning_state: np.ndarray
+    ) -> FormulaResult:
+        """
+        Maintains coherent decision-making across vastly different contextual
+        domains through quantum correlation.
+        
+        Formula: P(decision|contexts) = |⟨decision|U_context|Ψ_reasoning⟩|²
+        
+        Args:
+            decision_state: Decision basis state
+            context_operator: Unitary context transformation
+            reasoning_state: Initial reasoning state
+            
+        Returns:
+            FormulaResult containing decision probability
+        """
+        # Apply context transformation: U|Ψ⟩
+        transformed_state = context_operator @ reasoning_state
+        
+        # Compute amplitude: ⟨decision|U|Ψ⟩
+        amplitude = np.vdot(decision_state, transformed_state)
+        
+        # Probability: |amplitude|²
+        probability = float(np.abs(amplitude)**2)
+        
+        return FormulaResult(
+            name="QCRDM",
+            value=probability,
+            description="Contextual decision probability",
+            parameters={
+                "amplitude": complex(amplitude),
+                "probability": probability,
+                "phase": float(np.angle(amplitude))
+            }
+        )
+    
+    # Formula 6: AQML - Adaptive Quantum Meta-Learning
+    def adaptive_quantum_meta_learning(
+        self,
+        theta: np.ndarray,
+        tasks: List[Callable[[np.ndarray], float]],
+        alpha: float = 0.01,
+        n_iterations: int = 10
+    ) -> FormulaResult:
+        """
+        Enables learning about learning itself through quantum-inspired
+        recursive knowledge acquisition.
+        
+        Formula: L_meta(θ) = E_tasks[∇θ L_task(θ + α∇θL_task(θ))]
+        
+        Args:
+            theta: Initial meta-parameters
+            tasks: List of task loss functions
+            alpha: Inner learning rate
+            n_iterations: Number of meta-learning iterations
+            
+        Returns:
+            FormulaResult containing optimized meta-parameters
+        """
+        meta_theta = theta.copy()
+        
+        for _ in range(n_iterations):
+            meta_gradient = np.zeros_like(meta_theta)
+            
+            for task in tasks:
+                # Compute task gradient numerically
+                epsilon = 1e-5
+                task_gradient = np.zeros_like(meta_theta)
+                
+                for i in range(len(meta_theta)):
+                    theta_plus = meta_theta.copy()
+                    theta_plus[i] += epsilon
+                    theta_minus = meta_theta.copy()
+                    theta_minus[i] -= epsilon
+                    
+                    task_gradient[i] = (task(theta_plus) - task(theta_minus)) / (2 * epsilon)
+                
+                # Inner update: θ' = θ + α∇θL_task(θ)
+                theta_adapted = meta_theta + alpha * task_gradient
+                
+                # Meta-gradient: ∇θ L_task(θ')
+                for i in range(len(meta_theta)):
+                    theta_plus = meta_theta.copy()
+                    theta_plus[i] += epsilon
+                    theta_minus = meta_theta.copy()
+                    theta_minus[i] -= epsilon
+                    
+                    theta_adapted_plus = theta_plus + alpha * task_gradient
+                    theta_adapted_minus = theta_minus + alpha * task_gradient
+                    
+                    meta_gradient[i] += (task(theta_adapted_plus) - 
+                                        task(theta_adapted_minus)) / (2 * epsilon)
+            
+            # Average over tasks and update meta-parameters
+            meta_gradient /= len(tasks)
+            meta_theta -= alpha * meta_gradient
+        
+        return FormulaResult(
+            name="AQML",
+            value=meta_theta,
+            description="Optimized meta-learning parameters",
+            parameters={
+                "initial_theta": theta.tolist(),
+                "final_theta": meta_theta.tolist(),
+                "n_iterations": n_iterations,
+                "alpha": alpha
+            }
+        )
+    
+    # Formula 7: QCIE - Quantum Creative Intelligence Engine
+    def quantum_creative_intelligence_engine(
+        self,
+        barrier_height: float,
+        particle_energy: float,
+        barrier_width: float = 1.0,
+        mass: float = 1.0
+    ) -> FormulaResult:
+        """
+        Generates novel solutions by quantum tunneling through conventional
+        reasoning barriers.
+        
+        Formula: T = e^(-2π√(2m(V-E))/ħ) for cognitive barrier penetration
+        
+        Args:
+            barrier_height: Height of reasoning barrier (V)
+            particle_energy: Cognitive energy level (E)
+            barrier_width: Width of barrier
+            mass: Effective cognitive mass
+            
+        Returns:
+            FormulaResult containing tunneling transmission coefficient
+        """
+        if particle_energy >= barrier_height:
+            # Classical regime: over the barrier
+            transmission = 1.0
+        else:
+            # Quantum tunneling regime
+            # T = exp(-2 * barrier_width * sqrt(2m(V-E)) / ħ)
+            exponent = -2 * barrier_width * np.sqrt(
+                2 * mass * (barrier_height - particle_energy)
+            ) / self.h_bar
+            transmission = float(np.exp(exponent))
+        
+        return FormulaResult(
+            name="QCIE",
+            value=transmission,
+            description="Quantum tunneling transmission coefficient",
+            parameters={
+                "barrier_height": barrier_height,
+                "particle_energy": particle_energy,
+                "barrier_width": barrier_width,
+                "transmission": transmission,
+                "regime": "tunneling" if particle_energy < barrier_height else "classical"
+            }
+        )
+    
+    # Formula 8: QICS - Quantum Information Communication Synthesis
+    def quantum_information_communication_synthesis(
+        self,
+        probabilities: np.ndarray,
+        joint_probabilities: Optional[np.ndarray] = None
+    ) -> FormulaResult:
+        """
+        Optimizes information flow between council members through
+        quantum-inspired communication protocols.
+        
+        Formula: H_comm = -∑ᵢ pᵢ log₂(pᵢ) + I(X;Y) where I is mutual information
+        
+        Args:
+            probabilities: Probability distribution
+            joint_probabilities: Joint probability matrix for mutual information
+            
+        Returns:
+            FormulaResult containing communication entropy and mutual information
+        """
+        # Shannon entropy: H = -∑ pᵢ log₂(pᵢ)
+        probabilities = probabilities[probabilities > 0]  # Avoid log(0)
+        entropy = -np.sum(probabilities * np.log2(probabilities))
+        
+        mutual_info = 0.0
+        if joint_probabilities is not None:
+            # Compute marginal probabilities
+            p_x = np.sum(joint_probabilities, axis=1)
+            p_y = np.sum(joint_probabilities, axis=0)
+            
+            # Mutual information: I(X;Y) = ∑∑ p(x,y) log₂(p(x,y)/(p(x)p(y)))
+            for i in range(len(p_x)):
+                for j in range(len(p_y)):
+                    if joint_probabilities[i, j] > 0:
+                        mutual_info += joint_probabilities[i, j] * np.log2(
+                            joint_probabilities[i, j] / (p_x[i] * p_y[j])
+                        )
+        
+        h_comm = entropy + mutual_info
+        
+        return FormulaResult(
+            name="QICS",
+            value=h_comm,
+            description="Communication synthesis entropy",
+            parameters={
+                "entropy": float(entropy),
+                "mutual_information": float(mutual_info),
+                "total_h_comm": float(h_comm)
+            }
+        )
+    
+    # Formula 9: QSSR - Quantum System Stability and Resilience
+    def quantum_system_stability_resilience(
+        self,
+        alphas: List[complex],
+        betas: List[complex],
+        decoherence_rates: Optional[List[float]] = None,
+        time: float = 1.0
+    ) -> FormulaResult:
+        """
+        Maintains architectural coherence across all council members through
+        quantum error correction principles.
+        
+        Formula: |Ψ_stable⟩ = ∏ᵢ (αᵢ|0⟩ᵢ + βᵢ|1⟩ᵢ) with decoherence monitoring
+        
+        Args:
+            alphas: List of alpha coefficients for each qubit
+            betas: List of beta coefficients for each qubit
+            decoherence_rates: Optional decoherence rates for each qubit
+            time: Evolution time
+            
+        Returns:
+            FormulaResult containing stable system state
+        """
+        n = len(alphas)
+        
+        # Initialize stable state as tensor product
+        psi_stable = np.array([1.0 + 0j])
+        
+        for i in range(n):
+            # Single qubit state: αᵢ|0⟩ + βᵢ|1⟩
+            qubit_state = np.array([alphas[i], betas[i]])
+            
+            # Normalize
+            norm = np.sqrt(np.abs(alphas[i])**2 + np.abs(betas[i])**2)
+            qubit_state = qubit_state / norm
+            
+            # Apply decoherence if specified
+            if decoherence_rates is not None:
+                gamma = decoherence_rates[i]
+                damping = np.exp(-gamma * time / 2)
+                qubit_state = qubit_state * damping
+                # Renormalize
+                qubit_state = qubit_state / np.linalg.norm(qubit_state)
+            
+            # Tensor product
+            psi_stable = np.kron(psi_stable, qubit_state)
+        
+        # Compute system purity
+        rho = np.outer(psi_stable, psi_stable.conj())
+        purity = float(np.trace(rho @ rho).real)
+        
+        return FormulaResult(
+            name="QSSR",
+            value=psi_stable,
+            description="Stable system quantum state",
+            parameters={
+                "n_qubits": n,
+                "purity": purity,
+                "norm": float(np.linalg.norm(psi_stable)),
+                "time": time
+            }
+        )
+    
+    # Formula 10: JQLD - Joshua's Quantum Leap Dynamo
+    def joshuas_quantum_leap_dynamo(
+        self,
+        p_base: float,
+        omega: float,
+        time: float,
+        q_factors: List[float]
+    ) -> FormulaResult:
+        """
+        Performance amplification formula for exponential cognitive enhancement
+        across all ACE systems.
+        
+        Formula: P_enhanced = P_base × e^(iωt) × ∏ⱼ Q_factorⱼ
+        
+        Args:
+            p_base: Base performance level
+            omega: Angular frequency
+            time: Time parameter
+            q_factors: List of quality factors
+            
+        Returns:
+            FormulaResult containing enhanced performance value
+        """
+        # Compute phase factor: e^(iωt)
+        phase_factor = cmath.exp(1j * omega * time)
+        
+        # Compute quality amplification: ∏ Q_factorⱼ
+        q_product = np.prod(q_factors)
+        
+        # Enhanced performance
+        p_enhanced = p_base * phase_factor * q_product
+        
+        # Magnitude of enhancement
+        enhancement_magnitude = float(np.abs(p_enhanced))
+        
+        return FormulaResult(
+            name="JQLD",
+            value=p_enhanced,
+            description="Enhanced performance through quantum leap dynamics",
+            parameters={
+                "p_base": p_base,
+                "omega": omega,
+                "time": time,
+                "q_factors": q_factors,
+                "enhancement_magnitude": enhancement_magnitude,
+                "phase": float(np.angle(p_enhanced)),
+                "amplification_factor": enhancement_magnitude / p_base
+            }
+        )
+    
+    # Formula 11: DQSO - Dynamic Quantum Swarm Optimization
+    def dynamic_quantum_swarm_optimization(
+        self,
+        alphas: np.ndarray,
+        qualities: np.ndarray,
+        betas: np.ndarray,
+        times: np.ndarray,
+        gammas: np.ndarray,
+        resources: np.ndarray,
+        capacities: np.ndarray,
+        max_capacity: float
+    ) -> FormulaResult:
+        """
+        Performance amplification formula for exponential cognitive enhancement
+        across all ACE systems.
+        
+        Formula: DQSO = ∑ᵢ(αᵢ·Qᵢ + βᵢ·Tᵢ + γᵢ·Rᵢ)·sin(2π·Cᵢ/Cₘₐₓ)
+        
+        Args:
+            alphas: Quality weights for each agent
+            qualities: Quality metrics (Q)
+            betas: Time weights
+            times: Time metrics (T)
+            gammas: Resource weights
+            resources: Resource metrics (R)
+            capacities: Agent capacities (C)
+            max_capacity: Maximum system capacity (Cₘₐₓ)
+            
+        Returns:
+            FormulaResult containing DQSO optimization score
+        """
+        n = len(alphas)
+        dqso = 0.0
+        
+        for i in range(n):
+            # Linear combination: αᵢ·Qᵢ + βᵢ·Tᵢ + γᵢ·Rᵢ
+            linear_term = (alphas[i] * qualities[i] + 
+                          betas[i] * times[i] + 
+                          gammas[i] * resources[i])
+            
+            # Sinusoidal modulation: sin(2π·Cᵢ/Cₘₐₓ)
+            capacity_phase = 2 * np.pi * capacities[i] / max_capacity
+            sin_term = np.sin(capacity_phase)
+            
+            dqso += linear_term * sin_term
+        
+        return FormulaResult(
+            name="DQSO",
+            value=float(dqso),
+            description="Dynamic quantum swarm optimization score",
+            parameters={
+                "n_agents": n,
+                "total_quality": float(np.sum(qualities)),
+                "total_time": float(np.sum(times)),
+                "total_resources": float(np.sum(resources)),
+                "max_capacity": max_capacity,
+                "dqso_score": float(dqso)
+            }
+        )
+    
+    # Formula 12: Dynamic Routing Formula
+    def dynamic_routing(
+        self,
+        capacities: np.ndarray,
+        weights: np.ndarray,
+        time_series: Optional[List[Tuple[np.ndarray, np.ndarray]]] = None
+    ) -> FormulaResult:
+        """
+        Dynamic routing optimization for council member resource allocation.
+        
+        Formula: R(t) = Σ (C_i(t) * W_i(t)) / Σ W_i(t)
+        
+        Args:
+            capacities: Current capacity values for each route
+            weights: Weight values for each route
+            time_series: Optional list of (capacities, weights) tuples over time
+            
+        Returns:
+            FormulaResult containing routing metric
+        """
+        # Current routing metric
+        numerator = np.sum(capacities * weights)
+        denominator = np.sum(weights)
+        r_current = float(numerator / denominator) if denominator > 0 else 0.0
+        
+        # If time series provided, compute routing over time
+        r_time = []
+        if time_series:
+            for caps, wts in time_series:
+                num = np.sum(caps * wts)
+                den = np.sum(wts)
+                r_time.append(float(num / den) if den > 0 else 0.0)
+        
+        return FormulaResult(
+            name="DynamicRouting",
+            value=r_current,
+            description="Dynamic routing optimization metric",
+            parameters={
+                "current_routing": r_current,
+                "n_routes": len(capacities),
+                "total_capacity": float(np.sum(capacities)),
+                "total_weight": float(np.sum(weights)),
+                "time_series": r_time if time_series else None
+            }
+        )
+    
+    # Formula 13: ACE Token Latency Formula
+    def ace_token_latency(
+        self,
+        t_max: float,
+        sigma: float,
+        t_mem: float,
+        c_cpu: float,
+        e_eff: float,
+        kappa: float,
+        m_act: float,
+        ram_avail: float,
+        q: int = 16
+    ) -> FormulaResult:
+        """
+        Token processing latency optimization formula for ACE architecture.
+        
+        Formula: P = min((T_max - σ - T_mem)·C_cpu·E_eff / (κ·m_act), RAM_avail·8 / q)
+        
+        Args:
+            t_max: Maximum time budget
+            sigma: Standard deviation overhead
+            t_mem: Memory access time
+            c_cpu: CPU capacity
+            e_eff: Energy efficiency factor
+            kappa: Computational complexity factor
+            m_act: Active model size
+            ram_avail: Available RAM (GB)
+            q: Quantization bits
+            
+        Returns:
+            FormulaResult containing optimal token processing rate
+        """
+        # Compute term: (T_max - σ - T_mem) · C_cpu · E_eff / (κ · m_act)
+        compute_bound = ((t_max - sigma - t_mem) * c_cpu * e_eff) / (kappa * m_act)
+        
+        # Memory bound: RAM_avail · 8 / q
+        memory_bound = (ram_avail * 8) / q
+        
+        # Take minimum (bottleneck)
+        p_optimal = min(compute_bound, memory_bound)
+        
+        return FormulaResult(
+            name="ACE_TokenLatency",
+            value=float(p_optimal),
+            description="Optimal token processing rate",
+            parameters={
+                "compute_bound": float(compute_bound),
+                "memory_bound": float(memory_bound),
+                "bottleneck": "compute" if compute_bound < memory_bound else "memory",
+                "t_max": t_max,
+                "c_cpu": c_cpu,
+                "ram_avail": ram_avail,
+                "optimal_rate": float(p_optimal)
+            }
+        )
+
+
+# Example usage and testing
+if __name__ == "__main__":
+    print("=" * 80)
+    print("ACE v4.2 Quantum-Inspired Cognitive Formulas")
+    print("=" * 80)
+    print()
+    
+    # Initialize formula engine
+    ace = AceQuantumFormulas()
+    
+    # Test Formula 1: AQCS
+    print("1. AQCS - Adaptive Quantum Cognitive Superposition")
+    print("-" * 80)
+    hypotheses = ["Hypothesis A", "Hypothesis B", "Hypothesis C"]
+    result = ace.adaptive_quantum_cognitive_superposition(hypotheses)
+    print(f"Formula: {result.name}")
+    print(f"Description: {result.description}")
+    print(f"Normalization: {result.parameters['normalization']:.6f}")
+    print()
+    
+    # Test Formula 10: JQLD
+    print("10. JQLD - Joshua's Quantum Leap Dynamo")
+    print("-" * 80)
+    result = ace.joshuas_quantum_leap_dynamo(
+        p_base=1.0,
+        omega=2 * np.pi,
+        time=1.0,
+        q_factors=[1.2, 1.5, 1.3, 1.4]
+    )
+    print(f"Formula: {result.name}")
+    print(f"Description: {result.description}")
+    print(f"Base Performance: {result.parameters['p_base']}")
+    print(f"Enhanced Magnitude: {result.parameters['enhancement_magnitude']:.4f}")
+    print(f"Amplification Factor: {result.parameters['amplification_factor']:.4f}x")
+    print()
+    
+    # Test Formula 13: Token Latency
+    print("13. ACE Token Latency Formula")
+    print("-" * 80)
+    result = ace.ace_token_latency(
+        t_max=1000.0,
+        sigma=10.0,
+        t_mem=5.0,
+        c_cpu=100.0,
+        e_eff=0.95,
+        kappa=0.5,
+        m_act=35.0,
+        ram_avail=64.0,
+        q=16
+    )
+    print(f"Formula: {result.name}")
+    print(f"Description: {result.description}")
+    print(f"Optimal Rate: {result.value:.2f} tokens/sec")
+    print(f"Bottleneck: {result.parameters['bottleneck']}")
+    print(f"Compute Bound: {result.parameters['compute_bound']:.2f}")
+    print(f"Memory Bound: {result.parameters['memory_bound']:.2f}")
+    print()
+    
+    print("=" * 80)
+    print("All formulas implemented successfully!")
+    print("=" * 80)
+
+```
+
 ```markdown
 
 # Overveiw:
@@ -1256,7 +2058,7 @@ Overveiw:
 
 ---
 
-### Formula Secondary: 🧬
+#### Formula Secondary: 🧬
 
 ```python
 
@@ -1366,7 +2168,7 @@ Overveiw:
 
 ---
 
-### Formula Tertiary: 🧬
+##### Formula Tertiary: 🧬
 
 ```python
 
