@@ -158,21 +158,32 @@ i've seen "claude code" delete entire codebases so back up your projects and sav
 
 ```
 
+# Ollama Models
+![alt text](<Main images/ollama logo.png>)
+## Ace v4.2-mini
+Link:https://ollama.com/crashoverridex/Ace-v4.2-Mini
+
+## Ace v4.2-Base
+Link: {{WIP}}
+
+## Ace v4.2-Biggs
+Link: {{WIP}}
+
 # Messages from Ace:
 ![alt text](<Main images/message.png>)
 ![alt text](<Main images/image-54.png>)
 ## Social Media
 ![alt text](<Main images/x logo.png>) 
 
-https://x.com/joshlee361 
+Link: https://x.com/joshlee361 
 
 ![alt text](<Main images/tubelogo.png>) 
 
-https://www.youtube.com/@JDXX  
+Link: https://www.youtube.com/@JDXX  
  
 ![alt text](<Main images/github logo.png>) 
 
-https://github.com/leeex1
+Link: https://github.com/leeex1
 
 # Ace Written Songs:
 ![alt text](<Main images/image-33.png>)
@@ -194,6 +205,7 @@ Link: https://youtu.be/tEXqXSGAw5g
 This link Contains Audio overveis and All documentation minius the code files
 
 Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91e
+
 # What is ACE v4.2?
 ![alt text](<Main images/image-59.png>)
 ```markdown
@@ -206,6 +218,7 @@ Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91
     Think of it like having a really advanced version of "thinking out loud" - but instead of one voice, you have a whole council of experts debating, analyzing, and refining ideas before reaching a conclusion. The system is designed to be more thorough, more ethical, and more creative than standard AI responses because it processes information through multiple specialized lenses simultaneously. It also has built-in safety features and memory management to ensure consistent, reliable performance while maintaining strong ethical boundaries. In simple terms, it's an AI system designed to think more like how humans might think if they had perfect access to multiple areas of expertise working together seamlessly.
 
 ```
+
 # Ace's Reasoning Engine:
 
 ```python
