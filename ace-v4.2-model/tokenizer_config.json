@@ -1,1 +1,17 @@
-# Ace v4.2 model component: tokenizer_config.json
+{
+  "tokenizer_class": "PreTrainedTokenizerFast",
+  "bos_token": "<|startoftext|>",
+  "eos_token": "<|endoftext|>",
+  "unk_token": "<|unk|>",
+  "pad_token": "<|pad|>",
+  "additional_special_tokens": [
+    "<|council|>",
+    "<|user|>",
+    "<|system|>",
+    "<|assistant|>"
+  ],
+  "model_max_length": 8192,
+  "clean_up_tokenization_spaces": false,
+  "name_or_path": "Ace-v4.2",
+  "special_tokens_map_file": "special_tokens_map.json"
+}

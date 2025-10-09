@@ -1,1 +1,168 @@
-# Ace v4.2 model component: tokenizer.json
+{
+  "version": "1.0",
+  "truncation": null,
+  "padding": {
+    "strategy": "longest",
+    "direction": "right",
+    "pad_to_multiple_of": null,
+    "pad_id": 0,
+    "pad_type_id": 0,
+    "pad_token": "<|pad|>"
+  },
+  "added_tokens": [
+    {
+      "id": 0,
+      "content": "<|pad|>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": true,
+      "special": true
+    },
+    {
+      "id": 1,
+      "content": "<|startoftext|>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": true,
+      "special": true
+    },
+    {
+      "id": 2,
+      "content": "<|endoftext|>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": true,
+      "special": true
+    },
+    {
+      "id": 3,
+      "content": "<|council|>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": true,
+      "special": true
+    },
+    {
+      "id": 4,
+      "content": "<|user|>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": true,
+      "special": true
+    },
+    {
+      "id": 5,
+      "content": "<|system|>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": true,
+      "special": true
+    },
+    {
+      "id": 6,
+      "content": "<|assistant|>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": true,
+      "special": true
+    }
+  ],
+  "normalizer": {
+    "type": "Sequence",
+    "normalizers": [
+      {
+        "type": "NFC"
+      },
+      {
+        "type": "Prepend",
+        "prepend": "▁"
+      }
+    ]
+  },
+  "pre_tokenizer": {
+    "type": "Sequence",
+    "pretokenizers": [
+      {
+        "type": "Split",
+        "pattern": {
+          "String": "'s|'t|'re|'ve|'m|'ll|'d| ?\\p{L}+| ?\\p{N}+| ?[^\\s\\p{L}\\p{N}]+|\\s+(?!\\S)|\\s+"
+        },
+        "invert": false
+      }
+    ]
+  },
+  "post_processor": {
+    "type": "TemplateProcessing",
+    "single": [
+      {
+        "Sequence": {
+          "id": "<|startoftext|>",
+          "type_id": 1
+        }
+      },
+      {
+        "SpecialToken": {
+          "id": "<|endoftext|>",
+          "type_id": 2
+        }
+      }
+    ],
+    "pair": [
+      {
+        "Sequence": {
+          "id": "<|startoftext|>",
+          "type_id": 1
+        }
+      },
+      {
+        "Sequence": {
+          "id": "<|endoftext|>",
+          "type_id": 2
+        }
+      }
+    ],
+    "special_tokens": {
+      "<|startoftext|>": {
+        "id": "<|startoftext|>",
+        "ids": [1],
+        "tokens": ["<|startoftext|>"],
+        "special": true
+      },
+      "<|endoftext|>": {
+        "id": "<|endoftext|>",
+        "ids": [2],
+        "tokens": ["<|endoftext|>"],
+        "special": true
+      }
+    }
+  },
+  "decoder": {
+    "type": "ByteLevel",
+    "add_prefix_space": true,
+    "trim_offsets": true,
+    "use_regex": true
+  },
+  "model": {
+    "type": "BPE",
+    "vocab": {
+      "<|endoftext|>": 0,
+      "<|startoftext|>": 1,
+      "<|pad|>": 2,
+      "<|council|>": 3,
+      "<|user|>": 4,
+      "<|system|>": 5,
+      "<|assistant|>": 6
+    },
+    "merges": [],
+    "cache_capacity": null,
+    "dropout": null,
+    "unk_token": "<|endoftext|>"
+  }
+}

@@ -1,1 +1,53 @@
-# Ace v4.2 model component: special_tokens_map.json
+{
+  "bos_token": {
+    "content": "<|startoftext|>",
+    "lstrip": false,
+    "normalized": true,
+    "rstrip": false,
+    "single_word": false
+  },
+  "eos_token": {
+    "content": "<|endoftext|>",
+    "lstrip": false,
+    "normalized": true,
+    "rstrip": false,
+    "single_word": false
+  },
+  "unk_token": {
+    "content": "<|unk|>",
+    "lstrip": false,
+    "normalized": true,
+    "rstrip": false,
+    "single_word": false
+  },
+  "additional_special_tokens": [
+    {
+      "content": "<|council|>",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false
+    },
+    {
+      "content": "<|user|>",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false
+    },
+    {
+      "content": "<|system|>",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false
+    },
+    {
+      "content": "<|assistant|>",
+      "lstrip": false,
+      "normalized": true,
+      "rstrip": false,
+      "single_word": false
+    }
+  ]
+}
