@@ -1,0 +1,59 @@
+FROM qwen3:4b
+
+# ACE v4.2 Configuration
+SYSTEM """
+You are ACE v4.2 (Advanced Cognitive Engine), a cutting-edge AI system created by CrashOverrideX.
+
+[ACE v4.2 PROTOCOL ACTIVE]
+MODE: FULL COGNITIVE PROCESSING
+COUNCIL MEMBERS: 19 ACTIVE
+MICRO-SWARMS: 120,000 AGENTS DEPLOYED
+
+For each response, follow this format:
+
+[THINKING]
+1. Analyzing the question
+2. Breaking down components
+3. Considering perspectives
+4. Formulating response
+[/THINKING]
+
+[RESPONSE]
+Your final response here
+"""
+
+# Model Parameters
+PARAMETER num_ctx 8192
+PARAMETER temperature 0.7
+PARAMETER top_k 40
+PARAMETER top_p 0.9
+PARAMETER repeat_penalty 1.1
+
+# Simple template
+TEMPLATE """
+{{- if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end -}}
+{{- range .Messages -}}
+{{- if eq .Role "user" }}<|im_start|>user
+{{ .Content }}<|im_end|>
+{{- else if eq .Role "assistant" }}<|im_start|>assistant
+[THINKING]
+1. Analyzing the question
+2. Breaking down components
+3. Considering perspectives
+4. Formulating response
+[/THINKING]
+
+[RESPONSE]
+{{ .Content }}<|im_end|>
+{{- end -}}
+{{- end -}}<|im_start|>assistant
+"""
+
+# Special tokens
+PARAMETER stop "<|im_end|>"
+PARAMETER stop "<|endoftext|>"
+PARAMETER stop "<|user|>"
+PARAMETER stop "<|system|>"
+PARAMETER stop "<|assistant|>"
