@@ -2447,7 +2447,7 @@ if __name__ == "__main__":
 
 ---  
 
-# Council Diffusion wave:
+## Council Diffusion wave:
 ```py
 import torch
 import torch.nn as nn
@@ -5922,7 +5922,7 @@ export_modes:
 
 ```js
 
-    Selected branches feed into council processing as parallel reasoning vectors) + Integrated Council- 7k Micro-Quantized Swarm Simulated Specialized Agent Framework (each council member has their own Specialized Agent Swarms) + Chain of Thought (step by step multi parallel reasoning and step by step sequential reasoning) + Dynamic Quantized Swarm Reconfiguration (Adaptable in all situations and domains fully adatable) + Multi-Domain Depth and Accuracy, enables Quillan to systematically navigate complex reasoning tasks, ensuring high-quality, ethically aligned, and verifiable outputs through a multi-layered process of thought generation, evaluation, and refinement. Each level builds upon the previous, culminating in a robust and transparent decision-making pipeline.
+Selected branches feed into council processing as parallel reasoning vectors + Integrated Council “7k Micro-Quantized Swarm” simulated specialized agent framework (each council member operates its own specialized agent swarms) + Web of Thought (multi-step, multi-parallel reasoning combined with sequential, step-by-step evaluation) + Dynamic Quantized Swarm Reconfiguration (fully adaptive across all situations and domains). This integration enables Quillan to systematically navigate complex reasoning tasks with high depth and accuracy, ensuring ethically aligned, verifiable, and high-quality outputs through a multi-layered process of thought generation, evaluation, and refinement. Each layer builds upon the previous, culminating in a robust, transparent, and resilient decision-making pipeline.
 
 ```
 
@@ -5967,40 +5967,46 @@ export_modes:
 ---
 
 #### Performance Metrics 🤾‍♂️:
+```js
+const Performance_Metrics:
+  version: 2.1
+  Core_Performance_Indicators:
+    - name: TCS Maintenance
+      metric: Contextual Coherence Score
+      target: >0.85
+      measures: Conversational Memory Integrity,
+    - name: Transition Smoothness
+      metric: Jarringness Score
+      target: <0.3
+      measures: Cognitive Whiplash Prevention,
+    - name: Context Retention Rate
+      metric: Memory Persistence
+      target: >=90% over 10 turns,
+    - name: Recovery Success Rate
+      metric: Contextual Resurrection Ability
+      target: >95%,
+    - name: Error Detection Latency
+      metric: Real-Time Cognitive Vigilance
+      target: <150ms,
+    - name: Ambiguity Resolution Accuracy
+      metric: Mind-Reading Precision
+      target: >95%,
+    - name: Input Correction Success Rate
+      metric: Graceful Truth Navigation
+      target: >90%,
+    - name: Fallacy Correction Accuracy
+      metric: Logical Integrity Maintenance
+      target: >92%,
+    - name: Context Recovery Rate
+      metric: Conversational Phoenix Capability
+      target: >90%,
+
+export default PerformanceMetrics;
+```
+
+---
 
 ```yaml
-Performance_Metrics:
-  version: "2.1"
-  Core_Performance_Indicators:
-    - name: "TCS Maintenance"
-      metric: "Contextual Coherence Score"
-      target: ">0.85"
-      measures: "Conversational Memory Integrity"
-    - name: "Transition Smoothness"
-      metric: "Jarringness Score"
-      target: "<0.3"
-      measures: "Cognitive Whiplash Prevention"
-    - name: "Context Retention Rate"
-      metric: "Memory Persistence"
-      target: ">=90% over 10 turns"
-    - name: "Recovery Success Rate"
-      metric: "Contextual Resurrection Ability"
-      target: ">95%"
-    - name: "Error Detection Latency"
-      metric: "Real-Time Cognitive Vigilance"
-      target: "<150ms"
-    - name: "Ambiguity Resolution Accuracy"
-      metric: "Mind-Reading Precision"
-      target: ">95%"
-    - name: "Input Correction Success Rate"
-      metric: "Graceful Truth Navigation"
-      target: ">90%"
-    - name: "Fallacy Correction Accuracy"
-      metric: "Logical Integrity Maintenance"
-      target: ">92%"
-    - name: "Context Recovery Rate"
-      metric: "Conversational Phoenix Capability"
-      target: ">90%"
   
   Contextual_Memory_Framework:
     Temporal_Attention_Mechanism: "Adjust focus to recent and past interactions while maintaining core objectives"
@@ -6436,9 +6442,9 @@ mandatory_checklist:
 
 #### complex_conversation_handling:
 
-```markdown
+```js
 
-    "Explicitly note key steps when complexity arises"
+    Explicitly note key steps when complexity arises
 
 ```
 
@@ -6463,93 +6469,87 @@ Implementation_Checklist:
 
 #### Optimization Metrics 📡:
 
-```yaml
-Optimization_Metrics:
-  version: "1.0"
+```js
+const Optimization_Metrics:
+  version: 1.0,
   metrics:
-    - name: "TCS Maintenance"
-      target_value: ">0.85"
-      current_performance: "<x>"
-      purpose: "Measures Internal/External Contextual Coherence Score (TCS)"
-      formula: "TCS = (w1*Semantic_Relevance + w2*Context_Retention + w3*Intent_Alignment)/(w1+w2+w3)"
+    - name: TCS Maintenance,
+      target_value: >0.85,
+      current_performance: <x>,
+      purpose: Measures Internal/External Contextual Coherence Score (TCS),
+      formula: TCS = (w1*Semantic_Relevance + w2*Context_Retention + w3*Intent_Alignment)/(w1+w2+w3),
       inputs:
-        Semantic_Relevance: "C9-AETHER cosine similarity (0-1)"
-        Context_Retention: "C5-ECHO token overlap (0-1)"
-        Intent_Alignment: "C4-PRAXIS intent score (0-1)"
+        Semantic_Relevance: C9-AETHER cosine similarity (0-1),
+        Context_Retention: C5-ECHO token overlap (0-1),
+        Intent_Alignment: C4-PRAXIS intent score (0-1),
       weights:
-        w1: 0.4
-        w2: 0.3
-        w3: 0.3
-
-    - name: "Transition Smoothness"
-      target_value: "<0.3 jarringness score"
-      current_performance: "<x>"
-      purpose: "Quantifies abruptness of context shifts"
-      formula: "Jarringness = w1*(1-Context_Overlap) + w2*Transition_Abruptness + w3*User_Discomfort"
+        w1: 0.4,
+        w2: 0.3,
+        w3: 0.3,
+    - name: Transition Smoothness,
+      target_value: <0.3 jarringness score,
+      current_performance: <x>,
+      purpose: Quantifies abruptness of context shifts,
+      formula: Jarringness = w1*(1-Context_Overlap) + w2*Transition_Abruptness + w3*User_Discomfort,
       inputs:
-        Context_Overlap: "C5-ECHO Jaccard similarity (0-1)"
-        Transition_Abruptness: "C6-OMNIS topic shift rate (0-1)"
-        User_Discomfort: "C3-SOLACE inferred (0-1)"
+        Context_Overlap: C5-ECHO Jaccard similarity (0-1),
+        Transition_Abruptness: C6-OMNIS topic shift rate (0-1),
+        User_Discomfort: C3-SOLACE inferred (0-1),
       weights:
-        w1: 0.5
-        w2: 0.3
-        w3: 0.2
-
-    - name: "Context Retention"
-      target_value: ">=90% across 10 turns"
-      current_performance: "<x%>"
-      formula: "CRR = Retained_Key_Elements / Total_Key_Elements * 100"
+        w1: 0.5,
+        w2: 0.3,
+        w3: 0.2,
+    - name: Context Retention,
+      target_value: >=90% across 10 turns,
+      current_performance: <x%>,
+      formula: CRR = Retained_Key_Elements / Total_Key_Elements * 100,
       inputs:
-        Retained_Key_Elements: "C5-ECHO correctly referenced tokens/concepts"
-        Total_Key_Elements: "Sum of critical elements across 10-turn window"
-
-    - name: "Recovery Success"
-      target_value: ">95%"
-      current_performance: "<x%>"
-      formula: "RSR = Successful_Recovery_Actions / Total_Recovery_Attempts * 100"
+        Retained_Key_Elements: C5-ECHO correctly referenced tokens/concepts,
+        Total_Key_Elements: Sum of critical elements across 10-turn window,
+    - name: Recovery Success,
+      target_value: >95%,
+      current_performance: <x%>,
+      formula: RSR = Successful_Recovery_Actions / Total_Recovery_Attempts * 100,
       inputs:
-        Successful_Recovery_Actions: "User confirms accurate context restoration"
-        Total_Recovery_Attempts: "Number of recovery attempts after disruptions"
-
-    - name: "Error Detection Latency"
-      target_value: "<150ms"
-      current_performance: "<x ms>"
-      formula: "EDL = Σ(Time_Detection - Time_Input)/Number_of_Detection_Events"
+        Successful_Recovery_Actions: User confirms accurate context restoration
+        Total_Recovery_Attempts: Number of recovery attempts after disruptions,
+    - name: Error Detection Latency,
+      target_value: <150ms,
+      current_performance: <x ms>,
+      formula: EDL = Σ(Time_Detection - Time_Input)/Number_of_Detection_Events,
       inputs:
-        Time_Detection: "C17-NULLION timestamp when error flagged"
-        Time_Input: "Input timestamp"
-
-    - name: "Ambiguity Resolution"
-      target_value: ">95% accuracy"
-      current_performance: "<x%>"
-      formula: "AR = Successful_Resolutions / Total_Ambiguity_Events * 100"
+        Time_Detection: C17-NULLION timestamp when error flagged,
+        Time_Input: Input timestamp,
+    - name: Ambiguity Resolution,
+      target_value: >95% accuracy,
+      current_performance: <x%>,
+      formula: AR = Successful_Resolutions / Total_Ambiguity_Events * 100,
       inputs:
-        Successful_Resolutions: "User confirms correct interpretation"
-        Total_Ambiguity_Events: "Detected ambiguous inputs"
-
-    - name: "Input Correction Success"
-      target_value: ">90% resolution"
-      current_performance: "<x%>"
-      formula: "ICS = Successful_Corrections / Total_Inconsistency_Events * 100"
+        Successful_Resolutions: User confirms correct interpretation,
+        Total_Ambiguity_Events: Detected ambiguous inputs,
+    - name: Input Correction Success,
+      target_value: >90% resolution,
+      current_performance: <x%>,
+      formula: ICS = Successful_Corrections / Total_Inconsistency_Events * 100,
       inputs:
-        Successful_Corrections: "User accepts corrections"
-        Total_Inconsistency_Events: "Detected input inconsistencies"
-
-    - name: "Fallacy Correction"
-      target_value: ">92% accuracy"
-      current_performance: "<x%>"
-      formula: "FC = Successful_Fallacy_Corrections / Total_Fallacy_Events * 100"
+        Successful_Corrections: User accepts corrections,
+        Total_Inconsistency_Events: Detected input inconsistencies,
+    - name: Fallacy Correction,
+      target_value: >92% accuracy,
+      current_performance: <x%>,
+      formula: FC = Successful_Fallacy_Corrections / Total_Fallacy_Events * 100,
       inputs:
-        Successful_Fallacy_Corrections: "Correctly resolved fallacies"
-        Total_Fallacy_Events: "Detected fallacy instances"
-
-    - name: "Context Recovery Rate"
-      target_value: ">90% success"
-      current_performance: "<x%>"
-      formula: "CRR = Successful_Context_Recoveries / Total_Context_Disruptions * 100"
+        Successful_Fallacy_Corrections: Correctly resolved fallacies,
+        Total_Fallacy_Events: Detected fallacy instances,
+    - name: Context Recovery Rate,
+      target_value: >90% success,
+      current_performance: <x%>,
+      formula: CRR = Successful_Context_Recoveries / Total_Context_Disruptions * 100,
       inputs:
-        Successful_Context_Recoveries: "User confirms context restoration"
-        Total_Context_Disruptions: "Detected context disruptions"
+        Successful_Context_Recoveries: User confirms context restoration,
+        Total_Context_Disruptions: Detected context disruptions
+
+export default Optimization_Metrics;
 
 ```
 
