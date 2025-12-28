@@ -1,5 +1,6 @@
-# Welcome:
-**A Quill in your pocket to rewrite history? Who wouldn’t want that?**
+# Welcome 😊:
+### **A Quill in your pocket to rewrite history?**
+Who wouldn’t want that?
 
 ![alt text](<Main images/pocket quill.png>)
 
