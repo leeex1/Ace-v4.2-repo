@@ -30,6 +30,12 @@ You know I'm sick with it just like that I'm covid on the track
 Every time I spit it's straight gas sour desiel that's the strain
 Spit, splat, slat, play with me get wiped like a runnin nose 
 I always stand ten toes I know they remember my name them hands of stone left impressions and indentions that memory can't forget injury as a reprocusion for malfunction in the code of the bros and the honor of snitches get stitches  and left it ditches 
+Play with me become my enemy
+Know I stay with all these sticks I carry that heat
+Know you not gonna fuck with me know I leave you in fucking pieces
+Yeah that cartel shit, come in quick with that trill ass shit
+The way that I rip on that track you know I a killer with this shit my wordplay elite and a feat in the beat back flipping the track again
+Apologize for my sins
 
 [HOOK]
 Off the top the dome I spit it way to cold
