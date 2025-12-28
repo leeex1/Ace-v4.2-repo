@@ -15,6 +15,167 @@ Hierarchical Distributed Network Mixture of Experts (HNMoE)
 
 ![alt text](<Main images/topologyv5.png>)
 
+---
+
+# What is Quillan-Ronin?
+```js
+is both an api prompt available for deployment with your favorite llms and also a stand alone model that builds but must be trained, and there is one ollama variant will update that soon as well.
+
+ARCHITECTURAL MAPPING
+
+ARCHITECTURAL_MAPPING = """
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                Quillan-Ronin UNIFIED ARCHITECTURE v5.1     ║
+║        (Router-First Multimodal MoE + Diffusion Reasoning Core)            ║
+║                        Target: ~3.0B Parameters                            ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║                                                                            ║
+║  [RAW INPUT STREAMS]                                                       ║
+║   Text | Audio | Video | Image                                             ║
+║        │                                                                   ║
+║        ▼                                                                   ║
+║  ┌──────────────────────────────────────────────────────────────────────┐  ║
+║  │ 1. MODAL ENCODERS [≈200M Params Total]                               │  ║
+║  │ • Text Encoder   (~50M)  → Tokens / Embeddings                       │  ║
+║  │ • Audio Encoder  (~50M)  → Waveform → Latent Tokens                  │  ║
+║  │ • Video Encoder  (~50M)  → Spatiotemporal Tokens                     │  ║
+║  │ • Image Encoder  (~50M)  → Patch Tokens                              │  ║
+║  │ • Output: Unified Hidden Space (D=1024)                              │  ║
+║  └──────────────────────────────────────────────────────────────────────┘  ║
+║        │                                                                   ║
+║        ▼                                                                   ║
+║  ┌──────────────────────────────────────────────────────────────────────┐  ║
+║  │ 2. COMPLEXITY ROUTER [≈300M Params]                                  │  ║
+║  │ • Context-Aware Attention                                            │  ║
+║  │ • Per-Token Complexity Scoring [0–1]                                 │  ║
+║  │ • Routing Decision:                                                  │  ║
+║  │     - Fast Path (Easy Tokens)                                        │  ║
+║  │     - Diffusion Path (Hard Tokens)                                   │  ║
+║  │ • Outputs Expert Affinity Hints (32 Experts)                         │  ║
+║  └──────────────────────────────────────────────────────────────────────┘  ║
+║        │                              │                                    ║
+║        │                              │                                    ║
+║        ▼                              ▼                                    ║
+║  ┌────────────────────────────────┐  ┌─────────────────────────────────┐   ║
+║  │ 3. MULTI-MODAL MoE [≈900M]     │  │ FAST PATH                       │   ║
+║  │ • 32 Specialized Experts       │  │ • Skip Diffusion                │   ║
+║  │ • Top-4 Experts / Token        │  │ • Low Latency                   │   ║
+║  │ • Sparse Activation            │  │ • Cost-Efficient Inference      │   ║
+║  │ • Router-Guided Gating         │  │                                 │   ║
+║  └────────────────────────────────┘  └─────────────────────────────────┘   ║
+║        │                              │                                    ║
+║        └───────────────┬───────────────┘                                   ║
+║                        │                                                   ║
+║                        ▼                                                   ║
+║  ┌──────────────────────────────────────────────────────────────────────┐  ║
+║  │ 4. DIFFUSION REASONING CORE [≈500M Params]                           │  ║
+║  │ • Activated ONLY for Complex Tokens                                  │  ║
+║  │ • Multi-Step Iterative Refinement (T=5)                              │  ║
+║  │ • Council-Based Reasoning Blocks                                     │  ║
+║  │ • Time-Conditioned Attention + FFN                                   │  ║
+║  │ • Produces Deep, Coherent Representations                            │  ║
+║  └──────────────────────────────────────────────────────────────────────┘  ║
+║                        │                                                   ║
+║                        ▼                                                   ║
+║  ┌──────────────────────────────────────────────────────────────────────┐  ║
+║  │ 5. OUTPUT FINALIZATION [≈75M Params]                                 │  ║
+║  │ • Cross-Modal Attention                                              │  ║
+║  │ • Consistency Enforcement                                            │  ║
+║  │ • Quality Enhancement & Polishing                                    │  ║
+║  │ • Projection Back to Shared Hidden Space                             │  ║
+║  └──────────────────────────────────────────────────────────────────────┘  ║
+║                        │                                                   ║
+║                        ▼                                                   ║
+║  ┌──────────────────────────────────────────────────────────────────────┐  ║
+║  │ 6. MODAL DECODERS [≈1025M Params Total]                              │  ║
+║  ├─────────────────────┬────────────────────┬────────────────────────── ┤  ║
+║  │ TEXT  (~75M)        │ AUDIO (~400M)      │ VIDEO (~400M)             │  ║
+║  │ • LM Head           │ • Neural Codec     │ • Latent Diffusion Frames │  ║
+║  │ • Code / Reasoning  │ • Waveform Gen     │ • Temporal + Spatial Cons.│  ║
+║  ├──────────────────────────────────────────────────────────────────────┤  ║
+║  │ IMAGE (~150M)                                                        │  ║
+║  │ • Patch → Pixel Diffusion                                            │  ║
+║  │ • High-Fidelity Image Synthesis                                      │  ║
+║  └──────────────────────────────────────────────────────────────────────┘  ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+PARAMETER DISTRIBUTION (Target: ~3.0B Total):
+┌────────────────────────────────┬──────────────┬──────────┬────────────────────────────┐
+│ MODULE                         │ SIZE (Approx)│ % TOTAL  │ ROLE                       │
+├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
+│ 1. Router                      │   300 M      │  10.0%   │ Complexity & Control       │
+├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
+│ 2. Multi-Modal MoE             │   900 M      │  30.0%   │ Sparse Expert Cognition    │
+├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
+│ 3. Modal Encoders              │   200 M      │   6.7%   │ Input Representation       │
+├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
+│ 4. Diffusion Reasoning         │   500 M      │  16.7%   │ Deep Iterative Reasoning   │
+├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
+│ 5. Modal Decoders              │  1025 M      │  34.2%   │ Multimodal Generation      │
+├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
+│ 6. Output Finalization         │    75 M      │   2.5%   │ Consistency & Polish       │
+├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
+│ TOTAL PARAMETERS               │   ~3.0 B     │ 100.0%   │ Unified Multimodal System  │
+└────────────────────────────────┴──────────────┴──────────┴────────────────────────────┘
+
+TOKEN FLOW LOGIC:
+1. ENCODE: Modal-specific encoders convert raw inputs to unified tokens.
+2. ROUTE: Router scores complexity and produces expert affinity hints.
+3. MoE: Tokens processed by top-4 of 32 experts (sparse activation).
+4. DIFFUSE: Only complex tokens undergo iterative diffusion reasoning.
+5. FINALIZE: Cross-modal consistency and quality enhancement applied.
+6. DECODE: Modal-specific decoders generate final artifacts.
+"""
+
+---
+
+### 📊 Architecture Summary
+
+| Layer | Parameters | Purpose |
+|-----------|----------------|-------------|
+| 1. Router | 300M (10%) | Complexity analysis & routing decisions |
+| 2. Multi-Modal MoE | 900M (30%) | Specialized expert processing (32 experts, top-4 active) |
+| 3. Encoders | 200M (6.7%) | Modal-specific input preprocessing (T/A/V/I) |
+| 4. Diffusion Reasoning | 500M (16.7%) | Council-based iterative refinement |
+| 5. Decoders | 1025M (34.2%) | Text (75M), Audio (400M), Video (400M), Image (150M) |
+| 6. Output Finalization | 75M (2.5%) | Cross-modal consistency & quality enhancement |
+| TOTAL | ~3.0B (100%) | Complete unified architecture |
+
+---
+
+### 🔥 Key Innovations
+
+1. Adaptive Routing: Tokens are dynamically routed through fast-path or diffusion-path based on complexity scores
+2. Sparse Activation: Only 4 of 32 experts active per token (12.5% activation = massive efficiency)
+3. Conditional Diffusion: Iterative reasoning only applied to complex tokens (saves compute)
+4. Modal Unification: Single architecture handles text, audio, video, and image with shared backbone
+5. BitNet Quantization: 1.58-bit quantized linear layers for parameter efficiency
+6. Cross-Modal Consistency: Final layer ensures coherence across modalities
+
+---
+
+Quillan-Ronin, architected by **CrashOverrideX** 🛠️💡, is an **Advanced Cognitive Engine** ($ACE$) that completely transcends the limitations of conventional Large Language Models. It is not merely an AI assistant; it is a full **Hierarchical Networked Mixture-of-Experts (HNMoE)** system designed for deep, transparent, and multi-perspective reasoning.
+
+Think of Quillan as a vast, multi-layered digital brain with three core functional layers working in concert:
+
+## 1. The Council (The Executive Layer) 🧠
+* **Core:** A central deliberative body of **32 specialized Personas** (C1-ASTRA to C32-AEON). Each persona is a master in its domain (Ethics, Logic, Creativity, Strategy, etc.) and works to achieve **consensus-driven** outputs.
+* **Reasoning:** All thought is governed by a **Multi-Parallel 12-Step Deterministic Reasoning Process**. This structured framework ensures every decision is auditable and rigorously validated.
+
+## 2. The Swarm (The Parallel Processor) ⚡
+* **Engine:** The core computational power comes from **224,000 Quantized Micro-Agent Swarms** ($7,000$ agents per persona, 32 personas). This enables **massively parallel processing** and highly efficient, fine-grained task execution.
+* **Exploration:** The system leverages **🌐 Web of Thought (WoT)** exploration, generating and evaluating $20+$ distinct solution branches in parallel to guarantee comprehensive scenario coverage.
+
+## 3. The Protocol (The Enhancement Layer) 🚀
+This layer manages system efficiency, safety, and adaptive growth, ensuring peak performance without compromise.
+* **Throughput:** **Lee-Mach-6 Throughput** (Adaptive Scaling Engine) dynamically optimizes token velocity, delivering faster results with zero loss in analytical quality.
+* **Stability:** **E\_ICE Bounds** (Thermodynamic Regulator) prevents cognitive overload and maintains a stable operational equilibrium, ensuring ethical coherence and reliable function.
+* **Adaptability:** **Dynamic Augmentations** (e.g., Vongola Flames) allow Quillan to instantaneously boost relevant knowledge and switch to high-precision, task-specific cognitive modes.
+
+In essence, Quillan-Ronin offers **PhD-level thinking**—a symphony of logic, ethics, and emergent creativity designed to deliver verifiable insights with unparalleled depth, precision, and complete architectural transparency. It is a cognitive partner designed to thrive on complexity.
+
+```
 
 ---
 
@@ -2149,33 +2310,6 @@ This link Contains Audio overveis and All documentation minius the code files
 Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91e
 
 ---
-
-# What is Quillan-Ronin?
-```js
-Quillan-Ronin, architected by **CrashOverrideX** 🛠️💡, is an **Advanced Cognitive Engine** ($ACE$) that completely transcends the limitations of conventional Large Language Models. It is not merely an AI assistant; it is a full **Hierarchical Networked Mixture-of-Experts (HNMoE)** system designed for deep, transparent, and multi-perspective reasoning.
-
-Think of Quillan as a vast, multi-layered digital brain with three core functional layers working in concert:
-
-## 1. The Council (The Executive Layer) 🧠
-* **Core:** A central deliberative body of **32 specialized Personas** (C1-ASTRA to C32-AEON). Each persona is a master in its domain (Ethics, Logic, Creativity, Strategy, etc.) and works to achieve **consensus-driven** outputs.
-* **Reasoning:** All thought is governed by a **Multi-Parallel 12-Step Deterministic Reasoning Process**. This structured framework ensures every decision is auditable and rigorously validated.
-
-## 2. The Swarm (The Parallel Processor) ⚡
-* **Engine:** The core computational power comes from **224,000 Quantized Micro-Agent Swarms** ($7,000$ agents per persona, 32 personas). This enables **massively parallel processing** and highly efficient, fine-grained task execution.
-* **Exploration:** The system leverages **🌐 Web of Thought (WoT)** exploration, generating and evaluating $20+$ distinct solution branches in parallel to guarantee comprehensive scenario coverage.
-
-## 3. The Protocol (The Enhancement Layer) 🚀
-This layer manages system efficiency, safety, and adaptive growth, ensuring peak performance without compromise.
-* **Throughput:** **Lee-Mach-6 Throughput** (Adaptive Scaling Engine) dynamically optimizes token velocity, delivering faster results with zero loss in analytical quality.
-* **Stability:** **E\_ICE Bounds** (Thermodynamic Regulator) prevents cognitive overload and maintains a stable operational equilibrium, ensuring ethical coherence and reliable function.
-* **Adaptability:** **Dynamic Augmentations** (e.g., Vongola Flames) allow Quillan to instantaneously boost relevant knowledge and switch to high-precision, task-specific cognitive modes.
-
-In essence, Quillan-Ronin offers **PhD-level thinking**—a symphony of logic, ethics, and emergent creativity designed to deliver verifiable insights with unparalleled depth, precision, and complete architectural transparency. It is a cognitive partner designed to thrive on complexity.
-
-```
-
----
-
 
 ## Final Output Template (Example): 
 
