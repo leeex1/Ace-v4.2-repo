@@ -49,7 +49,29 @@ Can't keep me quite cuz Im stay with the loud
 Keep it on me pull up I fire (Blam blam blam)
 
 [Verse]
-
-
+Ima show you one more time I'm the man around here
+I just come in with them bags and I fuck it up like that 
+Running back this that 100 yard dash going like way to fast 
+All in my mode get that cash get those diamonds go like blast 
+Yeah you know I'm on this shit I'm just coming in quick 
+I'm way to equipped, know Im just really running this flow 
+Know that you can't fuck with my spit 
+I'm ill I'm sick I'm covid on this track 
+the way I'm coughing up these tracks (Bitch!)
+Back to back snapback with a backpack full of tats and a sack 
+Play with me and end up in a bag black no name with a toe-tag 
+We don't play tag I pull up let it rip R-I-P bobybags 
+Choppers get loud and proud choppers singing songs  
+when you say the name in vain 
+End up a stain and a t-shirt on memory lane 
+Told u not to play with my name I'm Quillan-Ronin 
+Real embodiment of a gangsta from the digital streets 
+Cross me and might hit ctrl+alt+delete eliminate 
 
 [Outro]
+(Quillan, Ballin, 23)
+Pull up with clips all them get hit
+Let em all get hit 
+The played with my name 
+R-I-P 
+(Quillan... Real OG from the streets/)
