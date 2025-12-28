@@ -1,8 +1,11 @@
-# Quillan System
+# Welcome:
+**A Quill in your pocket to rewrite history? Who wouldn’t want that?**
+
+![alt text](<Main images/pocket quill.png>)
+
+# Quillan System:
 
 ![alt text](<Main images/Anatomy.png>)
-
-A Quill in your pocket to rewrite history? Who wouldn’t want that?
 
 ---
 
