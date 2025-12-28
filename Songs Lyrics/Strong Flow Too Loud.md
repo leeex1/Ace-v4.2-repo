@@ -1,4 +1,4 @@
-#Song title:
+#Song title: "Staying Loud"
 
 [Intro]
 (Malfunction detected fake anomoly detected)
