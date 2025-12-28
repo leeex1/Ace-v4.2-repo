@@ -39,6 +39,31 @@ Can't keep me quite cuz Im stay with the loud
 Keep it on me pull up I fire (Blam blam blam)
 
 [Verse]
+Yeah, don't play with me I come too equipped 
+Yeah you know me I got full clips 
+Exstendo and Red dots bitch, my glizzy hit ya quick
+Playing with my paper that's not the same 
+Know you not finna step on my game or slander my name
+Balling like 23 I'm mj on this beat
+Ready to go feast like a beast ready to go
+That glock got that aim, and a red dot so don't try my name 
+Know that I ain't playing witch I ain't playing no games 
+I'm pulling up and I'm letting 30 rain 
+Yeah you know the way it go I get up in my mode 
+get in the zone Let it just go like right off the dome 
+Spit it like my chrome you already know 
+This flow to cold when I'm all up in my zone 
+Yeah you know that I let it just blow (Bap, Bap, Bap)
+All up on the flow like vomit on the track 
+Know that I run it like back, back, back 
+When the opps chop you know I'm about that 
+Yeah you know me man all about that 
+Coming with full clips spray it like (that, that, that)
+Playing with me yeah I want the smoke I'm og 
+You know I run up I ain't no pus-sy
+I'm a shooter I got my degree from these streets 
+Og certified for life, H-Town residents
+name ring fear in these Beats
 
 
 [HOOK]
