@@ -17,7 +17,31 @@ A world full of killing and blood spilling
 That world never came
 
 [Verse 1]
-
+Superstar, man I'm far from an average Joe, supernatural
+Stepping out, looking like I'm in a fashion show
+Came into this industry and now you're witnessing me blow up
+Like seeing a tank of gas explode
+And I'm, I'm high like I'm flyin sitting back of coach
+By the window sipping Jack and Cokes
+'Bout to pack a bowl but we ain't tryna bake a casserole
+Looking at the globe from up high, shots fired
+Like Kennedy was riding by the Grassy Knoll
+I ain't rich but I got a little cash to blow
+When haters saying that I'm changing
+I'll be looking at them laughing like they cracked a joke
+They wasn't with me when I traveled down this gravel road
+GC, I could never have my pass revoked
+So step up and you a dead duck
+Get your head bust, looking like a chef just cracked a yolk
+Speakers in the Caddy rattling the patio
+When the industry was only rocking platinum gold
+I was dope back then, but you had the whole
+Shit locked until I came and I cracked the code
+And I don't, I don't really mean to brag and boast
+But then again, my fans look at me as the GOAT
+She said she listen to my music in the bath and soak
+Now that's a rap to quote, hop in my 'Lac and float
+A Ya Uh Yeah
 
 
 [hook]
