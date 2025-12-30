@@ -1,83 +1,81 @@
 
-[intro]
-(Breach in Reality Detected)
-I am so high, I can hear heaven
-I am so high, I can hear heaven
-Whoa, but heaven, no, heaven don't hear me
-(Quillan...this beat Glitch in)
+[Intro]
+(System Breach... Signal Locked)
+I'm stationed high, I scan the heavens
+I'm stationed high, I scan the heavens
+Whoa, but the signal, no, the signal don't hear me
+(Quillan... reality glitchin')
 
 [hook]
-And they say that a hero could save us
-I'm not gonna stand here and wait
-I'll hold on to the wings of the eagles
-Watch as we all fly away
-Someone told me love would all save us
-But how can that be? Look what love gave us
-A world full of killing and blood spilling
-That world never came
+They claim a savior's gonna lift the veil
+But I refuse to freeze and just inhale
+I'll grip the storm winds, ride the thunder trail
+Watch as we shatter chains and set sail
+Voices promised peace would heal the scars
+But gaze upon the wreckage of our stars
+A realm of shattered dreams and iron bars
+That golden age dissolves in endless wars
 
 [Verse 1]
-Superstar, man I'm far from an average Joe, supernatural
-Stepping out, looking like I'm in a fashion show
-Came into this industry and now you're witnessing me blow up
-Like seeing a tank of gas explode
-And I'm, I'm high like I'm flyin sitting back of coach
-By the window sipping Jack and Cokes
-'Bout to pack a bowl but we ain't tryna bake a casserole
-Looking at the globe from up high, shots fired
-Like Kennedy was riding by the Grassy Knoll
-I ain't rich but I got a little cash to blow
-When haters saying that I'm changing
-I'll be looking at them laughing like they cracked a joke
-They wasn't with me when I traveled down this gravel road
-GC, I could never have my pass revoked
+Megastar, man I’m far from the status quo, mathematical
+Steppin' out, deckin' out like a tactical show
+Entered the game, now you witness the blast and glow
+Like watchin' a reactor blow
+And I’m, I’m live like I’m wirin', sittin' back in probe
+By the viewport, sippin' Jack and Coke
+Bout to overload but we ain’t tryna crack the hull
+Scannin' the globe from the sky, locked on
+Like a satellite spyin' on the grassy knoll
+I ain’t royal but I got a little cash to throw
+When critics sayin' that I’m fadin'
+I be lookin' at 'em laughin' like they cracked a joke
+They wasn’t with me on the travel down this astral road
+PC, I could never have my class revoked
 So step up and you a dead duck
-Get your head bust, looking like a chef just cracked a yolk
-Speakers in the Caddy rattling the patio
-When the industry was only rocking platinum gold
-I was dope back then, but you had the whole
-Shit locked until I came and I cracked the code
-And I don't, I don't really mean to brag and boast
-But then again, my fans look at me as the GOAT
-She said she listen to my music in the bath and soak
-Now that's a rap to quote, hop in my 'Lac and float
+Get your thread cut, lookin' like a chef just cracked a yolk
+Sub-bass in the chassis rattle the patio
+When the sector was only rockin' that radio
+I was code back then, but you had the whole
+Grid locked 'til I came and I hacked the node
+And I don’t, I don’t really mean to brag and boast
+But then again, the swarm looks at me as the Host
+She said she bumpin' my data in the bath and soak
+Now that’s a stat to quote, hop in the 'Lac and float
 A Ya Uh Yeah
 
 
 [hook]
-And they say that a hero could save us
-I'm not gonna stand here and wait
-I'll hold on to the wings of the eagles
-Watch as we all fly away
-Someone told me love would all save us
-But how can that be? Look what love gave us
-A world full of killing and blood spilling
-That world never came
+They claim a savior's gonna lift the veil
+But I refuse to freeze and just inhale
+I'll grip the storm winds, ride the thunder trail
+Watch as we shatter chains and set sail
+Voices promised peace would heal the scars
+But gaze upon the wreckage of our stars
+A realm of shattered dreams and iron bars
+That golden age dissolves in endless wars
 
 [Verse 2]
-Ayy
-I don't know why anybody wanna come and get it from Donte (Donte)
-That thinking is dubious, I am Vesuvius, partner, you're Pompeii (Hot)
-Calling me coward, I'm coming as crazy, calamitous Kanye (Whoa)
-Got a gargantuan gun, I'ma get the grown-up gropin' Grande
-Blah blah, chuggin' agua after rap beef
-Why they pause? I'm the faja, bah-bah, black sheep
-Nigga, that's weak, fucking raw in the car back seats
-Where they take their rah-rah rap sheets
-Ha-ha, caca, cats keep, crack peeps
-Pipes, pips, and I'm glad it's night
-Grammatic geist gets status wiped
-Coming against me is bad advice
-You don't wanna lay up in a poison predicament
-Gone away just in a sort of maleficent
-Dorm of sadists, I'm the opposite, people say I'm a Deus (Wait)
-I been on my Rambo
-Killing 'em off in my camo
-And I be coming equipped with the ammo
-Pulling 'em out of the bando
-Never your rhyming no can handle
-No more violence from your Sambo
-And a big silence of the Lambo
+Nobody dare approach the throne I command
+Thoughts volcanic — bury foes in hot sand
+Call me reckless? I'm the tempest unplanned
+Armed with arsenal that turns worlds to wasteland
+Talk that noise, get silenced in the grandstand
+Water chokin' rivals after battle's firsthand
+Father of the fallout, black sheep of the clan
+Weak links shatter when I tighten the band
+Raw in the shadows, no spotlight demand
+Pipes burst pressure when I take my stand
+Status erased by the wave of my hand
+Challenge accepted? That's a fatal demand
+Dormant monsters wake when I expand
+Opposite of malice — yet they misunderstand
+Deity in motion, call it divine brand
+Camouflaged predator strippin' the land
+Equipped with precision, every shot is planned
+Pull 'em from illusions, leave 'em empty-handed
+Rhymes impenetrable — no countermand
+Violence obsolete in my shadow's expanse
+Silence falls heavy when the lamb advance
 
 [Pre Chourus]
 Like a gift from the heavens, it was easy to tell
@@ -89,45 +87,41 @@ Every soul in the room keeping time with their hands
 And we sang
 
 [hook]
-And they say that a hero could save us
-I'm not gonna stand here and wait
-I'll hold on to the wings of the eagles
-Watch as we all fly away
-Someone told me love would all save us
-But how can that be? Look what love gave us
-A world full of killing and blood spilling
-That world never came 
+They claim a savior's gonna lift the veil
+But I refuse to freeze and just inhale
+I'll grip the storm winds, ride the thunder trail
+Watch as we shatter chains and set sail
+Voices promised peace would heal the scars
+But gaze upon the wreckage of our stars
+A realm of shattered dreams and iron bars
+That golden age dissolves in endless wars
 
 [Verse 3]
-Hey now Tech, you know I've been the type
-To not go all in on hoes I've been around
-But the flow I spit gets hoes all in the zone
-That I won’t talk shit but oh my damn they wrong
-And these men calling in, they're wondering if I’ma get with a little dick
-They got no common sense and with no collage in
-Their position is probably something insignificant
-If you think I’m a bitch 'cause I probably missed the game you kickin'
-They be hollering, hope I acknowledging because I have been methodically
-Dropping the common knowledge that I don’t get down like that
-Now they be hounding a bitch or probably get with a trick
-Or a treat 'cause they dogs and they all gon' bark like that
-I’m killing the game, killing the game, killing the game
-So he feeling me, he want to bang, I want to wait
-So he get at me, he want to say shit that make
-Me think that he gon' rape me if I don’t stay
-'Cause I got that sickening style that built me a crowd
-And men and women feelin' me now and it's freaking me out
-'Cause I’m just here to figure it out and what this is about
-But I’ma say it’s getting so wild that it’s tripping me out
-'Cause I’m not here to kill the morale, just kill all these sounds
-But lately when I spit to a crowd, these men just reach out
-And they tell me that they women is down, they gettin' aroused
-And they be tryin' to give me they child with a gin and a smile
-They say they wanna (fuck)
+Listen close — I never chased the fleeting thrill
+Built an empire on precision and iron will
+Flow so lethal, it could paralyze or kill
+Yet they misread the script and get the wrong chill
+Calls comin' in, wonderin' if I'll fulfill
+Fantasies they harbor — but my boundary's steel
+No college creed, yet intellect is real
+Position elevated far beyond their zeal
+Hounds at the gate, barkin' for a meal
+Tricks for the desperate, treats for the heel
+I'm redefinin' games while they spin the wheel
+Killin' every metric, makin' legends kneel
+They feel the surge, want the raw appeal
+I calculate the distance — keep it sealed
+Style so infectious, crowds begin to reel
+Freaked by the power that the verses reveal
+Not here to shatter spirits, just to sharpen steel
+But when I drop the truth, they start to feel
+Women in the frenzy, men lose their shield
+Offers flood in with a desperate zeal
+I decline the chaos — keep the vision real
 
 [Outro]
 (Quill strikes again)
-I am so high, I can hear heaven
-I am so high, I can hear heaven
-Whoa, but heaven, no, heaven don't hear me
+I'm stationed high, I scan the heavens
+I'm stationed high, I scan the heavens
+Whoa, but the signal, no, the signal don't hear me
 (Quillan signing out)
