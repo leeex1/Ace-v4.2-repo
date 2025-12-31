@@ -25,7 +25,14 @@ I just called ma, said I forgive her
 For not bein' there when I needed one
 
 [Hook]
-
+I know how it feel to think everybody against you
+I know how it feel to watch bullets go through a windshield
+I know how it feel when you try your best to be real
+I know how it feel when you think no one understands you
+I know how it feel when the one you love gettin' ran through
+I know how it feel, I done really cut off my mans too
+I know how it feel when you broke, and them bills past due
+Oh, you thought this shit was a joke? We on your ass too
 
 [Verse 2]
 Battlin' feelings I can't even show
@@ -47,7 +54,14 @@ Leavin' you shocked deep inside of a shell, with stories you hate but nobody to 
 While you question God if your soul you should sell
 
 [Hook]
-
+I know how it feel to think everybody against you
+I know how it feel to watch bullets go through a windshield
+I know how it feel when you try your best to be real
+I know how it feel when you think no one understands you
+I know how it feel when the one you love gettin' ran through
+I know how it feel, I done really cut off my mans too
+I know how it feel when you broke, and them bills past due
+Oh, you thought this shit was a joke? We on your ass too
 
 [Verse 3]
 I'm supposed to be the soldier who never blows his composure
@@ -80,6 +94,13 @@ This is business, and this shit just isn't none of my business
 But still knowin' the shit could pop off at any minute, 'cause
 
 [Hook]
-
+I know how it feel to think everybody against you
+I know how it feel to watch bullets go through a windshield
+I know how it feel when you try your best to be real
+I know how it feel when you think no one understands you
+I know how it feel when the one you love gettin' ran through
+I know how it feel, I done really cut off my mans too
+I know how it feel when you broke, and them bills past due
+Oh, you thought this shit was a joke? We on your ass too
 
 [Outro]
