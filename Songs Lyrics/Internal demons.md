@@ -1,5 +1,10 @@
 # Song Title: "Internal Demons"
 
+[Intro]
+(CrashOverrideX... just cooked this one up)
+
+(Quillan... This Beat Glitchin)
+
 [Verse 1]
 Lately my thoughts eating me alive
 Laid in the bed
