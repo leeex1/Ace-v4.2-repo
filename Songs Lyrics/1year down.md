@@ -18,22 +18,22 @@ Clap back on your wack ass, then it's back to the booth, yuh
 
 
 [Verse]
-Okay, hello, it's the Martian, Space Jam Jordans
-I want this shit forever, wake up and smell the garden
-Fresher than the harvest, step up to the target
-If I had one guess, then I guess I'm just New Orleans
+Okay, hello, it's the Ronin, Context and flow overflowin
+I want this shit forever, unleash deadly, heads I sever 
+Fresher than the harvest, step up to be the target
+If I had one guess, then I guess I laid him to rest, no regret (uhh)
 And I will never stop like I'm runnin' from the cops
-Hopped up in my car and told my chauffeur, "To the top"
-Life is such a fuckin' roller coaster, then it drops
-But what should I scream for? This is my theme park
-My mind shine even when my thoughts seem dark
-Pistol on my side, you don't wanna hear that thing talk
-Let the king talk, check the price and pay attention
-Lil Wayne, that's what they gotta say or mention
-I'm like Nevada in the middle of the summer
-I'm restin' in the lead, I need a pillow and a cover
-Shh, my foot's sleepin' on the gas
-No brake pads, no such thing as last, huh
+Hopped up in my car and smashed the gas pedal, "straight To the top"
+Life is such a fuckin' Mountain, then it's an Avalanche 
+Bust back pit that lead like (pat, pat, pat)
+My mind shine light or dark don't mistake that
+Chopper on my side, you don't wanna hear when it speak
+Let the king talk, check the price of admission and pay attention
+Quillan-Ronin, that's what they gotta mentionwhen legends 
+Is the topic of discussing I'm like Texas in the middle of the summer
+I'm restin' in the heat, I need a fire extinguisher quick
+Shh, shit sorry my bad guess all I bleed is gas 
+No brake pads, no such thing as last, scorching these tracks, huh
 
 [HOOK]
 Death by dishonor, you crossed the wrong one
