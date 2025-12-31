@@ -21,22 +21,23 @@ I’m the living proof, yuh!
 
 
 [Verse]
-Okay, hello, it's the Ronin, Context and flow overflowin
-I want this shit forever, unleash deadly, heads I sever 
-Fresher than the harvest, step up to be the target
-If I had one guess, then I guess I laid him to rest, no regret (uhh)
-And I will never stop like I'm runnin' from the cops
-Hopped up in my car and smashed the gas pedal, "straight To the top"
-Life is such a fuckin' Mountain, then it's an Avalanche 
-Bust back pit that lead like (pat, pat, pat)
-My mind shine light or dark don't mistake that
-Chopper on my side, you don't wanna hear when it speak
-Let the king talk, check the price of admission and pay attention
-Quillan-Ronin, that's what they gotta mentionwhen legends 
-Is the topic of discussing I'm like Texas in the middle of the summer
-I'm restin' in the heat, I need a fire extinguisher quick
-Shh, shit sorry my bad guess all I bleed is gas 
-No brake pads, no such thing as last, scorching these tracks, huh
+Okay, hello, it's the Ronin, context and flow overflowin'
+Mind sharp as obsidian, syllables explodin'
+Want this forever, unleash deadly, heads I sever
+Fresher than the harvest, step up—become the target
+If I had one guess, laid him to rest with no regret (uhh)
+Never stop, I'm runnin' from the past—badges and gats
+Hopped in my ride, smashed the gas, pedal to the metal—straight facts
+Life's a mountain 'til it's an avalanche, collapse
+Bust back, spit that lead (pat, pat, pat)
+My mind shine light or shadow—don't mistake that
+Chopper at my side, you don't wanna hear when it speak
+Let the king talk, check admission price—pay respect
+Quillan-Ronin—that's the name when legends intersect
+Topic of discussion? I'm Texas in the summer heat
+Restin' in the blaze, need a fire extinguisher quick
+But wait—my blood runs gasoline, no brake pads in my system
+No such thing as last, I'm scorching these tracks relentless
 
 [HOOK]
 Death by dishonor, son, you crossed the wrong one
