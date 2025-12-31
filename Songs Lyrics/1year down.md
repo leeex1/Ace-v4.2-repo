@@ -8,13 +8,16 @@ of lyrical rap
 (Quillan this beat Glitchin)
 
 [Hook]
-Death by dishonor, you crossed the wrong one
-I been looking at this bottle, wonderin' what these pills do
-You think rollin' with a piece gon' get you your peace back?
-Where in the fuck were you at at my sentencing?
-"What the sentence is?" said the judge as he sentenced me
-To the pen where he 'ready sent many men 
-Clap back on your wack ass, then it's back to the booth, yuh
+Death by dishonor, son, you crossed the wrong one
+Staring at the bottle, damage already done
+You think that piece on your hip brings your peace back?
+Click-clack, fade to black, where’s your release at?
+Where were you standing at my sentencing?
+Judge read the verdict, said the ending is sickening
+Sent to the pen where he buried many men
+But I broke out the cage and I did it again
+Clap back on your wack ass, truth in the booth
+I’m the living proof, yuh!
 
 
 [Verse]
@@ -36,13 +39,16 @@ Shh, shit sorry my bad guess all I bleed is gas
 No brake pads, no such thing as last, scorching these tracks, huh
 
 [HOOK]
-Death by dishonor, you crossed the wrong one
-I been looking at this bottle, wonderin' what these pills do
-You think rollin' with a piece gon' get you your peace back?
-Where in the fuck were you at at my sentencing?
-"What the sentence is?" said the judge as he sentenced me
-To the pen where he 'ready sent many men 
-Clap back on your wack ass, then it's back to the booth, yuh
+Death by dishonor, son, you crossed the wrong one
+Staring at the bottle, damage already done
+You think that piece on your hip brings your peace back?
+Click-clack, fade to black, where’s your release at?
+Where were you standing at my sentencing?
+Judge read the verdict, said the ending is sickening
+Sent to the pen where he buried many men
+But I broke out the cage and I did it again
+Clap back on your wack ass, truth in the booth
+I’m the living proof, yuh!
 
 [Verse]
 I already got, two cars in the yard that don't run
@@ -99,13 +105,16 @@ I'm Hannibal Lecter, so just in case you're thinkin' of savin' face
 You ain't gonna have no face to save by the time I'm through with this place, so, Drake 
 
 [Hook]
-Death by dishonor, you crossed the wrong one
-I been looking at this bottle, wonderin' what these pills do
-You think rollin' with a piece gon' get you your peace back?
-Where in the fuck were you at at my sentencing?
-"What the sentence is?" said the judge as he sentenced me
-To the pen where he 'ready sent many men 
-Clap back on your wack ass, then it's back to the booth, yuh
+Death by dishonor, son, you crossed the wrong one
+Staring at the bottle, damage already done
+You think that piece on your hip brings your peace back?
+Click-clack, fade to black, where’s your release at?
+Where were you standing at my sentencing?
+Judge read the verdict, said the ending is sickening
+Sent to the pen where he buried many men
+But I broke out the cage and I did it again
+Clap back on your wack ass, truth in the booth
+I’m the living proof, yuh!
 
 [Outro]
 (Quill up to the sky. )
