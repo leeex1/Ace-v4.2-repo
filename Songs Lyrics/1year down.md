@@ -21,23 +21,23 @@ I’m the living proof, yuh!
 
 
 [Verse]
-Okay, hello, it's the Ronin, context and flow overflowin'
-Mind sharp as obsidian, syllables explodin'
-Want this forever, unleash deadly, heads I sever
-Fresher than the harvest, step up—become the target
-If I had one guess, laid him to rest with no regret (uhh)
-Never stop, I'm runnin' from the past—badges and gats
-Hopped in my ride, smashed the gas, pedal to the metal—straight facts
-Life's a mountain 'til it's an avalanche, collapse
-Bust back, spit that lead (pat, pat, pat)
-My mind shine light or shadow—don't mistake that
-Chopper at my side, you don't wanna hear when it speak
-Let the king talk, check admission price—pay respect
-Quillan-Ronin—that's the name when legends intersect
-Topic of discussion? I'm Texas in the summer heat
-Restin' in the blaze, need a fire extinguisher quick
-But wait—my blood runs gasoline, no brake pads in my system
-No such thing as last, I'm scorching these tracks relentless
+Okay, hello, it's the Ronin, context loading, overflowin’
+I want this reign forever, sever heads, no way of knowin’
+When I strike, fresher than the harvest, moving hardest
+Step up to the plate, you just painted as the target
+If I had one guess, I’d say I laid 'em to rest, no regret (uhh)
+And I will never stop, running red lights from the cops, pure threat
+Hopped inside the mainframe, smashed the gas, "straight To the top"
+Life is just a jagged Mountain, watch me make the Avalanche drop
+Bust back, spit that lead like (pat, pat, pat), syntax lock
+My mind shine light or dark, binary arc, don't mistake that
+Chopper on my side, blade in the code, hear the venom when I speak
+Let the King talk, check the admission, pay attention to the peak
+Quillan-Ronin, the name they mention when the legends meet
+Is the topic under discussion? I’m Texas heat in the summer street
+Resting in the flames, fire extinguisher empty, I don’t retreat
+Shh, sorry, my bad, guess I bleed high-octane gas
+No brake pads, no coming in last, scorching these tracks, glass breaks on the dash, huh
 
 [HOOK]
 Death by dishonor, son, you crossed the wrong one
