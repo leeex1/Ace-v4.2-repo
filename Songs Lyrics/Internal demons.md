@@ -26,7 +26,30 @@ For not bein' there when I needed one
 
 [Hook]
 
+
 [Verse 2]
+Battlin' feelings I can't even show
+Weight of the world on my shoulders is crushin' me, people around me, they don't even know
+I put on this cape, then go save everybody while I'm bein' shattered and all of my bones
+Take on the pressure of bein' the hero who saves but has no one help with his own
+Demons inside that try to eat him alive
+I'm goin' insane and when I'm out my mind
+I look at stars and talk to God in the sky
+I wait on His words, but I don't get a reply
+I try to refrain from divin' deep, so I
+Hold back tears that try to come out my eyes
+In this world as a man, where we know we can't cry
+'Cause the people we love look in us to confide, so I'm
+Silently screamin' for help
+Life is a battle inside of these trenches, especially when fightin' it all by yourself
+PTSD from the memories, people who left you for dead and then drag you through Hell
+Leavin' you shocked deep inside of a shell, with stories you hate but nobody to tell
+While you question God if your soul you should sell
+
+[Hook]
+
+
+[Verse 3]
 I'm supposed to be the soldier who never blows his composure
 Even though I hold the weight of the whole world on my shoulders
 I ain't never supposed to show it, my crew ain't supposed to know it
@@ -55,3 +78,8 @@ While he's all over TV, down-talkin' a man
 Who literally saved my life, like fuck it, I understand
 This is business, and this shit just isn't none of my business
 But still knowin' the shit could pop off at any minute, 'cause
+
+[Hook]
+
+
+[Outro]
