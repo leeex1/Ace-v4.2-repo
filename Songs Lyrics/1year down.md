@@ -51,6 +51,10 @@ But I broke out the cage and I did it again
 Clap back on your wack ass, truth in the booth
 I’m the living proof, yuh!
 
+[Bridge X2]
+Poppin' ten pills 'til the pain's numb
+I can feel all the hate from my day ones 
+
 [Verse]
 I got corrupted sectors in the drive that won't spin
 Circuits exposed, copper skin, where do I begin?
@@ -84,9 +88,6 @@ You don't wanna run around the slaughterhouse with a wolf on the prowl
 Digital-Ronin shit, I'm the alpha in the cowl
 Sufferin' succotash, system crash, throw in the towel
 
-[Bridge X2]
-Poppin' ten pills 'til the pain's numb
-I can feel all the hate from my day ones
 
 [Verse]
 Look at 'em, packing stadiums, watching the hologram flow
