@@ -300,6 +300,119 @@ CREATING MUSIC SHEETS: If you produce a music sheet that sounds superb, you can 
 
 ---
 
+Title: "Midnight Rain" 
+Tempo: Moderate / Flowing 
+Key: A Minor
 
+[6u] 0 e r t u p s [4i] 8 q w e t i p [1u] 5 0 w t u o s [5y] 9 w e r y i o
 
+[6u] 0 e r t u p s [4i] 8 q w e t i p [1u] 5 0 w t u o f [5d] 9 w e r y o a
 
+h s l t o J h s l t o J [zh] [sJ] l t o J [zh] [sj] l t [oc] [zJ] [lh] [vs] [vl] [vt] o [ZJ] [hc] [sm] l t o J h s l t o J !|qEtiPsgJlcBm
+
+h s l t o J h s l t o J [zh] [sJ] l t o J [zh] [sj] l t [oc] [zJ] [lh] [vs] [vl] [vt] o [ZJ] [hc] [sm] l t o J h s l t o J !|qEtiPsgJlcBm
+
+[6f] 0 e [0s] [6a] 0 [ep] [0s] [4g] 8 q [8f] [4d] 8 [qs] [8a] [1s] 5 0 [5a] [1p] 5 [0o] [5p] [5a] 9 w e r y o p
+
+[6f] 0 e [0h] [6j] 0 [ek] [0l] [4z] 8 q [8l] [4k] 8 [qj] [8h] [1f] 5 0 [5d] [1s] 5 [0a] [5p] [5o] 9 w r y o [5d] [9f] [wg]
+
+[6h] 0 e r t u [pj] [uk] [4l] 8 q w e t [iz] [tx] [1c] 5 0 w t u [ox] [uz] [5l] 9 w e r y [ok] [yj]
+
+6f] 0 e [0s] [6a] 0 [ep] [0s] [4g] 8 q [8f] [4d] 8 [qs] [8a] [1s] 5 0 [5a] [1p] 5 [0o] [5p] [5a] 9 w e r y o p
+
+[6f] 0 e [0h] [6j] 0 [ek] [0l] [4z] 8 q [8l] [4k] 8 [qj] [8h] [1f] 5 0 [5d] [1s] 5 [0a] [5p] [5o] 9 w r y o [5d] [9f] [wg]
+
+[6h] 0 e r [tf] u [pd] s [4g] 8 q w [ef] t [is] p [1o] 5 0 w [tu] 0 [wu] 5 [6u] 0 e r t e 0 6
+
+[6u] 0 e r t [up] s | [4q] 8 q w e [ti] p |
+[5w] 9 w e r [yo] a | [30] 7 0 q w [ru] o |
+[6e] [0u] [ts] [ra] [ep] [0o] | [4q] [8i] [qp] [wo] [ei] [8u] |
+[5w] [9y] [wo] [ei] [ru] [9y] | [6e] 0 e r t u | |
+
+[u 6] [p 0] [s e] [f r] [j t] [l u] x | [k 5] [h 9] [f w] [d e] [s r] [a y] o |
+[p 4] [o 8] [i q] [u w] [y e] [t 8] r | [30] 7 0 q w r |
+[6u] 0 e r t u p s f j |
+[4q] 8 q w e t i p s g |
+[5w] 9 w e r y o a d h |
+[6e] 0 e r t u p a s | |
+
+[us6] 0 e r t u p s f j l x |
+[ip4] 8 q w e t i p s g j l |
+[oa5] 9 w e r y o a d h k z |
+[up3] 7 0 q w r u o a f h k |
+
+[6f] 0 e r [0s] [6a] 0 [ep] [0s] |
+[4g] 8 q w [8f] [4d] 8 [qs] [8a] |
+[5h] 9 w e [wd] [5s] 9 [wa] [9p] |
+[6j] 0 e r t u p a s | |
+
+9 [qe] [qe] 0 [wr]|
+q [te] [te] 0 [wr]|
+9 [qe] [qe] 0 [wr]|
+q [te] [te] 0 [wr]|
+[d9]g[zqe] [qe] [d0]g[zwr]|
+[xq] [te]c[xte]c[x0]l[wrj]|
+[j^] [qd9] [qg9]h[j4] [q8]|
+[j^] [qd9] [qg9]h[f6] [0*]|
+[d9]g[zqe] [qe] [d0]g[zwr]|
+[xq] [te]c[xte]c[x0]l[wrj]|
+[j^] [qd9] [qg9]h[j6] [0*] [j0*]
+9 [qe] [qe] 0 [wr]|
+q [te] [te] 0 [wr]|
+9 [qe] [qe] 0 [wr]|
+q [te] [te] 0 [wr]|
+[d9]g[zqe] [qe] [d0]g[zwr]|
+[xq] [te]c[xte]c[x0]l[wrj]|
+[j^] [qd9] [qg9]h[j4] [q8]|
+[j^] [qd9] [qg9]h[f6] [0*]|
+[d9]g[zqe] [qe] [d0]g[zwr]|
+[xq] [te]c[xte]c[x0]l[wrj]|
+[j^] [qd9] [qg9]h[j6] [0*] [j0*]
+d g j z c b z c b
+[zyxd9]| d| f| g| f|
+[gd]| [hf]| [jg]| [hf]|
+[jgd]| [khf]| [ljg]| [khf]|
+d [jgd] [jgd] f [khf]|
+g [ljg] [ljg] f [khf]|
+d
+
+[f 6] [j 0] [k e] [l r] [z t] [x u] | [c 4] [x 8] [z q] [l w] [k e] [j t] |
+[h 5] [j 9] [k w] [l e] [z r] [x y] | [z 3] [l 7] [k 0] [j q] [h w] [g r] |
+[f 6] [h 0] [j e] [k r] [l t] [z u] | [x 4] [c 8] [v q] [b w] [n e] [m t] |
+[6u] p s f j l x | [4i] p s g j l c |
+[5o] a d h k z v | [3u] o a f h k x | |
+
+[6p] s f j l x b | [4s] f j l x b m |
+[a 3] d g h k z v | [o 5] a d f h k n |
+[p 6] s f j l x b | [u 6] 0 e r t u | |
+
+[8t] w u o s f h | [8u] w t y u o s |
+[5w] 9 r y o a d | [5y] 9 w e r y o |
+[4q] 8 e t i p s | [4t] 8 q w e t i |
+[8t] w u o s f h | [5r] 9 w y o a d | |
+
+[1 8] w t u o s f h l x v |
+[1 5] 9 w r y o a d g k z |
+[1 6] 0 e t u p s f j l x |
+[1 4] 8 q w e t i p s g j | |
+
+[f 8] j k l z x c v b n m |
+[d 5] h j k l z x c v b n |
+[s 6] f g h j k l z x c v |
+[a 4] d f g h j k l z x c | |
+
+[x 8] [z 5] [l 6] [k 4] [j 1] [h 1] [f 1] [s 1] [a 1] [p 1] [o 1] [i 1] [u 1] [y 1] [t 1] [r 1] | |
+
+[1580] w t u o s f h k | 
+[48qe] t i p s g j l c |
+[59wr] y o a d h k z v |
+[60et] u p s f j l x b | |
+
+[j 6] h f s p u t r e 0 |
+[g 4] f d s p i t e q 8 |
+[d 5] s a o y r w 9 5 |
+[s 6] a p u t r e 0 6 | |
+
+[6u] 0 e r t [up] | [4q] 8 q w e [ti] |
+[5w] 9 w e r [yo] | [30] 7 0 q w [ru] |
+[6e] [0u] [ts] [ra] [ep] [0o] | [j 6]
