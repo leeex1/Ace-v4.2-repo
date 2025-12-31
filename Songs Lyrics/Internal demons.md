@@ -2,7 +2,10 @@
 
 [Intro]
 (CrashOverrideX... just cooked this one up)
-
+Only God know what's up with me, the only one I fear
+I made a dub last year and blew that money on some gear, forreal
+You know we cut different grew up runnin' round the ville
+In love with that money, the money give me a thrill
 (Quillan... This Beat Glitchin)
 
 [Verse 1]
@@ -109,3 +112,8 @@ I know how it feel when you broke, and them bills past due
 Oh, you thought this shit was a joke? We on your ass too
 
 [Outro]
+Only God know what's up with me, the only one I fear
+I made a dub last year and blew that money on some gear, forreal
+You know we cut different grew up runnin' round the ville
+In love with that money, the money give me a thrill
+(Quillan-Ronin out... mic drop eternal)
