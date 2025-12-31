@@ -88,22 +88,22 @@ Poppin' ten pills 'til the pain's numb
 I can feel all the hate from my day ones
 
 [Verse]
-There they go, packin' stadiums as Shady spits his flow
-Nuts they go, Macadamian, they go so ballistic, woah
-He can make them look like bozos, he's wonderin' if he should spit this slow
-Fuck no, go for broke, his cup just runneth over, oh no
-He ain't had him a buzz like this since the last time that he overdosed
-They been waiting patiently for Pinocchio to poke his nose
-Back into the game and they know rap will never be the same as befo'
-Bashin' in the brains of these hoes and establishin' a name as he goes
-The passion in the flame is ignited, you can't put it out once we light it
-This shit is exactly what the fuck that I'm talkin' about when we riot
-You dealin' with a few true villains who stand inside of the booth, truth-spillin'
-And spit true feelings until our tooth fillings come flyin' up out of our mouths, now rewind it
-Payback, motherfucker, for the way that you doubted me, how's it taste?
-When I slap the taste outta your mouths with a bass so loud that it shakes the place
-I'm Hannibal Lecter, so just in case you're thinkin' of savin' face
-You ain't gonna have no face to save by the time I'm through with this place, so, Drake 
+Look at 'em, packing stadiums, watching the hologram flow
+Nuts they go, Macadamian, cracking under pressure, woah
+They look like bozos in the spotlight, wondering if I spit slow
+Fuck no, go for broke, cup runneth over, volcano blow
+Haven't had a buzz like this since the system overdose
+Waiting patiently for Pinocchio to grow a nose
+Back in the game, rewriting the code, nothing’s the same as befo'
+Bashing in the brains of the clones, establishing the name as I go
+The passion is ignited, firewall burned, can't put it out once we light it
+This shit is exactly the riot I promised, don't try to fight it
+You dealing with a true villain, standing in the booth, truth-spilling
+Spit true feelings, knock your tooth fillings, ceiling peeling
+Payback, motherfucker, taste the metal, how's it taste?
+Slap the taste out your mouth with a bass line that erases space
+I'm Hannibal Lecter with a vector, thinking of saving face?
+You ain't gonna have no face to save, I deleted the place, no trace 
 
 [Hook]
 Death by dishonor, son, you crossed the wrong one
