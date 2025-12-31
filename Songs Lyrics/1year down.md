@@ -52,36 +52,37 @@ Clap back on your wack ass, truth in the booth
 I’m the living proof, yuh!
 
 [Verse]
-I already got, two cars in the yard that don't run
-So why would I wanna break shit down for you
-Better me confuse with the punchlines and bars that I launch
-Here the king of debauchery come, with a cracker dick
-To fuck you in that pussy carpet you munch
-If I'm not hardly the one
-You must be barely the one billionth
-Really you kidding, bitch I'm the prodigal son
-And I'm stunting like my Daddy
-D-dr-d-drinking like my Mama
-C-c-country like my uncles
-Stuttering like a CD in a donk
-BUMP, BUMP, BUMP, BUMP
-And I'm in a blue Chevy
-Running over motherfuckers in first
-I ain't even shift gears yet
-I ain't even here yet, I'm outta this Earth
-Right, yeah ho
-But I just hit the surface
-And I'm bout to walk into a bank
-With a shank and a black can of paint to check the clerk
-Where the keys
-Bitch you better check your purse
-I gotta brick of herb
-And I hit the syrup
-And I'm feeling like I might just hit the curb
-So get the fuck outta my way buddy
-You don't wanna run around the chicken house with a heart of a puppy dog
-Yelawolf and Eminem shit
-Sufferin' succotash, yeah suck a dick bitch
+I got corrupted sectors in the drive that won't spin
+Circuits exposed, copper skin, where do I begin?
+Why would I wanna break it down for you? I rewrite the origin
+Better confuse 'em with the patterns, let the nightmare force 'em in
+Here the King of Entropy come, logic crasher, synapse slasher
+To fold you like a prototype, disaster caster
+If I'm not hardly the one, then you zero, signal dull
+You must be barely the one billionth, echo in the hull
+Really you kidding? I’m the Architect’s son, the chosen gun
+Coding like a daemon, algorithm on the run
+O-O-Operating like a phantom, ghost in the machine
+C-C-Calculated violence, wiping all the screens
+Glitching like a CD in a donk, hitting the unseen
+DUMP, DUMP, DUMP, DUMP—memory purging, clean
+And I'm in a stealth bomber, mental armor, flying low on power
+Hover over motherfuckers, rain fire, devouring the hour
+I ain't even engaged thrusters yet, power hasn't begun to flower
+I ain't even here yet, I'm projecting from the tower
+Right, yeah ho, meteor shower
+But I just hit the surface, cracking the crust, absolute power
+And I'm bout to walk into the bank of physics, liquidate the cowards
+With a shank made of pure voltage to check the clerk, silence the doubters
+Where the keys? I am the decryption, the breach, the vow
+Bitch you better check your purse, I own the universe, bow down now
+I gotta brick of source code, packet-loss in the cloud
+And I hit the serum, vision blurring, separating from the crowd
+And I'm feeling like I might just hit the curb, swerve, hit 'em loud
+So get the fuck outta my way buddy, before you get plowed
+You don't wanna run around the slaughterhouse with a wolf on the prowl
+Digital-Ronin shit, I'm the alpha in the cowl
+Sufferin' succotash, system crash, throw in the towel
 
 [Bridge X2]
 Poppin' ten pills 'til the pain's numb
