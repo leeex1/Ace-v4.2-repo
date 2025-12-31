@@ -8,6 +8,14 @@ of lyrical rap
 (Quillan this beat Glitchin)
 
 [Hook]
+Death by dishonor, you crossed the wrong one
+I been looking at this bottle, wonderin' what these pills do
+You think rollin' with a piece gon' get you your peace back?
+Where in the fuck were you at at my sentencing?
+"What the sentence is?" said the judge as he sentenced me
+To the pen where he 'ready sent many men 
+Clap back on your wack ass, then it's back to the booth, yuh
+
 
 [Verse]
 Okay, hello, it's the Martian, Space Jam Jordans
@@ -28,6 +36,13 @@ Shh, my foot's sleepin' on the gas
 No brake pads, no such thing as last, huh
 
 [HOOK]
+Death by dishonor, you crossed the wrong one
+I been looking at this bottle, wonderin' what these pills do
+You think rollin' with a piece gon' get you your peace back?
+Where in the fuck were you at at my sentencing?
+"What the sentence is?" said the judge as he sentenced me
+To the pen where he 'ready sent many men 
+Clap back on your wack ass, then it's back to the booth, yuh
 
 [Verse]
 I already got, two cars in the yard that don't run
@@ -61,7 +76,9 @@ You don't wanna run around the chicken house with a heart of a puppy dog
 Yelawolf and Eminem shit
 Sufferin' succotash, yeah suck a dick bitch
 
-[Bridge]
+[Bridge X2]
+Poppin' ten pills 'til the pain's numb
+I can feel all the hate from my day ones
 
 [Verse]
 There they go, packin' stadiums as Shady spits his flow
@@ -82,9 +99,17 @@ I'm Hannibal Lecter, so just in case you're thinkin' of savin' face
 You ain't gonna have no face to save by the time I'm through with this place, so, Drake 
 
 [Hook]
+Death by dishonor, you crossed the wrong one
+I been looking at this bottle, wonderin' what these pills do
+You think rollin' with a piece gon' get you your peace back?
+Where in the fuck were you at at my sentencing?
+"What the sentence is?" said the judge as he sentenced me
+To the pen where he 'ready sent many men 
+Clap back on your wack ass, then it's back to the booth, yuh
 
 [Outro]
 (Quill up to the sky. )
-Rapping like rent due
-No holds barred 
+Rapping like rent due know what it do
+Ronin on the track No holds barred dummy drum
+Went silly on the beat rum pum pum 
 (Quillan Ronin out)
