@@ -1232,6 +1232,8 @@ TOKEN FLOW LOGIC:
 
 ---
 
+```
+
 ### 📊 Architecture Summary
 
 | Layer | Parameters | Purpose |
@@ -1254,11 +1256,6 @@ TOKEN FLOW LOGIC:
 4. Modal Unification: Single architecture handles text, audio, video, and image with shared backbone
 5. BitNet Quantization: 1.58-bit quantized linear layers for parameter efficiency
 6. Cross-Modal Consistency: Final layer ensures coherence across modalities
-
----
-
-
-```
 
 ---
 
