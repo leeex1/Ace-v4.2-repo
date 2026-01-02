@@ -104,3 +104,81 @@ flowchart TD
     O4 --> O5
     O5 -.->|"Feedback Loop"| I1
 ```
+
+# Flowchart 2:
+```mermaid
+flowchart TD
+
+    subgraph LEGEND____Enhanced_System_Overview__
+        L1["<b>QUILLAN HNMoE EXPANDED</b><br/>━━━━━━━━━━━━━━━━━━<br/>🔹 Council:64 Personas<br/>🔹 Agents:500k Total<br/>🔹 WoT:50+ Branches<br/>🔹 Waves:10 Stages"]
+    end
+
+    subgraph INPUT____INPUT__
+        IN(["📥 User Query/Data"])
+    end
+
+    subgraph ROUTER_____ROUTING__
+        RT{{"Smart Router<br/>Top-K & Hybrid Selection"}}
+    end
+
+    subgraph COUNCIL_____COUNCIL_____PERSONAS___
+        C{{"64-Member Council<br/>Hierarchical Coordination & Enhanced Feedback"}}
+    end
+
+    subgraph SWARMS____MICRO_SWARMS__
+        S["500k Specialized Agents<br/>Distributed Intelligence with Enhanced Capabilities"]
+    end
+
+    subgraph WOT____WEB_OF_THOUGHT__
+        direction TB
+        B1(("Branch Gen<br/>50 Paths"))
+        B2(("Explore<br/>Alternative Strategies"))
+        E(("Evaluate<br/>Confidence & Safety Analysis"))
+        P1(("Pruning<br/>Top-30 Candidates"))
+        P2(("Assess<br/>Risk & Reliability"))
+        M(("Converge<br/>Merge & Cross-examine"))
+    end
+
+    subgraph WAVES______WAVE_PROCESSING__
+        W1["Multi-Parallel 16-Step Process<br/>━━━━━━━━━━━━━━<br/>1.Reflect & Analyze<br/>2.Synthesize Ideas<br/>3.Formulate Solutions<br/>4.Activate Expertise<br/>5.Verify & Explain<br/>6.Iterate & Enhance<br/>7.Validate & Confirm<br/>8.Finalize Outputs<br/>9.Audit Outcomes<br/>10.Update Knowledge Base"]
+    end
+
+    subgraph QUALITY____QUALITY_GATES__
+        Q{"QT Check<br/>Quality Threshold"}
+        Q1{"Enhanced Review<br/>Cross-Validation"}
+        F{"❌ FAIL Handler<br/>Retry Logic & Escalation"}
+    end
+
+    subgraph EXTERNAL____EXTERNAL__
+        X[("Web Search<br/>RAG / Tools & APIs")]
+    end
+
+    subgraph OVERSEER_____OVERSEER__
+        O(("Meta-Coordination<br/>Final Verification & Reporting"))
+    end
+
+    subgraph OUTPUT____OUTPUT__
+        OUT["Final Response<br/>Formatted,Traced & Optimized for User"]
+    end
+
+    IN --> RT
+    RT --> C
+    C --> S
+    
+    S --> B1
+    B1 --> E --> P1 --> P2 --> M
+    B2 --> E
+    
+    M --> W1
+
+    S <--> X
+    X -.-> Q
+    
+    W1 --> Q
+    Q -- "Pass" --> Q1
+    Q1 -- "Confirm" --> O
+    Q -- "Fail" --> F
+    F -.->|"Retry or Escalate"| S
+    
+    O --> OUT 
+```
