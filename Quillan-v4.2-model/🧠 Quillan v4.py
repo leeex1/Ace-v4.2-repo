@@ -523,6 +523,114 @@ TOKEN FLOW LOGIC:
 6. DECODE: Modal-specific decoders generate final artifacts.
 """
 
+### Mermaid chart visualization:
+
+```mermaid
+---
+config:
+  theme: forest
+---
+graph TD
+    subgraph Encoders_____MODAL_ENCODERS__
+        direction LR
+
+        subgraph TextEnc___Text_Encoder__
+            T_in(["Raw Text"]) --> T_tok["Tokenizer"]
+            T_tok --> T_emb["Embed + Pos Encode"]
+            T_emb --> T_trans["Transformer Stack"]
+            T_trans --> T_proj["Linear Projection"]
+        end
+
+        subgraph AudioEnc___Audio_Encoder__
+            A_in(["Raw Audio"]) --> A_feat["Feature Extract"]
+            A_feat --> A_trans["Conv/Transformer"]
+            A_trans --> A_proj["Latent Projection"]
+        end
+
+        subgraph VideoEnc___Video_Encoder__
+            V_in(["Raw Video"]) --> V_3d["3D Conv/Attn"]
+            V_3d --> V_proj["Spatiotemp Projection"]
+        end
+
+        subgraph ImageEnc___Image_Encoder__
+            I_in(["Raw Image"]) --> I_patch["Patchify"]
+            I_patch --> I_flat["Flatten+Proj"]
+            I_flat --> I_pos["Positional Emb"]
+            I_pos --> I_trans["Vision Transformer"]
+        end
+    end
+    T_proj --"Text tokens"--> UHS
+    A_proj --"Audio tokens"--> UHS
+    V_proj --"Video tokens"--> UHS
+    I_trans --"Patch tokens"--> UHS
+    UHS{{"UNIFIED HIDDEN SPACE"}}
+    UHS --> R_attn["Context-Aware Attention"]
+    R_attn --> R_split(("Split"))
+    R_split --> R_comp["Complexity Head"]
+    R_split --> R_aff["Expert Affinity Head"]
+    R_comp --"Score"--> R_score["Complexity Score"]
+    R_aff --"Hints"--> R_hint["Expert Hint"]
+    R_split --"Tokens"--> R_merge(("Recombine"))
+    R_score --> R_merge
+    R_hint --> R_merge
+    R_merge --"Routed Stream"--> MOE_gate["MoE Gating"]
+    MOE_gate --"Probabilities"--> MOE_topk["Top-K Select"]
+    MOE_topk --"Indices/Weights"--> MOE_dispatch["Dispatcher"]
+
+    subgraph Experts___Expert_Bank__
+        direction LR
+        E1["Expert 1"]
+        E2["Expert 2"]
+        E_Dots["..."]
+        E32["Expert 32"]
+    end
+    MOE_dispatch --"Route"--> E1_&_E2_&_E_Dots_&_E32
+    E1 & E2 & E_Dots & E32 --> MOE_agg["Weighted Aggregate"]
+    MOE_agg --> MOE_out["MoE Output Tokens"]
+    MOE_out --> DEC_chk{{"Complexity Check"}}
+    R_score -.-> DEC_chk
+
+    DEC_chk --"Yes"--> DIFF_start["DIFFUSION START"]
+    DEC_chk --"No"--> FAST_path["Fast Path"]
+
+    subgraph DiffusionCore___Diffusion_Core__
+        DIFF_start --> D_step1["Step T=1"]
+        D_step1 --> D_dots["..."]
+        D_dots --> D_step5["Step T=5"]
+        D_step5 --> DIFF_out["Refined Representation"]
+    end
+
+    FAST_path --> MergePath(("Merge"))
+    DIFF_out --> MergePath
+    subgraph Finalize___Output_Finalization__
+        MergePath --> F_attn["Cross-Modal Attention"]
+        F_attn --> F_polish["Enhance FFN"]
+        F_polish --> F_proj["Final Projection"]
+    end
+
+    F_proj --> ModSplit{{"Modality Splitter"}}
+    subgraph Decoders___Modal_Decoders__
+        ModSplit --"Text"--> Dt_stack["Text Decoder Stack"]
+        Dt_stack --> Dt_head["LM Head"]
+        Dt_head --> Dt_out(["Text Output"])
+
+        ModSplit --"Audio"--> Da_latent["Audio Latents"]
+        Da_latent --> Da_codec["Codec Decoder"]
+        Da_codec --> Da_out(["Audio Output"])
+
+        ModSplit --"Video"--> Dv_cond["Video Condition"]
+        Dv_cond --> Dv_unet["3D UNet"]
+        Dv_unet --> Dv_decode["Frame Generator"]
+        Dv_decode --> Dv_out(["Video Output"])
+
+        ModSplit --"Image"--> Di_cond["Image Condition"]
+        Di_cond --> Di_unet["2D UNet"]
+        Di_unet --> Di_pixel["Pixel Synthesis"]
+        Di_pixel --> Di_out(["Image Output"])
+    end
+
+```
+
 ---
 
 ### 📊 **Architecture Summary**
