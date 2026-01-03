@@ -1,3 +1,35 @@
+# SEMANTICS OF MUSIC SHEETS:
+Here is a simple explanation of how to easily play the Virtual Piano Music Sheets
+
+# ORDER OF LETTERS:
+HOW THEY’RE PLAYED
+[asdf]
+Play notes together simultaneously
+[a s d f]
+Play the sequence at fastest possible speed
+asdf
+Play notes one after the other quickly
+a s d f
+Play each note after a short pause
+[as] [df]
+Play “as” together, short pause, then “df” together
+as|df
+Pause for “|”
+as| df
+Long pause for “|” with one extra space
+as | df
+Longer pause for “|” with 2 extra spaces
+as| |df
+Longest pause for 2 “|” with an extra space
+Paragraph Break
+Extended pause
+
+# MUSIC SHEET PRINCIPLES:
+BLACK & WHITE KEYS: In general White keys correspond to lower case letters on your keyboard and Black keys correspond to capital letters and symbols
+SIMULTANEOUS PRESS: Try to keep letters in [ ] either all capital or all lower case but not a combination of both
+MOBILE & TABLET: Black and White keys can now be pressed together on touch devices but not on desktops
+CREATING MUSIC SHEETS: If you produce a music sheet that sounds superb, you can Submit It Here to be featured on Virtual Piano
+
 Here’s an **annotated ASCII layout** that shows:
 
 * All **white and black keys**
@@ -24,7 +56,6 @@ Here’s an **annotated ASCII layout** that shows:
   * Spaced to align with appropriate black keys above
 
 ---
-
 
 ## 🎹 ASCII Piano Keyboard (QWERTY-mapped)
 
