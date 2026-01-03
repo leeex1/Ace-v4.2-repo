@@ -85,3 +85,54 @@ Here’s an **annotated ASCII layout** that shows:
 * Works best in **monospace fonts** (Consolas, Courier New, Fira Code)
 
 
+### Sample:
+
+[1 a] | | [1 a] | | [1 a] | | [1 a] | |
+
+1 | | 1 | | a | | a | |
+
+[1 5] [a f] | | [1 5] [a f] | | 
+
+1 a 1 a | 5 f 5 f | 1 a 1 a | 5 f 5 f | |
+
+[1 a] [s f] [d h] | | [1 a] [s f] [d h] | |
+
+1 | a s | d | f h | | 1 | a s | d | f h | | |
+
+[1 a] [s f] [d h] [f j] | [5 f] [h j] [j l] [l z] |
+[6 g] [j k] [l x] [z c] | [4 d] [f h] [j l] [l x] | |
+
+1 [a s] d [f h] j | 5 [f h] j [l z] x |
+6 [g j] k [l x] c | 4 [d f] h [j l] x | |
+
+[1 a s d f h j l] | [5 f h j l z x] | 
+[6 g j k l x c] | [4 d f h j l x] | |
+
+a s | d f | h j | l z | x c | v | | 
+1 5 | 6 4 | 1 5 | 6 4 | 1 | | |
+
+[1 a s d f h j l z] [5 f h j l z x] | [6 g j k l x c] [4 d f h j l x] | |
+
+[1 5] [8 0] [w t] [u o] [s f] [h k] [l z] [x v] | | 
+[5 9] [w r] [y o] [a d] [h k] [z c] [v b] | | 
+[6 0] [e t] [u p] [s f] [j l] [x n] [m] | |
+[4 8] [q w] [e t] [i p] [s g] [j l] [z c] | | |
+
+[1580wtuosfhklzxv] | | [48qetipsgJLZC] | |
+[59wryoadhkZCV] | | [60etupsFJLXnm] | | |
+
+[1 a s d] | [f h j l] | [z x c v] | [b n m] | | |
+
+[z x c v] | | [l z x] | | [h l z] | | [f h l] | |
+
+f | | h | | l | | z | | |
+
+[1 a] [s f] [d h] | | [1 a] [s f] [d h] | |
+
+1 a s | d f h | l z | | 1 a s | d f h | l | | |
+
+[1 a] | | [1 a] | | [1 5 a f] | | |
+
+[1 a s f l] | | | [1] | | | | |
+
+
