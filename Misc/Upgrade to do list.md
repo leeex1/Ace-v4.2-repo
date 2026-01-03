@@ -174,5 +174,7 @@ All that’s left is:
 - Testing video path (add shape kwargs) [ ]
 - Training it [ ]
 
+UPDATE RESUME []
+
 
 
