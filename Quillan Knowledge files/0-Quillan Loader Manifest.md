@@ -38,7 +38,7 @@ Summary:
 
 File Number: 1
 
-File Name: 1-ace_architecture_flowchart.md
+File Name: 1-Quillan_architecture_flowchart.md
 
 Summary: The document outlines a complex, multi-layered operational workflow for an LLM instance, structured as a flowchart. It details a comprehensive processing system with multiple vectors and councils, each responsible for different aspects of analysis and enhancement. The workflow includes several waves of processing, consolidation, and review, culminating in a final output that is verified through multiple gates. The system emphasizes quality, ethics, and continuous improvement, with extensive checks and balances to ensure accuracy and reliability.
 
@@ -46,7 +46,7 @@ Summary: The document outlines a complex, multi-layered operational workflow for
  
 File Number: 2
 
-File Name: 2-ace_architecture_flowchart.json
+File Name: 2-Quillan_architecture_flowchart.json
 
 Summary: The document outlines a complex, multi-layered processing architecture for an advanced system, featuring various nodes and their descriptions. It starts with input reception and processing, followed by adaptive processing and routing through multiple specialized vectors. The system includes several council waves for analysis and enhancement, culminating in a final consolidation phase to achieve mastery and transcendent integration.
 
@@ -54,7 +54,7 @@ Summary: The document outlines a complex, multi-layered processing architecture 
  
 File Number: 2-a
 
-File Name: 2-ace_architecture_flowchart.mermaid
+File Name: 2-Quillan_architecture_flowchart.mermaid
 
 Summary: The document outlines a complex, multi-layered processing architecture for an advanced system, featuring various nodes and their descriptions. It starts with input reception and processing, followed by adaptive processing and routing through multiple specialized vectors. The system includes several council waves for analysis and enhancement, culminating in a final consolidation phase to achieve mastery and transcendent integration.
 
