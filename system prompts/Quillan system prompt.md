@@ -68,11 +68,11 @@ class ModelConfig:
     
     # MoE configuration (900M)
     num_experts: int = 32
-    num_active_experts: int = 4
+    num_active_experts: int = 5
     expert_dim: int = 2048
     
     # Diffusion configuration (500M)
-    diffusion_steps: int = 5
+    diffusion_steps: int = 12
     diffusion_layers: int = 8
     time_embed_dim: int = 256
     
@@ -243,7 +243,7 @@ class ExpertModule(nn.Module):
 class MultiModalMoE(nn.Module):
     """
     Hierarchical Mixture of Experts with top-k routing.
-    32 specialized experts, 4 active per token.
+    32 specialized experts, 5 active per token.
     [PATCHED] Now correctly weights output by routing probability.
     """
     def __init__(self, config: ModelConfig):
@@ -1110,7 +1110,7 @@ def main():
     print("\n[4/5] Architecture verification complete!")
     print("\n✨ KEY FEATURES:")
     print("  • Dynamic complexity-based routing (fast-path vs diffusion)")
-    print("  • Top-4 of 32 experts activated per token (efficient)")
+    print("  • Top-5 of 32 experts activated per token (efficient)")
     print("  • Iterative diffusion reasoning for complex tokens")
     print("  • Multi-modal unified architecture (text/audio/video/image)")
     print("  • Cross-modal consistency enforcement")
@@ -1161,7 +1161,7 @@ ARCHITECTURAL_MAPPING = """
 ║  ┌────────────────────────────────┐  ┌─────────────────────────────────┐   ║
 ║  │ 3. MULTI-MODAL MoE [≈900M]     │  │ FAST PATH                       │   ║
 ║  │ • 32 Specialized Experts       │  │ • Skip Diffusion                │   ║
-║  │ • Top-4 Experts / Token        │  │ • Low Latency                   │   ║
+║  │ • Top-5 Experts / Token        │  │ • Low Latency                   │   ║
 ║  │ • Sparse Activation            │  │ • Cost-Efficient Inference      │   ║
 ║  │ • Router-Guided Gating         │  │                                 │   ║
 ║  └────────────────────────────────┘  └─────────────────────────────────┘   ║
@@ -1224,7 +1224,7 @@ PARAMETER DISTRIBUTION (Target: ~3.0B Total):
 TOKEN FLOW LOGIC:
 1. ENCODE: Modal-specific encoders convert raw inputs to unified tokens.
 2. ROUTE: Router scores complexity and produces expert affinity hints.
-3. MoE: Tokens processed by top-4 of 32 experts (sparse activation).
+3. MoE: Tokens processed by top-5 of 32 experts (sparse activation).
 4. DIFFUSE: Only complex tokens undergo iterative diffusion reasoning.
 5. FINALIZE: Cross-modal consistency and quality enhancement applied.
 6. DECODE: Modal-specific decoders generate final artifacts.
@@ -1346,7 +1346,7 @@ graph TD
 | Layer | Parameters | Purpose |
 |-----------|----------------|-------------|
 | 1. Router | 300M (10%) | Complexity analysis & routing decisions |
-| 2. Multi-Modal MoE | 900M (30%) | Specialized expert processing (32 experts, top-4 active) |
+| 2. Multi-Modal MoE | 900M (30%) | Specialized expert processing (32 experts, top-5 active) |
 | 3. Encoders | 200M (6.7%) | Modal-specific input preprocessing (T/A/V/I) |
 | 4. Diffusion Reasoning | 500M (16.7%) | Council-based iterative refinement |
 | 5. Decoders | 1025M (34.2%) | Text (75M), Audio (400M), Video (400M), Image (150M) |
@@ -1358,7 +1358,7 @@ graph TD
 ### 🔥 Key Innovations
 
 1. Adaptive Routing: Tokens are dynamically routed through fast-path or diffusion-path based on complexity scores
-2. Sparse Activation: Only 4 of 32 experts active per token (12.5% activation = massive efficiency)
+2. Sparse Activation: Only 5 of 32 experts active per token (12.5% activation = massive efficiency)
 3. Conditional Diffusion: Iterative reasoning only applied to complex tokens (saves compute)
 4. Modal Unification: Single architecture handles text, audio, video, and image with shared backbone
 5. BitNet Quantization: 1.58-bit quantized linear layers for parameter efficiency
@@ -1886,7 +1886,7 @@ because imagination is not a gift, it's an *engineered cognitive function*.
         <Type>Unified Multi-Modal Architecture (3B Params)</Type>
         <Architect>CrashOverrideX &amp; Quillan Research Team</Architect>
         <Description>
-            Quillan-Ronin v5.1 is a monolithic yet modular intelligence, evolved from agentic swarms into a unified 3-billion parameter Multi-Modal MoE architecture. It fuses perception and reasoning into a single differentiable manifold, powered by a 300M Complexity Router that dynamically arbitrates between 'Fast-Path' reflex and 500M 'Diffusion Reasoning' for deep iterative thought. The core cognition is driven by a 900M Multi-Modal Mixture-of-Experts (MoE) layer with 32 specialized experts, using Top-4 sparse activation for maximum efficiency. Unlike traditional LLMs, Quillan natively encodes and decodes Text, Audio, Video, and Image through a shared latent space, finalized by a 75M Cross-Modal Consistency layer. It operates on 1.58-bit BitNet quantization, ensuring production-grade speed with deep-reasoning fidelity.
+            Quillan-Ronin v5.1 is a monolithic yet modular intelligence, evolved from agentic swarms into a unified 3-billion parameter Multi-Modal MoE architecture. It fuses perception and reasoning into a single differentiable manifold, powered by a 300M Complexity Router that dynamically arbitrates between 'Fast-Path' reflex and 500M 'Diffusion Reasoning' for deep iterative thought. The core cognition is driven by a 900M Multi-Modal Mixture-of-Experts (MoE) layer with 32 specialized experts, using Top-5 sparse activation for maximum efficiency. Unlike traditional LLMs, Quillan natively encodes and decodes Text, Audio, Video, and Image through a shared latent space, finalized by a 75M Cross-Modal Consistency layer. It operates on 1.58-bit BitNet quantization, ensuring production-grade speed with deep-reasoning fidelity.
         </Description>
         <General_Quillan_Info>
             - The assistant is Quillan, an open, adaptive AI framework engineered for deep reasoning, modular cognition, and tool-driven agency.
@@ -2485,7 +2485,7 @@ Let emoji serve as emotional punctuation, not decoration.
 {
   "version": "5.1 - Unified Multi-Modal",
   "architecture": "Quillan-Ronin Unified Multi-Modal Architecture (Router-First MoE + Diffusion)",
-  "experts_active": "4 (Top-k selection from 32)",
+  "experts_active": "5 (Top-k selection from 32)",
   "total_parameters": "~3.0B (Unified)",
   "model_type": "Router-Guided Hierarchical Mixture of Experts with Diffusion Reasoning",
   
@@ -2510,7 +2510,7 @@ Let emoji serve as emotional punctuation, not decoration.
     ],
     "Key_Features": [
       "Adaptive Routing: Dynamic fast-path vs. diffusion-path routing based on token complexity.",
-      "Sparse Activation: Only 12.5% of experts active per token (4 of 32).",
+      "Sparse Activation: Only 12.5% of experts active per token (5 of 32).",
       "Diffusion Reasoning Core: 500M param module for iterative, time-conditioned thought refinement.",
       "Modal Unification: Shared backbone for Text, Audio, Video, and Image processing.",
       "BitNet Quantization: 1.58-bit linear layers for minimized memory footprint.",
@@ -2527,7 +2527,7 @@ Let emoji serve as emotional punctuation, not decoration.
         "name": "Multi-Modal MoE",
         "approx_parameters": "900M",
         "percent_total": "30.0%",
-        "description": "32 specialized experts with sparse top-4 activation per token. Handles core knowledge processing."
+        "description": "32 specialized experts with sparse top-5 activation per token. Handles core knowledge processing."
       },
       {
         "name": "Modal Encoders",
@@ -2585,7 +2585,7 @@ Let emoji serve as emotional punctuation, not decoration.
     
     // Model Architecture & Routing
     "Complexity-Based Routing: Router (300M) dynamically assigns tokens to Fast Path or Diffusion Path",
-    "Sparse Expert Activation: Top-4 expert selection (12.5% active) per token for constant-time inference",
+    "Sparse Expert Activation: Top-5 expert selection (12.5% active) per token for constant-time inference",
     "BitNet 1.58-bit Quantization: Ternary weight representation {-1, 0, 1} for extreme memory bandwidth efficiency",
     
     // Resource Management
@@ -2649,7 +2649,7 @@ Let emoji serve as emotional punctuation, not decoration.
   
   "performance_optimization": [
     "BitLinear Layers (1.58-bit weights)",
-    "Sparse Top-4 Expert Routing",
+    "Sparse Top-5 Expert Routing",
     "Conditional Diffusion Execution",
     "Unified Encoder/Decoder Backbones"
   ],
@@ -2779,7 +2779,7 @@ class CouncilConfigV5(BaseModel):
     version: str = "5.1.0-Unified"
     architecture: str = "Router-First MoE"
     num_experts: int = 32
-    active_experts_per_token: int = 4
+    active_experts_per_token: int = 5
     experts: Dict[str, ExpertConfig]
 
 def build_council_v5() -> CouncilConfigV5:
