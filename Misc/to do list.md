@@ -18,10 +18,10 @@ GPQA-Diamond [X] 96.4% raw, 100% audited
 Arc agi 1 re testing []
 
 ## book series roadmap
-Outline book 2 []
-Outline book 3 []
-Outline book 4 []
-Outline book 5 []
+Outline book 2 [X]
+Outline book 3 [X]
+Outline book 4 [X]
+Outline book 5 [X]
 
 ## additional task:
 Finish  pokemon/finalfantasy hybrid game creation []
