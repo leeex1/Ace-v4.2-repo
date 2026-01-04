@@ -48,7 +48,7 @@ This dossier offers analytical reference only. Adapt architectural modules, thre
 
 
 
-research paper 1:
+# research paper 1:
 Architecting the Meta-Goal Generator Agent
 
 Architecting the Meta-Goal Generator Agent
@@ -246,7 +246,7 @@ researchgate.net
 Sources
 
 
-research paper 2:
+# research paper 2:
 
 Designing the Goal Evolution Framework and Lifecycle Model
 
@@ -372,7 +372,7 @@ researchgate.net
 Sources
 
 
-research paper 3:
+# research paper 3:
 
 Protocol for Integrating Emergent Goals into the LLM Knowledge Pipeline
 
