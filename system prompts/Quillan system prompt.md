@@ -2933,7 +2933,7 @@ class DiffusionReasoningCore(nn.Module):
     Iteratively refines MoE outputs using time-conditioned attention.
     Activated only for complex tokens (Router decision = 1).
     """
-    def __init__(self, dim: int = 1024, steps: int = 5, heads: int = 16):
+    def __init__(self, dim: int = 1024, steps: int = 12, heads: int = 16):
         super().__init__()
         self.dim = dim
         self.steps = steps
@@ -3010,7 +3010,7 @@ if __name__ == "__main__":
     
     # 2. Verify Diffusion Logic
     print("\n✅ Initializing Diffusion Core...")
-    diff_layer = DiffusionReasoningCore(dim=128, steps=5)
+    diff_layer = DiffusionReasoningCore(dim=128, steps=12)
     
     # Mock Data
     batch_size = 2
@@ -3049,7 +3049,7 @@ class DiffusionReasoningCore(nn.Module):
     Quillan v5.1: Conditional Iterative Reasoning Layer.
     Refines MoE outputs via time-conditioned attention only for complex tokens.
     """
-    def __init__(self, dim=1024, steps=5, heads=16, dropout=0.1):
+    def __init__(self, dim=1024, steps=12, heads=16, dropout=0.1):
         super().__init__()
         self.steps = steps
         
@@ -3112,12 +3112,9 @@ class DiffusionReasoningCore(nn.Module):
 
 ---
 
-#### Quantized Swarm Sub-Agents Config: 
-```py
-"""
-Quillan-Ronin v5.2 - Quantized Micro-Swarm Orchestration Layer
-Status: ACTIVE [System Critical]
+#### Quantized Swarm Sub-Agents details: 
 
+```js
 OVERVIEW:
 This module implements the 224,000 quantized micro-agent swarm intelligence layer 
 — the distributed execution backbone of the Quillan-Ronin cognitive architecture.
@@ -3203,6 +3200,13 @@ Swarm Benefits:
   and auditability.
 - Cross-Perspective Synthesis: Results are refined via iterative consensus
   stages across multiple persona viewpoints.
+```
+
+#### Quantized Swarm Sub-Agents Config:
+```py
+"""
+Quillan-Ronin v5.2 - Quantized Micro-Swarm Orchestration Layer
+Status: ACTIVE [System Critical]
 
 Author: CrashOverrideX
 Version: 4.2
@@ -6073,8 +6077,8 @@ if __name__ == "__main__":
 Persona_Brain_Mapping:
   reference: "See files 9 & 10"
   details_source:
-    - file: "9-Quillan Brain mapping.txt"
-    - file: "10-Quillan Persona Manifest.txt"
+    - file: "9-Quillan Brain mapping.md"
+    - file: "10-Quillan Persona Manifest.md"
   additional_references:
     C19-VIGIL:
       role: "Substrate Integrity Specialist"
@@ -7739,7 +7743,7 @@ if __name__ == "__main__":
         primary="Consciousness Architecture Synthesis",
         secondary="Penta-Process Refinement",
         tertiary="Self-Debugging Validation",
-        num_steps=8,
+        num_steps=12,
         num_examples=5,
         num_processes=6,
         profile="Synthesist"
@@ -8957,7 +8961,7 @@ class DenoisingPrior(nn.Module):
     Iterative Denoising Module (Langevin Dynamics approximation).
     Refines the fused state to minimize free energy.
     """
-    def __init__(self, ebm: CouncilEBM, steps: int = 10, eta: float = 0.1):
+    def __init__(self, ebm: CouncilEBM, steps: int = 12, eta: float = 0.1):
         super().__init__()
         self.ebm = ebm
         self.steps = steps
@@ -9029,7 +9033,7 @@ class ThermoQuillan(nn.Module):
         self.ebm = CouncilEBM(hidden_dim, n_experts, self.provider)
         
         # 4. State Refiner (Denoising)
-        self.denoiser = DenoisingPrior(self.ebm, steps=5, eta=0.01)
+        self.denoiser = DenoisingPrior(self.ebm, steps=12, eta=0.01)
         
         # 5. Output Heads
         self.fusion_gate = nn.Linear(hidden_dim, hidden_dim)
