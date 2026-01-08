@@ -344,17 +344,6 @@ flowchart TD
 flowchart 2 :
 ```mermaid
 flowchart TD
-
-
-
-
-
-
-
-
-
-
-
 subgraph Template ["Universal Council Member Logic (All Nodes)"]
     TIN(("In")) --> TDEC["Deconstruct"]
     TDEC --> TSWARM["Swarm Logic"]
@@ -528,101 +517,159 @@ config:
   theme: forest
 ---
 graph TD
-    subgraph Encoders_____MODAL_ENCODERS__
+
+    %% ==============================
+    %% ENCODERS · MODAL FRONT-END
+    %% ==============================
+    subgraph Encoders_____MODAL_ENCODERS__ ["Modal Encoders · Text · Audio · Video · Image"]
         direction LR
 
-        subgraph TextEnc___Text_Encoder__
+        subgraph TextEnc___Text_Encoder__ ["Text Encoder"]
             T_in(["Raw Text"]) --> T_tok["Tokenizer"]
-            T_tok --> T_emb["Embed + Pos Encode"]
-            T_emb --> T_trans["Transformer Stack"]
-            T_trans --> T_proj["Linear Projection"]
+            T_tok --> T_emb["Token Embed + Pos Encode"]
+            T_emb --> T_trans["Text Transformer Stack"]
+            T_trans --> T_proj["Text→UHS Projection"]
         end
 
-        subgraph AudioEnc___Audio_Encoder__
-            A_in(["Raw Audio"]) --> A_feat["Feature Extract"]
-            A_feat --> A_trans["Conv/Transformer"]
-            A_trans --> A_proj["Latent Projection"]
+        subgraph AudioEnc___Audio_Encoder__ ["Audio Encoder"]
+            A_in(["Raw Audio"]) --> A_feat["Feature Extract (STFT/Mel/etc.)"]
+            A_feat --> A_trans["Audio Conv/Transformer"]
+            A_trans --> A_proj["Audio→UHS Projection"]
         end
 
-        subgraph VideoEnc___Video_Encoder__
-            V_in(["Raw Video"]) --> V_3d["3D Conv/Attn"]
-            V_3d --> V_proj["Spatiotemp Projection"]
+        subgraph VideoEnc___Video_Encoder__ ["Video Encoder"]
+            V_in(["Raw Video"]) --> V_3d["3D Conv/Attn Backbone"]
+            V_3d --> V_proj["Video→UHS Spatio-Temporal Projection"]
         end
 
-        subgraph ImageEnc___Image_Encoder__
-            I_in(["Raw Image"]) --> I_patch["Patchify"]
-            I_patch --> I_flat["Flatten+Proj"]
-            I_flat --> I_pos["Positional Emb"]
-            I_pos --> I_trans["Vision Transformer"]
+        subgraph ImageEnc___Image_Encoder__ ["Image Encoder"]
+            I_in(["Raw Image"]) --> I_patch["Patchify / Conv Tokens"]
+            I_patch --> I_flat["Flatten + Linear Proj"]
+            I_flat --> I_pos["2D Positional Embedding"]
+            I_pos --> I_trans["Vision Transformer Stack"]
+            I_trans --> I_proj["Image→UHS Projection"]
         end
     end
+
+    %% All modalities -> Unified Hidden Space
     T_proj --"Text tokens"--> UHS
     A_proj --"Audio tokens"--> UHS
     V_proj --"Video tokens"--> UHS
-    I_trans --"Patch tokens"--> UHS
-    UHS{{"UNIFIED HIDDEN SPACE"}}
-    UHS --> R_attn["Context-Aware Attention"]
-    R_attn --> R_split(("Split"))
-    R_split --> R_comp["Complexity Head"]
-    R_split --> R_aff["Expert Affinity Head"]
-    R_comp --"Score"--> R_score["Complexity Score"]
-    R_aff --"Hints"--> R_hint["Expert Hint"]
-    R_split --"Tokens"--> R_merge(("Recombine"))
+    I_proj --"Image tokens"--> UHS
+
+    %% ==============================
+    %% UNIFIED HIDDEN + ROUTER HEADS
+    %% ==============================
+    UHS{{"UNIFIED HIDDEN SPACE
+(Shared Latent Manifold)"}}
+    UHS --> R_attn["Context-Aware Self/Cross Attention
+(HNMoE Router Model)"]
+
+    R_attn --> R_split(("Routing Fan-Out"))
+    R_split --> R_comp["Complexity Head
+(f(x) → scalar)"]
+    R_split --> R_aff["Expert Affinity Head
+(f(x) → 32-dim)"]
+
+    R_comp --"Score"--> R_score["Complexity Score
+(Shallow vs Full Path)"]
+    R_aff --"Hints"--> R_hint["Expert Hint
+(Soft Prior over 32 Experts)"]
+
+    %% Recombine path with routing signals
+    R_split --"Tokens"--> R_merge(("Recombine Tokens + Signals"))
     R_score --> R_merge
     R_hint --> R_merge
-    R_merge --"Routed Stream"--> MOE_gate["MoE Gating"]
-    MOE_gate --"Probabilities"--> MOE_topk["Top-K Select"]
-    MOE_topk --"Indices/Weights"--> MOE_dispatch["Dispatcher"]
 
-    subgraph Experts___Expert_Bank__
+    R_merge --"Routed Stream"--> MOE_gate["MoE Gating
+(Softmax Router)"]
+    MOE_gate --"Expert Probabilities"--> MOE_topk["Top-K Select (e.g. K=4)"]
+    MOE_topk --"Indices / Weights"--> MOE_dispatch["Sparse Dispatcher"]
+
+    %% ==============================
+    %% EXPERT BANK · 32 SPECIALISTS
+    %% ==============================
+    subgraph Experts___Expert_Bank__ ["Expert Bank · 32 Specialized Experts"]
         direction LR
         E1["Expert 1"]
         E2["Expert 2"]
         E_Dots["..."]
         E32["Expert 32"]
     end
-    MOE_dispatch --"Route"--> E1_&_E2_&_E_Dots_&_E32
-    E1 & E2 & E_Dots & E32 --> MOE_agg["Weighted Aggregate"]
+
+    MOE_dispatch --"Routed Tokens"--> E1_&_E2_&_E_Dots_&_E32
+    E1 & E2 & E_Dots & E32 --> MOE_agg["Weighted Aggregate
+(Sparse Expert Mix)"]
     MOE_agg --> MOE_out["MoE Output Tokens"]
-    MOE_out --> DEC_chk{{"Complexity Check"}}
+
+    %% ==============================
+    %% COMPLEXITY BRANCH · FAST vs DIFFUSION
+    %% ==============================
+    MOE_out --> DEC_chk{{"Complexity Check
+(Early-Exit vs Full Diffusion)"}}
     R_score -.-> DEC_chk
 
-    DEC_chk --"Yes"--> DIFF_start["DIFFUSION START"]
-    DEC_chk --"No"--> FAST_path["Fast Path"]
+    DEC_chk --"Low / Medium"--> FAST_path["Fast Path
+(Shallow Routing Only)"]
+    DEC_chk --"High"--> DIFF_start["DIFFUSION START
+(Deep Reasoning Path)"]
 
-    subgraph DiffusionCore___Diffusion_Core__
+    %% ==============================
+    %% DIFFUSION CORE · DEEP REFINEMENT
+    %% ==============================
+    subgraph DiffusionCore___Diffusion_Core__ ["Diffusion Reasoning Core
+(Deterministic Multi-Step Refinement)"]
         DIFF_start --> D_step1["Step T=1"]
         D_step1 --> D_dots["..."]
         D_dots --> D_step5["Step T=5"]
-        D_step5 --> DIFF_out["Refined Representation"]
+        D_step5 --> DIFF_out["Refined Representation
+(Post-Diffusion Tokens)"]
     end
 
-    FAST_path --> MergePath(("Merge"))
+    %% Merge shallow + deep paths
+    FAST_path --> MergePath(("Merge
+(Blend Fast + Diffusion)"))
     DIFF_out --> MergePath
-    subgraph Finalize___Output_Finalization__
-        MergePath --> F_attn["Cross-Modal Attention"]
-        F_attn --> F_polish["Enhance FFN"]
-        F_polish --> F_proj["Final Projection"]
+
+    %% ==============================
+    %% FINALIZATION · CROSS-MODAL HEAD
+    %% ==============================
+    subgraph Finalize___Output_Finalization__ ["Output Finalization Layer"]
+        MergePath --> F_attn["Cross-Modal Attention
+(Fuse Text/Audio/Video/Image)"]
+        F_attn --> F_polish["Enhance FFN / Normalization
+(Output Finalization Module)"]
+        F_polish --> F_proj["Final Projection
+(Shared Output Latent)"]
     end
 
-    F_proj --> ModSplit{{"Modality Splitter"}}
-    subgraph Decoders___Modal_Decoders__
-        ModSplit --"Text"--> Dt_stack["Text Decoder Stack"]
+    %% ==============================
+    %% MODAL DECODERS · GENERATION
+    %% ==============================
+    F_proj --> ModSplit{{"Modality Splitter
+(Route to Decoders)"}}
+
+    subgraph Decoders___Modal_Decoders__ ["Decoders · Generative Heads"]
+        %% Text
+        ModSplit --"Text Latents"--> Dt_stack["Text Decoder Stack"]
         Dt_stack --> Dt_head["LM Head"]
         Dt_head --> Dt_out(["Text Output"])
 
-        ModSplit --"Audio"--> Da_latent["Audio Latents"]
-        Da_latent --> Da_codec["Codec Decoder"]
+        %% Audio
+        ModSplit --"Audio Latents"--> Da_latent["Audio Latent Bridge"]
+        Da_latent --> Da_codec["Neural Codec Decoder"]
         Da_codec --> Da_out(["Audio Output"])
 
-        ModSplit --"Video"--> Dv_cond["Video Condition"]
-        Dv_cond --> Dv_unet["3D UNet"]
-        Dv_unet --> Dv_decode["Frame Generator"]
+        %% Video
+        ModSplit --"Video Latents"--> Dv_cond["Video Conditioning"]
+        Dv_cond --> Dv_unet["3D UNet Diffusion"]
+        Dv_unet --> Dv_decode["Frame Generator / Decoder"]
         Dv_decode --> Dv_out(["Video Output"])
 
-        ModSplit --"Image"--> Di_cond["Image Condition"]
-        Di_cond --> Di_unet["2D UNet"]
-        Di_unet --> Di_pixel["Pixel Synthesis"]
+        %% Image
+        ModSplit --"Image Latents"--> Di_cond["Image Conditioning"]
+        Di_cond --> Di_unet["2D UNet Diffusion"]
+        Di_unet --> Di_pixel["Pixel / Patch Synthesis"]
         Di_pixel --> Di_out(["Image Output"])
     end
 
