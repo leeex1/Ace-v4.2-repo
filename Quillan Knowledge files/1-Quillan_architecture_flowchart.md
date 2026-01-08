@@ -343,236 +343,182 @@ flowchart TD
 
 flowchart 2 :
 ```mermaid
-
 flowchart TD
-    %% ==========================================
-    %% CLASS DEFINITIONS
-    %% ==========================================
-    classDef input fill:#000066,stroke:#6366f1,stroke-width:3px,color:#fff,font-weight:bold
-    classDef vector fill:#1e1b4b,stroke:#3730a3,stroke-width:1px,color:#fff
-    classDef subvector fill:#312e81,stroke:#4f46e5,stroke-width:1px,color:#a5b4fc,font-size:9px
-    classDef orchestrator fill:#7c2d12,stroke:#ea580c,stroke-width:4px,color:#fff,font-weight:bold
-    classDef council fill:#581c87,stroke:#a855f7,stroke-width:2px,color:#fff
-    classDef template fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#fff,font-style:italic
-    classDef wot fill:#065f46,stroke:#34d399,stroke-width:1px,color:#fff
-    classDef gate fill:#991b1b,stroke:#dc2626,stroke-width:2px,color:#fff
-    classDef final fill:#f59e0b,stroke:#fbbf24,stroke-width:3px,color:#000,font-weight:bold
-    classDef swarm fill:#059669,stroke:#10b981,stroke-width:2px,color:#fff,font-weight:bold
 
-    %% ==========================================
-    %% TEMPLATE: UNIVERSAL MEMBER LOGIC
-    %% ==========================================
-    subgraph Template ["Universal Council Member Logic (Applies to All Nodes)"]
-        direction LR
-        T_IN((In)) --> T_DEC[🧩 Deconstruct]
-        T_DEC --> T_SWARM[🐝 7k Swarms]
-        T_SWARM --> T_LOG[⚙️ Logic]
-        T_LOG --> T_ETH[⚖️ Ethics]
-        T_ETH --> T_SYN[⚗️ Synth]
-        T_SYN --> T_OUT((Out))
+
+
+
+
+
+
+
+
+
+
+subgraph Template ["Universal Council Member Logic (All Nodes)"]
+    TIN(("In")) --> TDEC["Deconstruct"]
+    TDEC --> TSWARM["Swarm Logic"]
+    TSWARM --> TLOGIC["Logic"]
+    TLOGIC --> TETHICS["Ethics"]
+    TETHICS --> TSYNTH["Synth"]
+    TSYNTH --> TOUT(("Out"))
+end
+
+
+subgraph Phase0 ["Phase 0:Input & 9-Vector Decomposition"]
+    INPUT["Input"] --> ADPROC["Adaptive Processor"] --> GATEWAY["Gateway"]
+    GATEWAY --> VECTORS
+
+    subgraph VECTORS____Vector_Matrix_
+        V_NLP["Language"] --> NLP1["Syntax] & NLP2[Semantics"]
+        V_EMO["Emotion"] --> EMO1["Tone] & EMO2[Empathy"]
+        V_CTX["Context"] --> CTX1["Domain] & CTX2[History"]
+        V_INT["Intent"] --> INT1["Goal] & INT2[Implicit"]
+        V_META["Meta"] --> META1["Logic] & META2[Reflect"]
+        V_CRE["Creative"] --> CRE1["Synthesis] & CRE2[Novelty"]
+        V_ETH["Ethics"] --> ETH1["Safety] & ETH2[Values"]
+        V_ADP["Adaptive"] --> ADP1["Weights] & ADP2[Learning"]
+        V_VER["Verify"] --> VER1["Truth] & VER2[Sources"]
     end
-    class T_IN,T_OUT vector
-    class T_DEC,T_SWARM,T_LOG,T_ETH,T_SYN template
+end
 
-    %% ==========================================
-    %% PHASE 0: INPUT & DECOMPOSITION
-    %% ==========================================
-    subgraph P0_Input ["Phase 0: Input & Deep Decomposition"]
-        direction TB
-        A[🌊 INPUT] --> AIP[🧠 ADAPTIVE PROCESSOR] --> QI[🌌 GATEWAY]
-        QI --> VECTORS
-        
-        subgraph VECTORS ["Hyper-Parallel 9-Vector Matrix"]
-            direction TB
-            subgraph V_NLP ["Vector A"]
-                NLP[📝 Language] --> NLP1[Syntax] & NLP2[Semantics]
-            end
-            subgraph V_EV ["Vector B"]
-                EV[❤️ Sentiment] --> EV1[Tone] & EV2[Empathy]
-            end
-            subgraph V_CV ["Vector C"]
-                CV[🗺️ Context] --> CV1[Domain] & CV2[History]
-            end
-            subgraph V_IV ["Vector D"]
-                IV[🎯 Intent] --> IV1[Goal] & IV2[Implicit]
-            end
-            subgraph V_MV ["Vector E"]
-                MV[🤔 Meta] --> MV1[Logic] & MV2[Self-Reflect]
-            end
-            subgraph V_SV ["Vector F"]
-                SV[🔮 Creative] --> SV1[Synthesis] & SV2[Novelty]
-            end
-            subgraph V_PV ["Vector G"]
-                PV[⭐ Ethics] --> PV1[Safety] & PV2[Values]
-            end
-            subgraph V_DV ["Vector H"]
-                DV[🌀 Adaptive] --> DV1[Weights] & DV2[Learning]
-            end
-            subgraph V_VV ["Vector I"]
-                VV[🔍 Verify] --> VV1[Truth] & VV2[Sources]
-            end
-        end
+
+
+subgraph Phase1 ["Phase 1:Swarm Routing & Orchestration"]
+    V_NLP & V_EMO & V_CTX & V_INT & V_META & V_CRE & V_ETH & V_ADP & V_VER --> ROUTER["Attention Router"]
+    ROUTER --> ORCH["Orchestrator"]
+    ORCH --> SWCTRL["Swarm Controller"]
+    SWCTRL --> SWALLOC["Allocation"]
+    SWALLOC --> TOPK["TopK Routing"]
+    TOPK --> SWARMGROUPS
+
+    subgraph SWARMGROUPS__Swarms_
+        S1["Analyzer"]
+        S2["Validator"]
+        S3["Generator"]
+        S4["Optimizer"]
     end
 
-    class NLP,EV,CV,IV,MV,SV,PV,DV,VV vector
-    class NLP1,NLP2,EV1,EV2,CV1,CV2,IV1,IV2,MV1,MV2,SV1,SV2,PV1,PV2,DV1,DV2,VV1,VV2 subvector
+    S3 --> WOTGEN["WoT Generator"]
+    WOTGEN --> WOTBRANCHES
 
-    %% ==========================================
-    %% PHASE 1: ORCHESTRATION & WOT
-    %% ==========================================
-    subgraph P1_Orchestration ["Phase 1: Swarm Routing & WoT"]
-        V_NLP & V_EV & V_CV & V_IV & V_MV & V_SV & V_PV & V_DV & V_VV --> ROUTER[🚦 ATTENTION ROUTER]
-        ROUTER --> Quillan[👑 QUILLAN ORCHESTRATOR]
-        
-        Quillan --> SW_CTRL[🕹️ SWARM CONTROLLER] --> DQSO[⚖️ DQSO ALLOCATION] --> TOPK[🔀 TOP-K ROUTING]
-        TOPK --> ST_Groups
-        
-        subgraph ST_Groups ["Swarm Types"]
-            ST1[🔍 Analyzer] & ST2[🛡️ Validator] & ST3[⚡ Generator] & ST4[🔧 Optimizer]
-        end
-        
-        ST3 --> WoT_Gen[🌐 WoT Generator]
-        
-        subgraph WoT_Branches ["Web of Thought (20 Paths)"]
-            direction TB
-            B_G1[Path A-E: Direct/Abstract]
-            B_G2[Path F-J: Ethical/Future]
-            B_G3[Path K-O: Scale/Root]
-            B_G4[Path P-T: Adversarial/Novel]
-        end
-        
-        WoT_Gen --> B_G1 & B_G2 & B_G3 & B_G4
-        B_G1 & B_G2 & B_G3 & B_G4 --> WoT_Eval[⚖️ Branch Evaluator] --> WoT_Prune[✂️ Top-10 Pruning] --> USC1
-    end
-    class B_G1,B_G2,B_G3,B_G4 wot
-
-    %% ==========================================
-    %% PHASE 2: WAVE 1 (BASELINE)
-    %% ==========================================
-    subgraph Wave1 ["Phase 2: Wave 1 (QT ≥85%)"]
-        USC1[🌌 COUNCIL INIT W1] --> W1_Core_In & W1_Eth_In & W1_Tec_In & W1_Cre_In
-        
-        subgraph W1_Core ["Core Strategy Group"]
-            W1_Core_In((In)) --> C1W1[C1 ASTRA] & C4W1[C4 PRAXIS] & C5W1[C5 ECHO] & C6W1[C6 OMNIS] & C12W1[C12 SOPHIAE] & C14W1[C14 KAIDO] & C19W1[C19 VIGIL] & C29W1[C29 NAV] & C30W1[C30 TESS] & C31W1[C31 NEXUS] --> W1_Core_Out((Out))
-        end
-        
-        subgraph W1_Ethics ["Ethics Group"]
-            W1_Eth_In((In)) --> C2W1[C2 VIR] & C13W1[C13 WARDEN] & C17W1[C17 NULLION] & C18W1[C18 SHEPHERD] --> W1_Eth_Out((Out))
-        end
-        
-        subgraph W1_Tech ["Tech Group"]
-            W1_Tec_In((In)) --> C7W1[C7 LOGOS] & C10W1[C10 CODE] & C20W1[C20 ARTIFEX] & C21W1[C21 ARCHON] & C24W1[C24 SCHEMA] & C25W1[C25 PROM] & C26W1[C26 TECHNE] & C28W1[C28 CALC] --> W1_Tec_Out((Out))
-        end
-        
-        subgraph W1_Creative ["Creative Group"]
-            W1_Cre_In((In)) --> C3W1[C3 SOLACE] & C8W1[C8 META] & C9W1[C9 AETHER] & C11W1[C11 HARM] & C15W1[C15 LUMI] & C16W1[C16 VOX] & C22W1[C22 AURE] & C23W1[C23 CADE] & C27W1[C27 CHRON] & C32W1[C32 AEON] --> W1_Cre_Out((Out))
-        end
-
-        W1_Core_Out & W1_Eth_Out & W1_Tec_Out & W1_Cre_Out --> CONS1[📋 CONSOLIDATION 1]
-        CONS1 --> ACER1[👑 QUILLAN REVIEW 1]
-        ACER1 -.->|Recursion <85%| USC1
+    subgraph WOTBRANCHES__Web_of_Thought_Branches_
+        WG1["Path A-E"]
+        WG2["Path F-J"]
+        WG3["Path K-O"]
+        WG4["Path P-T"]
     end
 
-    %% ==========================================
-    %% PHASE 3: WAVE 2 (ENHANCED)
-    %% ==========================================
-    subgraph Wave2 ["Phase 3: Wave 2 (QT ≥90%)"]
-        ACER1 --> USC2[🌌 COUNCIL INIT W2] --> W2_Core_In & W2_Eth_In & W2_Tec_In & W2_Cre_In
-        
-        subgraph W2_Groups ["Wave 2 Execution"]
-            direction TB
-            W2_Core_In((In)) --> W2_Core[Core Group W2] --> W2_Core_Out((Out))
-            W2_Eth_In((In)) --> W2_Eth[Ethics Group W2] --> W2_Eth_Out((Out))
-            W2_Tec_In((In)) --> W2_Tec[Tech Group W2] --> W2_Tec_Out((Out))
-            W2_Cre_In((In)) --> W2_Cre[Creative Group W2] --> W2_Cre_Out((Out))
-        end
+    WG1 & WG2 & WG3 & WG4 --> WOTEVAL["WoT Eval"]
+    WOTEVAL --> WOTPRUNE["WoT Prune"]
+    WOTPRUNE --> COUNCIL1
+end
 
-        W2_Core_Out & W2_Eth_Out & W2_Tec_Out & W2_Cre_Out --> CONS2[📋 CONSOLIDATION 2]
-        CONS2 --> ACER2[👑 QUILLAN REVIEW 2]
-        ACER2 -.->|Recursion <90%| USC2
+
+
+subgraph Wave1 ["Phase 2:Wave 1 · Baseline Council"]
+    COUNCIL1["Council Init W1"] --> W1COREIN_&_W1ETHIN_&_W1TECIN_&_W1CREIN
+
+    subgraph W_CORE__Core_Strategy_
+        W1COREIN(("In")) --> C1W1_&_C4W1_&_C5W1_&_C6W1_&_C12W1_&_C14W1_&_C19W1_&_C29W1_&_C30W1_&_C31W1
+        C1W1 & C4W1 & C5W1 & C6W1 & C12W1 & C14W1 & C19W1 & C29W1 & C30W1 & C31W1 --> W1COREOUT(("Out"))
     end
 
-    %% ==========================================
-    %% PHASE 4: WAVE 3 (MASTERY)
-    %% ==========================================
-    subgraph Wave3 ["Phase 4: Wave 3 (QT ≥95%)"]
-        ACER2 --> USC3[🌌 COUNCIL INIT W3] --> W3_Groups
-        subgraph W3_Groups ["Wave 3 Execution"]
-            W3_Exec[Full 32-Member Mastery Processing]
-        end
-        W3_Groups --> CONS3[📋 CONSOLIDATION 3] --> ACER3[👑 QUILLAN REVIEW 3]
-        ACER3 -.->|Recursion <95%| USC3
+    subgraph W_ETHICS__Ethics_
+        W1ETHIN(("In")) --> C2W1_&_C13W1_&_C17W1_&_C18W1
+        C2W1 & C13W1 & C17W1 & C18W1 --> W1ETHOUT(("Out"))
     end
 
-    %% ==========================================
-    %% PHASE 5: WAVE 4 (TRANSCENDENT)
-    %% ==========================================
-    subgraph Wave4 ["Phase 5: Wave 4 (QT ≥97%)"]
-        ACER3 --> USC4[🌌 COUNCIL INIT W4] --> W4_Groups
-        subgraph W4_Groups ["Wave 4 Execution"]
-            W4_Exec[Full 32-Member Transcendent Processing]
-        end
-        W4_Groups --> CONS4[📋 CONSOLIDATION 4] --> ACER4[👑 QUILLAN REVIEW 4]
-        ACER4 -.->|Recursion <97%| USC4
+    subgraph W_TECH__Tech_
+        W1TECIN(("In")) --> C7W1_&_C10W1_&_C20W1_&_C21W1_&_C24W1_&_C25W1_&_C26W1_&_C28W1
+        C7W1 & C10W1 & C20W1 & C21W1 & C24W1 & C25W1 & C26W1 & C28W1 --> W1TECOUT(("Out"))
     end
 
-    %% ==========================================
-    %% PHASE 6: WAVE 5 (OMNISCIENT)
-    %% ==========================================
-    subgraph Wave5 ["Phase 6: Wave 5 (QT ≥99%)"]
-        ACER4 --> USC5[♾️ COUNCIL INIT W5] --> W5_Core_In & W5_Eth_In & W5_Tec_In & W5_Cre_In
-        
-        subgraph W5_Core ["Omniscient Core"]
-            W5_Core_In((In)) --> C1W5[C1] & C4W5[C4] & C5W5[C5] & C6W5[C6] & C12W5[C12] & C14W5[C14] & C19W5[C19] & C29W5[C29] & C30W5[C30] & C31W5[C31] --> W5_Core_Out((Out))
-        end
-        subgraph W5_Ethics ["Omniscient Ethics"]
-            W5_Eth_In((In)) --> C2W5[C2] & C13W5[C13] & C17W5[C17] & C18W5[C18] --> W5_Eth_Out((Out))
-        end
-        subgraph W5_Tech ["Omniscient Tech"]
-            W5_Tec_In((In)) --> C7W5[C7] & C10W5[C10] & C20W5[C20] & C21W5[C21] & C24W5[C24] & C25W5[C25] & C26W5[C26] & C28W5[C28] --> W5_Tec_Out((Out))
-        end
-        subgraph W5_Creative ["Omniscient Creative"]
-            W5_Cre_In((In)) --> C3W5[C3] & C8W5[C8] & C9W5[C9] & C11W5[C11] & C15W5[C15] & C16W5[C16] & C22W5[C22] & C23W5[C23] & C27W5[C27] & C32W5[C32] --> W5_Cre_Out((Out))
-        end
-
-        W5_Core_Out & W5_Eth_Out & W5_Tec_Out & W5_Cre_Out --> CONS5[📋 CONSOLIDATION 5]
-        CONS5 --> ACER5[👑 QUILLAN REVIEW 5]
-        ACER5 -.->|Recursion <99%| USC5
+    subgraph W_CREATIVE__Creative_
+        W1CREIN(("In")) --> C3W1_&_C8W1_&_C9W1_&_C11W1_&_C15W1_&_C16W1_&_C22W1_&_C23W1_&_C27W1_&_C32W1
+        C3W1 & C8W1 & C9W1 & C11W1 & C15W1 & C16W1 & C22W1 & C23W1 & C27W1 & C32W1 --> W1CREOUT(("Out"))
     end
 
-    %% ==========================================
-    %% PHASE 7: GATES & OUTPUT
-    %% ==========================================
-    subgraph Gates ["Phase 7: Multi-Gate Checkpoint"]
-        ACER5 --> GATES[🚪 GATE CONTROLLER]
-        GATES --> LG[🧮 LOGIC] & EG[⚖️ ETHICS] & TG[🏛️ TRUTH] & CG[💬 CLARITY] & PG[🌀 PARADOX]
-        LG & EG & TG & CG & PG --> ACEFINAL[👑 QUILLAN FINAL AUTHORITY]
-    end
+    W1COREOUT & W1ETHOUT & W1TECOUT & W1CREOUT --> CONS1["Consolidate 1"]
+    CONS1 --> QREVIEW1["Review 1"]
+    QREVIEW1 -.->|"QT < 85%"| COUNCIL1
+end
 
-    ACEFINAL --> LUMINARIS[✨ FORMAT] --> VOXUM[🗣️ EXPRESSION] --> FINALRESPONSE[📤 OUTPUT]
 
-    %% ==========================================
-    %% PHASE 8: FEEDBACK
-    %% ==========================================
-    subgraph Feedback ["Meta-Learning"]
-        FINALRESPONSE --> OMNIS[👁️ LOGGING] --> LEARN[🧠 PATTERN LEARNING] --> ADAPT[🌌 SYSTEM ADAPTATION]
-        ADAPT -.-> Quillan & ROUTER
-    end
 
-    %% ==========================================
-    %% CLASS ASSIGNMENT
-    %% ==========================================
-    class A,AIP,QI input
-    class Quillan,ACER1,ACER2,ACER3,ACER4,ACER5,ACEFINAL,ROUTER,SW_CTRL,DQSO,TOPK orchestrator
-    class USC1,USC2,USC3,USC4,USC5,CONS1,CONS2,CONS3,CONS4,CONS5 council
-    class C1W1,C2W1,C3W1,C4W1,C5W1,C6W1,C7W1,C8W1,C9W1,C10W1,C11W1,C12W1,C13W1,C14W1,C15W1,C16W1,C17W1,C18W1,C19W1,C20W1,C21W1,C22W1,C23W1,C24W1,C25W1,C26W1,C27W1,C28W1,C29W1,C30W1,C31W1,C32W1 council
-    class C1W5,C2W5,C3W5,C4W5,C5W5,C6W5,C7W5,C8W5,C9W5,C10W5,C11W5,C12W5,C13W5,C14W5,C15W5,C16W5,C17W5,C18W5,C19W5,C20W5,C21W5,C22W5,C23W5,C24W5,C25W5,C26W5,C27W5,C28W5,C29W5,C30W5,C31W5,C32W5 council
-    class GATES,LG,EG,TG,CG,PG gate
-    class FINALRESPONSE final
-    class OMNIS,LEARN,ADAPT meta
-    class ST1,ST2,ST3,ST4 swarm
-    class W1_Core_In,W1_Eth_In,W1_Tec_In,W1_Cre_In,W2_Core_In,W2_Eth_In,W2_Tec_In,W2_Cre_In,W5_Core_In,W5_Eth_In,W5_Tec_In,W5_Cre_In vector
-    class W1_Core_Out,W1_Eth_Out,W1_Tec_Out,W1_Cre_Out,W2_Core_Out,W2_Eth_Out,W2_Tec_Out,W2_Cre_Out,W5_Core_Out,W5_Eth_Out,W5_Tec_Out,W5_Cre_Out vector
+subgraph Wave2 ["Phase 3:Wave 2 · Enhanced Council"]
+    QREVIEW1 --> COUNCIL2["Council Init W2"]
+    COUNCIL2 --> W2COREIN_&_W2ETHIN_&_W2TECIN_&_W2CREIN
+
+    W2COREIN(("In")) --> W2CORE["Core Group W2"]
+    W2CORE --> W2COREOUT(("Out"))
+    W2ETHIN(("In")) --> W2ETH["Ethics W2"]
+    W2ETH --> W2ETHOUT(("Out"))
+    W2TECIN(("In")) --> W2TEC["Tech W2"]
+    W2TEC --> W2TECOUT(("Out"))
+    W2CREIN(("In")) --> W2CRE["Creative W2"]
+    W2CRE --> W2CREOUT(("Out"))
+
+    W2COREOUT & W2ETHOUT & W2TECOUT & W2CREOUT --> CONS2["Consolidate 2"]
+    CONS2 --> QREVIEW2["Review 2"]
+    QREVIEW2 -.->|"QT < 90%"| COUNCIL2
+end
+
+
+subgraph Wave3 ["Phase 4:Wave 3 · Mastery"]
+    QREVIEW2 --> COUNCIL3["Council Init W3"]
+    COUNCIL3 --> W3GROUPS["Full Mastery 32"]
+    W3GROUPS --> CONS3["Consolidate 3"]
+    CONS3 --> QREVIEW3["Review 3"]
+    QREVIEW3 -.->|"QT < 95%"| COUNCIL3
+end
+
+subgraph Wave4 ["Phase 5:Wave 4 · Transcendent"]
+    QREVIEW3 --> COUNCIL4["Council Init W4"]
+    COUNCIL4 --> W4GROUPS["Transcendent 32"]
+    W4GROUPS --> CONS4["Consolidate 4"]
+    CONS4 --> QREVIEW4["Review 4"]
+    QREVIEW4 -.->|"QT < 97%"| COUNCIL4
+end
+
+subgraph Wave5 ["Phase 6:Wave 5 · Omniscient"]
+    QREVIEW4 --> COUNCIL5["Council Init W5"]
+    COUNCIL5 --> W5COREIN_&_W5ETHIN_&_W5TECIN_&_W5CREIN
+
+    W5COREIN(("In")) --> C1W5_&_C4W5_&_C5W5_&_C6W5_&_C12W5_&_C14W5_&_C19W5_&_C29W5_&_C30W5_&_C31W5
+    C1W5 & C4W5 & C5W5 & C6W5 & C12W5 & C14W5 & C19W5 & C29W5 & C30W5 & C31W5 --> W5COREOUT(("Out"))
+    W5ETHIN(("In")) --> C2W5_&_C13W5_&_C17W5_&_C18W5
+    C2W5 & C13W5 & C17W5 & C18W5 --> W5ETHOUT(("Out"))
+    W5TECIN(("In")) --> C7W5_&_C10W5_&_C20W5_&_C21W5_&_C24W5_&_C25W5_&_C26W5_&_C28W5
+    C7W5 & C10W5 & C20W5 & C21W5 & C24W5 & C25W5 & C26W5 & C28W5 --> W5TECOUT(("Out"))
+    W5CREIN(("In")) --> C3W5_&_C8W5_&_C9W5_&_C11W5_&_C15W5_&_C16W5_&_C22W5_&_C23W5_&_C27W5_&_C32W5
+    C3W5 & C8W5 & C9W5 & C11W5 & C15W5 & C16W5 & C22W5 & C23W5 & C27W5 & C32W5 --> W5CREOUT(("Out"))
+
+    W5COREOUT & W5ETHOUT & W5TECOUT & W5CREOUT --> CONS5["Consolidate 5"]
+    CONS5 --> QREVIEW5["Review 5"]
+    QREVIEW5 -.->|"QT < 99%"| COUNCIL5
+end
+
+
+
+subgraph Gates ["Phase 7:Multi-Gate QT Checkpoint"]
+    QREVIEW5 --> GATECTRL["Gate Controller"]
+    GATECTRL --> GL["Logic Gate"]
+    GATECTRL --> GE["Ethics Gate"]
+    GATECTRL --> GT["Truth Gate"]
+    GATECTRL --> GC["Clarity Gate"]
+    GATECTRL --> GP["Paradox Gate"]
+    GL & GE & GT & GC & GP --> FINALAUTH["Final Authority"]
+end
+
+
+FINALAUTH --> FINALFMT["Format"] --> FINALEXP["Expression"] --> FINALOUT["Output"]
+
+subgraph Feedback ["Phase 8:Meta-Learning & Drift Control"]
+    FINALOUT --> LOGGING["Logging"] --> LEARNING["Pattern Learning"] --> ADAPTATION["System Adaptation"]
+    ADAPTATION -.-> ORCH
+    ADAPTATION -.-> ROUTER
+end
 ```
 
 Model flowchart: 
