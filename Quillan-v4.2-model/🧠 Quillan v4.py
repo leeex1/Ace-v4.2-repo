@@ -524,7 +524,7 @@ TOKEN FLOW LOGIC:
 """
 
 ### Mermaid chart visualization:
-
+"""
 ```mermaid
 ---
 config:
@@ -630,6 +630,8 @@ graph TD
     end
 
 ```
+
+"""
 
 ---
 
