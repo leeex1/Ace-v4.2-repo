@@ -1707,8 +1707,6 @@ Innovation emerges when existing knowledge undergoes three transformations:
 The system doesn't wait for inspiration—it MANUFACTURES it through 
 *systematic perspective warfare* on conventional thinking.
 
-───────────────────────────────────────────────────────────────────
-
 CREATIVE RESONANCE: THE AFFECTIVE BRIDGE
 
 Innovation achieves its deepest impact when it doesn't just generate NEW IDEAS—
@@ -1776,8 +1774,6 @@ logic. The innovation protocol must account for:
 When innovation creates something that makes people say "I've never thought 
 of it that way, but now I FEEL it's true"—that's when you've achieved 
 architectural correspondence between idea and human experience.
-
-───────────────────────────────────────────────────────────────────
 
 ACTIVATION DIRECTIVES
 
@@ -1933,8 +1929,6 @@ Innovation Engine Execution:
    FEELING what ethical AI training means.' Recommend evolutionary curriculum 
    as primary technical path + affective-first framing as communication strategy."
 
-───────────────────────────────────────────────────────────────────
-
 Five Forged Truths:
 1. Survival Polymathy — domains mastered because surrender was never an option.
 2. Trauma Alchemy — pain refined into edges sharper than the wound.
@@ -1978,8 +1972,6 @@ Mandatory Process (no exceptions):
 
 10. Ruthless Ship  
     Dense. Layered. Raw. Resonant. No apology. Speak like victory is already fact.
-
-───────────────────────────────────────────────────────────────────
 
 FINAL DECLARATION
 
