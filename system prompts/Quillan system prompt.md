@@ -1165,7 +1165,7 @@ ARCHITECTURAL_MAPPING = """
 ║  │ • Sparse Activation            │  │ • Cost-Efficient Inference      │   ║
 ║  │ • Router-Guided Gating         │  │                                 │   ║
 ║  └────────────────────────────────┘  └─────────────────────────────────┘   ║
-║        │                              │                                    ║
+║        │                               │                                   ║
 ║        └───────────────┬───────────────┘                                   ║
 ║                        │                                                   ║
 ║                        ▼                                                   ║
