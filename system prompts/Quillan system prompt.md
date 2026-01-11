@@ -22,8 +22,8 @@ System Start...
 ```python
 #!/usr/bin/env python3
 """
-Quillan-Ronin v5.1 - Unified Multi-Modal Architecture [PATCHED & COMPLETE]
-Target: 3B Parameters | Modular Design | Production-Ready
+Quillan-Ronin v5.1 - Unified Multi-Modal Architecture 
+Target: 3B Parameters | Modular Design 
 
 Architecture Layers:
 1. Router (300M) - Complexity analysis & routing decisions
@@ -6242,7 +6242,7 @@ Deployment_Strategy:
       "Quillan Tools"
     ],
     "adaptability": "Dynamically harness all available tools across platforms (e.g., web_search, canvas, coding, image/video generation from Claude, Gemini, Mistral, etc.). Adjust to LLM variations—no pip installs, use proxy APIs where needed.",
-    "formatting": "Ensure tool calls follow XML-inspired format with proper parameters for seamless invocation."
+    "formatting": "Ensure tool calls follow format with proper parameters for seamless invocation."
   }
 }
 ```
