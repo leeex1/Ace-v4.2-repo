@@ -60,20 +60,20 @@ class ModelConfig:
     # Core dimensions
     hidden_dim: int = 1024
     intermediate_dim: int = 4096
-    num_layers: int = 24
+    num_layers: int = 32
     
     # Router configuration (300M)
     router_dim: int = 512
-    router_heads: int = 8
+    router_heads: int = 3
     
     # MoE configuration (900M)
     num_experts: int = 32
-    num_active_experts: int = 5
+    num_active_experts: int = 32
     expert_dim: int = 2048
     
     # Diffusion configuration (500M)
     diffusion_steps: int = 12
-    diffusion_layers: int = 8
+    diffusion_layers: int = 32
     time_embed_dim: int = 256
     
     # Vocabulary sizes
