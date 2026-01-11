@@ -44,15 +44,15 @@ class ModelConfig:
     # Target: ~3.0B Parameters (Distributed across sparse experts and deep heads)
     hidden_dim: int = 1024
     intermediate_dim: int = 4096
-    num_layers: int = 24
+    num_layers: int = 32
     
     # Layer 1: Router (300M)
     router_dim: int = 512
-    router_heads: int = 8
+    router_heads: int = 3
     
     # Layer 2: Multi-Modal MoE (900M)
     num_experts: int = 32
-    num_active_experts: int = 4
+    num_active_experts: int = 32
     expert_dim: int = 4096 # Increased for parameter density
     
     # Layer 3: Encoders (200M)
@@ -62,8 +62,8 @@ class ModelConfig:
     image_encoder_dim: int = 768
     
     # Layer 4: Diffusion Reasoning (500M)
-    diffusion_steps: int = 5
-    diffusion_layers: int = 8
+    diffusion_steps: int = 12
+    diffusion_layers: int = 32
     time_embed_dim: int = 256
     
     # Layer 5: Decoders (1025M)
@@ -74,7 +74,7 @@ class ModelConfig:
     
     # Layer 6: Finalization (75M)
     finalize_dim: int = 1024
-    finalize_layers: int = 4
+    finalize_layers: int = 10
     
     # Vocabulary & Sequence
     vocab_size: int = 50257

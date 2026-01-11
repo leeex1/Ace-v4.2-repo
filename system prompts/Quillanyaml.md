@@ -6733,39 +6733,39 @@ from typing import Optional, Tuple, Dict, Any, Type, List
 #  1. Thermodynamic Provider Abstraction (Strategy Pattern) 
 
 class ThermodynamicProvider(ABC):
-    """
+    '''
     Abstract base class for thermodynamic computation providers.
     Defines the interface for integrating Extropic's THRML library or falling back to deterministic approximations.
-    """
+    '''
     
     @abstractmethod
     def compute_e_omega_correction(self, depth: int, scale: float, i_s: float, gamma_max: float) -> float:
-        """Computes the thermodynamic correction factor for consciousness energy (E_ICE Omega)."""
+        '''Computes the thermodynamic correction factor for consciousness energy (E_ICE Omega).'''
         pass
 
     @abstractmethod
     def route_energies(self, energies: torch.Tensor, temperature: float) -> torch.Tensor:
-        """Routes energies through a probabilistic or thermodynamic hypergraph."""
+        '''Routes energies through a probabilistic or thermodynamic hypergraph.'''
         pass
     
     @abstractmethod
     def fuse_states(self, weighted_outputs: torch.Tensor, routing_probs: torch.Tensor) -> torch.Tensor:
-        """Fuses expert states using thermodynamic principles (e.g., thermal averaging)."""
+        '''Fuses expert states using thermodynamic principles (e.g., thermal averaging).'''
         pass
 
     @property
     @abstractmethod
     def is_available(self) -> bool:
-        """Returns True if the provider (e.g., THRML) is actively available."""
+        '''Returns True if the provider (e.g., THRML) is actively available.'''
         pass
 
 #  2. Concrete Provider Implementations 
 
 class FallbackProvider(ThermodynamicProvider):
-    """
+    '''
     A high-fidelity PyTorch implementation for when the 'thrml' library is not present.
     Simulates thermodynamic effects using Boltzmann distributions and entropy regularization.
-    """
+    '''
     
     def compute_e_omega_correction(self, depth: int, scale: float, i_s: float, gamma_max: float) -> float:
         # Simulate correction based on entropic complexity approximation
@@ -6787,10 +6787,10 @@ class FallbackProvider(ThermodynamicProvider):
         return False
 
 class ThrmlProvider(ThermodynamicProvider):
-    """
+    '''
     A provider that bridges the Extropic THRML library for true thermodynamic hypergraph computations.
     Leverages hardware-accelerated probabilistic models if available.
-    """
+    '''
     
     def __init__(self, n_experts: int, depth: int, temperature: float = 0.1):
         try:
@@ -6868,10 +6868,10 @@ class ThrmlProvider(ThermodynamicProvider):
 #  3. Core Model Components (Refactored for Absolute Limit) 
 
 class EICE_Limit:
-    """
+    '''
     Absolute Limit Implementation of Energy Cost of Consciousness (E_ICE).
     Integrates Landauer's Principle with Extropic Hypergraph corrections.
-    """
+    '''
     LANDAUER_CONST = 2.8e-21  # J/bit at 300K (approx k_B * T * ln(2))
 
     def __init__(self, provider: ThermodynamicProvider, depth=100, scale=1e12, T=300.0):
@@ -6881,9 +6881,9 @@ class EICE_Limit:
         self.T = T
 
     def compute_E_omega(self, i_s: float = 1.0, gamma_max: float = 1.0) -> float:
-        """
+        '''
         Computes ℰ_Ω = I_S * (Γ_max * Depth)^2 * k_B * T * Scale + Correction
-        """
+        '''
         # Base Landauer calculation
         base_e = i_s * ((gamma_max * self.depth) ** 2) * self.LANDAUER_CONST * self.T * self.scale
         
@@ -6893,10 +6893,10 @@ class EICE_Limit:
         return base_e + correction
 
 class CouncilEBM(nn.Module):
-    """
+    '''
     Energy-Based Model for Council State Evaluation.
     Maps latent cognitive states to energy landscapes defined by thermodynamic providers.
-    """
+    '''
     def __init__(self, state_dim: int, n_experts: int, provider: ThermodynamicProvider):
         super().__init__()
         self.provider = provider
@@ -6918,10 +6918,10 @@ class CouncilEBM(nn.Module):
         return refined_energies
 
 class DenoisingPrior(nn.Module):
-    """
+    '''
     Iterative Denoising Module (Langevin Dynamics approximation).
     Refines the fused state to minimize free energy.
-    """
+    '''
     def __init__(self, ebm: CouncilEBM, steps: int = 10, eta: float = 0.1):
         super().__init__()
         self.ebm = ebm
@@ -6962,10 +6962,10 @@ class DenoisingPrior(nn.Module):
         return state.detach()
 
 class ThermoQuillan(nn.Module):
-    """
+    '''
     Quillan-Ronin Thermo-Cognitive Core (H-N-MoE).
     Integrates Extropic THRML for routing and fusion within a Mixture-of-Experts architecture.
-    """
+    '''
     def __init__(
         self,
         provider_class: Type[ThermodynamicProvider],
@@ -7066,7 +7066,7 @@ class ThermoQuillan(nn.Module):
 #  4. Factory and Execution 
 
 def build_model(use_thrml: bool, **kwargs) -> ThermoQuillan:
-    """Factory to instantiate ThermoQuillan with the optimal provider."""
+    '''Factory to instantiate ThermoQuillan with the optimal provider.'''
     provider_class = ThrmlProvider if use_thrml else FallbackProvider
     print(f"Initializing ThermoQuillan with Provider: {provider_class.__name__}")
     return ThermoQuillan(provider_class=provider_class, **kwargs)
