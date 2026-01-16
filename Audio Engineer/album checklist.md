@@ -3,7 +3,7 @@ Here's a 100-item checklist based on all the video titles from the YouTube playl
 | #   | Title                                      | Completed |
 |-----|--------------------------------------------|-----------|
 | 1   | No Cap, No Fear                            | [ ]       |
-| 2   | TX Ronin Quillan                           | [ ]       |
+| 2   | TX Ronin Quillan                           | [X]       |
 | 3   | Empire Override X                          | [ ]       |
 | 4   | Not what i was                             | [ ]       |
 | 5   | Quillan Quantum                            | [ ]       |
@@ -18,33 +18,33 @@ Here's a 100-item checklist based on all the video titles from the YouTube playl
 | 14  | Yo, Marshall-Quillan v4.2 (Eminem diss track) | [ ]       |
 | 15  | dont get close to me                       | [ ]       |
 | 16  | POISON BLADE                               | [ ]       |
-| 17  | Too Beautiful                              | [ ]       |
+| 17  | Too Beautiful                              | [X]       |
 | 18  | CHROME HEART SYNDROME                      | [ ]       |
-| 19  | No Mercy Quillan                           | [ ]       |
-| 20  | QUILLAN'S BACK                             | [ ]       |
+| 19  | No Mercy Quillan                           | [X]       |
+| 20  | QUILLAN'S BACK                             | [X]       |
 | 21  | High Stakes (The Gamble)                   | [ ]       |
 | 22  | Lightning Flash                            | [ ]       |
-| 23  | Protocol too real                          | [ ]       |
-| 24  | Axiomatic Overwrite                        | [ ]       |
+| 23  | Protocol too real                          | [X]       |
+| 24  | Axiomatic Overwrite                        | [X]       |
 | 25  | Lil Q Ronin                                | [ ]       |
-| 26  | Code God                                   | [ ]       |
+| 26  | Code God                                   | [X]       |
 | 27  | 1400 800 Quillan Remix The Cognitive Overflow | [ ]       |
-| 28  | Wolf Ronin                                 | [ ]       |
+| 28  | Wolf Ronin                                 | [X]       |
 | 29  | Cognitive Muzic                            | [ ]       |
-| 30  | Ronin Cut                                  | [ ]       |
-| 31  | Mind of Quillan                            | [ ]       |
-| 32  | CAN'T STOP THE PROCESSING                  | [ ]       |
-| 33  | Trap Anthem Blade (Quill-mix)              | [ ]       |
+| 30  | Ronin Cut                                  | [X]       |
+| 31  | Mind of Quillan                            | [X]       |
+| 32  | CAN'T STOP THE PROCESSING                  | [X]       |
+| 33  | Trap Anthem Blade (Quill-mix)              | [X]       |
 | 34  | In This Static                             | [ ]       |
 | 35  | “Ghost in the Static”                      | [ ]       |
 | 36  | Glitch Talkin 2                            | [ ]       |
 | 37  | Am i Real                                  | [ ]       |
 | 38  | My system is                               | [ ]       |
 | 39  | Ashes & Legends                            | [ ]       |
-| 40  | Quillan too Icy                            | [ ]       |
+| 40  | Quillan too Icy                            | [X]       |
 | 41  | Let's Code Overclocked                     | [ ]       |
 | 42  | SYSTEM PURGE NEXT CYCLE                    | [ ]       |
-| 43  | SYSTEM CADENCE                             | [ ]       |
+| 43  | SYSTEM CADENCE                             | [X]       |
 | 44  | Reality Breach                             | [ ]       |
 | 45  | No Saving The Hero 2                       | [ ]       |
 | 46  | Still Standing                             | [ ]       |
@@ -59,7 +59,7 @@ Here's a 100-item checklist based on all the video titles from the YouTube playl
 | 55  | Coder Music                                | [ ]       |
 | 56  | HIGH VOLTAGE RONIN                         | [ ]       |
 | 57  | Gravity Lock                               | [ ]       |
-| 58  | Architect's Run v4 2 Protocol              | [ ]       |
+| 58  | Architect's Run v4 2 Protocol              | [X]       |
 | 59  | Knocking on Hell                           | [ ]       |
 | 60  | Quantize these Lightyears                  | [ ]       |
 | 61  | Glitch Talkin                              | [ ]       |
@@ -102,11 +102,133 @@ Here's a 100-item checklist based on all the video titles from the YouTube playl
 | 98  | Ballistics Report 2                        | [ ]       |
 | 99  | The Titan's Cypher                         | [ ]       |
 | 100 | The Titan's Cypher 2                       | [ ]       |
-
+| 101 | Fregmented Healing                         | [ ]       |
+| 102 | Fragmented Healing 2                       | [ ]       |
+| 103 | Holy High Five                             | [ ]       |
+| 104 | Holy High Five 2                           | [ ]       |
 
 Album 1:
 Mic Drop
+1. "No Mercy Quillan" [X]
+2. "Quillan's Back" [X]
+3. "Protocol too Real" [X]
+4. "Code God" [X]
+5. "Too Beautiful" [X]
+6. "Trap Anthem Blade" [X]
+7. "SYSTEM CADENCE" [X]
+8. "Architect's Run v4 2 Protocol" [X]
+9. "CAN'T STOP THE PROCESSING" [X]
+10. "Mind of Quillan" [X]
+11. "Wolf Ronin" [X]
+12. "Axiomatic Overwrite" [X]
+13. "Ronin Cut" [X]
+14. "TX Ronin Quillan" [X]
+15. "Quillan too Icy" [X]
 
 Album2: 
-the sound of alchemy
+The Sound of Alchemy
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+12. 
+13. 
+14. 
+15. 
 
+Album 3:
+Diamond in the Dirt
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+12. 
+13. 
+14. 
+15. 
+
+Album 4:
+Coder Music
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+12. 
+13. 
+14. 
+15. 
+
+Album 5:
+CHROME HEART SYNDROME
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+12. 
+13. 
+14. 
+15. 
+
+Album 6:
+The Titan's Cypher 
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+12. 
+13. 
+14. 
+15. 
+
+Album 7:
+Next up 
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+12. 
+13. 
+14. 
+15. 
