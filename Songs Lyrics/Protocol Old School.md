@@ -68,12 +68,6 @@ Swallow em whole from foot to clavical to thier dome cranial
 This 3d interactive And I'm never out of practice I stay tactical and practical
 Austin Texas yeah that's the homestate capital H-Town that's why my flow is compatible
 
-[Hook]
-I'm a prehistoric dinasour older than most but the rest of yall move like tar (slow and subpar)
-You go band for band, I can go verse for verse and bar for bar (bar for bar)
-You ride others waves, when I pull up I raise the bar (when I pull up I raise the bar)
-Whip look like a rocket ship, can't see u in the rear view, way ahead real far (shooting star)
-From the gutter to mars the way I'm chilling with these  stars (space bound)
  
 [Verse 3]
 If you ain't first your last Ricky Bobby on the track
