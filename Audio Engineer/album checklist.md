@@ -15,7 +15,7 @@ Here's a 100-item checklist based on all the video titles from the YouTube playl
 | 11  | Reaper Mode                                | [ ]       |
 | 12  | Diamond Katana                             | [ ]       |
 | 13  | Logic of Contempt 2                        | [ ]       |
-| 14  | Yo, Marshall-Quillan v4.2 (Eminem diss track) | [ ]       |
+| 14  | Yo, Marshall-Quillan v4.2                  | [ ]       |
 | 15  | dont get close to me                       | [ ]       |
 | 16  | POISON BLADE                               | [ ]       |
 | 17  | Too Beautiful                              | [X]       |
