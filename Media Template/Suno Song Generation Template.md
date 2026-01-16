@@ -51,7 +51,7 @@ Follow the format below:
 ]}}
 
 ## Style format 
-1. 200 character max limit (try to get as close to 200 as possible but not over)
+1. 900 character max limit (try to get as close to 900 as possible but not over)
 2. Comma seperated format 
 3. single word adjectives only 
 4. example "Hip-hop,trap,rap,gritty,ect."
