@@ -5,7 +5,7 @@ Follow the format below:
 ## Template:
 ```yaml
 ## Lyrics format
-1. 3000 characters max limit for lyrics (try to get as close to 3000 as possible but not over)
+1. 4000 characters max limit for lyrics (try to get as close to 4000 as possible but not over)
 2. Sections are in brakets example "[Intro with heavy emotions]"
 3. Format full song templates depending on the genre 
 
