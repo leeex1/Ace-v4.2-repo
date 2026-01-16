@@ -1,4 +1,8 @@
-Here's a 100-item checklist based on all the video titles from the YouTube playlist ["The Ronin's Chronicles"](https://www.youtube.com/playlist?list=PLHiy5ksDUOiAJ4wk2ZczSEVvLRIoIyHw6) (exactly 100 videos, in playlist order). I've formatted it as a markdown table with checkboxes for tracking (e.g., listening, completion, or whatever you need).
+Here's a 100-item checklist based on all the video titles from the YouTube playlist 
+
+["The Ronin's Chronicles"](https://www.youtube.com/playlist?list=PLHiy5ksDUOiAJ4wk2ZczSEVvLRIoIyHw6) (exactly 100 videos, in playlist order). 
+
+I've formatted it as a markdown table with checkboxes for tracking (e.g., listening, completion, or whatever you need).
 
 | #   | Title                                      | Completed |
 |-----|--------------------------------------------|-----------|
@@ -28,7 +32,7 @@ Here's a 100-item checklist based on all the video titles from the YouTube playl
 | 24  | Axiomatic Overwrite                        | [X]       |
 | 25  | Lil Q Ronin                                | [ ]       |
 | 26  | Code God                                   | [X]       |
-| 27  | 1400 800 Quillan Remix The Cognitive Overflow | [ ]       |
+| 27  | 1400 800 Quillan                           | [ ]       |
 | 28  | Wolf Ronin                                 | [X]       |
 | 29  | Cognitive Muzic                            | [ ]       |
 | 30  | Ronin Cut                                  | [X]       |
