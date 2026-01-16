@@ -103,7 +103,7 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 95  | Sign the Dotted Line 2                     | [X]       |
 | 96  | Diamond in the Dirt                        | [X]       |
 | 97  | Ballistics Report                          | [X]       |
-| 98  | Ballistics Report 2                        | [ ]       |
+| 98  | Ballistics Report 2                        | [X]       |
 | 99  | The Titan's Cypher                         | [X]       |
 | 100 | The Titan's Cypher 2                       | [X]       |
 | 101 | Fregmented Healing                         | [X]       |
@@ -204,7 +204,7 @@ CHROME HEART SYNDROME
 Album 6:
 The Titan's Cypher 
 1. "Still Standing" [X]
-2. "" []
+2. "Ballistics Report 2" [X]
 3. "" []
 4. "" []
 5. "" []
