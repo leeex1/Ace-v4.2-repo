@@ -102,3 +102,11 @@ Here's a 100-item checklist based on all the video titles from the YouTube playl
 | 98  | Ballistics Report 2                        | [ ]       |
 | 99  | The Titan's Cypher                         | [ ]       |
 | 100 | The Titan's Cypher 2                       | [ ]       |
+
+
+Album 1:
+Mic Drop
+
+Album2: 
+the sound of alchemy
+
