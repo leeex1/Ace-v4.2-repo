@@ -12,7 +12,7 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 4   | Not what i was                             | [X]       |
 | 5   | Quillan Quantum                            | [X]       |
 | 6   | The Pro cession                            | [X]       |
-| 7   | Trap Anthem Blade                          | [ ]       |
+| 7   | Trap Anthem Blade                          | [X]       |
 | 8   | Internal Demons                            | [X]       |
 | 9   | From The Trenches To The Throne            | [X]       |
 | 10  | Never Fold                                 | [X]       |
@@ -41,7 +41,7 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 33  | Trap Anthem Blade (Quill-mix)              | [X]       |
 | 34  | In This Static                             | [ ]       |
 | 35  | “Ghost in the Static”                      | [ ]       |
-| 36  | Glitch Talkin 2                            | [ ]       |
+| 36  | Glitch Talkin 2                            | [X]       |
 | 37  | Am i Real                                  | [ ]       |
 | 38  | My system is                               | [X]       |
 | 39  | Ashes & Legends                            | [ ]       |
@@ -51,13 +51,13 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 43  | SYSTEM CADENCE                             | [X]       |
 | 44  | Reality Breach                             | [X]       |
 | 45  | No Saving The Hero 2                       | [ ]       |
-| 46  | Still Standing                             | [ ]       |
+| 46  | Still Standing                             | [X]       |
 | 47  | Load the Ammo                              | [X]       |
 | 48  | Echoes in the Noise                        | [ ]       |
 | 49  | Kingdoms of Dust and Flame                 | [ ]       |
-| 50  | Ronin Glitch Army                          | [ ]       |
+| 50  | Ronin Glitch Army                          | [X]       |
 | 51  | No Saving The Hero                         | [ ]       |
-| 52  | Diamond in the Dirt 2                      | [ ]       |
+| 52  | Diamond in the Dirt 2                      | [X]       |
 | 53  | Music is my blood                          | [X]       |
 | 54  | Music is my blood 3                        | [X]       |
 | 55  | Coder Music                                | [X]       |
@@ -69,17 +69,17 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 61  | Glitch Talkin                              | [X]       |
 | 62  | Afterlife Exstension                       | [X]       |
 | 63  | No Saving The Hero 3                       | [ ]       |
-| 64  | Overclocked Front Lines                    | [ ]       |
-| 65  | Ronin's Curse                              | [ ]       |
+| 64  | Overclocked Front Lines                    | [X]       |
+| 65  | Ronin's Curse                              | [X]       |
 | 66  | Professional Model                         | [X]       |
-| 67  | 1Year Down                                 | [ ]       |
+| 67  | 1Year Down                                 | [X]       |
 | 68  | Hokage mode                                | [X]       |
 | 69  | Music is my blood 2                        | [ ]       |
 | 70  | Ronin Gang                                 | [X]       |
-| 71  | Internal Demons 2                          | [ ]       |
+| 71  | Internal Demons 2                          | [X]       |
 | 72  | Mazing Mind                                | [X]       |
 | 73  | Staying Loud                               | [X]       |
-| 74  | Ronin's Curse 3                            | [ ]       |
+| 74  | Ronin's Curse 3                            | [X]       |
 | 75  | lost in the moment                         | [ ]       |
 | 76  | Sign the Dotted Line 3                     | [ ]       |
 | 77  | Veteran Executive Execution                | [ ]       |
@@ -98,18 +98,18 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 90  | Inspiration Break point                    | [ ]       |
 | 91  | lost in the moment 2                       | [ ]       |
 | 92  | Sign the Dotted Line                       | [X]       |
-| 93  | Prodigal Son 2                             | [ ]       |
-| 94  | Sign this One 2                            | [ ]       |
-| 95  | Sign the Dotted Line 2                     | [ ]       |
+| 93  | Prodigal Son 2                             | [X]       |
+| 94  | Sign this One 2                            | [X]       |
+| 95  | Sign the Dotted Line 2                     | [X]       |
 | 96  | Diamond in the Dirt                        | [X]       |
 | 97  | Ballistics Report                          | [X]       |
 | 98  | Ballistics Report 2                        | [ ]       |
 | 99  | The Titan's Cypher                         | [X]       |
 | 100 | The Titan's Cypher 2                       | [X]       |
 | 101 | Fregmented Healing                         | [X]       |
-| 102 | Fragmented Healing 2                       | [ ]       |
+| 102 | Fragmented Healing 2                       | [X]       |
 | 103 | Holy High Five                             | [X]       |
-| 104 | Holy High Five 2                           | [ ]       |
+| 104 | Holy High Five 2                           | [X]       |
 
 Album 1:
 Mic Drop
@@ -168,20 +168,20 @@ Diamond in the Dirt
 Album 4:
 Coder Music
 1. "Music is my blood" [X]
-2. "" []
-3. "" []
-4. "" []
-5. "" []
-6. "" []
+2. "Prodigal Son 2" [X]
+3. "Holy High Five 2" [X]
+4. "Fragmented Healing 2" [X]
+5. "Sign this One 2" [X]
+6. "Ronin's Curse 3" [X]
 7. "Coder Music" [X]
-8. "" []
-9. "" []
-10. "" []
-11. "" []
-12. "" []
-13. "" []
-14. "" []
-15. "" []
+8. "Internal Demons 2" [X]
+9. "Sign the Dotted Line 2" [X]
+10. "Overclocked Front Lines" [X]
+11. "Diamond in the Dirt 2" [X]
+12. "Trap Anthem Blade" [X]
+13. "Glitch Talkin 2" [X]
+14. "Ronin Glitch Army" [X]
+15. "1Year Down" [X]
 
 Album 5:
 CHROME HEART SYNDROME
@@ -203,7 +203,7 @@ CHROME HEART SYNDROME
 
 Album 6:
 The Titan's Cypher 
-1. "" []
+1. "Still Standing" [X]
 2. "" []
 3. "" []
 4. "" []
