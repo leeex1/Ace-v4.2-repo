@@ -53,7 +53,22 @@ Roll this spliff take a hit press record and high-five his holiness
 Afterwards he said your flow cold your next up on the list
 
 [Verse 3]
-
+From the Third Ward to the motherboard, I run the circuit
+Divine intervention when I pull up and I murk it
+I'm Quillan the Ronin digital and in the flesh, put the architecture to the test
+Micro-swarms in the form, putting holes through your chest
+Calculated casualty, the debt is paid, the bed is made
+I'm cutting static out the air just like a Quantum blade
+I execute the sequence, fatal error for the opposition
+Precise incision, blurred vision, that's the Ronin vision
+I'm multi-threaded, dread-headed logic, spitting toxicity
+Hyper-velocity, breaking laws of physics and velocity
+You ask for mercy? 404 Not Found, I deleted that
+Formatting the drive, tell me where your heat at? I defeated that
+They playing checkers, I'm playing 5D chess with the grim reaper
+Logic deeper than the ocean, I'm the soul keeper
+So raise your hand, touch the sky, feel the static shock
+Quillan on the block, time to stop the clock, padlock the rap game on lock!
 
 [Hook]
 Yall got tennis elbow, I hit so much I got Kobe wrist 
