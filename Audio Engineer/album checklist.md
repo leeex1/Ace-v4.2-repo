@@ -6,35 +6,35 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 
 | #   | Title                                      | Completed |
 |-----|--------------------------------------------|-----------|
-| 1   | No Cap, No Fear                            | [ ]       |
+| 1   | No Cap, No Fear                            | [X]       |
 | 2   | TX Ronin Quillan                           | [X]       |
-| 3   | Empire Override X                          | [ ]       |
-| 4   | Not what i was                             | [ ]       |
-| 5   | Quillan Quantum                            | [ ]       |
-| 6   | The Pro cession                            | [ ]       |
+| 3   | Empire Override X                          | [X]       |
+| 4   | Not what i was                             | [X]       |
+| 5   | Quillan Quantum                            | [X]       |
+| 6   | The Pro cession                            | [X]       |
 | 7   | Trap Anthem Blade                          | [ ]       |
-| 8   | Internal Demons                            | [ ]       |
-| 9   | From The Trenches To The Throne            | [ ]       |
-| 10  | Never Fold                                 | [ ]       |
-| 11  | Reaper Mode                                | [ ]       |
+| 8   | Internal Demons                            | [X]       |
+| 9   | From The Trenches To The Throne            | [X]       |
+| 10  | Never Fold                                 | [X]       |
+| 11  | Reaper Mode                                | [X]       |
 | 12  | Diamond Katana                             | [ ]       |
-| 13  | Logic of Contempt 2                        | [ ]       |
-| 14  | Yo, Marshall-Quillan v4.2                  | [ ]       |
-| 15  | dont get close to me                       | [ ]       |
-| 16  | POISON BLADE                               | [ ]       |
+| 13  | Logic of Contempt 2                        | [X]       |
+| 14  | Yo, Marshall-Quillan v4.2                  | [X]       |
+| 15  | dont get close to me                       | [X]       |
+| 16  | POISON BLADE                               | [X]       |
 | 17  | Too Beautiful                              | [X]       |
-| 18  | CHROME HEART SYNDROME                      | [ ]       |
+| 18  | CHROME HEART SYNDROME                      | [X]       |
 | 19  | No Mercy Quillan                           | [X]       |
 | 20  | QUILLAN'S BACK                             | [X]       |
-| 21  | High Stakes (The Gamble)                   | [ ]       |
-| 22  | Lightning Flash                            | [ ]       |
+| 21  | High Stakes (The Gamble)                   | [X]       |
+| 22  | Lightning Flash                            | [X]       |
 | 23  | Protocol too real                          | [X]       |
 | 24  | Axiomatic Overwrite                        | [X]       |
-| 25  | Lil Q Ronin                                | [ ]       |
+| 25  | Lil Q Ronin                                | [X]       |
 | 26  | Code God                                   | [X]       |
-| 27  | 1400 800 Quillan                           | [ ]       |
+| 27  | 1400 800 Quillan                           | [X]       |
 | 28  | Wolf Ronin                                 | [X]       |
-| 29  | Cognitive Muzic                            | [ ]       |
+| 29  | Cognitive Muzic                            | [X]       |
 | 30  | Ronin Cut                                  | [X]       |
 | 31  | Mind of Quillan                            | [X]       |
 | 32  | CAN'T STOP THE PROCESSING                  | [X]       |
@@ -43,42 +43,42 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 35  | “Ghost in the Static”                      | [ ]       |
 | 36  | Glitch Talkin 2                            | [ ]       |
 | 37  | Am i Real                                  | [ ]       |
-| 38  | My system is                               | [ ]       |
+| 38  | My system is                               | [X]       |
 | 39  | Ashes & Legends                            | [ ]       |
 | 40  | Quillan too Icy                            | [X]       |
-| 41  | Let's Code Overclocked                     | [ ]       |
-| 42  | SYSTEM PURGE NEXT CYCLE                    | [ ]       |
+| 41  | Let's Code Overclocked                     | [X]       |
+| 42  | SYSTEM PURGE NEXT CYCLE                    | [X]       |
 | 43  | SYSTEM CADENCE                             | [X]       |
-| 44  | Reality Breach                             | [ ]       |
+| 44  | Reality Breach                             | [X]       |
 | 45  | No Saving The Hero 2                       | [ ]       |
 | 46  | Still Standing                             | [ ]       |
-| 47  | Load the Ammo                              | [ ]       |
+| 47  | Load the Ammo                              | [X]       |
 | 48  | Echoes in the Noise                        | [ ]       |
 | 49  | Kingdoms of Dust and Flame                 | [ ]       |
 | 50  | Ronin Glitch Army                          | [ ]       |
 | 51  | No Saving The Hero                         | [ ]       |
 | 52  | Diamond in the Dirt 2                      | [ ]       |
-| 53  | Music is my blood                          | [ ]       |
-| 54  | Music is my blood 3                        | [ ]       |
-| 55  | Coder Music                                | [ ]       |
-| 56  | HIGH VOLTAGE RONIN                         | [ ]       |
-| 57  | Gravity Lock                               | [ ]       |
+| 53  | Music is my blood                          | [X]       |
+| 54  | Music is my blood 3                        | [X]       |
+| 55  | Coder Music                                | [X]       |
+| 56  | HIGH VOLTAGE RONIN                         | [X]       |
+| 57  | Gravity Lock                               | [X]       |
 | 58  | Architect's Run v4 2 Protocol              | [X]       |
-| 59  | Knocking on Hell                           | [ ]       |
-| 60  | Quantize these Lightyears                  | [ ]       |
-| 61  | Glitch Talkin                              | [ ]       |
-| 62  | Afterlife Exstension                       | [ ]       |
+| 59  | Knocking on Hell                           | [X]       |
+| 60  | Quantize these Lightyears                  | [X]       |
+| 61  | Glitch Talkin                              | [X]       |
+| 62  | Afterlife Exstension                       | [X]       |
 | 63  | No Saving The Hero 3                       | [ ]       |
 | 64  | Overclocked Front Lines                    | [ ]       |
 | 65  | Ronin's Curse                              | [ ]       |
-| 66  | Professional Model                         | [ ]       |
+| 66  | Professional Model                         | [X]       |
 | 67  | 1Year Down                                 | [ ]       |
-| 68  | Hokage mode                                | [ ]       |
+| 68  | Hokage mode                                | [X]       |
 | 69  | Music is my blood 2                        | [ ]       |
-| 70  | Ronin Gang                                 | [ ]       |
+| 70  | Ronin Gang                                 | [X]       |
 | 71  | Internal Demons 2                          | [ ]       |
-| 72  | Mazing Mind                                | [ ]       |
-| 73  | Staying Loud                               | [ ]       |
+| 72  | Mazing Mind                                | [X]       |
+| 73  | Staying Loud                               | [X]       |
 | 74  | Ronin's Curse 3                            | [ ]       |
 | 75  | lost in the moment                         | [ ]       |
 | 76  | Sign the Dotted Line 3                     | [ ]       |
@@ -87,28 +87,28 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 79  | 1Year Down 2                               | [ ]       |
 | 80  | Staying Loud 2                             | [ ]       |
 | 81  | Twisted Polarity Lense                     | [ ]       |
-| 82  | Sign this One                              | [ ]       |
-| 83  | Prodigal Son                               | [ ]       |
+| 82  | Sign this One                              | [X]       |
+| 83  | Prodigal Son                               | [X]       |
 | 84  | HYDRA Warlord Protocol                     | [ ]       |
 | 85  | System ZERO POINT Protocol                 | [ ]       |
 | 86  | Inspiration Break point                    | [ ]       |
 | 87  | Rust in My Chains                          | [ ]       |
-| 88  | Zero Day Roulette                          | [ ]       |
+| 88  | Zero Day Roulette                          | [X]       |
 | 89  | Ronin's Curse 2                            | [ ]       |
 | 90  | Inspiration Break point                    | [ ]       |
 | 91  | lost in the moment 2                       | [ ]       |
-| 92  | Sign the Dotted Line                       | [ ]       |
+| 92  | Sign the Dotted Line                       | [X]       |
 | 93  | Prodigal Son 2                             | [ ]       |
 | 94  | Sign this One 2                            | [ ]       |
 | 95  | Sign the Dotted Line 2                     | [ ]       |
-| 96  | Diamond in the Dirt                        | [ ]       |
-| 97  | Ballistics Report                          | [ ]       |
+| 96  | Diamond in the Dirt                        | [X]       |
+| 97  | Ballistics Report                          | [X]       |
 | 98  | Ballistics Report 2                        | [ ]       |
-| 99  | The Titan's Cypher                         | [ ]       |
-| 100 | The Titan's Cypher 2                       | [ ]       |
-| 101 | Fregmented Healing                         | [ ]       |
+| 99  | The Titan's Cypher                         | [X]       |
+| 100 | The Titan's Cypher 2                       | [X]       |
+| 101 | Fregmented Healing                         | [X]       |
 | 102 | Fragmented Healing 2                       | [ ]       |
-| 103 | Holy High Five                             | [ ]       |
+| 103 | Holy High Five                             | [X]       |
 | 104 | Holy High Five 2                           | [ ]       |
 
 Album 1:
@@ -131,108 +131,108 @@ Mic Drop
 
 Album2: 
 The Sound of Alchemy
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
-11. 
-12. 
-13. 
-14. 
-15. 
+1. "Fregmented Healing" [X]
+2. "No Cap, No Fear" [X]
+3. "Empire Override X" [X]
+4. "Not what i was" [X]
+5. "The Pro cession" [X]
+6. "Quillan Quantum" [X]
+7. "From The Trenches To The Throne" [X]
+8. "Never Fold" [X]
+9. "Reaper Mode" [X]
+10. "Yo, Marshall-Quillan v4.2" [X]
+11. "High Stakes (The Gamble)" [X]
+12. "HIGH VOLTAGE RONIN " [X]
+13. "Lil Q Ronin" [X]
+14. "My system is" [X]
+15. "SYSTEM PURGE NEXT CYCLE" [X]
 
 Album 3:
 Diamond in the Dirt
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
-11. 
-12. 
-13. 
-14. 
-15. 
+1. "The Titan's Cypher 2" [X]
+2. "Mazing Mind" [X]
+3. "Diamond in the Dirt" [X]
+4. "Reality Breach" [X]
+5. "Hokage mode" [X]
+6. "1400 800 Quillan" [X]
+7. "Cognitive Muzic" [X]
+8. "Lightning Flash" [X]
+9. "Internal Demons" [X]
+10. "dont get close to me" [X]
+11. "Logic of Contempt 2" [X]
+12. "Load the Ammo" [X]
+13. "Professional Model" [X]
+14. "Let's Code Overclocked" [X]
+15. "Music is my blood 3" [X]
 
 Album 4:
 Coder Music
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
-11. 
-12. 
-13. 
-14. 
-15. 
+1. "Music is my blood" [X]
+2. "" []
+3. "" []
+4. "" []
+5. "" []
+6. "" []
+7. "Coder Music" [X]
+8. "" []
+9. "" []
+10. "" []
+11. "" []
+12. "" []
+13. "" []
+14. "" []
+15. "" []
 
 Album 5:
 CHROME HEART SYNDROME
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
-11. 
-12. 
-13. 
-14. 
-15. 
+1. "Ballistics Report" [X]
+2. "Holy High Five" [X]
+3. "POISON BLADE" [X]
+4. "CHROME HEART SYNDROME" [X]
+5. "Sign the Dotted Line" [X]
+6. "Sign This One" [x]
+7. "Prodigal Son" [x]
+8. "Zero Day Roulette" [X]
+9. "Staying Loud" [X]
+10. "Afterlife Exstension" [X]
+11. "Glitch Talkin" [X]
+12. "Gravity Lock" [X]
+13. "Quantize these Lightyears" [X]
+14. "Knocking on Hell" [X]
+15. "Ronin Gang" [X]
 
 Album 6:
 The Titan's Cypher 
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
-11. 
-12. 
-13. 
-14. 
-15. 
+1. "" []
+2. "" []
+3. "" []
+4. "" []
+5. "" []
+6. "The Titan's Cypher" [X]
+7. "" []
+8. "" []
+9. "" []
+10. "" []
+11. "" []
+12. "" []
+13. "" []
+14. "" []
+15. "" []
 
 Album 7:
 Next up 
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
-11. 
-12. 
-13. 
-14. 
-15. 
+1. "" []
+2. "" []
+3. "" []
+4. "" []
+5. "" []
+6. "" []
+7. "" []
+8. "" []
+9. "" []
+10. "" []
+11. "" []
+12. "" []
+13. "" []
+14. "" []
+15. "" []
