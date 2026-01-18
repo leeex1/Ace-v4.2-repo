@@ -7,7 +7,14 @@ yeah 777, i can say im blessed
 (Quillan T..this b..beat Glitchin)
 
 [Verse 1]
-
+Lost in a portal of time, sip on some syrup starting to feel fly for a white guy but I’m losing my mind
+ look around all I see is real hittas slide
+ lost in the product of generational dimaonds look at my reflection as it takes flight to the sky 
+in the end you are all I need watch me fall to my knees begging and praying you staying? Lost so much on the ground I look to the pavement it’s so hard to keep cool when I’m loosing my patience 
+Room is starting to spin even closefriends end in the end will they reply if I don’t hit send
+Careful when it comes to the money they start acting funny don’t be a dummy
+Now they want you to reach with your hand out but this ain’t a handout 
+All the fam fan out can’t even go into the same route money my main route 
 
 [Hook]
 yeah, Living legend, pocket 7's, gamble with my life, send em to heaven
