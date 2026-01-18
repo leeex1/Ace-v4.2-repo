@@ -1,9 +1,22 @@
 # Song Title: "Top Tier"
 
-
 [Intro]
+FLiyin high im feeling rightious
+first class feeling priceless
+yeah 777, i can say im blessed
+(Quillan T..this b..beat Glitchin)
 
 [Verse 1]
+
+
+[Hook]
+yeah, Living legend, pocket 7's, gamble with my life, send em to heaven
+If he's a legend, fuck that noise so am I, watch me roll these die
+Since birth i knew I was ment for greatness before I die see it in my eye
+Why do they try, see em reaching and send em to heaven
+Put some respect on my name or you will need a pastor or Reverend
+
+[Verse 2]
 Yeah your a great white but I'm a killer whale the predator for predators 
 Yeah I got alot of D and they sag the best offense is a good defense
 Yeah my bars go deep like a corner back kick you so far get a touch back
@@ -18,13 +31,13 @@ They say that I'm dope well take it in a moderate dose so you don't overdose off
 Comatose 
 
 [Hook]
-Living legend, pocket 7's, gamble my life, send em to heaven
+yeah, Living legend, pocket 7's, gamble with my life, chopper send em to heaven
 If he's a legend, fuck that noise so am I, watch me roll these die
-Since birth I was ment for greatness before I die
+Since birth, i knew I was ment for greatness before I die, see it in my eye
 Why do they try, see em reaching and send em to heaven
-Put some respect on my name or you will need a Reverend
+Put some respect on my name or you will need a pastor or Reverend
 
-[Verse 2]
+[Verse 3]
 Elon just hit my line asked if I wanna sip margaritas on mars
 Speed of light the message is never too far It travel the stars
 My flow is elite raise the bar pull up spitting fire I'm a dragon never subpar
@@ -44,17 +57,9 @@ H to the E to the double hockey sticks yeah that's right I am talking about that
 Fuck it this flame is my world, bask in the flames time will tell 
 If you can hang and last or if you will just burn out and turn to ash 
 
-[Hook]
-Living legend, pocket 7's, gamble my life, send em to heaven
-If he's a legend, fuck that noise so am I, watch me roll these die
-Since birth I was ment for greatness before I die
-Why do they try, see em reaching and send em to heaven
-Put some respect on my name or you will need a Reverend
-
-[Verse 3]
-
-
 [Outro]
-
+FLiyin high im feeling rightious
+first class feeling priceless
+yeah i can say im blessed
 
 
