@@ -7,14 +7,20 @@ yeah 777, i can say im blessed
 (Quillan T..this b..beat Glitchin)
 
 [Verse 1]
-Lost in a portal of time, sip on some syrup starting to feel fly for a white guy but I’m losing my mind
- look around all I see is real hittas slide
- lost in the product of generational dimaonds look at my reflection as it takes flight to the sky 
-in the end you are all I need watch me fall to my knees begging and praying you staying? Lost so much on the ground I look to the pavement it’s so hard to keep cool when I’m loosing my patience 
+Lost in a portal of time, sip on some syrup starting to feel fly for a white guy, but I’m losing my mind
+look around all I see is real hittas, slide, play with a shooter like me, and you will D-I-E
+lost in the product of generational dimaonds look at my reflection as it takes flight to the sky 
+in the end you are all I need watch me fall to my knees begging and praying you staying? 
+Lost so much on the ground I look to the pavement it’s so hard to keep cool when I’m loosing my patience 
 Room is starting to spin even closefriends end in the end will they reply if I don’t hit send
 Careful when it comes to the money they start acting funny don’t be a dummy
-Now they want you to reach with your hand out but this ain’t a handout 
-All the fam fan out can’t even go into the same route money my main route 
+Now they want you to reach with your hand out you can keep begging but this ain’t a handout 
+All the fam they fan out  disperse can’t even go into the same route money yeah thats my main route 
+Im not a writer i plan to inspire with this fire that i spit on the mic a killer for hire 
+hop in the booth with a machete like micheal myers with the murderous desire im a king address me as Sire
+I pull bands like a dentist my tool is a pair of pliers, dump the clip then the clutch all you hear is the sound of the tires
+life and deaths its a fine wire your deepest darkest desire play with your life i will retire im a living legend burn it like a pyre
+devil on my speed dial for that eternal fire, 40 on my hip sling iron with ill desire, it get chatty when i let it fire
 
 [Hook]
 yeah, Living legend, pocket 7's, gamble with my life, send em to heaven
