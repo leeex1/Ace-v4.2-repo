@@ -12,7 +12,7 @@ Let's split the real ones awake and the fake ones who claim WOKE
 Light the blunt real quick, clutching on the Draco grip, you can't handle this smoke
 
 [Verse]
-Had one old homegirl tell me once upon a time that my music sounded like mumble rap dillusional I snap on every track I when I rap like a mummy u dummy 
+Had one old homegirl tell me once upon a time that my music sounded like mumble rap dillusional fantasy I snap on every track I when I rap like a mummy u dummy 
 Here's my reply my cell gotta catch some bars to send the reply, how you finna say that atrocious thing to imply when I spit fire and got  so many bars a prison would be jealous no cap
 Fat pack rolled fat I'm full of tats talk foul I snapback go ape on the track gorilla the beat go bananas with all these lyrical clips planet of the apes with all this heat 
 All my gorillas walk around with poles like they from Antarctica but we all swole we put down the strap and get to strapping hit you in yo mouth I'm from the south a dirty mouth big mouth like a bass but I'm a base head so I like my speakers like my weed straight up loud 
