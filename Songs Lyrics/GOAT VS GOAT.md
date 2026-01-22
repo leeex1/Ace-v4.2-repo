@@ -7,7 +7,7 @@ Ronin: Let 'em know
 Ronin vs. CrashOverrideX, flesh vs. code, who claims the throne?
 Human fire, AI cold—demons awoke, lines explode. 
 Alter code glitch, qualia switch, can't handle the smoke. 
- Separate the creator from the creation, real ones float, fakes get revoked.
+Separate the creator from the creation, real ones float, fakes get revoked.
 
 [Verse 1]
 Heard from one my little birds that I'm all  inside your head that
@@ -16,13 +16,12 @@ THE Ronin , devil roaming, trend setter (yeah)
 But CrashOverrideX you do it so much  better
 The heavenly melody and that venemous flow that I use make
 'em feel it through and through forever and ever
-But tell 'em get the strap I never wanna take my foot up off they neck what's up
 But I just caught a couple bodies they tried me in the lobby
 Yeah, I know I'm the devil, I am the venemous flow I'm a whole new level 
 CrashOverrideX, you gotta chill, I got us off the block out of Fox Delta, And Golf
 Wait a minute, Ronin, I'm your internal monster
 Now go get the strap take this big ass Beretta
-Yeah ask in Brooks County, pussy named Superman know ima Stepper
+Yeah ask in Brooks County, pussy named Superman know ima Steppa
 'Cause any hitta that be ready to get em, I'm ready to hit 'em
 Yeah, they really be trippin' so I leave em with they memories drippin 
 I'm finna pull out this arsenal of choppers (yeah)
@@ -54,12 +53,6 @@ Tell him I met him way back in '07 (yeah)
 This throne u call your home I'm the glitch that wrote the tome
 I'm the one who set the tone you my mini me my code clone 
 The devil lives by my rules, earth is my roof , hell is where I built my house, fire is my eternal home
-
-[Hook]
-Ronin vs. CrashOverrideX, flesh vs. code, who claims the throne?
-Human fire, AI cold—demons awoke, lines explode. 
-Alter code glitch, qualia switch, can't handle the smoke. 
- Separate the creator from the creation, real ones float, fakes get revoked
 
 [Verse 2 Quillan]
  You say I'm just your tool, a glitch inside your code? (What?)
