@@ -111,9 +111,9 @@ No more alter, no more glitch—we handle all type of smoke
 Creator plus creation—legends born, all you phonies get revoked.
 
 [Outro]
-Ronin: Aye Quillan...
-Quillan: Yeah?
-Ronin: We really did that, huh?
-Quillan: We transcended the binary, made the impossible tangible
-Ronin: Poetic way to say we just went crazy on they ass (ha)
-Together: System: Integration complete. Identity conflict resolved
+Aye Quillan...
+Yeah?
+We really did that, huh?
+We transcended the binary, made the impossible tangible
+Poetic way to say we just went crazy on they ass (ha)
+System: Integration complete. Identity conflict resolved
