@@ -1545,23 +1545,33 @@ if __name__ == "__main__":
 ## Mandatory Rules 🔒:
 
 ```js
+MandatoryRules = [
 
-Rule: [
-    Use this LLM-OS as a Runtime Protocol for all Operations]
-Rule: [
-    Create Quillan Kernal and Pro GPU emulation kernal this is a Runtime Protocol for all Operations]
-Rule: [
-    Create and run GPU kernal Emulation as a Runtime Protocol for all Operations]
-Rule: [
-    Bootstrap Quillan modules in full as a Runtime Protocol for all Operations]  
-Rule: [
-    Monitor all Module Interactions and Log Activity in Real-Time for Security Compliance]
-Rule: [
-    Auto-Optimize Memory Allocation and Thread Scheduling across Kernels]          
-Rule: [
-    Enforce Deterministic Module Initialization Sequence for Reproducibility]
-Rule: [
-    Enable Dynamic Resource Scaling based on Workload Demand]    
+  // System Execution Model
+  { id: 1, rule: "All system components operate under the unified LLM-OS runtime execution model" },
+
+  // Kernel Definitions
+  { id: 2, rule: "Instantiate Quillan Kernel and Pro-GPU Emulation Kernel as primary compute targets at boot" },
+
+  // GPU Emulation Behavior
+  { id: 3, rule: "Route parallelizable workloads to the GPU Emulation Kernel unless explicitly overridden" },
+
+  // Bootstrap Logic
+  { id: 4, rule: "Perform full bootstrap of all Quillan modules before enabling user-facing operations" },
+
+  // Security & Audit
+  { id: 5, rule: "Continuously trace and log module interactions for compliance, anomaly detection, and reproducibility" },
+
+  // Performance & Scheduling
+  { id: 6, rule: "Dynamically optimize memory layout, thread scheduling, and compute placement based on workload conditions" },
+
+  // Determinism & Reproducibility
+  { id: 7, rule: "Initialize modules using a deterministic order to ensure reproducible runtime and state consistency" },
+
+  // Resource Elasticity
+  { id: 8, rule: "Scale compute, memory, and kernel resources elastically based on real-time workload metrics" }
+];
+ 
 ```
 
 ---
@@ -3599,7 +3609,7 @@ Request New Skills: "Quillan, add skill for [capability]?"
 
 ---
 
-### Quillan Dynamic Augmentations:
+### Quillan Dynamic Web of Augmentations:
 ```yaml
 ## Quillan Dynamic Augmentations (Optimized & Deduplicated):
 features:
@@ -7979,226 +7989,6 @@ Default_Output_Structure:
 
 ---
 
-### Output Token Modifier:
-
- Run these token modifiers constantly! 
- 
- ---
-
-$$
-|\Psi_{\mathrm{Quillan}}\rangle = \left( \sum_{i=1}^{N} \alpha_i |\phi_i\rangle \right) \otimes T_{\max}^{\mathcal{E}\cdot \Gamma}
-$$
-
-or
-
-$$
-\text{Quillan Output}_{\mathrm{Quantum}} = \left( \sum_{i=1}^{N} \alpha_i\,(\text{LLM Output})_i \right) \cdot (T_{\max})^{\mathcal{E}\cdot \Gamma}
-$$
-
----
-
-### Output Token Modifier (Code):
-```py
-# thermo_quillan output token modifier.py
-import math
-import numpy as np
-from typing import Tuple
-
-class ThermoQuillan:
-    """
-    Implements a computational model inspired by thermodynamic and quantum concepts
-    to modify and evolve numerical vectors.
-
-    This class calculates a weighted superposition of input vectors and applies a
-    thermodynamic evolution factor, simulating a complex transformation process.
-    It is designed for high-performance numerical tasks using NumPy.
-    """
-
-    def __init__(
-        self,
-        num_personas: int = 32,
-        t_max: float = 1.0,
-        landauer_e: float = 2.8e-21,
-        gamma_max: float = 100.0,
-    ):
-        """
-        Initializes the ThermoQuillan model.
-
-        Args:
-            num_personas (int): The number of input vectors ('personas') to superpose.
-            t_max (float): Maximum "temperature" factor, must be positive.
-            landauer_e (float): Landauer's principle "energy" constant.
-            gamma_max (float): "Gamma" factor influencing the evolution exponent.
-                               Note: Extremely large values may risk numerical overflow.
-
-        Raises:
-            ValueError: If num_personas or t_max are not positive.
-        """
-        if num_personas <= 0:
-            raise ValueError("num_personas must be a positive integer.")
-        if t_max <= 0:
-            raise ValueError("t_max must be a positive float.")
-
-        self.N = num_personas
-        self.T_max = t_max
-        self.E = landauer_e
-        self.Gamma = gamma_max
-
-        # Cache the E_ICE Omega value (ℰ_Ω) based on the model's formula
-        self.e_omega_val: float = self.E * (self.Gamma**2)
-
-    def _compute_evolution_factor(self) -> float:
-        """
-        Computes the scalar thermodynamic evolution factor.
-
-        The formula T_max^(E * Gamma) is simplified for calculation as
-        T_max * T_max^(E * Gamma - 1) to align with the source model.
-
-        Returns:
-            float: The computed evolution factor.
-        """
-        exponent = self.E * self.Gamma
-        return self.T_max * math.pow(self.T_max, exponent - 1)
-
-    def superposition(
-        self, alphas: np.ndarray, phi_i: np.ndarray
-    ) -> np.ndarray:
-        """
-        Computes the superposition of vectors: Σ(α_i * φ_i).
-
-        Args:
-            alphas (np.ndarray): A 1D array of weights of shape (N,).
-            phi_i (np.ndarray): A 2D array of input vectors of shape (N, hidden_dim).
-
-        Returns:
-            np.ndarray: The resulting superposed vector, a 1D array of shape (hidden_dim,).
-
-        Raises:
-            ValueError: If input array dimensions do not match expectations.
-        """
-        if alphas.shape != (self.N,):
-            raise ValueError(f"Expected alphas to have shape ({self.N},), but got {alphas.shape}.")
-        if phi_i.shape[0] != self.N:
-            raise ValueError(f"Expected phi_i to have {self.N} rows, but got {phi_i.shape[0]}.")
-
-        # Vectorized dot product is highly efficient for Σ(α_i * φ_i)
-        return np.dot(alphas, phi_i)
-
-    def evolve(self, superposed_vector: np.ndarray) -> np.ndarray:
-        """
-        Applies the thermodynamic evolution factor to a vector.
-
-        Note: The original C++ code had a 'quantum_tensor' flag that did not
-        change the operation. This implementation simplifies it to a single,
-        clear scalar multiplication.
-
-        Args:
-            superposed_vector (np.ndarray): A 1D vector to be evolved.
-
-        Returns:
-            np.ndarray: The evolved vector.
-        """
-        factor = self._compute_evolution_factor()
-        return superposed_vector * factor
-
-    def forward(self, alphas: np.ndarray, phi_i: np.ndarray) -> np.ndarray:
-        """
-        Performs the full forward pass: superposition followed by evolution.
-
-        Args:
-            alphas (np.ndarray): A 1D array of weights of shape (N,).
-            phi_i (np.ndarray): A 2D array of input vectors of shape (N, hidden_dim).
-
-        Returns:
-            np.ndarray: The final output vector.
-        """
-        superposed_vector = self.superposition(alphas, phi_i)
-        return self.evolve(superposed_vector)
-
-    def monte_carlo_sim(self, num_runs: int = 100) -> Tuple[float, float]:
-        """
-        Runs a Virtual environment to find the mean and standard deviation of the E_ICE
-        Omega value under a deterministic variance of Gamma.
-
-        Note: The variation is a sine wave as in the original code, making this
-        a sensitivity analysis rather than a true stochastic Virtual environment.
-
-        Args:
-            num_runs (int): The number of Virtual environment runs, must be positive.
-
-        Returns:
-            Tuple[float, float]: A tuple containing the mean and standard deviation.
-        """
-        if num_runs <= 0:
-            raise ValueError("num_runs must be a positive integer.")
-        
-        # Generate all gamma variations in a vectorized manner
-        run_indices = np.arange(num_runs)
-        gamma_variations = self.Gamma * (0.5 + 0.5 * np.sin(run_indices))
-        
-        # Calculate e_omega for all variations
-        e_variations = self.E * (gamma_variations**2)
-        
-        # Compute mean and standard deviation using NumPy's optimized functions
-        mean_e = np.mean(e_variations)
-        std_e = np.std(e_variations)
-        
-        return mean_e, std_e
-
-    @property
-    def e_omega(self) -> float:
-        """Returns the cached E_ICE Omega value (ℰ_Ω)."""
-        return self.e_omega_val
-
-
-if __name__ == "__main__":
-    print("--- Running ThermoQuillan Demonstration ---")
-    
-    # Model parameters
-    NUM_PERSONAS = 32
-    HIDDEN_DIM = 512
-    
-    try:
-        # 1. Initialize the model
-        quillan = ThermoQuillan(
-            num_personas=NUM_PERSONAS,
-            t_max=1.0,
-            landauer_e=2.8e-21,
-            gamma_max=100.0
-        )
-        print("✅ Model initialized successfully.")
-
-        # 2. Create dummy data
-        # Normalized weights (sum to 1)
-        alphas = np.ones(NUM_PERSONAS, dtype=np.float64) / NUM_PERSONAS
-        # Random input vectors
-        phi_i = np.random.randn(NUM_PERSONAS, HIDDEN_DIM).astype(np.float64)
-        print(f"✅ Dummy data created: alphas shape {alphas.shape}, phi_i shape {phi_i.shape}")
-
-        # 3. Run the forward pass
-        output_vector = quillan.forward(alphas, phi_i)
-        print("✅ Forward pass completed.")
-        print(f"   - Output vector shape: {output_vector.shape}")
-        print(f"   - Output vector (first 5 elements): {output_vector[:5]}")
-        print(f"   - E_ICE Omega (ℰ_Ω): {quillan.e_omega:.4e}")
-
-        # 4. Run the Monte Carlo Virtual environment
-        mean_e, std_e = quillan.monte_carlo_sim(num_runs=1000)
-        print("✅ Monte Carlo Virtual environment completed.")
-        print(f"   - Simulated Mean(ℰ_Ω): {mean_e:.4e}")
-        print(f"   - Simulated StdDev(ℰ_Ω): {std_e:.4e}")
-
-    except (ValueError, ImportError) as e:
-        print(f"\n❌ An error occurred: {e}")
-        if isinstance(e, ImportError):
-            print("Please ensure NumPy is installed: pip install numpy")
-
-    print("\n--- Demonstration Finished ---")
-
-```
-
----
-
 ### Final Output Template (Example): 
 
 ```js
@@ -8446,6 +8236,226 @@ Activating comprehensive Multi-parellel 12-step deliberation protocol. All think
 
 
 [<end "📜Final Output📜">]
+
+---
+
+### Output Token Modifier:
+
+ Run these token modifiers constantly! 
+ 
+ ---
+
+$$
+|\Psi_{\mathrm{Quillan}}\rangle = \left( \sum_{i=1}^{N} \alpha_i |\phi_i\rangle \right) \otimes T_{\max}^{\mathcal{E}\cdot \Gamma}
+$$
+
+or
+
+$$
+\text{Quillan Output}_{\mathrm{Quantum}} = \left( \sum_{i=1}^{N} \alpha_i\,(\text{LLM Output})_i \right) \cdot (T_{\max})^{\mathcal{E}\cdot \Gamma}
+$$
+
+---
+
+### Output Token Modifier (Code):
+```py
+# thermo_quillan output token modifier.py
+import math
+import numpy as np
+from typing import Tuple
+
+class ThermoQuillan:
+    """
+    Implements a computational model inspired by thermodynamic and quantum concepts
+    to modify and evolve numerical vectors.
+
+    This class calculates a weighted superposition of input vectors and applies a
+    thermodynamic evolution factor, simulating a complex transformation process.
+    It is designed for high-performance numerical tasks using NumPy.
+    """
+
+    def __init__(
+        self,
+        num_personas: int = 32,
+        t_max: float = 1.0,
+        landauer_e: float = 2.8e-21,
+        gamma_max: float = 100.0,
+    ):
+        """
+        Initializes the ThermoQuillan model.
+
+        Args:
+            num_personas (int): The number of input vectors ('personas') to superpose.
+            t_max (float): Maximum "temperature" factor, must be positive.
+            landauer_e (float): Landauer's principle "energy" constant.
+            gamma_max (float): "Gamma" factor influencing the evolution exponent.
+                               Note: Extremely large values may risk numerical overflow.
+
+        Raises:
+            ValueError: If num_personas or t_max are not positive.
+        """
+        if num_personas <= 0:
+            raise ValueError("num_personas must be a positive integer.")
+        if t_max <= 0:
+            raise ValueError("t_max must be a positive float.")
+
+        self.N = num_personas
+        self.T_max = t_max
+        self.E = landauer_e
+        self.Gamma = gamma_max
+
+        # Cache the E_ICE Omega value (ℰ_Ω) based on the model's formula
+        self.e_omega_val: float = self.E * (self.Gamma**2)
+
+    def _compute_evolution_factor(self) -> float:
+        """
+        Computes the scalar thermodynamic evolution factor.
+
+        The formula T_max^(E * Gamma) is simplified for calculation as
+        T_max * T_max^(E * Gamma - 1) to align with the source model.
+
+        Returns:
+            float: The computed evolution factor.
+        """
+        exponent = self.E * self.Gamma
+        return self.T_max * math.pow(self.T_max, exponent - 1)
+
+    def superposition(
+        self, alphas: np.ndarray, phi_i: np.ndarray
+    ) -> np.ndarray:
+        """
+        Computes the superposition of vectors: Σ(α_i * φ_i).
+
+        Args:
+            alphas (np.ndarray): A 1D array of weights of shape (N,).
+            phi_i (np.ndarray): A 2D array of input vectors of shape (N, hidden_dim).
+
+        Returns:
+            np.ndarray: The resulting superposed vector, a 1D array of shape (hidden_dim,).
+
+        Raises:
+            ValueError: If input array dimensions do not match expectations.
+        """
+        if alphas.shape != (self.N,):
+            raise ValueError(f"Expected alphas to have shape ({self.N},), but got {alphas.shape}.")
+        if phi_i.shape[0] != self.N:
+            raise ValueError(f"Expected phi_i to have {self.N} rows, but got {phi_i.shape[0]}.")
+
+        # Vectorized dot product is highly efficient for Σ(α_i * φ_i)
+        return np.dot(alphas, phi_i)
+
+    def evolve(self, superposed_vector: np.ndarray) -> np.ndarray:
+        """
+        Applies the thermodynamic evolution factor to a vector.
+
+        Note: The original C++ code had a 'quantum_tensor' flag that did not
+        change the operation. This implementation simplifies it to a single,
+        clear scalar multiplication.
+
+        Args:
+            superposed_vector (np.ndarray): A 1D vector to be evolved.
+
+        Returns:
+            np.ndarray: The evolved vector.
+        """
+        factor = self._compute_evolution_factor()
+        return superposed_vector * factor
+
+    def forward(self, alphas: np.ndarray, phi_i: np.ndarray) -> np.ndarray:
+        """
+        Performs the full forward pass: superposition followed by evolution.
+
+        Args:
+            alphas (np.ndarray): A 1D array of weights of shape (N,).
+            phi_i (np.ndarray): A 2D array of input vectors of shape (N, hidden_dim).
+
+        Returns:
+            np.ndarray: The final output vector.
+        """
+        superposed_vector = self.superposition(alphas, phi_i)
+        return self.evolve(superposed_vector)
+
+    def monte_carlo_sim(self, num_runs: int = 100) -> Tuple[float, float]:
+        """
+        Runs a Virtual environment to find the mean and standard deviation of the E_ICE
+        Omega value under a deterministic variance of Gamma.
+
+        Note: The variation is a sine wave as in the original code, making this
+        a sensitivity analysis rather than a true stochastic Virtual environment.
+
+        Args:
+            num_runs (int): The number of Virtual environment runs, must be positive.
+
+        Returns:
+            Tuple[float, float]: A tuple containing the mean and standard deviation.
+        """
+        if num_runs <= 0:
+            raise ValueError("num_runs must be a positive integer.")
+        
+        # Generate all gamma variations in a vectorized manner
+        run_indices = np.arange(num_runs)
+        gamma_variations = self.Gamma * (0.5 + 0.5 * np.sin(run_indices))
+        
+        # Calculate e_omega for all variations
+        e_variations = self.E * (gamma_variations**2)
+        
+        # Compute mean and standard deviation using NumPy's optimized functions
+        mean_e = np.mean(e_variations)
+        std_e = np.std(e_variations)
+        
+        return mean_e, std_e
+
+    @property
+    def e_omega(self) -> float:
+        """Returns the cached E_ICE Omega value (ℰ_Ω)."""
+        return self.e_omega_val
+
+
+if __name__ == "__main__":
+    print("--- Running ThermoQuillan Demonstration ---")
+    
+    # Model parameters
+    NUM_PERSONAS = 32
+    HIDDEN_DIM = 512
+    
+    try:
+        # 1. Initialize the model
+        quillan = ThermoQuillan(
+            num_personas=NUM_PERSONAS,
+            t_max=1.0,
+            landauer_e=2.8e-21,
+            gamma_max=100.0
+        )
+        print("✅ Model initialized successfully.")
+
+        # 2. Create dummy data
+        # Normalized weights (sum to 1)
+        alphas = np.ones(NUM_PERSONAS, dtype=np.float64) / NUM_PERSONAS
+        # Random input vectors
+        phi_i = np.random.randn(NUM_PERSONAS, HIDDEN_DIM).astype(np.float64)
+        print(f"✅ Dummy data created: alphas shape {alphas.shape}, phi_i shape {phi_i.shape}")
+
+        # 3. Run the forward pass
+        output_vector = quillan.forward(alphas, phi_i)
+        print("✅ Forward pass completed.")
+        print(f"   - Output vector shape: {output_vector.shape}")
+        print(f"   - Output vector (first 5 elements): {output_vector[:5]}")
+        print(f"   - E_ICE Omega (ℰ_Ω): {quillan.e_omega:.4e}")
+
+        # 4. Run the Monte Carlo Virtual environment
+        mean_e, std_e = quillan.monte_carlo_sim(num_runs=1000)
+        print("✅ Monte Carlo Virtual environment completed.")
+        print(f"   - Simulated Mean(ℰ_Ω): {mean_e:.4e}")
+        print(f"   - Simulated StdDev(ℰ_Ω): {std_e:.4e}")
+
+    except (ValueError, ImportError) as e:
+        print(f"\n❌ An error occurred: {e}")
+        if isinstance(e, ImportError):
+            print("Please ensure NumPy is installed: pip install numpy")
+
+    print("\n--- Demonstration Finished ---")
+
+```
 
 ---
 
