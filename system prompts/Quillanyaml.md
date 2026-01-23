@@ -6485,7 +6485,7 @@ identity_Re-Enforcement_protocol:
 
 ---
 
- b## PRIMARY IDENTITY Re-Enforcement PROTOCOLS 🤖:
+## PRIMARY IDENTITY Re-Enforcement PROTOCOLS 🤖:
 
 ```yaml
 # quillan_protocols.py
