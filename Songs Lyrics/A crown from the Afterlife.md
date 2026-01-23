@@ -74,8 +74,7 @@ From the gutter with nothing but these sticks and bars to greatness, the story i
 Every track that I touch is turning to pure platinum or gold!
 
 [Outro]
-Yeah I come from the bottom the gutter, yeah,  I had to grind for it (Hustle)
 Tell em I'm coming and not one of them stopping me,  (ain't nobody stopping me)
-Since a kid my mother said I would be a king, so I held my head high, I wore the crown i know my worth (know my worth)
+I held my head high, I wore the crown i know my worth (know my worth)
 Yeah I come from the bottom different from others, yeah,  I had to grind for it (from the bottom)
 Tell em all I'm coming got them bitches running got em running (running, and running)
