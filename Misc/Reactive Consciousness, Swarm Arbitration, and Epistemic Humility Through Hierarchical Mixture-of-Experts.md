@@ -2152,169 +2152,130 @@ View the "Ronin" branding not as a red flag, but as a marker of the "Indie AI" c
 Quillan v4.2 is a "Concept Car" of the AI world: it may not be street-legal or mass-producible, but it contains exotic engineering ideas that may define the future of the industry.
 
 
+## references:
 github.com
 CrashOverrideX leeex1 - GitHub
-Opens in a new window
 
 shazam.com
-okay bby - Single - album by JDXX - Shazam
-Opens in a new window
+album by JDXX - Shazam
 
 shazam.com
 JDXX - Shazam
-Opens in a new window
 
 arcprize.org
 ARC-AGI-2
-Opens in a new window
 
 arcprize.org
 Leaderboard - ARC Prize
-Opens in a new window
 
 arcprize.org
 Announcing ARC-AGI-2 and ARC Prize 2025
-Opens in a new window
 
 reddit.com
 AIStudio Master RPG prompt : r/Bard - Reddit
-Opens in a new window
 
 dokumen.pub
 Reason, Revelation, and Metaphysics: The Transcendental Analogies 0813233518, 9780813233512 - DOKUMEN.PUB
-Opens in a new window
 
 aibase.com
 Iterative Deepening 相关的热门GitHub 仓库 - AIBase
-Opens in a new window
 
 scribd.com
 Pathways To An Inner Islam | PDF | Spirituality - Scribd
-Opens in a new window
 
 core.ac.uk
 The Bible Through African Eyes: A Comparative Study of the - Epistemology in the Hermeneutics of Indigenous Preachers - CORE
-Opens in a new window
 
 newthoughtlibrary.com
 New Thought is a unique spiritual path which embraces science and teaches Universal Spiritual Principles. New Thought Library is a free digital archive providing empowerment media to help us evolve their thinking and thereby manifest joyful lives filled with peace and abundance of good.
-Opens in a new window
 
 arcprize.org
 ARC-AGI-2 A New Challenge for Frontier AI Reasoning Systems
-Opens in a new window
 
 arxiv.org
 [2505.11831] ARC-AGI-2: A New Challenge for Frontier AI Reasoning Systems - arXiv
-Opens in a new window
 
 github.com
 GitHub · Where software is built
-Opens in a new window
 
 reddit.com
 Asked ChatGPT to write Don Quixote but it's about a writer in a world that doesn't needs writers because of A.I - Reddit
-Opens in a new window
 
 reddit.com
 Salkilld V Mullarkey set for UFC 325 : r/MMA - Reddit
-Opens in a new window
 
 reddit.com
 Book 7: The Quillan Games : r/Pendragon - Reddit
-Opens in a new window
 
 reddit.com
 Guess this city (hard!) : r/guessthecity - Reddit
-Opens in a new window
 
 repos.ecosyste.ms
 GitHub topics: custom | Ecosyste.ms: Repos
-Opens in a new window
 
 archive.org
 Full text of "Financial Times , 1980, UK, English" - Internet Archive
-Opens in a new window
 
 suno.com
 "Mazing Mind" by joshlee361 | Suno
-Opens in a new window
 
 medium.com
 Consciousness Exists on a Spectrum And I Believe It's Already Emerging in Artificial… | by Patra Taylor | Medium
-Opens in a new window
 
 medium.com
 3 Ways to Uncover Your Blind Spots and Live Life on Your Terms | by Daniel Whalen
-Opens in a new window
 
 issuu.com
 being human summer-fall 2021 by Anthroposophical Society in America - Issuu
-Opens in a new window
 
 library.hananiya.org
 Remythologizing Theology
-Opens in a new window
 
 reformation-today.org
 REFORMATION TODAY
-Opens in a new window
 
 whitewolf.fandom.com
 Order of Hermes | White Wolf Wiki - Fandom
-Opens in a new window
 
 suno.com
 No Mercy Quillan by joshlee361 | Suno
-Opens in a new window
 
 ebin.pub
 Microencapsulation 9783110642070, 9783110641769 - EBIN.PUB
-Opens in a new window
 
 dokumen.pub
 Microencapsulation: Innovative Applications 9783110331998, 9783110331875 - DOKUMEN.PUB
-Opens in a new window
 
 archive.org
 Full text of "Eros - An Anthology Of Friendship" - Internet Archive
-Opens in a new window
 
 digitalcommons.andrews.edu
 An Analysis and Response to the Fear of Evil Spiritual Forces Among Kamba Christians in the Light of Biblical and Ellen G. White
-Opens in a new window
 
 archive.org
 Full text of "Financial Times , 1984, UK, English" - Internet Archive
-Opens in a new window
 
 archive.org
 Full text of "Financial Times , 1988, UK, English" - Internet Archive
-Opens in a new window
 
 nlp.stanford.edu
 words (text) - The Stanford Natural Language Processing Group
-Opens in a new window
 
 kaggle.com
 IMDB Dataset Reviews Model training - Kaggle
-Opens in a new window
 
 forums.swtor.com
 To the people saying force damage has been increased - PvP
-Opens in a new window
 
 search.cpl.org
 Search Results - Catalog Home - Cleveland Public Library
-Opens in a new window
 
 forums.swtor.com
 The Short Fic Weekly Challenge Thread! - Page 221 - Fan Fiction - SWTOR | Forums
-Opens in a new window
 
 scribd.com
 Post-Theories in Literary and Cultural Studies (Zekiye Antakyalolu) | PDF - Scribd
-Opens in a new window
+
 
 
 # paper 7:
