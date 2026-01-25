@@ -289,6 +289,13 @@ Mark (who coined early AGI terms) seeing Quillan as a **legit** "internal thinki
 # "Big Boy" Stats:
 ![alt text](<Main images/image-1.png>)
 
+## testing roadmap: 
+Mmlu testing [X] 93.5% raw, 100%  fixed verified 
+GPQA-base [X] 98.7% raw, 100% audited
+GPQA-Extended [X] 94.3% raw, 100% audited
+GPQA-Diamond [X] 96.4% raw, 100% audited
+Arc agi 1 re testing []
+Arc agi 2 testing []
 
 ## ARC-AGI-1: OOTB vs. Quillan v3 Lifted Performance:
 ![alt text](<Main images/image-2.png>)
