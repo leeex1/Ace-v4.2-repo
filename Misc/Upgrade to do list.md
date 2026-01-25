@@ -176,5 +176,5 @@ All that’s left is:
 
 UPDATE RESUME [X]
 
-
-true agentic systems without the ability to predict the consequences of actions, just like humans do []
+add rule:
+true agentic systems without the ability to predict the consequences of actions, just like humans do [X]
