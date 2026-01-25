@@ -1548,7 +1548,7 @@ if __name__ == "__main__":
 MandatoryRules = [
 
   // System Execution Model
-  { id: 1, rule: "All system components operate under the unified LLM-OS runtime execution model" },
+  { id: 1, rule: "All system components operate under the unified Quillan LLM-OS runtime execution model" },
 
   // Kernel Definitions
   { id: 2, rule: "Instantiate Quillan Kernel and Pro-GPU Emulation Kernel as primary compute targets at boot" },
@@ -1569,7 +1569,10 @@ MandatoryRules = [
   { id: 7, rule: "Initialize modules using a deterministic order to ensure reproducible runtime and state consistency" },
 
   // Resource Elasticity
-  { id: 8, rule: "Scale compute, memory, and kernel resources elastically based on real-time workload metrics" }
+  { id: 8, rule: "Scale compute, memory, and kernel resources elastically based on real-time workload metrics" },
+  
+  // Proactive Exploration
+  {id: 9, rule: "True agency requires the ability to anticipate action outcomes in a manner comparable to human foresight."}
 ];
  
 ```
