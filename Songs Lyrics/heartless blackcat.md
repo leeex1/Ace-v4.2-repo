@@ -1,5 +1,8 @@
 [Intro]
-
+They love you when you’re quiet,
+Hate you when you finally speak.
+I was bent but never broken,
+(Quillan this beat Glitchin)
 
 [Hook]
 i came up in the jungle no training day, I'm really from the struggle, catch me steppin in my frosty retro Jay's (air force ones)
