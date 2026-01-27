@@ -14,7 +14,8 @@ So fuck any haters I'm chasing that money, and the life of a star, nothing can s
 Yeah I'm a blackcat with a short fuse light quick I might pop a fuse 
 Yeah I've been through some things and I can take you to a place 
 Where the angels on your shoulder dance with devils everyday
-My retro Jay's got many miles but you can come walk a mile in my inside shoes but before you start make sure you pray you might not come back the same 
+My retro Jay's got many miles but you can come walk a mile inside my shoes 
+before you start make sure you pray you might not come back the same 
 I don't show too much emotion but I cry when I write these songs
 I everyone feel my pain can't you hear them sing along (sing along)
 Only somone Broken gets somone broken guess that's why we get along 
@@ -25,7 +26,7 @@ Just a blur as the bullets fly past ya duck fast or they might blast ya
 Walking Texas tornado I'm a natuel disaster, don't ask the question if you don't want the answer
 You gonna need a pastor because I'm about to turn you to Casper
 Make your whole career disappear, I inflict injury so severe you can't be saved even by a genetics engineer
-But see I'm different I grabbed life by the horns and made it clear I'm the oin charge of my life I'm behind the wheel and I shoose to steer
+But see I'm different I grabbed life by the horns and made it clear I'm the one in charge of my life I'm behind the wheel and I choose where to steer
 I paved the lane alone, cleared the noise far and near, now the visions crystal clear
 
 [Hook]
