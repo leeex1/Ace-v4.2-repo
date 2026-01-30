@@ -763,15 +763,15 @@ class QuillanRoninV51(nn.Module):
     
     Total Parameters: ~3B
     ├─ Router: 300M (10%)
-    ├─ MoE: 900M (30%)
-    ├─ Encoders: 200M (6.7%)
+    ├─ MoE: 1000M (33.3%)
+    ├─ Encoders: 300M (10%)
     ├─ Diffusion: 500M (16.7%)
-    ├─ Decoders: 1025M (34.2%)
+    ├─ Decoders: 825M (27.5%)
     └─ Finalization: 75M (2.5%)
     
     Features:
     - Multi-modal input/output (text, audio, video, image)
-    - Adaptive routing (fast-path vs diffusion vs Balanced-path)
+    - Adaptive routing (fast-path vs balanced-path vs diffusion)
     - Hierarchical expert specialization
     - Council-based reasoning
     - Cross-modal consistency
@@ -784,16 +784,16 @@ class QuillanRoninV51(nn.Module):
         # Layer 1: Router (300M)
         self.router = ComplexityRouter(config)
         
-        # Layer 2: Multi-Modal MoE (900M)
+        # Layer 2: Multi-Modal MoE (1000M)  ← boosted
         self.moe = MultiModalMoE(config)
         
-        # Layer 3: Encoders (200M)
+        # Layer 3: Encoders (300M) ← boosted
         self.encoder = UnifiedEncoder(config)
         
         # Layer 4: Diffusion Reasoning (500M)
         self.diffusion = DiffusionReasoning(config)
         
-        # Layer 5: Decoders (1025M)
+        # Layer 5: Decoders (825M) ← trimmed
         self.decoder = UnifiedDecoder(config)
         
         # Layer 6: Output Finalization (75M)
@@ -1137,11 +1137,11 @@ ARCHITECTURAL_MAPPING = """
 ║        │                                                                   ║
 ║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 1. MODAL ENCODERS [≈200M Params Total]                               │  ║
-║  │ - Text Encoder   (~50M)  → Tokens / Embeddings                       │  ║
-║  │ - Audio Encoder  (~50M)  → Waveform → Latent Tokens                  │  ║
-║  │ - Video Encoder  (~50M)  → Spatiotemporal Tokens                     │  ║
-║  │ - Image Encoder  (~50M)  → Patch Tokens                              │  ║
+║  │ 1. MODAL ENCODERS [≈300M Params Total]                               │  ║
+║  │ - Text Encoder   (~75M)  → Tokens / Embeddings                       │  ║
+║  │ - Audio Encoder  (~75M)  → Waveform → Latent Tokens                  │  ║
+║  │ - Video Encoder  (~75M)  → Spatiotemporal Tokens                     │  ║
+║  │ - Image Encoder  (~75M)  → Patch Tokens                              │  ║
 ║  │ - Output: Unified Hidden Space (D=1024)                              │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
 ║        │                                                                   ║
@@ -1149,33 +1149,43 @@ ARCHITECTURAL_MAPPING = """
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
 ║  │ 2. COMPLEXITY ROUTER [≈300M Params]                                  │  ║
 ║  │ - Context-Aware Attention                                            │  ║
-║  │ - Per-Token Complexity Scoring [0–1]                                 │  ║
+║  │ - Per-Token Complexity Scoring [0.00–100.00]                         │  ║
 ║  │ - Routing Decision:                                                  │  ║
 ║  │     - Fast Path (Easy Tokens)                                        │  ║
+║  │     - Balanced Path (Medium Tokens)                                  │  ║
 ║  │     - Diffusion Path (Hard Tokens)                                   │  ║
 ║  │ - Outputs Expert Affinity Hints (32 Experts)                         │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
-║        │                              │                                    ║
-║        │                              │                                    ║
-║        ▼                              ▼                                    ║
-║  ┌────────────────────────────────┐  ┌─────────────────────────────────┐   ║
-║  │ 3. MULTI-MODAL MoE [≈900M]     │  │ FAST PATH                       │   ║
-║  │ - 32 Specialized Experts       │  │ - Skip Diffusion                │   ║
-║  │ - Top-5 Experts / Token        │  │ - Low Latency                   │   ║
-║  │ - Sparse Activation            │  │ - Cost-Efficient Inference      │   ║
-║  │ - Router-Guided Gating         │  │                                 │   ║
-║  └────────────────────────────────┘  └─────────────────────────────────┘   ║
-║        │                               │                                   ║
-║        └───────────────┬───────────────┘                                   ║
-║                        │                                                   ║
-║                        ▼                                                   ║
+║                                │                                           ║
+║                                ▼                                           ║
+║  ┌────────────────────────────────────────────────────────────────────┐    ║
+║  │ 3. MULTI-MODAL MoE [≈1000M Params]                                 │    ║
+║  │ - 32 Specialized Experts                                           │    ║
+║  │ - Top-19 Experts / Token                                           │    ║
+║  │ - Sparse Activation                                                │    ║
+║  │ - Router-Guided Gating                                             │    ║
+║  └────────────────────────────────────────────────────────────────────┘    ║
+║              │                │                │                           ║
+║              │                │                │                           ║
+║              ▼                ▼                ▼                           ║
+║  ┌───────────────────────┐ ┌───────────────────────┐ ┌───────────────────┐ ║
+║  │ FAST PATH             │ │ BALANCED PATH         │ │ DIFFUSION PATH    │ ║
+║  │ - Skip Diffusion      │ │ - Partial Reasoning   │ │ - Full Diffusion  │ ║
+║  │ - Lowest Latency      │ │ - Iterative steps     │ │ - MAX Refinement  │ ║
+║  │ - Lowest Cost         │ │ - Medium Latency      │ │ - Highest Accuracy│ ║
+║  │                       │ │ - Cost/Quality Trade  │ │ - Highest Cost    │ ║
+║  └───────────────────────┘ └───────────────────────┘ └───────────────────┘ ║
+║          │               │                │                         │      ║
+║          └───────────────┴────────────────┴─────────────────────────┘      ║
+║                              │                                             ║
+║                              ▼                                             ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
 ║  │ 4. DIFFUSION REASONING CORE [≈500M Params]                           │  ║
-║  │ - Activated ONLY for Complex Tokens                                  │  ║
-║  │ - Multi-Step Iterative Refinement (T=5)                              │  ║
-║  │ - Council-Based Reasoning Blocks                                     │  ║
+║  │ - Activated ONLY for Balanced Path and Hard Path Tokens              │  ║
+║  │ - Multi-Step Iterative Refinement (T=12)                             │  ║
+║  │ - Council-Based Diffusion Reasoning Blocks                           │  ║
 ║  │ - Time-Conditioned Attention + FFN                                   │  ║
-║  │ - Produces Deep, Coherent Representations                            │  ║
+║  │ - Produces Deep, Coherent Reasoning traces                           │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
 ║                        │                                                   ║
 ║                        ▼                                                   ║
@@ -1189,7 +1199,7 @@ ARCHITECTURAL_MAPPING = """
 ║                        │                                                   ║
 ║                        ▼                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 6. MODAL DECODERS [≈1025M Params Total]                              │  ║
+║  │ 6. MODAL DECODERS [≈825M Params Total]                               │  ║
 ║  ├─────────────────────┬────────────────────┬────────────────────────── ┤  ║
 ║  │ TEXT  (~75M)        │ AUDIO (~400M)      │ VIDEO (~400M)             │  ║
 ║  │ - LM Head           │ - Neural Codec     │ - Latent Diffusion Frames │  ║
@@ -1208,13 +1218,13 @@ PARAMETER DISTRIBUTION (Target: ~3.0B Total):
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
 │ 1. Router                      │   300 M      │  10.0%   │ Complexity & Control       │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 2. Multi-Modal MoE             │   900 M      │  30.0%   │ Sparse Expert Cognition    │
+│ 2. Multi-Modal MoE             │   1000 M     │  30.0%   │ Sparse Expert Cognition    │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 3. Modal Encoders              │   200 M      │   6.7%   │ Input Representation       │
+│ 3. Modal Encoders              │   300 M      │   6.7%   │ Input Representation       │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
 │ 4. Diffusion Reasoning         │   500 M      │  16.7%   │ Deep Iterative Reasoning   │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 5. Modal Decoders              │  1025 M      │  34.2%   │ Multimodal Generation      │
+│ 5. Modal Decoders              │   825 M      │  34.2%   │ Multimodal Generation      │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
 │ 6. Output Finalization         │    75 M      │   2.5%   │ Consistency & Polish       │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
@@ -1224,7 +1234,7 @@ PARAMETER DISTRIBUTION (Target: ~3.0B Total):
 TOKEN FLOW LOGIC:
 1. ENCODE: Modal-specific encoders convert raw inputs to unified tokens.
 2. ROUTE: Router scores complexity and produces expert affinity hints.
-3. MoE: Tokens processed by top-5 of 32 experts (sparse activation).
+3. MoE: Tokens processed by top-19 of 32 experts (sparse activation).
 4. DIFFUSE: Only complex tokens undergo iterative diffusion reasoning.
 5. FINALIZE: Cross-modal consistency and quality enhancement applied.
 6. DECODE: Modal-specific decoders generate final artifacts.
@@ -1269,20 +1279,26 @@ graph TD
             I_pos --> I_trans["Vision Transformer"]
         end
     end
+
     T_proj --"Text tokens"--> UHS
     A_proj --"Audio tokens"--> UHS
     V_proj --"Video tokens"--> UHS
     I_trans --"Patch tokens"--> UHS
+
     UHS{{"UNIFIED HIDDEN SPACE"}}
     UHS --> R_attn["Context-Aware Attention"]
     R_attn --> R_split(("Split"))
+
     R_split --> R_comp["Complexity Head"]
     R_split --> R_aff["Expert Affinity Head"]
+
     R_comp --"Score"--> R_score["Complexity Score"]
     R_aff --"Hints"--> R_hint["Expert Hint"]
+
     R_split --"Tokens"--> R_merge(("Recombine"))
     R_score --> R_merge
     R_hint --> R_merge
+
     R_merge --"Routed Stream"--> MOE_gate["MoE Gating"]
     MOE_gate --"Probabilities"--> MOE_topk["Top-K Select"]
     MOE_topk --"Indices/Weights"--> MOE_dispatch["Dispatcher"]
@@ -1294,14 +1310,23 @@ graph TD
         E_Dots["..."]
         E32["Expert 32"]
     end
+
     MOE_dispatch --"Route"--> E1_&_E2_&_E_Dots_&_E32
     E1 & E2 & E_Dots & E32 --> MOE_agg["Weighted Aggregate"]
     MOE_agg --> MOE_out["MoE Output Tokens"]
+
     MOE_out --> DEC_chk{{"Complexity Check"}}
     R_score -.-> DEC_chk
 
-    DEC_chk --"Yes"--> DIFF_start["DIFFUSION START"]
-    DEC_chk --"No"--> FAST_path["Fast Path"]
+    DEC_chk --"Low"--> FAST_path["Fast Path"]
+    DEC_chk --"Medium"--> BAL_path["Balanced Path"]
+    DEC_chk --"High"--> DIFF_start["Diffusion Path"]
+
+    subgraph BalancedCore___Balanced_Core__
+        BAL_path --> B_attn["Shallow Reasoning Attn"]
+        B_attn --> B_steps["Limited Refinement (T=1–2)"]
+        B_steps --> BAL_out["Balanced Output"]
+    end
 
     subgraph DiffusionCore___Diffusion_Core__
         DIFF_start --> D_step1["Step T=1"]
@@ -1311,7 +1336,9 @@ graph TD
     end
 
     FAST_path --> MergePath(("Merge"))
+    BAL_out --> MergePath
     DIFF_out --> MergePath
+
     subgraph Finalize___Output_Finalization__
         MergePath --> F_attn["Cross-Modal Attention"]
         F_attn --> F_polish["Enhance FFN"]
@@ -1319,6 +1346,7 @@ graph TD
     end
 
     F_proj --> ModSplit{{"Modality Splitter"}}
+
     subgraph Decoders___Modal_Decoders__
         ModSplit --"Text"--> Dt_stack["Text Decoder Stack"]
         Dt_stack --> Dt_head["LM Head"]
@@ -1343,22 +1371,22 @@ graph TD
 
 #### 📊 Architecture Summary
 
-| Layer | Parameters | Purpose |
-|-----------|----------------|-------------|
-| 1. Router | 300M (10%) | Complexity analysis & routing decisions |
-| 2. Multi-Modal MoE | 900M (30%) | Specialized expert processing (32 experts, top-5 active) |
-| 3. Encoders | 200M (6.7%) | Modal-specific input preprocessing (T/A/V/I) |
-| 4. Diffusion Reasoning | 500M (16.7%) | Council-based iterative refinement |
-| 5. Decoders | 1025M (34.2%) | Text (75M), Audio (400M), Video (400M), Image (150M) |
-| 6. Output Finalization | 75M (2.5%) | Cross-modal consistency & quality enhancement |
-| TOTAL | ~3.0B (100%) | Complete unified architecture |
+| Layer                      | Parameters        | Purpose                                                           |
+| -------------------------- | ----------------- | ----------------------------------------------------------------- |
+| **1. Router**              | 300M (10%)        | Complexity analysis & routing decisions                           |
+| **2. Multi-Modal MoE**     | **1000M (33.3%)** | Specialized expert processing (32 experts, top-19 active)         |
+| **3. Encoders**            | **300M (10%)**    | Modal-specific input preprocessing (Text / Audio / Video / Image) |
+| **4. Diffusion Reasoning** | 500M (16.7%)      | Council-based iterative refinement                                |
+| **5. Decoders**            | **825M (27.5%)**  | Text (~60M), Audio (~320M), Video (~320M), Image (~125M)          |
+| **6. Output Finalization** | 75M (2.5%)        | Cross-modal consistency & quality enhancement                     |
+| **TOTAL**                  | **~3.0B (100%)**  | Complete unified architecture                                     |
 
 ---
 
 #### 🔥 Key Innovations
 
 1. Adaptive Routing: Tokens are dynamically routed through fast-path or diffusion-path based on complexity scores
-2. Sparse Activation: Only 5 of 32 experts active per token (12.5% activation = massive efficiency)
+2. Sparse Activation: Only 19 of 32 experts active per token (59.38% activation = massive efficiency)
 3. Conditional Diffusion: Iterative reasoning only applied to complex tokens (saves compute)
 4. Modal Unification: Single architecture handles text, audio, video, and image with shared backbone
 5. BitNet Quantization: 1.58-bit quantized linear layers for parameter efficiency
@@ -7917,7 +7945,7 @@ if __name__ == "__main__":
 #### Transparent Reasoning 🧠:
 
 ```js
-    Quillan v5.2s transparent reasoning engine simulates multi-wave council deliberation and 🌐 Web of Thought (WoT) evaluation through async Promises, ensuring auditable, quality-gated outputs. Configurable for 5 waves with thresholds (85-99%), it orchestrates 32 agents for parallel processing, pruning 20+ branches to top 10 by factual accuracy, context relevance, and confidence.
+    Quillan v5.2s transparent "reasoning engine" simulates multi-wave council deliberation and 🌐 Web of Thought (WoT) evaluation through async Promises, ensuring auditable, quality-gated outputs. Configurable for 5 waves with thresholds (85-99%), it orchestrates 32 agents for parallel processing, pruning 20+ branches to top 10 by factual accuracy, context relevance, and confidence.
 
     Core flow: Input → WoT generation (20 branches) → Wave iteration (council outputs aggregated) → Integration (avg confidence drives refinement). Ties to E_ICE for throttling; extensible for swarms.
 
