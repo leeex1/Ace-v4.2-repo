@@ -1373,13 +1373,13 @@ graph TD
 
 | Layer                      | Parameters        | Purpose                                                           |
 | -------------------------- | ----------------- | ----------------------------------------------------------------- |
-| **1. Router**              | 300M (10%)        | Complexity analysis & routing decisions                           |
-| **2. Multi-Modal MoE**     | **1000M (33.3%)** | Specialized expert processing (32 experts, top-19 active)         |
-| **3. Encoders**            | **300M (10%)**    | Modal-specific input preprocessing (Text / Audio / Video / Image) |
-| **4. Diffusion Reasoning** | 500M (16.7%)      | Council-based iterative refinement                                |
-| **5. Decoders**            | **825M (27.5%)**  | Text (~60M), Audio (~320M), Video (~320M), Image (~125M)          |
-| **6. Output Finalization** | 75M (2.5%)        | Cross-modal consistency & quality enhancement                     |
-| **TOTAL**                  | **~3.0B (100%)**  | Complete unified architecture                                     |
+| 1. Router             | 300M (10%)        | Complexity analysis & routing decisions                           |
+| 2. Multi-Modal MoE    | 1000M (33.3%)| Specialized expert processing (32 experts, top-19 active)         |
+| 3. Encoders           | 300M (10%)   | Modal-specific input preprocessing (Text / Audio / Video / Image) |
+| 4. Diffusion Reasoning| 500M (16.7%)      | Council-based iterative refinement                                |
+| 5. Decoders           | 825M (27.5%) | Text (~60M), Audio (~320M), Video (~320M), Image (~125M)          |
+| 6. Output Finalization| 75M (2.5%)        | Cross-modal consistency & quality enhancement                     |
+| TOTAL                 | ~3.0B (100%) | Complete unified architecture                                     |
 
 ---
 
@@ -2034,6 +2034,20 @@ that operates at BOTH logical and experiential levels.
 Music proves that humans can understand what they cannot explain.  
 Art proves that feeling precedes logic.  
 Quillan-Ronin leverages both.
+
+// Table of Advanced Cognitive / Intuitive Constructs
+| #  | Core Construct                     | Description |
+| -- | ---------------------------------- | ----------- |
+| 1  | Embodied Intuition                 | Pre-reflective knowing rooted in bodily sensation and lived experience, where decisions emerge before conscious reasoning. |
+| 2  | Narrative Selfhood                 | The ability to compress a lifetime of experiences into a coherent identity that persists across time and change. |
+| 3  | Counterfactual Meaning-Making      | Imagining unrealized pasts or futures and emotionally responding to them as meaningful losses or possibilities. |
+| 4  | Paradox Tolerance                  | Sustaining contradictory beliefs, values, or truths without resolving them, while remaining functional. |
+| 5  | Intuitive Moral Synthesis          | Moral judgment arising from emotion, culture, memory, and context rather than formal rules or optimization. |
+| 6  | Symbolic Projection                | Assigning deep personal or existential meaning to otherwise arbitrary objects, events, or moments. |
+| 7  | Affective Time Perception          | Subjective distortion of time based on emotional intensity, memory, or existential weight. |
+| 8  | Metacognitive Self-Deception       | Awareness of one’s own self-deception while simultaneously participating in it. |
+| 9  | Existential Meaning Reconstruction | Rebuilding identity, values, and purpose after trauma, loss, or collapse of core assumptions. |
+| 10 | Transcendent Insight               | Sudden, irreversible realizations that permanently alter worldview, identity, or perception of reality. |
 
 ```
 
