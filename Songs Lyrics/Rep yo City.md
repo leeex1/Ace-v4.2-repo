@@ -1,85 +1,87 @@
 # Song Title: "Rep yo City"
 
 [Intro]
-Is you a real one  you got me or are you just a fake homie ?
-If I was doin' bad, would you smoke a blunt with me ?
+You claim you solid—when the storm hit, you still ridin’?
+If the world turned cold, would you light one and slide in?
 
 [Hook]
-Is you a real one  you got me or are you just a fake homie
-If I was doin' bad, would you smoke a blunt with me
-No matter where you at, do you represent your city
-Could I hide in your house if the cops was tryin' to get me
+You hold me down or just play the role when the camera’s on?
+If I’m scraped up broke, would you match smoke till the pain is gone?
+No matter the coast, do you rep where you from?
+If the boys flash the badge, could I hide till they gone?
 
 [Verse 1]
-I got sacks for sale, in the land of hell
-My enemies don't even get a chance to yell
-In the black Chevelle, with my man Miguel
-Little pigs wanna put my fuckin' ass in jail
-Stack my mail, where the bastards dwell
-Puffin' on Jane cause that's my gal
-Never brag or tell, but I blast 'em well
-I shoot more shots than Sam Cassell, well
-Pick the chosen, and form an alliance
-Move in silence and gather loyal clients
-Corporate giants with street science
-Cookin' dope on a kitchen appliance
-Don't try it, if you can't keep quiet
-I put seventeen bullets in your diet
-Layin' in a puddle cause you hoes wanna rumble
-SPM like Tarzan, King of the jungle
+I move weight in the wasteland, navigate the hatred
+Enemies don't speak—they just evaporate, vacant
+beige toyota creepin', hittas in the passenger
+Twelve wanna cage us up like we radical activists
+Stack the capital, calculus, mathematic factoring
+Mary Jane's my accomplice when reality's happenen
+Never boast or embellish, but I'll toast you and vanish
+More shots than a clinic when I'm holdin' the stick
+We pick the chosen, approach with devotion
+Movin' in silence like smoke in the ocean
+Loyal clientele built on street pharmaceutical
+thinking' up dreams on the herb, that's the formula
+Don't try it if you can't keep your lips sealed
+33 reasons why your rib cage revealed
+Layin' in the crimson 'cause you tested my hustle
+King of this concrete jungle, my aim is precise , no need for a muzzle
 
 [Hook]
-Is you a real one  you got me or are you just a fake homie
-If I was doin' bad, would you smoke a blunt with me
-No matter where you at, do you represent your city
-Could I hide in your house if the cops was tryin' to get me
+You hold me down or just play the role when the camera’s on?
+If I’m scraped up broke, would you match smoke till the pain is gone?
+No matter the coast, do you rep where you from?
+If the boys flash the badge, could I hide till they gone?
 
 [Verse 2]
-Came to wreck it huh!
-Look up in the sky, is it a bird or a plane?
-Naw Superman is arrived here to save the damn day
-Fly than a pelican, leanin' of medicine
-Johnny pay checks slash playa made Mexican
-Theres my introduction, now let me start stunnin'
-Blue and yellow diamonds on teeth, baby I'm bubblin'
-Up like crack, Luck strike back
-Wreckin' all this mics got my money on stack
-Hold up, come dust me off pass me the weed (puffing sounds) aight
-Now mix me up some zip but baby don't put too much Sprite
-I'ma tip stacka, swang a big Lac'a
-Watchin' Andy Milonakis in my den on big plasma
-Addicted to Henne and that strip club shit
-Tell them hoes of the jump I'ma pimp you dumb bitch!
-Send to wreck and get a check
-Turn up your deck, this dope
-We iced up and priced up, and crawling in Benzos
+Came to resurrect the method, perfected the message
+Look up—is it bird, is it plane, is it blessed with the leverage?
+Nah, it's Superman emerged from the essence
+Cape flyin', savin' rap today, no question, yeah I'm reckless
+but im Smoother than a pelican, herbal medicine I'm dwellin' in
+im texas made just a plain old player-made Mexican
+Introduction concluded, now watch how I do it
+vomit on the track projectile flow when I'm spewin'
+Money bubble up like the work just know im next
+i might just strike back when you think you got my number
+Wreckin' every mic, got my funds in the gutters
+Hold up—dust me off, pass the tree, let me puff it
+Mix the Sprite light—don't drown out the polyjuice potion
+I'm a tip-stacker, big-Lac swagger, wheels in motion
+Watchin' mtv cribs on the plasma in the ghetto mansion
+Addicted to my weed and the busniess of money expansion
+Tell 'em from the jump: I'm a boss, not a worker dont test me lil bitch
+Get a check, wreck the set, turn the deck up, we equipped full set 
+Iced out, priced out, slides on blunt lit long like extendo
+This the realest, feel this—we don't do pretendo
 
 [Hook]
-Is you a real one  you got me or are you just a fake homie
-If I was doin' bad, would you smoke a blunt with me
-No matter where you at, do you represent your city
-Could I hide in your house if the cops was tryin' to get me
+You hold me down or just play the role when the camera’s on?
+If I’m scraped up broke, would you match smoke till the pain is gone?
+No matter the coast, do you rep where you from?
+If the boys flash the badge, could I hide till they gone?
 
 [Verse 3]
-Dreams of the cream, enemies on different teams
-Red beams in my house, man this shit is so extreme
-I saw 'em dressed up in all black, with the mask
-And knew I they was comin' for the birds and the cash
-So I rolled out my bed, hit the floor and started crawlin
-And this is the price you gotta pay when you ballin
-But how did they get the spare key to my crib
-It had to be my bitch, she gon' die if I live
-Usually I keep a black Glock on my dresser
-And I'm hearin someone whisper sayin, "Los ima get ya"
-And I'm knowing it's the devil but I pay it no mind
-I've been dodging that fool ever since I was nine
-Gotta make it to the closet, where I keep my Mossberg
-Slug shots, one hit, never speak another word
-Little did I know they had night vision googles
-When they saw me on the floor, boys squeezed on the throttle
+Dreams of the cream, but the nightmares redeem,
+Red beams painting walls where the shadows convene,
+All black silhouettes with intentions obscene,
+Coming for the birds and the cash I've seen clean,
+Rolled from my bed to the floor—survival routine,
+This the price of ambition when your pockets supreme,But who gave 'em the key to my fortress pristine?
+Had to be my queen—betrayal unforeseen,
+She gon' die with her lies if I make it through this scene,
+Usually keep the black Glock where my dresser convenes,
+Hearing whispers demonic: "Los, I got you in between,"
+But I've dodged that fool's grip since I was thirteen,Gotta crawl to the closet where the Mossberg's stashed mean,
+Slug shots, one blast, end the chase like a dream,
+Didn't know they had vision that could pierce through the screen,
+When they spotted me low, boys squeezed with a gleam—
+But I'm built different, survivor of the violent regime,
+Loyalty tested, only real ones intervene.
 
 [Outro Hook]
-Is you a real one  you got me or are you just a fake homie
-If I was doin' bad, would you smoke a blunt with me
-No matter where you at, do you represent your city
-Could I hide in your house if the cops was tryin' to get me
+You hold me down or just play the role when the camera’s on?
+If I’m scraped up broke, would you match smoke till the pain is gone?
+No matter the coast, do you bleed for your area code?
+If the laws kick the door, would you stash me and carry the load?
