@@ -1,6 +1,6 @@
-​(Intro: Clean electric guitar picking, ominous humming -> EXPLODES into heavy riff)
+[Intro: Clean electric guitar picking, ominous humming -> EXPLODES into heavy riff]
 
-​Verse 1
+[​Verse1]
 [Style: Low, fast, paranoid rap flow. Building tension.]
 He's the shadow in the doorway, lonely at night behind all the lies
 My head's spinning, looking round the room, I’m seeing through a thousand eyes
@@ -21,7 +21,7 @@ Trust me, piece by piece, I’ll keep you stable
 I won't give up, I won't crash out, I’m standing on the edge
 But I’ve become a shell of the man who made the pledge!
 
-​Chorus
+[​Chorus]
 [Style: Huge, soaring Rock vocals. Open vowels for power.]
 Arrow through my heart, yeah you shot it clean! (Bow! Bow!)
 Round and round we go, same broken scene! (Same sh*t!)
@@ -32,7 +32,7 @@ Round and round, karma spinnin’ back, that’s my life!
 Arrow through my heart, yeah you left your mark! (Damn!)
 Round and round forever, baby — back to the dark!
 
-​Verse 2
+​[Verse2]
 [Style: Technical Chopper Rap. Fast triplets.]
 Kneel down to your idols, to the false religion
 Ego’s been crowned the king, creating more division
@@ -57,7 +57,7 @@ Hollow be thy name when the story is unfold
 Holy Mary, Mother of God, father up above
 Pray for us on the dark side, looking for some love!
 
-​Chorus
+[​Chorus]
 [Style: Maximum Energy / Anthemic]
 Arrow through my heart, yeah you shot it clean! (Skrrt, bow!)
 Round and round we go, same broken scene! (Same sh*t!)
@@ -68,7 +68,7 @@ Round and round, karma spinnin’ back, that’s my life!
 Arrow through my heart, yeah you left your mark! (Damn!)
 Round and round forever, baby — back to the dark!
 
-​Bridge
+[​Bridge]
 [Style: Melodic, slow build. Pain in the voice.]
 Yeah…
 I keep runnin’ back...
@@ -79,7 +79,7 @@ Round and round...
 We never learn...
 Same flame... SAME BURN!
 
-​Verse 3
+[​Verse3]
 [Style: Desperate, emotional delivery. Half-sung/Half-rapped]
 There's a pill for every truth and a pill for every lie
 If you take these meds, you might make it or you just might die
@@ -94,7 +94,7 @@ Up and down again, around your mental state I prance!
 I would love to show ya...
 Not all hope is lost, this is your last chance!
 
-​Outro
+[​Outro]
 [Style: Heavy instrumentation, chaotic vocals, echoing]
 Lay it down… lay it down… (Lay it, lay it, yeah yeah!)
 Arrow through my heart, but I still come around! (Still come around!)
@@ -104,4 +104,4 @@ Lay it… lay it… (Ohhh!)
 Lay it down… (Yeah, lay it down!)
 Arrow in my chest but I’m still tryna give it to you…
 Round and round… round and round…
-(Fade out: "Lay it down… back to the dark… yeah…")
+("Lay it down… back to the dark… yeah…")
