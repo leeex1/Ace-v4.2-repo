@@ -43,3 +43,20 @@ Code experiments
 
 working code:
 [working code snippet]
+
+
+
+/index.html        <-- Shell UI (chat, sidebar, minimal canvas)
+css/
+  ui.css
+js/
+  core.js          <-- Input routing, module loader
+  ui.js            <-- DOM management, animation triggers
+  visualization.js <-- Canvas/WebGL render engine
+  simulation.js    <-- WASM + server hooks for AI/physics/audio
+  audio.js         <-- WebAudio + offloaded DSP
+  game.js          <-- WASM/WebGL game engine wrapper
+server/
+  ai.js            <-- Cognitive simulation / swarm engine
+  physics.js       <-- Game physics if heavy
+  audio.js         <-- DAW audio render
