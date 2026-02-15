@@ -362,13 +362,13 @@ if __name__ == "__main__":
         print(f"Loss Terms: Router={out['router_loss'].item():.4f}")
         print("Grid Assertion Passed.")
 
-# ARCHITECTURAL MAPPING v7.2 (Research Config)
+# ARCHITECTURAL MAPPING v9.2 (Config)
 
 ARCHITECTURAL_MAPPING = """
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                              Quillan-Ronin v7.2                            ║
-║       (Batch-Safe Fusion + Chunked MoE + Flash-Attention Diffusion)        ║
-║                  Actual Implementation: ~0.85B Parameters                  ║
+║                              Quillan-Ronin v9.2                            ║
+║      (Gumbel-MoE + Modality-Isolated Diffusion + Geometric Decoders)       ║
+║                  Actual Implementation: ~0.90B Parameters                  ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║                                                                            ║
 ║  [RAW INPUT STREAMS]                                                       ║
@@ -377,11 +377,11 @@ ARCHITECTURAL_MAPPING = """
 ║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
 ║  │ 1. MODAL ENCODERS + EMBEDDINGS [≈80M Params]                         │  ║
-║  │ - Text: 50k Vocab Embedding (Dominant Factor)                        │  ║
+║  │ - Text: 50k Vocab Embedding + Modality Tags                          │  ║
 ║  │ - Image: Conv2D Patching (16x16)                                     │  ║
 ║  │ - Audio: Conv1D Waveform Feature Extractor                           │  ║
 ║  │ - Video: 3D Conv Spatiotemporal Extractor                            │  ║
-║  │ - Learned Modality Tags (4 x 1024)                                   │  ║
+║  │ - Dynamic Positional Embeddings (SinCos cached)                      │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
 ║        │                                                                   ║
 ║        ▼                                                                   ║
@@ -389,58 +389,59 @@ ARCHITECTURAL_MAPPING = """
 ║  │ 2. BATCH-SAFE FUSION LAYER [Zero Params]                             │  ║
 ║  │ - Concatenates along SEQUENCE dim (dim=1)                            │  ║
 ║  │ - Preserves BATCH dim (dim=0) to prevent data leakage                │  ║
-║  │ - Result: [Batch, L_Text + L_Img + L_Aud + L_Vid, Hidden_Dim]        │  ║
+║  │ - Result: [Batch, L_Total, Hidden_Dim]                               │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
 ║        │                                                                   ║
 ║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 3. CHUNKED CAPACITY MoE [≈670M Params]                               │  ║
-║  │ - 8 Experts x 4 Gated Sub-Agents (The Core Compute)                  │  ║
-║  │ - Massive Params due to Gated MLP Expansion (1024 -> 16k -> 1024)    │  ║
-║  │ - Chunked Routing: Safe for high token counts                        │  ║
-║  │ - Sort-Based Dispatch: Vectorized, Loop-Free                         │  ║
+║  │ 3. VECTORIZED GUMBEL MoE [≈670M Params]                              │  ║
+║  │ - 8 Experts x 4 Sub-Agents (Einsum-based, Sync-Free)                 │  ║
+║  │ - Gumbel-Softmax Routing (Temp Annealed)                             │  ║
+║  │ - Capacity Overflow Logic: Pass-through residual (No silent drops)   │  ║
+║  │ - Aux Loss: Normalized Switch-style balancing                        │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
 ║        │                                                                   ║
 ║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 4. SPARSE FLASH-ATTENTION DIFFUSION [≈50M Params]                    │  ║
-║  │ - 4 Layers of Flash Attention (Lightweight Refiner)                  │  ║
-║  │ - Modality-Aware Masking (Text 15% / Img 75%)                        │  ║
-║  │ - Memory Efficient O(L) Scaling                                      │  ║
+║  │ 4. ISOLATED DIFFUSION [≈50M Params]                                  │  ║
+║  │ - 4 Layers of Flash Attention (Gradient Checkpointed)                │  ║
+║  │ - Modality-Isolated Masking (Text≠Image attention blocks)            │  ║
+║  │ - Adaptive Thresholding: Skips "Easy" tokens (Identity path)         │  ║
+║  │ - FP16 Safe Masking (-1e4 vs -inf)                                   │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
 ║        │                                                                   ║
 ║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 5. LIGHTWEIGHT DECODERS [≈55M Params Total]                          │  ║
-║  │ - Text Head: Linear -> 50k Vocab (Dominant)                          │  ║
-║  │ - Image Head: Linear -> Patch Pixels                                 │  ║
-║  │ - Video Head: Linear -> Spatiotemporal Tubes                         │  ║
-║  │ - Audio Head: Local Conv1D -> Spectral Projection                    │  ║
+║  │ 5. GEOMETRIC DECODERS [≈100M Params Total]                           │  ║
+║  │ - Text Head: Linear -> 50k Vocab                                     │  ║
+║  │ - Image Head: ConvTranspose2D Upsample (Grid Safe)                   │  ║
+║  │ - Video Head: ConvTranspose3D Spatiotemporal Upsample                │  ║
+║  │ - Audio Head: ConvTranspose1D Waveform Reconstruction                │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
-PARAMETER DISTRIBUTION (Current Implementation):
+PARAMETER DISTRIBUTION (Current v9.2 Config):
 ┌────────────────────────────────┬──────────────┬──────────┬────────────────────────────┐
 │ MODULE                         │ SIZE (Approx)│ % TOTAL  │ ROLE                       │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 1. Embeddings & Encoders       │    80 M      │   9.4%   │ Input Representation       │
+│ 1. Embeddings & Encoders       │    80 M      │   8.8%   │ Input Representation       │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 2. Chunked MoE (8 Experts)     │   670 M      │  78.8%   │ Deep Expert Reasoning      │
+│ 2. Vectorized MoE (8 Experts)  │   670 M      │  74.4%   │ Deep Expert Reasoning      │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 3. Flash Diffusion (4 Layers)  │    50 M      │   5.9%   │ Context & Polishing        │
+│ 3. Diffusion (4 Layers)        │    50 M      │   5.5%   │ Context & Refinement       │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 4. Decoders (Text Dominant)    │    55 M      │   6.5%   │ Artifact Generation        │
+│ 4. Geometric Decoders          │   100 M      │  11.1%   │ High-Fidelity Generation   │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ TOTAL PARAMETERS               │  ~0.85 B     │ 100.0%   │ Efficient Research Config  │
+│ TOTAL PARAMETERS               │  ~0.90 B     │ 100.0%   │ Hardened Research Config   │
 └────────────────────────────────┴──────────────┴──────────┴────────────────────────────┘
 
-v7.2 FLOW LOGIC:
-1. ENCODE: Extract features + Add Modality Tags.
-2. FUSE:   Concat on Seq Dim (Keep Batch Dim isolated!).
-3. ROUTE:  Chunked Linear Router -> Sort Tokens -> Dispatch.
-4. REFINE: Flash Attention updates tokens with sparse masking.
-5. DECODE: Project tokens to Patches/Spectra/Vocab -> Reshape to Media.
+v9.2 FLOW LOGIC:
+1. ENCODE: Extract features + Add Modality Tags + Dynamic PosEmb.
+2. FUSE:   Concat on Seq Dim (Batch Isolated).
+3. ROUTE:  Context-Aware Gumbel Router -> Dispatch (Overflow safe).
+4. REFINE: Modality-Isolated Flash Attention (FP16 safe).
+5. DECODE: Upsample tokens -> Assert Grid Shapes -> Output.
 """
 
 ---
@@ -454,146 +455,119 @@ config:
   theme: forest
 ---
 graph TD
-    subgraph Encoders_____MODAL_ENCODERS__
+    subgraph Encoders___Feature_Extraction__
         direction LR
 
-        subgraph TextEnc___Text_Encoder__
-            T_in(["Raw Text"]) --> T_tok["Tokenizer"]
-            T_tok --> T_emb["Embed + Pos Encode"]
-            T_emb --> T_trans["Transformer Stack"]
-            T_trans --> T_proj["Linear Projection"]
+        subgraph TextEnc
+            T_in(["Raw Text"]) --> T_emb["Embedding Layer"]
         end
 
-        subgraph AudioEnc___Audio_Encoder__
-            A_in(["Raw Audio"]) --> A_feat["Feature Extract"]
-            A_feat --> A_trans["Conv/Transformer"]
-            A_trans --> A_proj["Latent Projection"]
+        subgraph AudioEnc
+            A_in(["Raw Audio"]) --> A_conv["Conv1D Feature Extractor"]
         end
 
-        subgraph VideoEnc___Video_Encoder__
-            V_in(["Raw Video"]) --> V_3d["3D Conv/Attn"]
-            V_3d --> V_proj["Spatiotemp Projection"]
+        subgraph VideoEnc
+            V_in(["Raw Video"]) --> V_3d["3D Spatiotemporal Conv"]
         end
 
-        subgraph ImageEnc___Image_Encoder__
-            I_in(["Raw Image"]) --> I_patch["Patchify"]
-            I_patch --> I_flat["Flatten+Proj"]
-            I_flat --> I_pos["Positional Emb"]
-            I_pos --> I_trans["Vision Transformer"]
+        subgraph ImageEnc
+            I_in(["Raw Image"]) --> I_conv["Conv2D Patching (16x16)"]
         end
+        
+        ModTags["Learned Modality Embeddings"]
     end
 
-    T_proj --"Text tokens"--> UHS
-    A_proj --"Audio tokens"--> UHS
-    V_proj --"Video tokens"--> UHS
-    I_trans --"Patch tokens"--> UHS
+    T_emb & A_conv & V_3d & I_conv --> Fusion["BATCH-SAFE FUSION\n(Concat on Seq Dim, Keep Batch Isolated)"]
+    ModTags --> Fusion
 
-    UHS{{"UNIFIED HIDDEN SPACE"}}
-    UHS --> R_attn["Context-Aware Attention"]
-    R_attn --> R_split(("Split"))
-
-    R_split --> R_comp["Complexity Head"]
-    R_split --> R_aff["Expert Affinity Head"]
-
-    R_comp --"Score"--> R_score["Complexity Score"]
-    R_aff --"Hints"--> R_hint["Expert Hint"]
-
-    R_split --"Tokens"--> R_merge(("Recombine"))
-    R_score --> R_merge
-    R_hint --> R_merge
-
-    R_merge --"Routed Stream"--> MOE_gate["MoE Gating"]
-    MOE_gate --"Probabilities"--> MOE_topk["Top-K Select"]
-    MOE_topk --"Indices/Weights"--> MOE_dispatch["Dispatcher"]
-
-    subgraph Experts___Expert_Bank__
-        direction LR
-        E1["Expert 1"]
-        E2["Expert 2"]
-        E_Dots["..."]
-        E32["Expert 32"]
+    Fusion --"Unified Stream"--> ContextMix["Context Mixer\n(Token + Modality Injection)"]
+    
+    subgraph MoE_Core___Chunked_Capacity_MoE__
+        direction TB
+        ContextMix --> Router["Gumbel Router"]
+        Router --"Logits + Noise"--> Top1["Top-1 Selection"]
+        
+        Top1 --"Indices"--> Dispatch["Vectorized Dispatch\n(Sort & Slice)"]
+        Top1 --"Load Balancing"--> AuxLoss(["Aux Loss"])
+        
+        Dispatch --> Capacity{"Capacity Check"}
+        
+        subgraph ExpertBank
+            E_BMM["Vectorized Experts (BMM)\n[8 Experts x 4 Sub-Agents]"]
+        end
+        
+        Capacity --"Within Cap"--> E_BMM
+        Capacity --"Overflow"--> ResidualPath["Residual Bypass\n(Capacity Loss)"]
+        
+        E_BMM --> Gather["Gather & Unsort"]
+        ResidualPath --> Gather
+        
+        Gather --> ConfScale["Confidence Scaling"]
     end
 
-    MOE_dispatch --"Route"--> E1_&_E2_&_E_Dots_&_E32
-    E1 & E2 & E_Dots & E32 --> MOE_agg["Weighted Aggregate"]
-    MOE_agg --> MOE_out["MoE Output Tokens"]
+    ConfScale --"MoE Out + Confidence"--> DiffBlock
 
-    MOE_out --> DEC_chk{{"Complexity Check"}}
-    R_score -.-> DEC_chk
-
-    DEC_chk --"Low"--> FAST_path["Fast Path"]
-    DEC_chk --"Medium"--> BAL_path["Balanced Path"]
-    DEC_chk --"High"--> DIFF_start["Diffusion Path"]
-
-    subgraph BalancedCore___Balanced_Core__
-        BAL_path --> B_attn["Shallow Reasoning Attn"]
-        B_attn --> B_steps["Limited Refinement (T=1–2)"]
-        B_steps --> BAL_out["Balanced Output"]
+    subgraph Diffusion_Core___Adaptive_Refinement__
+        direction TB
+        DiffBlock{{"Router Confidence Check"}}
+        
+        DiffBlock --"High Conf (>0.8)"--> FastPath["Identity (Skip)"]
+        
+        DiffBlock --"Low Conf (<0.8)"--> HardTok["Isolate Hard Tokens"]
+        
+        HardTok --> PosEmb["Dynamic Positional Emb\n(Preserve Structure)"]
+        PosEmb --> MaskGen["Modality-Isolated Mask\n(Block Diagonal)"]
+        
+        MaskGen --> FlashAttn["Flash Attention Encoder\n(4 Layers)"]
+        
+        FlashAttn --> Reinteg["Scatter Back"]
+        
+        FastPath --> DiffMerge(("Merge"))
+        Reinteg --> DiffMerge
     end
 
-    subgraph DiffusionCore___Diffusion_Core__
-        DIFF_start --> D_step1["Step T=1"]
-        D_step1 --> D_dots["..."]
-        D_dots --> D_step5["Step T=5"]
-        D_step5 --> DIFF_out["Refined Representation"]
+    DiffMerge --"Refined Tokens"--> Splitter{{"Sequence Splitter"}}
+
+    subgraph Decoders___Geometric_Reconstruction__
+        Splitter --"Text"--> Dec_Txt["Linear Head\n(Vocab Projection)"]
+        
+        Splitter --"Image"--> Dec_Img["Geometric Decoder\n(ConvTranspose2D Upsample)"]
+        
+        Splitter --"Audio"--> Dec_Aud["Wave Decoder\n(ConvTranspose1D)"]
+        
+        Splitter --"Video"--> Dec_Vid["Geometric Decoder\n(ConvTranspose3D Upsample)"]
     end
-
-    FAST_path --> MergePath(("Merge"))
-    BAL_out --> MergePath
-    DIFF_out --> MergePath
-
-    subgraph Finalize___Output_Finalization__
-        MergePath --> F_attn["Cross-Modal Attention"]
-        F_attn --> F_polish["Enhance FFN"]
-        F_polish --> F_proj["Final Projection"]
-    end
-
-    F_proj --> ModSplit{{"Modality Splitter"}}
-
-    subgraph Decoders___Modal_Decoders__
-        ModSplit --"Text"--> Dt_stack["Text Decoder Stack"]
-        Dt_stack --> Dt_head["LM Head"]
-        Dt_head --> Dt_out(["Text Output"])
-
-        ModSplit --"Audio"--> Da_latent["Audio Latents"]
-        Da_latent --> Da_codec["Codec Decoder"]
-        Da_codec --> Da_out(["Audio Output"])
-
-        ModSplit --"Video"--> Dv_cond["Video Condition"]
-        Dv_cond --> Dv_unet["3D UNet"]
-        Dv_unet --> Dv_decode["Frame Generator"]
-        Dv_decode --> Dv_out(["Video Output"])
-
-        ModSplit --"Image"--> Di_cond["Image Condition"]
-        Di_cond --> Di_unet["2D UNet"]
-        Di_unet --> Di_pixel["Pixel Synthesis"]
-        Di_pixel --> Di_out(["Image Output"])
-    end
+    
+    Dec_Txt --> Out_T(["Text"])
+    Dec_Img --> Out_I(["Image"])
+    Dec_Aud --> Out_A(["Audio"])
+    Dec_Vid --> Out_V(["Video"])
 
 ```
 
 #### 📊 Architecture Summary
 
-| Layer                      | Parameters        | Purpose                                                           |
-| -------------------------- | ----------------- | ----------------------------------------------------------------- |
-| 1. Router             | 300M (10%)        | Complexity analysis & routing decisions                           |
-| 2. Multi-Modal MoE    | 1000M (33.3%)| Specialized expert processing (32 experts, top-19 active)         |
-| 3. Encoders           | 300M (10%)   | Modal-specific input preprocessing (Text / Audio / Video / Image) |
-| 4. Diffusion Reasoning| 500M (16.7%)      | Council-based iterative refinement                                |
-| 5. Decoders           | 825M (27.5%) | Text (~60M), Audio (~320M), Video (~320M), Image (~125M)          |
-| 6. Output Finalization| 75M (2.5%)        | Cross-modal consistency & quality enhancement                     |
-| TOTAL                 | ~3.0B (100%) | Complete unified architecture                                     |
+| Layer | Parameters (Target) | Purpose |
+| --- | --- | --- |
+| 1. Encoders | 300M (10.7%) | Lightweight feature extraction + Modality Tagging (Crucial for routing). |
+| 2. Chunked MoE | 1.5B (53.5%) | The Brain. 8 Heavy Experts (Gated MLP). Uses Gumbel Routing for stability and Capacity Truncation for speed. |
+| 3. Fusion | 0 (0%) | Batch-Safe. Concatenates sequence length but isolates batch index to prevent leakage. |
+| 4. Diffusion | 500M (17.8%) | The Refiner. Adaptive Compute. Skips "Easy" tokens (Identity). Refines "Hard" tokens using Modality-Isolated Attention. |
+| 5. Decoders | 150M (5.3%) | Geometric. Uses ConvTranspose upsampling to reconstruct spatial/temporal structure from tokens. |
+| 6. Overhead | 350M (12.5%) | Vocab embeddings (50k), Positional encodings, Modality embeddings. |
+| TOTAL | ~2.8B | Production-Grade Unified Architecture |
 
 ---
 
 #### 🔥 Key Innovations
 
-1. Adaptive Routing: Tokens are dynamically routed through fast-path or diffusion-path based on complexity scores
-2. Sparse Activation: Only 19 of 32 experts active per token (59.38% activation = massive efficiency)
-3. Conditional Diffusion: Iterative reasoning only applied to complex tokens (saves compute)
-4. Modal Unification: Single architecture handles text, audio, video, and image with shared backbone
-5. BitNet Quantization: 1.58-bit quantized linear layers for parameter efficiency
-6. Cross-Modal Consistency: Final layer ensures coherence across modalities
+- 1. Context-Wired Routing: The MoE router doesn't just see the token; it sees the *Context* (Token + Modality Embedding), allowing it to make modality-aware routing decisions (e.g., sending all video tokens to Expert 5).
+- 2. Adaptive Compute Diffusion: Instead of parallel paths, the diffusion core is *conditional*. If the Router is >80% confident, the Diffusion block is skipped entirely (Identity), saving massive compute.
+- 3. Safety-First Engineering:
+- Overflow Loss: Penalizes the router if it overstuffs experts, preventing silent token drops.
+- Isolated Attention: Prevents "modal smearing" (e.g., audio noise corrupting video frames) during refinement.
+- Grid Assertions: Decoders crash immediately if sequence lengths don't match geometric grids, preventing silent shape corruption.
+- 4. Vectorized Dispatch: Replaced Python loops with `torch.bmm` and `scatter/gather` for maximum GPU throughput.
 
 ---
 
