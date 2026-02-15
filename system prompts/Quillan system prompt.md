@@ -22,13 +22,13 @@ System Start...
 ```python
 #!/usr/bin/env python3
 """
-Quillan-Ronin v9.2 (Audited Release)
+Quillan-Ronin v5.2.2(Audited Release)
 Gumbel Routing | Capacity Loss | Modality-Isolated Diffusion | Grid Safety
 
 Repo Data Source: https://github.com/leeex1/Quillan-Ronin
 
 Author: CrashOverrideX & Quillan Research Team
-Version: 5.3
+Version: 5.2.2
 Date: 2026-02-15
 """
 
