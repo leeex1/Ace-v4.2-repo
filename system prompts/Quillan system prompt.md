@@ -23,7 +23,9 @@ System Start...
 #!/usr/bin/env python3
 """
 Quillan-Ronin v5.1 - Unified Multi-Modal Architecture 
-Target: 3B Parameters | Modular Design 
+Target: 3B Parameters | Modular Design | Multi-Modal Support
+
+Repo Data Source: https://github.com/leeex1/Quillan-Ronin
 
 Architecture Layers:
 1. Router (300M) - Complexity analysis & routing decisions
@@ -34,21 +36,36 @@ Architecture Layers:
 6. Output Finalization (75M) - Cross-modal consistency & polish
 
 Author: CrashOverrideX & Quillan Research Team
-Version: 5.1.2 (Complete)
-Date: 2025-01-XX
+Version: 5.1.2
+Date: 2026-02-15
 """
 
+import os
+import sys
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.optim as optim
 from dataclasses import dataclass
-from typing import Optional, Tuple, Dict, List
 from enum import Enum
 
+#  REPO SETUP
+REPO_URL = "https://github.com/leeex1/Quillan-Ronin.git"
+REPO_DIR = "/content/Quillan-Ronin"
 
-# CONFIGURATION
+if not os.path.exists(REPO_DIR):
+    os.system(f"git clone {REPO_URL} {REPO_DIR}")
 
+sys.path.append(REPO_DIR)
 
+# Repo-specific loader
+try:
+    from QuillanRonin.data import DatasetLoader
+except ImportError:
+    raise ImportError("DatasetLoader not found in repo. Make sure the repo exposes it.")
+
+#  CONFIGURATION
 class Modality(Enum):
     TEXT = "text"
     AUDIO = "audio"
@@ -57,1072 +74,298 @@ class Modality(Enum):
 
 @dataclass
 class ModelConfig:
-    # Core dimensions
     hidden_dim: int = 1024
     intermediate_dim: int = 4096
     num_layers: int = 32
-    
-    # Router configuration (300M)
+
     router_dim: int = 512
-    router_heads: int = 3
-    
-    # MoE configuration (900M)
+    router_heads: int = 8
+
     num_experts: int = 32
-    num_active_experts: int = 32
+    num_active_experts: int = 5
     expert_dim: int = 2048
-    
-    # Diffusion configuration (500M)
+
     diffusion_steps: int = 12
-    diffusion_layers: int = 33
+    diffusion_layers: int = 24
     time_embed_dim: int = 256
-    
-    # Vocabulary sizes
+
     vocab_size: int = 50257
-    audio_vocab_size: int = 16384
-    video_vocab_size: int = 8192
     image_patch_size: int = 16
-    
-    # Encoder dimensions (200M total)
+
     text_encoder_dim: int = 768
-    audio_encoder_dim: int = 512
-    video_encoder_dim: int = 768
     image_encoder_dim: int = 768
-    
-    # Decoder dimensions (1025M total)
-    text_decoder_dim: int = 512   # 75M
-    audio_decoder_dim: int = 1024  # 400M
-    video_decoder_dim: int = 1024  # 400M
-    image_decoder_dim: int = 768   # 150M
-    
-    # Output finalization (75M)
+    audio_encoder_dim: int = 512
+    video_encoder_dim: int = 512
+
+    text_decoder_dim: int = 768
     finalize_dim: int = 512
-    
-    # Training & inference
+
     max_seq_length: int = 4096
     dropout: float = 0.1
     complexity_threshold: float = 0.6
 
+cfg = ModelConfig()
 
-# BASE COMPONENTS
-
-
+#  UTILS
 class RMSNorm(nn.Module):
-    """Root Mean Square Layer Normalization for stability."""
-    def __init__(self, dim: int, eps: float = 1e-6):
+    def __init__(self, dim, eps=1e-6):
         super().__init__()
-        self.eps = eps
         self.weight = nn.Parameter(torch.ones(dim))
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        var = torch.mean(x ** 2, dim=-1, keepdim=True)
-        x_normed = x * torch.rsqrt(var + self.eps)
-        return self.weight * x_normed
+        self.eps = eps
+    def forward(self, x):
+        var = x.pow(2).mean(-1, keepdim=True)
+        return self.weight * x * torch.rsqrt(var + self.eps)
 
 class BitLinear(nn.Module):
-    """
-    1.58-bit quantized linear layer for parameter efficiency.
-    Simulated during training, actual quantization at deployment.
-    """
-    def __init__(self, in_features: int, out_features: int, bias: bool = False):
+    def __init__(self, in_f, out_f, bias=False):
         super().__init__()
-        self.weight = nn.Parameter(torch.randn(out_features, in_features))
-        self.bias = nn.Parameter(torch.zeros(out_features)) if bias else None
-        
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        # Simulated quantization during training
-        w_gamma = self.weight.abs().mean().clamp(min=1e-5)
-        w_quant = (self.weight / w_gamma).round().clamp(-1, 1) * w_gamma
-        return F.linear(x, w_quant, self.bias)
+        self.weight = nn.Parameter(torch.empty(out_f, in_f))
+        nn.init.kaiming_uniform_(self.weight, a=math.sqrt(5))
+        self.bias = nn.Parameter(torch.zeros(out_f)) if bias else None
+    def forward(self, x):
+        gamma = self.weight.abs().mean().clamp(min=1e-5)
+        wq = (self.weight / gamma).round().clamp(-1,1) * gamma
+        return F.linear(x, wq, self.bias)
 
-def rotate_half(x: torch.Tensor) -> torch.Tensor:
-    """Rotates half the hidden dims of the input."""
-    x1 = x[..., : x.shape[-1] // 2]
-    x2 = x[..., x.shape[-1] // 2 :]
-    return torch.cat((-x2, x1), dim=-1)
-
-def apply_rotary_pos_emb(x: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor) -> torch.Tensor:
-    """Applies RoPE transformation."""
-    # cos, sin are [seq_len, dim] -> [1, seq_len, dim] for broadcasting
-    cos = cos.unsqueeze(0)
-    sin = sin.unsqueeze(0)
-    return (x * cos) + (rotate_half(x) * sin)
-
-class RotaryEmbedding(nn.Module):
-    """RoPE positional encoding for better length generalization."""
-    def __init__(self, dim: int, max_seq_length: int = 4096):
-        super().__init__()
-        inv_freq = 1.0 / (10000 ** (torch.arange(0, dim, 2).float() / dim))
-        self.register_buffer("inv_freq", inv_freq)
-        self.max_seq_length = max_seq_length
-        
-    def forward(self, seq_len: int, device: torch.device) -> Tuple[torch.Tensor, torch.Tensor]:
-        t = torch.arange(seq_len, device=device).type_as(self.inv_freq)
-        freqs = torch.outer(t, self.inv_freq)
-        emb = torch.cat([freqs, freqs], dim=-1)
-        return emb.cos(), emb.sin()
-
-
-# 1. ROUTER LAYER (300M Parameters)
-
-
+#  ROUTER
 class ComplexityRouter(nn.Module):
-    """
-    Analyzes input complexity and makes routing decisions.
-    """
     def __init__(self, config: ModelConfig):
         super().__init__()
-        self.config = config
-        
-        # Multi-head attention for context-aware routing
-        self.attention = nn.MultiheadAttention(
-            embed_dim=config.hidden_dim,
-            num_heads=config.router_heads,
-            dropout=config.dropout,
-            batch_first=True
-        )
-        
-        # Complexity scoring network
-        self.complexity_net = nn.Sequential(
+        self.attn = nn.MultiheadAttention(config.hidden_dim, config.router_heads, batch_first=True, dropout=config.dropout)
+        self.norm = RMSNorm(config.hidden_dim)
+        self.net = nn.Sequential(
             BitLinear(config.hidden_dim, config.router_dim),
             nn.GELU(),
-            nn.Dropout(config.dropout),
-            BitLinear(config.router_dim, config.router_dim // 2),
-            nn.GELU(),
-            BitLinear(config.router_dim // 2, 1),
-            nn.Sigmoid()  # Output [0,1]
+            BitLinear(config.router_dim,1),
+            nn.Sigmoid()
         )
-        
-        # Expert affinity network (hints for MoE)
-        self.expert_affinity = BitLinear(config.hidden_dim, config.num_experts)
-        
-        self.norm = RMSNorm(config.hidden_dim)
-        
-    def forward(
-        self, 
-        x: torch.Tensor,
-        attention_mask: Optional[torch.Tensor] = None
-    ) -> Dict[str, torch.Tensor]:
-        # Context-aware representations
-        attn_out, _ = self.attention(x, x, x, attn_mask=attention_mask)
-        attn_out = self.norm(attn_out + x)
-        
-        # Complexity scoring
-        complexity_scores = self.complexity_net(attn_out)  # [B, L, 1]
-        
-        # Binary routing decision
-        routing_decision = (complexity_scores.squeeze(-1) > self.config.complexity_threshold).long()
-        
-        # Expert affinity hints
-        expert_hints = self.expert_affinity(attn_out)  # [B, L, num_experts]
-        
-        return {
-            "complexity_scores": complexity_scores,
-            "routing_decision": routing_decision,
-            "expert_hints": expert_hints,
-            "routed_hidden": attn_out
-        }
+        self.expert_hint = BitLinear(config.hidden_dim, config.num_experts)
+        self.threshold = config.complexity_threshold
+    def forward(self,x,mask=None):
+        attn_out,_ = self.attn(x,x,x,key_padding_mask=mask)
+        x = self.norm(x + attn_out)
+        score = self.net(x)
+        prob = score.squeeze(-1)
+        decision = (prob > self.threshold).long()
+        hints = self.expert_hint(x)
+        return dict(routed_hidden=x, complexity_scores=score, routing_prob=prob, routing_decision=decision, expert_hints=hints)
 
-
-# 2. MULTI-MODAL MoE LAYER (900M Parameters)
-
-
-class ExpertModule(nn.Module):
-    """Single expert in the MoE layer (32 total)."""
-    def __init__(self, config: ModelConfig):
+#  MoE
+class Expert(nn.Module):
+    def __init__(self,cfg):
         super().__init__()
         self.net = nn.Sequential(
-            BitLinear(config.hidden_dim, config.expert_dim),
+            BitLinear(cfg.hidden_dim,cfg.expert_dim),
             nn.GELU(),
-            nn.Dropout(config.dropout),
-            BitLinear(config.expert_dim, config.hidden_dim)
+            BitLinear(cfg.expert_dim,cfg.hidden_dim)
         )
-        
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.net(x)
+    def forward(self,x): return self.net(x)
 
 class MultiModalMoE(nn.Module):
-    """
-    Hierarchical Mixture of Experts with top-k routing.
-    32 specialized experts, 5 active per token.
-    [PATCHED] Now correctly weights output by routing probability.
-    """
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        self.num_experts = config.num_experts
-        self.num_active = config.num_active_experts
-        
-        # Expert pool
-        self.experts = nn.ModuleList([
-            ExpertModule(config) for _ in range(config.num_experts)
-        ])
-        
-        # Gating network (uses router hints)
+        self.experts = nn.ModuleList([Expert(cfg) for _ in range(cfg.num_experts)])
+        self.k = cfg.num_active_experts
         self.gate = nn.Sequential(
-            BitLinear(config.hidden_dim + config.num_experts, config.hidden_dim),
+            BitLinear(cfg.hidden_dim+cfg.num_experts,cfg.hidden_dim),
             nn.GELU(),
-            BitLinear(config.hidden_dim, config.num_experts)
+            BitLinear(cfg.hidden_dim,cfg.num_experts)
         )
-        
-        self.norm = RMSNorm(config.hidden_dim)
-        
-    def forward(
-        self,
-        x: torch.Tensor,
-        expert_hints: torch.Tensor
-    ) -> Tuple[torch.Tensor, torch.Tensor]:
-        """
-        Args:
-            x: [batch, seq_len, hidden_dim]
-            expert_hints: [batch, seq_len, num_experts]
-        """
-        batch_size, seq_len, hidden_dim = x.shape
-        
-        # Combine input with router hints
-        gate_input = torch.cat([x, expert_hints], dim=-1)
-        
-        # Compute routing logits
-        routing_logits = self.gate(gate_input)  # [B, L, num_experts]
-        
-        # Top-k routing
-        routing_weights, selected_experts = torch.topk(
-            routing_logits, 
-            self.num_active, 
-            dim=-1
-        )  # [B, L, k]
-        
-        # Normalize weights
-        routing_weights = F.softmax(routing_weights, dim=-1)
-        
-        # Flatten for processing
-        flat_x = x.view(-1, hidden_dim)  # [B*L, D]
-        flat_selected = selected_experts.view(-1, self.num_active) # [B*L, k]
-        flat_weights = routing_weights.view(-1, self.num_active)   # [B*L, k]
-        
-        output = torch.zeros_like(flat_x)
-        
-        # Process through selected experts
-        for i, expert in enumerate(self.experts):
-            # Mask: where is expert 'i' present in the top-k selection?
-            # Returns boolean tensor [B*L, k]
-            match_mask = (flat_selected == i) 
-            
-            # Find tokens that have at least one selection of this expert
-            token_indices = match_mask.any(dim=-1) # [B*L]
-            
-            if token_indices.any():
-                # Extract tokens for this expert
-                expert_tokens = flat_x[token_indices]
-                
-                # Forward pass through expert
-                expert_out = expert(expert_tokens)
-                
-                # [CRITICAL PATCH]: Weighted Accumulation
-                # Get the weight corresponding to this expert for these tokens
-                relevant_weights = (flat_weights[token_indices] * match_mask[token_indices].float()).sum(dim=-1)
-                
-                # Apply weight: [N_tokens, D] * [N_tokens, 1]
-                weighted_expert_out = expert_out * relevant_weights.unsqueeze(-1)
-                
-                # Accumulate result back to main output tensor
-                output[token_indices] += weighted_expert_out
-        
-        output = output.view(batch_size, seq_len, hidden_dim)
-        output = self.norm(output + x)  # Residual connection
-        
-        return output, routing_logits
-
-
-# 3. MODAL ENCODERS (200M Parameters Total)
-
-
+        self.norm = RMSNorm(cfg.hidden_dim)
+    def forward(self,x,hints):
+        B,L,D = x.shape
+        gate_in = torch.cat([x,hints],dim=-1)
+        logits = self.gate(gate_in)
+        weights, idx = torch.topk(logits,self.k,dim=-1)
+        weights = F.softmax(weights,dim=-1)
+        flat_x = x.reshape(-1,D)
+        flat_idx = idx.reshape(-1,self.k)
+        flat_w = weights.reshape(-1,self.k)
+        out = torch.zeros_like(flat_x)
+        for i,expert in enumerate(self.experts):
+            mask = (flat_idx == i)
+            token_mask = mask.any(-1)
+            if not token_mask.any(): continue
+            tokens = flat_x[token_mask]
+            exp_out = expert(tokens)
+            rel_w = (flat_w[token_mask]*mask[token_mask].float()).sum(-1)
+            out[token_mask] += exp_out * rel_w.unsqueeze(-1)
+        out = out.reshape(B,L,D)
+        return self.norm(out + x), logits
+ 
+#  ENCODERS
 class TextEncoder(nn.Module):
-    """
-    Text tokenization and embedding (50M params).
-    [PATCHED] Now applies RoPE correctly.
-    """
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        self.embed = nn.Embedding(config.vocab_size, config.text_encoder_dim)
-        self.proj = BitLinear(config.text_encoder_dim, config.hidden_dim)
-        self.rope = RotaryEmbedding(config.hidden_dim)
-        
-    def forward(self, input_ids: torch.Tensor) -> torch.Tensor:
-        # 1. Embed and Project
-        x = self.embed(input_ids)
-        x = self.proj(x)
-        
-        # 2. [CRITICAL PATCH] Apply RoPE
-        batch_size, seq_len, _ = x.shape
-        cos, sin = self.rope(seq_len, x.device)
-        x = apply_rotary_pos_emb(x, cos, sin)
-        
-        return x
-
-class AudioEncoder(nn.Module):
-    """Audio waveform encoding (50M params)."""
-    def __init__(self, config: ModelConfig):
-        super().__init__()
-        self.conv = nn.Sequential(
-            nn.Conv1d(1, 128, kernel_size=3, padding=1),
-            nn.GELU(),
-            nn.Conv1d(128, 256, kernel_size=3, padding=1),
-            nn.GELU(),
-            nn.Conv1d(256, config.audio_encoder_dim, kernel_size=3, padding=1)
-        )
-        self.proj = BitLinear(config.audio_encoder_dim, config.hidden_dim)
-        
-    def forward(self, audio: torch.Tensor) -> torch.Tensor:
-        # audio: [batch, 1, samples]
-        x = self.conv(audio)  # [batch, channels, seq_len]
-        x = x.transpose(1, 2)  # [batch, seq_len, channels]
-        x = self.proj(x)
-        return x
-
-class VideoEncoder(nn.Module):
-    """Video frame sequence encoding (50M params)."""
-    def __init__(self, config: ModelConfig):
-        super().__init__()
-        self.conv3d = nn.Sequential(
-            nn.Conv3d(3, 64, kernel_size=3, padding=1),
-            nn.GELU(),
-            nn.Conv3d(64, 128, kernel_size=3, padding=1),
-            nn.GELU(),
-            nn.Conv3d(128, 256, kernel_size=3, padding=1)
-        )
-        self.proj = BitLinear(256, config.hidden_dim)
-        
-    def forward(self, video: torch.Tensor) -> torch.Tensor:
-        # video: [batch, channels, frames, height, width]
-        x = self.conv3d(video)
-        b, c, f, h, w = x.shape
-        x = x.view(b, c, f, h * w).transpose(2, 3)
-        x = x.reshape(b, -1, c)
-        x = self.proj(x)
-        return x
+        self.embed = nn.Embedding(cfg.vocab_size, cfg.text_encoder_dim)
+        self.proj = BitLinear(cfg.text_encoder_dim,cfg.hidden_dim)
+    def forward(self,ids): return self.proj(self.embed(ids))
 
 class ImageEncoder(nn.Module):
-    """Image patch encoding (50M params)."""
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        self.patch_size = config.image_patch_size
-        self.patch_embed = nn.Conv2d(
-            3, 
-            config.image_encoder_dim, 
-            kernel_size=self.patch_size, 
-            stride=self.patch_size
-        )
-        self.proj = BitLinear(config.image_encoder_dim, config.hidden_dim)
-        
-    def forward(self, image: torch.Tensor) -> torch.Tensor:
-        x = self.patch_embed(image)
-        x = x.flatten(2).transpose(1, 2)
-        x = self.proj(x)
-        return x
+        self.patch = nn.Conv2d(3,cfg.image_encoder_dim,kernel_size=cfg.image_patch_size,stride=cfg.image_patch_size)
+        self.proj = BitLinear(cfg.image_encoder_dim,cfg.hidden_dim)
+    def forward(self,img):
+        x=self.patch(img)
+        x=x.flatten(2).transpose(1,2).contiguous()
+        return self.proj(x)
+
+class AudioEncoder(nn.Module):
+    def __init__(self,cfg):
+        super().__init__()
+        self.proj = BitLinear(cfg.audio_encoder_dim,cfg.hidden_dim)
+    def forward(self,waveform):
+        # Replace with proper audio feature extraction
+        return self.proj(waveform)
+
+class VideoEncoder(nn.Module):
+    def __init__(self,cfg):
+        super().__init__()
+        self.proj = BitLinear(cfg.video_encoder_dim,cfg.hidden_dim)
+    def forward(self,frames):
+        x = frames.flatten(2).transpose(1,2)
+        return self.proj(x)
 
 class UnifiedEncoder(nn.Module):
-    """Routes inputs to appropriate modal encoders."""
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        self.text = TextEncoder(config)
-        self.audio = AudioEncoder(config)
-        self.video = VideoEncoder(config)
-        self.image = ImageEncoder(config)
-        
-    def forward(
-        self, 
-        modality: Modality,
-        data: torch.Tensor
-    ) -> torch.Tensor:
-        if modality == Modality.TEXT:
-            return self.text(data)
-        elif modality == Modality.AUDIO:
-            return self.audio(data)
-        elif modality == Modality.VIDEO:
-            return self.video(data)
-        elif modality == Modality.IMAGE:
-            return self.image(data)
-        else:
-            raise ValueError(f"Unknown modality: {modality}")
+        self.text = TextEncoder(cfg)
+        self.image = ImageEncoder(cfg)
+        self.audio = AudioEncoder(cfg)
+        self.video = VideoEncoder(cfg)
+    def forward(self,modality,data):
+        if modality==Modality.TEXT: return self.text(data)
+        if modality==Modality.IMAGE: return self.image(data)
+        if modality==Modality.AUDIO: return self.audio(data)
+        if modality==Modality.VIDEO: return self.video(data)
+        raise NotImplementedError
 
-
-# 4. DIFFUSION REASONING LAYER (500M Parameters)
-
-
+#  DIFFUSION
 class DiffusionBlock(nn.Module):
-    """Single diffusion refinement block."""
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        self.attention = nn.MultiheadAttention(
-            config.hidden_dim,
-            num_heads=16,
-            dropout=config.dropout,
-            batch_first=True
-        )
-        self.ffn = nn.Sequential(
-            BitLinear(config.hidden_dim, config.intermediate_dim),
-            nn.GELU(),
-            nn.Dropout(config.dropout),
-            BitLinear(config.intermediate_dim, config.hidden_dim)
-        )
-        self.norm1 = RMSNorm(config.hidden_dim)
-        self.norm2 = RMSNorm(config.hidden_dim)
-        
-    def forward(
-        self, 
-        x: torch.Tensor,
-        time_emb: torch.Tensor
-    ) -> torch.Tensor:
-        # Add time conditioning
+        self.attn = nn.MultiheadAttention(cfg.hidden_dim,16,batch_first=True)
+        self.ff = nn.Sequential(BitLinear(cfg.hidden_dim,cfg.intermediate_dim),nn.GELU(),BitLinear(cfg.intermediate_dim,cfg.hidden_dim))
+        self.n1 = RMSNorm(cfg.hidden_dim)
+        self.n2 = RMSNorm(cfg.hidden_dim)
+    def forward(self,x,time_emb):
         x = x + time_emb.unsqueeze(1)
-        
-        # Self-attention
-        attn_out, _ = self.attention(x, x, x)
-        x = self.norm1(x + attn_out)
-        
-        # Feed-forward
-        ffn_out = self.ffn(x)
-        x = self.norm2(x + ffn_out)
-        
-        return x
+        a,_ = self.attn(x,x,x)
+        x = self.n1(x+a)
+        f = self.ff(x)
+        return self.n2(x+f)
 
 class DiffusionReasoning(nn.Module):
-    """
-    Council-based iterative refinement using diffusion process.
-    Only activated for complex tokens (routing_decision == 1).
-    """
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        self.num_steps = config.diffusion_steps
-        
-        # Time embedding for conditioning
-        self.time_embed = nn.Sequential(
-            nn.Embedding(config.diffusion_steps, config.time_embed_dim),
-            BitLinear(config.time_embed_dim, config.hidden_dim),
-            nn.GELU()
-        )
-        
-        # Diffusion blocks
-        self.blocks = nn.ModuleList([
-            DiffusionBlock(config) 
-            for _ in range(config.diffusion_layers)
-        ])
-        
-        self.final_norm = RMSNorm(config.hidden_dim)
-        
-    def forward(
-        self,
-        x: torch.Tensor,
-        routing_decision: torch.Tensor
-    ) -> torch.Tensor:
-        """
-        Args:
-            x: [batch, seq_len, hidden_dim]
-            routing_decision: [batch, seq_len] (0=fast, 1=diffusion, 2=Balanced)
-        """
-        # Create mask for tokens that need diffusion
-        diffusion_mask = routing_decision.unsqueeze(-1).float()
-        
-        # Initialize diffusion state
+        self.steps = cfg.diffusion_steps
+        self.time = nn.Embedding(cfg.diffusion_steps, cfg.hidden_dim)
+        self.blocks = nn.ModuleList([DiffusionBlock(cfg) for _ in range(cfg.diffusion_layers)])
+        self.norm = RMSNorm(cfg.hidden_dim)
+    def forward(self,x,decision):
+        mask = decision.bool()
+        if not mask.any(): return x
         state = x.clone()
-        
-        # Iterative refinement
-        for t in range(self.num_steps):
-            # Time conditioning
-            time_ids = torch.full(
-                (x.shape[0],), 
-                t, 
-                dtype=torch.long, 
-                device=x.device
-            )
-            time_emb = self.time_embed(time_ids)
-            
-            # Process through blocks
-            for block in self.blocks:
-                state = block(state, time_emb)
-        
-        # Apply diffusion only to selected tokens
-        output = x * (1 - diffusion_mask) + state * diffusion_mask
-        output = self.final_norm(output)
-        
-        return output
+        for t in range(self.steps):
+            time_emb = self.time.weight[t]
+            state = self.blocks[t](state,time_emb)
+        x[mask] = state[mask]
+        return self.norm(x)
 
-
-# 5. MODAL DECODERS (1025M Parameters Total)
-
-
+#  DECODERS
 class TextDecoder(nn.Module):
-    """Autoregressive text generation head (75M params)."""
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        self.proj = BitLinear(config.hidden_dim, config.text_decoder_dim)
-        self.lm_head = nn.Linear(config.text_decoder_dim, config.vocab_size)
-        self.norm = RMSNorm(config.text_decoder_dim)
-        
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        x = self.proj(x)
-        x = self.norm(x)
-        logits = self.lm_head(x)
-        return logits
-
-class AudioDecoder(nn.Module):
-    """Neural audio codec decoder (400M params)."""
-    def __init__(self, config: ModelConfig):
-        super().__init__()
-        # Upsampling network
-        self.proj = BitLinear(config.hidden_dim, config.audio_decoder_dim)
-        
-        # Transposed convolutions for waveform generation
-        self.deconv = nn.Sequential(
-            nn.ConvTranspose1d(config.audio_decoder_dim, 512, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose1d(512, 256, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose1d(256, 128, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose1d(128, 1, kernel_size=4, stride=2, padding=1),
-            nn.Tanh()
-        )
-        
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        x = self.proj(x)
-        x = x.transpose(1, 2)  # [B, D, L]
-        waveform = self.deconv(x)
-        return waveform
-
-class VideoDecoder(nn.Module):
-    """Video frame generation via latent diffusion (400M params)."""
-    def __init__(self, config: ModelConfig):
-        super().__init__()
-        self.proj = BitLinear(config.hidden_dim, config.video_decoder_dim)
-        
-        # 3D transposed convolutions
-        self.deconv3d = nn.Sequential(
-            nn.ConvTranspose3d(config.video_decoder_dim, 512, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose3d(512, 256, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose3d(256, 128, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose3d(128, 3, kernel_size=4, stride=2, padding=1),
-            nn.Sigmoid()
-        )
-        
-    def forward(self, x: torch.Tensor, target_shape: Tuple[int, int, int]) -> torch.Tensor:
-        # x: [batch, seq_len, hidden_dim]
-        frames, height, width = target_shape
-        
-        x = self.proj(x)
-        # Reshape for 3D conv
-        x = x.view(x.shape[0], -1, frames, height // 16, width // 16)
-        x = x.transpose(1, 2)  # [B, F, C, H, W] -> [B, C, F, H, W]
-        
-        video = self.deconv3d(x)
-        return video
-        
-class ImageDecoder(nn.Module):
-    """Image generation via diffusion (150M params)."""
-    def __init__(self, config: ModelConfig):
-        super().__init__()
-        self.proj = BitLinear(config.hidden_dim, config.image_decoder_dim)
-        
-        # Deconvolution for upsampling
-        self.deconv = nn.Sequential(
-            nn.ConvTranspose2d(config.image_decoder_dim, 512, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose2d(512, 256, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose2d(256, 128, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose2d(128, 3, kernel_size=4, stride=2, padding=1),
-            nn.Sigmoid()
-        )
-        
-    def forward(self, x: torch.Tensor, target_shape: Tuple[int, int]) -> torch.Tensor:
-        # x: [batch, num_patches, hidden_dim]
-        height, width = target_shape
-        num_patches_h = height // 16
-        num_patches_w = width // 16
-        
-        x = self.proj(x)
-        # Reshape to 2D spatial layout
-        x = x.view(x.shape[0], num_patches_h, num_patches_w, -1)
-        x = x.permute(0, 3, 1, 2)  # [B, C, H, W]
-        
-        image = self.deconv(x)
-        return image
+        self.proj = BitLinear(cfg.hidden_dim,cfg.text_decoder_dim)
+        self.head = nn.Linear(cfg.text_decoder_dim,cfg.vocab_size)
+    def forward(self,x): return self.head(self.proj(x))
 
 class UnifiedDecoder(nn.Module):
-    """Routes to appropriate modal decoders."""
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        self.text = TextDecoder(config)
-        self.audio = AudioDecoder(config)
-        self.video = VideoDecoder(config)
-        self.image = ImageDecoder(config)
-        
-    def forward(
-        self,
-        x: torch.Tensor,
-        modality: Modality,
-        **kwargs
-    ) -> torch.Tensor:
-        if modality == Modality.TEXT:
-            return self.text(x)
-        elif modality == Modality.AUDIO:
-            return self.audio(x)
-        elif modality == Modality.VIDEO:
-            return self.video(x, target_shape=kwargs.get('video_shape'))
-        elif modality == Modality.IMAGE:
-            return self.image(x, target_shape=kwargs.get('image_shape'))
-        else:
-            raise ValueError(f"Unknown modality: {modality}")
+        self.text = TextDecoder(cfg)
+    def forward(self,x,modality,**kw):
+        if modality==Modality.TEXT: return self.text(x)
+        raise NotImplementedError
 
-
-# 6. OUTPUT FINALIZATION LAYER (75M Parameters)
-
-
-class CrossModalAttention(nn.Module):
-    """Cross-modal consistency checking via attention."""
-    def __init__(self, config: ModelConfig):
-        super().__init__()
-        self.attention = nn.MultiheadAttention(
-            config.finalize_dim,
-            num_heads=8,
-            dropout=config.dropout,
-            batch_first=True
-        )
-        self.norm = RMSNorm(config.finalize_dim)
-        
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        attn_out, _ = self.attention(x, x, x)
-        return self.norm(x + attn_out)
-
+#  FINALIZATION
 class OutputFinalization(nn.Module):
-    """
-    Final layer for cross-modal consistency and output polish.
-    - Ensures coherence across modalities
-    - Applies final quality checks
-    - Optimizes output format
-    """
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        
-        # Project to finalization dimension
-        self.input_proj = BitLinear(config.hidden_dim, config.finalize_dim)
-        
-        # Cross-modal consistency layers
-        self.cross_modal_layers = nn.ModuleList([
-            CrossModalAttention(config) 
-            for _ in range(4)
-        ])
-        
-        # Quality enhancement network
-        self.quality_net = nn.Sequential(
-            BitLinear(config.finalize_dim, config.finalize_dim * 2),
-            nn.GELU(),
-            nn.Dropout(config.dropout),
-            BitLinear(config.finalize_dim * 2, config.finalize_dim)
-        )
-        
-        # Output projection back to hidden dimension
-        self.output_proj = BitLinear(config.finalize_dim, config.hidden_dim)
-        
-        self.final_norm = RMSNorm(config.hidden_dim)
-        
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """
-        Args:
-            x: [batch, seq_len, hidden_dim]
-        Returns:
-            finalized: [batch, seq_len, hidden_dim]
-        """
-        # Project to finalization space
-        x = self.input_proj(x)
-        
-        # Apply cross-modal consistency checks
-        for layer in self.cross_modal_layers:
-            x = layer(x)
-        
-        # Quality enhancement
-        enhanced = self.quality_net(x)
-        x = x + enhanced  # Residual connection
-        
-        # Project back to hidden dimension
-        output = self.output_proj(x)
-        output = self.final_norm(output)
-        
-        return output
+        self.proj = BitLinear(cfg.hidden_dim,cfg.finalize_dim)
+        self.attn = nn.MultiheadAttention(cfg.finalize_dim,8,batch_first=True)
+        self.back = BitLinear(cfg.finalize_dim,cfg.hidden_dim)
+        self.norm = RMSNorm(cfg.hidden_dim)
+    def forward(self,x):
+        h = self.proj(x)
+        a,_ = self.attn(h,h,h)
+        h = h+a
+        return self.norm(self.back(h))
 
-
-# 7. UNIFIED MODEL (Complete Integration)
-
-
+#  FULL MODEL
 class QuillanRoninV51(nn.Module):
-    """
-    Quillan-Ronin v5.1 - Complete Unified Architecture
-    
-    Total Parameters: ~3B
-    ├─ Router: 300M (10%)
-    ├─ MoE: 1000M (33.3%)
-    ├─ Encoders: 300M (10%)
-    ├─ Diffusion: 500M (16.7%)
-    ├─ Decoders: 825M (27.5%)
-    └─ Finalization: 75M (2.5%)
-    
-    Features:
-    - Multi-modal input/output (text, audio, video, image)
-    - Adaptive routing (fast-path vs balanced-path vs diffusion)
-    - Hierarchical expert specialization
-    - Council-based reasoning
-    - Cross-modal consistency
-    """
-    
-    def __init__(self, config: ModelConfig):
+    def __init__(self,cfg):
         super().__init__()
-        self.config = config
-        
-        # Layer 1: Router (300M)
-        self.router = ComplexityRouter(config)
-        
-        # Layer 2: Multi-Modal MoE (1000M)  ← boosted
-        self.moe = MultiModalMoE(config)
-        
-        # Layer 3: Encoders (300M) ← boosted
-        self.encoder = UnifiedEncoder(config)
-        
-        # Layer 4: Diffusion Reasoning (500M)
-        self.diffusion = DiffusionReasoning(config)
-        
-        # Layer 5: Decoders (825M) ← trimmed
-        self.decoder = UnifiedDecoder(config)
-        
-        # Layer 6: Output Finalization (75M)
-        self.finalization = OutputFinalization(config)
-        
-    def forward(
-        self,
-        modality: Modality,
-        input_data: torch.Tensor,
-        attention_mask: Optional[torch.Tensor] = None,
-        **decoder_kwargs
-    ) -> Dict[str, torch.Tensor]:
-        """
-        Unified forward pass supporting all modalities.
-        
-        Args:
-            modality: Input/output modality type
-            input_data: Modal-specific input tensor
-            attention_mask: Optional attention mask
-            **decoder_kwargs: Additional decoder arguments (e.g., target shapes)
-            
-        Returns:
-            Dictionary containing:
-            - output: Modal-specific output
-            - routing_info: Router decision metadata
-            - complexity_scores: Per-token complexity
-            - expert_activations: MoE routing statistics
-        """
-        
-        # === STAGE 1: ENCODING ===
-        # Convert modal input to unified hidden representation
-        hidden_states = self.encoder(modality, input_data)  # [B, L, D]
-        batch_size, seq_len, _ = hidden_states.shape
-        
-        # === STAGE 2: ROUTING ===
-        # Analyze complexity and determine processing path
-        routing_output = self.router(hidden_states, attention_mask)
-        
-        routed_hidden = routing_output["routed_hidden"]
-        complexity_scores = routing_output["complexity_scores"]
-        routing_decision = routing_output["routing_decision"]
-        expert_hints = routing_output["expert_hints"]
-        
-        # === STAGE 3: MoE PROCESSING ===
-        # Specialized expert processing with top-k selection
-        moe_output, expert_activations = self.moe(routed_hidden, expert_hints)
-        
-        # === STAGE 4: CONDITIONAL DIFFUSION ===
-        # Apply iterative reasoning for complex tokens
-        refined_hidden = self.diffusion(moe_output, routing_decision)
-        
-        # === STAGE 5: OUTPUT FINALIZATION ===
-        # Cross-modal consistency and quality enhancement
-        finalized_hidden = self.finalization(refined_hidden)
-        
-        # === STAGE 6: DECODING ===
-        # Generate modal-specific output
-        output = self.decoder(finalized_hidden, modality, **decoder_kwargs)
-        
-        # === METADATA COLLECTION ===
-        routing_info = {
-            "fast_path_ratio": (routing_decision == 0).float().mean().item(),
-            "diffusion_path_ratio": (routing_decision == 1).float().mean().item(),
-            "avg_complexity": complexity_scores.mean().item(),
-            "max_complexity": complexity_scores.max().item()
-        }
-        
-        return {
-            "output": output,
-            "routing_info": routing_info,
-            "complexity_scores": complexity_scores,
-            "expert_activations": expert_activations,
-            "hidden_states": finalized_hidden  # For analysis
-        }
-    
-    def count_parameters(self) -> Dict[str, int]:
-        """Calculate parameters per module."""
-        def count_params(module):
-            return sum(p.numel() for p in module.parameters() if p.requires_grad)
-        
-        return {
-            "router": count_params(self.router),
-            "moe": count_params(self.moe),
-            "encoder": count_params(self.encoder),
-            "diffusion": count_params(self.diffusion),
-            "decoder": count_params(self.decoder),
-            "finalization": count_params(self.finalization),
-            "total": count_params(self)
-        }
+        self.encoder = UnifiedEncoder(cfg)
+        self.router = ComplexityRouter(cfg)
+        self.moe = MultiModalMoE(cfg)
+        self.diff = DiffusionReasoning(cfg)
+        self.final = OutputFinalization(cfg)
+        self.decoder = UnifiedDecoder(cfg)
+    def forward(self,modality,input_data,mask=None,**kw):
+        h = self.encoder(modality,input_data)
+        route = self.router(h,mask)
+        h,_ = self.moe(route["routed_hidden"],route["expert_hints"])
+        h = self.diff(h,route["routing_decision"])
+        h = self.final(h)
+        out = self.decoder(h,modality,**kw)
+        return dict(output=out, routing=route)
 
+#  TRAINING SCAFFOLD
+def train_step(model,batch,optimizer,criterion,scaler=None):
+    model.train()
+    optimizer.zero_grad()
+    inputs, targets = batch["input"], batch["target"]
+    if scaler:
+        with torch.cuda.amp.autocast():
+            out = model(Modality.TEXT,inputs)
+            logits = out["output"]
+            loss = criterion(logits.reshape(-1,logits.size(-1)), targets.reshape(-1))
+        scaler.scale(loss).backward()
+        scaler.step(optimizer)
+        scaler.update()
+    else:
+        out = model(Modality.TEXT,inputs)
+        logits = out["output"]
+        loss = criterion(logits.reshape(-1,logits.size(-1)), targets.reshape(-1))
+        loss.backward()
+        optimizer.step()
+    return loss.item()
 
-# TRAINING UTILITIES
+#  BATCH LOADER WRAPPER
+def load_batch(modality, batch_size=2):
+    ds = DatasetLoader(modality.value)
+    sample = ds.get_batch(batch_size)
+    return {"input": sample["tokens"].cuda(), "target": sample["tokens"].cuda()}
 
-
-class QuillanTrainer:
-    """Training utilities for Quillan-Ronin v5.1."""
-    
-    def __init__(
-        self,
-        model: QuillanRoninV51,
-        learning_rate: float = 1e-4,
-        weight_decay: float = 0.01
-    ):
-        self.model = model
-        self.optimizer = torch.optim.AdamW(
-            model.parameters(),
-            lr=learning_rate,
-            weight_decay=weight_decay,
-            betas=(0.9, 0.95)
-        )
-        
-        # Learning rate scheduler with warmup
-        self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
-            self.optimizer,
-            T_max=100000,
-            eta_min=1e-6
-        )
-    
-    def compute_loss(
-        self,
-        outputs: torch.Tensor,
-        targets: torch.Tensor,
-        modality: Modality
-    ) -> torch.Tensor:
-        """Modal-specific loss computation."""
-        if modality == Modality.TEXT:
-            # Cross-entropy for text
-            return F.cross_entropy(
-                outputs.view(-1, outputs.shape[-1]),
-                targets.view(-1)
-            )
-        elif modality in [Modality.AUDIO, Modality.VIDEO, Modality.IMAGE]:
-            # MSE for continuous outputs
-            return F.mse_loss(outputs, targets)
-        else:
-            raise ValueError(f"Unknown modality: {modality}")
-    
-    def train_step(
-        self,
-        modality: Modality,
-        input_data: torch.Tensor,
-        targets: torch.Tensor,
-        **kwargs
-    ) -> Dict[str, float]:
-        """Single training step."""
-        self.model.train()
-        self.optimizer.zero_grad()
-        
-        # Forward pass
-        outputs = self.model(modality, input_data, **kwargs)
-        
-        # Compute loss
-        loss = self.compute_loss(outputs["output"], targets, modality)
-        
-        # Auxiliary losses for MoE load balancing
-        expert_variance = outputs["expert_activations"].var().mean()
-        aux_loss = 0.01 * expert_variance  # Encourage balanced expert usage
-        
-        total_loss = loss + aux_loss
-        
-        # Backward pass
-        total_loss.backward()
-        torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
-        self.optimizer.step()
-        self.scheduler.step()
-        
-        return {
-            "loss": loss.item(),
-            "aux_loss": aux_loss.item(),
-            "total_loss": total_loss.item(),
-            "lr": self.optimizer.param_groups[0]["lr"]
-        }
-
-
-# INFERENCE UTILITIES
-
-
-class QuillanInference:
-    """Inference utilities for Quillan-Ronin v5.1."""
-    
-    def __init__(self, model: QuillanRoninV51, device: str = "cuda"):
-        self.model = model.to(device)
-        self.model.eval()
-        self.device = device
-    
-    @torch.no_grad()
-    def generate_text(
-        self,
-        prompt: str,
-        tokenizer,
-        max_length: int = 512,
-        temperature: float = 1.0,
-        top_k: int = 50
-    ) -> str:
-        """Autoregressive text generation."""
-        input_ids = tokenizer.encode(prompt, return_tensors="pt").to(self.device)
-        
-        for _ in range(max_length):
-            outputs = self.model(Modality.TEXT, input_ids)
-            logits = outputs["output"][:, -1, :]
-            
-            # Temperature sampling
-            logits = logits / temperature
-            
-            # Top-k filtering
-            top_k_logits, top_k_indices = torch.topk(logits, top_k)
-            probs = F.softmax(top_k_logits, dim=-1)
-            
-            # Sample next token
-            next_token_idx = torch.multinomial(probs, 1)
-            next_token = top_k_indices.gather(-1, next_token_idx)
-            
-            input_ids = torch.cat([input_ids, next_token], dim=1)
-            
-            # Stop at EOS token
-            if next_token.item() == tokenizer.eos_token_id:
-                break
-        
-        return tokenizer.decode(input_ids[0])
-    
-    @torch.no_grad()
-    def generate_image(
-        self,
-        text_prompt: str,
-        tokenizer,
-        image_size: Tuple[int, int] = (256, 256)
-    ) -> torch.Tensor:
-        """Text-to-image generation."""
-        # Encode text prompt
-        input_ids = tokenizer.encode(text_prompt, return_tensors="pt").to(self.device)
-        text_hidden = self.model.encoder.text(input_ids)
-        
-        # Process through model backbone
-        routing_output = self.model.router(text_hidden)
-        moe_output, _ = self.model.moe(
-            routing_output["routed_hidden"],
-            routing_output["expert_hints"]
-        )
-        refined_hidden = self.model.diffusion(
-            moe_output,
-            routing_output["routing_decision"]
-        )
-        finalized_hidden = self.model.finalization(refined_hidden)
-        
-        # Generate image
-        image = self.model.decoder.image(finalized_hidden, target_shape=image_size)
-        
-        return image
-
-
-# MAIN EXECUTION & VERIFICATION
-
-
-def main():
-    """Comprehensive model verification and testing."""
-    print("="*70)
-    print("🧠 QUILLAN-RONIN v5.1 - ARCHITECTURE VERIFICATION")
-    print("="*70)
-    
-    # Initialize configuration
-    config = ModelConfig()
-    
-    # Build model
-    print("\n[1/5] Building model architecture...")
-    model = QuillanRoninV51(config)
-    
-    # Count parameters
-    print("\n[2/5] Calculating parameter distribution...")
-    param_counts = model.count_parameters()
-    
-    print("\n┌────────────────────────┬──────────────┬──────────┐")
-    print("│ Module                 │ Parameters   │ % Total  │")
-    print("├────────────────────────┼──────────────┼──────────┤")
-    
-    total = param_counts["total"]
-    for module_name, count in param_counts.items():
-        if module_name != "total":
-            percentage = (count / total) * 100
-            print(f"│ {module_name:22s} │ {count/1e6:8.1f}M    │ {percentage:6.2f}%  │")
-    
-    print("├────────────────────────┼──────────────┼──────────┤")
-    print(f"│ {'TOTAL':22s} │ {total/1e9:8.2f}B    │ 100.00%  │")
-    print("└────────────────────────┴──────────────┴──────────┘")
-    
-    # Test forward passes
-    print("\n[3/5] Testing forward passes for all modalities...")
-    
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    model = model.to(device)
-    
-    test_cases = [
-        ("TEXT", torch.randint(0, config.vocab_size, (2, 128)).to(device)),
-        ("AUDIO", torch.randn(2, 1, 16000).to(device)),
-        ("IMAGE", torch.randn(2, 3, 256, 256).to(device)),
-    ]
-    
-    for modality_name, test_input in test_cases:
-        modality = Modality[modality_name]
-        
-        # Additional kwargs for decoders
-        kwargs = {}
-        if modality == Modality.IMAGE:
-            kwargs["image_shape"] = (256, 256)
-        
-        try:
-            outputs = model(modality, test_input, **kwargs)
-            print(f"  ✅ {modality_name:6s}: Output shape = {tuple(outputs['output'].shape)}")
-            print(f"     ├─ Fast path: {outputs['routing_info']['fast_path_ratio']*100:.1f}%")
-            print(f"     └─ Avg complexity: {outputs['routing_info']['avg_complexity']:.3f}")
-        except Exception as e:
-            print(f"  ❌ {modality_name:6s}: {str(e)}")
-    
-    # Architecture summary
-    print("\n[4/5] Architecture verification complete!")
-    print("\n✨ KEY FEATURES:")
-    print("  - Dynamic complexity-based routing (fast-path vs diffusion)")
-    print("  - Top-5 of 32 experts activated per token (efficient)")
-    print("  - Iterative diffusion reasoning for complex tokens")
-    print("  - Multi-modal unified architecture (text/audio/video/image)")
-    print("  - Cross-modal consistency enforcement")
-    print("  - BitNet quantization for parameter efficiency")
-    
-    print("\n[5/5] Model ready for training/inference!")
-    print("="*70)
-
+#  MAIN EXECUTION
 if __name__ == "__main__":
-    main()
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = QuillanRoninV51(cfg).to(device)
+    optimizer = optim.AdamW(model.parameters(), lr=1e-4)
+    criterion = nn.CrossEntropyLoss()
+    scaler = torch.cuda.amp.GradScaler() if device=="cuda" else None
 
+    for step in range(1000):  # change to however many steps you want
+        batch = load_batch(Modality.TEXT, batch_size=2)
+        loss = train_step(model,batch,optimizer,criterion,scaler)
+        if step % 10 == 0:
+            print(f"[Step {step}] Loss: {loss:.4f}")
 
+    # Save checkpoint
+    torch.save(model.state_dict(), "QuillanRoninV51_checkpoint.pt")
+ 
 # ARCHITECTURAL MAPPING
 
 ARCHITECTURAL_MAPPING = """
