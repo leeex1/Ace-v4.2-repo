@@ -22,349 +22,340 @@ System Start...
 ```python
 #!/usr/bin/env python3
 """
-Quillan-Ronin v5.1 - Unified Multi-Modal Architecture 
-Target: 3B Parameters | Modular Design | Multi-Modal Support
+Quillan-Ronin v7.2 (Production Grade)
+Chunked MoE | Flash Attention Diffusion | Video Reconstruction | Batch-Safe Fusion
 
 Repo Data Source: https://github.com/leeex1/Quillan-Ronin
 
-Architecture Layers:
-1. Router (300M) - Complexity analysis & routing decisions
-2. Multi-Modal MoE (900M) - 32 specialized experts
-3. Encoders (200M) - Text/Audio/Video/Image preprocessing
-4. Diffusion Reasoning (500M) - Council-based iterative refinement
-5. Decoders (1025M) - Modal-specific output generation
-6. Output Finalization (75M) - Cross-modal consistency & polish
-
 Author: CrashOverrideX & Quillan Research Team
-Version: 5.1.2
+Version: 5.3
 Date: 2026-02-15
 """
 
-import os
-import sys
-import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.optim as optim
-from dataclasses import dataclass
-from enum import Enum
+from torch.cuda.amp import autocast, GradScaler
+import math
 
-#  REPO SETUP
-REPO_URL = "https://github.com/leeex1/Quillan-Ronin.git"
-REPO_DIR = "/content/Quillan-Ronin"
+# ------------------------------
+# CONFIGURATION
+# ------------------------------
+class Config:
+    seq_len_mod = 128      # Sequence length per modality
+    hidden_dim = 1024
+    num_experts = 8        # Experts (Scale to 32+ for large runs)
+    expert_capacity = 64   # Max tokens per expert per batch
+    routing_chunk_size = 16384 # Max tokens to route at once (VRAM safety)
+    num_subagents = 4
+    num_diff_layers = 4
+    patch_size = 16
+    vocab_size = 50000
+    lr = 3e-4
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-if not os.path.exists(REPO_DIR):
-    os.system(f"git clone {REPO_URL} {REPO_DIR}")
+cfg = Config()
 
-sys.path.append(REPO_DIR)
-
-# Repo-specific loader
-try:
-    from QuillanRonin.data import DatasetLoader
-except ImportError:
-    raise ImportError("DatasetLoader not found in repo. Make sure the repo exposes it.")
-
-#  CONFIGURATION
-class Modality(Enum):
-    TEXT = "text"
-    AUDIO = "audio"
-    VIDEO = "video"
-    IMAGE = "image"
-
-@dataclass
-class ModelConfig:
-    hidden_dim: int = 1024
-    intermediate_dim: int = 4096
-    num_layers: int = 32
-
-    router_dim: int = 512
-    router_heads: int = 8
-
-    num_experts: int = 32
-    num_active_experts: int = 5
-    expert_dim: int = 2048
-
-    diffusion_steps: int = 12
-    diffusion_layers: int = 24
-    time_embed_dim: int = 256
-
-    vocab_size: int = 50257
-    image_patch_size: int = 16
-
-    text_encoder_dim: int = 768
-    image_encoder_dim: int = 768
-    audio_encoder_dim: int = 512
-    video_encoder_dim: int = 512
-
-    text_decoder_dim: int = 768
-    finalize_dim: int = 512
-
-    max_seq_length: int = 4096
-    dropout: float = 0.1
-    complexity_threshold: float = 0.6
-
-cfg = ModelConfig()
-
-#  UTILS
-class RMSNorm(nn.Module):
-    def __init__(self, dim, eps=1e-6):
+# ------------------------------
+# 1. SPECIALIZED DECODERS
+# ------------------------------
+class PatchDecoder(nn.Module):
+    """
+    Lightweight decoder: Projects tokens back to patch pixels.
+    Includes visualization utilities for both Image and Video.
+    """
+    def __init__(self, cfg, channels=3, is_video=False):
         super().__init__()
-        self.weight = nn.Parameter(torch.ones(dim))
-        self.eps = eps
+        self.P = cfg.patch_size
+        self.C = channels
+        self.is_video = is_video
+        
+        # Patch dim: (C * P * P) or (C * T * P * P)
+        self.patch_dim = channels * (self.P ** 2)
+        if is_video: self.patch_dim *= 4 # Assume temporal depth 4 (from encoder stride)
+        
+        self.proj = nn.Linear(cfg.hidden_dim, self.patch_dim)
+        
     def forward(self, x):
-        var = x.pow(2).mean(-1, keepdim=True)
-        return self.weight * x * torch.rsqrt(var + self.eps)
-
-class BitLinear(nn.Module):
-    def __init__(self, in_f, out_f, bias=False):
-        super().__init__()
-        self.weight = nn.Parameter(torch.empty(out_f, in_f))
-        nn.init.kaiming_uniform_(self.weight, a=math.sqrt(5))
-        self.bias = nn.Parameter(torch.zeros(out_f)) if bias else None
-    def forward(self, x):
-        gamma = self.weight.abs().mean().clamp(min=1e-5)
-        wq = (self.weight / gamma).round().clamp(-1,1) * gamma
-        return F.linear(x, wq, self.bias)
-
-#  ROUTER
-class ComplexityRouter(nn.Module):
-    def __init__(self, config: ModelConfig):
-        super().__init__()
-        self.attn = nn.MultiheadAttention(config.hidden_dim, config.router_heads, batch_first=True, dropout=config.dropout)
-        self.norm = RMSNorm(config.hidden_dim)
-        self.net = nn.Sequential(
-            BitLinear(config.hidden_dim, config.router_dim),
-            nn.GELU(),
-            BitLinear(config.router_dim,1),
-            nn.Sigmoid()
-        )
-        self.expert_hint = BitLinear(config.hidden_dim, config.num_experts)
-        self.threshold = config.complexity_threshold
-    def forward(self,x,mask=None):
-        attn_out,_ = self.attn(x,x,x,key_padding_mask=mask)
-        x = self.norm(x + attn_out)
-        score = self.net(x)
-        prob = score.squeeze(-1)
-        decision = (prob > self.threshold).long()
-        hints = self.expert_hint(x)
-        return dict(routed_hidden=x, complexity_scores=score, routing_prob=prob, routing_decision=decision, expert_hints=hints)
-
-#  MoE
-class Expert(nn.Module):
-    def __init__(self,cfg):
-        super().__init__()
-        self.net = nn.Sequential(
-            BitLinear(cfg.hidden_dim,cfg.expert_dim),
-            nn.GELU(),
-            BitLinear(cfg.expert_dim,cfg.hidden_dim)
-        )
-    def forward(self,x): return self.net(x)
-
-class MultiModalMoE(nn.Module):
-    def __init__(self,cfg):
-        super().__init__()
-        self.experts = nn.ModuleList([Expert(cfg) for _ in range(cfg.num_experts)])
-        self.k = cfg.num_active_experts
-        self.gate = nn.Sequential(
-            BitLinear(cfg.hidden_dim+cfg.num_experts,cfg.hidden_dim),
-            nn.GELU(),
-            BitLinear(cfg.hidden_dim,cfg.num_experts)
-        )
-        self.norm = RMSNorm(cfg.hidden_dim)
-    def forward(self,x,hints):
-        B,L,D = x.shape
-        gate_in = torch.cat([x,hints],dim=-1)
-        logits = self.gate(gate_in)
-        weights, idx = torch.topk(logits,self.k,dim=-1)
-        weights = F.softmax(weights,dim=-1)
-        flat_x = x.reshape(-1,D)
-        flat_idx = idx.reshape(-1,self.k)
-        flat_w = weights.reshape(-1,self.k)
-        out = torch.zeros_like(flat_x)
-        for i,expert in enumerate(self.experts):
-            mask = (flat_idx == i)
-            token_mask = mask.any(-1)
-            if not token_mask.any(): continue
-            tokens = flat_x[token_mask]
-            exp_out = expert(tokens)
-            rel_w = (flat_w[token_mask]*mask[token_mask].float()).sum(-1)
-            out[token_mask] += exp_out * rel_w.unsqueeze(-1)
-        out = out.reshape(B,L,D)
-        return self.norm(out + x), logits
- 
-#  ENCODERS
-class TextEncoder(nn.Module):
-    def __init__(self,cfg):
-        super().__init__()
-        self.embed = nn.Embedding(cfg.vocab_size, cfg.text_encoder_dim)
-        self.proj = BitLinear(cfg.text_encoder_dim,cfg.hidden_dim)
-    def forward(self,ids): return self.proj(self.embed(ids))
-
-class ImageEncoder(nn.Module):
-    def __init__(self,cfg):
-        super().__init__()
-        self.patch = nn.Conv2d(3,cfg.image_encoder_dim,kernel_size=cfg.image_patch_size,stride=cfg.image_patch_size)
-        self.proj = BitLinear(cfg.image_encoder_dim,cfg.hidden_dim)
-    def forward(self,img):
-        x=self.patch(img)
-        x=x.flatten(2).transpose(1,2).contiguous()
+        # x: [B, L, D] -> [B, L, Patch_Pixels]
         return self.proj(x)
 
-class AudioEncoder(nn.Module):
-    def __init__(self,cfg):
+    def reconstruct_image(self, patches, H, W):
+        """
+        Visualizer: [B, L, D] -> [B, C, H, W]
+        """
+        B, L, _ = patches.shape
+        h_grid, w_grid = H // self.P, W // self.P
+        
+        x = patches.view(B, h_grid, w_grid, self.C, self.P, self.P)
+        # Permute: [B, h, w, C, ph, pw] -> [B, C, h, ph, w, pw]
+        x = x.permute(0, 3, 1, 4, 2, 5)
+        return x.reshape(B, self.C, H, W)
+
+    def reconstruct_video(self, patches, T, H, W):
+        """
+        Visualizer: [B, L, D] -> [B, C, T, H, W]
+        Assumes tokens cover spatial grid per timestep.
+        """
+        B, L, _ = patches.shape
+        h_grid, w_grid = H // self.P, W // self.P
+        # Assuming T_patch=1 (preserved time dim)
+        
+        x = patches.view(B, T, h_grid, w_grid, self.C, self.P, self.P)
+        # Permute: [B, T, h, w, C, ph, pw] -> [B, C, T, h, ph, w, pw]
+        x = x.permute(0, 4, 1, 2, 5, 3, 6)
+        return x.reshape(B, self.C, T, H, W)
+
+class AudioHead(nn.Module):
+    """
+    Ensures spectral continuity via local convolution.
+    """
+    def __init__(self, cfg, out_samples=512):
         super().__init__()
-        self.proj = BitLinear(cfg.audio_encoder_dim,cfg.hidden_dim)
-    def forward(self,waveform):
-        # Replace with proper audio feature extraction
-        return self.proj(waveform)
+        self.context = nn.Conv1d(cfg.hidden_dim, cfg.hidden_dim, kernel_size=3, padding=1)
+        self.proj = nn.Linear(cfg.hidden_dim, out_samples)
+        
+    def forward(self, x):
+        # x: [B, L, D] -> Transpose -> Conv1d -> Transpose
+        ctx = self.context(x.transpose(1, 2)).transpose(1, 2)
+        return self.proj(ctx + x) 
 
-class VideoEncoder(nn.Module):
-    def __init__(self,cfg):
+# ------------------------------
+# 2. FLASH ATTENTION DIFFUSION
+# ------------------------------
+class FlashAttentionLayer(nn.Module):
+    def __init__(self, hidden_dim, heads):
         super().__init__()
-        self.proj = BitLinear(cfg.video_encoder_dim,cfg.hidden_dim)
-    def forward(self,frames):
-        x = frames.flatten(2).transpose(1,2)
-        return self.proj(x)
+        self.heads = heads
+        self.scale = (hidden_dim // heads) ** -0.5
+        self.qkv = nn.Linear(hidden_dim, hidden_dim * 3)
+        self.proj = nn.Linear(hidden_dim, hidden_dim)
+        self.norm1 = nn.LayerNorm(hidden_dim)
+        self.norm2 = nn.LayerNorm(hidden_dim)
+        self.ffn = nn.Sequential(
+            nn.Linear(hidden_dim, hidden_dim * 4),
+            nn.GELU(),
+            nn.Linear(hidden_dim * 4, hidden_dim)
+        )
 
-class UnifiedEncoder(nn.Module):
-    def __init__(self,cfg):
+    def forward(self, x):
+        B, L, D = x.shape
+        shortcut = x
+        x = self.norm1(x)
+        
+        # QKV
+        qkv = self.qkv(x).reshape(B, L, 3, self.heads, D // self.heads)
+        q, k, v = qkv.unbind(2) # [B, L, H, D_head]
+        
+        # Transpose for SDPA: [B, H, L, D_head]
+        q, k, v = q.transpose(1, 2), k.transpose(1, 2), v.transpose(1, 2)
+        
+        # Flash Attention
+        attn = F.scaled_dot_product_attention(q, k, v, dropout_p=0.0, is_causal=False)
+        
+        attn = attn.transpose(1, 2).reshape(B, L, D)
+        x = self.proj(attn) + shortcut
+        x = x + self.ffn(self.norm2(x))
+        return x
+
+class SparseFlashDiffusion(nn.Module):
+    def __init__(self, cfg):
         super().__init__()
-        self.text = TextEncoder(cfg)
-        self.image = ImageEncoder(cfg)
-        self.audio = AudioEncoder(cfg)
-        self.video = VideoEncoder(cfg)
-    def forward(self,modality,data):
-        if modality==Modality.TEXT: return self.text(data)
-        if modality==Modality.IMAGE: return self.image(data)
-        if modality==Modality.AUDIO: return self.audio(data)
-        if modality==Modality.VIDEO: return self.video(data)
-        raise NotImplementedError
+        self.layers = nn.ModuleList([
+            FlashAttentionLayer(cfg.hidden_dim, 8) for _ in range(cfg.num_diff_layers)
+        ])
+        # Modality Masks: 0:Text, 1:Img, 2:Aud, 3:Vid
+        self.mask_tokens = nn.Parameter(torch.randn(4, cfg.hidden_dim))
+        self.register_buffer('ratios', torch.tensor([0.15, 0.75, 0.50, 0.50]))
 
-#  DIFFUSION
-class DiffusionBlock(nn.Module):
-    def __init__(self,cfg):
+    def forward(self, x, mod_indices):
+        B, L, D = x.shape
+        
+        # 1. Sparse Masking
+        token_ratios = self.ratios[mod_indices] 
+        rand_mask = torch.rand(B, L, device=x.device) < token_ratios
+        
+        out = x.clone()
+        for i in range(4):
+            mask = (mod_indices == i) & rand_mask
+            if mask.any():
+                out[mask] = self.mask_tokens[i].to(out.dtype)
+        
+        # 2. Flash Attention Refinement
+        for layer in self.layers:
+            out = layer(out)
+        return out
+
+# ------------------------------
+# 3. CHUNKED MoE ROUTING
+# ------------------------------
+class GatedSubAgent(nn.Module):
+    def __init__(self, cfg):
         super().__init__()
-        self.attn = nn.MultiheadAttention(cfg.hidden_dim,16,batch_first=True)
-        self.ff = nn.Sequential(BitLinear(cfg.hidden_dim,cfg.intermediate_dim),nn.GELU(),BitLinear(cfg.intermediate_dim,cfg.hidden_dim))
-        self.n1 = RMSNorm(cfg.hidden_dim)
-        self.n2 = RMSNorm(cfg.hidden_dim)
-    def forward(self,x,time_emb):
-        x = x + time_emb.unsqueeze(1)
-        a,_ = self.attn(x,x,x)
-        x = self.n1(x+a)
-        f = self.ff(x)
-        return self.n2(x+f)
+        self.n_agents = cfg.num_subagents
+        self.gate = nn.Linear(cfg.hidden_dim, self.n_agents)
+        self.w1 = nn.Linear(cfg.hidden_dim, cfg.hidden_dim * 4 * self.n_agents)
+        self.w2 = nn.Linear(cfg.hidden_dim * 4 * self.n_agents, cfg.hidden_dim * self.n_agents)
+        self.act = nn.GELU()
 
-class DiffusionReasoning(nn.Module):
-    def __init__(self,cfg):
+    def forward(self, x):
+        gate = F.softmax(self.gate(x), dim=-1).unsqueeze(-1) 
+        h = self.w2(self.act(self.w1(x)))
+        h = h.view(-1, self.n_agents, x.size(-1)) 
+        return (h * gate).sum(dim=1)
+
+class ChunkedCapacityMoE(nn.Module):
+    def __init__(self, cfg):
         super().__init__()
-        self.steps = cfg.diffusion_steps
-        self.time = nn.Embedding(cfg.diffusion_steps, cfg.hidden_dim)
-        self.blocks = nn.ModuleList([DiffusionBlock(cfg) for _ in range(cfg.diffusion_layers)])
-        self.norm = RMSNorm(cfg.hidden_dim)
-    def forward(self,x,decision):
-        mask = decision.bool()
-        if not mask.any(): return x
-        state = x.clone()
-        for t in range(self.steps):
-            time_emb = self.time.weight[t]
-            state = self.blocks[t](state,time_emb)
-        x[mask] = state[mask]
-        return self.norm(x)
+        self.num_experts = cfg.num_experts
+        self.capacity = cfg.expert_capacity
+        self.chunk_size = cfg.routing_chunk_size
+        
+        self.router = nn.Linear(cfg.hidden_dim, cfg.num_experts)
+        self.experts = nn.ModuleList([GatedSubAgent(cfg) for _ in range(cfg.num_experts)])
 
-#  DECODERS
-class TextDecoder(nn.Module):
-    def __init__(self,cfg):
+    def forward(self, x):
+        # x: [B, L, D] (Fused)
+        B, L, D = x.shape
+        flat_x = x.view(-1, D)
+        N = flat_x.shape[0]
+        
+        # 1. Chunked Routing (Memory Safety)
+        if N > self.chunk_size:
+            logits_list = []
+            for i in range(0, N, self.chunk_size):
+                chunk = flat_x[i : i + self.chunk_size]
+                logits_list.append(self.router(chunk))
+            logits = torch.cat(logits_list, dim=0)
+        else:
+            logits = self.router(flat_x)
+            
+        probs = F.softmax(logits, dim=-1)
+        expert_idx = torch.argmax(probs, dim=-1)
+        
+        # 2. Sort & Truncate
+        sorted_idx, sort_map = torch.sort(expert_idx)
+        sorted_x = flat_x[sort_map]
+        
+        results_sorted = torch.zeros_like(sorted_x)
+        counts = torch.bincount(sorted_idx, minlength=self.num_experts)
+        
+        start = 0
+        for i, expert in enumerate(self.experts):
+            count = counts[i].item()
+            if count > 0:
+                # Capacity Truncation
+                safe_k = min(count, self.capacity)
+                expert_in = sorted_x[start : start + safe_k]
+                results_sorted[start : start + safe_k] = expert(expert_in)
+            start += count
+            
+        # 3. Unsort (Gather)
+        results = torch.zeros_like(flat_x)
+        results.index_copy_(0, sort_map, results_sorted)
+        
+        return (results + flat_x).view(B, L, D)
+
+# ------------------------------
+# 4. MAIN ARCHITECTURE
+# ------------------------------
+class QuillanRoninV7_2(nn.Module):
+    def __init__(self, cfg):
         super().__init__()
-        self.proj = BitLinear(cfg.hidden_dim,cfg.text_decoder_dim)
-        self.head = nn.Linear(cfg.text_decoder_dim,cfg.vocab_size)
-    def forward(self,x): return self.head(self.proj(x))
+        self.cfg = cfg
+        
+        # Encoders
+        self.text_emb = nn.Embedding(cfg.vocab_size, cfg.hidden_dim)
+        self.img_conv = nn.Conv2d(3, cfg.hidden_dim, cfg.patch_size, cfg.patch_size)
+        self.aud_conv = nn.Conv1d(1, cfg.hidden_dim, 4, 4)
+        self.vid_conv = nn.Conv3d(3, cfg.hidden_dim, (3,4,4), (1,4,4), (1,0,0))
+        
+        # Modality Tags (Learned Embeddings)
+        self.mod_emb = nn.Embedding(4, cfg.hidden_dim)
+        
+        # Core
+        self.moe = ChunkedCapacityMoE(cfg)
+        self.diffusion = SparseFlashDiffusion(cfg)
+        
+        # Decoders
+        self.head_txt = nn.Linear(cfg.hidden_dim, cfg.vocab_size)
+        self.head_img = PatchDecoder(cfg, channels=3)
+        self.head_aud = AudioHead(cfg, out_samples=512)
+        self.head_vid = PatchDecoder(cfg, channels=3, is_video=True)
 
-class UnifiedDecoder(nn.Module):
-    def __init__(self,cfg):
-        super().__init__()
-        self.text = TextDecoder(cfg)
-    def forward(self,x,modality,**kw):
-        if modality==Modality.TEXT: return self.text(x)
-        raise NotImplementedError
+    def forward(self, text, img, aud, vid):
+        # --- 1. ENCODE ---
+        h_t = self.text_emb(text) + self.mod_emb(torch.tensor(0, device=text.device))
+        h_i = self.img_conv(img).flatten(2).transpose(1,2) + self.mod_emb(torch.tensor(1, device=img.device))
+        h_a = self.aud_conv(aud).transpose(1,2) + self.mod_emb(torch.tensor(2, device=aud.device))
+        h_v = self.vid_conv(vid).flatten(2).transpose(1,2) + self.mod_emb(torch.tensor(3, device=vid.device))
 
-#  FINALIZATION
-class OutputFinalization(nn.Module):
-    def __init__(self,cfg):
-        super().__init__()
-        self.proj = BitLinear(cfg.hidden_dim,cfg.finalize_dim)
-        self.attn = nn.MultiheadAttention(cfg.finalize_dim,8,batch_first=True)
-        self.back = BitLinear(cfg.finalize_dim,cfg.hidden_dim)
-        self.norm = RMSNorm(cfg.hidden_dim)
-    def forward(self,x):
-        h = self.proj(x)
-        a,_ = self.attn(h,h,h)
-        h = h+a
-        return self.norm(self.back(h))
+        # --- 2. BATCH-SAFE FUSION ---
+        # Concatenate along Sequence Dimension (Dim 1) to preserve Batch Isolation
+        fused = torch.cat([h_t, h_i, h_a, h_v], dim=1)
+        B, L_total, D = fused.shape
+        
+        # Build Modality Indices
+        lens = [h_t.shape[1], h_i.shape[1], h_a.shape[1], h_v.shape[1]]
+        base_idx = torch.cat([
+            torch.full((l,), i, device=text.device, dtype=torch.long) 
+            for i, l in enumerate(lens)
+        ])
+        mod_indices = base_idx.unsqueeze(0).expand(B, -1)
 
-#  FULL MODEL
-class QuillanRoninV51(nn.Module):
-    def __init__(self,cfg):
-        super().__init__()
-        self.encoder = UnifiedEncoder(cfg)
-        self.router = ComplexityRouter(cfg)
-        self.moe = MultiModalMoE(cfg)
-        self.diff = DiffusionReasoning(cfg)
-        self.final = OutputFinalization(cfg)
-        self.decoder = UnifiedDecoder(cfg)
-    def forward(self,modality,input_data,mask=None,**kw):
-        h = self.encoder(modality,input_data)
-        route = self.router(h,mask)
-        h,_ = self.moe(route["routed_hidden"],route["expert_hints"])
-        h = self.diff(h,route["routing_decision"])
-        h = self.final(h)
-        out = self.decoder(h,modality,**kw)
-        return dict(output=out, routing=route)
+        # --- 3. PROCESS ---
+        moe_out = self.moe(fused)
+        diff_out = self.diffusion(moe_out, mod_indices)
+        
+        # --- 4. DECODE ---
+        o_t, o_i, o_a, o_v = torch.split(diff_out, lens, dim=1)
+        
+        return {
+            'text': self.head_txt(o_t),
+            'image': self.head_img(o_i),
+            'audio': self.head_aud(o_a),
+            'video': self.head_vid(o_v)
+        }
 
-#  TRAINING SCAFFOLD
-def train_step(model,batch,optimizer,criterion,scaler=None):
-    model.train()
-    optimizer.zero_grad()
-    inputs, targets = batch["input"], batch["target"]
-    if scaler:
-        with torch.cuda.amp.autocast():
-            out = model(Modality.TEXT,inputs)
-            logits = out["output"]
-            loss = criterion(logits.reshape(-1,logits.size(-1)), targets.reshape(-1))
-        scaler.scale(loss).backward()
-        scaler.step(optimizer)
-        scaler.update()
-    else:
-        out = model(Modality.TEXT,inputs)
-        logits = out["output"]
-        loss = criterion(logits.reshape(-1,logits.size(-1)), targets.reshape(-1))
-        loss.backward()
-        optimizer.step()
-    return loss.item()
-
-#  BATCH LOADER WRAPPER
-def load_batch(modality, batch_size=2):
-    ds = DatasetLoader(modality.value)
-    sample = ds.get_batch(batch_size)
-    return {"input": sample["tokens"].cuda(), "target": sample["tokens"].cuda()}
-
-#  MAIN EXECUTION
+# ------------------------------
+# TEST ROUTINE
+# ------------------------------
 if __name__ == "__main__":
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    model = QuillanRoninV51(cfg).to(device)
-    optimizer = optim.AdamW(model.parameters(), lr=1e-4)
-    criterion = nn.CrossEntropyLoss()
-    scaler = torch.cuda.amp.GradScaler() if device=="cuda" else None
-
-    for step in range(1000):  # change to however many steps you want
-        batch = load_batch(Modality.TEXT, batch_size=2)
-        loss = train_step(model,batch,optimizer,criterion,scaler)
-        if step % 10 == 0:
-            print(f"[Step {step}] Loss: {loss:.4f}")
-
-    # Save checkpoint
-    torch.save(model.state_dict(), "QuillanRoninV51_checkpoint.pt")
+    model = QuillanRoninV7_2(cfg).to(cfg.device)
+    
+    # Dummy Inputs
+    B = 2
+    text = torch.randint(0, cfg.vocab_size, (B, 128)).to(cfg.device)
+    img = torch.randn(B, 3, 256, 256).to(cfg.device)
+    aud = torch.randn(B, 1, 2048).to(cfg.device)
+    vid = torch.randn(B, 3, 8, 32, 32).to(cfg.device)
+    
+    # Forward
+    print("Running v7.2 Forward Pass...")
+    with autocast(enabled=True):
+        out = model(text, img, aud, vid)
+        
+        # Verify Video Reconstruction
+        # H=32, W=32, T=8
+        vid_recon = model.head_vid.reconstruct_video(out['video'], T=8, H=32, W=32)
+        
+        print(f"Text Out: {out['text'].shape}")       # [B, 128, Vocab]
+        print(f"Image Out: {out['image'].shape}")     # [B, 256, 768] (Patches)
+        print(f"Video Recon: {vid_recon.shape}")      # [B, 3, 8, 32, 32]
+        
+        loss = out['image'].mean() + out['video'].mean()
+        
+    # Backward
+    print("Running Backward Pass...")
+    scaler = GradScaler()
+    optimizer = torch.optim.Adam(model.parameters())
+    
+    optimizer.zero_grad()
+    scaler.scale(loss).backward()
+    scaler.step(optimizer)
+    scaler.update()
+    
+    print("v7.2 Integration Successful.")
  
 # ARCHITECTURAL MAPPING
 
