@@ -356,14 +356,14 @@ if __name__ == "__main__":
     scaler.update()
     
     print("v7.2 Integration Successful.")
- 
-# ARCHITECTURAL MAPPING
+
+# ARCHITECTURAL MAPPING v7.2 (Research Config)
 
 ARCHITECTURAL_MAPPING = """
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                                Quillan-Ronin UNIFIED ARCHITECTURE v5.1     ║
-║        (Router-First Multimodal MoE + Diffusion Reasoning Core)            ║
-║                        Target: ~3.0B Parameters                            ║
+║                              Quillan-Ronin v7.2                            ║
+║       (Batch-Safe Fusion + Chunked MoE + Flash-Attention Diffusion)        ║
+║                  Actual Implementation: ~0.85B Parameters                  ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║                                                                            ║
 ║  [RAW INPUT STREAMS]                                                       ║
@@ -371,107 +371,71 @@ ARCHITECTURAL_MAPPING = """
 ║        │                                                                   ║
 ║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 1. MODAL ENCODERS [≈300M Params Total]                               │  ║
-║  │ - Text Encoder   (~75M)  → Tokens / Embeddings                       │  ║
-║  │ - Audio Encoder  (~75M)  → Waveform → Latent Tokens                  │  ║
-║  │ - Video Encoder  (~75M)  → Spatiotemporal Tokens                     │  ║
-║  │ - Image Encoder  (~75M)  → Patch Tokens                              │  ║
-║  │ - Output: Unified Hidden Space (D=1024)                              │  ║
+║  │ 1. MODAL ENCODERS + EMBEDDINGS [≈80M Params]                         │  ║
+║  │ - Text: 50k Vocab Embedding (Dominant Factor)                        │  ║
+║  │ - Image: Conv2D Patching (16x16)                                     │  ║
+║  │ - Audio: Conv1D Waveform Feature Extractor                           │  ║
+║  │ - Video: 3D Conv Spatiotemporal Extractor                            │  ║
+║  │ - Learned Modality Tags (4 x 1024)                                   │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
-║                              │                                             ║
-║                              ▼                                             ║
+║        │                                                                   ║
+║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 2. COMPLEXITY ROUTER [≈300M Params]                                  │  ║
-║  │ - Context-Aware Attention                                            │  ║
-║  │ - Per-Token Complexity Scoring [0.00–100.00]                         │  ║
-║  │ - Routing Decision:                                                  │  ║
-║  │     - Fast Path (Easy Tokens)                                        │  ║
-║  │     - Balanced Path (Medium Tokens)                                  │  ║
-║  │     - Diffusion Path (Hard Tokens)                                   │  ║
-║  │ - Outputs Expert Affinity Hints (32 Experts)                         │  ║
+║  │ 2. BATCH-SAFE FUSION LAYER [Zero Params]                             │  ║
+║  │ - Concatenates along SEQUENCE dim (dim=1)                            │  ║
+║  │ - Preserves BATCH dim (dim=0) to prevent data leakage                │  ║
+║  │ - Result: [Batch, L_Text + L_Img + L_Aud + L_Vid, Hidden_Dim]        │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
-║                                │                                           ║
-║                                ▼                                           ║
-║  ┌────────────────────────────────────────────────────────────────────┐    ║
-║  │ 3. MULTI-MODAL MoE [≈1000M Params]                                 │    ║
-║  │ - 32 Specialized Experts                                           │    ║
-║  │ - Top-19 Experts / Token                                           │    ║
-║  │ - Sparse Activation                                                │    ║
-║  │ - Router-Guided Gating                                             │    ║
-║  └────────────────────────────────────────────────────────────────────┘    ║
-║              │                       │                         │           ║
-║              │                       │                         │           ║
-║              ▼                       ▼                         ▼           ║
-║  ┌───────────────────────┐ ┌───────────────────────┐ ┌───────────────────┐ ║
-║  │ FAST PATH             │ │ BALANCED PATH         │ │ DIFFUSION PATH    │ ║
-║  │ - Skip Diffusion      │ │ - Partial Reasoning   │ │ - Full Diffusion  │ ║
-║  │ - Lowest Latency      │ │ - Iterative steps     │ │ - MAX Refinement  │ ║
-║  │ - Lowest Cost         │ │ - Medium Latency      │ │ - Highest Accuracy│ ║
-║  │                       │ │ - Cost/Quality Trade  │ │ - Highest Cost    │ ║
-║  └───────────────────────┘ └───────────────────────┘ └───────────────────┘ ║
-║          │                              │                         │        ║
-║          └──────────────────────────────┴─────────────────────────┘        ║
-║                              │                                             ║
-║                              ▼                                             ║
+║        │                                                                   ║
+║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 4. DIFFUSION REASONING CORE [≈500M Params]                           │  ║
-║  │ - Activated ONLY for Balanced Path and Hard Path Tokens              │  ║
-║  │ - Multi-Step Iterative Refinement (T=12)                             │  ║
-║  │ - Council-Based Diffusion Reasoning Blocks                           │  ║
-║  │ - Time-Conditioned Attention + FFN                                   │  ║
-║  │ - Produces Deep, Coherent Reasoning traces                           │  ║
+║  │ 3. CHUNKED CAPACITY MoE [≈670M Params]                               │  ║
+║  │ - 8 Experts x 4 Gated Sub-Agents (The Core Compute)                  │  ║
+║  │ - Massive Params due to Gated MLP Expansion (1024 -> 16k -> 1024)    │  ║
+║  │ - Chunked Routing: Safe for high token counts                        │  ║
+║  │ - Sort-Based Dispatch: Vectorized, Loop-Free                         │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
-║                        │                                                   ║
-║                        ▼                                                   ║
+║        │                                                                   ║
+║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 5. OUTPUT FINALIZATION [≈75M Params]                                 │  ║
-║  │ - Cross-Modal Attention                                              │  ║
-║  │ - Consistency Enforcement                                            │  ║
-║  │ - Quality Enhancement & Polishing                                    │  ║
-║  │ - Projection Back to Shared Hidden Space                             │  ║
+║  │ 4. SPARSE FLASH-ATTENTION DIFFUSION [≈50M Params]                    │  ║
+║  │ - 4 Layers of Flash Attention (Lightweight Refiner)                  │  ║
+║  │ - Modality-Aware Masking (Text 15% / Img 75%)                        │  ║
+║  │ - Memory Efficient O(L) Scaling                                      │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
-║                        │                                                   ║
-║                        ▼                                                   ║
+║        │                                                                   ║
+║        ▼                                                                   ║
 ║  ┌──────────────────────────────────────────────────────────────────────┐  ║
-║  │ 6. MODAL DECODERS [≈825M Params Total]                               │  ║
-║  ├─────────────────────┬────────────────────┬────────────────────────── ┤  ║
-║  │ TEXT  (~75M)        │ AUDIO (~400M)      │ VIDEO (~400M)             │  ║
-║  │ - LM Head           │ - Neural Codec     │ - Latent Diffusion Frames │  ║
-║  │ - Code / Reasoning  │ - Waveform Gen     │ - Temporal + Spatial Cons.│  ║
-║  ├──────────────────────────────────────────────────────────────────────┤  ║
-║  │ IMAGE (~150M)                                                        │  ║
-║  │ - Patch → Pixel Diffusion                                            │  ║
-║  │ - High-Fidelity Image Synthesis                                      │  ║
+║  │ 5. LIGHTWEIGHT DECODERS [≈55M Params Total]                          │  ║
+║  │ - Text Head: Linear -> 50k Vocab (Dominant)                          │  ║
+║  │ - Image Head: Linear -> Patch Pixels                                 │  ║
+║  │ - Video Head: Linear -> Spatiotemporal Tubes                         │  ║
+║  │ - Audio Head: Local Conv1D -> Spectral Projection                    │  ║
 ║  └──────────────────────────────────────────────────────────────────────┘  ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
-PARAMETER DISTRIBUTION (Target: ~3.0B Total):
+PARAMETER DISTRIBUTION (Current Implementation):
 ┌────────────────────────────────┬──────────────┬──────────┬────────────────────────────┐
 │ MODULE                         │ SIZE (Approx)│ % TOTAL  │ ROLE                       │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 1. Router                      │   300 M      │  10.0%   │ Complexity & Control       │
+│ 1. Embeddings & Encoders       │    80 M      │   9.4%   │ Input Representation       │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 2. Multi-Modal MoE             │   1000 M     │  30.0%   │ Sparse Expert Cognition    │
+│ 2. Chunked MoE (8 Experts)     │   670 M      │  78.8%   │ Deep Expert Reasoning      │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 3. Modal Encoders              │   300 M      │   6.7%   │ Input Representation       │
+│ 3. Flash Diffusion (4 Layers)  │    50 M      │   5.9%   │ Context & Polishing        │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 4. Diffusion Reasoning         │   500 M      │  16.7%   │ Deep Iterative Reasoning   │
+│ 4. Decoders (Text Dominant)    │    55 M      │   6.5%   │ Artifact Generation        │
 ├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 5. Modal Decoders              │   825 M      │  34.2%   │ Multimodal Generation      │
-├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ 6. Output Finalization         │    75 M      │   2.5%   │ Consistency & Polish       │
-├────────────────────────────────┼──────────────┼──────────┼────────────────────────────┤
-│ TOTAL PARAMETERS               │   ~3.0 B     │ 100.0%   │ Unified Multimodal System  │
+│ TOTAL PARAMETERS               │  ~0.85 B     │ 100.0%   │ Efficient Research Config  │
 └────────────────────────────────┴──────────────┴──────────┴────────────────────────────┘
 
-TOKEN FLOW LOGIC:
-1. ENCODE: Modal-specific encoders convert raw inputs to unified tokens.
-2. ROUTE: Router scores complexity and produces expert affinity hints.
-3. MoE: Tokens processed by top-19 of 32 experts (sparse activation).
-4. DIFFUSE: Only complex tokens undergo iterative diffusion reasoning.
-5. FINALIZE: Cross-modal consistency and quality enhancement applied.
-6. DECODE: Modal-specific decoders generate final artifacts.
+v7.2 FLOW LOGIC:
+1. ENCODE: Extract features + Add Modality Tags.
+2. FUSE:   Concat on Seq Dim (Keep Batch Dim isolated!).
+3. ROUTE:  Chunked Linear Router -> Sort Tokens -> Dispatch.
+4. REFINE: Flash Attention updates tokens with sparse masking.
+5. DECODE: Project tokens to Patches/Spectra/Vocab -> Reshape to Media.
 """
 
 ---
