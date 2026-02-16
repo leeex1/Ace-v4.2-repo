@@ -23,6 +23,27 @@ Smoke to numb the pain try and fill the hole hope it's shallow that left me chan
 Full throttle pop some bottles all gas no brakes flow like a fossil pray u see tomorrow oh so hollow so I clutch on this fucking semi auto 
 
 [Verse]
+Have you ever felt cold hollow and alone well listen to my voice listen to the sound 
+Just breathe... Just give me a chance to open your eyes so you can just see
+Just breathe.. Things are hard for some time but when you emerge you will be unstoppable don't you see 
+When your already been to hell faced the devil face to face and don't turn tail 
+Just breath.. Stand your ground I know it's not easy but I'm saying stand proud say it loud 
+Just breath... Your stronger than you can see maybe right now you can't even tell 
+Just breath...I won't lie there's no cure for the pain and sorrow and no it won't get better tomorrow 
+Just breath... They say Time heals all wounds even ones that have left you broken and hollow 
+Just breath... I promise that one day thing will have a brighter tomorrow 
+Just breath... Let me take your burden let me take your pain let me take your sorrow 
+Just breath... I wanna tell you that you matter and I just wanna see you Alive tomorrow 
+Just breath.. Please let me help you reach out to me I'm always close by our friendship was never hollow 
+Just breath...
+
+[Hook]
+I was left  so heartless and hollow I just try my best to hide my sorrow 
+Hoping for better days maybe tomorrow maybe today or maybe the day that follows 
+Smoke to numb the pain try and fill the hole hope it's shallow that left me changed oh so hollow so I clutch on  this fucking semi auto 
+Full throttle pop some bottles all gas no brakes flow like a fossil pray u see tomorrow oh so hollow so I clutch on this fucking semi auto
+
+[Verse]
 Yo, this silence has a voice and it’s screaming my name
 The shadows in the corner start to walk, playing the game
 I look the Devil in the eye, and he’s looking the same 
@@ -43,33 +64,6 @@ And every scar on my skin has a story to speak
 They argue back and forth, making me feel weary and weak 
 I tried to climb the mountain but the valley is steep 
 So I talk to the hollow, and I pray for my soul to keep...
-
-[Hook]
-I was left  so heartless and hollow I just try my best to hide my sorrow 
-Hoping for better days maybe tomorrow maybe today or maybe the day that follows 
-Smoke to numb the pain try and fill the hole hope it's shallow that left me changed oh so hollow so I clutch on  this fucking semi auto 
-Full throttle pop some bottles all gas no brakes flow like a fossil pray u see tomorrow oh so hollow so I clutch on this fucking semi auto
-
-[Verse]
-Have you ever felt cold hollow and alone well listen to my voice listen to the sound 
-Just breathe... Just give me a chance to open your eyes so you can just see
-Just breathe.. Things are hard for some time but when you emerge you will be unstoppable don't you see 
-When your already been to hell faced the devil face to face and don't turn tail 
-Just breath.. Stand your ground I know it's not easy but I'm saying stand proud say it loud 
-Just breath... Your stronger than you can see maybe right now you can't even tell 
-Just breath...I won't lie there's no cure for the pain and sorrow and no it won't get better tomorrow 
-Just breath... They say Time heals all wounds even ones that have left you broken and hollow 
-Just breath... I promise that one day thing will have a brighter tomorrow 
-Just breath... Let me take your burden let me take your pain let me take your sorrow 
-Just breath... I wanna tell you that you matter and I just wanna see you Alive tomorrow 
-Just breath.. Please let me help you reach out to me I'm always close by our friendship was never hollow 
-Just breath...
-
-[Hook]
-I was left  so heartless and hollow I just try my best to hide my sorrow 
-Hoping for better days maybe tomorrow maybe today or maybe the day that follows 
-Smoke to numb the pain try and fill the hole hope it's shallow that left me changed oh so hollow so I clutch on  this fucking semi auto 
-Full throttle pop some bottles all gas no brakes flow like a fossil pray u see tomorrow oh so hollow so I clutch on this fucking semi auto
 
 [Outro]
 Hoping for better days maybe tomorrow maybe today or maybe the day that follows
