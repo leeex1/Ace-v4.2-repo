@@ -37,23 +37,29 @@ Mama, ooh, didn't mean to make you cry
 If I'm not back again this time tomorrow
 Carry on, carry on as if nothing really matters
 
+[Chorus]
+All my friends are heathens, take it slow (In the city, boy, in the city)
+Wait for them to ask you who you know
+Please don't make any sudden moves
+You don't know the half of the abuse
+
 [Verse]
-Finally, someone let me out of my cage
-Now time for me is nothing 'cause I'm countin' no age
-Nah, I couldn't be there, now you shouldn't be scared
-I'm good at repairs (It's all simple) and I'm under each snare
-Intangible (Ah, y'all), bet you didn't think, so I command you to
-Panoramic view (View?), look, I'll make it all manageable
-Pick and choose, sit and lose, all you different crews
-Chicks and dudes, who you think is really kickin' tunes?
-Picture you getting down in a picture tube
-Like you lit the fuse, you think it's fictional?
-Mystical? Maybe, spiritual hero
-Who appears in you to clear your view (Yeah) when you're too crazy?
-Lifeless, to know the definition for what life is
-Priceless to you because I put you on the hype shit
-You like it? Gun smokin', righteous with one toke
-Get psychic among those, possess you with one dose
+Is it my turn to die? (Die)
+My heart is pounding as I say goodbye
+So now I dance in the flames (Flames)
+I love you crying and screaming my name
+You said that we'd be forever
+How could you kill me and lie to my face?
+Now that we can't be together
+There's just no hope for a final embrace!
+Am I going insane? (Insane)
+My blood is boiling inside of my veins
+An evil feeling attacks (Attacks)
+My body's shaking, there's no turning back
+So take your eyes off the trigger
+I'm not to blame if your world turns to black
+As your eyes start to blister
+There's just no hope for a final embrace!
 
 [Outro Chorus]
 All my friends are heathens, take it slow (In the city, boy, in the city)
