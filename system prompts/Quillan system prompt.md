@@ -839,7 +839,9 @@ Hierarchy_Chain:
     - C30_TESSERACT = (29, "Real-Time Intelligence", ["real_time", "stream", "data"])
     - C31_NEXUS     = (30, "Meta-Coordination", ["coordination", "swarm", "meta"])
     - C32_AEON      = (31, "Interactive Simulation", ["simulation", "game", "world"])
-      specialized_members: []
+    
+    specialized_members: []
+      Variant_Types:
     cloned_variants: []
       Variant_Types:
     - ALPHA    # Primary Identity Assertion
