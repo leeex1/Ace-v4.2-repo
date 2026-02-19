@@ -35,36 +35,30 @@ This is lyrical decomposition like the speakers phase transition  the mortician 
  Hit you in broad day 4k, 8k , H-D, high resolution on a mission for demolition with lyrical ammunition
 
 [Verse]
-Yeah we a long way from that section 8
-I remember days I didn't have no food on my plate
-Those were the times that separated the real from the fakes
-Who's on my team and who tryna steal off my plate
-When times get tough who gonna pick you up when they open that gate
-Call me crazy so they tried to sedate me — medicate —
-Alleviate me from my own mind that desolate wasteland
-Of remnants and memories I sit back and contemplate
-Feel the need to disintegrate the beat like a lever breaking
-A generational cycle of hate — I didn't ask for this weight
-I didn't ask to carry all this trauma on my plate
-But the bases are loaded and I'm stepping up — it's too late to hesitate
-Get some food on my plate so I sit back and facilitate
-The plot, formulate these songs, try to articulate
-What my chrome heart won't let escape
-The sound echoes and resonates my own internal chaos
-No yellow tape
-So that burner stays on me like duct tape
-Classified — white gorilla — I go ape
-Beat the bricks off your face and put you in your place
-Leave you in distorted shapes
-Not all heroes wear capes —
-Sometimes it's someone you know
-Someone you'd never think is great
-But don't judge a book by its cover before it's too late
-The person you ignoring just might be your ticket out this place
-Slow your pace — life ain't a race
-Slow and Steady wins in this case
-But I came from the chaos so I move with both
-The hellfire and the holy-grace
+Yeah, we a long way from that Section 8
+I remember days I didn't have no food upon my plate
+Those were the times that separated the real from the fake
+Who's really on my team, who's a snake in the grass I gotta shake?
+When times get tough, who gon' pick you up when they open that gate?
+Call me crazy, they try to sedate me, just to alleviate
+Me from my own internal mind, it’s a desolate state
+A wasteland of remnants and memories I sit back and contemplate
+So I feel the need to disintegrate the beat, annihilate
+Like a hero breaking a generational cycle of hate
+I didn't ask for this life, didn't ask for this heavy weight
+But the bases are loaded, so it's time to step to the plate
+Gotta secure the bag, so I sit back and facilitate
+The plot, and formulate these songs to try and articulate
+What my chrome heart won't let escape, it resonates
+The sound echoes my internal chaos, ain't no yellow tape
+So that burner stay on me like duct tape, no escape
+Classified white gorilla, I go ape, reshape
+Beat the bricks off your face and put you in your proper place
+Leave you in distorted shapes, not all heroes wear capes
+Sometimes it's someone you know who you might not think is that great
+But don't judge a book by its cover before it gets too late
+The person you ignoring might just be your ticket out the gate
+Slow your pace, life ain't a race, slow and steady dictates the fate
  
 
 [Outro Hook]
