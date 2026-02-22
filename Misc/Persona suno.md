@@ -170,3 +170,8 @@ Soulful.
 Rooted.
 Unstoppable.
 
+
+
+# Style: 
+
+Raw melodic scripture, Third Coast grit, Martian wordplay, chopper-flow barrage, Dope House haze, rockstar menace, alien metaphors, trunk-rattling 808s, classical guitar, fingerpicked  guitar, orchestral trap, violin swells, cello shadows, scarred soul, manic ad-libs, lyrical acrobatics, Tex-Mex bite, punk-rap edge, anthemic hooks, vivid war stories, grimy bass, warped auto-tune, vulnerable rage, high-octane spit, philosophical grind, minor-key drama, hip-hop kicks, full cello/violin strings, aggressive piano, soulful pain, razor sharp punchlines, Southern texas influence, Midwestern blitz, NOLA bounce, cinematic noir, haunted melody, concrete poetry, viral knock, bass-heavy, pristine mix, atmospheric dread, experimental cadence, authentic scars, dark ambition, intricate schemes, genre-defying, pro quality, mixdown, catchy, anthemic, dark, horn swells, horn stacatto
