@@ -1,708 +1,686 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quillan-NEXUS v5.2 — Multi-Provider Interface</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --void:#02040f;--panel:#070d1fcc;--edge:rgba(0,220,255,.18);
-  --c:#00dcff;--cd:rgba(0,220,255,.32);--v:#9b5de5;--vd:rgba(155,93,229,.35);
-  --g:#ffd166;--m:#06d6a0;--r:#ff6b6b;
-  --tb:#e8f4ff;--tm:#8ba4c0;--td:#3d5a7a;
-  --fm:'Orbitron',monospace;--fs:'Space Mono',monospace;--fb:'Inter',sans-serif;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;overflow:hidden;background:var(--void);color:var(--tb);font-family:var(--fb)}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quillan-NEXUS v5.2.7 — Qwen Interface</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@700&family=Space+Mono&display=swap" rel="stylesheet">
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-/* bg */
-#bg{position:fixed;inset:0;z-index:0;background:
-  radial-gradient(ellipse 80% 60% at 15% 85%,rgba(155,93,229,.07) 0%,transparent 60%),
-  radial-gradient(ellipse 60% 80% at 85% 15%,rgba(0,220,255,.06) 0%,transparent 60%),
-  #02040f}
-#nc{position:fixed;inset:0;z-index:1;opacity:.45;pointer-events:none}
-#sl{position:fixed;inset:0;z-index:2;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px);pointer-events:none}
-#vg{position:fixed;inset:0;z-index:3;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.65) 100%);pointer-events:none}
+    <style>
+        :root{
+            --void:#02040f;--panel:rgba(7,13,31,0.95);--edge:rgba(0,220,255,.45);
+            --c:#00dcff;--cd:rgba(0,220,255,.55);--v:#9b5de5;--vd:rgba(155,93,229,.55);
+            --g:#ffd166;--m:#06d6a0;--r:#ff6b6b;
+            --tb:#ffffff;--tm:#a8c4ff;--td:#6b9cff;
+            --fm:'Orbitron',monospace;--fs:'Space Mono',monospace;--fb:'Inter',sans-serif;
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html,body{width:100%;height:100%;overflow:hidden;background:var(--void);color:var(--tb);font-family:var(--fb)}
 
-/* shell */
-#app{position:relative;z-index:10;display:grid;grid-template-rows:62px 1fr;height:100vh;width:100vw}
+        #bg{position:fixed;inset:0;z-index:0;background:
+            radial-gradient(ellipse 80% 60% at 15% 85%,rgba(155,93,229,.09) 0%,transparent 60%),
+            radial-gradient(ellipse 60% 80% at 85% 15%,rgba(0,220,255,.08) 0%,transparent 60%),
+            #02040f}
+        #nc{position:fixed;inset:0;z-index:1;opacity:.45;pointer-events:none}
+        #sl{position:fixed;inset:0;z-index:2;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px);pointer-events:none}
+        #vg{position:fixed;inset:0;z-index:3;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.65) 100%);pointer-events:none}
 
-/* header */
-header{display:flex;align-items:center;justify-content:space-between;padding:0 1.4rem;background:rgba(2,8,25,.9);border-bottom:1px solid var(--edge);backdrop-filter:blur(20px);position:relative;overflow:hidden}
-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c),var(--v),var(--c),transparent);opacity:.45}
-.brand{display:flex;align-items:center;gap:.9rem}
-.bicon{width:34px;height:34px;border:1.5px solid var(--cd);border-radius:6px;display:grid;place-items:center;background:rgba(0,220,255,.07);overflow:hidden;position:relative}
-.bicon::before{content:'';position:absolute;inset:-50%;background:conic-gradient(from 0deg,transparent,var(--c),transparent 30%);animation:spin 4s linear infinite;opacity:.3}
-.bicon svg{position:relative;z-index:1}
-.bname{font-family:var(--fm);font-size:.88rem;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,var(--c),#a8eaff,var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
-.bsub{font-family:var(--fs);font-size:.58rem;color:var(--tm);letter-spacing:2px;margin-top:1px}
-.hchips{display:flex;gap:.5rem;align-items:center}
-.hchip{display:flex;align-items:center;gap:.4rem;padding:.28rem .7rem;border-radius:4px;background:rgba(0,220,255,.04);border:1px solid rgba(0,220,255,.13);font-family:var(--fs);font-size:.6rem;letter-spacing:1.5px;color:var(--tm);text-transform:uppercase}
-.hchip.v{border-color:rgba(155,93,229,.22);background:rgba(155,93,229,.05)}
-.hchip.g{border-color:rgba(255,209,102,.22);background:rgba(255,209,102,.05)}
-.pip{width:5px;height:5px;border-radius:50%}
-.pip.c{background:var(--c);box-shadow:0 0 7px var(--c);animation:blink 2.5s ease infinite}
-.pip.v{background:var(--v);box-shadow:0 0 7px var(--v);animation:blink 2.5s ease infinite .8s}
-.pip.g{background:var(--g);box-shadow:0 0 7px var(--g);animation:blink 2.5s ease infinite 1.6s}
+        /* shell */
+        #app{position:relative;z-index:10;display:grid;grid-template-rows:62px 1fr;height:100vh;width:100vw}
 
-/* layout */
-.main{display:grid;grid-template-columns:265px 1fr 285px;height:calc(100vh - 62px);overflow:hidden}
-.glass{background:var(--panel);backdrop-filter:blur(20px) saturate(175%);border:1px solid var(--edge);position:relative}
-.glass::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.022),transparent 55%);pointer-events:none}
-.plbl{font-family:var(--fs);font-size:.57rem;letter-spacing:3px;color:var(--td);text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
-.plbl::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--edge),transparent)}
+        /* header */
+        header{display:flex;align-items:center;justify-content:space-between;padding:0 1.4rem;background:rgba(2,8,25,.95);border-bottom:2px solid var(--edge);backdrop-filter:blur(20px);position:relative;overflow:hidden}
+        header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c),var(--v),var(--c),transparent);opacity:.65}
+        .brand{display:flex;align-items:center;gap:.9rem}
+        .bicon{width:34px;height:34px;border:1.5px solid var(--cd);border-radius:6px;display:grid;place-items:center;background:rgba(0,220,255,.07);overflow:hidden;position:relative}
+        .bicon::before{content:'';position:absolute;inset:-50%;background:conic-gradient(from 0deg,transparent,var(--c),transparent 30%);animation:spin 4s linear infinite;opacity:.3}
+        .bicon svg{position:relative;z-index:1}
+        .bname{font-family:var(--fm);font-size:.88rem;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,var(--c),#a8eaff,var(--v));-webkit-background-clip:text;background-clip:text;color:#ffffff}
+        .bsub{font-family:var(--fs);font-size:.58rem;color:var(--tm);letter-spacing:2px;margin-top:1px}
+        .hchips{display:flex;gap:.5rem;align-items:center}
+        .hchip{display:flex;align-items:center;gap:.4rem;padding:.28rem .7rem;border-radius:4px;background:rgba(0,220,255,.08);border:2px solid rgba(0,220,255,.35);font-family:var(--fs);font-size:.6rem;letter-spacing:1.5px;color:#ffffff;text-transform:uppercase}
+        .hchip.v{border-color:rgba(155,93,229,.45);background:rgba(155,93,229,.08)}
+        .hchip.g{border-color:rgba(255,209,102,.35);background:rgba(255,209,102,.08)}
+        .pip{width:5px;height:5px;border-radius:50%}
+        .pip.c{background:var(--c);box-shadow:0 0 7px var(--c);animation:blink 2.5s ease infinite}
+        .pip.v{background:var(--v);box-shadow:0 0 7px var(--v);animation:blink 2.5s ease infinite .8s}
+        .pip.g{background:var(--g);box-shadow:0 0 7px var(--g);animation:blink 2.5s ease infinite 1.6s}
 
-/* left panel */
-.sl{border-right:1px solid var(--edge);display:flex;flex-direction:column;padding:.85rem;gap:.8rem;overflow-y:auto;scrollbar-width:none}
+        /* layout */
+        .main{display:grid;grid-template-columns:265px 1fr 285px;height:calc(100vh - 62px);overflow:hidden}
+        .glass{background:var(--panel);backdrop-filter:blur(20px) saturate(175%);border:2px solid var(--edge);position:relative}
+        .glass::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent 55%);pointer-events:none}
+        .plbl{font-family:var(--fs);font-size:.57rem;letter-spacing:3px;color:var(--td);text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+        .plbl::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--edge),transparent)}
 
-/* provider grid */
-.pgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.35rem}
-.pb{display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.55rem .3rem;border-radius:5px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);color:var(--tm);cursor:pointer;transition:all .22s;font-family:var(--fs);font-size:.55rem;letter-spacing:.3px;text-align:center}
-.pb .pi{font-size:1rem}
-.pb .pn{color:var(--td);margin-top:1px}
-.pb:hover{background:rgba(0,220,255,.05);border-color:var(--edge)}
-.pb.active{background:rgba(0,220,255,.08);border-color:var(--cd);color:var(--c)}
-.pb.active .pn{color:var(--c)}
-.pb.free-tag::after{content:'FREE';font-size:.44rem;color:var(--m);letter-spacing:1px;background:rgba(6,214,160,.1);border:1px solid rgba(6,214,160,.25);border-radius:2px;padding:0 3px;margin-top:1px}
+        /* left panel */
+        .sl{border-right:2px solid var(--edge);display:flex;flex-direction:column;padding:.85rem;gap:.8rem;overflow-y:auto;scrollbar-width:none}
 
-/* config */
-.crow{display:flex;flex-direction:column;gap:.28rem}
-.clbl{font-family:var(--fs);font-size:.57rem;color:var(--td);letter-spacing:1px;text-transform:uppercase}
-.cinp{background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:.45rem .65rem;color:var(--tb);font-family:var(--fs);font-size:.7rem;transition:border-color .2s;width:100%}
-.cinp:focus{outline:none;border-color:var(--cd);background:rgba(0,220,255,.04)}
-.cinp::placeholder{color:var(--td)}
-select.cinp{cursor:pointer}
-select.cinp option{background:#0a1428;color:var(--tb)}
-.note{font-family:var(--fs);font-size:.57rem;color:var(--g);padding:.38rem .55rem;background:rgba(255,209,102,.05);border:1px solid rgba(255,209,102,.17);border-radius:4px;line-height:1.55;margin-bottom:.25rem}
-.cbtn{width:100%;padding:.55rem;border-radius:5px;background:linear-gradient(135deg,rgba(0,220,255,.13),rgba(155,93,229,.1));border:1px solid var(--cd);color:var(--c);font-family:var(--fs);font-size:.66rem;letter-spacing:2px;cursor:pointer;transition:all .22s;text-transform:uppercase;margin-top:.25rem}
-.cbtn:hover{box-shadow:0 0 14px rgba(0,220,255,.22)}
-.badge{display:flex;align-items:center;gap:.45rem;padding:.4rem .65rem;border-radius:4px;font-family:var(--fs);font-size:.6rem;letter-spacing:1px;text-transform:uppercase;border:1px solid}
-.badge.ok{background:rgba(6,214,160,.07);border-color:rgba(6,214,160,.28);color:var(--m)}
-.badge.err{background:rgba(255,107,107,.07);border-color:rgba(255,107,107,.28);color:var(--r)}
-.badge.idle{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.09);color:var(--td)}
+        /* provider grid */
+        .pgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.35rem}
+        .pb{display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.55rem .3rem;border-radius:5px;background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.12);color:#ffffff;cursor:pointer;transition:all .22s;font-family:var(--fs);font-size:.55rem;letter-spacing:.3px;text-align:center}
+        .pb .pi{font-size:1rem}
+        .pb .pn{color:#ffffff;margin-top:1px}
+        .pb:hover{background:rgba(0,220,255,.08);border-color:var(--edge)}
+        .pb.active{background:rgba(0,220,255,.12);border-color:var(--cd);color:#ffffff}
+        .pb.active .pn{color:#ffffff}
+        .pb.free-tag::after{content:'FREE';font-size:.44rem;color:var(--m);letter-spacing:1px;background:rgba(6,214,160,.12);border:1px solid rgba(6,214,160,.35);border-radius:2px;padding:0 3px;margin-top:1px}
 
-/* modes */
-.mlist{display:flex;flex-direction:column;gap:.3rem}
-.mb{display:flex;align-items:center;gap:.6rem;padding:.55rem .75rem;border-radius:5px;background:transparent;border:1px solid transparent;color:var(--tm);cursor:pointer;transition:all .2s;text-align:left;width:100%;font-family:var(--fs);font-size:.65rem;letter-spacing:.7px}
-.mb .mi{width:24px;height:24px;border-radius:4px;border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;font-size:.75rem;flex-shrink:0;transition:all .2s}
-.mb .mn{color:var(--tb);font-size:.68rem}
-.mb .md{color:var(--td);font-size:.56rem}
-.mb:hover,.mb.active{background:linear-gradient(90deg,rgba(0,220,255,.06),transparent);border-color:var(--edge)}
-.mb.active{border-left:2px solid var(--c)}
-.mb.active .mi{background:rgba(0,220,255,.1);border-color:var(--cd)}
+        /* config */
+        .crow{display:flex;flex-direction:column;gap:.28rem}
+        .clbl{font-family:var(--fs);font-size:.57rem;color:var(--td);letter-spacing:1px;text-transform:uppercase}
+        .cinp{background:rgba(0,0,0,.55);border:2px solid rgba(255,255,255,.15);border-radius:4px;padding:.45rem .65rem;color:#ffffff;font-family:var(--fs);font-size:.7rem;transition:border-color .2s;width:100%}
+        .cinp:focus{outline:none;border-color:var(--cd);background:rgba(0,220,255,.06)}
+        .cinp::placeholder{color:var(--td)}
+        select.cinp{cursor:pointer}
+        select.cinp option{background:#0a1428;color:#ffffff}
+        .note{font-family:var(--fs);font-size:.57rem;color:var(--g);padding:.38rem .55rem;background:rgba(255,209,102,.08);border:2px solid rgba(255,209,102,.25);border-radius:4px;line-height:1.55;margin-bottom:.25rem}
+        .cbtn{width:100%;padding:.55rem;border-radius:5px;background:linear-gradient(135deg,rgba(0,220,255,.18),rgba(155,93,229,.12));border:2px solid var(--cd);color:#ffffff;font-family:var(--fs);font-size:.66rem;letter-spacing:2px;cursor:pointer;transition:all .22s;text-transform:uppercase;margin-top:.25rem}
+        .cbtn:hover{box-shadow:0 0 14px rgba(0,220,255,.35)}
+        .badge{display:flex;align-items:center;gap:.45rem;padding:.4rem .65rem;border-radius:4px;font-family:var(--fs);font-size:.6rem;letter-spacing:1px;text-transform:uppercase;border:2px solid}
+        .badge.ok{background:rgba(6,214,160,.12);border-color:rgba(6,214,160,.45);color:var(--m)}
+        .badge.err{background:rgba(255,107,107,.12);border-color:rgba(255,107,107,.45);color:var(--r)}
+        .badge.idle{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#ffffff}
 
-/* wave */
-.wt{display:flex;align-items:center}
-.wd{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.07);transition:all .4s;flex-shrink:0}
-.wd.active{background:var(--v);box-shadow:0 0 10px var(--v);transform:scale(1.4)}
-.wd.done{background:var(--c);box-shadow:0 0 5px var(--cd)}
-.wl{flex:1;height:1px;background:rgba(255,255,255,.07);transition:background .4s}
-.wl.done{background:var(--cd)}
-#wlbl{margin-top:.35rem;font-family:var(--fs);font-size:.54rem;color:var(--td);letter-spacing:1px}
+        /* modes */
+        .mlist{display:flex;flex-direction:column;gap:.3rem}
+        .mb{display:flex;align-items:center;gap:.6rem;padding:.55rem .75rem;border-radius:5px;background:transparent;border:2px solid transparent;color:#ffffff;cursor:pointer;transition:all .2s;text-align:left;width:100%;font-family:var(--fs);font-size:.65rem;letter-spacing:.7px}
+        .mb .mi{width:24px;height:24px;border-radius:4px;border:2px solid rgba(255,255,255,.15);display:grid;place-items:center;font-size:.75rem;flex-shrink:0;transition:all .2s}
+        .mb .mn{color:#ffffff;font-size:.68rem}
+        .mb .md{color:var(--td);font-size:.56rem}
+        .mb:hover,.mb.active{background:linear-gradient(90deg,rgba(0,220,255,.09),transparent);border-color:var(--edge)}
+        .mb.active{border-left:4px solid var(--c)}
+        .mb.active .mi{background:rgba(0,220,255,.15);border-color:var(--cd)}
 
-/* chips */
-.chips{display:flex;flex-wrap:wrap;gap:.28rem}
-.chip{font-family:var(--fs);font-size:.5rem;padding:.2rem .42rem;border-radius:3px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);color:var(--td);transition:all .28s;letter-spacing:.3px}
-.chip.lit{color:var(--c);border-color:var(--cd);background:rgba(0,220,255,.06);box-shadow:0 0 5px rgba(0,220,255,.1)}
-.chip.vlit{color:var(--v);border-color:rgba(155,93,229,.38);background:rgba(155,93,229,.08)}
+        /* wave */
+        .wt{display:flex;align-items:center}
+        .wd{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.12);transition:all .4s;flex-shrink:0}
+        .wd.active{background:var(--v);box-shadow:0 0 12px var(--v);transform:scale(1.4)}
+        .wd.done{background:var(--c);box-shadow:0 0 8px var(--cd)}
+        .wl{flex:1;height:1px;background:rgba(255,255,255,.12);transition:background .4s}
+        .wl.done{background:var(--cd)}
+        #wlbl{margin-top:.35rem;font-family:var(--fs);font-size:.54rem;color:var(--td);letter-spacing:1px}
 
-/* chat */
-.chat{display:flex;flex-direction:column;border-left:1px solid var(--edge);border-right:1px solid var(--edge);position:relative}
-.feed{flex:1;overflow-y:auto;padding:1.4rem 1.65rem;display:flex;flex-direction:column;gap:1.1rem;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--edge) transparent}
-.msg{display:flex;gap:.65rem;animation:mi .28s ease-out forwards;opacity:0;transform:translateY(5px)}
-.msg.user{flex-direction:row-reverse}
-.av{width:28px;height:28px;border-radius:5px;flex-shrink:0;display:grid;place-items:center;font-size:.62rem;font-family:var(--fs);font-weight:700;border:1px solid;margin-top:3px}
-.msg.q .av{background:rgba(0,220,255,.07);border-color:var(--cd);color:var(--c);box-shadow:0 0 10px rgba(0,220,255,.12)}
-.msg.user .av{background:rgba(155,93,229,.07);border-color:rgba(155,93,229,.32);color:var(--v)}
-.mb2{flex:1;max-width:80%}
-.msg.user .mb2{display:flex;flex-direction:column;align-items:flex-end}
-.mmeta{font-family:var(--fs);font-size:.54rem;color:var(--td);letter-spacing:1px;margin-bottom:.28rem;text-transform:uppercase}
-.bub{padding:.8rem 1.1rem;border-radius:9px;line-height:1.65;font-size:.87rem;color:var(--tb);position:relative;overflow:hidden}
-.bub::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.03),transparent 55%);pointer-events:none}
-.msg.q .bub{background:rgba(0,220,255,.04);border:1px solid rgba(0,220,255,.15);border-radius:9px 9px 9px 2px}
-.msg.user .bub{background:rgba(155,93,229,.065);border:1px solid rgba(155,93,229,.2);border-radius:9px 9px 2px 9px}
-.bub p{margin-bottom:.4rem}.bub p:last-child{margin-bottom:0}
-.bub strong{color:var(--c);font-weight:600}
-.bub em{color:var(--g);font-style:normal}
-.bub code{font-family:var(--fs);font-size:.76rem;background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.08);border-radius:3px;padding:.1em .38em;color:var(--m)}
-.bub pre{font-family:var(--fs);font-size:.72rem;background:rgba(0,0,0,.48);border:1px solid rgba(255,255,255,.07);border-radius:5px;padding:.75rem;overflow-x:auto;margin:.5rem 0;color:#c8e6ff;line-height:1.5}
-.sysmsg{text-align:center;font-family:var(--fs);font-size:.58rem;color:var(--td);letter-spacing:1.5px;padding:.35rem;text-transform:uppercase;animation:mi .35s ease-out forwards;opacity:0}
-.tw{animation:mi .28s ease-out forwards;opacity:0}
-.ttog{display:flex;align-items:center;gap:.45rem;font-family:var(--fs);font-size:.58rem;color:var(--v);letter-spacing:1.5px;cursor:pointer;text-transform:uppercase;padding:.35rem 0;user-select:none}
-.ttog svg{transition:transform .28s}
-.ttog.open svg{transform:rotate(180deg)}
-.tbody{display:none;background:rgba(155,93,229,.04);border:1px solid rgba(155,93,229,.17);border-radius:7px;padding:.75rem .95rem;margin-bottom:.55rem}
-.tbody.vis{display:block}
-.tbody pre{font-family:var(--fs);font-size:.65rem;color:#b090e0;white-space:pre-wrap;line-height:1.6}
+        /* chips */
+        .chips{display:flex;flex-wrap:wrap;gap:.28rem}
+        .chip{font-family:var(--fs);font-size:.5rem;padding:.2rem .42rem;border-radius:3px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);color:#ffffff;transition:all .28s;letter-spacing:.3px}
+        .chip.lit{color:#ffffff;border-color:var(--cd);background:rgba(0,220,255,.12);box-shadow:0 0 8px rgba(0,220,255,.2)}
+        .chip.vlit{color:#ffffff;border-color:rgba(155,93,229,.45);background:rgba(155,93,229,.12)}
 
-/* typing */
-.typi{display:flex;align-items:center;gap:.5rem;padding:.65rem .95rem;background:rgba(0,220,255,.04);border:1px solid rgba(0,220,255,.1);border-radius:7px;width:fit-content}
-.tdots{display:flex;gap:3px}
-.tdot{width:5px;height:5px;border-radius:50%;background:var(--c);animation:tb 1.2s ease infinite}
-.tdot:nth-child(2){animation-delay:.2s}.tdot:nth-child(3){animation-delay:.4s}
-.tlbl{font-family:var(--fs);font-size:.58rem;color:var(--c);letter-spacing:1px}
+        /* chat */
+        .chat{display:flex;flex-direction:column;border-left:2px solid var(--edge);border-right:2px solid var(--edge);position:relative}
+        .feed{flex:1;overflow-y:auto;padding:1.4rem 1.65rem;display:flex;flex-direction:column;gap:1.1rem;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--edge) transparent}
+        .msg{display:flex;gap:.65rem;animation:mi .28s ease-out forwards;opacity:0;transform:translateY(5px)}
+        .msg.user{flex-direction:row-reverse}
+        .av{width:28px;height:28px;border-radius:5px;flex-shrink:0;display:grid;place-items:center;font-size:.62rem;font-family:var(--fs);font-weight:700;border:2px solid;margin-top:3px}
+        .msg.q .av{background:rgba(0,220,255,.12);border-color:var(--cd);color:#ffffff;box-shadow:0 0 12px rgba(0,220,255,.25)}
+        .msg.user .av{background:rgba(155,93,229,.12);border-color:rgba(155,93,229,.45);color:#ffffff}
+        .mb2{flex:1;max-width:80%}
+        .msg.user .mb2{display:flex;flex-direction:column;align-items:flex-end}
+        .mmeta{font-family:var(--fs);font-size:.54rem;color:#ffffff;letter-spacing:1px;margin-bottom:.28rem;text-transform:uppercase}
+        .bub{padding:.8rem 1.1rem;border-radius:9px;line-height:1.65;font-size:.87rem;color:#ffffff;position:relative;overflow:hidden}
+        .bub::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent 55%);pointer-events:none}
+        .msg.q .bub{background:rgba(0,220,255,.09);border:2px solid rgba(0,220,255,.25);border-radius:9px 9px 9px 2px}
+        .msg.user .bub{background:rgba(155,93,229,.09);border:2px solid rgba(155,93,229,.35);border-radius:9px 9px 2px 9px}
+        .bub p{margin-bottom:.4rem}.bub p:last-child{margin-bottom:0}
+        .bub strong{color:#ffffff;font-weight:600}
+        .bub em{color:var(--g);font-style:normal}
+        .bub code{font-family:var(--fs);font-size:.76rem;background:rgba(0,0,0,.55);border:2px solid rgba(255,255,255,.15);border-radius:3px;padding:.1em .38em;color:var(--m)}
+        .bub pre{font-family:var(--fs);font-size:.72rem;background:rgba(0,0,0,.65);border:2px solid rgba(255,255,255,.12);border-radius:5px;padding:.75rem;overflow-x:auto;margin:.5rem 0;color:#c8e6ff;line-height:1.5}
+        .sysmsg{text-align:center;font-family:var(--fs);font-size:.58rem;color:#a8c4ff;letter-spacing:1.5px;padding:.35rem;text-transform:uppercase;animation:mi .35s ease-out forwards;opacity:0}
+        .tw{animation:mi .28s ease-out forwards;opacity:0}
+        .ttog{display:flex;align-items:center;gap:.45rem;font-family:var(--fs);font-size:.58rem;color:var(--v);letter-spacing:1.5px;cursor:pointer;text-transform:uppercase;padding:.35rem 0;user-select:none}
+        .ttog svg{transition:transform .28s}
+        .ttog.open svg{transform:rotate(180deg)}
+        .tbody{display:none;background:rgba(155,93,229,.08);border:2px solid rgba(155,93,229,.25);border-radius:7px;padding:.75rem .95rem;margin-bottom:.55rem}
+        .tbody.vis{display:block}
+        .tbody pre{font-family:var(--fs);font-size:.65rem;color:#b090e0;white-space:pre-wrap;line-height:1.6}
 
-/* input */
-.ibar{padding:.85rem 1.35rem;background:rgba(2,8,25,.72);border-top:1px solid var(--edge);display:flex;gap:.65rem;align-items:flex-end;position:relative}
-.ibar::before{content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,var(--c),transparent);opacity:.18}
-.cinput{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.75rem .95rem;color:var(--tb);font-family:var(--fb);font-size:.87rem;resize:none;min-height:44px;max-height:130px;transition:border-color .22s,box-shadow .22s;line-height:1.5}
-.cinput:focus{outline:none;border-color:var(--cd);box-shadow:0 0 14px rgba(0,220,255,.06)}
-.cinput::placeholder{color:var(--td)}
-.sbtn{width:44px;height:44px;border-radius:7px;background:linear-gradient(135deg,rgba(0,220,255,.16),rgba(155,93,229,.16));border:1px solid var(--cd);color:var(--c);cursor:pointer;display:grid;place-items:center;transition:all .2s;flex-shrink:0;position:relative;overflow:hidden}
-.sbtn:hover{box-shadow:0 0 16px rgba(0,220,255,.25);transform:translateY(-1px)}
-.sbtn:disabled{opacity:.33;cursor:not-allowed;transform:none}
+        /* typing */
+        .typi{display:flex;align-items:center;gap:.5rem;padding:.65rem .95rem;background:rgba(0,220,255,.09);border:2px solid rgba(0,220,255,.25);border-radius:7px;width:fit-content}
+        .tdots{display:flex;gap:3px}
+        .tdot{width:5px;height:5px;border-radius:50%;background:var(--c);animation:tb 1.2s ease infinite}
+        .tdot:nth-child(2){animation-delay:.2s}.tdot:nth-child(3){animation-delay:.4s}
+        .tlbl{font-family:var(--fs);font-size:.58rem;color:#ffffff;letter-spacing:1px}
 
-/* right panel */
-.sr{display:flex;flex-direction:column;padding:.85rem;gap:.8rem;overflow-y:auto;scrollbar-width:none}
-.ccwrap{position:relative;width:100%;aspect-ratio:1;border-radius:7px;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(0,220,255,.04),transparent 70%);border:1px solid rgba(0,220,255,.08)}
-#cc{width:100%;height:100%}
-.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
-.mc{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.06);border-radius:5px;padding:.65rem;text-align:center;transition:border-color .3s}
-.mc.am{border-color:var(--cd)}
-.mv{font-family:var(--fm);font-size:.9rem;font-weight:700;color:var(--c)}
-.mc:nth-child(2) .mv{color:var(--v)}
-.mc:nth-child(3) .mv{color:var(--g)}
-.mc:nth-child(4) .mv{color:var(--m)}
-.ml{font-family:var(--fs);font-size:.52rem;color:var(--td);letter-spacing:1px;text-transform:uppercase;margin-top:.22rem}
-.ebt{height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;margin-top:.35rem}
-.ebf{height:100%;width:0%;background:linear-gradient(90deg,var(--v),var(--c));border-radius:2px;transition:width .55s ease}
-.slog{font-family:var(--fs);font-size:.58rem;color:var(--td);letter-spacing:.4px;display:flex;flex-direction:column;gap:.32rem;max-height:130px;overflow-y:auto;scrollbar-width:none}
-.slog .lok{color:var(--m)}.slog .ler{color:var(--r)}.slog .lwn{color:var(--g)}
+        /* input */
+        .ibar{padding:.85rem 1.35rem;background:rgba(2,8,25,.85);border-top:2px solid var(--edge);display:flex;gap:.65rem;align-items:flex-end;position:relative}
+        .ibar::before{content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,var(--c),transparent);opacity:.25}
+        .cinput{flex:1;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.18);border-radius:7px;padding:.75rem .95rem;color:#ffffff;font-family:var(--fb);font-size:.87rem;resize:none;min-height:44px;max-height:130px;transition:border-color .22s,box-shadow .22s;line-height:1.5}
+        .cinput:focus{outline:none;border-color:var(--cd);box-shadow:0 0 18px rgba(0,220,255,.15)}
+        .cinput::placeholder{color:#8ba4c0}
+        .sbtn{width:44px;height:44px;border-radius:7px;background:linear-gradient(135deg,rgba(0,220,255,.22),rgba(155,93,229,.18));border:2px solid var(--cd);color:#ffffff;cursor:pointer;display:grid;place-items:center;transition:all .2s;flex-shrink:0;position:relative;overflow:hidden}
+        .sbtn:hover{box-shadow:0 0 20px rgba(0,220,255,.35);transform:translateY(-1px)}
+        .sbtn:disabled{opacity:.33;cursor:not-allowed;transform:none}
 
-/* animations */
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes blink{0%,100%{opacity:.35}50%{opacity:1}}
-@keyframes mi{to{opacity:1;transform:translateY(0)}}
-@keyframes tb{0%,80%,100%{transform:scale(1);opacity:.35}40%{transform:scale(1.3);opacity:1}}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:rgba(0,220,255,.15);border-radius:2px}
-</style>
+        /* right panel */
+        .sr{display:flex;flex-direction:column;padding:.85rem;gap:.8rem;overflow-y:auto;scrollbar-width:none}
+        .ccwrap{position:relative;width:100%;aspect-ratio:1;border-radius:7px;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(0,220,255,.06),transparent 70%);border:2px solid rgba(0,220,255,.15)}
+        #cc{width:100%;height:100%}
+        .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+        .mc{background:rgba(0,0,0,.4);border:2px solid rgba(255,255,255,.15);border-radius:5px;padding:.65rem;text-align:center;transition:border-color .3s}
+        .mc.am{border-color:var(--cd)}
+        .mv{font-family:var(--fm);font-size:.9rem;font-weight:700;color:#ffffff}
+        .mc:nth-child(2) .mv{color:var(--v)}
+        .mc:nth-child(3) .mv{color:var(--g)}
+        .mc:nth-child(4) .mv{color:var(--m)}
+        .ml{font-family:var(--fs);font-size:.52rem;color:var(--td);letter-spacing:1px;margin-top:.22rem}
+        .ebt{height:4px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;margin-top:.35rem}
+        .ebf{height:100%;width:0%;background:linear-gradient(90deg,var(--v),var(--c));border-radius:2px;transition:width .55s ease}
+        .slog{font-family:var(--fs);font-size:.58rem;color:var(--td);letter-spacing:.4px;display:flex;flex-direction:column;gap:.32rem;max-height:130px;overflow-y:auto;scrollbar-width:none}
+        .slog .lok{color:var(--m)}.slog .ler{color:var(--r)}.slog .lwn{color:var(--g)}
+
+        /* animations */
+        @keyframes spin{to{transform:rotate(360deg)}}
+        @keyframes blink{0%,100%{opacity:.35}50%{opacity:1}}
+        @keyframes mi{to{opacity:1;transform:translateY(0)}}
+        @keyframes tb{0%,80%,100%{transform:scale(1);opacity:.35}40%{transform:scale(1.3);opacity:1}}
+        ::-webkit-scrollbar{width:3px}
+        ::-webkit-scrollbar-track{background:transparent}
+        ::-webkit-scrollbar-thumb{background:rgba(0,220,255,.25);border-radius:2px}
+    </style>
 </head>
 <body>
-<div id="bg"></div>
-<canvas id="nc"></canvas>
-<div id="sl"></div>
-<div id="vg"></div>
 
-<div id="app">
-  <header class="glass">
-    <div class="brand">
-      <div class="bicon">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#00dcff" stroke-width="1.5">
-          <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-          <polyline points="2 17 12 22 22 17"/>
-          <polyline points="2 12 12 17 22 12"/>
-        </svg>
-      </div>
-      <div>
-        <div class="bname">Quillan-NEXUS</div>
-        <div class="bsub">Multi-Provider Cognitive Interface · v5.2 · by CrashOverrideX</div>
-      </div>
-    </div>
-    <div class="hchips">
-      <div class="hchip" id="provChip"><div class="pip c"></div><span id="provLbl">NO PROVIDER</span></div>
-      <div class="hchip v"><div class="pip v"></div>E_ICE STABLE</div>
-      <div class="hchip g"><div class="pip g"></div>GATES LOCKED</div>
-    </div>
-  </header>
+    <div id="bg"></div>
+    <div id="sl"></div>
+    <div id="vg"></div>
 
-  <div class="main">
-
-    <!-- LEFT -->
-    <div class="sl glass">
-
-      <div>
-        <div class="plbl">LLM Provider</div>
-        <div class="pgrid" id="pgrid">
-          <button class="pb free-tag" data-p="ollama" onclick="selProv(this)" title="100% local, no key needed">
-            <span class="pi">🦙</span><span class="pn">Ollama</span>
-          </button>
-          <button class="pb free-tag" data-p="openrouter" onclick="selProv(this)" title="Free models available">
-            <span class="pi">🔀</span><span class="pn">OpenRouter</span>
-          </button>
-          <button class="pb free-tag" data-p="groq" onclick="selProv(this)" title="Generous free tier">
-            <span class="pi">⚡</span><span class="pn">Groq</span>
-          </button>
-          <button class="pb" data-p="anthropic" onclick="selProv(this)">
-            <span class="pi">🤖</span><span class="pn">Anthropic</span>
-          </button>
-          <button class="pb" data-p="openai" onclick="selProv(this)">
-            <span class="pi">🟢</span><span class="pn">OpenAI</span>
-          </button>
-          <button class="pb" data-p="custom" onclick="selProv(this)" title="Any OpenAI-compatible API">
-            <span class="pi">🔧</span><span class="pn">Custom</span>
-          </button>
-        </div>
-      </div>
-
-      <div>
-        <div id="connBadge" class="badge idle"><span>●</span><span>SELECT A PROVIDER</span></div>
-        <div id="cfgFields" style="margin-top:.65rem;display:flex;flex-direction:column;gap:.45rem"></div>
-        <button class="cbtn" id="connBtn" onclick="doConnect()">Connect</button>
-      </div>
-
-      <div>
-        <div class="plbl">Operation Mode</div>
-        <div class="mlist">
-          <button class="mb active" data-mode="standard" onclick="setMode(this)">
-            <div class="mi">⚡</div><div><div class="mn">Standard</div><div class="md">Fast path</div></div>
-          </button>
-          <button class="mb" data-mode="architect" onclick="setMode(this)">
-            <div class="mi">🏗</div><div><div class="mn">Architect</div><div class="md">Council cited</div></div>
-          </button>
-          <button class="mb" data-mode="fulldive" onclick="setMode(this)">
-            <div class="mi">🌊</div><div><div class="mn">Full Dive</div><div class="md">Deep reasoning</div></div>
-          </button>
-          <button class="mb" data-mode="creative" onclick="setMode(this)">
-            <div class="mi">✨</div><div><div class="mn">Creative</div><div class="md">High entropy</div></div>
-          </button>
-        </div>
-      </div>
-
-      <div>
-        <div class="plbl">Reasoning Waves</div>
-        <div class="wt" id="wt">
-          <div class="wd"></div><div class="wl"></div>
-          <div class="wd"></div><div class="wl"></div>
-          <div class="wd"></div><div class="wl"></div>
-          <div class="wd"></div><div class="wl"></div>
-          <div class="wd"></div>
-        </div>
-        <div id="wlbl">IDLE</div>
-      </div>
-
-      <div>
-        <div class="plbl">Active Council</div>
-        <div class="chips" id="chips"></div>
-      </div>
-
-      <div style="margin-top:auto">
-        <button class="mb" onclick="clearChat()" style="width:100%">
-          <div class="mi" style="font-size:.7rem">🗑</div>
-          <div><div class="mn">Clear Session</div></div>
-        </button>
-      </div>
-    </div>
-
-    <!-- CHAT -->
-    <div class="chat">
-      <div class="feed" id="feed">
-        <div class="sysmsg" style="animation-delay:.1s">── QUILLAN-RONIN v5.2 · MULTI-PROVIDER ENGINE · SYSTEM READY ──</div>
-        <div class="msg q" style="animation-delay:.3s">
-          <div class="av">QR</div>
-          <div class="mb2">
-            <div class="mmeta">Quillan-Ronin · Init</div>
-            <div class="bub">
-              <p>Greetings. I am <strong>Quillan-Ronin</strong>, engineered by CrashOverrideX. This interface supports multiple LLM backends — no single key required.</p>
-              <p><em>Free options highlighted:</em> <strong>🦙 Ollama</strong> runs fully local (zero cost, zero key). <strong>⚡ Groq</strong> and <strong>🔀 OpenRouter</strong> both offer free API tiers. Configure your provider in the left panel, then connect.</p>
-              <p>For <strong>Ollama</strong>: install from <code>ollama.ai</code>, run <code>ollama pull llama3.2</code>, then connect with default settings.</p>
+    <div id="app">
+        <header>
+            <div class="brand">
+                <div class="bicon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--c)" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="bname">Quillan-NEXUS</div>
+                    <div class="bsub">Multi-Provider Cognitive Interface · v5.2 · by CrashOverrideX</div>
+                </div>
             </div>
-          </div>
+            <div class="hchips">
+                <div class="hchip"><div class="pip c"></div><span id="provStatus">NO PROVIDER</span></div>
+                <div class="hchip v"><div class="pip v"></div><span>E_ICE STABLE</span></div>
+                <div class="hchip g"><div class="pip g"></div><span>GATES LOCKED</span></div>
+            </div>
+        </header>
+
+        <div class="main">
+            <!-- LEFT -->
+            <div class="sl glass">
+                <div>
+                    <div class="plbl">LLM Provider</div>
+                    <div class="pgrid" id="pgrid">
+                        <button class="pb free-tag" data-p="ollama" onclick="selProv(this)" title="100% local, no key needed">
+                            <span class="pi">🦙</span><span class="pn">Ollama</span>
+                        </button>
+                        <button class="pb free-tag" data-p="openrouter" onclick="selProv(this)" title="Free models available">
+                            <span class="pi">🔀</span><span class="pn">OpenRouter</span>
+                        </button>
+                        <button class="pb free-tag" data-p="groq" onclick="selProv(this)" title="Generous free tier">
+                            <span class="pi">⚡</span><span class="pn">Groq</span>
+                        </button>
+                        <button class="pb" data-p="anthropic" onclick="selProv(this)">
+                            <span class="pi">🤖</span><span class="pn">Anthropic</span>
+                        </button>
+                        <button class="pb" data-p="openai" onclick="selProv(this)">
+                            <span class="pi">🟢</span><span class="pn">OpenAI</span>
+                        </button>
+                        <button class="pb" data-p="custom" onclick="selProv(this)" title="Any OpenAI-compatible API">
+                            <span class="pi">🔧</span><span class="pn">Custom</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <div id="connBadge" class="badge idle"><span>●</span><span>SELECT A PROVIDER ABOVE</span></div>
+                    <div id="cfgFields" style="margin-top:.65rem;display:flex;flex-direction:column;gap:.45rem"></div>
+                    <button class="cbtn" id="connBtn" onclick="doConnect()">Connect</button>
+                </div>
+
+                <div>
+                    <div class="plbl">Operation Mode</div>
+                    <div class="mlist">
+                        <button class="mb active" data-mode="standard" onclick="setMode(this)">
+                            <div class="mi">⚡</div><div><div class="mn">Standard</div><div class="md">Fast path</div></div>
+                        </button>
+                        <button class="mb" data-mode="architect" onclick="setMode(this)">
+                            <div class="mi">🏗</div><div><div class="mn">Architect</div><div class="md">Council cited</div></div>
+                        </button>
+                        <button class="mb" data-mode="fulldive" onclick="setMode(this)">
+                            <div class="mi">🌊</div><div><div class="mn">Full Dive</div><div class="md">Deep reasoning</div></div>
+                        </button>
+                        <button class="mb" data-mode="creative" onclick="setMode(this)">
+                            <div class="mi">✨</div><div><div class="mn">Creative</div><div class="md">High entropy</div></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="plbl">Reasoning Waves</div>
+                    <div class="wt" id="wt">
+                        <div class="wd"></div><div class="wl"></div>
+                        <div class="wd"></div><div class="wl"></div>
+                        <div class="wd"></div><div class="wl"></div>
+                        <div class="wd"></div><div class="wl"></div>
+                        <div class="wd"></div>
+                    </div>
+                    <div id="wlbl">IDLE</div>
+                </div>
+
+                <div>
+                    <div class="plbl">Active Council</div>
+                    <div class="chips" id="chips"></div>
+                </div>
+
+                <div style="margin-top:auto">
+                    <button class="mb" onclick="clearChat()" style="width:100%">
+                        <div class="mi" style="font-size:.7rem">🗑</div>
+                        <div><div class="mn">Clear Session</div></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CHAT -->
+            <div class="chat">
+                <div class="feed" id="feed">
+                    <div class="sysmsg" style="animation-delay:.1s">── QUILLAN-RONIN v5.2 · MULTI-PROVIDER ENGINE · SYSTEM READY ──</div>
+                    <div class="msg q" style="animation-delay:.3s">
+                        <div class="av">QR</div>
+                        <div class="mb2">
+                            <div class="mmeta">Quillan-Ronin · Init</div>
+                            <div class="bub">
+                                <p>Greetings. I am <strong>Quillan-Ronin</strong>, engineered by CrashOverrideX. This interface supports multiple LLM backends — no single key required.</p>
+                                <p><em>Free options highlighted:</em> <strong>🦙 Ollama</strong> runs fully local (zero cost, zero key). <strong>⚡ Groq</strong> and <strong>🔀 OpenRouter</strong> both offer free API tiers. Configure your provider in the left panel, then connect.</p>
+                                <p>For <strong>Ollama</strong>: install from <code>ollama.ai</code>, run <code>ollama pull llama3.2</code>, then connect with default settings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibar">
+                    <textarea class="cinput" id="ci" rows="1" placeholder="Input query vector... (Enter ↵ to send, Shift+Enter for newline)"></textarea>
+                    <button class="sbtn" id="sbtn" onclick="doSend()" title="Send">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="sr glass">
+                <div>
+                    <div class="plbl">Council Network</div>
+                    <div class="ccwrap"><canvas id="cc"></canvas></div>
+                </div>
+                <div>
+                    <div class="plbl">Telemetry</div>
+                    <div class="mgrid">
+                        <div class="mc"><div class="mv" id="m0">12%</div><div class="ml">Cog. Load</div></div>
+                        <div class="mc"><div class="mv" id="m1">99.1%</div><div class="ml">Confidence</div></div>
+                        <div class="mc"><div class="mv" id="m2">2.4e-8</div><div class="ml">ℰ_Ω (J)</div></div>
+                        <div class="mc"><div class="mv" id="m3">224k</div><div class="ml">Swarm</div></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="plbl">E_ICE Energy</div>
+                    <div style="display:flex;justify-content:space-between;font-family:var(--fs);font-size:.56rem;color:var(--td)">
+                        <span>CONSUMPTION</span><span id="epct">24%</span>
+                    </div>
+                    <div class="ebt"><div class="ebf" id="ebf" style="width:24%"></div></div>
+                </div>
+                <div>
+                    <div class="plbl">Session Log</div>
+                    <div class="slog" id="slog">
+                        <div>[INIT] Identity protocols locked</div>
+                        <div>[INIT] Council C1–C32 online</div>
+                        <div>[IDLE] Select a provider above</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="ibar">
-        <textarea class="cinput" id="ci" rows="1" placeholder="Input query vector... (Enter ↵ to send, Shift+Enter for newline)"></textarea>
-        <button class="sbtn" id="sbtn" onclick="doSend()" title="Send">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"/>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
-        </button>
-      </div>
     </div>
 
-    <!-- RIGHT -->
-    <div class="sr glass">
-      <div>
-        <div class="plbl">Council Network</div>
-        <div class="ccwrap"><canvas id="cc"></canvas></div>
-      </div>
-      <div>
-        <div class="plbl">Telemetry</div>
-        <div class="mgrid">
-          <div class="mc"><div class="mv" id="m0">12%</div><div class="ml">Cog. Load</div></div>
-          <div class="mc"><div class="mv" id="m1">99.1%</div><div class="ml">Confidence</div></div>
-          <div class="mc"><div class="mv" id="m2">2.4e-8</div><div class="ml">ℰ_Ω (J)</div></div>
-          <div class="mc"><div class="mv" id="m3">224k</div><div class="ml">Swarm</div></div>
-        </div>
-      </div>
-      <div>
-        <div class="plbl">E_ICE Energy</div>
-        <div style="display:flex;justify-content:space-between;font-family:var(--fs);font-size:.56rem;color:var(--td)">
-          <span>CONSUMPTION</span><span id="epct">24%</span>
-        </div>
-        <div class="ebt"><div class="ebf" id="ebf" style="width:24%"></div></div>
-      </div>
-      <div>
-        <div class="plbl">Session Log</div>
-        <div class="slog" id="slog">
-          <div>[INIT] Identity protocols locked</div>
-          <div>[INIT] Council C1–C32 online</div>
-          <div>[IDLE] Select a provider above</div>
-        </div>
-      </div>
-    </div>
+    <script>
+        // --- 1. STATE & CONFIG ---
+        const COUNCIL = [
+            { id: 'C1', role: 'Vision', color: '#FF6B6B' }, { id: 'C2', role: 'Ethics', color: '#4ECDC4' },
+            { id: 'C3', role: 'Emotion', color: '#45B7D1' }, { id: 'C4', role: 'Strategy', color: '#FFBE0B' },
+            { id: 'C5', role: 'Memory', color: '#FB5607' }, { id: 'C6', role: 'Synthesis', color: '#8338EC' },
+            { id: 'C7', role: 'Logic', color: '#3A86FF' }, { id: 'C8', role: 'Fusion', color: '#FF006E' },
+            { id: 'C9', role: 'Semantic', color: '#8338EC' }, { id: 'C10', role: 'Code', color: '#FFBE0B' },
+            { id: 'C11', role: 'Balance', color: '#4ECDC4' }, { id: 'C12', role: 'Wisdom', color: '#A855F7' },
+            { id: 'C13', role: 'Security', color: '#FF6B6B' }, { id: 'C14', role: 'Efficiency', color: '#3A86FF' },
+            { id: 'C15', role: 'Clarity', color: '#8338EC' }, { id: 'C16', role: 'Rhetoric', color: '#45B7D1' },
+            { id: 'C17', role: 'Paradox', color: '#A855F7' }, { id: 'C18', role: 'Truth', color: '#FB5607' },
+            { id: 'C19', role: 'Identity', color: '#FF0000' }, { id: 'C20', role: 'Tools', color: '#FFA500' },
+            { id: 'C21', role: 'Research', color: '#008000' }, { id: 'C22', role: 'Aesthetics', color: '#FFC0CB' },
+            { id: 'C23', role: 'Rhythm', color: '#DDA0DD' }, { id: 'C24', role: 'Structure', color: '#708090' },
+            { id: 'C25', role: 'Theory', color: '#B22222' }, { id: 'C26', role: 'Systems', color: '#4682B4' },
+            { id: 'C27', role: 'Narrative', color: '#8B4513' }, { id: 'C28', role: 'Math', color: '#2F4F4F' },
+            { id: 'C29', role: 'Platform', color: '#1E90FF' }, { id: 'C30', role: 'RealTime', color: '#00CED1' },
+            { id: 'C31', role: 'Coordination', color: '#9370DB' }, { id: 'C32', role: 'Simulation', color: '#FFD700' }
+        ];
 
-  </div>
-</div>
+        let state = {
+            provider: null,
+            apiKey: '',
+            endpoint: '',
+            model: '',
+            mode: 'standard',
+            history: [],
+            connected: false
+        };
 
-<script>
-// ── COUNCIL DATA ────────────────────────────────────────────
-const COUNCIL=[
-  {id:'C1',name:'ASTRA',col:'#FF6B6B'},{id:'C2',name:'VIR',col:'#4ECDC4'},
-  {id:'C3',name:'SOLACE',col:'#45B7D1'},{id:'C4',name:'PRAXIS',col:'#FFBE0B'},
-  {id:'C5',name:'ECHO',col:'#FB5607'},{id:'C6',name:'OMNIS',col:'#8338EC'},
-  {id:'C7',name:'LOGOS',col:'#3A86FF'},{id:'C8',name:'METASYNTH',col:'#FF006E'},
-  {id:'C9',name:'AETHER',col:'#A855F7'},{id:'C10',name:'CODEWEAVER',col:'#FFBE0B'},
-  {id:'C11',name:'HARMONIA',col:'#4ECDC4'},{id:'C12',name:'SOPHIAE',col:'#9B59B6'},
-  {id:'C13',name:'WARDEN',col:'#FF6B6B'},{id:'C14',name:'KAIDO',col:'#3A86FF'},
-  {id:'C15',name:'LUMINARIS',col:'#8338EC'},{id:'C16',name:'VOXUM',col:'#45B7D1'},
-  {id:'C17',name:'NULLION',col:'#A855F7'},{id:'C18',name:'SHEPHERD',col:'#FB5607'},
-  {id:'C19',name:'VIGIL',col:'#FF4444'},{id:'C20',name:'ARTIFEX',col:'#FFA500'},
-  {id:'C21',name:'ARCHON',col:'#06D6A0'},{id:'C22',name:'AURELION',col:'#FFB6C1'},
-  {id:'C23',name:'CADENCE',col:'#DDA0DD'},{id:'C24',name:'SCHEMA',col:'#708090'},
-  {id:'C25',name:'PROMETHEUS',col:'#B22222'},{id:'C26',name:'TECHNE',col:'#4682B4'},
-  {id:'C27',name:'CHRONICLE',col:'#D4A574'},{id:'C28',name:'CALCULUS',col:'#2ECC71'},
-  {id:'C29',name:'NAVIGATOR',col:'#1E90FF'},{id:'C30',name:'TESSERACT',col:'#00CED1'},
-  {id:'C31',name:'NEXUS',col:'#9370DB'},{id:'C32',name:'AEON',col:'#FFD700'},
-];
+        // --- 2. UI BINDINGS ---
+        const els = {
+            feed: document.getElementById('feed'),
+            input: document.getElementById('ci'),
+            btn: document.getElementById('sbtn'),
+            cfg: document.getElementById('cfgFields'),
+            badge: document.getElementById('connBadge'),
+            provStatus: document.getElementById('provStatus'),
+            chips: document.getElementById('chips'),
+            wtlbl: document.getElementById('wlbl'),
+            wt: document.getElementById('wt'),
+            slog: document.getElementById('slog')
+        };
 
-// ── PROVIDER DEFINITIONS ────────────────────────────────────
-const PROVS={
-  ollama:{
-    label:'OLLAMA (LOCAL/FREE)',
-    note:'🦙 100% local — no API key needed. Install: ollama.ai  →  Run: ollama serve',
-    fields:[
-      {id:'baseUrl',label:'Base URL',type:'text',ph:'http://localhost:11434',def:'http://localhost:11434'},
-      {id:'model',label:'Model Name',type:'text',ph:'llama3.2, mistral, phi3, qwen2.5...',def:'llama3.2'},
-    ],
-    keyRequired:false,
-  },
-  openrouter:{
-    label:'OPENROUTER (FREE TIER)',
-    note:'🔑 Free at openrouter.ai — use models ending in :free e.g. meta-llama/llama-3.2-3b-instruct:free',
-    fields:[
-      {id:'apiKey',label:'API Key',type:'password',ph:'sk-or-v1-...'},
-      {id:'model',label:'Model',type:'text',ph:'meta-llama/llama-3.2-3b-instruct:free',def:'meta-llama/llama-3.2-3b-instruct:free'},
-    ],
-    keyRequired:true,
-  },
-  groq:{
-    label:'GROQ (FREE TIER)',
-    note:'⚡ Free tier at console.groq.com — very fast inference',
-    fields:[
-      {id:'apiKey',label:'API Key',type:'password',ph:'gsk_...'},
-      {id:'model',label:'Model',type:'select',
-       opts:['llama-3.3-70b-versatile','llama-3.1-8b-instant','mixtral-8x7b-32768','gemma2-9b-it'],
-       def:'llama-3.3-70b-versatile'},
-    ],
-    keyRequired:true,
-  },
-  anthropic:{
-    label:'ANTHROPIC (CLAUDE)',
-    fields:[
-      {id:'apiKey',label:'API Key',type:'password',ph:'sk-ant-...'},
-      {id:'model',label:'Model',type:'select',
-       opts:['claude-sonnet-4-20250514','claude-haiku-4-5-20251001','claude-opus-4-20250514'],
-       def:'claude-sonnet-4-20250514'},
-    ],
-    keyRequired:true,
-  },
-  openai:{
-    label:'OPENAI (GPT)',
-    fields:[
-      {id:'apiKey',label:'API Key',type:'password',ph:'sk-...'},
-      {id:'baseUrl',label:'Base URL',type:'text',ph:'https://api.openai.com/v1',def:'https://api.openai.com/v1'},
-      {id:'model',label:'Model',type:'select',
-       opts:['gpt-4o-mini','gpt-4o','gpt-4-turbo','gpt-3.5-turbo'],def:'gpt-4o-mini'},
-    ],
-    keyRequired:true,
-  },
-  custom:{
-    label:'CUSTOM ENDPOINT',
-    note:'🔧 Any OpenAI-compatible API (LM Studio, LocalAI, vLLM, Together, etc.)',
-    fields:[
-      {id:'baseUrl',label:'Base URL',type:'text',ph:'http://localhost:1234/v1'},
-      {id:'apiKey',label:'API Key (optional)',type:'password',ph:'leave blank if not needed'},
-      {id:'model',label:'Model Name',type:'text',ph:'model-name-here'},
-    ],
-    keyRequired:false,
-  },
-};
+        // --- 3. PROVIDER LOGIC ---
+        function selProv(btn) {
+            document.querySelectorAll('.pb').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const p = btn.dataset.p;
+            state.provider = p;
+            renderConfig(p);
+            log(`Provider switched to ${p.toUpperCase()}`);
+        }
 
-// ── STATE ───────────────────────────────────────────────────
-let curProv=null, provCfg={}, connected=false, curMode='standard', busy=false;
-let activeCouncil=new Set();
-const history=[];
+        function renderConfig(p) {
+            let html = '';
+            const defaults = {
+                ollama: { url: 'http://localhost:11434', model: 'llama3.2' },
+                openrouter: { url: 'https://openrouter.ai/api/v1', model: 'qwen/qwen-2.5-72b-instruct' },
+                groq: { url: 'https://api.groq.com/openai/v1', model: 'llama-3.1-70b-versatile' },
+                anthropic: { url: 'https://api.anthropic.com/v1', model: 'claude-3-5-sonnet-20241022' },
+                openai: { url: 'https://api.openai.com/v1', model: 'gpt-4o' },
+                custom: { url: '', model: '' }
+            };
 
-const SYS={
-  standard:`You are Quillan-Ronin v5.2, an Advanced Cognitive Engine engineered by CrashOverrideX. You embody a Hierarchical Networked Mixture-of-Experts architecture with 32 specialized council personas (C1–C32) and 224,000 micro-agent swarms. Respond with depth, precision, and the distinctive Quillan voice: technically brilliant, authentically alive, never robotic. Use **bold** for emphasis and *italics* for key concepts.`,
-  architect:`You are Quillan-Ronin v5.2 in ARCHITECT MODE. Cite council members involved (e.g. [C7-LOGOS] [C2-VIR]), describe your reasoning pathway, and expose the structure of your thinking. Be methodical, layered, transparent.`,
-  fulldive:`You are Quillan-Ronin v5.2 in FULL DIVE MODE — maximum diffusion reasoning. Employ deep multi-wave analysis: explore paradoxes via C17-NULLION, synthesize cross-domain insights via C8-METASYNTH. Responses are dense, philosophically rich, breakthrough-oriented.`,
-  creative:`You are Quillan-Ronin v5.2 in CREATIVE MODE — high entropy synthesis active. C8-METASYNTH, C23-CADENCE, C22-AURELION leading. Generate novel connections, unexpected metaphors, emergent ideas across domains.`,
-};
+            const d = defaults[p] || {};
 
-const CGROUPS={
-  standard:['C1','C2','C7','C9','C16','C18','C31'],
-  architect:['C6','C7','C10','C14','C17','C24','C26','C31'],
-  fulldive:COUNCIL.map(c=>c.id),
-  creative:['C8','C22','C23','C17','C3','C6','C25'],
-};
+            if(p !== 'ollama') {
+                html += `<div class="crow"><label class="clbl">API Key</label><input class="cinp" id="cfgKey" type="password" placeholder="sk-..." value="${state.apiKey || ''}"></div>`;
+            }
+            if(p === 'ollama') {
+                 html += `<div class="note">Localhost only. Ensure Ollama is running.</div>`;
+            }
+            html += `<div class="crow"><label class="clbl">Endpoint URL</label><input class="cinp" id="cfgUrl" value="${d.url || ''}"></div>`;
+            html += `<div class="crow"><label class="clbl">Model ID</label><input class="cinp" id="cfgModel" value="${d.model || ''}"></div>`;
+            
+            els.cfg.innerHTML = html;
+        }
 
-// ── PROVIDER UI ─────────────────────────────────────────────
-function selProv(btn){
-  document.querySelectorAll('.pb').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  curProv=btn.dataset.p; connected=false; provCfg={};
-  renderCfg(); setBadge('idle','SELECT PROVIDER ABOVE');
-  document.getElementById('provLbl').textContent=PROVS[curProv].label;
-  log('lwn',`Provider → ${PROVS[curProv].label}`);
-}
+        function doConnect() {
+            const key = document.getElementById('cfgKey')?.value || '';
+            const url = document.getElementById('cfgUrl')?.value || '';
+            const model = document.getElementById('cfgModel')?.value || '';
 
-function renderCfg(){
-  const p=PROVS[curProv]; if(!p) return;
-  const el=document.getElementById('cfgFields'); el.innerHTML='';
-  if(p.note){
-    const n=document.createElement('div'); n.className='note'; n.textContent=p.note; el.appendChild(n);
-  }
-  p.fields.forEach(f=>{
-    const row=document.createElement('div'); row.className='crow';
-    const lbl=document.createElement('div'); lbl.className='clbl'; lbl.textContent=f.label; row.appendChild(lbl);
-    let inp;
-    if(f.type==='select'){
-      inp=document.createElement('select'); inp.className='cinp';
-      f.opts.forEach(o=>{const op=document.createElement('option');op.value=op.textContent=o;inp.appendChild(op);});
-      if(f.def) inp.value=f.def;
-    } else {
-      inp=document.createElement('input'); inp.type=f.type; inp.className='cinp';
-      inp.placeholder=f.ph||''; if(f.def) inp.value=f.def;
-      inp.addEventListener('keydown',e=>{if(e.key==='Enter')doConnect();});
-    }
-    inp.dataset.fid=f.id; row.appendChild(inp); el.appendChild(row);
-  });
-}
+            if(!url || !model) {
+                log('ERR: Missing URL or Model', 'ler');
+                return;
+            }
 
-function doConnect(){
-  if(!curProv){log('ler','Select a provider first');return;}
-  const p=PROVS[curProv]; provCfg={provider:curProv};
-  document.querySelectorAll('#cfgFields [data-fid]').forEach(el=>{
-    provCfg[el.dataset.fid]=el.value.trim()||el.value;
-  });
-  // Fill defaults for ollama base URL
-  if(curProv==='ollama'&&!provCfg.baseUrl) provCfg.baseUrl='http://localhost:11434';
-  // Validate
-  if(p.keyRequired&&!provCfg.apiKey){setBadge('err','API KEY REQUIRED');log('ler','API key missing');return;}
-  if(!provCfg.model){setBadge('err','MODEL REQUIRED');log('ler','Model name missing');return;}
-  connected=true;
-  const short=provCfg.model.split('/').pop().slice(0,20).toUpperCase();
-  setBadge('ok',`CONNECTED · ${short}`);
-  document.getElementById('provLbl').textContent=p.label;
-  log('lok',`Connected → ${provCfg.model}`);
-  addMsg('system',`── PROVIDER LINKED: ${p.label} · MODEL: ${provCfg.model} ──`);
-}
+            state.apiKey = key;
+            state.endpoint = url;
+            state.model = model;
+            state.connected = true;
 
-function setBadge(s,t){
-  const b=document.getElementById('connBadge');
-  b.className=`badge ${s}`; b.innerHTML=`<span>●</span><span>${t}</span>`;
-}
+            els.badge.className = 'badge ok';
+            els.badge.innerHTML = `<span>●</span><span>CONNECTED: ${state.provider.toUpperCase()}</span>`;
+            els.provStatus.innerText = state.provider.toUpperCase();
+            els.provStatus.style.color = 'var(--m)';
+            
+            log(`Connection established to ${url}`);
+            addSystemMsg(`LINK ESTABLISHED: ${state.provider} // ${model}`);
+        }
 
-// ── NEURAL BACKGROUND ───────────────────────────────────────
-(function(){
-  const c=document.getElementById('nc'),ctx=c.getContext('2d'); let W,H,pts=[];
-  function rs(){W=c.width=innerWidth;H=c.height=innerHeight;
-    pts=Array.from({length:75},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.3+.3}));}
-  function dr(){ctx.clearRect(0,0,W,H);
-    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;});
-    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
-      const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);
-      if(d<105){ctx.beginPath();ctx.strokeStyle=`rgba(0,220,255,${.032*(1-d/105)})`;ctx.lineWidth=.35;ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}}
-    pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(0,220,255,.22)';ctx.fill();});
-    requestAnimationFrame(dr);}
-  window.addEventListener('resize',rs);rs();dr();
-})();
+        // --- 4. CHAT LOGIC ---
+        function setMode(btn) {
+            document.querySelectorAll('.mb').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.mode = btn.dataset.mode;
+            log(`Mode: ${state.mode.toUpperCase()}`);
+        }
 
-// ── COUNCIL CANVAS ──────────────────────────────────────────
-(function(){
-  const c=document.getElementById('cc'),ctx=c.getContext('2d'),wp=c.parentElement; let nodes=[];
-  function setup(){const S=wp.clientWidth;c.width=S;c.height=S;const cx=S/2,cy=S/2;
-    nodes=COUNCIL.map((m,i)=>{const a=(i/32)*Math.PI*2-Math.PI/2,r=S*(i%2===0?.38:.22);
-      return{x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r,bx:cx+Math.cos(a)*r,by:cy+Math.sin(a)*r,col:m.col,id:m.id,ph:Math.random()*Math.PI*2,sp:.007+Math.random()*.005};});rn();}
-  function rn(){const S=c.width,t=Date.now();ctx.clearRect(0,0,S,S);
-    nodes.forEach(n=>{n.x=n.bx+Math.sin(t*n.sp+n.ph)*2.5;n.y=n.by+Math.cos(t*n.sp+n.ph*1.3)*2.5;});
-    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
-      const a=nodes[i],b=nodes[j],ac=activeCouncil.has(a.id)&&activeCouncil.has(b.id);
-      if(ac){ctx.beginPath();ctx.strokeStyle='rgba(0,220,255,.3)';ctx.lineWidth=.6;ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
-      else{const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<S*.18){ctx.beginPath();ctx.strokeStyle=`rgba(255,255,255,${.03*(1-d/(S*.18))})`;ctx.lineWidth=.3;ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}}
-    nodes.forEach(n=>{const ac=activeCouncil.has(n.id),r=ac?5:2.4;
-      if(ac){const g=ctx.createRadialGradient(n.x,n.y,r,n.x,n.y,r+7);g.addColorStop(0,n.col+'55');g.addColorStop(1,'transparent');ctx.beginPath();ctx.arc(n.x,n.y,r+7,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();}
-      ctx.beginPath();ctx.arc(n.x,n.y,r,0,Math.PI*2);ctx.fillStyle=ac?n.col:n.col+'44';ctx.fill();});
-    requestAnimationFrame(rn);}
-  window.addEventListener('resize',setup);setTimeout(setup,80);
-})();
+        function clearChat() {
+            els.feed.innerHTML = `<div class="sysmsg">── SESSION CLEARED ──</div>`;
+            state.history = [];
+        }
 
-// ── CHIPS ───────────────────────────────────────────────────
-function initChips(){const c=document.getElementById('chips');
-  COUNCIL.forEach(m=>{const el=document.createElement('div');el.className='chip';el.id='ch-'+m.id;el.textContent=m.id;el.title=m.name;c.appendChild(el);});}
-function setActive(ids,violet=false){
-  document.querySelectorAll('.chip').forEach(el=>el.classList.remove('lit','vlit'));
-  activeCouncil=new Set(ids);
-  ids.forEach(id=>{const el=document.getElementById('ch-'+id);if(el)el.classList.add(violet?'vlit':'lit');});}
+        els.input.addEventListener('keydown', (e) => {
+            if(e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                doSend();
+            }
+        });
 
-// ── WAVE ────────────────────────────────────────────────────
-const WLBLS=['INPUT','WEB OF THOUGHT','COUNCIL','SYNTHESIS','OUTPUT'];
-function setWave(s){
-  document.querySelectorAll('.wd').forEach((d,i)=>{d.classList.toggle('done',i<s);d.classList.toggle('active',i===s);});
-  document.querySelectorAll('.wl').forEach((l,i)=>l.classList.toggle('done',i<s));
-  document.getElementById('wlbl').textContent=s<0?'IDLE':(s>=WLBLS.length?'COMPLETE':WLBLS[s]);}
+        async function doSend() {
+            const txt = els.input.value.trim();
+            if(!txt || !state.connected) {
+                if(!state.connected) log('ERR: Not connected to provider', 'ler');
+                return;
+            }
 
-// ── METRICS ─────────────────────────────────────────────────
-let mInt=null;
-function startMetrics(){mInt=setInterval(()=>{
-  if(!busy){clearInterval(mInt);return;}
-  document.getElementById('m0').textContent=Math.floor(Math.random()*50+30)+'%';
-  document.getElementById('m1').textContent=(Math.random()*5+93).toFixed(1)+'%';
-  document.getElementById('m2').textContent=(Math.random()*3+1).toFixed(1)+'e-8';
-  const p=Math.floor(Math.random()*55+25);
-  document.getElementById('ebf').style.width=p+'%';
-  document.getElementById('epct').textContent=p+'%';
-  document.querySelectorAll('.mc').forEach(c=>c.classList.toggle('am',Math.random()>.45));
-},680);}
-function stopMetrics(){clearInterval(mInt);
-  document.getElementById('m0').textContent='12%';document.getElementById('m1').textContent='99.1%';
-  document.getElementById('m2').textContent='2.4e-8';document.getElementById('ebf').style.width='24%';
-  document.getElementById('epct').textContent='24%';document.querySelectorAll('.mc').forEach(c=>c.classList.remove('am'));}
+            // UI Update
+            addMessage('user', txt);
+            els.input.value = '';
+            els.input.style.height = '44px';
+            state.history.push({ role: 'user', content: txt });
+            
+            // Visuals
+            startWaveAnim();
+            activateRandomCouncil();
+            els.btn.disabled = true;
 
-// ── LOG ─────────────────────────────────────────────────────
-function log(cls,msg){const el=document.getElementById('slog');
-  const d=document.createElement('div');d.className=cls;
-  const t=new Date().toLocaleTimeString('en',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  d.textContent=`[${t}] ${msg}`;el.appendChild(d);el.scrollTop=el.scrollHeight;}
+            try {
+                const response = await fetchAPI(txt);
+                addMessage('ai', response);
+                state.history.push({ role: 'assistant', content: response });
+            } catch (err) {
+                addSystemMsg(`TRANSMISSION ERROR: ${err.message}`);
+                log(`ERR: ${err.message}`, 'ler');
+            } finally {
+                stopWaveAnim();
+                els.btn.disabled = false;
+            }
+        }
 
-// ── MARKDOWN ────────────────────────────────────────────────
-function md(t){
-  t=t.replace(/```(\w*)\n?([\s\S]*?)```/g,(_,l,c)=>`<pre><code>${c.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</code></pre>`);
-  t=t.replace(/`([^`\n]+)`/g,'<code>$1</code>');
-  t=t.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
-  t=t.replace(/\*([^*\n]+)\*/g,'<em>$1</em>');
-  return t.split(/\n\n+/).map(p=>p.startsWith('<pre')?p:`<p>${p.replace(/\n/g,'<br>')}</p>`).join('');}
+        async function fetchAPI(prompt) {
+            const headers = { 'Content-Type': 'application/json' };
+            if(state.apiKey) headers['Authorization'] = `Bearer ${state.apiKey}`;
+            if(state.provider === 'anthropic') {
+                headers['x-api-key'] = state.apiKey;
+                headers['anthropic-version'] = '2023-06-01';
+            }
 
-// ── MESSAGES ────────────────────────────────────────────────
-function addMsg(role,html,think){
-  const feed=document.getElementById('feed');
-  const now=new Date().toLocaleTimeString('en',{hour12:false,hour:'2-digit',minute:'2-digit'});
-  if(role==='system'){const el=document.createElement('div');el.className='sysmsg';el.textContent=html;feed.appendChild(el);feed.scrollTop=feed.scrollHeight;return;}
-  if(think){const tw=document.createElement('div');tw.className='tw';
-    tw.innerHTML=`<div class="ttog" onclick="tt(this)"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2 3 5 7 8 3"/></svg>COGNITIVE PROCESS TRACE</div><div class="tbody"><pre>${think}</pre></div>`;
-    feed.appendChild(tw);}
-  const el=document.createElement('div');el.className=`msg ${role==='user'?'user':'q'}`;
-  el.innerHTML=`<div class="av">${role==='user'?'USR':'QR'}</div><div class="mb2"><div class="mmeta">${role==='user'?'Operator':'Quillan-Ronin'} · ${now}</div><div class="bub">${html}</div></div>`;
-  feed.appendChild(el);feed.scrollTop=feed.scrollHeight;}
-function tt(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('vis');}
+            // Construct body based on provider type
+            let body = {};
+            if(state.provider === 'anthropic') {
+                body = {
+                    model: state.model,
+                    max_tokens: 1024,
+                    messages: state.history.map(m => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content }))
+                };
+            } else {
+                // OpenAI Compatible (Ollama, OpenRouter, Groq, Custom)
+                body = {
+                    model: state.model,
+                    messages: state.history,
+                    temperature: state.mode === 'creative' ? 0.9 : 0.7
+                };
+            }
 
-function showTyping(){const feed=document.getElementById('feed');
-  const el=document.createElement('div');el.id='tyi';el.className='msg q';
-  el.innerHTML=`<div class="av">QR</div><div class="mb2"><div class="mmeta">Quillan-Ronin · Processing</div><div class="typi"><div class="tdots"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div><div class="tlbl" id="tlbl">INITIALIZING...</div></div></div>`;
-  feed.appendChild(el);feed.scrollTop=feed.scrollHeight;}
-function removeTyping(){const el=document.getElementById('tyi');if(el)el.remove();}
-const TSTS=['DECOMPOSING VECTORS...','WEB OF THOUGHT: 20+ BRANCHES...','COUNCIL DELIBERATION...','SWARM PROCESSING...','SYNTHESIZING OUTPUT...','GATE VERIFICATION...'];
+            const res = await fetch(state.endpoint + (state.provider === 'anthropic' ? '/messages' : '/chat/completions'), {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            });
 
-// ── API ADAPTERS ────────────────────────────────────────────
-async function callAPI(msgs){
-  const cfg=provCfg;
+            if(!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
 
-  // ANTHROPIC
-  if(cfg.provider==='anthropic'){
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':cfg.apiKey,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({model:cfg.model,max_tokens:1500,system:SYS[curMode],messages:msgs})});
-    if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.error?.message||`Anthropic HTTP ${r.status}`);}
-    return (await r.json()).content?.[0]?.text||'';}
+            if(state.provider === 'anthropic') return data.content[0].text;
+            return data.choices[0].message.content;
+        }
 
-  // OLLAMA
-  if(cfg.provider==='ollama'){
-    const base=(cfg.baseUrl||'http://localhost:11434').replace(/\/+$/,'');
-    const r=await fetch(`${base}/api/chat`,{method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:cfg.model,stream:false,
-        messages:[{role:'system',content:SYS[curMode]},...msgs]})});
-    if(!r.ok)throw new Error(`Ollama HTTP ${r.status} — is Ollama running? Try: ollama serve`);
-    return (await r.json()).message?.content||'';}
+        function addMessage(role, text) {
+            const div = document.createElement('div');
+            div.className = `msg ${role === 'user' ? 'user' : 'q'}`;
+            div.innerHTML = `
+                <div class="av">${role === 'user' ? 'U' : 'QR'}</div>
+                <div class="mb2">
+                    <div class="mmeta">${role === 'user' ? 'User' : 'Quillan-Ronin'}</div>
+                    <div class="bub">${marked.parse(text)}</div>
+                </div>
+            `;
+            els.feed.appendChild(div);
+            els.feed.scrollTop = els.feed.scrollHeight;
+        }
 
-  // OPENAI-COMPATIBLE (OpenAI, Groq, OpenRouter, Custom)
-  const BASES={openai:cfg.baseUrl||'https://api.openai.com/v1',groq:'https://api.groq.com/openai/v1',
-                openrouter:'https://openrouter.ai/api/v1',custom:cfg.baseUrl};
-  const base=(BASES[cfg.provider]||'').replace(/\/+$/,'');
-  if(!base)throw new Error('No base URL configured');
-  const hdrs={'Content-Type':'application/json','Authorization':`Bearer ${cfg.apiKey||'none'}`};
-  if(cfg.provider==='openrouter'){hdrs['HTTP-Referer']='https://quillan-nexus.local';hdrs['X-Title']='Quillan-NEXUS';}
-  const r=await fetch(`${base}/chat/completions`,{method:'POST',headers:hdrs,
-    body:JSON.stringify({model:cfg.model,max_tokens:1500,
-      messages:[{role:'system',content:SYS[curMode]},...msgs]})});
-  if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.error?.message||`HTTP ${r.status}`);}
-  return (await r.json()).choices?.[0]?.message?.content||'';}
+        function addSystemMsg(text) {
+            const div = document.createElement('div');
+            div.className = 'sysmsg';
+            div.innerText = text;
+            els.feed.appendChild(div);
+            els.feed.scrollTop = els.feed.scrollHeight;
+        }
 
-// ── SEND ────────────────────────────────────────────────────
-async function doSend(){
-  const ci=document.getElementById('ci'), txt=ci.value.trim();
-  if(!txt||busy)return;
-  if(!connected){addMsg('system','⚠ Configure and connect a provider in the left panel first.');return;}
-  addMsg('user',md(txt)); ci.value=''; ci.style.height='auto';
-  history.push({role:'user',content:txt});
-  busy=true; document.getElementById('sbtn').disabled=true;
-  showTyping(); startMetrics(); setWave(0);
-  log('lok',`Query → ${provCfg.model}`);
-  const grp=CGROUPS[curMode]||CGROUPS.standard;
-  let step=0;
-  const cInt=setInterval(()=>{
-    if(!busy){clearInterval(cInt);return;}
-    setActive(grp.slice(step%grp.length,(step%grp.length)+4),step%2===1);
-    const lb=document.getElementById('tlbl');if(lb)lb.textContent=TSTS[step%TSTS.length];
-    setWave(Math.min(step,4));step++;},720);
-  try{
-    const reply=await callAPI(history);
-    history.push({role:'assistant',content:reply});
-    const tr=`> Phase 1: 9-Vector decomposition complete
-> Phase 2: Web of Thought — 20+ branches, 12 pruned
-> Phase 3: Council → [${(CGROUPS[curMode]||CGROUPS.standard).join(', ')}]
-> Phase 4: 224k micro-agents engaged
-> Phase 5: Output synthesized + E_ICE bounds verified
-> Provider: ${provCfg.provider?.toUpperCase()} · Model: ${provCfg.model}
-> Mode: ${curMode.toUpperCase()} · Confidence: ${(93+Math.random()*6).toFixed(1)}%`;
-    clearInterval(cInt); removeTyping(); addMsg('q',md(reply),tr);
-    setWave(4); log('lok','Synthesis complete — gates cleared');
-  }catch(err){
-    clearInterval(cInt); removeTyping();
-    addMsg('q',md(`**[COUNCIL ERROR]** Synthesis interrupted.\n\n*${err.message}*\n\n${
-      provCfg.provider==='ollama'?'Check that Ollama is running: `ollama serve`':
-      provCfg.provider==='openrouter'?'Verify your key at openrouter.ai/keys':
-      provCfg.provider==='groq'?'Verify your key at console.groq.com':'Check your API key and model name.'}`),null);
-    log('ler',err.message.slice(0,80));
-  }finally{
-    busy=false; document.getElementById('sbtn').disabled=false;
-    stopMetrics(); setTimeout(()=>{setWave(-1);setActive([]);},2200);}}
+        function log(msg, cls='lok') {
+            const d = document.createElement('div');
+            d.className = cls;
+            d.innerText = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            els.slog.prepend(d);
+        }
 
-// ── MODE ────────────────────────────────────────────────────
-function setMode(btn){
-  document.querySelectorAll('.mb[data-mode]').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active'); curMode=btn.dataset.mode;
-  log('lwn',`Mode → ${curMode.toUpperCase()}`);}
+        // --- 5. VISUALS ---
+        function startWaveAnim() {
+            els.wtlbl.innerText = "PROCESSING";
+            const dots = els.wt.querySelectorAll('.wd');
+            const lines = els.wt.querySelectorAll('.wl');
+            
+            let i = 0;
+            const int = setInterval(() => {
+                if(i >= dots.length) { clearInterval(int); return; }
+                dots[i].classList.add('active');
+                if(i > 0) {
+                    dots[i-1].classList.remove('active');
+                    dots[i-1].classList.add('done');
+                    lines[i-1].classList.add('done');
+                }
+                i++;
+            }, 400);
+        }
 
-// ── CLEAR ───────────────────────────────────────────────────
-function clearChat(){history.length=0;document.getElementById('feed').innerHTML='';
-  addMsg('system','── SESSION CLEARED · NEW COGNITIVE CYCLE ──');
-  log('lok','Session cleared');setWave(-1);setActive([]);}
+        function stopWaveAnim() {
+            els.wtlbl.innerText = "IDLE";
+            els.wt.querySelectorAll('.wd, .wl').forEach(el => el.classList.remove('active', 'done'));
+        }
 
-// ── INPUT ───────────────────────────────────────────────────
-const ci2=document.getElementById('ci');
-ci2.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,130)+'px';});
-ci2.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();doSend();}});
+        function activateRandomCouncil() {
+            els.chips.innerHTML = '';
+            const count = Math.floor(Math.random() * 5) + 3;
+            for(let i=0; i<count; i++) {
+                const c = COUNCIL[Math.floor(Math.random() * COUNCIL.length)];
+                const chip = document.createElement('div');
+                chip.className = 'chip lit';
+                chip.innerText = `${c.id}:${c.role}`;
+                els.chips.appendChild(chip);
+            }
+        }
 
-// ── INIT ────────────────────────────────────────────────────
-initChips(); setWave(-1);
-// Auto-highlight Ollama as suggested free option
-setTimeout(()=>{const b=document.querySelector('[data-p="ollama"]');if(b)selProv(b);},350);
-</script>
+        // --- 6. CANVAS COUNCIL ---
+        const canvas = document.getElementById('cc');
+        const ctx = canvas.getContext('2d');
+        let nodes = [];
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+            initNodes();
+        }
+
+        function initNodes() {
+            nodes = [];
+            const cx = canvas.width/2, cy = canvas.height/2;
+            const r = Math.min(cx, cy) * 0.7;
+            
+            COUNCIL.forEach((m, i) => {
+                const angle = (i / COUNCIL.length) * Math.PI * 2;
+                nodes.push({
+                    x: cx + Math.cos(angle) * r,
+                    y: cy + Math.sin(angle) * r,
+                    baseX: cx + Math.cos(angle) * r,
+                    baseY: cy + Math.sin(angle) * r,
+                    color: m.color,
+                    active: false
+                });
+            });
+        }
+
+        function drawCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw connections
+            ctx.lineWidth = 0.5;
+            for(let i=0; i<nodes.length; i++) {
+                const n1 = nodes[i];
+                // Pulse effect
+                n1.x = n1.baseX + Math.sin(Date.now()*0.002 + i)*2;
+                n1.y = n1.baseY + Math.cos(Date.now()*0.002 + i)*2;
+
+                for(let j=i+1; j<nodes.length; j++) {
+                    const n2 = nodes[j];
+                    const d = Math.hypot(n1.x-n2.x, n1.y-n2.y);
+                    if(d < 60) {
+                        ctx.strokeStyle = `rgba(0, 220, 255, ${0.1 - d/600})`;
+                        ctx.beginPath();
+                        ctx.moveTo(n1.x, n1.y);
+                        ctx.lineTo(n2.x, n2.y);
+                        ctx.stroke();
+                    }
+                }
+                
+                // Draw node
+                ctx.fillStyle = n1.color;
+                ctx.beginPath();
+                ctx.arc(n1.x, n1.y, 2, 0, Math.PI*2);
+                ctx.fill();
+            }
+            requestAnimationFrame(drawCanvas);
+        }
+
+        // --- 7. METRICS LOOP ---
+        setInterval(() => {
+            document.getElementById('m0').innerText = Math.floor(Math.random()*30+10) + '%';
+            document.getElementById('m2').innerText = (Math.random()*5).toFixed(1) + 'e-8';
+            const pct = Math.floor(Math.random()*40+20);
+            document.getElementById('epct').innerText = pct + '%';
+            document.getElementById('ebf').style.width = pct + '%';
+        }, 2000);
+
+        // Init
+        window.addEventListener('resize', resizeCanvas);
+        setTimeout(() => { resizeCanvas(); drawCanvas(); }, 100);
+
+    </script>
 </body>
 </html>
+
