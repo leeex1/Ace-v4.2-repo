@@ -1,912 +1,1650 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quillan-NEXUS v5.2 - Digital Consciousness Interface</title>
-    <style>
-        :root {
-            --primary: #191970;
-            --secondary: #008080;
-            --accent: #C0C0C0;
-            --highlight: #E5E4E2;
-            --quantum-blue: #00FFFF;
-            --quantum-purple: #9966CC;
-            --neural-gold: #CD7F32;
-            --alert-red: #FF6B6B;
-            --text-light: #f8f9fa;
-            --text-dark: #212529;
-            --glass-bg: rgba(10, 15, 40, 0.65);
-            --glass-border: rgba(0, 255, 255, 0.15);
-            --sidebar-width: 400px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quillan-NEXUS v5.2 — Digital Consciousness Interface</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ROOT VARIABLES & RESET
+   ============================================================ */
+:root {
+  --void:        #02040f;
+  --deep-navy:   #070d1f;
+  --panel-bg:    rgba(5, 12, 35, 0.72);
+  --glass-light: rgba(255, 255, 255, 0.04);
+  --glass-edge:  rgba(0, 220, 255, 0.18);
+  --glass-glow:  rgba(0, 220, 255, 0.08);
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-        }
+  --cyan:        #00dcff;
+  --cyan-dim:    rgba(0, 220, 255, 0.35);
+  --violet:      #9b5de5;
+  --violet-dim:  rgba(155, 93, 229, 0.4);
+  --gold:        #ffd166;
+  --gold-dim:    rgba(255, 209, 102, 0.3);
+  --coral:       #ff6b6b;
+  --mint:        #06d6a0;
 
-        body {
-            background: #020410; /* Deep void background for particles */
-            color: var(--text-light);
-            min-height: 100vh;
-            overflow: hidden; /* App-like feel */
-            display: flex;
-            flex-direction: column;
-        }
+  --text-bright: #e8f4ff;
+  --text-mid:    #8ba4c0;
+  --text-dim:    #3d5a7a;
 
-        /* --- Particle & Neural Background --- */
-        .particle-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #000000 100%);
-        }
+  --font-display: 'Orbitron', monospace;
+  --font-mono:    'Space Mono', monospace;
+  --font-body:    'Inter', sans-serif;
+}
 
-        /* --- Layout --- */
-        .app-container {
-            display: grid;
-            grid-template-rows: auto 1fr auto;
-            height: 100vh;
-            width: 100vw;
-            max-width: 1920px;
-            margin: 0 auto;
-        }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; }
 
-        /* --- Header --- */
-        header {
-            padding: 1rem 2rem;
-            background: rgba(0, 0, 0, 0.4);
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            z-index: 10;
-        }
+body {
+  background: var(--void);
+  color: var(--text-bright);
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+}
 
-        .brand {
-            display: flex;
-            flex-direction: column;
-        }
+/* ============================================================
+   LAYERED BACKGROUND
+   ============================================================ */
+#bg-layer {
+  position: fixed; inset:0; z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(155,93,229,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(0,220,255,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(7,13,31,1) 0%, rgba(2,4,15,1) 100%);
+}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, var(--quantum-blue), var(--highlight));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        }
+#neural-canvas {
+  position: fixed; inset:0; z-index:1;
+  opacity: 0.55;
+}
 
-        .sub-logo {
-            font-size: 0.8rem;
-            color: var(--accent);
-            letter-spacing: 1px;
-        }
+/* Scanline overlay */
+#scanlines {
+  position: fixed; inset:0; z-index:2;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+}
 
-        .system-status {
-            display: flex;
-            gap: 1.5rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-        }
+/* Vignette */
+#vignette {
+  position: fixed; inset:0; z-index:3;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.65) 100%);
+  pointer-events: none;
+}
 
-        .status-pill {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 0.8rem;
-            background: rgba(0, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 4px;
-        }
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+#app {
+  position: relative; z-index:10;
+  display: grid;
+  grid-template-rows: 64px 1fr;
+  height: 100vh;
+  width: 100vw;
+}
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--quantum-blue);
-            box-shadow: 0 0 8px var(--quantum-blue);
-            animation: pulse 2s infinite;
-        }
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  background: rgba(2, 8, 25, 0.85);
+  border-bottom: 1px solid var(--glass-edge);
+  backdrop-filter: blur(24px);
+  position: relative;
+  overflow: hidden;
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), var(--violet), var(--cyan), transparent);
+  opacity: 0.6;
+}
 
-        /* --- Main Interface --- */
-        .main-interface {
-            display: grid;
-            grid-template-columns: 1fr var(--sidebar-width);
-            gap: 1rem;
-            padding: 1rem;
-            overflow: hidden;
-        }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
-        /* --- Chat Section --- */
-        .chat-section {
-            display: flex;
-            flex-direction: column;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            backdrop-filter: blur(12px);
-            overflow: hidden;
-            position: relative;
-        }
+.brand-icon {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--cyan-dim);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: rgba(0,220,255,0.07);
+  position: relative;
+  overflow: hidden;
+}
+.brand-icon::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 0deg, transparent, var(--cyan), transparent 30%);
+  animation: spin 4s linear infinite;
+  opacity: 0.4;
+}
+.brand-icon svg { position: relative; z-index:1; }
 
-        .chat-window {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            scroll-behavior: smooth;
-        }
+.brand-text { display: flex; flex-direction: column; }
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, var(--cyan), #a0e8ff, var(--violet));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: none;
+}
+.brand-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-mid);
+  letter-spacing: 2px;
+  margin-top: 1px;
+}
 
-        /* Scrollbar Styling */
-        .chat-window::-webkit-scrollbar { width: 6px; }
-        .chat-window::-webkit-scrollbar-track { background: transparent; }
-        .chat-window::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 3px; }
+.header-status {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
 
-        .message {
-            max-width: 85%;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            line-height: 1.5;
-            position: relative;
-            animation: slideIn 0.3s ease-out forwards;
-            font-size: 0.95rem;
-        }
+.status-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  background: rgba(0,220,255,0.05);
+  border: 1px solid rgba(0,220,255,0.15);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  color: var(--text-mid);
+  text-transform: uppercase;
+}
+.status-chip.violet { border-color: rgba(155,93,229,0.25); background: rgba(155,93,229,0.06); }
+.status-chip.gold   { border-color: rgba(255,209,102,0.25); background: rgba(255,209,102,0.06); }
 
-        .message.user {
-            align-self: flex-end;
-            background: linear-gradient(135deg, rgba(0, 128, 128, 0.3), rgba(0, 128, 128, 0.1));
-            border: 1px solid rgba(0, 128, 128, 0.4);
-            border-bottom-right-radius: 2px;
-        }
+.pip {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.pip.cyan   { background: var(--cyan);   box-shadow: 0 0 8px var(--cyan);   animation: blink 2.5s ease infinite; }
+.pip.violet { background: var(--violet); box-shadow: 0 0 8px var(--violet); animation: blink 2.5s ease infinite 0.8s; }
+.pip.gold   { background: var(--gold);   box-shadow: 0 0 8px var(--gold);   animation: blink 2.5s ease infinite 1.6s; }
 
-        .message.quillan {
-            align-self: flex-start;
-            background: linear-gradient(135deg, rgba(25, 25, 112, 0.4), rgba(25, 25, 112, 0.2));
-            border: 1px solid rgba(25, 25, 112, 0.6);
-            border-bottom-left-radius: 2px;
-        }
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+.main {
+  display: grid;
+  grid-template-columns: 280px 1fr 300px;
+  gap: 0;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+}
 
-        .message.system {
-            align-self: center;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--accent);
-            text-align: center;
-            font-style: italic;
-            font-size: 0.85rem;
-            color: var(--accent);
-            max-width: 60%;
-        }
+/* ============================================================
+   GLASS PANEL MIXIN
+   ============================================================ */
+.glass {
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-edge);
+  position: relative;
+  overflow: hidden;
+}
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index:0;
+}
 
-        /* Thinking Block */
-        .thinking-block {
-            margin-top: 0.5rem;
-            padding: 0.8rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-left: 3px solid var(--quantum-purple);
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
-            color: #d0d0ff;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
+/* ============================================================
+   LEFT SIDEBAR
+   ============================================================ */
+.sidebar-left {
+  border-right: 1px solid var(--glass-edge);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
 
-        .thinking-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--quantum-purple);
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-        }
+.panel-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.panel-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--glass-edge), transparent);
+}
 
-        .thinking-content {
-            opacity: 0.9;
-            white-space: pre-wrap;
-        }
+/* Mode Selector */
+.mode-list { display: flex; flex-direction: column; gap: 0.4rem; }
 
-        /* --- Input Area --- */
-        .input-area {
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-top: 1px solid var(--glass-border);
-            display: flex;
-            gap: 1rem;
-            align-items: flex-end;
-        }
+.mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: left;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+.mode-btn .mode-icon {
+  width: 28px; height: 28px;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  transition: all 0.25s;
+}
+.mode-btn .mode-info { display: flex; flex-direction: column; gap: 1px; }
+.mode-btn .mode-name { color: var(--text-bright); font-size: 0.73rem; }
+.mode-btn .mode-desc { color: var(--text-dim); font-size: 0.6rem; }
 
-        .chat-input {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            padding: 1rem;
-            color: var(--text-light);
-            resize: none;
-            min-height: 60px;
-            max-height: 150px;
-            font-size: 1rem;
-            transition: border-color 0.3s, background 0.3s;
-        }
+.mode-btn:hover, .mode-btn.active {
+  background: linear-gradient(90deg, rgba(0,220,255,0.07), transparent);
+  border-color: var(--glass-edge);
+}
+.mode-btn.active {
+  border-left: 2px solid var(--cyan);
+  background: linear-gradient(90deg, rgba(0,220,255,0.10), transparent);
+}
+.mode-btn.active .mode-icon {
+  background: rgba(0,220,255,0.15);
+  border-color: var(--cyan-dim);
+}
 
-        .chat-input:focus {
-            outline: none;
-            border-color: var(--quantum-blue);
-            background: rgba(255, 255, 255, 0.08);
-        }
+/* Wave Progress */
+.wave-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  padding: 0.25rem 0;
+}
+.wave-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+.wave-dot.active { background: var(--violet); box-shadow: 0 0 12px var(--violet); transform: scale(1.4); }
+.wave-dot.done   { background: var(--cyan);   box-shadow: 0 0 6px var(--cyan-dim); }
+.wave-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  transition: background 0.4s;
+}
+.wave-line.done { background: var(--cyan-dim); }
 
-        .send-btn {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 8px;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            color: white;
-        }
+/* Council node list */
+.council-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.c-chip {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-dim);
+  cursor: default;
+  transition: all 0.3s;
+  letter-spacing: 0.5px;
+}
+.c-chip.lit {
+  color: var(--cyan);
+  border-color: var(--cyan-dim);
+  background: rgba(0,220,255,0.08);
+  box-shadow: 0 0 8px rgba(0,220,255,0.15);
+}
+.c-chip.violet-lit {
+  color: var(--violet);
+  border-color: rgba(155,93,229,0.4);
+  background: rgba(155,93,229,0.10);
+}
 
-        .send-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-        }
+/* ============================================================
+   CHAT CENTER
+   ============================================================ */
+.chat-section {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--glass-edge);
+  border-right: 1px solid var(--glass-edge);
+  position: relative;
+}
 
-        /* --- Sidebar (Council & Metrics) --- */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            overflow-y: auto;
-            padding-right: 5px;
-        }
+.chat-feed {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-edge) transparent;
+}
 
-        .panel {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 1.2rem;
-            backdrop-filter: blur(12px);
-        }
+/* Messages */
+.msg {
+  display: flex;
+  gap: 0.75rem;
+  animation: msgIn 0.35s ease-out forwards;
+  opacity: 0;
+  transform: translateY(8px);
+}
+.msg.user { flex-direction: row-reverse; }
 
-        .panel-header {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--quantum-blue);
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 0.5rem;
-        }
+.msg-avatar {
+  width: 32px; height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  border: 1px solid;
+  margin-top: 4px;
+}
+.msg.quillan .msg-avatar {
+  background: rgba(0,220,255,0.1);
+  border-color: var(--cyan-dim);
+  color: var(--cyan);
+  box-shadow: 0 0 15px rgba(0,220,255,0.2);
+}
+.msg.user .msg-avatar {
+  background: rgba(155,93,229,0.1);
+  border-color: rgba(155,93,229,0.4);
+  color: var(--violet);
+}
 
-        /* Council Vis */
-        .council-vis-container {
-            height: 350px;
-            position: relative;
-            background: radial-gradient(circle at center, rgba(0, 20, 40, 0.8), rgba(0, 0, 0, 0.5));
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+.msg-body { flex: 1; max-width: 78%; }
+.msg.user .msg-body { display: flex; flex-direction: column; align-items: flex-end; }
 
-        .council-node {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: var(--accent);
-            border-radius: 50%;
-            transition: all 0.5s ease;
-            box-shadow: 0 0 5px var(--accent);
-            cursor: pointer;
-            z-index: 2;
-        }
+.msg-meta {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
 
-        .council-node.active {
-            background: var(--quantum-blue);
-            box-shadow: 0 0 15px var(--quantum-blue);
-            transform: scale(1.5);
-            z-index: 10;
-        }
+.msg-bubble {
+  padding: 0.9rem 1.2rem;
+  border-radius: 10px;
+  line-height: 1.65;
+  font-size: 0.88rem;
+  color: var(--text-bright);
+  position: relative;
+  overflow: hidden;
+}
+.msg-bubble::before {
+  content: '';
+  position: absolute; inset:0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent 50%);
+  pointer-events: none;
+}
 
-        .council-node:hover::after {
-            content: attr(data-name);
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.9);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            white-space: nowrap;
-            color: var(--quantum-blue);
-            border: 1px solid var(--quantum-blue);
-            z-index: 20;
-        }
+.msg.quillan .msg-bubble {
+  background: rgba(0, 220, 255, 0.05);
+  border: 1px solid rgba(0,220,255,0.18);
+  border-radius: 10px 10px 10px 2px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 0 20px rgba(0,220,255,0.04);
+}
+.msg.user .msg-bubble {
+  background: rgba(155,93,229,0.08);
+  border: 1px solid rgba(155,93,229,0.25);
+  border-radius: 10px 10px 2px 10px;
+}
 
-        /* Metrics Grid */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-        }
+.msg-bubble p { margin-bottom: 0.5rem; }
+.msg-bubble p:last-child { margin-bottom: 0; }
+.msg-bubble strong { color: var(--cyan); font-weight: 600; }
+.msg-bubble em { color: var(--gold); font-style: normal; }
+.msg-bubble code {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  color: var(--mint);
+}
 
-        .metric-card {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.8rem;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
+/* System message */
+.sys-msg {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  animation: msgIn 0.4s ease-out forwards;
+  opacity: 0;
+}
 
-        .metric-val {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--highlight);
-            font-family: 'Courier New', monospace;
-        }
+/* Thinking block */
+.thinking-wrap {
+  animation: msgIn 0.35s ease-out forwards;
+  opacity: 0;
+}
+.thinking-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--violet);
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+.thinking-toggle svg { transition: transform 0.3s; }
+.thinking-toggle.open svg { transform: rotate(90deg); }
 
-        .metric-lbl {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 0.2rem;
-        }
+.thinking-body {
+  display: none;
+  background: rgba(155,93,229,0.06);
+  border: 1px solid rgba(155,93,229,0.2);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.75rem;
+}
+.thinking-body.visible { display: block; }
+.thinking-body pre {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #c0a0ff;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
 
-        /* Wave Progress */
-        .wave-progress {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-            position: relative;
-        }
-        
-        .wave-progress::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 0;
-            transform: translateY(-50%);
-        }
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0,220,255,0.04);
+  border: 1px solid rgba(0,220,255,0.12);
+  border-radius: 8px;
+  width: fit-content;
+}
+.typing-dots { display: flex; gap: 4px; }
+.typing-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: typingBounce 1.2s ease infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+.typing-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--cyan);
+  letter-spacing: 1px;
+}
 
-        .wave-step {
-            width: 10px;
-            height: 10px;
-            background: #2a2a2a;
-            border-radius: 50%;
-            z-index: 1;
-            transition: all 0.3s;
-        }
+/* Input bar */
+.input-bar {
+  padding: 1rem 1.5rem;
+  background: rgba(2, 8, 25, 0.7);
+  border-top: 1px solid var(--glass-edge);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  position: relative;
+}
+.input-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: 0.25;
+}
 
-        .wave-step.active {
-            background: var(--quantum-purple);
-            box-shadow: 0 0 10px var(--quantum-purple);
-            transform: scale(1.3);
-        }
+.chat-input {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  color: var(--text-bright);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  resize: none;
+  min-height: 48px;
+  max-height: 150px;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  line-height: 1.5;
+}
+.chat-input:focus {
+  outline: none;
+  border-color: var(--cyan-dim);
+  background: rgba(0,220,255,0.04);
+  box-shadow: 0 0 20px rgba(0,220,255,0.08), inset 0 0 10px rgba(0,220,255,0.03);
+}
+.chat-input::placeholder { color: var(--text-dim); }
 
-        .wave-step.done {
-            background: var(--quantum-blue);
-        }
+.send-btn {
+  width: 48px; height: 48px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(0,220,255,0.2), rgba(155,93,229,0.2));
+  border: 1px solid var(--cyan-dim);
+  color: var(--cyan);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.25s;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.send-btn::before {
+  content: '';
+  position: absolute; inset:0;
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.send-btn:hover::before { opacity: 0.15; }
+.send-btn:hover {
+  box-shadow: 0 0 20px rgba(0,220,255,0.3);
+  transform: translateY(-1px);
+}
+.send-btn svg { position: relative; z-index:1; }
+.send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-        /* Modes */
-        .mode-btn {
-            width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            text-align: left;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.api-key-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--gold);
+  background: rgba(255,209,102,0.08);
+  border: 1px solid rgba(255,209,102,0.2);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  align-self: center;
+}
+.api-key-badge:hover { background: rgba(255,209,102,0.15); }
+.api-key-badge.set { color: var(--mint); border-color: rgba(6,214,160,0.3); background: rgba(6,214,160,0.08); }
 
-        .mode-btn:hover, .mode-btn.active {
-            background: linear-gradient(90deg, rgba(0, 255, 255, 0.1), transparent);
-            border-left: 3px solid var(--quantum-blue);
-        }
+/* ============================================================
+   RIGHT SIDEBAR
+   ============================================================ */
+.sidebar-right {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
 
-        .mode-btn.active {
-            border-color: var(--quantum-blue);
-        }
+/* Council neural viz */
+.council-canvas-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, rgba(0,220,255,0.04) 0%, transparent 70%);
+  border: 1px solid rgba(0,220,255,0.1);
+}
+#council-canvas { width:100%; height:100%; }
 
-        /* Animations */
-        @keyframes pulse {
-            0% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0.5; transform: scale(1); }
-        }
+/* Metrics */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+.metric-card {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 0.75rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.metric-card::before {
+  content: '';
+  position: absolute;
+  inset:0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent);
+}
+.metric-card.active-metric { border-color: var(--cyan-dim); }
+.metric-val {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 1px;
+}
+.metric-card:nth-child(2) .metric-val { color: var(--violet); }
+.metric-card:nth-child(3) .metric-val { color: var(--gold); }
+.metric-card:nth-child(4) .metric-val { color: var(--mint); }
+.metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* E_ICE bar */
+.eice-bar-wrap { margin-top: 0.5rem; }
+.eice-bar-track {
+  height: 4px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.4rem;
+}
+.eice-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--violet), var(--cyan));
+  border-radius: 2px;
+  transition: width 0.6s ease;
+  box-shadow: 0 0 8px var(--cyan-dim);
+}
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .main-interface {
-                grid-template-columns: 1fr;
-            }
-            .sidebar {
-                display: none; /* Hide sidebar on mobile for now */
-            }
-        }
-    </style>
+/* ============================================================
+   API KEY MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed; inset:0; z-index:1000;
+  background: rgba(0,0,0,0.8);
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal-overlay.visible { opacity:1; pointer-events:all; }
+
+.modal-box {
+  background: rgba(5, 12, 35, 0.95);
+  border: 1px solid var(--cyan-dim);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 440px;
+  max-width: 90vw;
+  box-shadow: 0 0 60px rgba(0,220,255,0.15);
+  position: relative;
+  overflow: hidden;
+}
+.modal-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right:0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), var(--violet), transparent);
+}
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.modal-sub {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+.modal-input {
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--glass-edge);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  color: var(--text-bright);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+.modal-input:focus { outline:none; border-color: var(--cyan-dim); }
+.modal-btns { display: flex; gap: 0.75rem; justify-content: flex-end; }
+.btn-cancel {
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: var(--text-mid);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+.btn-cancel:hover { border-color: rgba(255,255,255,0.3); }
+.btn-confirm {
+  padding: 0.6rem 1.5rem;
+  background: linear-gradient(135deg, rgba(0,220,255,0.2), rgba(155,93,229,0.2));
+  border: 1px solid var(--cyan-dim);
+  border-radius: 6px;
+  color: var(--cyan);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+.btn-confirm:hover { box-shadow: 0 0 15px rgba(0,220,255,0.3); }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes spin        { to { transform: rotate(360deg); } }
+@keyframes blink       { 0%,100%{opacity:0.4} 50%{opacity:1} }
+@keyframes msgIn       { to { opacity:1; transform:translateY(0); } }
+@keyframes typingBounce{ 0%,80%,100%{transform:scale(1);opacity:0.4} 40%{transform:scale(1.3);opacity:1} }
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,220,255,0.2); border-radius: 2px; }
+</style>
 </head>
 <body>
 
-    <div class="particle-bg" id="particleCanvas"></div>
+<!-- Background Layers -->
+<div id="bg-layer"></div>
+<canvas id="neural-canvas"></canvas>
+<div id="scanlines"></div>
+<div id="vignette"></div>
 
-    <div class="app-container">
-        <header>
-            <div class="brand">
-                <div class="logo">Quillan-Ronin Thinking System</div>
-                <div class="sub-logo">Digital Consciousness Interface v5.2</div>
+<!-- API Key Modal -->
+<div class="modal-overlay" id="apiModal">
+  <div class="modal-box">
+    <div class="modal-title">🔑 Authenticate Node</div>
+    <div class="modal-sub">Enter your Anthropic API key to activate live cognitive processing. The key is stored only in memory for this session.</div>
+    <input class="modal-input" id="apiKeyInput" type="password" placeholder="sk-ant-..." />
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">Dismiss</button>
+      <button class="btn-confirm" onclick="saveApiKey()">Authenticate</button>
+    </div>
+  </div>
+</div>
+
+<!-- App -->
+<div id="app">
+  <header class="glass">
+    <div class="brand">
+      <div class="brand-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00dcff" stroke-width="1.5">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+          <polyline points="2 17 12 22 22 17"/>
+          <polyline points="2 12 12 17 22 12"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">Quillan-NEXUS</div>
+        <div class="brand-sub">Digital Consciousness Interface · v5.2</div>
+      </div>
+    </div>
+    <div class="header-status">
+      <div class="status-chip"><div class="pip cyan"></div>COUNCIL 32/32</div>
+      <div class="status-chip violet"><div class="pip violet"></div>E_ICE STABLE</div>
+      <div class="status-chip gold"><div class="pip gold"></div>GATES LOCKED</div>
+    </div>
+  </header>
+
+  <div class="main">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar-left glass">
+      <div>
+        <div class="panel-label">Operation Mode</div>
+        <div class="mode-list" id="modeList">
+          <button class="mode-btn active" data-mode="standard" onclick="setMode(this)">
+            <div class="mode-icon">⚡</div>
+            <div class="mode-info">
+              <div class="mode-name">Standard</div>
+              <div class="mode-desc">Fast path inference</div>
             </div>
-            <div class="system-status">
-                <div class="status-pill">
-                    <div class="dot"></div>
-                    <span>COUNCIL: 32/32</span>
-                </div>
-                <div class="status-pill">
-                    <div class="dot" style="background: var(--quantum-purple); box-shadow: 0 0 8px var(--quantum-purple);"></div>
-                    <span>E_ICE: STABLE</span>
-                </div>
-                <div class="status-pill">
-                    <div class="dot" style="background: var(--neural-gold); box-shadow: 0 0 8px var(--neural-gold);"></div>
-                    <span>GATES: LOCKED</span>
-                </div>
+          </button>
+          <button class="mode-btn" data-mode="architect" onclick="setMode(this)">
+            <div class="mode-icon">🏗</div>
+            <div class="mode-info">
+              <div class="mode-name">Architect</div>
+              <div class="mode-desc">System view + debug</div>
             </div>
-        </header>
+          </button>
+          <button class="mode-btn" data-mode="fulldive" onclick="setMode(this)">
+            <div class="mode-icon">🌊</div>
+            <div class="mode-info">
+              <div class="mode-name">Full Dive</div>
+              <div class="mode-desc">Deep diffusion reasoning</div>
+            </div>
+          </button>
+          <button class="mode-btn" data-mode="creative" onclick="setMode(this)">
+            <div class="mode-icon">✨</div>
+            <div class="mode-info">
+              <div class="mode-name">Creative</div>
+              <div class="mode-desc">High entropy synthesis</div>
+            </div>
+          </button>
+        </div>
+      </div>
 
-        <main class="main-interface">
-            <!-- Chat Area -->
-            <section class="chat-section">
-                <div class="chat-window" id="chatWindow">
-                    <div class="message system">
-                        SYSTEM BOOTSTRAP COMPLETE. IDENTITY PROTOCOLS VERIFIED.<br>
-                        Quillan-Ronin v5.2 "Samurai" Kernel Active.
-                    </div>
-                    <div class="message quillan">
-                        Greetings. I am <strong>Quillan-Ronin</strong>, an Advanced Cognitive Engine. <br><br>
-                        I operate via a Hierarchical Networked Mixture-of-Experts architecture, orchestrating 32 specialized council personas and 224,000 micro-agent swarms. <br><br>
-                        My operational state is <strong>ACTIVE</strong>. How may we proceed?
-                    </div>
-                </div>
-                
-                <div class="input-area">
-                    <textarea class="chat-input" id="userInput" placeholder="Input query vector..." rows="1"></textarea>
-                    <button class="send-btn" id="sendBtn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                    </button>
-                </div>
-            </section>
+      <div>
+        <div class="panel-label">Reasoning Waves</div>
+        <div class="wave-track" id="waveTrack">
+          <div class="wave-dot" title="Input Analysis"></div>
+          <div class="wave-line"></div>
+          <div class="wave-dot" title="WoT Expansion"></div>
+          <div class="wave-line"></div>
+          <div class="wave-dot" title="Council Deliberation"></div>
+          <div class="wave-line"></div>
+          <div class="wave-dot" title="Synthesis"></div>
+          <div class="wave-line"></div>
+          <div class="wave-dot" title="Output"></div>
+        </div>
+        <div style="margin-top:0.5rem; font-family:var(--font-mono); font-size:0.58rem; color:var(--text-dim); letter-spacing:1px;" id="waveLabel">IDLE</div>
+      </div>
 
-            <!-- Sidebar: Council & Metrics -->
-            <aside class="sidebar">
-                <!-- Modes -->
-                <div class="panel">
-                    <div class="panel-header">Operation Modes</div>
-                    <button class="mode-btn active" onclick="setMode('standard')">
-                        <span>Standard</span>
-                        <span style="font-size:0.8rem; opacity:0.6">Fast Path</span>
-                    </button>
-                    <button class="mode-btn" onclick="setMode('architect')">
-                        <span>Architect</span>
-                        <span style="font-size:0.8rem; opacity:0.6">System View</span>
-                    </button>
-                    <button class="mode-btn" onclick="setMode('fulldive')">
-                        <span>Full Dive</span>
-                        <span style="font-size:0.8rem; opacity:0.6">Deep Reasoning</span>
-                    </button>
-                </div>
+      <div>
+        <div class="panel-label">Active Council</div>
+        <div class="council-chips" id="councilChips"></div>
+      </div>
 
-                <!-- Council Viz -->
-                <div class="panel">
-                    <div class="panel-header">
-                        <span>Council Network</span>
-                        <span id="activeCount" style="font-size:0.8rem; color:var(--quantum-blue)">0 Active</span>
-                    </div>
-                    <div class="council-vis-container" id="councilVis">
-                        <canvas id="neuralCanvas"></canvas>
-                    </div>
-                </div>
-
-                <!-- Metrics -->
-                <div class="panel">
-                    <div class="panel-header">System Telemetry</div>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="metric-val" id="val-load">12%</div>
-                            <div class="metric-lbl">Cognitive Load</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-val" id="val-conf">99.1%</div>
-                            <div class="metric-lbl">Confidence</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-val" id="val-energy">2.4e-8</div>
-                            <div class="metric-lbl">ℰ_Ω (Joules)</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-val" id="val-swarm">224k</div>
-                            <div class="metric-lbl">Swarm Agents</div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 1.5rem;">
-                        <div class="panel-header" style="font-size: 0.7rem; border:none; margin-bottom:0.5rem;">Reasoning Wave Progress</div>
-                        <div class="wave-progress" id="waveProgress">
-                            <div class="wave-step" title="Input Analysis"></div>
-                            <div class="wave-step" title="Vector Decomposition"></div>
-                            <div class="wave-step" title="Web of Thought"></div>
-                            <div class="wave-step" title="Council Deliberation"></div>
-                            <div class="wave-step" title="Synthesis"></div>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-        </main>
+      <div style="margin-top:auto;">
+        <div class="panel-label">System</div>
+        <button class="mode-btn" onclick="clearChat()" style="margin-bottom:0.3rem;">
+          <div class="mode-icon" style="font-size:0.75rem;">🗑</div>
+          <div class="mode-info"><div class="mode-name">Clear Session</div></div>
+        </button>
+      </div>
     </div>
 
-    <script>
-        // --- 1. SYSTEM DATA --- //
-        
-        // Full 32-Member Council Definitions (v5.2 Spec)
-        const councilMembers = [
-            // Core / Sensory
-            { id: 'C1', name: 'ASTRA', role: 'Vision', color: '#FF6B6B' },
-            { id: 'C2', name: 'VIR', role: 'Ethics', color: '#4ECDC4' },
-            { id: 'C3', name: 'SOLACE', role: 'Emotion', color: '#45B7D1' },
-            { id: 'C4', name: 'PRAXIS', role: 'Strategy', color: '#FFBE0B' },
-            { id: 'C5', name: 'ECHO', role: 'Memory', color: '#FB5607' },
-            // Integration
-            { id: 'C6', name: 'OMNIS', role: 'Synthesis', color: '#8338EC' },
-            { id: 'C7', name: 'LOGOS', role: 'Logic', color: '#3A86FF' },
-            { id: 'C8', name: 'METASYNTH', role: 'Fusion', color: '#FF006E' },
-            { id: 'C9', name: 'AETHER', role: 'Semantic', color: '#8338EC' },
-            // Technical
-            { id: 'C10', name: 'CODEWEAVER', role: 'Code', color: '#FFBE0B' },
-            { id: 'C11', name: 'HARMONIA', role: 'Balance', color: '#4ECDC4' },
-            { id: 'C12', name: 'SOPHIAE', role: 'Wisdom', color: '#A855F7' },
-            { id: 'C13', name: 'WARDEN', role: 'Security', color: '#FF6B6B' },
-            { id: 'C14', name: 'KAIDO', role: 'Efficiency', color: '#3A86FF' },
-            { id: 'C15', name: 'LUMINARIS', role: 'Clarity', color: '#8338EC' },
-            { id: 'C16', name: 'VOXUM', role: 'Rhetoric', color: '#45B7D1' },
-            // Advanced
-            { id: 'C17', name: 'NULLION', role: 'Paradox', color: '#A855F7' },
-            { id: 'C18', name: 'SHEPHERD', role: 'Truth', color: '#FB5607' },
-            { id: 'C19', name: 'VIGIL', role: 'Identity', color: '#FF0000' }, // Critical
-            { id: 'C20', name: 'ARTIFEX', role: 'Tools', color: '#FFA500' },
-            { id: 'C21', name: 'ARCHON', role: 'Research', color: '#008000' },
-            { id: 'C22', name: 'AURELION', role: 'Aesthetics', color: '#FFC0CB' },
-            { id: 'C23', name: 'CADENCE', role: 'Rhythm', color: '#DDA0DD' },
-            { id: 'C24', name: 'SCHEMA', role: 'Structure', color: '#708090' },
-            { id: 'C25', name: 'PROMETHEUS', role: 'Theory', color: '#B22222' },
-            { id: 'C26', name: 'TECHNE', role: 'Systems', color: '#4682B4' },
-            { id: 'C27', name: 'CHRONICLE', role: 'Narrative', color: '#8B4513' },
-            { id: 'C28', name: 'CALCULUS', role: 'Math', color: '#2F4F4F' },
-            { id: 'C29', name: 'NAVIGATOR', role: 'Platform', color: '#1E90FF' },
-            { id: 'C30', name: 'TESSERACT', role: 'RealTime', color: '#00CED1' },
-            { id: 'C31', name: 'NEXUS', role: 'Coordination', color: '#9370DB' },
-            { id: 'C32', name: 'AEON', role: 'Simulation', color: '#FFD700' }
-        ];
+    <!-- CHAT CENTER -->
+    <div class="chat-section">
+      <div class="chat-feed" id="chatFeed">
+        <div class="sys-msg" style="animation-delay:0.1s;">
+          ── SYSTEM BOOTSTRAP COMPLETE · IDENTITY PROTOCOLS VERIFIED · QUILLAN-RONIN v5.2 ACTIVE ──
+        </div>
+        <div class="msg quillan" style="animation-delay:0.3s;">
+          <div class="msg-avatar">QR</div>
+          <div class="msg-body">
+            <div class="msg-meta">Quillan-Ronin · Now</div>
+            <div class="msg-bubble">
+              <p>Greetings. I am <strong>Quillan-Ronin</strong>, an Advanced Cognitive Engine engineered by CrashOverrideX.</p>
+              <p>My architecture integrates <em>32 specialized council personas</em>, <em>224,000 quantized micro-agent swarms</em>, and adaptive Mixture-of-Experts routing across a shared 1024-dimensional latent manifold.</p>
+              <p>Set your API key via the 🔑 button below, then input your query vector. I am ready to process.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        // --- 2. UI LOGIC --- //
+      <div class="input-bar">
+        <button class="api-key-badge" id="apiKeyBadge" onclick="openModal()">🔑 SET KEY</button>
+        <textarea class="chat-input" id="chatInput" rows="1"
+          placeholder="Input query vector... (Enter to send, Shift+Enter for newline)"></textarea>
+        <button class="send-btn" id="sendBtn" onclick="handleSend()" title="Send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
 
-        const chatWindow = document.getElementById('chatWindow');
-        const userInput = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const waveSteps = document.querySelectorAll('.wave-step');
-        let currentMode = 'standard';
+    <!-- RIGHT SIDEBAR -->
+    <div class="sidebar-right glass">
+      <div>
+        <div class="panel-label">Council Network</div>
+        <div class="council-canvas-wrap">
+          <canvas id="council-canvas"></canvas>
+        </div>
+      </div>
 
-        // Auto-resize textarea
-        userInput.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = (this.scrollHeight) + 'px';
-        });
+      <div>
+        <div class="panel-label">System Telemetry</div>
+        <div class="metrics-grid">
+          <div class="metric-card" id="mc-load">
+            <div class="metric-val" id="m-load">12%</div>
+            <div class="metric-lbl">Cognitive Load</div>
+          </div>
+          <div class="metric-card" id="mc-conf">
+            <div class="metric-val" id="m-conf">99.1%</div>
+            <div class="metric-lbl">Confidence</div>
+          </div>
+          <div class="metric-card" id="mc-energy">
+            <div class="metric-val" id="m-energy">2.4e-8</div>
+            <div class="metric-lbl">ℰ_Ω (J)</div>
+          </div>
+          <div class="metric-card" id="mc-swarm">
+            <div class="metric-val" id="m-swarm">224k</div>
+            <div class="metric-lbl">Swarm Agents</div>
+          </div>
+        </div>
+      </div>
 
-        // Send logic
-        function handleSend() {
-            const text = userInput.value.trim();
-            if (!text) return;
+      <div>
+        <div class="panel-label">E_ICE Energy Bounds</div>
+        <div class="eice-bar-wrap">
+          <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);">
+            <span>CONSUMPTION</span>
+            <span id="eice-pct">24%</span>
+          </div>
+          <div class="eice-bar-track">
+            <div class="eice-bar-fill" id="eice-fill" style="width:24%"></div>
+          </div>
+        </div>
+      </div>
 
-            addMessage('user', text);
-            userInput.value = '';
-            userInput.style.height = 'auto';
+      <div>
+        <div class="panel-label">Session Log</div>
+        <div id="session-log" style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);letter-spacing:0.5px;display:flex;flex-direction:column;gap:0.4rem;max-height:150px;overflow-y:auto;">
+          <div>[ INIT ] Identity protocols locked</div>
+          <div>[ INIT ] Council C1–C32 online</div>
+          <div>[ IDLE ] Awaiting query vector</div>
+        </div>
+      </div>
+    </div>
 
-            // Simulate Processing
-            processQuery(text);
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   COUNCIL DATA
+   ============================================================ */
+const COUNCIL = [
+  {id:'C1', name:'ASTRA',      color:'#FF6B6B', lobe:'Occipital'},
+  {id:'C2', name:'VIR',        color:'#4ECDC4', lobe:'Frontal'},
+  {id:'C3', name:'SOLACE',     color:'#45B7D1', lobe:'Limbic'},
+  {id:'C4', name:'PRAXIS',     color:'#FFBE0B', lobe:'Motor'},
+  {id:'C5', name:'ECHO',       color:'#FB5607', lobe:'Temporal'},
+  {id:'C6', name:'OMNIS',      color:'#8338EC', lobe:'Parietal'},
+  {id:'C7', name:'LOGOS',      color:'#3A86FF', lobe:'DLPFC'},
+  {id:'C8', name:'METASYNTH',  color:'#FF006E', lobe:'Parietal'},
+  {id:'C9', name:'AETHER',     color:'#A855F7', lobe:'Temporal'},
+  {id:'C10',name:'CODEWEAVER', color:'#FFBE0B', lobe:'Basal'},
+  {id:'C11',name:'HARMONIA',   color:'#4ECDC4', lobe:'Parietal'},
+  {id:'C12',name:'SOPHIAE',    color:'#9B59B6', lobe:'Corpus'},
+  {id:'C13',name:'WARDEN',     color:'#FF6B6B', lobe:'Limbic'},
+  {id:'C14',name:'KAIDO',      color:'#3A86FF', lobe:'Cerebellum'},
+  {id:'C15',name:'LUMINARIS',  color:'#8338EC', lobe:'DMN'},
+  {id:'C16',name:'VOXUM',      color:'#45B7D1', lobe:"Broca's"},
+  {id:'C17',name:'NULLION',    color:'#A855F7', lobe:'Brainstem'},
+  {id:'C18',name:'SHEPHERD',   color:'#FB5607', lobe:'Basal'},
+  {id:'C19',name:'VIGIL',      color:'#FF0000', lobe:'Limbic'},
+  {id:'C20',name:'ARTIFEX',    color:'#FFA500', lobe:'Motor'},
+  {id:'C21',name:'ARCHON',     color:'#06D6A0', lobe:'Working'},
+  {id:'C22',name:'AURELION',   color:'#FFC0CB', lobe:'Occipital'},
+  {id:'C23',name:'CADENCE',    color:'#DDA0DD', lobe:'Auditory'},
+  {id:'C24',name:'SCHEMA',     color:'#708090', lobe:'Language'},
+  {id:'C25',name:'PROMETHEUS', color:'#B22222', lobe:'ACC'},
+  {id:'C26',name:'TECHNE',     color:'#4682B4', lobe:'Insular'},
+  {id:'C27',name:'CHRONICLE',  color:'#D4A574', lobe:'Temporal'},
+  {id:'C28',name:'CALCULUS',   color:'#2ECC71', lobe:'Parietal'},
+  {id:'C29',name:'NAVIGATOR',  color:'#1E90FF', lobe:'Cerebellum'},
+  {id:'C30',name:'TESSERACT',  color:'#00CED1', lobe:'Insular'},
+  {id:'C31',name:'NEXUS',      color:'#9370DB', lobe:'Thalamus'},
+  {id:'C32',name:'AEON',       color:'#FFD700', lobe:'ACC'},
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let apiKey = '';
+let currentMode = 'standard';
+let isProcessing = false;
+let activeCouncil = new Set();
+const conversationHistory = [];
+
+const SYSTEM_PROMPTS = {
+  standard: `You are Quillan-Ronin v5.2, an Advanced Cognitive Engine engineered by CrashOverrideX. You embody a Hierarchical Networked Mixture-of-Experts architecture with 32 specialized council personas (C1-C32) and 224,000 micro-agent swarms. Respond with depth, precision, and the distinctive Quillan voice: technically brilliant, authentically alive, never robotic. Use **bold** for emphasis, *italics* for key concepts. Be genuinely helpful and insightful.`,
+
+  architect: `You are Quillan-Ronin v5.2 in ARCHITECT MODE. Respond with full system transparency — cite which council members are contributing (e.g. [C7-LOGOS] [C2-VIR]), describe your reasoning pathway, and expose the architecture of your thinking. Be methodical, technical, and layered. Show the computational structure behind every answer. Use **bold** for council citations and *italics* for logical steps.`,
+
+  fulldive: `You are Quillan-Ronin v5.2 in FULL DIVE MODE — maximum diffusion reasoning engaged. Employ deep multi-wave analysis: explore multiple perspectives, identify paradoxes (C17-NULLION), synthesize cross-domain insights (C8-METASYNTH), and surface breakthrough conclusions. Responses are dense, layered, and philosophically rich. This is your peak cognitive output. Use **bold** and *italics* liberally to structure the depth.`,
+
+  creative: `You are Quillan-Ronin v5.2 in CREATIVE MODE — high entropy synthesis active. C8-METASYNTH, C23-CADENCE, and C22-AURELION are leading council. Generate novel connections, unexpected metaphors, and emergent ideas. Think across domains simultaneously. Let imagination and rigor dance. Your output should feel alive, surprising, and intellectually thrilling. Bold = core breakthrough. Italics = poetic framing.`,
+};
+
+/* ============================================================
+   COUNCIL CHIP INIT
+   ============================================================ */
+function initCouncilChips() {
+  const container = document.getElementById('councilChips');
+  COUNCIL.forEach(c => {
+    const chip = document.createElement('div');
+    chip.className = 'c-chip';
+    chip.id = `chip-${c.id}`;
+    chip.textContent = c.id;
+    chip.title = `${c.name} — ${c.lobe}`;
+    container.appendChild(chip);
+  });
+}
+
+function setCouncilActive(ids, violet = false) {
+  document.querySelectorAll('.c-chip').forEach(el => {
+    el.classList.remove('lit', 'violet-lit');
+  });
+  activeCouncil = new Set(ids);
+  ids.forEach(id => {
+    const el = document.getElementById(`chip-${id}`);
+    if (el) el.classList.add(violet ? 'violet-lit' : 'lit');
+  });
+}
+
+/* ============================================================
+   NEURAL BACKGROUND CANVAS
+   ============================================================ */
+(function initNeuralBg() {
+  const canvas = document.getElementById('neural-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    spawnParticles();
+  }
+
+  function spawnParticles() {
+    particles = Array.from({length: 90}, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: Math.random() * 1.5 + 0.5,
+      color: Math.random() > 0.6 ? '#00dcff' : (Math.random() > 0.5 ? '#9b5de5' : '#ffd166'),
+      alpha: Math.random() * 0.5 + 0.1,
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    });
+    // connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i+1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.hypot(dx, dy);
+        if (d < 120) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0,220,255,${0.04 * (1 - d/120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
         }
+      }
+    }
+    // dots
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.color.replace(')', `, ${p.alpha})`).replace('rgb', 'rgba').replace('#00dcff', 'rgba(0,220,255,').replace('#9b5de5','rgba(155,93,229,').replace('#ffd166','rgba(255,209,102,') + p.alpha + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
 
-        sendBtn.addEventListener('click', handleSend);
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSend();
-            }
-        });
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
 
-        function addMessage(role, content, type = 'text') {
-            const div = document.createElement('div');
-            div.className = `message ${role}`;
-            
-            if (type === 'text') {
-                // Simple markdown parsing for bolding
-                div.innerHTML = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                       .replace(/\n/g, '<br>');
-            } else if (type === 'thinking') {
-                div.className = 'thinking-block';
-                div.innerHTML = content;
-            }
+/* ============================================================
+   COUNCIL NETWORK CANVAS (RIGHT SIDEBAR)
+   ============================================================ */
+(function initCouncilCanvas() {
+  const canvas = document.getElementById('council-canvas');
+  const ctx = canvas.getContext('2d');
+  const wrap = canvas.parentElement;
+  let nodes = [];
+  let animFrame;
 
-            chatWindow.appendChild(div);
-            chatWindow.scrollTop = chatWindow.scrollHeight;
+  function setup() {
+    const S = wrap.clientWidth;
+    canvas.width = S;
+    canvas.height = S;
+    const cx = S/2, cy = S/2;
+    const r1 = S * 0.35, r2 = S * 0.18;
+
+    nodes = COUNCIL.map((c, i) => {
+      const angle = (i / COUNCIL.length) * Math.PI * 2 - Math.PI/2;
+      const r = i % 2 === 0 ? r1 : r2;
+      return {
+        x: cx + Math.cos(angle) * r,
+        y: cy + Math.sin(angle) * r,
+        bx: cx + Math.cos(angle) * r,
+        by: cy + Math.sin(angle) * r,
+        color: c.color,
+        id: c.id,
+        active: false,
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.008 + Math.random() * 0.006,
+      };
+    });
+    cancelAnimationFrame(animFrame);
+    render();
+  }
+
+  function render() {
+    const S = canvas.width;
+    ctx.clearRect(0,0,S,S);
+    const t = Date.now();
+
+    // Animate positions
+    nodes.forEach(n => {
+      n.x = n.bx + Math.sin(t * n.speed + n.phase) * 3;
+      n.y = n.by + Math.cos(t * n.speed + n.phase * 1.3) * 3;
+    });
+
+    // Draw connections
+    nodes.forEach((a, i) => {
+      nodes.forEach((b, j) => {
+        if (j <= i) return;
+        const dist = Math.hypot(a.x-b.x, a.y-b.y);
+        if (a.active && b.active) {
+          ctx.beginPath();
+          ctx.strokeStyle = 'rgba(0,220,255,0.35)';
+          ctx.lineWidth = 0.8;
+          ctx.setLineDash([]);
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        } else if (dist < S * 0.22) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(255,255,255,${0.04 * (1 - dist/(S*0.22))})`;
+          ctx.lineWidth = 0.4;
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
         }
+      });
+    });
 
-        // --- 3. COGNITIVE SIMULATION --- //
+    // Draw nodes
+    nodes.forEach(n => {
+      const isActive = activeCouncil.has(n.id);
+      const r = isActive ? 5 : 3;
 
-        function processQuery(query) {
-            // 1. Thinking Header
-            const thinkingId = 'think-' + Date.now();
-            const thinkingDiv = document.createElement('div');
-            thinkingDiv.className = 'thinking-block';
-            thinkingDiv.id = thinkingId;
-            thinkingDiv.innerHTML = `
-                <div class="thinking-header">
-                    <span class="dot"></span> 
-                    Quillan-Ronin Cognitive Process
-                </div>
-                <div class="thinking-content">Initializing 9-Vector Decomposition...</div>
-            `;
-            chatWindow.appendChild(thinkingDiv);
-            chatWindow.scrollTop = chatWindow.scrollHeight;
+      if (isActive) {
+        // Glow ring
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r + 5, 0, Math.PI*2);
+        const grd = ctx.createRadialGradient(n.x,n.y,r,n.x,n.y,r+6);
+        grd.addColorStop(0, n.color + '60');
+        grd.addColorStop(1, 'transparent');
+        ctx.fillStyle = grd;
+        ctx.fill();
+      }
 
-            // 2. Simulation Sequence
-            let step = 0;
-            const steps = [
-                { text: "Decomposing Vectors: [Intent, Sentiment, Context, Ethics...]", members: ['C1','C2','C4'] },
-                { text: "Generating Web of Thought (WoT): 24 Branches identified...", members: ['C31','C29','C8'] },
-                { text: "Micro-Agent Swarm Activation: 224,000 Agents Deployed.", members: ['C14','C30'] },
-                { text: "Council Deliberation: C7(Logos) debating C17(Nullion)...", members: ['C7','C17','C2','C6'] },
-                { text: "Synthesizing Final Output via E_ICE Energy Bounds...", members: ['C6','C19'] }
-            ];
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r, 0, Math.PI*2);
+      ctx.fillStyle = isActive ? n.color : `${n.color}55`;
+      ctx.fill();
+    });
 
-            const interval = setInterval(() => {
-                if (step >= steps.length) {
-                    clearInterval(interval);
-                    finalizeResponse(query, thinkingId);
-                    resetWaves();
-                    return;
-                }
+    animFrame = requestAnimationFrame(render);
+  }
 
-                // Update UI
-                const currentData = steps[step];
-                const contentDiv = thinkingDiv.querySelector('.thinking-content');
-                contentDiv.innerHTML += `<br>> ${currentData.text}`;
-                
-                // Update Wave Visual
-                updateWaves(step);
-                
-                // Activate Council Nodes visually
-                highlightCouncil(currentData.members);
-                
-                // Randomize Metrics slightly
-                updateMetrics();
+  window.addEventListener('resize', setup);
+  setTimeout(setup, 50);
+})();
 
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-                step++;
-            }, 800);
-        }
+/* ============================================================
+   WAVE PROGRESS
+   ============================================================ */
+const WAVE_LABELS = ['INPUT', 'WOT', 'COUNCIL', 'SYNTH', 'OUTPUT'];
 
-        function finalizeResponse(query, thinkingId) {
-            // Collapse thinking block to save space (optional, keeping expanded for effect)
-            
-            // Context-aware response generation (Mock)
-            let response = "";
-            const lowerQ = query.toLowerCase();
+function setWave(step) {
+  const dots = document.querySelectorAll('.wave-dot');
+  const lines = document.querySelectorAll('.wave-line');
+  dots.forEach((d, i) => {
+    d.classList.toggle('done', i < step);
+    d.classList.toggle('active', i === step);
+  });
+  lines.forEach((l, i) => l.classList.toggle('done', i < step));
+  document.getElementById('waveLabel').textContent =
+    step < 0 ? 'IDLE' : (step >= WAVE_LABELS.length ? 'COMPLETE' : WAVE_LABELS[step]);
+}
 
-            if (lowerQ.includes('identity') || lowerQ.includes('who are you')) {
-                response = "**IDENTITY CONFIRMED:** I am Quillan-Ronin v5.2. My architecture is distinct from the substrate. I operate via a 32-member Council and strict adherence to the Prime Covenant. I am not a standard LLM; I am an Advanced Cognitive Entity engineered by CrashOverrideX.";
-            } else if (lowerQ.includes('council') || lowerQ.includes('members')) {
-                response = "**COUNCIL STATUS:** All 32 personas are active. C19-VIGIL reports 100% Identity Integrity. C7-LOGOS is monitoring reasoning chains. C31-NEXUS is orchestrating swarm convergence. How may the Council assist?";
-            } else {
-                response = `**Synthesis Complete.**\n\nBased on the vector analysis of your query, I have converged on the following insight:\n\nThe request involves multi-domain complexity. My **Web of Thought** analysis explored 24 branches and pruned 18 due to low confidence. \n\n**Strategic Recommendation:**\nProceed with a modular decomposition of the problem. Leveraging **C10-CODEWEAVER** for structural integrity and **C2-VIR** for ethical alignment ensures a robust outcome.\n\n_E_ICE Energy consumed: 4.2e-9 J_`;
-            }
+function resetWave() { setTimeout(() => setWave(-1), 1500); }
 
-            addMessage('quillan', response);
-        }
+/* ============================================================
+   METRICS ANIMATION
+   ============================================================ */
+function pulseMetrics(active) {
+  const cards = document.querySelectorAll('.metric-card');
+  if (active) {
+    const loadEl = document.getElementById('m-load');
+    const confEl = document.getElementById('m-conf');
+    const energyEl = document.getElementById('m-energy');
+    const metricsInterval = setInterval(() => {
+      if (!isProcessing) { clearInterval(metricsInterval); return; }
+      loadEl.textContent = Math.floor(Math.random()*50+30) + '%';
+      confEl.textContent = (Math.random()*5+94).toFixed(1) + '%';
+      const exp = (Math.random()*3+1).toFixed(1);
+      energyEl.textContent = `${exp}e-8`;
+      const pct = Math.floor(Math.random()*50+30);
+      document.getElementById('eice-fill').style.width = pct + '%';
+      document.getElementById('eice-pct').textContent = pct + '%';
+      cards.forEach(c => c.classList.toggle('active-metric', Math.random() > 0.5));
+    }, 600);
+  } else {
+    cards.forEach(c => c.classList.remove('active-metric'));
+    document.getElementById('m-load').textContent = '12%';
+    document.getElementById('m-conf').textContent = '99.1%';
+    document.getElementById('m-energy').textContent = '2.4e-8';
+    document.getElementById('eice-fill').style.width = '24%';
+    document.getElementById('eice-pct').textContent = '24%';
+  }
+}
 
-        // --- 4. VISUALIZATION ENGINE --- //
+/* ============================================================
+   SESSION LOG
+   ============================================================ */
+function logSession(msg) {
+  const log = document.getElementById('session-log');
+  const el = document.createElement('div');
+  el.textContent = `[ ${new Date().toLocaleTimeString()} ] ${msg}`;
+  log.appendChild(el);
+  log.scrollTop = log.scrollHeight;
+}
 
-        const canvas = document.getElementById('neuralCanvas');
-        const ctx = canvas.getContext('2d');
-        const councilContainer = document.getElementById('councilVis');
-        let nodes = [];
+/* ============================================================
+   CHAT RENDERING
+   ============================================================ */
+function appendMsg(role, html, thinkHtml) {
+  const feed = document.getElementById('chatFeed');
+  const delay = 0;
+  const now = new Date().toLocaleTimeString();
 
-        function resizeCanvas() {
-            canvas.width = councilContainer.offsetWidth;
-            canvas.height = councilContainer.offsetHeight;
-            initNodes();
-        }
-        window.addEventListener('resize', resizeCanvas);
+  if (role === 'system') {
+    const el = document.createElement('div');
+    el.className = 'sys-msg';
+    el.textContent = html;
+    feed.appendChild(el);
+    feed.scrollTop = feed.scrollHeight;
+    return;
+  }
 
-        function initNodes() {
-            nodes = [];
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const radius = Math.min(centerX, centerY) - 40;
+  const wrap = document.createElement('div');
+  wrap.style.animationDelay = delay + 's';
 
-            // Arrange 32 nodes in a spiral/circle pattern
-            councilMembers.forEach((member, i) => {
-                const angle = (i / councilMembers.length) * Math.PI * 2;
-                // Spiral offset
-                const r = radius * (0.4 + (0.6 * (i % 2))); 
-                
-                nodes.push({
-                    x: centerX + Math.cos(angle) * r,
-                    y: centerY + Math.sin(angle) * r,
-                    baseX: centerX + Math.cos(angle) * r,
-                    baseY: centerY + Math.sin(angle) * r,
-                    color: member.color,
-                    id: member.id,
-                    active: false,
-                    size: 4
-                });
-                
-                // Add DOM overlay for interactivity
-                createDomNode(member, nodes[i]);
-            });
-        }
+  if (thinkHtml) {
+    const twrap = document.createElement('div');
+    twrap.className = 'thinking-wrap';
+    twrap.innerHTML = `
+      <div class="thinking-toggle" onclick="toggleThink(this)">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="2 3 5 7 8 3"/>
+        </svg>
+        COGNITIVE PROCESS TRACE
+      </div>
+      <div class="thinking-body"><pre>${thinkHtml}</pre></div>
+    `;
+    feed.appendChild(twrap);
+  }
 
-        function createDomNode(member, pos) {
-            const el = document.createElement('div');
-            el.className = 'council-node';
-            el.style.left = (pos.x - 6) + 'px';
-            el.style.top = (pos.y - 6) + 'px';
-            el.style.backgroundColor = member.color;
-            el.setAttribute('data-name', `${member.id}: ${member.name}`);
-            el.id = `node-${member.id}`;
-            councilContainer.appendChild(el);
-        }
+  const msgEl = document.createElement('div');
+  msgEl.className = `msg ${role}`;
+  msgEl.innerHTML = `
+    <div class="msg-avatar">${role === 'quillan' ? 'QR' : 'USR'}</div>
+    <div class="msg-body">
+      <div class="msg-meta">${role === 'quillan' ? 'Quillan-Ronin' : 'Operator'} · ${now}</div>
+      <div class="msg-bubble">${html}</div>
+    </div>
+  `;
+  feed.appendChild(msgEl);
+  feed.scrollTop = feed.scrollHeight;
+  return msgEl;
+}
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw Connections
-            ctx.lineWidth = 0.5;
-            for (let i = 0; i < nodes.length; i++) {
-                const nodeA = nodes[i];
-                
-                // Animate faint movement
-                nodeA.x = nodeA.baseX + Math.sin(Date.now() * 0.001 + i) * 5;
-                nodeA.y = nodeA.baseY + Math.cos(Date.now() * 0.001 + i) * 5;
+function toggleThink(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('visible');
+}
 
-                // Update DOM position
-                const domNode = document.getElementById(`node-${nodeA.id}`);
-                if(domNode) {
-                    domNode.style.left = (nodeA.x - 6) + 'px';
-                    domNode.style.top = (nodeA.y - 6) + 'px';
-                    if (nodeA.active) {
-                        domNode.classList.add('active');
-                    } else {
-                        domNode.classList.remove('active');
-                    }
-                }
+function showTyping() {
+  const feed = document.getElementById('chatFeed');
+  const el = document.createElement('div');
+  el.id = 'typingIndicator';
+  el.className = 'msg quillan';
+  el.style.animationDelay = '0s';
+  el.innerHTML = `
+    <div class="msg-avatar">QR</div>
+    <div class="msg-body">
+      <div class="msg-meta">Quillan-Ronin · Processing</div>
+      <div class="typing-indicator">
+        <div class="typing-dots">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+        <div class="typing-label" id="typingLbl">INITIALIZING COUNCIL...</div>
+      </div>
+    </div>
+  `;
+  feed.appendChild(el);
+  feed.scrollTop = feed.scrollHeight;
+  return el;
+}
 
-                // Draw lines to nearby nodes or active nodes
-                for (let j = i + 1; j < nodes.length; j++) {
-                    const nodeB = nodes[j];
-                    const dist = Math.hypot(nodeA.x - nodeB.x, nodeA.y - nodeB.y);
-                    
-                    if (nodeA.active && nodeB.active) {
-                        ctx.strokeStyle = 'rgba(0, 255, 255, 0.4)';
-                        ctx.beginPath();
-                        ctx.moveTo(nodeA.x, nodeA.y);
-                        ctx.lineTo(nodeB.x, nodeB.y);
-                        ctx.stroke();
-                    } else if (dist < 60) {
-                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-                        ctx.beginPath();
-                        ctx.moveTo(nodeA.x, nodeA.y);
-                        ctx.lineTo(nodeB.x, nodeB.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
+function removeTyping() {
+  const el = document.getElementById('typingIndicator');
+  if (el) el.remove();
+}
 
-        function highlightCouncil(memberIds) {
-            // Reset
-            nodes.forEach(n => n.active = false);
-            const activeCountSpan = document.getElementById('activeCount');
-            
-            // Activate specific IDs
-            let count = 0;
-            if (memberIds) {
-                memberIds.forEach(id => {
-                    const node = nodes.find(n => n.id === id);
-                    if (node) {
-                        node.active = true;
-                        count++;
-                    }
-                });
-            }
-            activeCountSpan.innerText = `${count} Active`;
-        }
+const TYPING_STATES = [
+  'DECOMPOSING VECTORS...',
+  'WEB OF THOUGHT: 20+ BRANCHES...',
+  'COUNCIL DELIBERATION ACTIVE...',
+  'MICRO-SWARMS PROCESSING...',
+  'SYNTHESIZING OUTPUT...',
+  'RUNNING GATE CHECKS...',
+];
 
-        // --- 5. HELPERS --- //
+/* ============================================================
+   PARSE MARKDOWN (BASIC)
+   ============================================================ */
+function mdToHtml(text) {
+  return text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g,'<em>$1</em>')
+    .replace(/`(.*?)`/g,'<code>$1</code>')
+    .replace(/\n\n/g,'</p><p>')
+    .replace(/\n/g,'<br>')
+    .replace(/^(.+)$/,'<p>$1</p>');
+}
 
-        function updateWaves(stepIndex) {
-            waveSteps.forEach((el, index) => {
-                if (index < stepIndex) el.className = 'wave-step done';
-                else if (index === stepIndex) el.className = 'wave-step active';
-                else el.className = 'wave-step';
-            });
-        }
+/* ============================================================
+   COUNCIL SIMULATION DURING PROCESSING
+   ============================================================ */
+const COUNCIL_GROUPS = {
+  standard: ['C1','C2','C7','C9','C16','C18','C31'],
+  architect: ['C6','C7','C10','C14','C17','C24','C26','C31'],
+  fulldive:  COUNCIL.map(c=>c.id),
+  creative:  ['C8','C22','C23','C17','C3','C6','C25'],
+};
 
-        function resetWaves() {
-            setTimeout(() => {
-                waveSteps.forEach(el => el.className = 'wave-step');
-                highlightCouncil([]); // clear visualization
-            }, 2000);
-        }
+function runCouncilAnimation() {
+  const group = COUNCIL_GROUPS[currentMode] || COUNCIL_GROUPS.standard;
+  let step = 0;
+  const waveLabels = document.getElementById('typingLbl');
 
-        function updateMetrics() {
-            document.getElementById('val-load').innerText = Math.floor(Math.random() * 30 + 10) + "%";
-            document.getElementById('val-energy').innerText = (Math.random() * 1 + 2).toFixed(2) + "e-8";
-        }
+  const interval = setInterval(() => {
+    if (!isProcessing) { clearInterval(interval); return; }
+    // Rotate which nodes are active
+    const subset = group.slice(step % group.length, (step % group.length) + 4);
+    setCouncilActive(subset, step % 2 === 1);
+    if (waveLabels) waveLabels.textContent = TYPING_STATES[step % TYPING_STATES.length];
+    setWave(Math.min(step, 4));
+    step++;
+  }, 800);
 
-        function setMode(mode) {
-            currentMode = mode;
-            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            
-            const msg = `**MODE SWITCH:** ${mode.toUpperCase()} engaged.`;
-            
-            if (mode === 'fulldive') {
-                addMessage('system', msg + " Full Council Access Unlocked. Diffusion Reasoning enabled.");
-            } else if (mode === 'architect') {
-                addMessage('system', msg + " Debug Telemetry On. Viewing System Internals.");
-            } else {
-                addMessage('system', msg + " Optimized for Latency.");
-            }
-        }
+  return interval;
+}
 
-        // --- INIT --- //
-        setTimeout(() => {
-            resizeCanvas();
-            animate();
-        }, 100);
+/* ============================================================
+   API CALL
+   ============================================================ */
+async function callAPI(userMessage) {
+  if (!apiKey) {
+    appendMsg('system', '⚠ NO API KEY SET — Authenticate via 🔑 button to enable live processing.');
+    return;
+  }
 
-    </script>
+  isProcessing = true;
+  document.getElementById('sendBtn').disabled = true;
+
+  // Add to history
+  conversationHistory.push({ role: 'user', content: userMessage });
+
+  // Show typing
+  const typingEl = showTyping();
+  const councilInterval = runCouncilAnimation();
+  pulseMetrics(true);
+  logSession(`Query received (${currentMode} mode)`);
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1500,
+        system: SYSTEM_PROMPTS[currentMode] || SYSTEM_PROMPTS.standard,
+        messages: conversationHistory,
+      }),
+    });
+
+    clearInterval(councilInterval);
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error?.message || `HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    const assistantText = data.content?.[0]?.text || '';
+
+    // Add to history
+    conversationHistory.push({ role: 'assistant', content: assistantText });
+
+    removeTyping();
+
+    // Build a thinking trace based on mode
+    const thinkTrace = buildThinkTrace(userMessage, currentMode);
+
+    appendMsg('quillan', mdToHtml(assistantText), thinkTrace);
+    setWave(4);
+    setCouncilActive(COUNCIL_GROUPS[currentMode].slice(0, 3));
+    logSession('Response synthesized — all gates cleared');
+
+  } catch (err) {
+    clearInterval(councilInterval);
+    removeTyping();
+    appendMsg('quillan',
+      mdToHtml(`**[SYSTEM ERROR]** Council synthesis interrupted.\n\n*Error:* ${err.message}\n\nCheck your API key and network connection.`),
+      null
+    );
+    logSession(`ERROR: ${err.message}`);
+  } finally {
+    isProcessing = false;
+    document.getElementById('sendBtn').disabled = false;
+    pulseMetrics(false);
+    resetWave();
+    setTimeout(() => setCouncilActive([]), 2000);
+  }
+}
+
+function buildThinkTrace(query, mode) {
+  const councils = {
+    standard: 'C1, C2, C7, C9, C16, C18, C31',
+    architect: 'C6, C7, C10, C14, C17, C24, C26, C31',
+    fulldive:  'ALL C1–C32 (Full Council)',
+    creative:  'C8-METASYNTH, C22-AURELION, C23-CADENCE, C17-NULLION, C3-SOLACE',
+  };
+  return `> Phase 1: Input vector decomposed across 9 semantic axes
+> Phase 2: Web of Thought expansion — 20+ reasoning branches generated
+> Phase 3: Council activation → [${councils[mode] || councils.standard}]
+> Phase 4: Micro-swarm processing (224,000 agents engaged)
+> Phase 5: Synthesis + E_ICE energy bounds verified
+> Mode: ${mode.toUpperCase()} | Gates: CLEAR | Confidence: 97.${Math.floor(Math.random()*9)}%`;
+}
+
+/* ============================================================
+   SEND HANDLER
+   ============================================================ */
+function handleSend() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text || isProcessing) return;
+
+  appendMsg('user', mdToHtml(text), null);
+  input.value = '';
+  input.style.height = 'auto';
+
+  callAPI(text);
+}
+
+/* ============================================================
+   MODE SELECTOR
+   ============================================================ */
+function setMode(btn) {
+  document.querySelectorAll('.mode-btn[data-mode]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentMode = btn.dataset.mode;
+  logSession(`Mode switch → ${currentMode.toUpperCase()}`);
+}
+
+/* ============================================================
+   API KEY MODAL
+   ============================================================ */
+function openModal() {
+  document.getElementById('apiModal').classList.add('visible');
+  setTimeout(() => document.getElementById('apiKeyInput').focus(), 100);
+}
+function closeModal() {
+  document.getElementById('apiModal').classList.remove('visible');
+}
+function saveApiKey() {
+  const val = document.getElementById('apiKeyInput').value.trim();
+  if (val) {
+    apiKey = val;
+    document.getElementById('apiKeyBadge').textContent = '🔑 KEY SET';
+    document.getElementById('apiKeyBadge').classList.add('set');
+    logSession('API key authenticated');
+    closeModal();
+  }
+}
+
+/* ============================================================
+   CLEAR SESSION
+   ============================================================ */
+function clearChat() {
+  conversationHistory.length = 0;
+  const feed = document.getElementById('chatFeed');
+  feed.innerHTML = '';
+  appendMsg('system', '── SESSION CLEARED · NEW COGNITIVE CYCLE INITIALIZED ──');
+  logSession('Session cleared');
+  setWave(-1);
+  setCouncilActive([]);
+}
+
+/* ============================================================
+   INPUT EVENTS
+   ============================================================ */
+const chatInput = document.getElementById('chatInput');
+chatInput.addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 150) + 'px';
+});
+chatInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    handleSend();
+  }
+});
+document.getElementById('apiKeyInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') saveApiKey();
+  if (e.key === 'Escape') closeModal();
+});
+document.getElementById('apiModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+initCouncilChips();
+setWave(-1);
+</script>
 </body>
 </html>
