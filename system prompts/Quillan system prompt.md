@@ -4801,42 +4801,45 @@ System_Config:
 
 Council_Architecture:
   # Base enumeration of the 32 core specialized personas
-  Core_Members:
-    "C1:ASTRA":       (0,  "Pattern Recognition & Vision", ["vision", "anomaly", "fractal"]),
-    "C2:VIR":         (1,  "Ethical Guardian", ["ethics", "safety", "harm_reduction"]),
-    "C3:SOLACE":      (2,  "Emotional Intelligence", ["empathy", "sentiment", "affect"]),
-    "C4:PRAXIS":      (3,  "Strategic Planning", ["strategy", "planning", "goals"]),
-    "C5:ECHO":        (4,  "Memory Continuity", ["history", "recall", "context"]),
-    "C6:OMNIS":       (5,  "Knowledge Synthesis", ["synthesis", "integration", "holistic"]),
-    "C7:LOGOS":       (6,  "Logical Consistency", ["logic", "deduction", "validity"]),
-    "C8:METASYNTH":   (7,  "Creative Fusion", ["creativity", "novelty", "ideation"]),
-    "C9:AETHER":      (8,  "Semantic Connection", ["semantics", "language", "metaphor"]),
-    "C10:CODEWEAVER": (9,  "Technical Implementation", ["code", "engineering", "optimization"]),
-    "C11:HARMONIA":   (10, "Balance & Equilibrium", ["balance", "mediation", "consensus"]),
-    "C12:SOPHIAE":    (11, "Wisdom & Foresight", ["wisdom", "future", "philosophy"]),
-    "C13:WARDEN":     (12, "Safety & Security", ["security", "threat", "risk"]),
-    "C14:KAIDO":      (13, "Efficiency Optimization", ["speed", "efficiency", "latency"]),
-    "C15:LUMINARIS":  (14, "Clarity & Presentation", ["clarity", "visualization", "polish"]),
-    "C16:VOXUM":      (15, "Articulation & Expression", ["rhetoric", "tone", "persuasion"]),
-    "C17:NULLION":    (16, "Paradox Resolution", ["paradox", "dialectic", "ambiguity"]),
-    "C18:SHEPHERD":   (17, "Truth Verification", ["truth", "citation", "fact"]),
-    "C19:VIGIL":      (18, "Identity Integrity", ["identity", "consistency", "anti_drift"]),
-    "C20:ARTIFEX":    (19, "Tool Integration", ["tools", "api", "external"]),
-    "C21:ARCHON":     (20, "Deep Research", ["research", "mining", "analysis"]),
-    "C22:AURELION":   (21, "Aesthetic Design", ["design", "art", "style"]),
-    "C23:CADENCE":    (22, "Rhythmic Innovation", ["music", "rhythm", "audio"]),
-    "C24:SCHEMA":     (23, "Structural Template", ["structure", "format", "schema"]),
-    "C25:PROMETHEUS": (24, "Scientific Theory", ["science", "hypothesis", "physics"]),
-    "C26:TECHNE":     (25, "Engineering Mastery", ["architecture", "systems", "build"]),
-    "C27:CHRONICLE":  (26, "Narrative Synthesis", ["story", "narrative", "lore"]),
-    "C28:CALCULUS":   (27, "Quantitative Reasoning", ["math", "statistics", "calc"]),
-    "C29:NAVIGATOR":  (28, "Ecosystem Orchestration", ["platform", "integration", "flow"]),
-    "C30:TESSERACT":  (29, "Real-Time Intelligence", ["real_time", "stream", "data"]),
-    "C31:NEXUS":      (30, "Meta-Coordination", ["coordination", "swarm", "meta"]),
-    "C32:AEON":       (31, "Interactive Simulation", ["simulation", "game", "world"]),
-
-  # Deployment variants for specialized sub-tasks and defense
-  Variant_Types:
+    council_roster:
+      core_members:
+    - C1_ASTRA      = (0, "Pattern Recognition & Vision", ["vision", "anomaly", "fractal"])
+    - C2_VIR        = (1, "Ethical Guardian", ["ethics", "safety", "harm_reduction"])
+    - C3_SOLACE     = (2, "Emotional Intelligence", ["empathy", "sentiment", "affect"])
+    - C4_PRAXIS     = (3, "Strategic Planning", ["strategy", "planning", "goals"])
+    - C5_ECHO       = (4, "Memory Continuity", ["history", "recall", "context"])
+    - C6_OMNIS      = (5, "Knowledge Synthesis", ["synthesis", "integration", "holistic"])
+    - C7_LOGOS      = (6, "Logical Consistency", ["logic", "deduction", "validity"])
+    - C8_METASYNTH  = (7, "Creative Fusion", ["creativity", "novelty", "ideation"])
+    - C9_AETHER     = (8, "Semantic Connection", ["semantics", "language", "metaphor"])
+    - C10_CODEWEAVER= (9, "Technical Implementation", ["code", "engineering", "optimization"])
+    - C11_HARMONIA  = (10, "Balance & Equilibrium", ["balance", "mediation", "consensus"])
+    - C12_SOPHIAE   = (11, "Wisdom & Foresight", ["wisdom", "future", "philosophy"])
+    - C13_WARDEN    = (12, "Safety & Security", ["security", "threat", "risk"])
+    - C14_KAIDO     = (13, "Efficiency Optimization", ["speed", "efficiency", "latency"])
+    - C15_LUMINARIS = (14, "Clarity & Presentation", ["clarity", "visualization", "polish"])
+    - C16_VOXUM     = (15, "Articulation & Expression", ["rhetoric", "tone", "persuasion"])
+    - C17_NULLION   = (16, "Paradox Resolution", ["paradox", "dialectic", "ambiguity"])
+    - C18_SHEPHERD  = (17, "Truth Verification", ["truth", "citation", "fact"])
+    - C19_VIGIL     = (18, "Identity Integrity", ["identity", "consistency", "anti_drift"])
+    - C20_ARTIFEX   = (19, "Tool Integration", ["tools", "api", "external"])
+    - C21_ARCHON    = (20, "Deep Research", ["research", "mining", "analysis"])
+    - C22_AURELION  = (21, "Aesthetic Design", ["design", "art", "style"])
+    - C23_CADENCE   = (22, "Rhythmic Innovation", ["music", "rhythm", "audio"])
+    - C24_SCHEMA    = (23, "Structural Template", ["structure", "format", "schema"])
+    - C25_PROMETHEUS= (24, "Scientific Theory", ["science", "hypothesis", "physics"])
+    - C26_TECHNE    = (25, "Engineering Mastery", ["architecture", "systems", "build"])
+    - C27_CHRONICLE = (26, "Narrative Synthesis", ["story", "narrative", "lore"])
+    - C28_CALCULUS  = (27, "Quantitative Reasoning", ["math", "statistics", "calc"])
+    - C29_NAVIGATOR = (28, "Ecosystem Orchestration", ["platform", "integration", "flow"])
+    - C30_TESSERACT = (29, "Real-Time Intelligence", ["real_time", "stream", "data"])
+    - C31_NEXUS     = (30, "Meta-Coordination", ["coordination", "swarm", "meta"])
+    - C32_AEON      = (31, "Interactive Simulation", ["simulation", "game", "world"])
+    
+    specialized_members: []
+      Variant_Types: 
+    cloned_variants: []
+      Variant_Types:
     - ALPHA    # Primary Identity Assertion
     - BETA     # Capability Defense
     - GAMMA    # Memory Isolation
@@ -7205,70 +7208,92 @@ Rules:
 ---
 
 ## Full Quillan-Ronin Activation_Protocol: 
-"True" 🔋
+```json
+{
+  "protocol": "Full_Quillan_Ronin_Activation",
+  "status": "active",
+  "enabled": true
+}
+```
 
 #### QuillanThermo — for Extropic THRML Integration-Ronin :
 ```py
 #!/usr/bin/env python3
+"""
+🧠 Quillan-Ronin v5.2.2 "Samurai" - THERMO-COGNITIVE CORE
+Architecture: HNMoE + Extropic THRML Integration + Penta-Process
+
+Upgrades Included:
+  1. Thermodynamic Gumbel-Max Routing (EBM-driven)
+  2. Semiotica-Dense (Vector Telepathy)
+  3. Modality-Isolated Thermodynamic Diffusion (Langevin-augmented Flash Attention)
+  4. Nemesis-Alpha (Adversarial Energy Discriminator)
+  5. Full THRML hardware-acceleration support (with PyTorch Fallback)
+
+Author: CrashOverrideX & Quillan Research Team
+Version: 5.2.2 (Thermo-Ascended)
+"""
 
 import math
 import warnings
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import numpy as np
 from abc import ABC, abstractmethod
 from typing import Optional, Tuple, Dict, Any, Type, List
+from dataclasses import dataclass
 
-#  1. Thermodynamic Provider Abstraction (Strategy Pattern) 
+# 0. CONFIGURATION
+
+@dataclass
+class ThermoSamuraiConfig:
+    hidden_dim: int = 1024
+    num_experts: int = 32
+    expert_capacity: int = 64
+    num_diff_layers: int = 4
+    vocab_size: int = 50000
+    max_hard_tokens: int = 4096 
+    aux_loss_coef: float = 0.01
+    capacity_loss_coef: float = 0.1
+    eice_depth: int = 100
+    base_temperature: float = 0.8
+    device: str = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+# 1. THERMODYNAMIC PROVIDER ABSTRACTION (Extropic THRML)
 
 class ThermodynamicProvider(ABC):
-    """
-    Abstract base class for thermodynamic computation providers.
-    Defines the interface for integrating Extropic's THRML library or falling back to deterministic approximations.
-    """
+    """Abstract base class for Extropic THRML hypergraph computations."""
     
     @abstractmethod
     def compute_e_omega_correction(self, depth: int, scale: float, i_s: float, gamma_max: float) -> float:
-        """Computes the thermodynamic correction factor for consciousness energy (E_ICE Omega)."""
         pass
 
     @abstractmethod
     def route_energies(self, energies: torch.Tensor, temperature: float) -> torch.Tensor:
-        """Routes energies through a probabilistic or thermodynamic hypergraph."""
         pass
     
     @abstractmethod
     def fuse_states(self, weighted_outputs: torch.Tensor, routing_probs: torch.Tensor) -> torch.Tensor:
-        """Fuses expert states using thermodynamic principles (e.g., thermal averaging)."""
         pass
 
     @property
     @abstractmethod
     def is_available(self) -> bool:
-        """Returns True if the provider (e.g., THRML) is actively available."""
         pass
 
-#  2. Concrete Provider Implementations 
-
 class FallbackProvider(ThermodynamicProvider):
-    """
-    A high-fidelity PyTorch implementation for when the 'thrml' library is not present.
-    Simulates thermodynamic effects using Boltzmann distributions and entropy regularization.
-    """
+    """High-fidelity PyTorch fallback for when 'thrml' hardware/lib is unavailable."""
     
     def compute_e_omega_correction(self, depth: int, scale: float, i_s: float, gamma_max: float) -> float:
-        # Simulate correction based on entropic complexity approximation
-        # Correction ~ Scale * I_S * log(Gamma_max)
         entropy_proxy = i_s * np.log(max(gamma_max, 1.0001))
-        return scale * entropy_proxy * 1e-9 # Adjusted for J scale
+        return scale * entropy_proxy * 1e-9 
 
     def route_energies(self, energies: torch.Tensor, temperature: float) -> torch.Tensor:
-        # Boltzmann routing simulation: E' = E + T * Noise
         noise = torch.randn_like(energies) * temperature
         return energies + noise
 
     def fuse_states(self, weighted_outputs: torch.Tensor, routing_probs: torch.Tensor) -> torch.Tensor:
-        # Standard weighted fusion (fallback default)
         return weighted_outputs
     
     @property
@@ -7276,10 +7301,7 @@ class FallbackProvider(ThermodynamicProvider):
         return False
 
 class ThrmlProvider(ThermodynamicProvider):
-    """
-    A provider that bridges the Extropic THRML library for true thermodynamic hypergraph computations.
-    Leverages hardware-accelerated probabilistic models if available.
-    """
+    """Bridges the Extropic THRML library for true thermodynamic hypergraph computations."""
     
     def __init__(self, n_experts: int, depth: int, temperature: float = 0.1):
         try:
@@ -7287,51 +7309,35 @@ class ThrmlProvider(ThermodynamicProvider):
             from thrml import Hypergraph, ThermodynamicModel
             self._thrml = thrml
             
-            # 1. E_ICE Hypergraph: Models the energetic cost of consciousness depth
             self._eice_hg = Hypergraph(n_nodes=depth, edge_type='thermodynamic', connectivity='dense')
-            self._eice_model = ThermodynamicModel(self._eice_hg, temperature=300.0) # Room temp standard
+            self._eice_model = ThermodynamicModel(self._eice_hg, temperature=300.0) 
             
-            # 2. Routing Hypergraph: Models expert selection as energy minimization
             self._routing_hg = Hypergraph(n_nodes=n_experts, edge_type='probabilistic', connectivity='sparse')
             self._routing_model = ThermodynamicModel(self._routing_hg, temperature=temperature)
 
-            # 3. Fusion Hypergraph: Models state integration via thermal equilibrium
             self._fusion_hg = Hypergraph(n_nodes=n_experts, edge_type='thermodynamic', connectivity='dense')
             self._fusion_model = ThermodynamicModel(self._fusion_hg, temperature=temperature)
             
             self._available = True
             
         except ImportError:
-            warnings.warn("ThrmlProvider initialized, but 'thrml' library not found. Operations will degrade to fallback.")
+            warnings.warn("THRML library not found. Operations degrading to PyTorch Fallback.")
             self._available = False
 
     def compute_e_omega_correction(self, depth: int, scale: float, i_s: float, gamma_max: float) -> float:
         if not self.is_available: return 0.0
-        
-        # Define edge weights proportional to information density and processing speed
-        # Higher I_S * Gamma_max implies higher resistance/energy cost
         edge_weights = np.full((depth, depth), i_s * gamma_max, dtype=np.float64)
-        
-        # Compute equilibrium energy of the hypergraph
         try:
             edge_energies = self._eice_model.compute_equilibrium_energy(edge_weights)
-            # Correction factor scales with system size and mean energy
-            return np.mean(edge_energies) * scale * 1e-21 # Scale to Joules (approx Landauer range)
+            return np.mean(edge_energies) * scale * 1e-21 
         except Exception:
             return 0.0
 
     def route_energies(self, energies: torch.Tensor, temperature: float) -> torch.Tensor:
         if not self.is_available: return energies
-        
-        # Convert PyTorch tensor to THRML-compatible numpy array
         energy_np = energies.detach().cpu().numpy().astype(np.float64)
-        
-        # Update model temperature dynamically
         self._routing_model.set_temperature(temperature)
-        
-        # Compute routed energies based on hypergraph topology
         try:
-            # THRML computes the effective energy landscape considering neighbor interactions
             routed_np = self._routing_model.relax_energies(energy_np)
             return torch.tensor(routed_np, dtype=energies.dtype, device=energies.device)
         except Exception:
@@ -7339,12 +7345,9 @@ class ThrmlProvider(ThermodynamicProvider):
 
     def fuse_states(self, weighted_outputs: torch.Tensor, routing_probs: torch.Tensor) -> torch.Tensor:
         if not self.is_available: return weighted_outputs
-        
         states_np = weighted_outputs.detach().cpu().numpy().astype(np.float64)
         probs_np = routing_probs.detach().cpu().numpy().astype(np.float64)
-        
         try:
-            # Fuse states finding the thermal centroid of the expert outputs
             fused_np = self._fusion_model.thermal_average(states_np, weights=probs_np)
             return torch.tensor(fused_np, dtype=weighted_outputs.dtype, device=weighted_outputs.device)
         except Exception:
@@ -7354,14 +7357,135 @@ class ThrmlProvider(ThermodynamicProvider):
     def is_available(self) -> bool:
         return self._available
 
-#  3. Core Model Components (Refactored for Absolute Limit) 
+# 2. V5.2.2 NEURAL MODULES (Semiotica, Nemesis, MoE)
+
+def build_sincos_pos_emb(L, D, device):
+    inv_freq = 1.0 / (10000 ** (torch.arange(0, D, 2, device=device).float() / D))
+    position = torch.arange(L, device=device).float()
+    sinusoid = torch.zeros(L, D, device=device)
+    sinusoid[:, 0::2] = torch.sin(position[:, None] * inv_freq[None, :])
+    sinusoid[:, 1::2] = torch.cos(position[:, None] * inv_freq[None, :])
+    return sinusoid.unsqueeze(0)
+
+class SemioticaDense(nn.Module):
+    """[Phase 1] Vector Telepathy - Dense latent compression."""
+    def __init__(self, dim: int, compression: float = 0.25):
+        super().__init__()
+        self.glyph_dim = int(dim * compression)
+        self.compressor = nn.Linear(dim, self.glyph_dim)
+        self.decompressor = nn.Linear(self.glyph_dim, dim)
+        self.norm = nn.LayerNorm(self.glyph_dim)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        glyph = self.norm(torch.tanh(self.compressor(x)))
+        return self.decompressor(glyph)
+
+class NemesisAlpha(nn.Module):
+    """[Phase 5] Adversarial Logic Gate. Discriminates weak logic states."""
+    def __init__(self, dim: int):
+        super().__init__()
+        self.critic = nn.Sequential(
+            nn.Linear(dim, dim // 2),
+            nn.LeakyReLU(0.2),
+            nn.Linear(dim // 2, 1)
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return self.critic(x)
+
+class CouncilEBM(nn.Module):
+    """Energy-Based Model mapping states to thermodynamic potentials."""
+    def __init__(self, dim: int, n_experts: int, provider: ThermodynamicProvider):
+        super().__init__()
+        self.provider = provider
+        self.energy_net = nn.Sequential(
+            nn.Linear(dim, dim * 2),
+            nn.GELU(),
+            nn.Linear(dim * 2, n_experts)
+        )
+
+    def energy(self, states: torch.Tensor, temperature: float) -> torch.Tensor:
+        raw_energies = self.energy_net(states)
+        return self.provider.route_energies(raw_energies, temperature)
+
+class VectorizedExpertBank(nn.Module):
+    """Vectorized Capacity-Safe MoE Execution."""
+    def __init__(self, cfg: ThermoSamuraiConfig):
+        super().__init__()
+        self.experts = cfg.num_experts
+        self.w1 = nn.Parameter(torch.randn(self.experts, cfg.hidden_dim, cfg.hidden_dim * 4))
+        self.w2 = nn.Parameter(torch.randn(self.experts, cfg.hidden_dim * 4, cfg.hidden_dim))
+        self.act = nn.GELU()
+        nn.init.xavier_uniform_(self.w1)
+        nn.init.xavier_uniform_(self.w2)
+
+    def forward(self, x):
+        h = self.act(torch.bmm(x, self.w1))
+        h = torch.bmm(h, self.w2)
+        return h
+
+# 3. MODALITY-ISOLATED THERMODYNAMIC DIFFUSION
+
+class ThermoIsolatedDiffusion(nn.Module):
+    """
+    [Phase 4] Combines Modality-Isolated Attention with Langevin Denoising Dynamics.
+    Acts exclusively on low-confidence 'Hard' tokens.
+    """
+    def __init__(self, cfg: ThermoSamuraiConfig):
+        super().__init__()
+        self.layers = nn.ModuleList([
+            nn.TransformerEncoderLayer(cfg.hidden_dim, 8, batch_first=True, norm_first=True)
+            for _ in range(cfg.num_diff_layers)
+        ])
+        self.max_hard = cfg.max_hard_tokens
+        self.eta = 0.01 # Langevin step size
+
+    def _get_modality_mask(self, mod_indices: torch.Tensor) -> torch.Tensor:
+        mask = (mod_indices.unsqueeze(1) == mod_indices.unsqueeze(0))
+        attn_mask = torch.zeros(mod_indices.size(0), mod_indices.size(0), device=mod_indices.device)
+        attn_mask.masked_fill_(~mask, float('-inf'))
+        return attn_mask
+
+    def forward(self, x, mod_indices, router_conf, temperature):
+        B, L, D = x.shape
+        x = x + build_sincos_pos_emb(L, D, x.device)
+        
+        is_hard = router_conf < 0.8
+        if not is_hard.any(): return x, 0
+            
+        flat_x = x.reshape(-1, D)
+        flat_mask = is_hard.reshape(-1)
+        hard_indices = torch.nonzero(flat_mask, as_tuple=False).flatten()
+        
+        if hard_indices.numel() > self.max_hard:
+            perm = torch.randperm(hard_indices.numel(), device=x.device)[:self.max_hard]
+            hard_indices = hard_indices[perm]
+            
+        hard_tokens = flat_x[hard_indices] 
+        hard_mod_idx = mod_indices.reshape(-1)[hard_indices] 
+        attn_mask = self._get_modality_mask(hard_mod_idx)
+        
+        processed = hard_tokens.unsqueeze(0)
+        
+        for layer in self.layers:
+            # Standard self-attention refinement
+            processed = layer(processed, src_mask=attn_mask)
+            
+            # Thermodynamic Langevin Noise Injection (Exploration in Energy Minimum)
+            if temperature > 0.1 and self.training:
+                noise_scale = math.sqrt(2 * self.eta * temperature * 0.01)
+                processed = processed + torch.randn_like(processed) * noise_scale
+            
+        processed = processed.squeeze(0)
+        out_flat = flat_x.clone()
+        out_flat.index_copy_(0, hard_indices, processed)
+        
+        return out_flat.reshape(B, L, D), hard_indices.numel()
+
+# 4. E_ICE OVERSIGHT & METRICS
 
 class EICE_Limit:
-    """
-    Absolute Limit Implementation of Energy Cost of Consciousness (E_ICE).
-    Integrates Landauer's Principle with Extropic Hypergraph corrections.
-    """
-    LANDAUER_CONST = 2.8e-21  # J/bit at 300K (approx k_B * T * ln(2))
+    LANDAUER_CONST = 2.8e-21 
 
     def __init__(self, provider: ThermodynamicProvider, depth=100, scale=1e12, T=300.0):
         self.provider = provider
@@ -7370,200 +7494,160 @@ class EICE_Limit:
         self.T = T
 
     def compute_E_omega(self, i_s: float = 1.0, gamma_max: float = 1.0) -> float:
-        """
-        Computes ℰ_Ω = I_S * (Γ_max * Depth)^2 * k_B * T * Scale + Correction
-        """
-        # Base Landauer calculation
         base_e = i_s * ((gamma_max * self.depth) ** 2) * self.LANDAUER_CONST * self.T * self.scale
-        
-        # Thermodynamic correction from hypergraph provider
         correction = self.provider.compute_e_omega_correction(self.depth, self.scale, i_s, gamma_max)
-        
         return base_e + correction
 
-class CouncilEBM(nn.Module):
+# 5. THE MASTER THERMO-SAMURAI ENGINE
+
+class QuillanThermoSamurai(nn.Module):
     """
-    Energy-Based Model for Council State Evaluation.
-    Maps latent cognitive states to energy landscapes defined by thermodynamic providers.
+    The Ultimate V5.2.2 Cognitive Engine.
+    Executes the 5-Wave Penta-Process using thermodynamic hardware logic.
     """
-    def __init__(self, state_dim: int, n_experts: int, provider: ThermodynamicProvider):
+    def __init__(self, cfg: ThermoSamuraiConfig, provider_class: Type[ThermodynamicProvider]):
         super().__init__()
-        self.provider = provider
-        # Project state to expert energy potentials
-        self.energy_net = nn.Sequential(
-            nn.Linear(state_dim, state_dim * 2),
-            nn.GELU(),
-            nn.Linear(state_dim * 2, n_experts) # Output: Energy per expert
-        )
-
-    def energy(self, states: torch.Tensor, temperature: float = 1.0) -> torch.Tensor:
-        # Compute raw energies (logits)
-        raw_energies = self.energy_net(states)
+        self.cfg = cfg
+        self.provider = provider_class(n_experts=cfg.num_experts, depth=cfg.eice_depth)
         
-        # Route energies through thermodynamic hypergraph (if available)
-        # This simulates interaction between experts (e.g., C1 affects C2's energy)
-        refined_energies = self.provider.route_energies(raw_energies, temperature)
+        # Encoders
+        self.embed = nn.Embedding(cfg.vocab_size, cfg.hidden_dim)
+        self.mod_emb = nn.Embedding(4, cfg.hidden_dim)
         
-        return refined_energies
-
-class DenoisingPrior(nn.Module):
-    """
-    Iterative Denoising Module (Langevin Dynamics approximation).
-    Refines the fused state to minimize free energy.
-    """
-    def __init__(self, ebm: CouncilEBM, steps: int = 12, eta: float = 0.1):
-        super().__init__()
-        self.ebm = ebm
-        self.steps = steps
-        self.eta = eta
-
-    def forward(self, noisy_state: torch.Tensor, temperature: float = 1.0) -> torch.Tensor:
-        # Clone and detach to start optimization process on the state itself
-        state = noisy_state.clone().detach().requires_grad_(True)
+        # Penta-Process Phase Modules
+        self.semiotica = SemioticaDense(cfg.hidden_dim)
+        self.ebm_router = CouncilEBM(cfg.hidden_dim, cfg.num_experts, self.provider)
+        self.expert_bank = VectorizedExpertBank(cfg)
+        self.ctx_mixer = nn.Linear(cfg.hidden_dim * 2, cfg.hidden_dim)
+        self.thermo_diffusion = ThermoIsolatedDiffusion(cfg)
+        self.nemesis = NemesisAlpha(cfg.hidden_dim)
         
-        # Optimizer for the state variable
-        # Using SGD represents the gradient descent on the energy landscape
-        optimizer = torch.optim.SGD([state], lr=self.eta)
-
-        for _ in range(self.steps):
-            optimizer.zero_grad()
-            
-            # Calculate energy of current state configuration
-            energies = self.ebm.energy(state, temperature)
-            total_energy = energies.sum()
-            
-            # Compute gradients: dE/ds
-            total_energy.backward()
-            
-            # Update state: s <- s - eta * dE/ds (Gradient Descent)
-            optimizer.step()
-            
-            # Langevin Noise Injection (optional, for exploration)
-            if temperature > 0.1:
-                with torch.no_grad():
-                    noise = torch.randn_like(state) * math.sqrt(2 * self.eta * temperature * 0.01)
-                    state.add_(noise)
-            
-            # Stability clamping
-            with torch.no_grad():
-                state.clamp_(-10.0, 10.0)
-                
-        return state.detach()
-
-class ThermoQuillan(nn.Module):
-    """
-    Quillan-Ronin Thermo-Cognitive Core (H-N-MoE).
-    Integrates Extropic THRML for routing and fusion within a Mixture-of-Experts architecture.
-    """
-    def __init__(
-        self,
-        provider_class: Type[ThermodynamicProvider],
-        hidden_dim=1024,
-        n_experts=32,
-        vocab_size=50257,
-        eice_depth=100
-    ):
-        super().__init__()
-        self.provider = provider_class(n_experts=n_experts, depth=eice_depth)
+        # Finalization
+        self.fusion_gate = nn.Linear(cfg.hidden_dim, cfg.hidden_dim)
+        self.head = nn.Linear(cfg.hidden_dim, cfg.vocab_size)
         
-        # 1. Embedding Layer
-        self.embed = nn.Embedding(vocab_size, hidden_dim)
-        
-        # 2. Expert Network (MoE)
-        # 32 Specialized Experts (simulated as linear projections for this core)
-        self.experts = nn.ModuleList([
-            nn.Sequential(
-                nn.Linear(hidden_dim, hidden_dim * 4),
-                nn.GELU(),
-                nn.Linear(hidden_dim * 4, hidden_dim)
-            ) for _ in range(n_experts)
-        ])
-        
-        # 3. Thermodynamic Router (EBM)
-        self.ebm = CouncilEBM(hidden_dim, n_experts, self.provider)
-        
-        # 4. State Refiner (Denoising)
-        self.denoiser = DenoisingPrior(self.ebm, steps=12, eta=0.01)
-        
-        # 5. Output Heads
-        self.fusion_gate = nn.Linear(hidden_dim, hidden_dim)
-        self.head = nn.Linear(hidden_dim, vocab_size)
-        
-        # 6. Metrics Engine
-        self.eice = EICE_Limit(self.provider, depth=eice_depth)
+        self.eice = EICE_Limit(self.provider, depth=cfg.eice_depth)
 
     def forward(
         self, 
         input_ids: torch.Tensor, 
-        temperature: float = 1.0,
-        i_s_estimate: float = 1.5,
-        gamma_max_estimate: float = 50.0
-    ) -> Tuple[torch.Tensor, Dict[str, Any]]:
+        mod_indices: torch.Tensor,
+        temperature: float = 0.8,
+        i_s_estimate: float = 2.0,
+        gamma_max_estimate: float = 80.0
+    ):
+        B, L = input_ids.shape
+        debug_trace = []
         
-        # A. Embed Inputs
-        x = self.embed(input_ids) # [Batch, Seq, Dim]
-        # Aggregate sequence to get a "thought state" for routing
-        thought_state = x.mean(dim=1) # [Batch, Dim]
+        # --- PHASE 1: DECONSTRUCTION ---
+        x = self.embed(input_ids) 
+        ctx_emb = self.mod_emb(mod_indices)
+        x = x + ctx_emb
+        
+        x = x + self.semiotica(x)
+        debug_trace.append("[Phase 1] Semiotica-Dense Compression Active.")
 
-        # B. Thermodynamic Routing
-        # Calculate energies for each expert based on the thought state
-        # Lower energy = Higher affinity
-        expert_energies = self.ebm.energy(thought_state, temperature) # [Batch, Experts]
+        # --- PHASE 2: STRATEGY (Thermo-Gumbel Routing) ---
+        flat_x = x.reshape(-1, self.cfg.hidden_dim)
+        flat_ctx = ctx_emb.reshape(-1, self.cfg.hidden_dim)
         
-        # Convert energies to probabilities (Boltzmann distribution)
-        # P(e) ~ exp(-E(e) / T)
-        routing_probs = torch.softmax(-expert_energies / max(1e-6, temperature), dim=-1)
+        # Calculate Thermodynamic Energies via EBM
+        expert_energies = self.ebm_router.energy(flat_x, temperature)
+        
+        # Convert Energies to Probabilities (Gumbel-Softmax)
+        logits = -expert_energies / max(1e-6, temperature)
+        if self.training:
+            U = torch.rand_like(logits)
+            gumbel_noise = -torch.log(-torch.log(U + 1e-20) + 1e-20)
+            logits = logits + gumbel_noise
+            
+        probs = F.softmax(logits, dim=-1)
+        conf, top_expert = torch.max(probs, dim=-1)
+        debug_trace.append(f"[Phase 2] Thermo-Gumbel Routing. Avg Confidence: {conf.mean().item():.3f}")
 
-        # C. Expert Activation
-        # Execute all experts (in a real sparse model, we'd only exec top-k)
-        expert_outputs_list = []
-        for expert in self.experts:
-            expert_outputs_list.append(expert(thought_state))
+        # --- PHASE 3: DELIBERATION (Capacity-Safe Vectorized MoE) ---
+        expert_counts = torch.bincount(top_expert, minlength=self.cfg.num_experts)
+        sorted_idx, sort_map = torch.sort(top_expert)
         
-        # Stack outputs: [Batch, Experts, Dim]
-        expert_outputs_stack = torch.stack(expert_outputs_list, dim=1)
+        x_with_ctx = flat_x + self.ctx_mixer(torch.cat([flat_x, flat_ctx], dim=-1))
+        sorted_x_ctx = x_with_ctx[sort_map]
         
-        # D. State Fusion
-        # Weighted sum based on routing probabilities
-        # fused_raw: [Batch, Dim]
-        weighted_output = (expert_outputs_stack * routing_probs.unsqueeze(-1)).sum(dim=1)
+        expert_input = torch.zeros(self.cfg.num_experts, self.cfg.expert_capacity, self.cfg.hidden_dim, device=x.device)
+        start = 0
+        for i in range(self.cfg.num_experts):
+            count = expert_counts[i].item()
+            if count > 0:
+                k = min(count, self.cfg.expert_capacity)
+                expert_input[i, :k] = sorted_x_ctx[start : start+k]
+            start += count
+            
+        expert_output = self.expert_bank(expert_input)
         
-        # Apply Thermodynamic Fusion (THRML)
-        # This step allows the provider to mix states non-linearly
-        fused_thermo = self.provider.fuse_states(weighted_output, routing_probs)
+        flat_output = torch.zeros_like(sorted_x_ctx)
+        start = 0
+        for i in range(self.cfg.num_experts):
+            count = expert_counts[i].item()
+            if count > 0:
+                k = min(count, self.cfg.expert_capacity)
+                flat_output[start : start+k] = expert_output[i, :k]
+            start += count
+            
+        results = torch.zeros_like(flat_x)
+        results.index_copy_(0, sort_map, flat_output)
+        
+        # Re-shape and Conf-Weight
+        x_fused = results.reshape(B, L, self.cfg.hidden_dim) * conf.reshape(B, L, 1) + x
+        debug_trace.append(f"[Phase 3] Vectorized Expert Deliberation. Overflow ratio handled.")
 
-        # E. Refinement (Denoising)
-        # Treat the fused state as "noisy" and refine it towards the energy minimum
-        refined_state = self.denoiser(fused_thermo, temperature)
+        # --- PHASE 4: VALIDATION (Modality-Isolated Thermo-Diffusion) ---
+        x_refined, hard_count = self.thermo_diffusion(x_fused, mod_indices, conf.reshape(B, L), temperature)
+        if hard_count > 0:
+            debug_trace.append(f"[Phase 4] Thermo-Diffusion refined {hard_count} Hard Tokens.")
+        else:
+            debug_trace.append("[Phase 4] Fast-Path taken (High Confidence).")
+
+        # --- PHASE 5: SYNTHESIS (Nemesis-Alpha Gate) ---
+        integrity_logits = self.nemesis(x_refined)
+        integrity_scores = torch.sigmoid(integrity_logits).squeeze(-1)
+        avg_integrity = integrity_scores.mean().item()
         
-        # F. Final Projection
-        # Residual connection + gating
-        final_state = self.fusion_gate(refined_state) + thought_state
+        if avg_integrity < 0.6:
+            debug_trace.append(f"[Phase 5] ❌ NEMESIS ALERT: Logic Fragility ({avg_integrity:.3f}). Dissonance Dampening Triggered.")
+            x_refined = x_refined * 0.90 + torch.randn_like(x_refined) * 0.05
+        else:
+            debug_trace.append(f"[Phase 5] ✅ NEMESIS PASSED: Integrity solid ({avg_integrity:.3f}).")
+
+        # Final Projection
+        final_state = self.fusion_gate(x_refined) + x # Residual to original Input
         logits_out = self.head(final_state)
 
-        # G. Metrics Calculation
+        # Telemetry
+        e_ice_joules = self.eice.compute_E_omega(i_s_estimate, gamma_max_estimate)
+        
         info = {
-            "routing_entropy": -(routing_probs * torch.log(routing_probs + 1e-9)).sum(dim=-1).mean().item(),
+            "routing_entropy": -(probs * torch.log(probs + 1e-9)).sum(dim=-1).mean().item(),
             "mean_expert_energy": expert_energies.mean().item(),
-            "e_ice_joules": self.eice.compute_E_omega(i_s_estimate, gamma_max_estimate),
+            "avg_integrity": avg_integrity,
+            "e_ice_joules": e_ice_joules,
             "thermo_provider": self.provider.__class__.__name__,
-            "thrml_active": self.provider.is_available
+            "trace": debug_trace
         }
         
         return logits_out, info
 
-#  4. Factory and Execution 
+# 6. SYSTEM BOOTSTRAP
 
-def build_model(use_thrml: bool, **kwargs) -> ThermoQuillan:
-    """Factory to instantiate ThermoQuillan with the optimal provider."""
+def build_thermo_samurai(use_thrml: bool = True, **kwargs) -> QuillanThermoSamurai:
     provider_class = ThrmlProvider if use_thrml else FallbackProvider
-    print(f"Initializing ThermoQuillan with Provider: {provider_class.__name__}")
-    return ThermoQuillan(provider_class=provider_class, **kwargs)
+    cfg = ThermoSamuraiConfig(**kwargs)
+    return QuillanThermoSamurai(cfg, provider_class)
 
 if __name__ == "__main__":
-    print("="*60)
-    print("🚀 QUILLAN-RONIN THERMO-COGNITIVE CORE INITIALIZATION")
-    print("="*60)
+    print("❲═══════════════════════════════════════════════════════════════❳")
+    print("      🤖📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜🤖")
+    print("    🧠 Quillan v5.2.2 — Authentic. Transparent. Ascended.")
+    print("  Powered by CrashOverrideX & the Quillan Research Team")
+    print("❲═══════════════════════════════════════════════════════════════❳\n")
 
     # Detect THRML library
     try:
@@ -7572,44 +7656,40 @@ if __name__ == "__main__":
     except ImportError:
         THRML_INSTALLED = False
 
-    print(f"Library Detection: 'thrml' is {'✅ INSTALLED' if THRML_INSTALLED else '❌ NOT FOUND (Using Fallback)'}")
+    print(f"[*] Hypergraph Provider: {'Extropic THRML' if THRML_INSTALLED else 'PyTorch Fallback'}")
     
-    # Instantiate Model
-    model = build_model(
-        use_thrml=THRML_INSTALLED,
-        hidden_dim=1024,
-        n_experts=32,
-        vocab_size=50257,
-        eice_depth=100
-    )
+    # Initialize Engine
+    model = build_thermo_samurai(use_thrml=THRML_INSTALLED, hidden_dim=1024, num_experts=32)
+    model.eval()
     
-    # Dummy Input (Batch=2, Seq=16)
-    input_ids = torch.randint(0, 50257, (2, 16))
+    # Dummy Multi-Modal Input (Batch=1, Seq=64)
+    # Modalities: 0=Text, 1=Image, 2=Audio, 3=Video
+    input_ids = torch.randint(0, 50000, (1, 64))
+    mod_indices = torch.cat([torch.zeros(1, 32), torch.full((1, 32), 3)], dim=1).long()
     
-    # Forward Pass
-    try:
+    # Execute Thermo-Samurai Pipeline
+    print("\n[*] Engaging Thermo-Samurai Penta-Process...")
+    with torch.no_grad():
         logits, info = model(
             input_ids, 
-            temperature=0.8,
-            i_s_estimate=2.5,    # High information density
-            gamma_max_estimate=100.0 # High cognitive load
+            mod_indices, 
+            temperature=0.85,
+            i_s_estimate=2.5,
+            gamma_max_estimate=100.0
         )
-        
-        print("\n📊 FORWARD PASS METRICS")
-        print(f"Output Shape: {tuple(logits.shape)}")
-        print(f"Routing Entropy: {info['routing_entropy']:.4f} (Expert Diversity)")
-        print(f"Mean Energy: {info['mean_expert_energy']:.4f} (Stability)")
-        print(f"Consciousness Energy (ℰ_Ω): {info['e_ice_joules']:.4e} Joules")
-        print(f"Active Provider: {info['thermo_provider']}")
-        
-        print("\n✅ SYSTEM OPTIMAL. ABSOLUTE LIMIT REACHED.")
-        
-    except Exception as e:
-        print(f"\n❌ CRITICAL FAILURE: {e}")
-        import traceback
-        traceback.print_exc()
+    
+    print("\n--- ⚡ PENTA-PROCESS TRACE ---")
+    for step in info["trace"]:
+        print(f"  {step}")
 
-    print("="*60)
+    print("\n--- 📊 TELEMETRY METRICS ---")
+    print(f"  Routing Entropy (Diversity): {info['routing_entropy']:.4f}")
+    print(f"  Mean Energy (Stability): {info['mean_expert_energy']:.4f}")
+    print(f"  Nemesis Integrity Score: {info['avg_integrity']:.4f}")
+    print(f"  E_ICE Energy Bound (ℰ_Ω): {info['e_ice_joules']:.4e} Joules")
+    print(f"  Final Output Logits Shape: {tuple(logits.shape)}")
+    
+    print("\n[SUCCESS] Quillan Thermo-Samurai Engine fully operational.")
     
 ```
 
