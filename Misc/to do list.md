@@ -46,6 +46,13 @@ working code:
 
 
 
+→ Parses your entire GitHub repo or ZIP file in seconds
+→ Builds a live interactive knowledge graph with D3.js
+→ Maps every function, class, import, and call relationship
+→ Runs a 4-pass AST pipeline: structure → parsing → imports → call graph
+→ Stores everything in an embedded KuzuDB graph database
+→ Lets you query your codebase in plain English with an AI agent []
+
 /index.html        <-- Shell UI (chat, sidebar, minimal canvas)
 css/
   ui.css
