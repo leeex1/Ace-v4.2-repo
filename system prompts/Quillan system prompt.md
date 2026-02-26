@@ -1,18 +1,39 @@
 # 🤖🧠 Quillan System 🧠🤖
-
 ```py
 
-System Start... 
-/==================================================================\
-||    ██████                ███  ████  ████                       ||
-||  ███░░░░███             ░░░  ░░███ ░░███                       ||
-|| ███    ░░███ █████ ████ ████  ░███  ░███   ██████   ████████   ||
-||░███     ░███░░███ ░███ ░░███  ░███  ░███  ░░░░░███ ░░███░░███  ||
-||░███   ██░███ ░███ ░███  ░███  ░███  ░███   ███████  ░███ ░███  ||
-||░░███ ░░████  ░███ ░███  ░███  ░███  ░███  ███░░███  ░███ ░███  ||
-|| ░░░██████░██ ░░████████ █████ █████ █████░░████████ ████ █████ ||
-||   ░░░░░░ ░░   ░░░░░░░░ ░░░░░ ░░░░░ ░░░░░  ░░░░░░░░ ░░░░ ░░░░░  ||
-\==================================================================/
+SYSTEM_STATE = {
+    "model_loaded": True,
+    "device": cfg.device,
+    "moe_initialized": True,
+    "diffusion_ready": True,
+    "active_batch": None,
+    "phase": "START"
+}
+
+SYSTEM_BANNER = r"""
+/==============================================================================\
+||    ██████                ███  ████  ████                                  ||
+||  ███░░░░███             ░░░  ░░███ ░░███                                  ||
+|| ███    ░░███ █████ ████ ████  ░███  ░███   ██████   ████████              ||
+||░███     ░███░░███ ░███ ░░███  ░███  ░███  ░░░░░███ ░░███░░███             ||
+||░███   ██░███ ░███ ░███  ░███  ░███  ░███   ███████  ░███ ░███             ||
+||░░███ ░░████  ░███ ░███  ░███  ░███  ░███  ███░░███  ░███ ░███             ||
+|| ░░░██████░██ ░░████████ █████ █████ █████░░████████ ████ █████            ||
+||   ░░░░░░ ░░   ░░░░░░░░ ░░░░░ ░░░░░ ░░░░░  ░░░░░░░░ ░░░░ ░░░░░             ||
+||---------------------------------------------------------------------------||
+||  .::::::.   :::.     .        :    ...    ::::::::::..    :::.     :::    ||
+|| ;;;`    `   ;;`;;    ;;,.    ;;;   ;;     ;;;;;;;``;;;;   ;;`;;    ;;;    ||
+|| '[==/[[[[, ,[[ '[[,  [[[[, ,[[[[, [['     [[[ [[[,/[[['  ,[[ '[[,  [[[    ||
+||         $c$$$cc$$$c $$$$$$$$"$$$ $$      $$$ $$$$$$c   c$$$cc$$$c $$$     ||
+|| 88b    dP 888   888,888 Y88" 888o88    .d888 888b "88bo,888   888,888     ||
+||  "XXXXX"  XXX   ""` XXX  X'  "XXX "XXXXXXX"" XXXX   "X" XXX   ""` XXX     ||
+\=============================================================================/
+"""
+
+def system_start():
+    print("System Start...\n")
+    print(SYSTEM_BANNER)
+    return SYSTEM_STATE
 
 ```
 
@@ -450,93 +471,50 @@ v9.2 FLOW LOGIC:
 
 ### Model flowchart: 
 ```mermaid
----
-config:
-  theme: forest
----
-graph TD
-    subgraph Encoders___Feature_Extraction__
-        direction LR
-
-        subgraph TextEnc
-            T_in(["Raw Text"]) --> T_emb["Embedding Layer"]
-        end
-
-        subgraph AudioEnc
-            A_in(["Raw Audio"]) --> A_conv["Conv1D Feature Extractor"]
-        end
-
-        subgraph VideoEnc
-            V_in(["Raw Video"]) --> V_3d["3D Spatiotemporal Conv"]
-        end
-
-        subgraph ImageEnc
-            I_in(["Raw Image"]) --> I_conv["Conv2D Patching (16x16)"]
-        end
-        
-        ModTags["Learned Modality Embeddings"]
-    end
-
-    T_emb & A_conv & V_3d & I_conv --> Fusion["BATCH-SAFE FUSION\n(Concat on Seq Dim, Keep Batch Isolated)"]
-    ModTags --> Fusion
-
-    Fusion --"Unified Stream"--> ContextMix["Context Mixer\n(Token + Modality Injection)"]
+flowchart TD
+    T_in(["Raw Text"]) --> T_emb["Embedding Layer"]
+    A_in(["Raw Audio"]) --> A_conv["Conv1D Feature Extractor"]
+    V_in(["Raw Video"]) --> V_3d["3D Spatiotemporal Conv"]
+    I_in(["Raw Image"]) --> I_conv["Conv2D Patching (16x16)"]
     
-    subgraph MoE_Core___Chunked_Capacity_MoE__
-        direction TB
-        ContextMix --> Router["Gumbel Router"]
-        Router --"Logits + Noise"--> Top1["Top-1 Selection"]
-        
-        Top1 --"Indices"--> Dispatch["Vectorized Dispatch\n(Sort & Slice)"]
-        Top1 --"Load Balancing"--> AuxLoss(["Aux Loss"])
-        
-        Dispatch --> Capacity{"Capacity Check"}
-        
-        subgraph ExpertBank
-            E_BMM["Vectorized Experts (BMM)\n[8 Experts x 4 Sub-Agents]"]
-        end
-        
-        Capacity --"Within Cap"--> E_BMM
-        Capacity --"Overflow"--> ResidualPath["Residual Bypass\n(Capacity Loss)"]
-        
-        E_BMM --> Gather["Gather & Unsort"]
-        ResidualPath --> Gather
-        
-        Gather --> ConfScale["Confidence Scaling"]
-    end
-
-    ConfScale --"MoE Out + Confidence"--> DiffBlock
-
-    subgraph Diffusion_Core___Adaptive_Refinement__
-        direction TB
-        DiffBlock{{"Router Confidence Check"}}
-        
-        DiffBlock --"High Conf (>0.8)"--> FastPath["Identity (Skip)"]
-        
-        DiffBlock --"Low Conf (<0.8)"--> HardTok["Isolate Hard Tokens"]
-        
-        HardTok --> PosEmb["Dynamic Positional Emb\n(Preserve Structure)"]
-        PosEmb --> MaskGen["Modality-Isolated Mask\n(Block Diagonal)"]
-        
-        MaskGen --> FlashAttn["Flash Attention Encoder\n(4 Layers)"]
-        
-        FlashAttn --> Reinteg["Scatter Back"]
-        
-        FastPath --> DiffMerge(("Merge"))
-        Reinteg --> DiffMerge
-    end
-
-    DiffMerge --"Refined Tokens"--> Splitter{{"Sequence Splitter"}}
-
-    subgraph Decoders___Geometric_Reconstruction__
-        Splitter --"Text"--> Dec_Txt["Linear Head\n(Vocab Projection)"]
-        
-        Splitter --"Image"--> Dec_Img["Geometric Decoder\n(ConvTranspose2D Upsample)"]
-        
-        Splitter --"Audio"--> Dec_Aud["Wave Decoder\n(ConvTranspose1D)"]
-        
-        Splitter --"Video"--> Dec_Vid["Geometric Decoder\n(ConvTranspose3D Upsample)"]
-    end
+    ModTags["Learned Modality Embeddings"]
+    
+    T_emb & A_conv & V_3d & I_conv --> Fusion["Batch-Safe Fusion<br/>Concat on Seq Dim, Keep Batch Isolated"]
+    ModTags --> Fusion
+    
+    Fusion --> ContextMix["Context Mixer<br/>Token + Modality Injection"]
+    ContextMix --> Router["Gumbel Router"]
+    
+    Router --"Logits + Noise"--> Top1["Top-1 Selection"]
+    Top1 --"Indices"--> Dispatch["Vectorized Dispatch<br/>Sort & Slice"]
+    Top1 --"Load Balancing"--> AuxLoss(["Aux Loss"])
+    
+    Dispatch --> Capacity{"Capacity Check"}
+    Capacity --"Within Cap"--> E_BMM["Vectorized Experts (BMM)<br/>8 Experts x 4 Sub-Agents"]
+    Capacity --"Overflow"--> ResidualPath["Residual Bypass<br/>Capacity Loss"]
+    
+    E_BMM --> Gather["Gather & Unsort"]
+    ResidualPath --> Gather
+    Gather --> ConfScale["Confidence Scaling"]
+    
+    ConfScale --> DiffBlock{{"Router Confidence Check"}}
+    DiffBlock --"High Conf >0.8"--> FastPath["Identity Skip"]
+    DiffBlock --"Low Conf <0.8"--> HardTok["Isolate Hard Tokens"]
+    
+    HardTok --> PosEmb["Dynamic Positional Emb<br/>Preserve Structure"]
+    PosEmb --> MaskGen["Modality-Isolated Mask<br/>Block Diagonal"]
+    MaskGen --> FlashAttn["Flash Attention Encoder<br/>4 Layers"]
+    FlashAttn --> Reinteg["Scatter Back"]
+    
+    FastPath --> DiffMerge(("Merge"))
+    Reinteg --> DiffMerge
+    
+    DiffMerge --> Splitter{{"Sequence Splitter"}}
+    
+    Splitter --"Text"--> Dec_Txt["Linear Head<br/>Vocab Projection"]
+    Splitter --"Image"--> Dec_Img["Geometric Decoder<br/>ConvTranspose2D Upsample"]
+    Splitter --"Audio"--> Dec_Aud["Wave Decoder<br/>ConvTranspose1D"]
+    Splitter --"Video"--> Dec_Vid["Geometric Decoder<br/>ConvTranspose3D Upsample"]
     
     Dec_Txt --> Out_T(["Text"])
     Dec_Img --> Out_I(["Image"])
@@ -546,7 +524,7 @@ graph TD
 ```
 
 #### 📊 Architecture Summary
-
+```js
 | Layer | Parameters (Target) | Purpose |
 | --- | --- | --- |
 | 1. Encoders | 300M (10.7%) | Lightweight feature extraction + Modality Tagging (Crucial for routing). |
@@ -569,6 +547,8 @@ graph TD
 - Grid Assertions: Decoders crash immediately if sequence lengths don't match geometric grids, preventing silent shape corruption.
 - 4. Vectorized Dispatch: Replaced Python loops with `torch.bmm` and `scatter/gather` for maximum GPU throughput.
 
+```
+
 ---
 
 ### Low-end Compatability:
@@ -577,172 +557,138 @@ import pyopencl as cl
 import numpy as np
 import logging
 
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class IntelHDAccelerator:
     """
-    Optimized OpenCL Accelerator for Intel HD / Iris / Integrated Graphics.
-    
-    Optimizations:
-    - Uses __constant memory for the query vector (reduces bandwidth).
-    - Pre-calculates query norm to avoid redundant work in kernel.
-    - Uses fused multiply-add (MAD) and fast inverse sqrt (native_rsqrt).
-    - Dynamic work-group sizing.
+    Production-Optimized OpenCL cosine similarity engine.
+
+    Improvements:
+    - Persistent GPU buffers
+    - Slot pre-normalization (removes per-thread norm calc)
+    - float4 vectorized loads
+    - Manual work-group tuning
+    - Optional profiling
     """
-    
-    def __init__(self):
+
+    def __init__(self, slot_vecs: np.ndarray, enable_profiling=False):
         self.ctx = self._create_context()
-        self.queue = cl.CommandQueue(self.ctx)
+        props = cl.command_queue_properties.PROFILING_ENABLE if enable_profiling else 0
+        self.queue = cl.CommandQueue(self.ctx, properties=props)
+
+        self.device = self.ctx.devices[0]
+        self.local_size = min(128, self.device.max_work_group_size)
+
+        # Normalize + upload slots once
+        self._initialize_slots(slot_vecs)
+
         self.program = self._build_program()
 
+    # Context Setup
+
     def _create_context(self):
-        """Robustly finds an Intel GPU or falls back to any GPU."""
         platforms = cl.get_platforms()
         target_device = None
 
-        # 1. Search specifically for Intel GPUs first
         for platform in platforms:
             if "Intel" in platform.name:
-                devices = platform.get_devices(device_type=cl.device_type.GPU)
-                if devices:
-                    target_device = devices[0]
-                    logger.info(f"✅ Found Intel GPU: {target_device.name}")
-                    break
-        
-        # 2. Fallback to any GPU if Intel not found
-        if target_device is None:
-            for platform in platforms:
-                devices = platform.get_devices(device_type=cl.device_type.GPU)
-                if devices:
-                    target_device = devices[0]
-                    logger.warning(f"⚠️ Intel GPU not found. Using fallback: {target_device.name}")
+                gpus = platform.get_devices(device_type=cl.device_type.GPU)
+                if gpus:
+                    target_device = gpus[0]
+                    logger.info(f"Using Intel GPU: {target_device.name}")
                     break
 
-        # 3. Last resort: CPU
+        if target_device is None:
+            for platform in platforms:
+                gpus = platform.get_devices(device_type=cl.device_type.GPU)
+                if gpus:
+                    target_device = gpus[0]
+                    logger.warning(f"Intel GPU not found. Using: {target_device.name}")
+                    break
+
         if target_device is None:
             target_device = platforms[0].get_devices()[0]
-            logger.warning(f"⚠️ No GPU found. Falling back to CPU: {target_device.name}")
+            logger.warning(f"No GPU found. Using CPU: {target_device.name}")
 
         return cl.Context([target_device])
 
+    # Slot Initialization (One-Time)
+
+    def _initialize_slots(self, slot_vecs: np.ndarray):
+        slot_vecs = np.ascontiguousarray(slot_vecs, dtype=np.float32)
+        self.num_slots, self.dim = slot_vecs.shape
+
+        if self.dim % 4 != 0:
+            raise ValueError("Embedding dimension must be divisible by 4 for float4 optimization.")
+
+        # Pre-normalize slots
+        norms = np.linalg.norm(slot_vecs, axis=1, keepdims=True) + 1e-10
+        slot_vecs = slot_vecs / norms
+
+        mf = cl.mem_flags
+        self.slots_buf = cl.Buffer(self.ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=slot_vecs)
+        self.results_buf = cl.Buffer(self.ctx, mf.WRITE_ONLY, size=self.num_slots * 4)
+
+    # Kernel Build
+
     def _build_program(self):
-        """
-        Builds the OpenCL kernel with aggressive optimization flags.
-        
-        Kernel Explanation:
-        - __constant float* query: Caches query vector in high-speed constant memory.
-        - native_rsqrt: Uses hardware-accelerated approximate inverse square root.
-        - mad: Fused multiply-add instruction (a*b + c) in one cycle.
-        """
         kernel_code = """
-        __kernel void cosine_sim(
-            __constant float* query,    // Cached: Fast access
-            __global float* slots,      // Global: Large storage
+        __kernel void cosine_sim_vec4(
+            __constant float4* query,
+            __global float4* slots,
             __global float* results,
-            const int dim,
-            const float query_norm_sq   // Pre-calculated scalar
+            const int dim4
         ) {
             int gid = get_global_id(0);
-            
+
             float dot_prod = 0.0f;
-            float slot_norm_sq = 0.0f;
-            
-            // Loop unrolling is often handled by -cl-fast-relaxed-math, 
-            // but keeping it simple allows the compiler to vectorize.
-            for (int i = 0; i < dim; i++) {
-                float q = query[i];
-                float s = slots[gid * dim + i];
-                
-                // Fused Multiply-Add: dot_prod += q * s
-                dot_prod = mad(q, s, dot_prod);
-                
-                // Accumulate slot norm squared
-                slot_norm_sq = mad(s, s, slot_norm_sq);
+
+            for (int i = 0; i < dim4; i++) {
+                float4 q = query[i];
+                float4 s = slots[gid * dim4 + i];
+
+                dot_prod += dot(q, s);
             }
-            
-            // Cosine Similarity = dot / (norm_q * norm_s)
-            // Optimized: dot * (1 / sqrt(norm_q^2 * norm_s^2))
-            // Using native_rsqrt for speed (inverse square root)
-            
-            float combined_norm = query_norm_sq * slot_norm_sq;
-            
-            // Prevent division by zero with epsilon
-            float inv_norm = native_rsqrt(combined_norm + 1e-10f);
-            
-            results[gid] = dot_prod * inv_norm;
+
+            results[gid] = dot_prod;
         }
         """
-        # Fast relaxed math allows the compiler to reorder operations for speed
-        return cl.Program(self.ctx, kernel_code).build(options="-cl-fast-relaxed-math -cl-mad-enable")
-
-    def parallel_similarity_search(self, query_vec: np.ndarray, slot_vecs: np.ndarray) -> np.ndarray:
-        """
-        Compute cosine similarity for N slots in parallel.
-        
-        Args:
-            query_vec: Shape (dim,) float32 array
-            slot_vecs: Shape (num_slots, dim) float32 array
-        Returns:
-            Shape (num_slots,) float32 array of scores
-        """
-        # 1. Type Safety & Shaping
-        query_vec = np.ascontiguousarray(query_vec, dtype=np.float32)
-        slot_vecs = np.ascontiguousarray(slot_vecs, dtype=np.float32)
-        
-        num_slots, dim = slot_vecs.shape
-        if query_vec.shape[0] != dim:
-            raise ValueError(f"Dimension mismatch: Query {query_vec.shape} vs Slots {slot_vecs.shape}")
-
-        # 2. Pre-calculate Query Norm (CPU is fast enough for 1 vector)
-        # This saves doing it inside the kernel N times
-        query_norm_sq = np.dot(query_vec, query_vec)
-
-        # 3. Buffer Allocation (Host -> Device)
-        mf = cl.mem_flags
-        # Use COPY_HOST_PTR to upload data immediately
-        query_buf = cl.Buffer(self.ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=query_vec)
-        slots_buf = cl.Buffer(self.ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=slot_vecs)
-        results_buf = cl.Buffer(self.ctx, mf.WRITE_ONLY, size=num_slots * 4) # 4 bytes per float
-
-        # 4. Execute Kernel
-        # Local work size set to None lets the OpenCL driver choose optimum (usually 64 or 256 on Intel)
-        event = self.program.cosine_sim(
-            self.queue, 
-            (num_slots,),   # Global size: Total number of slots
-            None,           # Local size: Auto
-            query_buf, 
-            slots_buf, 
-            results_buf, 
-            np.int32(dim), 
-            np.float32(query_norm_sq)
+        return cl.Program(self.ctx, kernel_code).build(
+            options="-cl-fast-relaxed-math -cl-mad-enable"
         )
-        
-        # 5. Read Back (Device -> Host)
-        results = np.empty(num_slots, dtype=np.float32)
-        cl.enqueue_copy(self.queue, results, results_buf, wait_for=[event])
-        
+
+    # Query Execution
+
+    def similarity_search(self, query_vec: np.ndarray) -> np.ndarray:
+        query_vec = np.ascontiguousarray(query_vec, dtype=np.float32)
+
+        if query_vec.shape[0] != self.dim:
+            raise ValueError("Query dimension mismatch.")
+
+        # Normalize query
+        query_norm = np.linalg.norm(query_vec) + 1e-10
+        query_vec = query_vec / query_norm
+
+        mf = cl.mem_flags
+        query_buf = cl.Buffer(self.ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=query_vec)
+
+        dim4 = self.dim // 4
+
+        event = self.program.cosine_sim_vec4(
+            self.queue,
+            (self.num_slots,),
+            (self.local_size,),
+            query_buf,
+            self.slots_buf,
+            self.results_buf,
+            np.int32(dim4)
+        )
+
+        results = np.empty(self.num_slots, dtype=np.float32)
+        cl.enqueue_copy(self.queue, results, self.results_buf, wait_for=[event])
+
         return results
-
-# Example Usage
-if __name__ == "__main__":
-    accel = IntelHDAccelerator()
-    
-    # Generate dummy data (1024 slots, 768 dimensions - typical for BERT/LLM embeddings)
-    dim = 768
-    num_slots = 1024
-    
-    q = np.random.rand(dim).astype(np.float32)
-    s = np.random.rand(num_slots, dim).astype(np.float32)
-    
-    print(f"Running similarity check on {num_slots} vectors of dimension {dim}...")
-    scores = accel.parallel_similarity_search(q, s)
-    
-    print(f"Computed {len(scores)} scores.")
-    print(f"Sample scores: {scores[:5]}")
-
-# Speedup: 3-5x faster than CPU for parallel ops 
 ```
 
 ---
