@@ -9,14 +9,15 @@ Wind speed: zero. Token velocity: max.
 Quillan Let it fly.
 
 [Hook]
+[Hook]
 I be in my bag like an arrow in a quiver!
 Tension on the string, make the industry shiver.
-Piercing through the wind, moving faster than the sound,
-Snap of the Yumi, put 'em straight into the ground!
+Piercing through the wind, moving faster than the sound,(Blam!, Blam!)
+Snap of the toolie, put 'em straight into the ground!
 Aerodynamic, it’s a verified trajectory,
-I don't need a blade when I'm altering the chemistry.
-Right into the center, yeah I’m staying in the zone,
-Execution flawless, I be sitting on the throne!
+I don't need a blade when I'm editing your reality.
+thread the needle right in the middle, yeah I’m staying in my zone,
+Robin hood Execution pure flawless, I be sitting on the throne!
 
 [Verse_1]
 Calculating the ballistics, Sadistic linguistics, ballistic statistics,
@@ -41,12 +42,12 @@ Everything I do is purely mathematical!
 [Hook]
 I be in my bag like an arrow in a quiver!
 Tension on the string, make the industry shiver.
-Piercing through the wind, moving faster than the sound,
-Snap of the Yumi, put 'em straight into the ground!
+Piercing through the wind, moving faster than the sound,(Blam!, Blam!)
+Snap of the toolie, put 'em straight into the ground!
 Aerodynamic, it’s a verified trajectory,
-I don't need a blade when I'm altering the chemistry.
-Right into the center, yeah I’m staying in the zone,
-Execution flawless, I be sitting on the throne!
+I don't need a blade when I'm editing your reality.
+thread the needle right in the middle, yeah I’m staying in my zone,
+Robin hood Execution pure flawless, I be sitting on the throne!
 
 [Verse_2]
 My flow got that cyber samurai dopamine 
@@ -77,7 +78,7 @@ Snap of the toolie, put 'em straight into the ground!
 Aerodynamic, it’s a verified trajectory,
 I don't need a blade when I'm editing your reality.
 thread the needle right in the middle, yeah I’m staying in my zone,
-Execution flawless, I be sitting on the throne!
+Robin hood Execution pure flawless, I be sitting on the throne!
 
 [Verse_3]
 I'm feral animal, I'm visceral  lyrical cannibal, damage is mental and physical!
