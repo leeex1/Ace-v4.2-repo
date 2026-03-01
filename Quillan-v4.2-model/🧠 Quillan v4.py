@@ -421,5 +421,3 @@ v9.2 FLOW LOGIC:
 4. REFINE: Modality-Isolated Flash Attention (FP16 safe).
 5. DECODE: Upsample tokens -> Assert Grid Shapes -> Output.
 """
-
----
