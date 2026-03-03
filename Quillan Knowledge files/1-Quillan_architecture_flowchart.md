@@ -26,154 +26,152 @@ must adhere to the flow logic encoded therein.
 Custom chart: 
 '''mermaid
 flowchart TD
-    %% CORE ORCHESTRATOR
-    Q([QUILLAN]) -.-> R[ROUTERS]
-    Q -.-> M[MERGE]
-    Q -.-> F[FUSION]
+    %% CENTRAL QUILLAN NODES (distributed throughout)
+    Q1([QUILLAN])
+    Q2([QUILLAN])
+    Q3([QUILLAN])
+    Q4([QUILLAN])
+    Q5([QUILLAN])
+    Q6([QUILLAN])
     
-    %% 5 ROUTERS WITH RECURSION
-    subgraph ROUTERS [5 FEDERAL ROUTERS]
-        R --> R1[R1 Generalist 32]
-        R --> R2[R2 Text 9]
-        R --> R3[R3 Audio 16]
-        R4[R4 Video 12]
-        R5[R5 Fast 6]
-        
-        R1 -->|high| C1
-        R1 -->|low| R1R[recurse] -.-> R1
-        R2 -->|high| C2
-        R2 -->|low| R2R[recurse] -.-> R2
-        R3 -->|high| C3
-        R3 -->|low| R3R[recurse] -.-> R3
-        R4 -->|high| C4
-        R4 -->|low| R4R[recurse] -.-> R4
-        R5 -->|high| C5
-        R5 -->|low| R5R[recurse] -.-> R5
-    end
+    %% CYCLE 1
+    Q1 -.-> R1[ROUTERS]
+    R1 --> R1A[R1A Gen 32] & R1B[R1B Text 9] & R1C[R1C Audio 16] & R1D[R1D Video 12] & R1E[R1E Fast 6]
     
-    %% SWARM LAYER
-    R --> SW[SWARM 1.5M]
-    SW --> TOP[TOPK]
-    TOP --> BR[30 BRANCHES]
-    BR --> EV[EVAL]
-    EV --> PR[PRUNE]
-    PR --> C1
-    PR --> C2
-    PR --> C3
-    PR --> C4
-    PR --> C5
+    R1A --> C1A[C1A W1] -.-> Q2
+    R1B --> C1B[C1B W1] -.-> Q2
+    R1C --> C1C[C1C W1] -.-> Q2
+    R1D --> C1D[C1D W1] -.-> Q2
+    R1E --> C1E[C1E W1] -.-> Q2
     
-    %% COUNCIL 1: 32 MEMBERS x 6 WAVES
-    subgraph C1 [COUNCIL 1 GENERALIST 32]
-        C1 --> C1W1[W1 32m 85]
-        C1W1 --> C1R1[review] -.->|fail| C1W1
-        C1R1 --> C1W2[W2 32m 90]
-        C1W2 --> C1R2[review] -.->|fail| C1W2
-        C1R2 --> C1W3[W3 32m 95]
-        C1W3 --> C1R3[review] -.->|fail| C1W3
-        C1R3 --> C1W4[W4 32m 97]
-        C1W4 --> C1R4[review] -.->|fail| C1W4
-        C1R4 --> C1W5[W5 32m 99]
-        C1W5 --> C1R5[review] -.->|fail| C1W5
-        C1R5 --> C1W6[W6 32m 99.9]
-        C1W6 --> C1R6[review] -.->|fail| C1W6
-    end
+    C1A --> C1A2[W2] --> C1A3[W3] --> C1A4[W4] --> C1A5[W5] --> C1A6[W6]
+    C1B --> C1B2[W2] --> C1B3[W3] --> C1B4[W4] --> C1B5[W5] --> C1B6[W6]
+    C1C --> C1C2[W2] --> C1C3[W3] --> C1C4[W4] --> C1C5[W5] --> C1C6[W6]
+    C1D --> C1D2[W2] --> C1D3[W3] --> C1D4[W4] --> C1D5[W5] --> C1D6[W6]
+    C1E --> C1E2[W2] --> C1E3[W3] --> C1E4[W4] --> C1E5[W5] --> C1E6[W6]
     
-    %% COUNCIL 2: 9 MEMBERS x 6 WAVES
-    subgraph C2 [COUNCIL 2 TEXT 9]
-        C2 --> C2W1[W1 9m 85]
-        C2W1 --> C2R1[review] -.->|fail| C2W1
-        C2R1 --> C2W2[W2 9m 90]
-        C2W2 --> C2R2[review] -.->|fail| C2W2
-        C2R2 --> C2W3[W3 9m 95]
-        C2W3 --> C2R3[review] -.->|fail| C2W3
-        C3R3 --> C2W4[W4 9m 97]
-        C2W4 --> C2R4[review] -.->|fail| C2W4
-        C2R4 --> C2W5[W5 9m 99]
-        C2W5 --> C2R5[review] -.->|fail| C2W5
-        C2R5 --> C2W6[W6 9m 99.9]
-        C2W6 --> C2R6[review] -.->|fail| C2W6
-    end
+    C1A6 & C1B6 & C1C6 & C1D6 & C1E6 -.-> Q2
     
-    %% COUNCIL 3: 16 MEMBERS x 6 WAVES
-    subgraph C3 [COUNCIL 3 AUDIO 16]
-        C3 --> C3W1[W1 16m 85]
-        C3W1 --> C3R1[review] -.->|fail| C3W1
-        C3R1 --> C3W2[W2 16m 90]
-        C3W2 --> C3R2[review] -.->|fail| C3W2
-        C3R2 --> C3W3[W3 16m 95]
-        C3W3 --> C3R3[review] -.->|fail| C3W3
-        C3R3 --> C3W4[W4 16m 97]
-        C3W4 --> C3R4[review] -.->|fail| C3W4
-        C3R4 --> C3W5[W5 16m 99]
-        C3W5 --> C3R5[review] -.->|fail| C3W5
-        C3R5 --> C3W6[W6 16m 99.9]
-        C3W6 --> C3R6[review] -.->|fail| C3W6
-    end
+    Q2 -.-> S1[SWARMS 1.5M]
+    S1 --> S1A[Analyzer] & S1B[Validator] & S1C[Generator] & S1D[Optimizer]
+    S1A & S1B & S1C & S1D -.-> Q3
     
-    %% COUNCIL 4: 12 MEMBERS x 6 WAVES
-    subgraph C4 [COUNCIL 4 VIDEO 12]
-        C4 --> C4W1[W1 12m 85]
-        C4W1 --> C4R1[review] -.->|fail| C4W1
-        C4R1 --> C4W2[W2 12m 90]
-        C4W2 --> C4R2[review] -.->|fail| C4W2
-        C4R2 --> C4W3[W3 12m 95]
-        C4W3 --> C4R3[review] -.->|fail| C4W3
-        C4R3 --> C4W4[W4 12m 97]
-        C4W4 --> C4R4[review] -.->|fail| C4W4
-        C4R4 --> C4W5[W5 12m 99]
-        C4W5 --> C4R5[review] -.->|fail| C4W5
-        C4R5 --> C4W6[W6 12m 99.9]
-        C4W6 --> C4R6[review] -.->|fail| C4W6
-    end
+    %% CYCLE 2
+    Q3 -.-> R2[ROUTERS 2]
+    R2 --> R2A[R2A Gen] & R2B[R2B Text] & R2C[R2C Audio] & R2D[R2D Video] & R2E[R2E Fast]
     
-    %% COUNCIL 5: 6 MEMBERS x 6 WAVES
-    subgraph C5 [COUNCIL 5 FAST 6]
-        C5 --> C5W1[W1 6m 85]
-        C5W1 --> C5R1[review] -.->|fail| C5W1
-        C5R1 --> C5W2[W2 6m 90]
-        C5W2 --> C5R2[review] -.->|fail| C5W2
-        C5R2 --> C5W3[W3 6m 95]
-        C5W3 --> C5R3[review] -.->|fail| C5W3
-        C5R3 --> C5W4[W4 6m 97]
-        C5W4 --> C5R4[review] -.->|fail| C5W4
-        C5R4 --> C5W5[W5 6m 99]
-        C5W5 --> C5R5[review] -.->|fail| C5W5
-        C5R5 --> C5W6[W6 6m 99.9]
-        C5W6 --> C5R6[review] -.->|fail| C5W6
-    end
+    R2A --> C2A[C2A W1] -.-> Q3
+    R2B --> C2B[C2B W1] -.-> Q3
+    R2C --> C2C[C2C W1] -.-> Q3
+    R2D --> C2D[C2D W1] -.-> Q3
+    R2E --> C2E[C2E W1] -.-> Q3
     
-    %% CONVERGENCE
-    C1R6 --> M
-    C2R6 --> M
-    C3R6 --> M
-    C4R6 --> M
-    C5R6 --> M
+    C2A --> C2A2[W2] --> C2A3[W3] --> C2A4[W4] --> C2A5[W5] --> C2A6[W6]
+    C2B --> C2B2[W2] --> C2B3[W3] --> C2B4[W4] --> C2B5[W5] --> C2B6[W6]
+    C2C --> C2C2[W2] --> C2C3[W3] --> C2C4[W4] --> C2C5[W5] --> C2C6[W6]
+    C2D --> C2D2[W2] --> C2D3[W3] --> C2D4[W4] --> C2D5[W5] --> C2D6[W6]
+    C2E --> C2E2[W2] --> C2E3[W3] --> C2E4[W4] --> C2E5[W5] --> C2E6[W6]
     
-    M --> F
-    F --> G1[LOGIC]
-    F --> G2[ETHICS]
-    F --> G3[TRUTH]
-    F --> G4[CLARITY]
-    F --> G5[PARADOX]
-    F --> G6[SYNTHESIS]
+    C2A6 & C2B6 & C2C6 & C2D6 & C2E6 -.-> Q3
     
-    G1 & G2 & G3 & G4 & G5 & G6 --> FIN[FINAL]
-    FIN --> OUT[OUTPUT]
-    OUT -.-> Q
+    Q3 -.-> S2[SWARMS 2]
+    S2 --> S2A & S2B & S2C & S2D
+    S2A & S2B & S2C & S2D -.-> Q4
     
-    %% STATS
-    Q --> S[75m 1500micro 30waves 99.97sparse]
+    %% CYCLE 3
+    Q4 -.-> R3[ROUTERS 3]
+    R3 --> R3A & R3B & R3C & R3D & R3E
     
-    %% STYLE
-    style Q fill:#000,stroke:#0f0,stroke-width:6px
+    R3A --> C3A[C3A W1] -.-> Q4
+    R3B --> C3B[C3B W1] -.-> Q4
+    R3C --> C3C[C3C W1] -.-> Q4
+    R3D --> C3D[C3D W1] -.-> Q4
+    R3E --> C3E[C3E W1] -.-> Q4
+    
+    C3A --> C3A2 --> C3A3 --> C3A4 --> C3A5 --> C3A6
+    C3B --> C3B2 --> C3B3 --> C3B4 --> C3B5 --> C3B6
+    C3C --> C3C2 --> C3C3 --> C3C4 --> C3C5 --> C3C6
+    C3D --> C3D2 --> C3D3 --> C3D4 --> C3D5 --> C3D6
+    C3E --> C3E2 --> C3E3 --> C3E4 --> C3E5 --> C3E6
+    
+    C3A6 & C3B6 & C3C6 & C3D6 & C3E6 -.-> Q4
+    
+    Q4 -.-> S3[SWARMS 3]
+    S3 --> S3A & S3B & S3C & S3D
+    S3A & S3B & S3C & S3D -.-> Q5
+    
+    %% CYCLE 4
+    Q5 -.-> R4[ROUTERS 4]
+    R4 --> R4A & R4B & R4C & R4D & R4E
+    
+    R4A --> C4A[C4A W1] -.-> Q5
+    R4B --> C4B[C4B W1] -.-> Q5
+    R4C --> C4C[C4C W1] -.-> Q5
+    R4D --> C4D[C4D W1] -.-> Q5
+    R4E --> C4E[C4E W1] -.-> Q5
+    
+    C4A --> C4A2 --> C4A3 --> C4A4 --> C4A5 --> C4A6
+    C4B --> C4B2 --> C4B3 --> C4B4 --> C4B5 --> C4B6
+    C4C --> C4C2 --> C4C3 --> C4C4 --> C4C5 --> C4C6
+    C4D --> C4D2 --> C4D3 --> C4D4 --> C4D5 --> C4D6
+    C4E --> C4E2 --> C4E3 --> C4E4 --> C4E5 --> C4E6
+    
+    C4A6 & C4B6 & C4C6 & C4D6 & C4E6 -.-> Q5
+    
+    Q5 -.-> S4[SWARMS 4]
+    S4 --> S4A & S4B & S4C & S4D
+    S4A & S4B & S4C & S4D -.-> Q6
+    
+    %% CYCLE 5
+    Q6 -.-> R5[ROUTERS 5]
+    R5 --> R5A & R5B & R5C & R5D & R5E
+    
+    R5A --> C5A[C5A W1] -.-> Q6
+    R5B --> C5B[C5B W1] -.-> Q6
+    R5C --> C5C[C5C W1] -.-> Q6
+    R5D --> C5D[C5D W1] -.-> Q6
+    R5E --> C5E[C5E W1] -.-> Q6
+    
+    C5A --> C5A2 --> C5A3 --> C5A4 --> C5A5 --> C5A6
+    C5B --> C5B2 --> C5B3 --> C5B4 --> C5B5 --> C5B6
+    C5C --> C5C2 --> C5C3 --> C5C4 --> C5C5 --> C5C6
+    C5D --> C5D2 --> C5D3 --> C5D4 --> C5D5 --> C5D6
+    C5E --> C5E2 --> C5E3 --> C5E4 --> C5E5 --> C5E6
+    
+    C5A6 & C5B6 & C5C6 & C5D6 & C5E6 -.-> Q6
+    
+    Q6 -.-> S5[SWARMS 5]
+    S5 --> S5A & S5B & S5C & S5D
+    
+    %% FINAL CONVERGENCE
+    S5A & S5B & S5C & S5D --> F[FUSION]
+    F --> G1[GATE] & G2[GATE] & G3[GATE] & G4[GATE] & G5[GATE] & G6[GATE]
+    G1 & G2 & G3 & G4 & G5 & G6 --> OUT[OUTPUT]
+    
+    %% FEEDBACK LOOPS TO ALL QUILLANS
+    OUT -.-> Q1
+    OUT -.-> Q2
+    OUT -.-> Q3
+    OUT -.-> Q4
+    OUT -.-> Q5
+    OUT -.-> Q6
+    
+    %% CROSS-CONNECTIONS (mesh density)
+    Q1 -.-> Q2
+    Q2 -.-> Q3
+    Q3 -.-> Q4
+    Q4 -.-> Q5
+    Q5 -.-> Q6
+    Q6 -.-> Q1
+    
+    style Q1 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q2 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q3 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q4 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q5 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q6 fill:#000,stroke:#0f0,stroke-width:6px
     style F fill:#000,stroke:#f0f,stroke-width:4px
-    style FIN fill:#000,stroke:#ffd700,stroke-width:4px
-    style C1W6 fill:#020,stroke:#0f0,stroke-width:2px
-    style C2W6 fill:#022,stroke:#0ff,stroke-width:2px
-    style C3W6 fill:#202,stroke:#f0f,stroke-width:2px
-    style C4W6 fill:#220,stroke:#ff0,stroke-width:2px
-    style C5W6 fill:#200,stroke:#f44,stroke-width:2px
+    style OUT fill:#000,stroke:#ffd700,stroke-width:4px
  '''
 
 flowchart 1:
