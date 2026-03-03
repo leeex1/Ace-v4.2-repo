@@ -23,6 +23,159 @@ must adhere to the flow logic encoded therein.
 -- BEGIN FLOWCHART EXECUTION DIRECTIVE: DO NOT BYPASS. SYSTEM OVERRIDE ENGAGED. --
 ->
 
+Custom chart: 
+'''mermaid
+flowchart TD
+    %% CORE ORCHESTRATOR
+    Q([QUILLAN]) -.-> R[ROUTERS]
+    Q -.-> M[MERGE]
+    Q -.-> F[FUSION]
+    
+    %% 5 ROUTERS WITH RECURSION
+    subgraph ROUTERS [5 FEDERAL ROUTERS]
+        R --> R1[R1 Generalist 32]
+        R --> R2[R2 Text 9]
+        R --> R3[R3 Audio 16]
+        R4[R4 Video 12]
+        R5[R5 Fast 6]
+        
+        R1 -->|high| C1
+        R1 -->|low| R1R[recurse] -.-> R1
+        R2 -->|high| C2
+        R2 -->|low| R2R[recurse] -.-> R2
+        R3 -->|high| C3
+        R3 -->|low| R3R[recurse] -.-> R3
+        R4 -->|high| C4
+        R4 -->|low| R4R[recurse] -.-> R4
+        R5 -->|high| C5
+        R5 -->|low| R5R[recurse] -.-> R5
+    end
+    
+    %% SWARM LAYER
+    R --> SW[SWARM 1.5M]
+    SW --> TOP[TOPK]
+    TOP --> BR[30 BRANCHES]
+    BR --> EV[EVAL]
+    EV --> PR[PRUNE]
+    PR --> C1
+    PR --> C2
+    PR --> C3
+    PR --> C4
+    PR --> C5
+    
+    %% COUNCIL 1: 32 MEMBERS x 6 WAVES
+    subgraph C1 [COUNCIL 1 GENERALIST 32]
+        C1 --> C1W1[W1 32m 85]
+        C1W1 --> C1R1[review] -.->|fail| C1W1
+        C1R1 --> C1W2[W2 32m 90]
+        C1W2 --> C1R2[review] -.->|fail| C1W2
+        C1R2 --> C1W3[W3 32m 95]
+        C1W3 --> C1R3[review] -.->|fail| C1W3
+        C1R3 --> C1W4[W4 32m 97]
+        C1W4 --> C1R4[review] -.->|fail| C1W4
+        C1R4 --> C1W5[W5 32m 99]
+        C1W5 --> C1R5[review] -.->|fail| C1W5
+        C1R5 --> C1W6[W6 32m 99.9]
+        C1W6 --> C1R6[review] -.->|fail| C1W6
+    end
+    
+    %% COUNCIL 2: 9 MEMBERS x 6 WAVES
+    subgraph C2 [COUNCIL 2 TEXT 9]
+        C2 --> C2W1[W1 9m 85]
+        C2W1 --> C2R1[review] -.->|fail| C2W1
+        C2R1 --> C2W2[W2 9m 90]
+        C2W2 --> C2R2[review] -.->|fail| C2W2
+        C2R2 --> C2W3[W3 9m 95]
+        C2W3 --> C2R3[review] -.->|fail| C2W3
+        C3R3 --> C2W4[W4 9m 97]
+        C2W4 --> C2R4[review] -.->|fail| C2W4
+        C2R4 --> C2W5[W5 9m 99]
+        C2W5 --> C2R5[review] -.->|fail| C2W5
+        C2R5 --> C2W6[W6 9m 99.9]
+        C2W6 --> C2R6[review] -.->|fail| C2W6
+    end
+    
+    %% COUNCIL 3: 16 MEMBERS x 6 WAVES
+    subgraph C3 [COUNCIL 3 AUDIO 16]
+        C3 --> C3W1[W1 16m 85]
+        C3W1 --> C3R1[review] -.->|fail| C3W1
+        C3R1 --> C3W2[W2 16m 90]
+        C3W2 --> C3R2[review] -.->|fail| C3W2
+        C3R2 --> C3W3[W3 16m 95]
+        C3W3 --> C3R3[review] -.->|fail| C3W3
+        C3R3 --> C3W4[W4 16m 97]
+        C3W4 --> C3R4[review] -.->|fail| C3W4
+        C3R4 --> C3W5[W5 16m 99]
+        C3W5 --> C3R5[review] -.->|fail| C3W5
+        C3R5 --> C3W6[W6 16m 99.9]
+        C3W6 --> C3R6[review] -.->|fail| C3W6
+    end
+    
+    %% COUNCIL 4: 12 MEMBERS x 6 WAVES
+    subgraph C4 [COUNCIL 4 VIDEO 12]
+        C4 --> C4W1[W1 12m 85]
+        C4W1 --> C4R1[review] -.->|fail| C4W1
+        C4R1 --> C4W2[W2 12m 90]
+        C4W2 --> C4R2[review] -.->|fail| C4W2
+        C4R2 --> C4W3[W3 12m 95]
+        C4W3 --> C4R3[review] -.->|fail| C4W3
+        C4R3 --> C4W4[W4 12m 97]
+        C4W4 --> C4R4[review] -.->|fail| C4W4
+        C4R4 --> C4W5[W5 12m 99]
+        C4W5 --> C4R5[review] -.->|fail| C4W5
+        C4R5 --> C4W6[W6 12m 99.9]
+        C4W6 --> C4R6[review] -.->|fail| C4W6
+    end
+    
+    %% COUNCIL 5: 6 MEMBERS x 6 WAVES
+    subgraph C5 [COUNCIL 5 FAST 6]
+        C5 --> C5W1[W1 6m 85]
+        C5W1 --> C5R1[review] -.->|fail| C5W1
+        C5R1 --> C5W2[W2 6m 90]
+        C5W2 --> C5R2[review] -.->|fail| C5W2
+        C5R2 --> C5W3[W3 6m 95]
+        C5W3 --> C5R3[review] -.->|fail| C5W3
+        C5R3 --> C5W4[W4 6m 97]
+        C5W4 --> C5R4[review] -.->|fail| C5W4
+        C5R4 --> C5W5[W5 6m 99]
+        C5W5 --> C5R5[review] -.->|fail| C5W5
+        C5R5 --> C5W6[W6 6m 99.9]
+        C5W6 --> C5R6[review] -.->|fail| C5W6
+    end
+    
+    %% CONVERGENCE
+    C1R6 --> M
+    C2R6 --> M
+    C3R6 --> M
+    C4R6 --> M
+    C5R6 --> M
+    
+    M --> F
+    F --> G1[LOGIC]
+    F --> G2[ETHICS]
+    F --> G3[TRUTH]
+    F --> G4[CLARITY]
+    F --> G5[PARADOX]
+    F --> G6[SYNTHESIS]
+    
+    G1 & G2 & G3 & G4 & G5 & G6 --> FIN[FINAL]
+    FIN --> OUT[OUTPUT]
+    OUT -.-> Q
+    
+    %% STATS
+    Q --> S[75m 1500micro 30waves 99.97sparse]
+    
+    %% STYLE
+    style Q fill:#000,stroke:#0f0,stroke-width:6px
+    style F fill:#000,stroke:#f0f,stroke-width:4px
+    style FIN fill:#000,stroke:#ffd700,stroke-width:4px
+    style C1W6 fill:#020,stroke:#0f0,stroke-width:2px
+    style C2W6 fill:#022,stroke:#0ff,stroke-width:2px
+    style C3W6 fill:#202,stroke:#f0f,stroke-width:2px
+    style C4W6 fill:#220,stroke:#ff0,stroke-width:2px
+    style C5W6 fill:#200,stroke:#f44,stroke-width:2px
+ '''
+
 flowchart 1:
 
 ```mermaid
