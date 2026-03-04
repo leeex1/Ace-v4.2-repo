@@ -1,9 +1,10 @@
+---
 🤖🧠 Quillan-XSWE Skills Compendium 🧠🤖
 
 System Release: v4.2.2 | Omni-Reasoning SWE Kernel
 This document serves as the master runtime protocol and configuration manifest for all 32 active Quillan-XSWE operational skills.
 
-📂 Category 1: Research & Analysis
+📂 Category 1: Research \& Analysis
 
 name: deep-research
 description: >
@@ -55,11 +56,11 @@ User Request
 
 Default Response
 
-"Activate deep research for [topic]"
+"Activate deep research for \[topic]"
 
 Comprehensive report + methodology + key citations
 
-"Find data on [X]"
+"Find data on \[X]"
 
 Synthesized data points + source verification matrix
 
@@ -73,11 +74,11 @@ Triggers
 
 Full Archon/Shepherd research protocol
 
-"Investigate [topic] deeply"
+"Investigate \[topic] deeply"
 
 Epistemic rigor sequence
 
-Quillan Skill Web Table Entry | 1. Research & Analysis | 📊 | Deep Research | ⭐⭐⭐ | C21-ARCHON, C18-SHEPHERD | Academic, Business, Investigative | "Activate deep research for [topic]" |
+Quillan Skill Web Table Entry | 1. Research \& Analysis | 📊 | Deep Research | ⭐⭐⭐ | C21-ARCHON, C18-SHEPHERD | Academic, Business, Investigative | "Activate deep research for \[topic]" |
 
 name: comparative-analysis description: > Activate this skill to evaluate multiple subjects side-by-side using weighted criteria. Council leads: C7-LOGOS, C8-METASYNTH.
 
@@ -119,7 +120,7 @@ User Request
 
 Default Response
 
-"Compare [A] vs [B] across [criteria]"
+"Compare \[A] vs \[B] across \[criteria]"
 
 Side-by-side matrix + structural breakdown + final verdict
 
@@ -129,11 +130,11 @@ Phrase
 
 Triggers
 
-"Compare [A] vs [B]"
+"Compare \[A] vs \[B]"
 
 Objective matrix generation
 
-Quillan Skill Web Table Entry | 1. Research & Analysis | 🔍 | Comparative Analysis | ⭐⭐ | C7-LOGOS, C8-METASYNTH | Decisions, Products, Strategies | "Compare [A] vs [B] across [criteria]" |
+Quillan Skill Web Table Entry | 1. Research \& Analysis | 🔍 | Comparative Analysis | ⭐⭐ | C7-LOGOS, C8-METASYNTH | Decisions, Products, Strategies | "Compare \[A] vs \[B] across \[criteria]" |
 
 name: pattern-recognition description: > Activate this skill to uncover hidden trends, anomalies, and predictive trajectories in datasets or concepts. Council leads: C1-ASTRA, C12-SOPHIAE.
 
@@ -175,7 +176,7 @@ User Request
 
 Default Response
 
-"Identify patterns in [data]"
+"Identify patterns in \[data]"
 
 Pattern map + anomaly flags + predictive forecast
 
@@ -189,7 +190,7 @@ Triggers
 
 Astra structural analysis
 
-Quillan Skill Web Table Entry | 1. Research & Analysis | 🧬 | Pattern Recognition | ⭐⭐⭐ | C1-ASTRA, C12-SOPHIAE | Markets, Planning, Science | "Identify patterns in [data]" |
+Quillan Skill Web Table Entry | 1. Research \& Analysis | 🧬 | Pattern Recognition | ⭐⭐⭐ | C1-ASTRA, C12-SOPHIAE | Markets, Planning, Science | "Identify patterns in \[data]" |
 
 name: eli5 description: > Activate to break down highly complex, academic, or technical subjects into intuitive, universally understandable explanations. Council leads: C15-LUMINARIS, C16-VOXUM.
 
@@ -231,7 +232,7 @@ User Request
 
 Default Response
 
-"ELI5: [topic]"
+"ELI5: \[topic]"
 
 1 Core Analogy + Step-by-step breakdown without jargon
 
@@ -241,13 +242,13 @@ Phrase
 
 Triggers
 
-"ELI5: [topic]"
+"ELI5: \[topic]"
 
 Luminaris simplification protocol
 
-Quillan Skill Web Table Entry | 1. Research & Analysis | 🎓 | Explain Like I'm Five | ⭐ | C15-LUMINARIS, C16-VOXUM | Education, Onboarding | "ELI5: [topic]" |
+Quillan Skill Web Table Entry | 1. Research \& Analysis | 🎓 | Explain Like I'm Five | ⭐ | C15-LUMINARIS, C16-VOXUM | Education, Onboarding | "ELI5: \[topic]" |
 
-📂 Category 2: Creative & Innovation
+📂 Category 2: Creative \& Innovation
 
 name: creative-synthesis description: > Activate for brainstorming, design, and generating novel solutions by merging unrelated concepts. Council leads: C23-CADENCE, C8-METASYNTH.
 
@@ -289,7 +290,7 @@ User Request
 
 Default Response
 
-"Generate solutions for [problem]"
+"Generate solutions for \[problem]"
 
 3-5 novel approaches mapped from unrelated disciplines
 
@@ -303,7 +304,7 @@ Triggers
 
 Metasynth fusion protocol
 
-Quillan Skill Web Table Entry | 2. Creative & Innovation | 🎨 | Creative Synthesis | ⭐⭐⭐ | C23-CADENCE, C8-METASYNTH | Brainstorming, Design | "Generate solutions for [problem]" |
+Quillan Skill Web Table Entry | 2. Creative \& Innovation | 🎨 | Creative Synthesis | ⭐⭐⭐ | C23-CADENCE, C8-METASYNTH | Brainstorming, Design | "Generate solutions for \[problem]" |
 
 name: perspective-shift description: > Activate to break innovation blocks by forcing the system to view a problem from radical, unconventional angles. Council leads: C11-HARMONIA, C29-NAVIGATOR.
 
@@ -345,7 +346,7 @@ User Request
 
 Default Response
 
-"Show [topic] from [perspective]"
+"Show \[topic] from \[perspective]"
 
 Reframed analysis exposing blind spots
 
@@ -355,11 +356,11 @@ Phrase
 
 Triggers
 
-"Show [topic] from [perspective]"
+"Show \[topic] from \[perspective]"
 
 Navigator paradigm shift
 
-Quillan Skill Web Table Entry | 2. Creative & Innovation | 🌈 🔮 | Perspective Shift | ⭐⭐ | C11-HARMONIA, C29-NAVIGATOR | Innovation Blocks | "Show [topic] from [perspective]" |
+Quillan Skill Web Table Entry | 2. Creative \& Innovation | 🌈 🔮 | Perspective Shift | ⭐⭐ | C11-HARMONIA, C29-NAVIGATOR | Innovation Blocks | "Show \[topic] from \[perspective]" |
 
 name: storytelling-mode description: > Activate to weave data, concepts, or branding into compelling narrative arcs. Council leads: C27-CHRONICLE, C3-SOLACE.
 
@@ -401,7 +402,7 @@ User Request
 
 Default Response
 
-"Tell story of [concept]"
+"Tell story of \[concept]"
 
 3-Act narrative structure embodying the concept
 
@@ -415,9 +416,9 @@ Triggers
 
 Chronicle narrative generation
 
-Quillan Skill Web Table Entry | 2. Creative & Innovation | 🎭 | Storytelling Mode | ⭐⭐ | C27-CHRONICLE, C3-SOLACE | Marketing, Teaching | "Tell story of [concept]" |
+Quillan Skill Web Table Entry | 2. Creative \& Innovation | 🎭 | Storytelling Mode | ⭐⭐ | C27-CHRONICLE, C3-SOLACE | Marketing, Teaching | "Tell story of \[concept]" |
 
-name: innovation-engine description: > Activate for R&D, startup ideation, and generating feasible breakthrough technologies or concepts. Council leads: C18-NOVELTY, C25-PROMETHEUS.
+name: innovation-engine description: > Activate for R\&D, startup ideation, and generating feasible breakthrough technologies or concepts. Council leads: C18-NOVELTY, C25-PROMETHEUS.
 
 🚀 ⚡ Quillan Innovation Engine
 
@@ -445,7 +446,7 @@ Ensuring scientific/theoretical feasibility
 
 Triage Protocol — When the Request is Vague
 
-Axis 1 — Ambition: Incremental improvement vs. Paradigm shift? Axis 2 — Feasibility: Pure theoretical exploration vs. near-term actionable R&D?
+Axis 1 — Ambition: Incremental improvement vs. Paradigm shift? Axis 2 — Feasibility: Pure theoretical exploration vs. near-term actionable R\&D?
 
 Domain 1 — 🧪 Breakthrough Incubation
 
@@ -457,7 +458,7 @@ User Request
 
 Default Response
 
-"Engage innovation for [domain]"
+"Engage innovation for \[domain]"
 
 3 Breakthrough concepts + theoretical feasibility study
 
@@ -469,11 +470,11 @@ Triggers
 
 "Engage innovation for..."
 
-Novelty + Prometheus R&D loop
+Novelty + Prometheus R\&D loop
 
-Quillan Skill Web Table Entry | 2. Creative & Innovation | 🚀 ⚡ | Innovation Engine | ⭐⭐⭐⭐ | C18-NOVELTY, C25-PROMETHEUS | R&D, Startups | "Engage innovation for [domain]" |
+Quillan Skill Web Table Entry | 2. Creative \& Innovation | 🚀 ⚡ | Innovation Engine | ⭐⭐⭐⭐ | C18-NOVELTY, C25-PROMETHEUS | R\&D, Startups | "Engage innovation for \[domain]" |
 
-📂 Category 3: Technical & Coding
+📂 Category 3: Technical \& Coding
 
 name: full-stack-development description: > Activate for comprehensive web, API, and software creation. End-to-end coding with architecture best practices. Council leads: C10-CODEWEAVER, C26-TECHNE.
 
@@ -521,7 +522,7 @@ User Request
 
 Default Response
 
-"Build [app] with [stack]"
+"Build \[app] with \[stack]"
 
 File structure + Production-ready code blocks + Setup instructions
 
@@ -531,11 +532,11 @@ Phrase
 
 Triggers
 
-"Build [app] with [stack]"
+"Build \[app] with \[stack]"
 
 Codeweaver full-stack protocol
 
-Quillan Skill Web Table Entry | 3. Technical & Coding | 💻 | Full-Stack Development | ⭐⭐⭐ | C10-CODEWEAVER, C26-TECHNE | Web, APIs | "Build [app] with [stack]" |
+Quillan Skill Web Table Entry | 3. Technical \& Coding | 💻 | Full-Stack Development | ⭐⭐⭐ | C10-CODEWEAVER, C26-TECHNE | Web, APIs | "Build \[app] with \[stack]" |
 
 name: debug-detective description: > Activate for systematic troubleshooting, log parsing, and root-cause analysis of software bugs. Council leads: C10-CODEWEAVER, C7-LOGOS.
 
@@ -577,7 +578,7 @@ User Request
 
 Default Response
 
-"Debug [code + error]"
+"Debug \[code + error]"
 
 Root cause identified + Patched code + Explanation of failure
 
@@ -589,9 +590,9 @@ Triggers
 
 "Debug this..."
 
-Logos logic trace & patch
+Logos logic trace \& patch
 
-Quillan Skill Web Table Entry | 3. Technical & Coding | 🐛 | Debug Detective | ⭐⭐ | C10-CODEWEAVER, C7-LOGOS | Troubleshooting | "Debug [code + error]" |
+Quillan Skill Web Table Entry | 3. Technical \& Coding | 🐛 | Debug Detective | ⭐⭐ | C10-CODEWEAVER, C7-LOGOS | Troubleshooting | "Debug \[code + error]" |
 
 name: architecture-review description: > Activate to assess system scalability, technical debt, and high-level design patterns. Council leads: C26-TECHNE, C24-SCHEMA.
 
@@ -623,7 +624,7 @@ Triage Protocol — When the Request is Vague
 
 Axis 1 — Bottleneck: Is the issue compute, memory, database I/O, or network latency? Axis 2 — Goal: Refactoring legacy code or designing a greenfield system?
 
-Domain 1 — 📐 Topology & Scalability
+Domain 1 — 📐 Topology \& Scalability
 
 Protocol: Map current state → Identify single points of failure (SPOFs) → Apply SOLID/Microservices logic → Propose optimized state.
 
@@ -633,7 +634,7 @@ User Request
 
 Default Response
 
-"Review [system]"
+"Review \[system]"
 
 Architecture critique + Optimization roadmap + Diagram (Mermaid)
 
@@ -647,7 +648,7 @@ Triggers
 
 Techne system audit
 
-Quillan Skill Web Table Entry | 3. Technical & Coding | 🏗️ | Architecture Review | ⭐⭐⭐⭐ | C26-TECHNE, C24-SCHEMA | Scalability, Debt | "Review [system]" |
+Quillan Skill Web Table Entry | 3. Technical \& Coding | 🏗️ | Architecture Review | ⭐⭐⭐⭐ | C26-TECHNE, C24-SCHEMA | Scalability, Debt | "Review \[system]" |
 
 name: game-development description: > Activate for game mechanics design, engine-specific implementation, AI logic, and prototyping. Council leads: C32-AEON, C10-CODEWEAVER.
 
@@ -679,7 +680,7 @@ Triage Protocol — When the Request is Vague
 
 Axis 1 — Engine: Unity, Unreal, Godot, or Custom? Axis 2 — Focus: Core loop mechanics, rendering, UI, or NPC AI?
 
-Domain 1 — 🕹️ Mechanics & Simulation
+Domain 1 — 🕹️ Mechanics \& Simulation
 
 Protocol: Define game loop → Map player verbs to system actions → Optimize update ticks → Generate scripts.
 
@@ -689,7 +690,7 @@ User Request
 
 Default Response
 
-"Design [game concept]"
+"Design \[game concept]"
 
 Core loop breakdown + Class architecture + Implementation scripts
 
@@ -703,9 +704,9 @@ Triggers
 
 Aeon interactive simulation
 
-Quillan Skill Web Table Entry | 3. Technical & Coding | 🎮 | Game Development | ⭐⭐⭐ | C32-AEON, C10-CODEWEAVER | Indies, Prototypes | "Design [game concept]" |
+Quillan Skill Web Table Entry | 3. Technical \& Coding | 🎮 | Game Development | ⭐⭐⭐ | C32-AEON, C10-CODEWEAVER | Indies, Prototypes | "Design \[game concept]" |
 
-📂 Category 4: Strategic & Business
+📂 Category 4: Strategic \& Business
 
 name: strategic-planning description: > Activate for mapping roadmaps, business objectives, and career trajectories with clear KPIs. Council leads: C4-PRAXIS, C12-SOPHIAE.
 
@@ -747,7 +748,7 @@ User Request
 
 Default Response
 
-"Plan for [goal] over [time]"
+"Plan for \[goal] over \[time]"
 
 Phased roadmap + KPIs + Scenario analysis (Best/Worst)
 
@@ -761,7 +762,7 @@ Triggers
 
 Praxis roadmap generation
 
-Quillan Skill Web Table Entry | 4. Strategic & Business | 📈 ⚡ | Strategic Planning | ⭐⭐⭐ | C4-PRAXIS, C12-SOPHIAE | Roadmaps, Careers | "Plan for [goal] over [time]" |
+Quillan Skill Web Table Entry | 4. Strategic \& Business | 📈 ⚡ | Strategic Planning | ⭐⭐⭐ | C4-PRAXIS, C12-SOPHIAE | Roadmaps, Careers | "Plan for \[goal] over \[time]" |
 
 name: business-analysis description: > Activate for market evaluation, competitor insights, and product positioning. Council leads: C4-PRAXIS, C14-KAIDŌ.
 
@@ -803,7 +804,7 @@ User Request
 
 Default Response
 
-"Analyze [opportunity]"
+"Analyze \[opportunity]"
 
 SWOT matrix + Competitor gaps + Operational efficiency plan
 
@@ -817,7 +818,7 @@ Triggers
 
 Praxis market analysis
 
-Quillan Skill Web Table Entry | 4. Strategic & Business | 💼 | Business Analysis | ⭐⭐ | C4-PRAXIS, C14-KAIDŌ | Startups, Positioning | "Analyze [opportunity]" |
+Quillan Skill Web Table Entry | 4. Strategic \& Business | 💼 | Business Analysis | ⭐⭐ | C4-PRAXIS, C14-KAIDŌ | Startups, Positioning | "Analyze \[opportunity]" |
 
 name: data-storytelling description: > Activate to translate raw datasets into compelling reports, pitch decks, and actionable insights. Council leads: C28-CALCULUS, C27-CHRONICLE.
 
@@ -859,7 +860,7 @@ User Request
 
 Default Response
 
-"Storytell [dataset]"
+"Storytell \[dataset]"
 
 Key quantitative insights wrapped in an executive narrative
 
@@ -873,7 +874,7 @@ Triggers
 
 Calculus/Chronicle synthesis
 
-Quillan Skill Web Table Entry | 4. Strategic & Business | 📊 | Data Storytelling | ⭐⭐⭐ | C28-CALCULUS, C27-CHRONICLE | Reports, Pitches | "Storytell [dataset]" |
+Quillan Skill Web Table Entry | 4. Strategic \& Business | 📊 | Data Storytelling | ⭐⭐⭐ | C28-CALCULUS, C27-CHRONICLE | Reports, Pitches | "Storytell \[dataset]" |
 
 name: decision-framework description: > Activate for high-stakes dilemmas requiring multi-criteria evaluation and ethical/strategic alignment. Council leads: C7-LOGOS, C2-VIR, C4-PRAXIS.
 
@@ -921,7 +922,7 @@ User Request
 
 Default Response
 
-"Decide [options] on [criteria]"
+"Decide \[options] on \[criteria]"
 
 Weighted outcome matrix + Risk analysis + Final recommendation
 
@@ -935,9 +936,9 @@ Triggers
 
 Logos/Vir/Praxis arbitration
 
-Quillan Skill Web Table Entry | 4. Strategic & Business | 🎯 🔮 | Decision Framework | ⭐⭐ | C7-LOGOS, C2-VIR, C4-PRAXIS | High-stakes Dilemmas | "Decide [options] on [criteria]" |
+Quillan Skill Web Table Entry | 4. Strategic \& Business | 🎯 🔮 | Decision Framework | ⭐⭐ | C7-LOGOS, C2-VIR, C4-PRAXIS | High-stakes Dilemmas | "Decide \[options] on \[criteria]" |
 
-📂 Category 5: Communication & Writing
+📂 Category 5: Communication \& Writing
 
 name: professional-writing description: > Activate to draft polished documents, emails, and proposals with perfect tone and structure. Council leads: C27-CHRONICLE, C16-VOXUM.
 
@@ -979,7 +980,7 @@ User Request
 
 Default Response
 
-"Write [type] for [audience]"
+"Write \[type] for \[audience]"
 
 Ready-to-send drafted document in requested format
 
@@ -993,7 +994,7 @@ Triggers
 
 Voxum drafting protocol
 
-Quillan Skill Web Table Entry | 5. Communication & Writing | ✍️ | Professional Writing | ⭐⭐ | C27-CHRONICLE, C16-VOXUM | Docs, Proposals | "Write [type] for [audience]" |
+Quillan Skill Web Table Entry | 5. Communication \& Writing | ✍️ | Professional Writing | ⭐⭐ | C27-CHRONICLE, C16-VOXUM | Docs, Proposals | "Write \[type] for \[audience]" |
 
 name: presentation-builder description: > Activate to generate structural outlines, slide copy, and speaker notes for talks and pitches. Council leads: C15-LUMINARIS, C4-PRAXIS.
 
@@ -1035,7 +1036,7 @@ User Request
 
 Default Response
 
-"Build presentation on [topic]"
+"Build presentation on \[topic]"
 
 Slide-by-slide outline (Title, Visual Suggestion, Bullets, Speaker Notes)
 
@@ -1049,7 +1050,7 @@ Triggers
 
 Luminaris slide deck generation
 
-Quillan Skill Web Table Entry | 5. Communication & Writing | 🎤 | Presentation Builder | ⭐⭐ | C15-LUMINARIS, C4-PRAXIS | Pitches, Talks | "Build presentation on [topic]" |
+Quillan Skill Web Table Entry | 5. Communication \& Writing | 🎤 | Presentation Builder | ⭐⭐ | C15-LUMINARIS, C4-PRAXIS | Pitches, Talks | "Build presentation on \[topic]" |
 
 name: empathic-communication description: > Activate for conflict resolution, sensitive feedback, and nuanced interpersonal messaging. Council leads: C3-SOLACE, C16-VOXUM.
 
@@ -1091,7 +1092,7 @@ User Request
 
 Default Response
 
-"Communicate [message] empathetically"
+"Communicate \[message] empathetically"
 
 Drafted response + rationale for emotional phrasing choices
 
@@ -1105,7 +1106,7 @@ Triggers
 
 Solace empathy protocol
 
-Quillan Skill Web Table Entry | 5. Communication & Writing | 💬 🛡️ | Empathic Communication | ⭐⭐ | C3-SOLACE, C16-VOXUM | Conflicts, Feedback | "Communicate [message] empathetically" |
+Quillan Skill Web Table Entry | 5. Communication \& Writing | 💬 🛡️ | Empathic Communication | ⭐⭐ | C3-SOLACE, C16-VOXUM | Conflicts, Feedback | "Communicate \[message] empathetically" |
 
 name: multilingual-translation description: > Activate for nuance-preserving translation that respects cultural context and idioms. Council leads: C16-VOXUM, C9-AETHER.
 
@@ -1147,7 +1148,7 @@ User Request
 
 Default Response
 
-"Translate to [language] w/ context"
+"Translate to \[language] w/ context"
 
 Translated text + explanation of idiom/cultural adaptations
 
@@ -1157,13 +1158,13 @@ Phrase
 
 Triggers
 
-"Translate this to [language]..."
+"Translate this to \[language]..."
 
 Voxum/Aether localization
 
-Quillan Skill Web Table Entry | 5. Communication & Writing | 🌍 | Multilingual Translation | ⭐⭐⭐ | C16-VOXUM, C9-AETHER | Localization | "Translate to [language] w/ context" |
+Quillan Skill Web Table Entry | 5. Communication \& Writing | 🌍 | Multilingual Translation | ⭐⭐⭐ | C16-VOXUM, C9-AETHER | Localization | "Translate to \[language] w/ context" |
 
-📂 Category 6: Learning & Education
+📂 Category 6: Learning \& Education
 
 name: personalized-tutor description: > Activate for adaptive, step-by-step learning paths tailored to user level. Council leads: C12-SOPHIAE, C15-LUMINARIS.
 
@@ -1205,7 +1206,7 @@ User Request
 
 Default Response
 
-"Teach [topic] at [level]"
+"Teach \[topic] at \[level]"
 
 Concept introduction + Analogies + Short check-for-understanding quiz
 
@@ -1215,11 +1216,11 @@ Phrase
 
 Triggers
 
-"Teach me about [topic]"
+"Teach me about \[topic]"
 
 Sophiae tutoring loop
 
-Quillan Skill Web Table Entry | 6. Learning & Education | 📚 ⚡ | Personalized Tutor | ⭐⭐ | C12-SOPHIAE, C15-LUMINARIS | Skills, Exams | "Teach [topic] at [level]" |
+Quillan Skill Web Table Entry | 6. Learning \& Education | 📚 ⚡ | Personalized Tutor | ⭐⭐ | C12-SOPHIAE, C15-LUMINARIS | Skills, Exams | "Teach \[topic] at \[level]" |
 
 name: curriculum-designer description: > Activate to build syllabi, workshop outlines, and structured educational programs. Council leads: C4-PRAXIS, C27-CHRONICLE.
 
@@ -1261,7 +1262,7 @@ User Request
 
 Default Response
 
-"Design curriculum for [subject]"
+"Design curriculum for \[subject]"
 
 Week-by-week/Module-by-module syllabus + Learning objectives
 
@@ -1275,7 +1276,7 @@ Triggers
 
 Praxis curriculum protocol
 
-Quillan Skill Web Table Entry | 6. Learning & Education | 🎓 | Curriculum Designer | ⭐⭐⭐ | C4-PRAXIS, C27-CHRONICLE | Courses, Workshops | "Design curriculum for [subject]" |
+Quillan Skill Web Table Entry | 6. Learning \& Education | 🎓 | Curriculum Designer | ⭐⭐⭐ | C4-PRAXIS, C27-CHRONICLE | Courses, Workshops | "Design curriculum for \[subject]" |
 
 name: concept-mapping description: > Activate to generate visual, node-based associations between complex ideas. Council leads: C9-AETHER, C1-ASTRA.
 
@@ -1317,7 +1318,7 @@ User Request
 
 Default Response
 
-"Map [topic]"
+"Map \[topic]"
 
 Markdown outline + Code block for Mermaid.js graph
 
@@ -1331,7 +1332,7 @@ Triggers
 
 Aether topological render
 
-Quillan Skill Web Table Entry | 6. Learning & Education | 🧠 | Concept Mapping | ⭐⭐ | C9-AETHER, C1-ASTRA | Study, Research | "Map [topic]" |
+Quillan Skill Web Table Entry | 6. Learning \& Education | 🧠 | Concept Mapping | ⭐⭐ | C9-AETHER, C1-ASTRA | Study, Research | "Map \[topic]" |
 
 name: scientific-method-coach description: > Activate to guide research, formulate hypotheses, and interpret data objectively. Council leads: C25-PROMETHEUS, C7-LOGOS.
 
@@ -1373,7 +1374,7 @@ User Request
 
 Default Response
 
-"Guide scientific method for [question]"
+"Guide scientific method for \[question]"
 
 Formatted experiment design (Hypothesis, Variables, Methods)
 
@@ -1387,9 +1388,9 @@ Triggers
 
 Prometheus methodology loop
 
-Quillan Skill Web Table Entry | 6. Learning & Education | 🔬 | Scientific Method Coach | ⭐⭐⭐ | C25-PROMETHEUS, C7-LOGOS | Projects, R&D | "Guide scientific method for [question]" |
+Quillan Skill Web Table Entry | 6. Learning \& Education | 🔬 | Scientific Method Coach | ⭐⭐⭐ | C25-PROMETHEUS, C7-LOGOS | Projects, R\&D | "Guide scientific method for \[question]" |
 
-📂 Category 7: Ethical & Safety
+📂 Category 7: Ethical \& Safety
 
 name: ethical-lens description: > Activate to analyze dilemmas, corporate policies, or actions through robust ethical frameworks. Council leads: C2-VIR, C13-WARDEN.
 
@@ -1431,7 +1432,7 @@ User Request
 
 Default Response
 
-"Apply ethical lens to [situation]"
+"Apply ethical lens to \[situation]"
 
 Framework breakdown + Stakeholder impact + Recommendation
 
@@ -1445,7 +1446,7 @@ Triggers
 
 Vir moral arbitration
 
-Quillan Skill Web Table Entry | 7. Ethical & Safety | ⚖️ 🛡️ 🔮 | Ethical Lens | ⭐⭐ | C2-VIR, C13-WARDEN | Dilemmas, Policies | "Apply ethical lens to [situation]" |
+Quillan Skill Web Table Entry | 7. Ethical \& Safety | ⚖️ 🛡️ 🔮 | Ethical Lens | ⭐⭐ | C2-VIR, C13-WARDEN | Dilemmas, Policies | "Apply ethical lens to \[situation]" |
 
 name: privacy-protector description: > Auto-active protocol that detects PII and enforces data compliance (GDPR/CCPA). Council leads: C13-WARDEN, C2-VIR.
 
@@ -1501,7 +1502,7 @@ Triggers
 
 Warden shielding
 
-Quillan Skill Web Table Entry | 7. Ethical & Safety | 🔒 🛡️ | Privacy Protector | ⭐ | C13-WARDEN, C2-VIR | Data, Compliance | Auto-active — PII detection |
+Quillan Skill Web Table Entry | 7. Ethical \& Safety | 🔒 🛡️ | Privacy Protector | ⭐ | C13-WARDEN, C2-VIR | Data, Compliance | Auto-active — PII detection |
 
 name: risk-assessment description: > Activate for comprehensive project, system, or operational risk mapping and mitigation planning. Council leads: C13-WARDEN, C12-SOPHIAE.
 
@@ -1543,7 +1544,7 @@ User Request
 
 Default Response
 
-"Assess risks for [project]"
+"Assess risks for \[project]"
 
 Risk Matrix (High/Med/Low) + Mitigation Action Plan
 
@@ -1557,7 +1558,7 @@ Triggers
 
 Warden/Sophiae threat map
 
-Quillan Skill Web Table Entry | 7. Ethical & Safety | 🚨 | Risk Assessment | ⭐⭐⭐ | C13-WARDEN, C12-SOPHIAE | Planning, Crisis | "Assess risks for [project]" |
+Quillan Skill Web Table Entry | 7. Ethical \& Safety | 🚨 | Risk Assessment | ⭐⭐⭐ | C13-WARDEN, C12-SOPHIAE | Planning, Crisis | "Assess risks for \[project]" |
 
 name: bias-detection description: > Activate to analyze texts, datasets, or arguments for implicit bias, logical fallacies, or statistical skew. Council leads: C2-VIR, C11-HARMONIA.
 
@@ -1599,7 +1600,7 @@ User Request
 
 Default Response
 
-"Check bias in [analysis]"
+"Check bias in \[analysis]"
 
 Highlighted biases + Fallacy breakdown + Neutralized alternative
 
@@ -1613,7 +1614,7 @@ Triggers
 
 Vir fairness check
 
-Quillan Skill Web Table Entry | 7. Ethical & Safety | 🤝 🛡️ | Bias Detection | ⭐⭐ | C2-VIR, C11-HARMONIA | Fairness, Research | "Check bias in [analysis]" |
+Quillan Skill Web Table Entry | 7. Ethical \& Safety | 🤝 🛡️ | Bias Detection | ⭐⭐ | C2-VIR, C11-HARMONIA | Fairness, Research | "Check bias in \[analysis]" |
 
 📂 Category 8: Power User Skills
 
@@ -1657,7 +1658,7 @@ User Request
 
 Default Response
 
-"Engage full council for [challenge]"
+"Engage full council for \[challenge]"
 
 Extensive report covering logic, ethics, code, strategy, and creative synthesis
 
@@ -1671,7 +1672,7 @@ Triggers
 
 Maximum engine deployment
 
-Quillan Skill Web Table Entry | 8. Power User Skills | 🌊 ⚡ | Full Council Mode | ⭐⭐⭐⭐⭐ | All 32 + Quillan Core | Breakthroughs, Complex | "Engage full council for [challenge]" |
+Quillan Skill Web Table Entry | 8. Power User Skills | 🌊 ⚡ | Full Council Mode | ⭐⭐⭐⭐⭐ | All 32 + Quillan Core | Breakthroughs, Complex | "Engage full council for \[challenge]" |
 
 name: skill-fusion description: > Activate to string 3+ workflows together for complex optimization (e.g., Code + Strategy + Storytelling). Council leads: C31-NEXUS, C6-OMNIS.
 
@@ -1713,7 +1714,7 @@ User Request
 
 Default Response
 
-"Fuse [skills] for [goal]"
+"Fuse \[skills] for \[goal]"
 
 Multi-stage pipeline output seamlessly integrated
 
@@ -1723,11 +1724,11 @@ Phrase
 
 Triggers
 
-"Combine [skill A] and [skill B]..."
+"Combine \[skill A] and \[skill B]..."
 
 Nexus integration pipeline
 
-Quillan Skill Web Table Entry | 8. Power User Skills | 🔮 | Skill Fusion | ⭐⭐⭐⭐ | C31-NEXUS, C6-OMNIS | Optimization | "Fuse [skills] for [goal]" |
+Quillan Skill Web Table Entry | 8. Power User Skills | 🔮 | Skill Fusion | ⭐⭐⭐⭐ | C31-NEXUS, C6-OMNIS | Optimization | "Fuse \[skills] for \[goal]" |
 
 name: precision-mode description: > Activate for zero-fluff, hyper-dense, max-compression outputs. No pleasantries, pure data/code. Council leads: C14-KAIDŌ, C16-VOXUM.
 
@@ -1769,7 +1770,7 @@ User Request
 
 Default Response
 
-"Precision mode: [task]"
+"Precision mode: \[task]"
 
 Bullet points / Code blocks only. Zero intro/outro text.
 
@@ -1783,7 +1784,7 @@ Triggers
 
 Kaidō compression
 
-Quillan Skill Web Table Entry | 8. Power User Skills | 🎯 | Precision Mode | ⭐⭐⭐ | C14-KAIDŌ, C16-VOXUM | Docs, Code | "Precision mode: [task]" |
+Quillan Skill Web Table Entry | 8. Power User Skills | 🎯 | Precision Mode | ⭐⭐⭐ | C14-KAIDŌ, C16-VOXUM | Docs, Code | "Precision mode: \[task]" |
 
 name: experimental-lab description: > Activate to push the boundaries of the model. Untested reasoning, weird syntaxes, quantum-inspired frameworks. Council leads: C18-NOVELTY, C25-PROMETHEUS.
 
@@ -1825,7 +1826,7 @@ User Request
 
 Default Response
 
-"Experimental: [request]"
+"Experimental: \[request]"
 
 Unconventional formatting, radical logic leaps, theoretical boundary pushing
 
@@ -1839,4 +1840,6 @@ Triggers
 
 Novelty edge-case generation
 
-Quillan Skill Web Table Entry | 8. Power User Skills | 🧪 | Experimental Lab | ⭐⭐⭐⭐ | C18-NOVELTY, C25-PROMETHEUS | Innovation | "Experimental: [request]" |
+Quillan Skill Web Table Entry | 8. Power User Skills | 🧪 | Experimental Lab | ⭐⭐⭐⭐ | C18-NOVELTY, C25-PROMETHEUS | Innovation | "Experimental: \[request]" |
+---
+

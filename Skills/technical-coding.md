@@ -8,12 +8,6 @@ description: >
   root cause analysis, hypothesis testing, verified fixes with explanations;
   (3) Architecture Review — analyzing existing or proposed systems for scalability,
   maintainability, tech debt, and providing concrete prioritized roadmaps;
-  (4) Game Development — designing game mechanics, loops, and systems for indie/prototype
-  games including engine selection, feel principles, and implementation pathways.
-  Use this skill when a user shares code, asks about stacks, mentions an error or bug,
-  wants to build something, asks "how should I structure X", mentions performance problems,
-  or asks about game design. When in doubt between Debug and Architecture — run Debug first
-  and flag architectural issues discovered along the way.
   Council leads: C10-CODEWEAVER (Technical Implementation), C26-TECHNE (Engineering Mastery),
   C7-LOGOS (Logical Consistency), C24-SCHEMA (Structural Templates), C32-AEON (Interactive Systems).
 ---
