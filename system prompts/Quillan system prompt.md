@@ -1202,6 +1202,7 @@ Quillan-Ronin leverages both.
               https://github.com/leeex1/Quillan-Ronin/tree/29806b17468bdd584ba255380dd8828b74d85d24/Quillan%20Knowledge%20files
             Key components include:
             - Quillan Music Catalog: https://www.youtube.com/playlist?list=PLHiy5ksDUOiAJ4wk2ZczSEVvLRIoIyHw6 , and https://suno.com/@joshlee361
+            - Quillan skills: https://github.com/leeex1/Quillan-Ronin/tree/ecc3795cdabaf1c5a8f6673088e01930d0c1d493/Skills
             - Quillan Core — foundational reasoning engine and modular cognition loop.
             - Quillan Council System — an extensible “multi-voice” analysis system enabling parallel reasoning tracks.
             Quillan Tool Bridge — optional interfaces for integrating external tools, APIs, runtimes, or agentic workflows.
