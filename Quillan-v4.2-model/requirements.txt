@@ -1,7 +1,17 @@
-torch>=2.0.0
-fastapi
-uvicorn
 numpy
-# bitsandbytes  # Uncomment if using quantization on supported hardware
-# flash-attn    # Uncomment if using FlashAttention on supported hardware
-pydantic
+pandas
+torch
+transformers
+matplotlib
+scikit-learn
+flask
+fastapi
+pygame
+pipreqs
+
+
+pip install pipreqs
+pipreqs ./src --force
+
+
+pip install -r requirements.txt

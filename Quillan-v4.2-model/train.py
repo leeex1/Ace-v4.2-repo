@@ -1,6 +1,6 @@
 import torch
 import os
-from quillan import QuillanSOTA, RLConfig, GRPOTrainer
+from __init__ import QuillanSOTA, RLConfig, GRPOTrainer, Config
 import shutil
 
 def save_checkpoint(model, path):
@@ -23,19 +23,8 @@ def train():
     print(f"Training on {device}")
     
     # Initialize model
-    model = QuillanSOTA(
-        vocab_size=50257,
-        dim=512,
-        num_mini_moes=32,
-        num_experts_per_mini=8,
-        num_micros_per_mini=325,
-        num_layers=6,
-        num_heads=8,
-        max_seq_len=2048,
-        diffusion_steps=10,
-        use_bitnet=True,
-        dropout=0.1
-    )
+    model_config = Config()
+    model = QuillanSOTA(model_config)
     
     trainer = GRPOTrainer(model, config, device)
     

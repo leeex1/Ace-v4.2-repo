@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import torch
 from quillan import QuillanSOTA
@@ -6,6 +7,15 @@ import os
 from typing import List, Optional
 
 app = FastAPI(title="Quillan API", description="API for Quillan v4.2 SOTA Model")
+
+# CORS - allow browser frontend to connect
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Global model variable
 model = None
@@ -20,6 +30,18 @@ class GenerateRequest(BaseModel):
 
 class GenerateResponse(BaseModel):
     generated_ids: List[int]
+
+class ChatRequest(BaseModel):
+    message: str
+    mode: Optional[str] = "standard"
+    temperature: Optional[float] = 0.7
+    max_tokens: Optional[int] = 256
+
+class ChatResponse(BaseModel):
+    response: str
+    thinking: Optional[List[str]] = []
+    mode: str
+    model_loaded: bool
 
 @app.on_event("startup")
 async def load_model_event():
@@ -69,6 +91,67 @@ async def generate(request: GenerateRequest):
             )
         
         return GenerateResponse(generated_ids=output_ids[0].tolist())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/chat", response_model=ChatResponse)
+async def chat(request: ChatRequest):
+    """Text-based chat endpoint for the frontend interface."""
+    thinking_steps = []
+    
+    if model is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Model not loaded. Training may still be in progress."
+        )
+    
+    try:
+        thinking_steps.append("Tokenizing input query...")
+        # Simple char-level tokenization matching local_inference.py
+        tokens = [min(ord(c), 999) for c in request.message]
+        max_len = 50
+        if len(tokens) < max_len:
+            tokens.extend([0] * (max_len - len(tokens)))
+        else:
+            tokens = tokens[:max_len]
+        
+        text_tensor = torch.tensor([tokens], dtype=torch.long).to(device)
+        
+        # Dummy multimodal inputs (text-only inference)
+        img = torch.randn(1, 3, 256, 256).to(device)
+        aud = torch.randn(1, 1, 2048).to(device)
+        vid = torch.randn(1, 3, 8, 32, 32).to(device)
+        
+        thinking_steps.append("Running forward pass through council network...")
+        
+        with torch.no_grad():
+            outputs = model(text_tensor, img, aud, vid)
+        
+        response_text = ""
+        if 'text' in outputs:
+            logits = outputs['text']
+            predicted_tokens = torch.argmax(logits, dim=-1)
+            response_chars = []
+            for token in predicted_tokens[0]:
+                token_val = token.item()
+                if token_val == 0:
+                    break
+                elif 1 <= token_val <= 999:
+                    char_code = min(max(token_val, 32), 126)
+                    response_chars.append(chr(char_code))
+            response_text = ''.join(response_chars).strip()
+        
+        thinking_steps.append("Synthesis complete.")
+        
+        if not response_text:
+            response_text = "[Model generated empty response — training may still be in progress]"
+        
+        return ChatResponse(
+            response=response_text,
+            thinking=thinking_steps,
+            mode=request.mode or "standard",
+            model_loaded=True
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
