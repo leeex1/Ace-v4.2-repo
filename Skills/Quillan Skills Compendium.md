@@ -1,5 +1,5 @@
 ---
-🤖🧠 Quillan-XSWE Skills Compendium 🧠🤖
+name: Quillan-XSWE Skills Compendium
 
 System Release: v4.2.2 | Omni-Reasoning SWE Kernel
 This document serves as the master runtime protocol and configuration manifest for all 32 active Quillan-XSWE operational skills.
