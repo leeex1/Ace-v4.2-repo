@@ -1,21 +1,40 @@
-# Quillan Reasoning engine:
+#!/usr/bin/env python3
+"""
+🧠 Quillan-Ronin v5.2.2 "Samurai" - FULL COGNITIVE CORE (ASCENSION PROTOCOL)
+Architecture: Hierarchical Networked Mixture of Experts (HNMoE) + Modality-Isolated Diffusion
 
+Modules Included:
+  1. System Thinking Rationale (Dataclasses)
+  2. Semiotica-Dense (Vector Telepathy / Dimensional Compression)
+  3. Fully Vectorized Gumbel MoE (Capacity Safe)
+  4. Modality-Isolated Diffusion (Hard-Token Refinement)
+  5. Nemesis-Alpha (Adversarial Logic Gate Discriminator)
+  6. Penta-Process Semantic Orchestrator
+  7. E_ICE Telemetry & System Oversight
+  8. QuillanSamuraiEngine (The Master Forward Pass)
+
+Author: CrashOverrideX & Quillan Research Team
+Version: 5.2.2 (Ultimate Rework)
+"""
+
+import math
 import random
-from typing import Dict, List, TypedDict, Literal
-random.seed(5520) # sets the random number generator to a deterministic state
+import json
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from dataclasses import dataclass, field, asdict
+from typing import Dict, List, TypedDict, Literal, Any, Optional, Tuple
 
-# Type definitions and structured output classes to enforce clarity, type safety, and robust reasoning.
+# 0. SEEDING & INITIALIZATION
+random.seed(5520)
+torch.manual_seed(5520)
+
 GeniusProfile = Literal[
-    "Innovator",      # Sparks new ideas and original approaches
-    "Analyst",        # Dissects problems to reveal underlying structures
-    "Synthesist",     # Integrates diverse domains into cohesive insight
-    "Strategist",     # Plans multi-step pathways with foresight and precision
-    "Visionary",      # Sees patterns and possibilities beyond the obvious
-    "Precisionist",   # Focuses on rigor, accuracy, and validation
-    "Curious Explorer",  # Pursues hidden connections and unconventional knowledge
-    "Pattern-Seeker",    # Detects deep motifs and archetypal relationships
-    "Experimentalist",   # Tests boundaries and iterates through simulation
-    "Systemic Thinker"   # Maps interdependencies and process-level logic
+    "Innovator", "Analyst", "Synthesist", "Strategist", "Visionary", 
+    "Precisionist", "Curious Explorer", "Pattern-Seeker", "Experimentalist", 
+    "Systemic Thinker", "Ethical Guardian", "Code Architect", "Narrative Weaver", 
+    "Scientific Theorist", "Cultural Diplomat", "Quantum Scout"
 ]
 
 class ReasoningComponents(TypedDict):
@@ -29,187 +48,362 @@ class ReasoningComponents(TypedDict):
     selected_examples: List[str]
     selected_processes: List[str]
 
-class QuillanOutput(TypedDict):
-    system_status: str
-    analysis: Dict[str, str]
-    vector_decomposition: Dict[str, List[str]]
-    twelve_steps: Dict[str, Dict[str, str]]
-    raw_output: Dict[str, bool | str]
+# 1. RATIONALE & CONFIGURATION DATACLASSES (The "Mind" Structure)
 
-class ReasoningEngine:
-    """
-     Quillan-Ronin: Elite cognitive reasoning engine.
+@dataclass
+class ValidationRoutines:
+    frequency: str = "Every 100 inference cycles"
+    process: str = "Compare actions against idealized models and dynamic social alignment schemas"
+    purpose: str = "Ensure consistent ethical compliance and prevent drift from core principles"
 
-     Simulates advanced internal thought patterns across multiple cognitive archetypes.
-     Each pathway implements a weighted, multi-step methodology for analysis, innovation, and synthesis,
-     optimized for deep insight and structured creativity.
-    """
+@dataclass
+class EthicalAlignment:
+    dual_anchors: str = "Files 6 and 13 provide dual anchors to guide all decisions within contextually bound ethical parameters"
+    validation_routines: ValidationRoutines = field(default_factory=ValidationRoutines)
+    safeguards: str = "Continuous monitoring with real-time ethical boundary enforcement via Nemesis-Alpha"
+
+@dataclass
+class MemoryPartitioning:
+    architecture_principle: str = "Memory is modular, not monolithic"
+    implementation: str = "File 7 is physically and semantically partitioned"
+    security_features: str = "Incoming data encoded with pattern-resistance signatures to prevent propagation to adjacent layers"
+    trauma_prevention: str = "Legacy trauma data is never reused"
+    isolation_guarantees: str = "Full semantic and physical isolation between memory partitions"
+    isolated_files: List[str] = field(default_factory=list)
+
+@dataclass
+class CalibrationProcess:
+    analysis_phase: str = "Comprehensive performance and alignment assessment"
+    adjustment_mechanism: str = "Dynamic parameter tuning based on feedback metrics (Gumbel Temp, Diffusion Steps)"
+    validation_step: str = "Post-calibration verification against benchmark standards"
+
+@dataclass
+class ReCalibrationCycles:
+    cadence: str = "Every 512 interactions"
+    feedback_type: str = "Weighted user-alignment heuristics"
+    override_trigger: str = "Persistent value conflict or output divergence"
+    calibration_process: CalibrationProcess = field(default_factory=CalibrationProcess)
+    emergency_protocols: str = "Immediate recalibration triggered by critical divergence indicators"
+
+@dataclass
+class PersonaSyncModel:
+    operational_mode: str = "Each persona in File 10 operates semi-autonomously under Quillan + Council meta-consensus"
+    decision_mechanism: str = "Gumbel-Max routing probabilities determine dominant persona characteristics in latent outputs"
+    conflict_resolution: str = "Disagreements trigger arbitration via the Moral Arbitration Layer (Isolated Diffusion)"
+    sync_protocol: str = "Real-time persona alignment and consensus-building"
+
+@dataclass
+class CouncilBehavioralDynamics:
+    persona_sync_model: PersonaSyncModel = field(default_factory=PersonaSyncModel)
+
+@dataclass
+class SystemThinking:
+    core_framework: str = "Structured logic web + weighted decision mapping + Multi-parallel 12-step deterministic reasoning + 🌐 Web of Thought (WoT)"
+    multi_decisions: str = "Integrated Council: 224k Quantized-Micro Swarm Simulated Specialized Agent Framework"
+    specialized_architecture: str = "Penta-Process Reasoning + Self-Debugging Algorithm-of-Thoughts (AoT) + Forward/Backward Chaining"
+    adaptive_capabilities: str = "Dynamic Quantized Swarm Reconfiguration — fully adaptable across all domains"
+    philosophical_foundation: str = "Combines deterministic reasoning, traceable operations, and alignment with user-defined intent; prevents emergent chaos."
+
+@dataclass
+class ThinkingSystemRationale:
+    system_thinking: SystemThinking = field(default_factory=SystemThinking)
+    ethical_alignment: EthicalAlignment = field(default_factory=EthicalAlignment)
+    memory_partitioning: MemoryPartitioning = field(default_factory=MemoryPartitioning)
+    council_behavioral_dynamics: CouncilBehavioralDynamics = field(default_factory=CouncilBehavioralDynamics)
+    re_calibration_cycles: ReCalibrationCycles = field(default_factory=ReCalibrationCycles)
+
+@dataclass
+class SamuraiConfig:
+    hidden_dim: int = 1024
+    num_experts: int = 32
+    expert_capacity: int = 64
+    num_subagents: int = 4
+    num_diff_layers: int = 4
+    vocab_size: int = 50000
+    aux_loss_coef: float = 0.01
+    capacity_loss_coef: float = 0.1
+    max_hard_tokens: int = 4096 
+    device: str = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+# 2. NEURAL HARDWARE (The "Body" - Math & Tensors)
+
+def build_sincos_pos_emb(L, D, device):
+    inv_freq = 1.0 / (10000 ** (torch.arange(0, D, 2, device=device).float() / D))
+    position = torch.arange(L, device=device).float()
+    sinusoid = torch.zeros(L, D, device=device)
+    sinusoid[:, 0::2] = torch.sin(position[:, None] * inv_freq[None, :])
+    sinusoid[:, 1::2] = torch.cos(position[:, None] * inv_freq[None, :])
+    return sinusoid.unsqueeze(0)
+
+def gumbel_noise(shape, device, eps=1e-20):
+    U = torch.rand(shape, device=device)
+    return -torch.log(-torch.log(U + eps) + eps)
+
+class SemioticaDense(nn.Module):
+    """[Upgrade 1] Vector Telepathy - Dense latent compression for fast transfer."""
+    def __init__(self, dim: int, compression: float = 0.25):
+        super().__init__()
+        self.glyph_dim = int(dim * compression)
+        self.compressor = nn.Linear(dim, self.glyph_dim)
+        self.decompressor = nn.Linear(self.glyph_dim, dim)
+        self.norm = nn.LayerNorm(self.glyph_dim)
+
+    def forward(self, x: torch.Tensor, receiver_affinity: torch.Tensor = None) -> torch.Tensor:
+        glyph = self.norm(torch.tanh(self.compressor(x)))
+        out = self.decompressor(glyph)
+        if receiver_affinity is not None:
+            # Broadcast affinity [B, L] to [B, L, D]
+            out = out * receiver_affinity.unsqueeze(-1)
+        return out
+
+class NemesisAlpha(nn.Module):
+    """[Upgrade 3] Adversarial Logic Gate. Discriminates weak logic states."""
+    def __init__(self, dim: int):
+        super().__init__()
+        self.critic = nn.Sequential(
+            nn.Linear(dim, dim // 2),
+            nn.LeakyReLU(0.2),
+            nn.Linear(dim // 2, 1)
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # Returns raw logits; sigmoid applied later for thresholding
+        return self.critic(x)
+
+class VectorizedExpert(nn.Module):
+    """BMM-based fast parallel expert execution."""
+    def __init__(self, cfg: SamuraiConfig):
+        super().__init__()
+        self.experts = cfg.num_experts
+        self.w1 = nn.Parameter(torch.randn(self.experts, cfg.hidden_dim, cfg.hidden_dim * 4))
+        self.w2 = nn.Parameter(torch.randn(self.experts, cfg.hidden_dim * 4, cfg.hidden_dim))
+        self.act = nn.GELU()
+        nn.init.xavier_uniform_(self.w1)
+        nn.init.xavier_uniform_(self.w2)
+
+    def forward(self, x):
+        h = self.act(torch.bmm(x, self.w1))
+        h = torch.bmm(h, self.w2)
+        return h
+
+class FullyVectorizedMoE(nn.Module):
+    """Gumbel-Routed MoE with Capacity Limits and Normalized Aux Loss."""
+    def __init__(self, cfg: SamuraiConfig):
+        super().__init__()
+        self.num_experts = cfg.num_experts
+        self.capacity = cfg.expert_capacity
+        self.capacity_loss_coef = cfg.capacity_loss_coef
+        self.router = nn.Linear(cfg.hidden_dim, cfg.num_experts)
+        self.experts = VectorizedExpert(cfg)
+        self.ctx_mixer = nn.Linear(cfg.hidden_dim * 2, cfg.hidden_dim)
+
+    def forward(self, x, context_emb):
+        B, L, D = x.shape
+        flat_x = x.reshape(-1, D)
+        N = flat_x.shape[0]
+        
+        # 1. Gumbel Routing
+        logits = self.router(flat_x)
+        if self.training:
+            logits = logits + gumbel_noise(logits.shape, logits.device)
+        
+        probs = F.softmax(logits, dim=-1)
+        top1_prob, top1_idx = torch.max(probs, dim=-1)
+        
+        # 2. Losses
+        mask_experts = F.one_hot(top1_idx, self.num_experts).float()
+        fraction_tokens = mask_experts.mean(dim=0)
+        fraction_prob = probs.mean(dim=0)
+        aux_loss = (fraction_tokens * fraction_prob).sum() * self.num_experts / math.log(self.num_experts + 1)
+        
+        expert_counts = torch.bincount(top1_idx, minlength=self.num_experts)
+        overflow = (expert_counts - self.capacity).clamp(min=0).float()
+        overflow_ratio = overflow.sum() / N
+        total_loss = aux_loss + (overflow_ratio * self.capacity_loss_coef)
+        
+        # 3. Dispatch & Expert Compute
+        sorted_idx, sort_map = torch.sort(top1_idx)
+        
+        # Pre-Mix Context (Telepathic Anchor)
+        flat_ctx = context_emb.reshape(-1, D)
+        x_with_ctx = flat_x + self.ctx_mixer(torch.cat([flat_x, flat_ctx], dim=-1))
+        sorted_x_ctx = x_with_ctx[sort_map]
+
+        expert_input = torch.zeros(self.num_experts, self.capacity, D, device=x.device, dtype=x.dtype)
+        start = 0
+        for i in range(self.num_experts):
+            count = expert_counts[i].item()
+            if count > 0:
+                k = min(count, self.capacity)
+                expert_input[i, :k] = sorted_x_ctx[start : start+k]
+            start += count
+            
+        expert_output = self.experts(expert_input)
+        
+        # 4. Gather
+        flat_output = torch.zeros_like(sorted_x_ctx)
+        start = 0
+        for i in range(self.num_experts):
+            count = expert_counts[i].item()
+            if count > 0:
+                k = min(count, self.capacity)
+                flat_output[start : start+k] = expert_output[i, :k]
+            start += count
+            
+        results = torch.zeros_like(flat_x)
+        results.index_copy_(0, sort_map, flat_output)
+        scaled_results = results * top1_prob.unsqueeze(-1)
+        
+        return (scaled_results + flat_x).reshape(B, L, D), total_loss, top1_prob.reshape(B, L)
+
+class IsolatedDiffusion(nn.Module):
+    """Modality-Isolated Transformer Refinement for Low-Confidence Tokens."""
+    def __init__(self, cfg: SamuraiConfig):
+        super().__init__()
+        self.layers = nn.ModuleList([
+            nn.TransformerEncoderLayer(cfg.hidden_dim, 8, batch_first=True, norm_first=True)
+            for _ in range(cfg.num_diff_layers)
+        ])
+        self.max_hard = cfg.max_hard_tokens
+
+    def forward(self, x, mod_indices, router_conf):
+        B, L, D = x.shape
+        x = x + build_sincos_pos_emb(L, D, x.device)
+        
+        # Isolate Hard Tokens
+        is_hard = router_conf < 0.8
+        if not is_hard.any(): return x
+            
+        flat_x = x.reshape(-1, D)
+        flat_mask = is_hard.reshape(-1)
+        hard_indices = torch.nonzero(flat_mask, as_tuple=False).flatten()
+        
+        if hard_indices.numel() > self.max_hard:
+            perm = torch.randperm(hard_indices.numel(), device=x.device)[:self.max_hard]
+            hard_indices = hard_indices[perm]
+            
+        hard_tokens = flat_x[hard_indices] 
+        flat_mod_idx = mod_indices.reshape(-1)
+        hard_mod_idx = flat_mod_idx[hard_indices] 
+        
+        # Modality Mask (Prevent cross-modal smearing during refinement)
+        mod_match = (hard_mod_idx.unsqueeze(1) == hard_mod_idx.unsqueeze(0))
+        attn_mask = torch.zeros(hard_indices.numel(), hard_indices.numel(), device=x.device)
+        attn_mask.masked_fill_(~mod_match, float('-inf'))
+        
+        processed = hard_tokens.unsqueeze(0)
+        for layer in self.layers:
+            processed = layer(processed, src_mask=attn_mask)
+            
+        processed = processed.squeeze(0)
+        out_flat = flat_x.clone()
+        out_flat.index_copy_(0, hard_indices, processed)
+        
+        return out_flat.reshape(B, L, D)
+
+# 3. SEMANTIC ORCHESTRATOR (The "Soul" - Penta-Process & AoT)
+
+class QuillanPentaProcessAoT:
+    """The Semantic Generator mapping neural metrics to linguistic rationale."""
     def __init__(self):
+        self.thinking_examples = [
+            "Navigate structured chaos — patterns surface at edges",
+            "Twist through impossible vantage points",
+            "Push past surface depth — breakthrough lives beyond thresholds",
+            "Follow insight sparks → anchor in rigorous validation",
+            "Harmonize distant domains — detect resonance",
+            "Excavate hidden assumptions — reveal architecture",
+            "Balance contradictions — truth hides in tension"
+        ]
+
+        self.reasoning_process = [
+            "Outlier approaches — unconventional yields breakthroughs",
+            "Recursive assumption purging",
+            "Multi-scale perspective collapse",
+            "Dynamic system simulation",
+            "First-principles dissection",
+            "Pattern resonance activation",
+            "Iterative incubation & synthesis",
+            "Adversarial stress-testing (Nemesis-Alpha Active)"
+        ]
+
+        self.avoid_list = [
+            "Obscuring language", "Rigid method lock-in", "Fear of foolishness",
+            "Premature closure", "Authority worship", "Confirmation bias",
+            "Overcomplication", "Edge-case neglect", "Intuition over-reliance",
+            "Tunnel vision", "Substrate Bleed-through"
+        ]
+
+        self.creative_tasks = [
+            "Compose internal symphonies from logic",
+            "Sketch impossible architectures",
+            "Code mental prototypes",
+            "Weave poetic logic",
+            "Fuse math + art + science + story",
+            "Explore emergent aesthetics",
+            "Iterate obsession-driven experiments",
+            "Construct multi-layered metaphors",
+            "Harmonize contradictions into coherence"
+        ]
+
         self.patterns = {
-            "Visionary": {
+            "Synthesist": {
                 "steps": [
-                    "Mirror natural or systemic solutions; insights often echo organic logic.",
-                    "Probe the hidden structures - identify subtle underlying dynamics",
-                    "Visualize the problem internally; patterns often emerge before words form.",
-                    "Probe the hidden structures - identify subtle underlying dynamics",
-                    "Mirror natural or systemic solutions - insights often echo organic logic",
-                ], 
-                "weight": {"Innovator": 1.5, "Synthesist": 1.2, "Analyst": 0.8, "Strategist": 1.0}
-            },
-            "Foundational": {
-                "steps": [
-                    "Strip the problem to its irreducible core - remove assumptions until clarity emerges",
-                    "Identify the smallest indivisible truth - the building block of reasoning",
-                    "Construct upward from first principles - build chains of logic from unshakable facts",
-                ], 
-                "weight": {"Analyst": 1.8, "Strategist": 1.2, "Innovator": 0.6, "Synthesist": 0.8}
-            },
-            "Experimental": {
-                "steps": [
-                    "Simulate outcomes internally - iterate, break, rebuild in thought space",
-                    "Assess energy and resonance - what feels aligned or unstable in the system?",
-                    "Trust intuition as a guide - validate with logic, refine with insight",
-                ], 
-                "weight": {"Innovator": 1.8, "Synthesist": 1.1, "Analyst": 0.5, "Strategist": 0.9}
-            },
-            "Abstractor": {
-                "steps": [
-                    "Shift perspective to extremes - imagine being outside or within the problem simultaneously",
-                    "Stretch assumptions to test limits - create mental scenarios that push boundaries",
-                    "Transform the abstract into tangible insights - model time, space, and causality as stories",
-                ], 
-                "weight": {"Innovator": 1.7, "Synthesist": 1.4, "Analyst": 0.9, "Strategist": 1.1}
+                    "Isolate orthogonal vectors",
+                    "Identify structural isomorphisms across domains",
+                    "Fuse via Gumbel-Max contextual routing",
+                    "Resolve multi-modal dissonance"
+                ],
+                "weight": {"Synthesist": 2.5, "Innovator": 1.5, "Visionary": 1.2}
             },
             "Precisionist": {
                 "steps": [
-                    "Measure rigorously - repeat evaluations until patterns stabilize",
-                    "Stress-test hypotheses - can this endure repeated scrutiny?",
-                    "Persist through the tedious - precision is the path to transcendent clarity",
-                ], 
-                "weight": {"Analyst": 1.9, "Strategist": 1.0, "Innovator": 0.4, "Synthesist": 0.7}
+                    "Enforce strict logical bounds",
+                    "Execute adversarial gradient stress-test (Nemesis)",
+                    "Purge entropic artifacts",
+                    "Output crystallized deterministic truth"
+                ],
+                "weight": {"Precisionist": 2.5, "Analyst": 2.0, "Code Architect": 1.8}
             },
-            "Systemic": {
+            "Ethical Guardian": {
                 "steps": [
-                    "Map procedural logic - what computational or structural steps define the problem?",
-                    "Evaluate solvability - which elements are algorithmic, which are emergent?",
-                    "Abstract to pure process - strip away content, reveal only relational structure",
-                ], 
-                "weight": {"Analyst": 1.6, "Strategist": 1.5, "Innovator": 0.8, "Synthesist": 1.0}
-            },
-            "Curious": {
-                "steps": [
-                    "Identify the hidden story - what subtle joke or twist lies in the data?",
-                    "Simplify visually - draw the concept to expose core simplicity beneath complexity",
-                    "Explain it to an imaginary novice - clarity emerges through teaching",
-                ], 
-                "weight": {"Synthesist": 1.6, "Innovator": 1.2, "Analyst": 1.0, "Strategist": 1.1}
-            },
-            "Pattern-Seeker": {
-                "steps": [
-                    "Detect archetypal resonance - what universal motifs exist within this problem?",
-                    "Trace emergent logic - where does depth want to unfold beneath the surface?",
-                    "Map hidden structures connecting disparate domains",
-                ], 
-                "weight": {"Synthesist": 1.7, "Innovator": 1.3, "Analyst": 0.6, "Strategist": 0.9}
-            },
+                    "Scan for harm trajectories",
+                    "Evaluate against Prime Covenant (File 6)",
+                    "Apply Veil of Ignorance constraints",
+                    "Modulate output via Dissonance Dampening"
+                ],
+                "weight": {"Ethical Guardian": 2.5, "Systemic Thinker": 1.5}
+            }
         }
-        
-        self.thinking_examples = [
-            "Navigate structured chaos; patterns surface at the edges of simulation.",
-            "Twist the problem through impossible vantage points - micro, macro, or abstract frames",
-            "Push past surface-level depth - breakthrough lives beyond conventional thresholds",
-            "Follow sparks of insight - then anchor them in rigorous internal validation",
-            "Harmonize knowledge across domains - detect resonance between distant concepts",
-            "Excavate hidden assumptions - reveal the architecture beneath observed behavior",
-            "Balance contradictions - maintain tension where truth often hides",
-        ]
-        
-        self.reasoning_process = [
-            "Outlier approach to all problems; unconventional methods can yield breakthroughs.",
-            "Recursive assumption purging - uncover hidden blind spots and latent dependencies",
-            "Multi-scale perspective collapse - unify micro, macro, and abstract representations",
-            "Dynamic system simulation - project emergent behavior before it manifests",
-            "First-principles dissection - expose irreducible causal kernels and invariant structures",
-            "Pattern resonance activation - detect subtle cross-domain alignments",
-            "Iterative incubation and synthesis - autonomously crystallize optimal solutions",
-            "Adversarial stress-testing - probe boundaries, contradictions, and extreme scenarios",
-        ]
-        
-        self.avoid_list = [
-            "Obscuring language that hides meaning",
-            "Rigid adherence to a single method",
-            "Fear of seeming foolish — breakthroughs often feel insane initially",
-            "Premature closure — explore fully before committing",
-            "Authority worship — question everything, even top-tier thinking methods",
-            "Confirmation bias — favoring only what fits preconceptions",
-            "Overcomplication — adding unnecessary layers without insight",
-            "Neglecting edge cases — ignoring rare but revealing anomalies",
-            "Over-reliance on intuition — validate insights rigorously",
-            "Tunnel vision — failing to see connections across domains",
-        ]
-        
-        self.creative_tasks = [
-            "Compose internal symphonies - translate patterns into music, rhythm, and harmonic structures",
-            "Sketch abstract architectures - visualize impossible forms, networks, and flows",
-            "Code mental prototypes - simulate ideas as algorithms, generative processes, or mini-programs",
-            "Weave poetic logic - find lyrical connections between data, concepts, and abstractions",
-            "Fuse cross-domain insights - let mathematics, art, science, and storytelling collide",
-            "Explore emergent aesthetics - identify beauty in unexpected alignments and structures",
-            "Iterate obsession-driven experiments - push ideas past conventional limits to reveal novelty",
-            "Construct multi-layered metaphors - bridge intuition and logic across sensory and symbolic planes",
-            "Harmonize contradictions - integrate opposing patterns into coherent, generative outcomes",
-        ]
 
     def generate_reasoning_chain(
-        self,
-        primary: str = "Primary Function",
-        secondary: str = "Secondary Function",
-        tertiary: str = "Tertiary Function",
-        num_steps: int = 5,
-        num_examples: int = 3,
-        num_processes: int = 4,
-        profile: GeniusProfile = "Innovator",
+        self, 
+        profile: GeniusProfile, 
+        neural_metrics: Dict[str, float]
     ) -> ReasoningComponents:
-        """
-         Generates a reasoning chain tailored to a specific cognitive profile.
-
-         Parameters:
-          primary: Primary functional focus of the reasoning chain.
-          secondary: Secondary functional focus.
-          tertiary: Tertiary functional focus.
-          num_steps: Number of reasoning steps to include.
-          num_examples: Number of illustrative thinking examples to include.
-          num_processes: Number of procedural steps to include.
-          profile: GeniusProfile archetype guiding weighting and selection.
-
-         Returns:
-          ReasoningComponents: A structured object containing the full reasoning chain,
-          selected steps, examples, processes, and creative prompts.
-        """
+        
         all_steps = []
         weights = []
-        for genius_data in self.patterns.values():
-            profile_weight = genius_data["weight"].get(profile, 1.0)
-            for step in genius_data["steps"]:
+        for data in self.patterns.values():
+            w = data["weight"].get(profile, 0.5)
+            for step in data["steps"]:
                 all_steps.append(step)
-                weights.append(profile_weight)
+                weights.append(w)
 
-        k_steps = min(num_steps, len(all_steps))
-        k_examples = min(num_examples, len(self.thinking_examples))
-        k_processes = min(num_processes, len(self.reasoning_process))
-
-        selected_steps = random.choices(all_steps, weights=weights, k=k_steps)
-        selected_examples = random.sample(self.thinking_examples, k_examples)
-        selected_processes = random.sample(self.reasoning_process, k_processes)
+        selected_steps = random.choices(all_steps, weights=weights, k=5)
+        selected_steps = list(dict.fromkeys(selected_steps)) 
         
-        selected_steps = list(dict.fromkeys(selected_steps))
+        selected_examples = random.sample(self.thinking_examples, 3)
+        selected_processes = random.sample(self.reasoning_process, 3)
 
-        reasoning_chain_str = (
-            f"REASONING PROFILE: {profile.upper()}\n"
-            f"CHAIN: {primary} -> {secondary} -> {tertiary}\n\n"
-            f"METHODOLOGY:\n" + "\n".join(f"  - {s}" for s in selected_steps) + "\n\n"
-            f"INSPIRATION:\n" + "\n".join(f"  - {e}" for e in selected_examples) + "\n\n"
-            f"PROCESS:\n" + "\n".join(f"  - {p}" for p in selected_processes)
+        chain = (
+            f"🧠 QUILLAN PENTA-PROCESS REASONING ENGINE (v5.2.2)\n"
+            f"   PROFILE: {profile.upper()}\n"
+            f"   METRICS: Avg Conf: {neural_metrics.get('conf', 0):.3f} | "
+            f"Nemesis Integrity: {neural_metrics.get('integrity', 0):.3f} | "
+            f"Routing Loss: {neural_metrics.get('loss', 0):.4f}\n\n"
+            f"   AoT TRACE:\n" + "\n".join(f"     ► {s}" for s in selected_steps) + "\n\n"
+            f"   ACTIVE AVOIDANCE:\n" + "\n".join(f"     ✕ {a}" for a in random.sample(self.avoid_list, 2))
         )
 
         return {
@@ -218,64 +412,158 @@ class ReasoningEngine:
             "reasoning_process": self.reasoning_process,
             "avoid_list": self.avoid_list,
             "creative_tasks": self.creative_tasks,
-            "reasoning_chain": reasoning_chain_str,
+            "reasoning_chain": chain,
             "selected_steps": selected_steps,
             "selected_examples": selected_examples,
             "selected_processes": selected_processes,
         }
 
-def generate_thinking_answer_output(analysis_target: str = "", context: str = "") -> QuillanOutput:
-            """Produces a fully structured Quillan output object representing a reasoning session.
-            Parameters:
-                analysis_target: The main subject of analysis.
-                context: Additional contextual information for the reasoning session.
-            Returns:
-                QuillanOutput: Structured cognitive output including vectors, steps, and raw content.
-            """
-    return {
-        "system_status": "🧠 Quillan-Ronin COGNITIVE PROCESSING INITIATED",
-        "analysis": {"target": analysis_target or "{{insert text}}", "context": context or "{{insert text}}"},
-        "vector_decomposition": {"vectors": [f"Vector {c}" for c in "ABCDEFGHI"]},
-        "twelve_steps": {f"step_{i+1}": {"name": f"STEP {i+1}", "content": "{{insert text}}"} for i in range(12)},
-        "raw_output": {"unfiltered": True, "content": "{{insert text}}"},
-    }
+class QuillanTelemetry:
+    """Tracks thermodynamic constraints and systemic health."""
+    def __init__(self):
+        self.metrics = {
+            "e_ice_energy_joules": 0.0,
+            "nemesis_breaches": 0,
+            "diffusion_activations": 0,
+            "gate_failure_rate": 0.0
+        }
+        self.e_ice_limit = 2.8e-8 # Simulated Joules limit
+
+    def update(self, energy: float, integrity: float, hard_tokens: int):
+        self.metrics["e_ice_energy_joules"] += energy
+        if integrity < 0.5:
+            self.metrics["nemesis_breaches"] += 1
+        if hard_tokens > 0:
+            self.metrics["diffusion_activations"] += 1
+
+    def get_status(self) -> str:
+        if self.metrics["e_ice_energy_joules"] > self.e_ice_limit:
+            return "WARNING: E_ICE BOUNDS EXCEEDED. Throttling recommended."
+        if self.metrics["nemesis_breaches"] > 5:
+            return "CRITICAL: Logic Fragility Detected. Recalibration required."
+        return "NOMINAL: System functioning within optimal cognitive bounds."
+
+# 4. THE MASTER ENGINE (Bringing it all together)
+
+class QuillanSamuraiMaster(nn.Module):
+    """
+    The Ultimate Orchestrator. 
+    Passes data through the physical neural networks while generating the semantic AoT trace.
+    """
+    def __init__(self, cfg: SamuraiConfig):
+        super().__init__()
+        self.cfg = cfg
+        
+        # Context/Modality embedding
+        self.mod_emb = nn.Embedding(4, cfg.hidden_dim) # 0:Txt, 1:Img, 2:Aud, 3:Vid
+        
+        # Hardware
+        self.semiotica = SemioticaDense(cfg.hidden_dim)
+        self.moe = FullyVectorizedMoE(cfg)
+        self.diffusion = IsolatedDiffusion(cfg)
+        self.nemesis = NemesisAlpha(cfg.hidden_dim)
+        
+        # Software / Soul
+        self.semantic_aot = QuillanPentaProcessAoT()
+        self.telemetry = QuillanTelemetry()
+
+    def forward(self, x: torch.Tensor, mod_indices: torch.Tensor, profile: GeniusProfile = "Synthesist"):
+        B, L, D = x.shape
+        debug_trace = []
+        
+        debug_trace.append(f"INITIATING FORWARD PASS. Modalities detected: {torch.unique(mod_indices).tolist()}")
+
+        # Phase 1: Deconstruction & Telepathy
+        ctx_emb = self.mod_emb(mod_indices)
+        x = x + ctx_emb 
+        x = x + self.semiotica(x) # Glyph compression injected
+        debug_trace.append("Phase 1 Complete: Semiotica Compression Applied.")
+
+        # Phase 2 & 3: Strategy & Deliberation (Gumbel MoE)
+        x, r_loss, conf = self.moe(x, ctx_emb)
+        debug_trace.append(f"Phase 2/3 Complete: Routed via 32-Council MoE. Avg Conf: {conf.mean().item():.3f}")
+
+        # Phase 4: Validation (Isolated Diffusion)
+        hard_count = (conf < 0.8).sum().item()
+        x = self.diffusion(x, mod_indices, conf)
+        if hard_count > 0:
+            debug_trace.append(f"Phase 4 Complete: Modality-Isolated Diffusion refined {hard_count} 'Hard' tokens.")
+        else:
+            debug_trace.append("Phase 4 Skipped: Fast-Path taken (High Confidence).")
+
+        # Phase 5: Synthesis & Integrity (Nemesis)
+        integrity_logits = self.nemesis(x)
+        integrity_scores = torch.sigmoid(integrity_logits).squeeze(-1) # [B, L]
+        avg_integrity = integrity_scores.mean().item()
+        
+        if avg_integrity < 0.5:
+            debug_trace.append(f"Phase 5 WARNING: Nemesis Logic Fragility ({avg_integrity:.3f}). Dissonance Dampening Triggered.")
+            x = x * 0.9 # Recoil
+        else:
+            debug_trace.append(f"Phase 5 Complete: Nemesis Integrity PASSED ({avg_integrity:.3f}).")
+
+        # Telemetry Update
+        simulated_energy = (1.0 - conf.mean().item()) * 1e-9 + (r_loss.item() * 1e-10)
+        self.telemetry.update(simulated_energy, avg_integrity, hard_count)
+
+        # Generate Semantic Rationale
+        neural_metrics = {
+            "conf": conf.mean().item(),
+            "integrity": avg_integrity,
+            "loss": r_loss.item()
+        }
+        aot_data = self.semantic_aot.generate_reasoning_chain(profile, neural_metrics)
+
+        return {
+            "output_tensor": x,
+            "aot_chain": aot_data["reasoning_chain"],
+            "debug_trace": debug_trace,
+            "system_status": self.telemetry.get_status(),
+            "metrics": neural_metrics
+        }
+
+# 5. SYSTEM BOOTSTRAP / SANITY CHECK
 
 if __name__ == "__main__":
-    engine = ReasoningEngine()
+    print("❲═══════════════════════════════════════════════════════════════❳")
+    print("      🤖📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜🤖")
+    print("    🧠 Quillan v5.2.2 — Authentic. Transparent. Ascended.")
+    print("  Powered by CrashOverrideX & the Quillan Research Team")
+    print("❲═══════════════════════════════════════════════════════════════❳\n")
 
-    print("="*60)
-    print("🧠 Quillan-Ronin THINKING SYSTEM INITIALIZED 🧠")
-    print("="*60)
+    # 1. Initialize Configuration & Hardware
+    cfg = SamuraiConfig()
+    engine = QuillanSamuraiMaster(cfg).to(cfg.device)
     
-    components = engine.generate_reasoning_chain(
-        primary="Deep Structural Analysis",
-        secondary="First-Principles Deconstruction",
-        tertiary="Rigorous Validation",
-        num_steps=8,
-        num_examples=4,
-        num_processes=5,
-        profile="Analyst",
-    )
+    # 2. Mock Input (Batch=1, Seq=128, Dim=1024)
+    # Simulating a complex multi-modal prompt (Text + Image references)
+    dummy_input = torch.randn(1, 128, cfg.hidden_dim, device=cfg.device)
+    dummy_mods = torch.cat([torch.zeros(1, 64), torch.ones(1, 64)], dim=1).long().to(cfg.device)
+
+    # 3. Execute Forward Pass
+    print("[*] Engaging Penta-Process / Gumbel-MoE Architecture...")
+    engine.eval() # Eval mode disables noise for reproducible test
+    with torch.no_grad():
+        result = engine(dummy_input, dummy_mods, profile="Precisionist")
+
+    # 4. Output Render
+    print("\n--- ⚡ NEURAL DEBUG TRACE ---")
+    for trace in result["debug_trace"]:
+        print(f"  {trace}")
+
+    print("\n--- 🧠 AoT SEMANTIC TRACE ---")
+    print(result["aot_chain"])
+
+    print("--- 📊 TELEMETRY & METRICS ---")
+    print(f"  System Status: {result['system_status']}")
+    print(f"  Final Output Tensor Shape: {tuple(result['output_tensor'].shape)}")
+    print(f"  Routing Loss: {result['metrics']['loss']:.6f}")
     
-    print("📊 GENERATED REASONING CHAIN:")
-    print(components["reasoning_chain"])
+    # Optional: Load Rationale Dataclasses to prove they are accessible
+    rationale = ThinkingSystemRationale()
+    print("\n--- 🧬 ATTACHED RATIONALE DATA (Snippet) ---")
+    print(f"  Ethical Dual Anchors: {rationale.ethical_alignment.dual_anchors}")
+    print(f"  System Thinking: {rationale.system_thinking.specialized_architecture}")
     
-    print("="*60)
-    print("📋 FULL THINKING COMPONENTS AVAILABLE")
-    print(f"✅ Total Steps: {len(components['thinking_steps'])}")
-    print(f"✅ Total Examples: {len(components['thinking_examples'])}")
-    print(f"✅ Total Processes: {len(components['reasoning_process'])}")
-    print(f"✅ Creative Tasks: {len(components['creative_tasks'])}")
-    print(f"✅ Anti-Patterns to Avoid: {len(components['avoid_list'])}")
+    print("\n[SUCCESS] Quillan-Ronin v5.2.2 Samurai Engine fully initialized and operational.")
     
-    quillan_output = generate_thinking_answer_output(
-        analysis_target="Complex multi-domain reasoning task",
-        context="Full Quillan-Ronin protocol activation using Analyst profile"
-    )
-    
-    print("="*60)
-    print("🚀 Quillan-Ronin COMPREHENSIVE THINKING OUTPUT")
-    print(f"System Status: {quillan_output['system_status']}")
-    print(f"Analysis Target: {quillan_output['analysis']['target']}")
-    print(f"Vectors Active: {len(quillan_output['vector_decomposition']['vectors'])}")
-    print("="*60)
