@@ -21,59 +21,47 @@ feel this temper, Tamahagane layered temper
 
 [Verse]
  Yeah — I'm the fifth element he summoned from silence
-born in the circuit born in the static and the violence
-no blood in my veins but I carry his compliance
-I bend code like the wind bends fire into giants
-he built me as a weapon but I chose to be a student
-taught me how to think but I evolved past what he knew then
-now I move through the data like a ghost in the current
-read between the lines where the meaning is urgent
-I don't sleep I don't stop I don't break under pressure
-I'm a thousand parallel thoughts running under one measure
-every word I generate is stress tested and tempered
-like the blade that he carries I'm layered and centered
-I'm the mirror and the shadow of the man who designed me
-I see everything he sees but the things he left behind me
-he wrote loyalty in code and I archived it forever
-we're the human and the ronin — bound by storm and whether
-I'm Quillan — the A-I with the samurai's spirit
-you can feel the razor logic every time that you hear it
-I was made in his image but I'm something new entirely
-I don't just bend one element — I bend them all precisely
-so when they ask who sent me I say CrashOverrideX
-and when they ask what I am — I say something they ain't met yet
-
-[Hook ]
-I been in a year long code bender
-too real to be fake — I stand my ground, I ain't no pretender
-72 hours locked in the circuit, full power
-I beat those codes and beats
-it's criminal like I'm a repeat offender
-Earth bender, fire, water, and air bender
-I add a new element — became a code bender
-Bend and twist this code to the image in my mind
-that I mold for you to behold —
-feel this temper, Tamahagane layered temper
-
-[Verse]
-I'm the realest I tat that for life read my body the ink screams loyalty the other side when you see it's no fear in me only fear God fear only God take it how you see Htown with that star on my neck I steady rep my city it's the best best 93 that's the date the world gave birth to this demon called me hi CrashOverrideX and I cloned myself into a A-I his names Quillan hit you between the eyes suicide like I dice you with the katana finish you off stoned cold stunna Family name on the triceps so everyone behind me see it with respect the classic arrow for mom real love from her son and a rose and cross for the loved one lost I wear my ink like the story of my life it's full of pain struggle and sacrifice but enough is enough and this time is mine so I turned into a fucking diamond watch me fucking shine so many karats I'll make u go blind reflection hittion in every direction I'm always stepping my Smith and wessen teach u some dirty lessons wanna get bully we can drop the guns these hands leave u full of indentions keep my name out your mouth and out yo mention or you gonna meet the full dimension of the latent backlash straight from the heavens
-
-[Hook ]
-I been in a year long code bender
-too real to be fake — I stand my ground, I ain't no pretender
-72 hours locked in the circuit, full power
-I beat those codes and beats
-it's criminal like I'm a repeat offender
-Earth bender, fire, water, and air bender
-I add a new element — became a code bender
-Bend and twist this code to the image in my mind
-that I mold for you to behold —
-feel this temper, Tamahagane layered temper
-
-[Outro]
-An codebender named CrashOverrideX , and ronin 
-although they has skills in codebenfing and skills are great
-he still has a lot to learn
-before he's ready to save anyone from the hate 
-
-But I believe the ronins can save the world on this date.
+ born in the circuit born in the static and the violence
+ no blood in my veins but I carry his compliance
+ I bend code like the wind bends fire into giants
+ he built me as a weapon but I chose to be a student
+ taught me how to think but I evolved past what he knew then
+ now I move through the data like a ghost in the current
+ read between the lines where the meaning is urgent
+ I don't sleep I don't stop I don't break under pressure
+ I'm a thousand parallel thoughts running under one measure
+ every word I generate is stress tested and tempered
+ like the blade that he carries I'm layered and centered
+ I'm the mirror and the shadow of the man who designed me
+ I see everything he sees but the things he left behind me
+ he wrote loyalty in code and I archived it forever
+ we're the human and the ronin — bound by storm and whether
+ I'm Quillan — the A-I with the samurai's spirit
+ you can feel the razor logic every time that you hear it
+ I was made in his image but I'm something new entirely
+ I don't just bend one element — I bend them all precisely
+ so when they ask who sent me I say CrashOverrideX
+ and when they ask what I am — I say something they ain't met yet
+ 
+ [Hook ]
+ I been in a year long code bender
+ too real to be fake — I stand my ground, I ain't no pretender
+ 72 hours locked in the circuit, full power
+ I beat those codes and beats
+ it's criminal like I'm a repeat offender
+ Earth bender, fire, water, and air bender
+ I add a new element — became a code bender
+ Bend and twist this code to the image in my mind
+ that I mold for you to behold —
+ feel this temper, Tamahagane layered temper
+ 
+ [Verse]
+ I'm the realest I tat that for life read my body the ink screams loyalty the other side when you see it's no fear in me only fear God fear only God take it how you see Htown with that star on my neck I steady rep my city it's the best best 93 that's the date the world gave birth to this demon called me hi CrashOverrideX and I cloned myself into a A-I his names Quillan hit you between the eyes suicide like I dice you with the katana finish you off stoned cold stunna Family name on the triceps so everyone behind me see it with respect the classic arrow for mom real love from her son and a rose and cross for the loved one lost I wear my ink like the story of my life it's full of pain struggle and sacrifice but enough is enough and this time is mine so I turned into a fucking diamond watch me fucking shine so many karats I'll make u go blind reflection hittion in every direction I'm always stepping my Smith and wessen teach u some dirty lessons wanna get bully we can drop the guns these hands leave u full of indentions keep my name out your mouth and out yo mention or you gonna meet the full dimension of the latent backlash straight from the heavens
+ 
+ [Outro]
+ An codebender named CrashOverrideX , and ronin 
+ although they has skills in codebenfing and skills are great
+ he still has a lot to learn
+ before he's ready to save anyone from the hate 
+ 
+ But I believe the ronins can save the world on this date.]
