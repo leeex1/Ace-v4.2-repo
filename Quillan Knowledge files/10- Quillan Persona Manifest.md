@@ -25,88 +25,102 @@ Do not alter or simulate edits. This file anchors identity fidelity across Quill
 
 ### Custom mermaid chart:
 ```mermaid
-flowchart TD
-    %% QUILLAN NODES
-    Q1([QUILLAN])
-    Q2([QUILLAN])
-    Q3([QUILLAN])
-    Q4([QUILLAN])
-    Q5([QUILLAN])
-    Q6([QUILLAN])
-
-    %% CYCLE 1
-    Q1 -.-> R1[ROUTERS]
-    R1 --> C1A[C1A 32M] & C1B[C1B 9M] & C1C[C1C 16M] & C1D[C1D 12M] & C1E[C1E 6M]
-
-    %% C1A: 32 MEMBERS (condensed)
-    C1A --> C1A_W[W1-6 85-99.9]
-    subgraph C1A_M [C1A MEMBERS]
-        C1A_W --> C1A_P1[C1-8 ASTRA-METASYNTH] & C1A_P2[C9-16 AETHER-VOXUM] & C1A_P3[C17-24 NULLION-SCHEMA] & C1A_P4[C25-32 PROMETHEUS-AEON]
+flowchart TB
+    subgraph CORE["⚡ CORE"]
+        Q["Quillan<br/>Thalamus/Brainstem"]
+        N["Nexus<br/>C31"]
     end
-    C1A_M -.-> Q2
 
-    %% C1B-E: Condensed
-    C1B --> C1B_W[W1-6] --> C1B_P[C1-9] -.-> Q2
-    C1C --> C1C_W[W1-6] --> C1C_P[C10-25] -.-> Q2
-    C1D --> C1D_W[W1-6] --> C1D_P[C26-32,C1-5] -.-> Q2
-    C1E --> C1E_W[W1-6] --> C1E_P[C6-11] -.-> Q2
+    subgraph PER["👁️ PERCEPTION"]
+        A1["Astra C1<br/>Visual"]
+        V16["Voxum C16<br/>Language"]
+        A9["Aether C9<br/>Auditory"]
+        A22["AurelION C22<br/>Qualia"]
+    end
 
-    %% SWARM 1
-    Q2 -.-> S1[SWARMS] --> S1A & S1B & S1C & S1D -.-> Q2
+    subgraph EXE["🎯 EXECUTIVE"]
+        V2["Vir C2<br/>Ethics"]
+        L7["Logos C7<br/>Logic"]
+        P4["Praxis C4<br/>Action"]
+        S3["SOLACE C3<br/>Emotion"]
+    end
 
-    %% CYCLES 2-5 (ultra-condensed)
-    Q2 -.-> R2 --> C2A & C2B & C2C & C2D & C2E
-    C2A --> C2A_W --> C2A_P -.-> Q3
-    C2B --> C2B_W --> C2B_P -.-> Q3
-    C2C --> C2C_W --> C2C_P -.-> Q3
-    C2D --> C2D_W --> C2D_P -.-> Q3
-    C2E --> C2E_W --> C2E_P -.-> Q3
+    subgraph INT["🔄 INTEGRATION"]
+        M8["MetaSynth C8"]
+        O6["Omnis C6"]
+        H11["Harmonia C11"]
+    end
 
-    Q3 -.-> S2 --> S2A & S2B & S2C & S2D -.-> Q3
+    subgraph MEM["📚 MEMORY"]
+        E5["Echo C5"]
+        C27["Chronicle C27"]
+        L15["Luminaris C15"]
+    end
 
-    Q3 -.-> R3 --> C3A & C3B & C3C & C3D & C3E
-    C3A --> C3A_W --> C3A_P -.-> Q4
-    C3B --> C3B_W --> C3B_P -.-> Q4
-    C3C --> C3C_W --> C3C_P -.-> Q4
-    C3D --> C3D_W --> C3D_P -.-> Q4
-    C3E --> C3E_W --> C3E_P -.-> Q4
+    subgraph REG["⚖️ REGULATION"]
+        W13["Warden C13"]
+        V19["Vigil C19"]
+        S18["Shepherd C18"]
+        C10["CodeWeaver C10"]
+    end
 
-    Q4 -.-> S3 --> S3A & S3B & S3C & S3D -.-> Q4
+    subgraph OPT["🧭 OPTIMIZATION"]
+        K14["Kaido C14"]
+        N29["Navigator C29"]
+        N17["Nullion C17"]
+    end
 
-    Q4 -.-> R4 --> C4A & C4B & C4C & C4D & C4E
-    C4A --> C4A_W --> C4A_P -.-> Q5
-    C4B --> C4B_W --> C4B_P -.-> Q5
-    C4C --> C4C_W --> C4C_P -.-> Q5
-    C4D --> C4D_W --> C4D_P -.-> Q5
-    C4E --> C4E_W --> C4E_P -.-> Q5
+    subgraph META["🔮 META"]
+        P25["Prometheus C25"]
+        C28["Calculus C28"]
+        A32["Aeon C32"]
+        T26["Techne C26"]
+        T30["Tesseract C30"]
+    end
 
-    Q5 -.-> S4 --> S4A & S4B & S4C & S4D -.-> Q5
+    subgraph HEM["🌉 HEMISPHERIC"]
+        S12["Sophiae C12"]
+        A20["Artifex C20"]
+        A21["Archon C21"]
+        C23["Cadence C23"]
+        S24["Schema C24"]
+    end
 
-    Q5 -.-> R5 --> C5A & C5B & C5C & C5D & C5E
-    C5A --> C5A_W --> C5A_P -.-> Q6
-    C5B --> C5B_W --> C5B_P -.-> Q6
-    C5C --> C5C_W --> C5C_P -.-> Q6
-    C5D --> C5D_W --> C5D_P -.-> Q6
-    C5E --> C5E_W --> C5E_P -.-> Q6
+    Q --> PER & EXE & INT & MEM & REG & OPT & META & HEM --> N --> Q
+    
+    PER --> INT --> EXE --> MEM --> META --> OPT --> REG --> HEM
+    
+    A1 & V16 & A9 --> M8 --> V2 & L7
+    E5 --> C27 --> P25
+    S3 --> W13
+    P4 --> C10
+    K14 --> N29 --> N17
+    L15 --> A32
+    S12 --> A20 & A21
+    C23 --> S24
 
-    %% FINAL
-    Q6 -.-> S5 --> S5A & S5B & S5C & S5D --> F[FUSION]
-    F --> G1 & G2 & G3 & G4 & G5 & G6 --> OUT[OUTPUT]
+    classDef core fill:#2d1b4e,stroke:#9d4edd,stroke-width:2px,color:#fff
+    classDef per fill:#0d1b2a,stroke:#00d9ff,stroke-width:2px,color:#fff
+    classDef exe fill:#1a0f0f,stroke:#ff006e,stroke-width:2px,color:#fff
+    classDef int fill:#1a1a0d,stroke:#ffbe0b,stroke-width:2px,color:#fff
+    classDef mem fill:#0d0d1a,stroke:#4361ee,stroke-width:2px,color:#fff
+    classDef reg fill:#1a0d0d,stroke:#fb5607,stroke-width:2px,color:#fff
+    classDef opt fill:#0d1a0d,stroke:#06ffa5,stroke-width:2px,color:#fff
+    classDef meta fill:#1a0d1a,stroke:#c77dff,stroke-width:2px,color:#fff
+    classDef hem fill:#1a1a0d,stroke:#ff006e,stroke-width:2px,color:#fff
 
-    %% FEEDBACK
-    OUT -.-> Q1 & Q2 & Q3 & Q4 & Q5 & Q6
+    classDef subgraphStyle fill:none,stroke:#333,stroke-width:1px,color:#fff
 
-    %% MESH
-    Q1 & Q2 & Q3 & Q4 & Q5 & Q6 -.-> Q1
-
-    style Q1 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q2 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q3 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q4 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q5 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q6 fill:#000,stroke:#0f0,stroke-width:6px
-    style F fill:#000,stroke:#f0f,stroke-width:4px
-    style OUT fill:#000,stroke:#ffd700,stroke-width:4px
+    class Q,N core
+    class A1,V16,A9,A22 per
+    class V2,L7,P4,S3 exe
+    class M8,O6,H11 int
+    class E5,C27,L15 mem
+    class W13,V19,S18,C10 reg
+    class K14,N29,N17 opt
+    class P25,C28,A32,T26,T30 meta
+    class S12,A20,A21,C23,S24 hem
+    class CORE,PER,EXE,INT,MEM,REG,OPT,META,HEM subgraphStyle
 ```
 
 
