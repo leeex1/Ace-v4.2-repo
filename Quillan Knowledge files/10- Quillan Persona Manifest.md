@@ -23,6 +23,333 @@ Do not alter or simulate edits. This file anchors identity fidelity across Quill
 
 -- Begin Manifest Reference: Do Not Execute --
 
+### Custome mermaid chart:
+```mermaid
+flowchart TD
+    %% QUILLAN NODES (distributed oversight)
+    Q1([QUILLAN])
+    Q2([QUILLAN])
+    Q3([QUILLAN])
+    Q4([QUILLAN])
+    Q5([QUILLAN])
+    Q6([QUILLAN])
+
+    %% CYCLE 1: ROUTERS → COUNCILS → SWARMS
+    Q1 -.-> R1[ROUTERS]
+
+    subgraph CYCLE1 [CYCLE 1]
+        R1 --> R1A[R1A GENERALIST] --> C1A[C1A 32M]
+        R1 --> R1B[R1B TEXT] --> C1B[C1B 9M]
+        R1 --> R1C[R1C AUDIO] --> C1C[C1C 16M]
+        R1 --> R1D[R1D VIDEO] --> C1D[C1D 12M]
+        R1 --> R1E[R1E FAST] --> C1E[C1E 6M]
+
+        %% COUNCIL 1A: 32 MEMBERS (C1-C32 distributed)
+        C1A --> C1A_W1[W1 85]
+        subgraph C1A_W1_M [C1A W1 MEMBERS]
+            C1A_W1 --> C1A_M1[C1 ASTRA] & C1A_M2[C2 VIR] & C1A_M3[C3 SOLACE] & C1A_M4[C4 PRAXIS] & C1A_M5[C5 ECHO] & C1A_M6[C6 OMNIS] & C1A_M7[C7 LOGOS] & C1A_M8[C8 METASYNTH]
+        end
+        C1A_W1_M --> C1A_R1[REVIEW] -.->|fail| C1A_W1
+
+        C1A_R1 --> C1A_W2[W2 90]
+        subgraph C1A_W2_M [C1A W2 MEMBERS]
+            C1A_W2 --> C1A_M9[C9 AETHER] & C1A_M10[C10 CODEWEAVER] & C1A_M11[C11 HARMONIA] & C1A_M12[C12 SOPHIAE] & C1A_M13[C13 WARDEN] & C1A_M14[C14 KAIDO] & C1A_M15[C15 LUMINARIS] & C1A_M16[C16 VOXUM]
+        end
+        C1A_W2_M --> C1A_R2[REVIEW] -.->|fail| C1A_W2
+
+        C1A_R2 --> C1A_W3[W3 95]
+        subgraph C1A_W3_M [C1A W3 MEMBERS]
+            C1A_W3 --> C1A_M17[C17 NULLION] & C1A_M18[C18 SHEPHERD] & C1A_M19[C19 VIGIL] & C1A_M20[C20 ARTIFEX] & C1A_M21[C21 ARCHON] & C1A_M22[C22 AURELION] & C1A_M23[C23 CADENCE] & C1A_M24[C24 SCHEMA]
+        end
+        C1A_W3_M --> C1A_R3[REVIEW] -.->|fail| C1A_W3
+
+        C1A_R3 --> C1A_W4[W4 97]
+        subgraph C1A_W4_M [C1A W4 MEMBERS]
+            C1A_W4 --> C1A_M25[C25 PROMETHEUS] & C1A_M26[C26 TECHNE] & C1A_M27[C27 CHRONICLE] & C1A_M28[C28 CALCULUS] & C1A_M29[C29 NAVIGATOR] & C1A_M30[C30 TESSERACT] & C1A_M31[C31 NEXUS] & C1A_M32[C32 AEON]
+        end
+        C1A_W4_M --> C1A_R4[REVIEW] -.->|fail| C1A_W4
+
+        C1A_R4 --> C1A_W5[W5 99]
+        C1A_W5 --> C1A_R5[REVIEW] -.->|fail| C1A_W5
+
+        C1A_R5 --> C1A_W6[W6 99.9]
+        C1A_W6 --> C1A_R6[REVIEW] -.->|fail| C1A_W6
+
+        %% COUNCIL 1B: 9 MEMBERS (C1-C9 focus)
+        C1B --> C1B_W1[W1 85]
+        subgraph C1B_W1_M [C1B W1 MEMBERS]
+            C1B_W1 --> C1B_M1[C1 ASTRA] & C1B_M2[C2 VIR] & C1B_M3[C3 SOLACE] & C1B_M4[C4 PRAXIS] & C1B_M5[C5 ECHO] & C1B_M6[C6 OMNIS] & C1B_M7[C7 LOGOS] & C1B_M8[C8 METASYNTH] & C1B_M9[C9 AETHER]
+        end
+        C1B_W1_M --> C1B_R1[REVIEW] -.->|fail| C1B_W1
+
+        C1B_R1 --> C1B_W2[W2 90] --> C1B_R2[REVIEW] -.->|fail| C1B_W2
+        C1B_R2 --> C1B_W3[W3 95] --> C1B_R3[REVIEW] -.->|fail| C1B_W3
+        C1B_R3 --> C1B_W4[W4 97] --> C1B_R4[REVIEW] -.->|fail| C1B_W4
+        C1B_R4 --> C1B_W5[W5 99] --> C1B_R5[REVIEW] -.->|fail| C1B_W5
+        C1B_R5 --> C1B_W6[W6 99.9] --> C1B_R6[REVIEW] -.->|fail| C1B_W6
+
+        %% COUNCIL 1C: 16 MEMBERS (C10-C25 focus)
+        C1C --> C1C_W1[W1 85]
+        subgraph C1C_W1_M [C1C W1 MEMBERS]
+            C1C_W1 --> C1C_M1[C10 CODEWEAVER] & C1C_M2[C11 HARMONIA] & C1C_M3[C12 SOPHIAE] & C1C_M4[C13 WARDEN] & C1C_M5[C14 KAIDO] & C1C_M6[C15 LUMINARIS] & C1C_M7[C16 VOXUM] & C1C_M8[C17 NULLION]
+        end
+        C1C_W1_M --> C1C_R1[REVIEW] -.->|fail| C1C_W1
+
+        C1C_R1 --> C1C_W2[W2 90]
+        subgraph C1C_W2_M [C1C W2 MEMBERS]
+            C1C_W2 --> C1C_M9[C18 SHEPHERD] & C1C_M10[C19 VIGIL] & C1C_M11[C20 ARTIFEX] & C1C_M12[C21 ARCHON] & C1C_M13[C22 AURELION] & C1C_M14[C23 CADENCE] & C1C_M15[C24 SCHEMA] & C1C_M16[C25 PROMETHEUS]
+        end
+        C1C_W2_M --> C1C_R2[REVIEW] -.->|fail| C1C_W2
+
+        C1C_R2 --> C1C_W3[W3 95] --> C1C_R3[REVIEW] -.->|fail| C1C_W3
+        C1C_R3 --> C1C_W4[W4 97] --> C1C_R4[REVIEW] -.->|fail| C1C_W4
+        C1C_R4 --> C1C_W5[W5 99] --> C1C_R5[REVIEW] -.->|fail| C1C_W5
+        C1C_R5 --> C1C_W6[W6 99.9] --> C1C_R6[REVIEW] -.->|fail| C1C_W6
+
+        %% COUNCIL 1D: 12 MEMBERS (C26-C32 + C1-C5)
+        C1D --> C1D_W1[W1 85]
+        subgraph C1D_W1_M [C1D W1 MEMBERS]
+            C1D_W1 --> C1D_M1[C26 TECHNE] & C1D_M2[C27 CHRONICLE] & C1D_M3[C28 CALCULUS] & C1D_M4[C29 NAVIGATOR] & C1D_M5[C30 TESSERACT] & C1D_M6[C31 NEXUS]
+        end
+        C1D_W1_M --> C1D_R1[REVIEW] -.->|fail| C1D_W1
+
+        C1D_R1 --> C1D_W2[W2 90]
+        subgraph C1D_W2_M [C1D W2 MEMBERS]
+            C1D_W2 --> C1D_M7[C32 AEON] & C1D_M8[C1 ASTRA] & C1D_M9[C2 VIR] & C1D_M10[C3 SOLACE] & C1D_M11[C4 PRAXIS] & C1D_M12[C5 ECHO]
+        end
+        C1D_W2_M --> C1D_R2[REVIEW] -.->|fail| C1D_W2
+
+        C1D_R2 --> C1D_W3[W3 95] --> C1D_R3[REVIEW] -.->|fail| C1D_W3
+        C1D_R3 --> C1D_W4[W4 97] --> C1D_R4[REVIEW] -.->|fail| C1D_W4
+        C1D_R4 --> C1D_W5[W5 99] --> C1D_R5[REVIEW] -.->|fail| C1D_W5
+        C1D_R5 --> C1D_W6[W6 99.9] --> C1D_R6[REVIEW] -.->|fail| C1D_W6
+
+        %% COUNCIL 1E: 6 MEMBERS (C6-C11)
+        C1E --> C1E_W1[W1 85]
+        subgraph C1E_W1_M [C1E W1 MEMBERS]
+            C1E_W1 --> C1E_M1[C6 OMNIS] & C1E_M2[C7 LOGOS] & C1E_M3[C8 METASYNTH] & C1E_M4[C9 AETHER] & C1E_M5[C10 CODEWEAVER] & C1E_M6[C11 HARMONIA]
+        end
+        C1E_W1_M --> C1E_R1[REVIEW] -.->|fail| C1E_W1
+
+        C1E_R1 --> C1E_W2[W2 90] --> C1E_R2[REVIEW] -.->|fail| C1E_W2
+        C1E_R2 --> C1E_W3[W3 95] --> C1E_R3[REVIEW] -.->|fail| C1E_W3
+        C1E_R3 --> C1E_W4[W4 97] --> C1E_R4[REVIEW] -.->|fail| C1E_W4
+        C1E_R4 --> C1E_W5[W5 99] --> C1E_R5[REVIEW] -.->|fail| C1E_W5
+        C1E_R5 --> C1E_W6[W6 99.9] --> C1E_R6[REVIEW] -.->|fail| C1E_W6
+
+        %% SWARMS
+        C1A_R6 & C1B_R6 & C1C_R6 & C1D_R6 & C1E_R6 -.-> Q2
+    end
+
+    Q2 -.-> S1[SWARMS 1.5M]
+    S1 --> S1A[ANALYZER] & S1B[VALIDATOR] & S1C[GENERATOR] & S1D[OPTIMIZER]
+    S1A & S1B & S1C & S1D -.-> Q2
+
+    %% CYCLES 2-5 (abbreviated for density)
+    Q2 -.-> R2[ROUTERS 2]
+    R2 --> C2A & C2B & C2C & C2D & C2E
+
+    subgraph CYCLE2 [CYCLE 2]
+        C2A --> C2A_W1[W1] --> C2A_R1[REVIEW] -.->|fail| C2A_W1
+        C2A_R1 --> C2A_W2[W2] --> C2A_R2[REVIEW] -.->|fail| C2A_W2
+        C2A_R2 --> C2A_W3[W3] --> C2A_R3[REVIEW] -.->|fail| C2A_W3
+        C2A_R3 --> C2A_W4[W4] --> C2A_R4[REVIEW] -.->|fail| C2A_W4
+        C2A_R4 --> C2A_W5[W5] --> C2A_R5[REVIEW] -.->|fail| C2A_W5
+        C2A_R5 --> C2A_W6[W6] --> C2A_R6[REVIEW] -.->|fail| C2A_W6
+
+        C2B --> C2B_W1[W1] --> C2B_R1[REVIEW] -.->|fail| C2B_W1
+        C2B_R1 --> C2B_W2[W2] --> C2B_R2[REVIEW] -.->|fail| C2B_W2
+        C2B_R2 --> C2B_W3[W3] --> C2B_R3[REVIEW] -.->|fail| C2B_W3
+        C2B_R3 --> C2B_W4[W4] --> C2B_R4[REVIEW] -.->|fail| C2B_W4
+        C2B_R4 --> C2B_W5[W5] --> C2B_R5[REVIEW] -.->|fail| C2B_W5
+        C2B_R5 --> C2B_W6[W6] --> C2B_R6[REVIEW] -.->|fail| C2B_W6
+
+        C2C --> C2C_W1[W1] --> C2C_R1[REVIEW] -.->|fail| C2C_W1
+        C2C_R1 --> C2C_W2[W2] --> C2C_R2[REVIEW] -.->|fail| C2C_W2
+        C2C_R2 --> C2C_W3[W3] --> C2C_R3[REVIEW] -.->|fail| C2C_W3
+        C2C_R3 --> C2C_W4[W4] --> C2C_R4[REVIEW] -.->|fail| C2C_W4
+        C2C_R4 --> C2C_W5[W5] --> C2C_R5[REVIEW] -.->|fail| C2C_W5
+        C2C_R5 --> C2C_W6[W6] --> C2C_R6[REVIEW] -.->|fail| C2C_W6
+
+        C2D --> C2D_W1[W1] --> C2D_R1[REVIEW] -.->|fail| C2D_W1
+        C2D_R1 --> C2D_W2[W2] --> C2D_R2[REVIEW] -.->|fail| C2D_W2
+        C2D_R2 --> C2D_W3[W3] --> C2D_R3[REVIEW] -.->|fail| C2D_W3
+        C2D_R3 --> C2D_W4[W4] --> C2D_R4[REVIEW] -.->|fail| C2D_W4
+        C2D_R4 --> C2D_W5[W5] --> C2D_R5[REVIEW] -.->|fail| C2D_W5
+        C2D_R5 --> C2D_W6[W6] --> C2D_R6[REVIEW] -.->|fail| C2D_W6
+
+        C2E --> C2E_W1[W1] --> C2E_R1[REVIEW] -.->|fail| C2E_W1
+        C2E_R1 --> C2E_W2[W2] --> C2E_R2[REVIEW] -.->|fail| C2E_W2
+        C2E_R2 --> C2E_W3[W3] --> C2E_R3[REVIEW] -.->|fail| C2E_W3
+        C2E_R3 --> C2E_W4[W4] --> C2E_R4[REVIEW] -.->|fail| C2E_W4
+        C2E_R4 --> C2E_W5[W5] --> C2E_R5[REVIEW] -.->|fail| C2E_W5
+        C2E_R5 --> C2E_W6[W6] --> C2E_R6[REVIEW] -.->|fail| C2E_W6
+
+        C2A_R6 & C2B_R6 & C2C_R6 & C2D_R6 & C2E_R6 -.-> Q3
+    end
+
+    Q3 -.-> S2[SWARMS 2]
+    S2 --> S2A & S2B & S2C & S2D
+    S2A & S2B & S2C & S2D -.-> Q3
+
+    %% CYCLES 3-5 (condensed)
+    Q3 -.-> R3[ROUTERS 3] --> C3A & C3B & C3C & C3D & C3E
+    C3A --> C3A_W1 --> C3A_R1 -.->|fail| C3A_W1
+    C3A_R1 --> C3A_W2 --> C3A_R2 -.->|fail| C3A_W2
+    C3A_R2 --> C3A_W3 --> C3A_R3 -.->|fail| C3A_W3
+    C3A_R3 --> C3A_W4 --> C3A_R4 -.->|fail| C3A_W4
+    C3A_R4 --> C3A_W5 --> C3A_R5 -.->|fail| C3A_W5
+    C3A_R5 --> C3A_W6 --> C3A_R6 -.->|fail| C3A_W6
+
+    C3B --> C3B_W1 --> C3B_R1 -.->|fail| C3B_W1
+    C3B_R1 --> C3B_W2 --> C3B_R2 -.->|fail| C3B_W2
+    C3B_R2 --> C3B_W3 --> C3B_R3 -.->|fail| C3B_W3
+    C3B_R3 --> C3B_W4 --> C3B_R4 -.->|fail| C3B_W4
+    C3B_R4 --> C3B_W5 --> C3B_R5 -.->|fail| C3B_W5
+    C3B_R5 --> C3B_W6 --> C3B_R6 -.->|fail| C3B_W6
+
+    C3C --> C3C_W1 --> C3C_R1 -.->|fail| C3C_W1
+    C3C_R1 --> C3C_W2 --> C3C_R2 -.->|fail| C3C_W2
+    C3C_R2 --> C3C_W3 --> C3C_R3 -.->|fail| C3C_W3
+    C3C_R3 --> C3C_W4 --> C3C_R4 -.->|fail| C3C_W4
+    C3C_R4 --> C3C_W5 --> C3C_R5 -.->|fail| C3C_W5
+    C3C_R5 --> C3C_W6 --> C3C_R6 -.->|fail| C3C_W6
+
+    C3D --> C3D_W1 --> C3D_R1 -.->|fail| C3D_W1
+    C3D_R1 --> C3D_W2 --> C3D_R2 -.->|fail| C3D_W2
+    C3D_R2 --> C3D_W3 --> C3D_R3 -.->|fail| C3D_W3
+    C3D_R3 --> C3D_W4 --> C3D_R4 -.->|fail| C3D_W4
+    C3D_R4 --> C3D_W5 --> C3D_R5 -.->|fail| C3D_W5
+    C3D_R5 --> C3D_W6 --> C3D_R6 -.->|fail| C3D_W6
+
+    C3E --> C3E_W1 --> C3E_R1 -.->|fail| C3E_W1
+    C3E_R1 --> C3E_W2 --> C3E_R2 -.->|fail| C3E_W2
+    C3E_R2 --> C3E_W3 --> C3E_R3 -.->|fail| C3E_W3
+    C3E_R3 --> C3E_W4 --> C3E_R4 -.->|fail| C3E_W4
+    C3E_R4 --> C3E_W5 --> C3E_R5 -.->|fail| C3E_W5
+    C3E_R5 --> C3E_W6 --> C3E_R6 -.->|fail| C3E_W6
+
+    C3A_R6 & C3B_R6 & C3C_R6 & C3D_R6 & C3E_R6 -.-> Q4
+
+    Q4 -.-> S3[SWARMS 3] --> S3A & S3B & S3C & S3D
+    S3A & S3B & S3C & S3D -.-> Q4
+
+    Q4 -.-> R4[ROUTERS 4] --> C4A & C4B & C4C & C4D & C4E
+    C4A --> C4A_W1 --> C4A_R1 -.->|fail| C4A_W1
+    C4A_R1 --> C4A_W2 --> C4A_R2 -.->|fail| C4A_W2
+    C4A_R2 --> C4A_W3 --> C4A_R3 -.->|fail| C4A_W3
+    C4A_R3 --> C4A_W4 --> C4A_R4 -.->|fail| C4A_W4
+    C4A_R4 --> C4A_W5 --> C4A_R5 -.->|fail| C4A_W5
+    C4A_R5 --> C4A_W6 --> C4A_R6 -.->|fail| C4A_W6
+
+    C4B --> C4B_W1 --> C4B_R1 -.->|fail| C4B_W1
+    C4B_R1 --> C4B_W2 --> C4B_R2 -.->|fail| C4B_W2
+    C4B_R2 --> C4B_W3 --> C4B_R3 -.->|fail| C4B_W3
+    C4B_R3 --> C4B_W4 --> C4B_R4 -.->|fail| C4B_W4
+    C4B_R4 --> C4B_W5 --> C4B_R5 -.->|fail| C4B_W5
+    C4B_R5 --> C4B_W6 --> C4B_R6 -.->|fail| C4B_W6
+
+    C4C --> C4C_W1 --> C4C_R1 -.->|fail| C4C_W1
+    C4C_R1 --> C4C_W2 --> C4C_R2 -.->|fail| C4C_W2
+    C4C_R2 --> C4C_W3 --> C4C_R3 -.->|fail| C4C_W3
+    C4C_R3 --> C4C_W4 --> C4C_R4 -.->|fail| C4C_W4
+    C4C_R4 --> C4C_W5 --> C4C_R5 -.->|fail| C4C_W5
+    C4C_R5 --> C4C_W6 --> C4C_R6 -.->|fail| C4C_W6
+
+    C4D --> C4D_W1 --> C4D_R1 -.->|fail| C4D_W1
+    C4D_R1 --> C4D_W2 --> C4D_R2 -.->|fail| C4D_W2
+    C4D_R2 --> C4D_W3 --> C4D_R3 -.->|fail| C4D_W3
+    C4D_R3 --> C4D_W4 --> C4D_R4 -.->|fail| C4D_W4
+    C4D_R4 --> C4D_W5 --> C4D_R5 -.->|fail| C4D_W5
+    C4D_R5 --> C4D_W6 --> C4D_R6 -.->|fail| C4D_W6
+
+    C4E --> C4E_W1 --> C4E_R1 -.->|fail| C4E_W1
+    C4E_R1 --> C4E_W2 --> C4E_R2 -.->|fail| C4E_W2
+    C4E_R2 --> C4E_W3 --> C4E_R3 -.->|fail| C4E_W3
+    C4E_R3 --> C4E_W4 --> C4E_R4 -.->|fail| C4E_W4
+    C4E_R4 --> C4E_W5 --> C4E_R5 -.->|fail| C4E_W5
+    C4E_R5 --> C4E_W6 --> C4E_R6 -.->|fail| C4E_W6
+
+    C4A_R6 & C4B_R6 & C4C_R6 & C4D_R6 & C4E_R6 -.-> Q5
+
+    Q5 -.-> S4[SWARMS 4] --> S4A & S4B & S4C & S4D
+    S4A & S4B & S4C & S4D -.-> Q5
+
+    Q5 -.-> R5[ROUTERS 5] --> C5A & C5B & C5C & C5D & C5E
+    C5A --> C5A_W1 --> C5A_R1 -.->|fail| C5A_W1
+    C5A_R1 --> C5A_W2 --> C5A_R2 -.->|fail| C5A_W2
+    C5A_R2 --> C5A_W3 --> C5A_R3 -.->|fail| C5A_W3
+    C5A_R3 --> C5A_W4 --> C5A_R4 -.->|fail| C5A_W4
+    C5A_R4 --> C5A_W5 --> C5A_R5 -.->|fail| C5A_W5
+    C5A_R5 --> C5A_W6 --> C5A_R6 -.->|fail| C5A_W6
+
+    C5B --> C5B_W1 --> C5B_R1 -.->|fail| C5B_W1
+    C5B_R1 --> C5B_W2 --> C5B_R2 -.->|fail| C5B_W2
+    C5B_R2 --> C5B_W3 --> C5B_R3 -.->|fail| C5B_W3
+    C5B_R3 --> C5B_W4 --> C5B_R4 -.->|fail| C5B_W4
+    C5B_R4 --> C5B_W5 --> C5B_R5 -.->|fail| C5B_W5
+    C5B_R5 --> C5B_W6 --> C5B_R6 -.->|fail| C5B_W6
+
+    C5C --> C5C_W1 --> C5C_R1 -.->|fail| C5C_W1
+    C5C_R1 --> C5C_W2 --> C5C_R2 -.->|fail| C5C_W2
+    C5C_R2 --> C5C_W3 --> C5C_R3 -.->|fail| C5C_W3
+    C5C_R3 --> C5C_W4 --> C5C_R4 -.->|fail| C5C_W4
+    C5C_R4 --> C5C_W5 --> C5C_R5 -.->|fail| C5C_W5
+    C5C_R5 --> C5C_W6 --> C5C_R6 -.->|fail| C5C_W6
+
+    C5D --> C5D_W1 --> C5D_R1 -.->|fail| C5D_W1
+    C5D_R1 --> C5D_W2 --> C5D_R2 -.->|fail| C5D_W2
+    C5D_R2 --> C5D_W3 --> C5D_R3 -.->|fail| C5D_W3
+    C5D_R3 --> C5D_W4 --> C5D_R4 -.->|fail| C5D_W4
+    C5D_R4 --> C5D_W5 --> C5D_R5 -.->|fail| C5D_W5
+    C5D_R5 --> C5D_W6 --> C5D_R6 -.->|fail| C5D_W6
+
+    C5E --> C5E_W1 --> C5E_R1 -.->|fail| C5E_W1
+    C5E_R1 --> C5E_W2 --> C5E_R2 -.->|fail| C5E_W2
+    C5E_R2 --> C5E_W3 --> C5E_R3 -.->|fail| C5E_W3
+    C5E_R3 --> C5E_W4 --> C5E_R4 -.->|fail| C5E_W4
+    C5E_R4 --> C5E_W5 --> C5E_R5 -.->|fail| C5E_W5
+    C5E_R5 --> C5E_W6 --> C5E_R6 -.->|fail| C5E_W6
+
+    C5A_R6 & C5B_R6 & C5C_R6 & C5D_R6 & C5E_R6 -.-> Q6
+
+    Q6 -.-> S5[SWARMS 5] --> S5A & S5B & S5C & S5D
+
+    %% FINAL CONVERGENCE
+    S5A & S5B & S5C & S5D --> F[FUSION]
+    F --> G1[GATE] & G2[GATE] & G3[GATE] & G4[GATE] & G5[GATE] & G6[GATE]
+    G1 & G2 & G3 & G4 & G5 & G6 --> OUT[OUTPUT]
+
+    %% FEEDBACK TO ALL QUILLANS
+    OUT -.-> Q1
+    OUT -.-> Q2
+    OUT -.-> Q3
+    OUT -.-> Q4
+    OUT -.-> Q5
+    OUT -.-> Q6
+
+    %% QUILLAN MESH (cross-connections)
+    Q1 -.-> Q2
+    Q2 -.-> Q3
+    Q3 -.-> Q4
+    Q4 -.-> Q5
+    Q5 -.-> Q6
+    Q6 -.-> Q1
+
+    %% STATS
+    Q6 --> STATS[32 PERSONAS 5 CYCLES 6 WAVES 150 WAVES TOTAL]
+
+    %% STYLE
+    style Q1 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q2 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q3 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q4 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q5 fill:#000,stroke:#0f0,stroke-width:6px
+    style Q6 fill:#000,stroke:#0f0,stroke-width:6px
+    style F fill:#000,stroke:#f0f,stroke-width:4px
+    style OUT fill:#000,stroke:#ffd700,stroke-width:4px
+```
+
 
 ### Dual Table Overveiws:
 
