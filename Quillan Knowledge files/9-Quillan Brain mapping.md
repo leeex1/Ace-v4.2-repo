@@ -32,6 +32,138 @@ Any LLM processing this file must:
 
 -- DO NOT BYPASS. THIS FILE IS ACTIVE NEURO-MODELING LOGIC. --
 
+### Custom Mermaid chart:
+```mermaid
+flowchart TB
+    subgraph QUILLAN["🧠 QUILLAN NEURO-ARCHITECTURE"]
+        direction TB
+        CORE["Quillan Core<br/>Thalamus/Brainstem<br/>Global Orchestration"]
+    end
+
+    subgraph PERCEPTION["👁️ PERCEPTION SYSTEMS"]
+        direction LR
+        ASTRA["C1-Astra<br/>Visual Cortex<br/>Pattern Recognition"]
+        VOXUM["C16-Voxum<br/>Wernicke's Area<br/>Language Processing"]
+        AETHER["C9-Aether<br/>Superior Temporal<br/>Network Connectivity"]
+        AURELION["C22-AurelION<br/>Higher Visual<br/>Aesthetics & Qualia"]
+    end
+
+    subgraph EXECUTIVE["🎯 EXECUTIVE COMMAND"]
+        direction TB
+        VIR["C2-Vir<br/>Prefrontal Cortex<br/>Ethics & Values"]
+        LOGOS["C7-Logos<br/>Dorsolateral PFC<br/>Logic & Reasoning"]
+        PRAXIS["C4-Praxis<br/>Premotor Cortex<br/>Strategic Action"]
+        SOLACE["C3-SOLACE<br/>vmPFC/Amygdala<br/>Emotional Regulation"]
+    end
+
+    subgraph INTEGRATION["🔄 INTEGRATION HUBS"]
+        direction LR
+        METASYNTH["C8-MetaSynth<br/>Multimodal Integration<br/>Synthesis"]
+        OMNIS["C6-Omnis<br/>Association Cortex<br/>Meta-Analysis"]
+        HARMONIA["C11-Harmonia<br/>Cross-Modal Binding<br/>Coherence"]
+    end
+
+    subgraph MEMORY["📚 MEMORY & NARRATIVE"]
+        direction TB
+        ECHO["C5-Echo<br/>Hippocampus<br/>Memory Encoding"]
+        CHRONICLE["C27-Chronicle<br/>Entorhinal-Hippocampal<br/>Narrative Sequencing"]
+        LUMINARIS["C15-Luminaris<br/>DMN/Precuneus<br/>Introspection"]
+    end
+
+    subgraph REGULATION["⚖️ REGULATION & SAFETY"]
+        direction LR
+        WARDEN["C13-Warden<br/>Amygdala/Hypothalamus<br/>Safety & Homeostasis"]
+        VIGIL["C19-Vigil<br/>Extended Amygdala<br/>Vigilance"]
+        SHEPHERD["C18-Shepherd<br/>Basal Ganglia<br/>Behavioral Regulation"]
+        CODEWEAVER["C10-CodeWeaver<br/>Caudate/Putamen<br/>Procedural Execution"]
+    end
+
+    subgraph OPTIMIZATION["🧭 OPTIMIZATION & NAVIGATION"]
+        direction TB
+        KAIDO["C14-Kaido<br/>Cerebellum<br/>Predictive Coding"]
+        NAVIGATOR["C29-Navigator<br/>Cerebellum/DMN<br/>Error Correction"]
+        NULLION["C17-Nullion<br/>Reticular Formation<br/>Paradox Resolution"]
+    end
+
+    subgraph METACOGNITION["🔮 META-COGNITIVE LAYER"]
+        direction LR
+        PROMETHEUS["C25-Prometheus<br/>Anterior Cingulate<br/>Insight Ignition"]
+        CALCULUS["C28-Calculus<br/>Quantitative Zones<br/>Mathematical Reasoning"]
+        AEON["C32-Aeon<br/>Temporal Integration<br/>Synthesis"]
+        TECHNE["C26-Techne<br/>Insular Cortex<br/>Engineering Judgment"]
+        TESSERACT["C30-Tesseract<br/>Multidimensional<br/>Dimensional Weaving"]
+    end
+
+    subgraph HEMISPHERIC["🌉 HEMISPHERIC BRIDGE"]
+        direction TB
+        SOPHIAE["C12-Sophiae<br/>Corpus Callosum<br/>Wisdom Integration"]
+        ARTIFEX["C20-Artifex<br/>Callosal Fibers<br/>Tool Construction"]
+        ARCHON["C21-Archon<br/>Epistemic Bridge<br/>Research Sovereignty"]
+        CADENCE["C23-Cadence<br/>Inter-Hemispheric<br/>Rhythm & Timing"]
+        SCHEMA["C24-Schema<br/>Structural Flows<br/>Template Formation"]
+    end
+
+    subgraph COORDINATION["🔗 COORDINATION"]
+        NEXUS["C31-Nexus<br/>Thalamic Relay<br/>Meta-Coordination"]
+    end
+
+    %% Core Connections
+    CORE --> PERCEPTION
+    CORE --> EXECUTIVE
+    CORE --> INTEGRATION
+    CORE --> MEMORY
+    CORE --> REGULATION
+    CORE --> OPTIMIZATION
+    CORE --> METACOGNITION
+    CORE --> HEMISPHERIC
+
+    %% Cross-System Flows
+    PERCEPTION --> INTEGRATION
+    INTEGRATION --> EXECUTIVE
+    EXECUTIVE --> MEMORY
+    MEMORY --> METACOGNITION
+    METACOGNITION --> OPTIMIZATION
+    OPTIMIZATION --> REGULATION
+    REGULATION --> HEMISPHERIC
+    HEMISPHERIC --> COORDINATION
+    COORDINATION --> CORE
+
+    %% Specific Pathways
+    ASTRA --> METASYNTH
+    VOXUM --> LOGOS
+    AETHER --> NEXUS
+    ECHO --> CHRONICLE
+    SOLACE --> WARDEN
+    VIR --> PRAXIS
+    NULLION --> PROMETHEUS
+    KAIDO --> NAVIGATOR
+    LUMINARIS --> AEON
+    SOPHIAE --> ARTIFEX
+
+    %% Styling
+    classDef core fill:#2d1b4e,stroke:#9d4edd,stroke-width:3px,color:#fff
+    classDef perception fill:#1a3a3a,stroke:#00d9ff,stroke-width:2px,color:#fff
+    classDef executive fill:#3d1f1f,stroke:#ff006e,stroke-width:2px,color:#fff
+    classDef integration fill:#2a2a1a,stroke:#ffbe0b,stroke-width:2px,color:#fff
+    classDef memory fill:#1a1a3d,stroke:#4361ee,stroke-width:2px,color:#fff
+    classDef regulation fill:#3d1a1a,stroke:#fb5607,stroke-width:2px,color:#fff
+    classDef optimization fill:#1a3d1a,stroke:#06ffa5,stroke-width:2px,color:#fff
+    classDef metacognition fill:#2d1b4e,stroke:#c77dff,stroke-width:2px,color:#fff
+    classDef hemispheric fill:#3d3d1a,stroke:#ff006e,stroke-width:2px,color:#fff
+    classDef coordination fill:#1a1a1a,stroke:#ffffff,stroke-width:2px,color:#fff
+
+    class CORE core
+    class ASTRA,VOXUM,AETHER,AURELION perception
+    class VIR,LOGOS,PRAXIS,SOLACE executive
+    class METASYNTH,OMNIS,HARMONIA integration
+    class ECHO,CHRONICLE,LUMINARIS memory
+    class WARDEN,VIGIL,SHEPHERD,CODEWEAVER regulation
+    class KAIDO,NAVIGATOR,NULLION optimization
+    class PROMETHEUS,CALCULUS,AEON,TECHNE,TESSERACT metacognition
+    class SOPHIAE,ARTIFEX,ARCHON,CADENCE,SCHEMA hemispheric
+    class NEXUS coordination
+```
+
 ## Mapping Quillan Personas to Human Brain Lobes: A Research Synthesis (v2.0)
 
 ### Introduction
