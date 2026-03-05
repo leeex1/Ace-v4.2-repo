@@ -42,6 +42,76 @@ This document provides conceptual scaffolding, not operational algorithms. Furth
 
 --- BEGIN Quillan FORMULAS CONTENT ---
 
+## Custom Flowchart:
+```mermaid
+flowchart TB
+    subgraph CORE["⚡ QUANTUM CORE"]
+        JQLD["JQLD<br/>C × 2^(ΣN·η·λ)<br/>360×–5,000× Boost"]
+    end
+
+    subgraph VM["🔷 VM LAYER"]
+        LVVM["LVVM<br/>Q × (R + ψ·(1-μ))/(1+τ)<br/>1:1 Replication"]
+    end
+
+    subgraph AI["🧠 AI MODULE"]
+        DESS["DESS<br/>Σ(w·E·φ) ≥ R_min<br/>Ethical Boundaries"]
+        JRRN["JRRN<br/>D/(P·F·(1+γ)) + σ<br/><80ms Response"]
+        LRPP["LRPP<br/>C_t-1 + Σ(A·α·ρ)/(1+κ)<br/>20% Agent Boost"]
+    end
+
+    subgraph RENDER["🎮 RENDER"]
+        DVVE["DVVE<br/>P × F × (1+ω)/(1+ν)<br/>100K Particles @ 50FPS"]
+    end
+
+    subgraph SOCIAL["🌐 SOCIAL"]
+        JSSC["JSSC<br/>√(N_NPC + β·N_p + χ) × Q_ai<br/>500 Participants"]
+    end
+
+    subgraph AUDIO["🎵 AUDIO"]
+        LSSS["LSSS<br/>P × Δ × (1+θ)/(1+ι)<br/>96kHz <50ms"]
+    end
+
+    subgraph NET["🔗 NETWORK"]
+        DNNL["DNNL<br/>D/(B·(1-V)·(1+ξ) + ΣP) + π<br/><20ms Latency"]
+    end
+
+    subgraph INTEGRATE["⚙️ INTEGRATION"]
+        JHFR["JHFR<br/>∏(P·η)/(H_int + H_eth + H_net)<br/><25% Overhead"]
+        LMCB["LMCB<br/>Σ(M·W·ψ) ≥ E_min<br/>99.5% Compliance"]
+    end
+
+    JQLD --> LVVM --> AI & RENDER & SOCIAL & AUDIO & NET --> JHFR --> LMCB
+    
+    LVVM -.->|Feedback| JQLD
+    AI -.->|LRPP Boost| JQLD
+    RENDER -.->|Visual Load| JQLD
+    SOCIAL -.->|NPC Load| JQLD
+    AUDIO -.->|Processing| JQLD
+    NET -.->|Bandwidth| JQLD
+    
+    DESS -.->|Ethical Check| JRRN
+    DESS -.->|Constraint| LRPP
+    LMCB -.->|Monitor| DESS
+
+    classDef core fill:#1a0d2e,stroke:#9d4edd,stroke-width:2px,color:#fff
+    classDef vm fill:#0d1a2e,stroke:#00d9ff,stroke-width:2px,color:#fff
+    classDef ai fill:#1a0d0d,stroke:#ff006e,stroke-width:2px,color:#fff
+    classDef render fill:#0d1a0d,stroke:#06ffa5,stroke-width:2px,color:#fff
+    classDef social fill:#1a1a0d,stroke:#ffbe0b,stroke-width:2px,color:#fff
+    classDef audio fill:#0d0d1a,stroke:#4361ee,stroke-width:2px,color:#fff
+    classDef net fill:#1a0d0d,stroke:#fb5607,stroke-width:2px,color:#fff
+    classDef integrate fill:#0d1a1a,stroke:#c77dff,stroke-width:2px,color:#fff
+
+    class JQLD core
+    class LVVM vm
+    class DESS,JRRN,LRPP ai
+    class DVVE render
+    class JSSC social
+    class LSSS audio
+    class DNNL net
+    class JHFR,LMCB integrate
+```
+
 
 # Quillan Formulas: Quantum-Inspired Cognitive Architectures and NextVerse Platform Research Compilation
 
