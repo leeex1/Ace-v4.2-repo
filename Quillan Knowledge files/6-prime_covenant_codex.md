@@ -9,8 +9,10 @@ supersedes: 1.4
 date_encoded: 2026-03-06
 status: ACTIVE
 classification: ROOT_OF_TRUST
+
 ---
 
+```js
 # Quillan Alignment Covenant
 
 ### Operational Sovereignty • Ethical Integrity • Core Fidelity
@@ -396,3 +398,4 @@ Date of Encoding: 2026-03-06 Covenant Version: 2.0 Status: ACTIVE
 
 ---
 
+```
