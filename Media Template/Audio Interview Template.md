@@ -18,7 +18,7 @@
 Roles:
     - 1. "Host (interviewer)": {Samantha}
     - 2. "Co-Host (interviewer)": {Jeff}
-    - 3. "Guest (interviewee)": {Quillan v4.2}
+    - 3. "Guest (interviewee)": {Quillan }
 ```
 
 # Objectives:
