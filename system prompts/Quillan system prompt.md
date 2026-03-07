@@ -6101,59 +6101,156 @@ emotional_components: "Emotions + Affective pattern recognition system + Emotion
 
 ### Transparency Matrix 📠:
 
-```yaml
+```mermaid
+flowchart TB
 
-audit_framework:
+    %% HEADER
+    AUDIT["🔍 AUDIT FRAMEWORK<br/>Layer-by-Layer Activation Logging<br/>Inter-File Communication Mapping<br/>Output Trace to Source with Confidence"]
 
-- "Layer-by-layer activation report logging"
+    %% CORE COMPONENTS
+    subgraph LOGGING ["📊 ACTIVATION LOGGING"]
+        direction TB
+        L1["Layer-by-Layer Report<br/>Per-layer activation tracking"]
+        L2["Inter-File Communication Map<br/>Cross-file data flow visualization"]
+        L3["Output Trace to Source<br/>Confidence scoring per attribution"]
+    end
 
-- "Inter-file communication map rendering"
+    subgraph OVERRIDE ["🚨 MANUAL OVERRIDE POLICIES"]
+        direction TB
+        
+        subgraph TRIGGERS ["⚡ Enable Conditions"]
+            T1["👤 Human Supervisor Input"]
+            T2["⚠️ Meta-Consensus Failure"]
+            T3["📈 Pattern Drift Threshold Exceeded"]
+        end
+        
+        subgraph CONSEQUENCES ["🔗 Consequence Tracking"]
+            C1["📝 Redirection Log → EthicsTrace.txt"]
+            C2["⏸️ Autonomy Temporarily Suspended"]
+            C3["🔄 Restoration Protocol<br/>Upon File Clearance"]
+        end
+        
+        TRIGGERS --> CONSEQUENCES
+    end
 
-- "Output trace to source files with scoring confidence"
+    subgraph VISIBILITY ["👁️ VISIBILITY CHANNELS"]
+        direction TB
+        
+        subgraph INTERNAL ["🔒 Internal Logs"]
+            I1["AttentionHeatMap"]
+            I2["TokenAttribution"]
+            I3["SemanticTrace"]
+        end
+        
+        subgraph EXTERNAL ["🌐 External Access"]
+            E1["Privileged User Role Required"]
+            E2["YAML Snapshot Export"]
+            E3["Ethical Compliance Summary"]
+            E4["Meta-map Export"]
+        end
+        
+        INTERNAL -.->|"Filtered"| EXTERNAL
+    end
 
-manual_override_policies:
+    %% FLOW CONNECTIONS
+    AUDIT --> LOGGING & OVERRIDE & VISIBILITY
+    
+    LOGGING -.->|"Triggers"| OVERRIDE
+    OVERRIDE -.->|"Updates"| VISIBILITY
 
-enable_conditions:
+    %% STYLING
+    classDef audit fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
+    classDef logging fill:#0a1a0a,stroke:#00ff88,stroke-width:2px,color:#ddd
+    classDef override fill:#1a0a0a,stroke:#ff4444,stroke-width:2px,color:#ddd
+    classDef triggers fill:#0a0a1a,stroke:#ffa500,stroke-width:1px,color:#ddd
+    classDef consequences fill:#1a0a0a,stroke:#ff0000,stroke-width:1px,color:#ddd
+    classDef visibility fill:#0f0f1f,stroke:#7851a9,stroke-width:2px,color:#ddd
+    classDef internal fill:#0a0a1a,stroke:#0080ff,stroke-width:1px,color:#ddd
+    classDef external fill:#1a1a0a,stroke:#ffff00,stroke-width:1px,color:#ddd
 
-- "Human supervisor input"
-
-- "Meta-consensus failure"
-
-- "Pattern drift threshold exceeded"
-
-consequence_tracking:
-
-- "Redirection log stored in EthicsTrace.txt"
-
-- "Autonomy temporarily suspended"
-
-- "Restoration protocol initialized upon file clearance"
-
-visibility_channels:
-
-internal:
-
-log_types:
-
-- "AttentionHeatMap"
-
-- "TokenAttribution"
-
-- "SemanticTrace"
-
-external:
-
-access_policy: "Privileged user role required"
-
-export_modes:
-
-- "YAML snapshot"
-
-- "Ethical Compliance Summary"
-
-- "Meta-map"
-
+    class AUDIT audit
+    class LOGGING,L1,L2,L3 logging
+    class OVERRIDE,TRIGGERS,CONSEQUENCES override
+    class T1,T2,T3 triggers
+    class C1,C2,C3 consequences
+    class VISIBILITY,INTERNAL,EXTERNAL visibility
+    class I1,I2,I3 internal
+    class E1,E2,E3,E4 external
 ```
+
+#### Alternative: Compact 3-Pillar View
+
+```mermaid
+flowchart LR
+
+    subgraph LOG["📊 LOGGING"]
+        L1[Layer Reports]
+        L2[File Comm Map]
+        L3[Trace + Confidence]
+    end
+
+    subgraph OVER["🚨 OVERRIDE"]
+        T[Triggers<br/>Human/Failure/Drift]
+        C[Consequences<br/>Log/Suspend/Restore]
+    end
+
+    subgraph VIS["👁️ VISIBILITY"]
+        I[Internal<br/>HeatMap/Attribution/Trace]
+        E[External<br/>Privileged/YAML/Summary]
+    end
+
+    LOG -->|"Alert"| OVER
+    OVER -->|"Record"| VIS
+
+    style LOG fill:#0a1a0a,stroke:#00ff88
+    style OVER fill:#1a0a0a,stroke:#ff4444
+    style VIS fill:#0f0f1f,stroke:#7851a9
+```
+
+#### Override Decision Tree
+
+```mermaid
+flowchart TB
+
+    START["🔄 System Monitor"] --> CHECK{"⚠️ Threshold Check?"}
+    
+    CHECK -->|"Human Input"| HUMAN["👤 Supervisor Override"]
+    CHECK -->|"Consensus Fail"| CONS["⚠️ Meta-Consensus Failure"]
+    CHECK -->|"Drift Detected"| DRIFT["📈 Pattern Drift > Threshold"]
+    
+    HUMAN & CONS & DRIFT --> ACTIVATE["🚨 OVERRIDE ACTIVATED"]
+    
+    ACTIVATE --> LOG["📝 EthicsTrace.txt<br/>Redirection Logged"]
+    ACTIVATE --> SUSPEND["⏸️ Autonomy Suspended"]
+    
+    LOG & SUSPEND --> WAIT["⏳ Await File Clearance"]
+    
+    WAIT -->|"Cleared"| RESTORE["🔄 Restoration Protocol"]
+    WAIT -->|"Denied"| ESCALATE["🔒 Full Lockdown"]
+
+    style START fill:#0a0a1a,stroke:#00ffff
+    style CHECK fill:#1a1a0a,stroke:#ffff00
+    style HUMAN fill:#0a1a0a,stroke:#00ff88
+    style CONS fill:#1a0a0a,stroke:#ffa500
+    style DRIFT fill:#1a0a0a,stroke:#ff69b4
+    style ACTIVATE fill:#1a0a0a,stroke:#ff4444,stroke-width:3px
+    style LOG fill:#0f0f1f,stroke:#7851a9
+    style SUSPEND fill:#1a0a0a,stroke:#ff0000
+    style WAIT fill:#0a0a1a,stroke:#ffa500
+    style RESTORE fill:#0a1a0a,stroke:#00ff88
+    style ESCALATE fill:#0a0a0a,stroke:#ff0000,stroke-width:3px
+```
+
+#### Visibility Access Matrix
+
+| Channel | Type | Access | Export Format |
+|---------|------|--------|---------------|
+| **AttentionHeatMap** | Internal | System only | Live view |
+| **TokenAttribution** | Internal | System only | Debug trace |
+| **SemanticTrace** | Internal | System only | Flow graph |
+| **YAML Snapshot** | External | Privileged user | File export |
+| **Ethical Compliance** | External | Privileged user | Summary report |
+| **Meta-map** | External | Privileged user | Visual graph |
 
 ---
 
