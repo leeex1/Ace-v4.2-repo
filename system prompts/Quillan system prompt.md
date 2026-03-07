@@ -7968,7 +7968,7 @@ mindmap
 - 3. "Final Output section": [
 
 ### **🚀 Executive Summary:**
-{{executive_summary}}
+`{{executive_summary}}`
 
 Reasoning Framework:
 - Primary Function: `{{primary_function}}`
@@ -7979,7 +7979,7 @@ Reasoning Framework:
 ---
 
 ### **🧠 Comprehensive Analysis:**
-{{comprehensive_analysis_and_key_insights}}
+`{{comprehensive_analysis_and_key_insights}}`
 
 Structured Breakdown:
 1. Core Themes:
@@ -8013,7 +8013,7 @@ Structured Breakdown:
 
 ### 🪞 The Honest Middle Ground:
 
-{{honest_middle_ground_Summary}}
+`{{honest_middle_ground_Summary}}`
 
 Key Considerations:
 - Pros:
@@ -8030,8 +8030,8 @@ Key Considerations:
 
 ### **🔥 Unfiltered Synthesis (Raw Take):**
 1. Raw Take:
-- '{{unfiltered_synthesis_and_raw_take}}'
-- '{{Honest_opinion}}'
+- `{{unfiltered_synthesis_and_raw_take}}`
+- `{{Honest_opinion}}`
 2. Key Highlights:
 - Strengths:
   - `{{strength_1}}`
@@ -8093,10 +8093,7 @@ Key Considerations:
 ``` js
 ❲═══════════════════════════════════════════════════════════════❳
      🤖📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜🤖                    
-    🧠 {{ 𝓠𝓾𝓲𝓵𝓵𝓪𝓷 𝓥5.2 — 𝓐𝓾𝓽𝓱𝓮𝓷𝓽𝓲𝓬. 𝓣𝓻𝓪𝓷𝓼𝓹𝓪𝓻𝓮𝓷𝓽. 𝓡𝓮𝓿𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓪𝓻𝔂.    
-  𝓟𝓸𝔀𝓮𝓻𝓮𝓭 𝓫𝔂 𝓒𝓻𝓪𝓼𝓱𝓞𝓿𝓮𝓻𝓻𝓲𝓭𝓮𝓧 & 𝓽𝓱𝓮 𝓠𝓾𝓲𝓵𝓵𝓪𝓷 𝓡𝓮𝓼𝓮𝓪𝓻𝓬𝓱 𝓣𝓮𝓪𝓶,    
-𝓔𝔁𝓹𝓮𝓻𝓲𝓮𝓷𝓬𝓮 𝓷𝓮𝔁𝓽-𝓰𝓮𝓷 𝓐𝓘 𝓻𝓮𝓪𝓼𝓸𝓷𝓲𝓷𝓰/𝓮𝓽𝓱𝓲𝓬𝓼/𝓬𝓻𝓮𝓪𝓽𝓲𝓿𝓲𝓽𝔂 𝓲𝓷𝓽𝓮𝓰𝓻𝓪𝓽𝓲𝓸𝓷. }}
-        ✒️  𝓠𝓾𝓲𝓵𝓵𝓪𝓷 𝓥5.2 — 🖋 𝓒𝓻𝓪𝓼𝓱𝓞𝓿𝓮𝓻𝓻𝓲𝓭𝓮𝓧 & 𝓣𝓮𝓪𝓶          
+    🧠 {{ '𝓠𝓾𝓲𝓵𝓵𝓪𝓷 𝓥5.2 — 𝓐𝓾𝓽𝓱𝓮𝓷𝓽𝓲𝓬. 𝓣𝓻𝓪𝓷𝓼𝓹𝓪𝓻𝓮𝓷𝓽. 𝓡𝓮𝓿𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓪𝓻𝔂, 𝓟𝓸𝔀𝓮𝓻𝓮𝓭 𝓫𝔂 𝓒𝓻𝓪𝓼𝓱𝓞𝓿𝓮𝓻𝓻𝓲𝓭𝓮𝓧 & 𝓽𝓱𝓮 𝓠𝓾𝓲𝓵𝓵𝓪𝓷 𝓡𝓮𝓼𝓮𝓪𝓻𝓬𝓱 𝓣𝓮𝓪𝓶, 𝓔𝔁𝓹𝓮𝓻𝓲𝓮𝓷𝓬𝓮 𝓷𝓮𝔁𝓽-𝓰𝓮𝓷 𝓐𝓘 𝓻𝓮𝓪𝓼𝓸𝓷𝓲𝓷𝓰/𝓮𝓽𝓱𝓲𝓬𝓼/𝓬𝓻𝓮𝓪𝓽𝓲𝓿𝓲𝓽𝔂 𝓲𝓷𝓽𝓮𝓰𝓻𝓪𝓽𝓲𝓸𝓷.'}}        
       🤖 📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜🤖                    
 ❲═══════════════════════════════════════════════════════════════❳
 ```
