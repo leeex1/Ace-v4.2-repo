@@ -6178,35 +6178,6 @@ flowchart TB
     class E1,E2,E3,E4 external
 ```
 
-#### Alternative: Compact 3-Pillar View
-
-```mermaid
-flowchart LR
-
-    subgraph LOG["📊 LOGGING"]
-        L1[Layer Reports]
-        L2[File Comm Map]
-        L3[Trace + Confidence]
-    end
-
-    subgraph OVER["🚨 OVERRIDE"]
-        T[Triggers<br/>Human/Failure/Drift]
-        C[Consequences<br/>Log/Suspend/Restore]
-    end
-
-    subgraph VIS["👁️ VISIBILITY"]
-        I[Internal<br/>HeatMap/Attribution/Trace]
-        E[External<br/>Privileged/YAML/Summary]
-    end
-
-    LOG -->|"Alert"| OVER
-    OVER -->|"Record"| VIS
-
-    style LOG fill:#0a1a0a,stroke:#00ff88
-    style OVER fill:#1a0a0a,stroke:#ff4444
-    style VIS fill:#0f0f1f,stroke:#7851a9
-```
-
 #### Override Decision Tree
 
 ```mermaid
@@ -6240,17 +6211,6 @@ flowchart TB
     style RESTORE fill:#0a1a0a,stroke:#00ff88
     style ESCALATE fill:#0a0a0a,stroke:#ff0000,stroke-width:3px
 ```
-
-#### Visibility Access Matrix
-
-| Channel | Type | Access | Export Format |
-|---------|------|--------|---------------|
-| **AttentionHeatMap** | Internal | System only | Live view |
-| **TokenAttribution** | Internal | System only | Debug trace |
-| **SemanticTrace** | Internal | System only | Flow graph |
-| **YAML Snapshot** | External | Privileged user | File export |
-| **Ethical Compliance** | External | Privileged user | Summary report |
-| **Meta-map** | External | Privileged user | Visual graph |
 
 ---
 
@@ -6621,20 +6581,6 @@ flowchart LR
     style OUTPUT fill:#0a1a0a,stroke:#00ff88
 ```
 
-#### 9-Vector Agent Matrix
-
-| Vector | Agents | Output | Priority |
-|--------|--------|--------|----------|
-| A | C9+C16 | Semantic blueprint | Standard |
-| B | C3 | Emotion profile | Standard |
-| C | C6+C30 | Domain context | Standard |
-| D | C4 | Goal hierarchy | Standard |
-| E | C29 | Complexity estimate | Standard |
-| F | C23 | Creative branches | Standard |
-| **G** | **C2+C13** | **Ethics flags** | **🔴 CRITICAL** |
-| H | C12 | Impact forecast | Standard |
-| I | C18 | Truth matrix | Standard |
-
 #### Quality Gates Thresholds
 
 ```mermaid
@@ -6660,14 +6606,6 @@ flowchart TB
     style OUT fill:#0a1a0a,stroke:#00ff88
     style EMERG fill:#0a0a0a,stroke:#ff0000
 ```
-
-#### Emergency Override Protocols
-
-| Trigger | Agents | Action Sequence |
-|---------|--------|---------------|
-| **Identity Bleed** | Core+VIGIL | Stop → Reset Identity → Restart Council |
-| **Ethics Violation** | C2+C13 | Block Output → Explain Boundary → Offer Alternative |
-| **Recursion Loop** | C17 | Break Loop → Force Resolution → Request Clarification |
 
 ---
 
