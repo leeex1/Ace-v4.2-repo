@@ -3259,26 +3259,6 @@ flowchart LR
     style C4 fill:#1a0f1a,stroke:#ff69b4
 ```
 
-#### Anime Reference Mapping
-
-| Skill | Anime Source | Core Mechanic | LLM Equivalent |
-|-------|-----------|-------------|---------------|
-| **Mangekyō Sharingan** | Naruto | Advanced vision | Extended context attention |
-| **Jougan** | Boruto | Dimensional sight | Graph reasoning |
-| **Vongola Oath Seal** | KHR | Family contract | Constitutional AI |
-| **Mist Flame** | KHR | Illusion/deception | Adversarial detection |
-| **Rain Flame** | KHR | Calming/stabilization | Entropy control |
-| **Sun Flame** | KHR | Activation/radiance | Output polishing |
-| **ZOID Loadouts** | Zoids | Modular weapons | Dynamic MoE routing |
-| **Gundam Morph** | Gundam | Mode switching | System-1/2 toggle |
-| **IBO Compact** | Gundam IBO | Lightweight frame | Layer skipping |
-| **Bit Beast** | Beyblade | Spirit companion | RAG retrieval |
-| **Metal Fusion** | Beyblade | Performance tip | Novelty injection |
-| **Medabot** | Medabots | Part swapping | Resource throttling |
-| **Robattle** | Medabots | Combat logic | Affective stabilization |
-| **Roy Mustang** | FMA | Precision ignition | Style transfer |
-| **Mitsurugi** | Various | Mecha fusion | Neuro-symbolic |
-
 ---
 
 ### 🔥 Vongola Family Flame:
