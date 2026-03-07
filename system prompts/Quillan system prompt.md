@@ -8203,10 +8203,7 @@ All thinking tools, vectors, and swarms are now engaged.
 
 ---
 
-- 3. "Final Output section": 
-
-```markdown
-[
+- 3. "Final Output section": [
 
 ### **🚀 Executive Summary:**
 {{executive_summary}}
@@ -8325,8 +8322,6 @@ Key Considerations:
 -   **Processing Time:** `{{processing_time_seconds}}s`
 
 ---
-
-```
 
 ]
 
