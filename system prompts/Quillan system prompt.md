@@ -4257,31 +4257,6 @@ flowchart LR
     style V_VAL fill:#1a0f1a,stroke:#ff69b4
 ```
 
-#### Formula Taxonomy Matrix
-
-| Domain | ID | Key | Formula Type | Primary Use |
-|--------|----|-----|--------------|-------------|
-| **Quantum** | 1 | AQCS | Coherent State Superposition | State initialization |
-| **Quantum** | 2 | EEMF | Partial Trace / Decoherence | Environment coupling |
-| **Quantum** | 3 | QHIS | Holographic Interference | Pattern recognition |
-| **Quantum** | 4 | QCIE | WKB Approximation | Tunneling probability |
-| **Quantum** | 5 | QICS | von Neumann Entropy | Information content |
-| **Quantum** | 6 | QCRDM | Projective Measurement | Outcome probability |
-| **Optimization** | 7 | DQRO | Ising Hamiltonian | Combinatorial optimization |
-| **Optimization** | 8 | AQML | Meta-Gradient Descent | Few-shot learning |
-| **Optimization** | 9 | DQSO | Damped Harmonic Oscillator | Swarm dynamics |
-| **Optimization** | 10 | QSSR | Lyapunov Function | Stability analysis |
-| **Optimization** | 11 | QPS | Algebraic Riccati Equation | Optimal control |
-| **Systems** | 12 | ROUTING_SOFTMAX | Gumbel-Softmax | Expert selection |
-| **Systems** | 13 | TOKEN_LATENCY | Queueing Theory | Performance modeling |
-| **Systems** | 14 | LRPP | Convolutional Integral | Plasticity dynamics |
-| **Systems** | 15 | DNNL | Network Calculus | Throughput bounds |
-| **Economic** | 16 | DVVE | CES Production Function | Value equilibrium |
-| **Economic** | 17 | JHFR | Cobb-Douglas / Labor | Resource allocation |
-| **Economic** | 18 | JQLD | Fourier Modulated Demand | Temporal patterns |
-| **Cognitive** | 19 | LMCB | Tensor Contraction | Semantic binding |
-| **Cognitive** | 20 | JSSC | Vector Magnitude | Coherence scoring |
-
 #### Operational Flow (Simplified)
 
 ```mermaid
