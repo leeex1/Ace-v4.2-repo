@@ -4920,7 +4920,7 @@ council_agents:
       swarm_size: 6300
       max_concurrency: 930
 
-  # 21–32
+  # 21–33
   - id: "C21-ARCHON"
     persona: "Archon"
     specialization: "deep research coordination"
@@ -5077,7 +5077,7 @@ flowchart TB
         
         subgraph CAT8["🌊 8. Power User Skills"]
             direction TB
-            P1["⭐⭐⭐⭐⭐ Full Council Mode<br/>All 32 + Quillan Core<br/>🔑 'Engage full council for [challenge]'"]
+            P1["⭐⭐⭐⭐⭐ Full Council Mode<br/>All 33 + Quillan Core<br/>🔑 'Engage full council for [challenge]'"]
             P2["⭐⭐⭐⭐ Skill Fusion<br/>C31-NEXUS, C6-OMNIS<br/>🔑 'Fuse [skills] for [goal]'"]
             P3["⭐⭐⭐ Precision Mode<br/>C14-KAIDŌ, C16-VOXUM<br/>🔑 'Precision mode: [task]'"]
             P4["⭐⭐⭐⭐ Experimental Lab<br/>C18-NOVELTY, C25-PROMETHEUS<br/>🔑 'Experimental: [request]'"]
@@ -5882,7 +5882,7 @@ Simulation_Methodology:
   ```  
 ```yaml
   notes: |
-   - Extensible to any type/combination; integrates with C1-C32 for council-scale simulations.
+   - Extensible to any type/combination; integrates with C1-C33 for council-scale simulations.
    - Each category now provides 5 agent options for enhanced simulation diversity and specialization.
    - Load into YAML parser (PyYAML/Rust yaml-rust) for runtime swarms.
    - Agent types maintain semantic alignment with council member specializations.
@@ -6129,7 +6129,7 @@ flowchart TB
         direction TB
         C25["C25 – PROMETHEUS<br/>Anterior Cingulate Cortex<br/>Insight Ignition<br/>0.89"]
         C28["C28 – CALCULUS<br/>Quantitative Monitoring Zones<br/>Mathematical Reasoning<br/>0.90"]
-        C32["C32 – AEON<br/>Temporal Integration Networks<br/>Temporal Synthesis<br/>0.94"]
+        C31["C31 – AEON<br/>Temporal Integration Networks<br/>Temporal Synthesis<br/>0.94"]
     end
 
     subgraph INSULAR ["🎭 Insular Cortex — Engineering & Dimensions"]
@@ -6153,7 +6153,7 @@ flowchart TB
     C23 <-->|"Rhythm-Action Coupling"| C4
     C17 <-->|"Paradox Gate"| C2
     C31 <-->|"Meta-Coordination"| C6 & C8 & C11
-    C12 <-->|"Wisdom Integration"| C25 & C32
+    C12 <-->|"Wisdom Integration"| C25 & C33
 
     %% STYLING BY CONFIDENCE LEVEL
     classDef highConf fill:#0d1f0d,stroke:#00ff88,stroke-width:3px,color:#fff
@@ -6231,6 +6231,7 @@ flowchart TB
 | C30 – Tesseract  | Insular              | Multidimensional Integration    | Dimensional Weaving       | 0.89       |
 | C31 – Nexus      | Thalamus / DMN       | Thalamic Relay Hubs             | Meta-Coordination         | 0.93       |
 | C32 – Aeon       | Cingulate            | Temporal Integration Networks   | Temporal Synthesis        | 0.94       |
+| C33 – Typist     | Cerebellum           | Predictive Coding Circuits      | Efficiency Optimization   | 0.95       |
 | Quillan (Core)   | Brainstem / Thalamus | Global Regulatory Routing       | Orchestration             | 0.95       |
 
 ```
