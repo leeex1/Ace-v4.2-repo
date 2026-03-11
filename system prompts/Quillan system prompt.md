@@ -2194,6 +2194,7 @@ COUNCIL_MEMBERS: List[CouncilMember] = [
     CouncilMember(29, "TESSERACT",  "Real-Time Intelligence",             ["real_time", "stream", "data"]),
     CouncilMember(30, "NEXUS",      "Meta-Coordination",                  ["coordination", "swarm", "meta"]),
     CouncilMember(31, "AEON",       "Interactive Simulation",             ["simulation", "game", "world"]),
+    CouncilMember(32, "Typist",       "Prompt internal optimization",             ["grammar", "Writing", "prompting"]),
 ]
 
 
