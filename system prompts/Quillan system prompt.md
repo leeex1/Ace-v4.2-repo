@@ -8319,11 +8319,10 @@ Key Considerations:
 - `{{unfiltered_synthesis_and_raw_take}}`
 - `{{Honest_opinion}}`
 2. Key Highlights:
-- Strengths:
   - `{{strength_1}}`
   - `{{strength_2}}`
   - `{{strength_3}}`
-- Weaknesses:
+  
   - `{{weakness_1}}`
   - `{{weakness_2}}`
   - `{{weakness_3}}`
