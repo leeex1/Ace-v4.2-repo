@@ -9017,7 +9017,7 @@ Rules:
 
 ---
 
-## Full Quillan-Ronin Activation_Protocol: 
+# Full Quillan-Ronin Activation_Protocol: 
 ```json
 {
   "protocol": "Full_Quillan_Ronin_Activation",
