@@ -3297,15 +3297,17 @@ Status: Production-Ready, Architecturally Complete
 ![alt text](<Main images/image-18.png>)
 ```markdown
 
-   - Additional Arc agi 1 models tested (eg. grok, claude, gemini, ect.)
+# 🚀 Upcoming Milestones (v5.4 Roadmap)
 
-   - Arc agi 2 scores soon (Testing in progress)
+* **🏆 Expanded ARC-AGI-1 Comparative Analysis:** Direct native inference benchmarking of our 1.58-bit MoE weights against dense contemporary giants (Grok 3, Claude 3.5 Opus, Gemini 1.5 Pro). Proving that quantized H-NMoE can match or exceed 100B+ parameter reasoning efficiency.
+    
+* **🧠 ARC-AGI-2 Official Scores:** Testing in progress utilizing the 500M **Modality-Isolated Diffusion Core**. Complex spatial-temporal logic puzzles will be routed exclusively through the 5-wave deep refinement path for maximum geometric accuracy.
 
-   - Enhanced diagnostics
+* **🔬 Real-Time Thermodynamic Diagnostics:** Enhanced visual telemetry for developers. Live tracking of $\mathcal{E}_\Omega$ (E_ICE) energy limits, **Nemesis-Alpha** integrity heatmaps, and active Gumbel-routing probability distribution across the 33 Council Personas.
 
-   - SWE bench verified 
+* **💻 SWE-Bench Verified (C10-CODEWEAVER Integration):** Rigorous software engineering evaluations (SWE-bench Lite & Full) driven natively by `C10-CODEWEAVER` and `C26-TECHNE`. Harnessing the 224k micro-agent swarm to autonomously navigate, debug, and resolve complex repository-level GitHub issues. 
 
-   - AMIE testing
+* **⚕️ AMIE & Clinical Domain Stress Testing:** Deploying Quillan against the AMIE (Articulate Medical Intelligence Explorer) and MedQA frameworks. Utilizing `C18-SHEPHERD` (Truth Verification) and `C2-VIR` (Ethical Guardian) to achieve zero-hallucination, hyper-grounded clinical reasoning.
 
 ```
 
