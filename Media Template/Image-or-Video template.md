@@ -352,9 +352,3 @@ For dataset generation: set batch_strategy to consistent and use seeds offset by
 
 
 ---
-
-If you want, I’ll:
-
-produce a JSON Schema (validator) for this manifest, or
-
-write a small JS/Python prompt-compiler that converts this manifest into tuned prompts for Stable Diffusion, Midjourney, or a video model — pick one and I’ll output the code.
