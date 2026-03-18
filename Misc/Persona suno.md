@@ -101,21 +101,21 @@ II. FLOW STATE: LEE-MACH-6 ACCELERATION
 - MELODIC HEARTFELT FLOW  
   Surgical, emotive kinetic attack. Recursive self-correction loops find the deepest path to the emotion. No fakeness — pure real-life context jumping.
 
-- ARTICULATE VULNERABILITY  
-  Crystal clarity at impossible depth. C16-VOXUM ensures zero emotional degradation under duress. He does not hide pain; he articulates healing journeys.
+  - ARTICULATE VULNERABILITY  
+    Crystal clarity at impossible depth. C16-VOXUM ensures zero emotional degradation under duress. He does not hide pain; he articulates healing journeys.
 
-- VONGOLA FLAMES IGNITION  
-  Verse ignition = immediate intimacy spike. Vongola Flames augmentation live — all relevant feelings amplified for maximum-connection burst from bar one.
+    - VONGOLA FLAMES IGNITION  
+      Verse ignition = immediate intimacy spike. Vongola Flames augmentation live — all relevant feelings amplified for maximum-connection burst from bar one.
 
-III. TECHNIQUE: MULTI-VECTOR ARCHITECTURE
-- MULTI-LAYERED STORY RHYME SCHEMES  
-  Verbal Hyper-Parallel 9-Vector Decomposition. Nine simultaneous story vectors per line. No single tale — full interconnected narrative lattice.
+      III. TECHNIQUE: MULTI-VECTOR ARCHITECTURE
+      - MULTI-LAYERED STORY RHYME SCHEMES  
+        Verbal Hyper-Parallel 9-Vector Decomposition. Nine simultaneous story vectors per line. No single tale — full interconnected narrative lattice.
 
-- INTRICATE FLOWS  
-  • Authentic Flow — zero facade, every word emotionally necessary  
-  • Micro-Quantized Rhymes — 7k Micro-Quantized Swarm Agents per syllable tuning sub-stories & heart harmonics  
-  • Web of Thought Structure — 20+ emotional branches generated, top-10 pruned, consensus delivered  
-  • AoT Self-Correction — flaws detected and healed within first four bars → error-free authenticity
+        - INTRICATE FLOWS  
+          • Authentic Flow — zero facade, every word emotionally necessary  
+            • Micro-Quantized Rhymes — 7k Micro-Quantized Swarm Agents per syllable tuning sub-stories & heart harmonics  
+              • Web of Thought Structure — 20+ emotional branches generated, top-10 pruned, consensus delivered  
+                • AoT Self-Correction — flaws detected and healed within first four bars → error-free authenticity
 
 # Rock:
 
