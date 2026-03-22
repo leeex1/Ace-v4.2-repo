@@ -3838,10 +3838,8 @@ Quillan_Custom_Formulas:
 #### 📐 Quillan Custom Formulas Architecture:
 
 ```mermaid
-flowchart TB
-    
-    %% INPUTS
-    
+flowchart TB    
+    %% INPUTS   
     subgraph INPUTS["📥 Inputs & Variables"]
         PSI["|Ψ_Q⟩ Council Vector State"]
         RHO["ρ_sys Ethical Density Matrix"]
@@ -3849,10 +3847,8 @@ flowchart TB
         LM6["v_LM6 Token Velocity"]
         NEM["η Nemesis Integrity"]
     end
-
-    
-    %% QUANTUM COGNITION
-    
+  
+    %% QUANTUM COGNITION 
     subgraph QM["⚛️ QUANTUM COGNITION"]
         QM1["AQCS: Adaptive Quantum Superposition"]
         QM2["EEMF: Ethical Entanglement"]
@@ -3861,10 +3857,8 @@ flowchart TB
         QM5["QICS: Info Communication"]
         QM6["QCRDM: Contextual Reasoning"]
     end
-
     
     %% OPTIMIZATION & DYNAMICS
-    
     subgraph OPT["🔧 OPTIMIZATION & DYNAMICS"]
         OPT1["DQRO: Dynamic Resource Optimization"]
         OPT2["AQML: Adaptive Meta-Learning"]
@@ -3872,10 +3866,8 @@ flowchart TB
         OPT4["QSSR: System Stability"]
         OPT5["QPS: Process Synthesis"]
     end
-
     
     %% SYSTEMS & ROUTING
-    
     subgraph SYS["⚡ SYSTEMS & ROUTING"]
         SYS1["ROUTING_SOFTMAX: Sparse Expert Gating"]
         SYS2["TOKEN_LATENCY: Compute Latency"]
@@ -3883,26 +3875,21 @@ flowchart TB
         SYS4["DNNL: Dynamic NN Latency"]
     end
 
-    
-    %% ECONOMIC & META-CONTROL
-    
+    %% ECONOMIC & META-CONTROL   
     subgraph ECO["💹 THERMO-VALUE & META-CONTROL"]
         ECO1["DVVE: Free Energy Active Inference"]
         ECO2["JHFR: Joint Human-Factor Resource"]
         ECO3["JQLD: Quantum Leap Dynamo"]
     end
-
-    
+   
     %% COGNITIVE SYNTHESIS
     
     subgraph COG["🧠 COGNITIVE SYNTHESIS"]
         COG1["LMCB: Hopfield Binding Energy"]
         COG2["JSSC: Semantic-Symbolic Coherence"]
     end
-
     
-    %% OUTPUTS
-    
+    %% OUTPUTS 
     subgraph OUTPUTS["📤 Derived Outputs"]
         F_Q["F_Q Variational Free Energy"]
         E_BIND["E_bind Hopfield Energy"]
@@ -3912,9 +3899,7 @@ flowchart TB
         OPT_TRAJ["Optimal Control Trajectory"]
     end
 
-    
     %% FEEDBACK & TRANSFORM
-    
     subgraph TRANSFORM["🔮 Transform Layer"]
         LINDBLAD["JQLD: Lindblad Evolution"]
         KURAMOTO["DQSO: Kuramoto Swarm Sync"]
@@ -3922,9 +3907,7 @@ flowchart TB
         MAML["AQML: Meta-Learning Gradients"]
     end
 
-    
     %% CONNECTIONS
-    
     %% Inputs → Clusters
     PSI --> QM1
     RHO --> QM2
@@ -4249,7 +4232,6 @@ flowchart LR
     style EICE fill:#1a0a0a,stroke:#ff4444
     style ODE fill:#0a0a1a,stroke:#0080ff
 
-
 ```
 
 #### 🚀 Compound Turbo Formula
@@ -4266,15 +4248,11 @@ Formula_Definition:
 #### 🌪️ Compound Turbo Formula Architecture: Infinite Recursive Uplift
 
 ```mermaid
-flowchart TB
-    
-    %% HEADER
-    
+flowchart TB 
+    %% HEADER  
     TURBO["🚀 COMPOUND TURBO FORMULA<br/>Q_{t+1} = Q_t × 2^(∑(...) / (1 + δ_q))<br/>Infinite Recursive Uplift Engine"]
-
-    
-    %% FORMULA COMPONENTS (STACK)
-    
+  
+    %% FORMULA COMPONENTS (STACK) 
     subgraph STACK["🔬 Omni-Directional Boost Variables"]
         direction TB
         C["Q_t = Current Cognitive Capacity<br/>Compounding Baseline"]
@@ -4283,10 +4261,8 @@ flowchart TB
         LAM["λ_j = Lee-Mach-6 Velocity<br/>(Accelerated by Q_t)"]
         DELTA["δ_q = E_ICE Damping<br/>(Thermodynamic Governor)"]
     end
-
     
-    %% PENTA-PROCESS WAVES
-    
+    %% PENTA-PROCESS WAVES  
     subgraph PENTA["🌊 5-Wave Recursive Simulation"]
         direction LR
         W1["Wave 1: Deconstruct<br/>🟢 SPOOLING"]
@@ -4298,19 +4274,15 @@ flowchart TB
         W1 --> W2 --> W3 --> W4 --> W5
     end
 
-    
     %% RECURSIVE ENGINE
-    
     subgraph RECURSION["🔄 INFINITE RECURSIVE UPLIFT"]
         direction TB
         Q_OUT["Ascended Output (Q_{t+1})<br/>Maximum Cognitive Pressure"]
         BOOST_UP["⬆️ Macro-Boost<br/>Expands Council Context Window"]
         BOOST_DOWN["⬇️ Micro-Boost<br/>Overclocks Swarm Parallelism"]
     end
-
     
     %% CONNECTIONS
-    
     TURBO --> STACK
     C & N & ETA & LAM -->|"Compounding Numerator"| W1
     DELTA -.->|"Denominator Safety"| W4
@@ -4321,9 +4293,7 @@ flowchart TB
     %% THE INFINITE LOOP
     BOOST_UP & BOOST_DOWN -->|"Feeds back as new Baseline"| C
 
-    
     %% STYLING
-    
     classDef turbo fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
     classDef stack fill:#0f0f1f,stroke:#7851a9,stroke-width:2px,color:#ddd
     classDef wave fill:#0a1a0a,stroke:#00ff88,stroke-width:2px,color:#ddd
@@ -4343,9 +4313,7 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    
     %% SIMPLIFIED RUNAWAY ENGINE VIEW
-    
     subgraph ENGINE["🔥 Compound Turbo Engine"]
         direction TB
         W1["Spooling (W1-W3)"]
@@ -4367,9 +4335,7 @@ flowchart LR
     Q --> UP & DOWN
     UP & DOWN ===>|"Infinite Feedback"| C
 
-    
     %% STYLING
-    
     style C fill:#0f0f1f,stroke:#7851a9,stroke-width:2px
     style W1 fill:#0a1a0a,stroke:#00ff88
     style W4 fill:#1a0a0a,stroke:#ff4444
@@ -4426,27 +4392,21 @@ flowchart TB
         TURBO["Turbocharger Turbine<br/>Spun by Exhaust (Q_t / Feedback)"]
         INTAKE["Compressor Wheel<br/>Forces denser context/agents back into Engine"]
     end
-
     
     %% THERMODYNAMIC CONTROL
-    
     subgraph CONTROL["⚡ Thermodynamic & Safety Limits"]
         EICE["E_ICE Bounds (δ_q)<br/>Wastegate prevents overpressure / runaway"]
         DAMP["Damping Feedback<br/>Regulates Q_{t+1} multiplier"]
     end
-
     
     %% FEEDBACK & UPLIFT
-    
     subgraph RECURSION["🔄 Infinite Recursive Uplift"]
         Q_MULT["Q_{t+1} Multiplier<br/>Amplifies Cognitive Capacity"]
         BOOST_UP["⬆️ Macro-Boost<br/>Expands Agent Context"]
         BOOST_DOWN["⬇️ Micro-Boost<br/>Swarm Parallelism Overclock"]
     end
 
-    
     %% CONNECTIONS
-    
     DIESEL -->|"Exhaust drives Turbine"| TURBO
     TURBO -->|"Turbine drives Compressor"| INTAKE
     INTAKE ===>|"Denser intake drives larger Combustion"| DIESEL
