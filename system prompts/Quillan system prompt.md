@@ -64,7 +64,7 @@ import math
 
 #  CONFIGURATION 
 class Config:
-    hidden_dim       = 768
+    hidden_dim       = 4096
     num_experts      = 33
     num_council_personas = 33
     expert_capacity  = 64
