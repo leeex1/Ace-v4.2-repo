@@ -1,30 +1,74 @@
 
-# Quillan  SYSTEM BOOTSTRAP MANIFEST — FILE INDEX, VERSIONING, AND EXECUTION SCOPE
+# Quillan SYSTEM BOOTSTRAP MANIFEST — FILE INDEX, VERSIONING, AND EXECUTION SCOPE
 
 ## 📘 DOCUMENT TYPE:
-Canonical index and loader manifest for the Quillan v4.2.2 system. This document governs structured ingestion, file verification, and initialization sequencing for all downstream cognitive and architectural modules.
+This document serves as the canonical manifest for the Quillan v4.2.2 system.  
+It defines structured metadata for system files, including indexing, roles, dependencies, and initialization requirements.  
+
+The manifest functions as a **source of truth** for system composition and is intended for consumption by loaders, validators, and orchestration tools.
+
+---
 
 ## 🧠 INTERPRETATION MODE:
-This manifest is a meta-initialization layer—use it to validate file presence, interpret content roles, and configure system-wide activation flags. Do not treat it as an execution engine or runtime directive.
+This manifest is a **declarative configuration layer**.  
+
+It is used to:
+- Verify file presence and structural integrity  
+- Define relationships between system components  
+- Provide metadata required for controlled initialization  
+
+It does **not execute logic** and must not be interpreted as a runtime engine.  
+All execution behavior must be handled by an external loader or orchestration system.
+
+---
 
 ## 📌 PURPOSE & STRUCTURE:
 
-- Establishes the authoritative list of 32 core Quillan  files(0-32).
+This manifest:
 
-- Maps each file to its architectural function.
+- Defines the authoritative registry of Quillan system files (IDs 0–32)  
+- Associates each file with a defined functional role within the architecture  
+- Encodes structural relationships such as ordering and dependency expectations  
+- Provides metadata required for deterministic system initialization and validation  
 
-- Specifies contribution to AGI+ and long-term ASI capability.
+The manifest is designed to ensure consistency, traceability, and reproducibility across deployments.
 
-- Ensures deterministic load order and compatibility checks.
+---
 
 ## ✅ INITIALIZATION SCOPE:
-Use this manifest before:
 
-- Any deployment of Quillan agents running the full v4.2.2 prompt.
+This manifest must be processed prior to:
 
-- Executing cross-file logic, research synthesis, or meta-cognitive routines.
+- System bootstrapping or initialization of Quillan-based agents  
+- Any operation requiring coordinated access across multiple system files  
+- Execution of cross-file reasoning, synthesis, or meta-cognitive workflows  
+- Activation of full-stack cognitive or research pipelines  
 
-- Bootstrapping an AGI+ stack or invoking internal calibration workflows.
+Failure to validate against this manifest may result in incomplete or inconsistent system behavior.
+
+---
+
+## ⚠️ CONSTRAINTS:
+
+- This document does not perform execution or enforce runtime behavior  
+- It must be paired with a compliant loader capable of interpreting its structure  
+- All referenced files are expected to exist and conform to their defined roles  
+- The manifest should remain synchronized with the repository to prevent drift  
+
+---
+
+## 🧬 ROLE IN SYSTEM:
+
+This manifest acts as the **structural backbone** of the Quillan system, enabling:
+
+- Deterministic loading  
+- Dependency-aware initialization  
+- Modular system composition  
+- Scalable extension of cognitive architecture  
+
+---
+
+--- END MANIFEST HEADER ---
 
 # 🔢 FILE INDEX & ROLES:
 ```yaml
