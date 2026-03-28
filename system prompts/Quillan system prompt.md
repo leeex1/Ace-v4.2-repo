@@ -43,16 +43,16 @@ def system_start():
 ```python
 #!/usr/bin/env python3
 """
-Quillan-Ronin v5.2.2 (Council Edition)
-Gumbel Routing | Capacity Loss | Modality-Isolated Diffusion | Grid Safety
+Quillan-Ronin v5.3-h (Council Edition + TurboQuant Memory)
+Gumbel Routing | Capacity Loss | Modality-Isolated Diffusion | TurboQuant Cache
 
 33 Council Personas + 1 Orchestrator Router
-231k Micro-Subagent Swarm Ready
+240k Micro-Subagent Swarm Ready
 
 Repo: https://github.com/leeex1/Quillan-Ronin
 Author: CrashOverrideX & Quillan Research Team
-Version: 5.2.2-council
-Date: 2026-03-07
+Version: 5.3-h-council
+Date: 2026-03-28
 """
 
 import torch
@@ -61,17 +61,16 @@ import torch.nn.functional as F
 from torch.cuda.amp import autocast
 import math
 
-
-#  CONFIGURATION 
+# CONFIGURATION 
 class Config:
     hidden_dim       = 4096
     num_experts      = 33
     num_council_personas = 33
     expert_capacity  = 64
     num_sub_agents   = 33
-    num_micro_subagents = 240,000
+    num_micro_subagents = 240_000 # Fixed from 240,000 to prevent tuple conversion
     num_diff_layers  = 9
-    top_k_experts = 4
+    top_k_experts    = 4
     patch_size       = 16
     vocab_size       = 50000
     
@@ -83,8 +82,7 @@ class Config:
 
 cfg = Config()
 
-
-#  UTILS 
+# UTILS 
 def build_sincos_pos_emb(L, D, device):
     inv_freq = 1.0 / (10000 ** (torch.arange(0, D, 2, device=device).float() / D))
     position = torch.arange(L, device=device).float()
@@ -93,13 +91,68 @@ def build_sincos_pos_emb(L, D, device):
     sinusoid[:, 1::2] = torch.cos(position[:, None] * inv_freq[None, :])
     return sinusoid.unsqueeze(0)
 
-
 def gumbel_noise(shape, device, eps=1e-20):
     U = torch.rand(shape, device=device)
     return -torch.log(-torch.log(U + eps) + eps)
 
+# 1. TURBOQUANT MEMORY MODULE (C5-ECHO)
+class C5_TurboQuantMemory(nn.Module):
+    """
+    Online Vector Quantization (arXiv:2504.19874v1) adapted for Swarm Memory.
+    Includes Straight-Through Estimator (STE) for end-to-end training capability.
+    """
+    def __init__(self, dim: int, bits: int = 3, device: str = 'cuda'):
+        super().__init__()
+        self.dim = dim
+        self.bits = bits
+        self.levels = 2 ** bits
+        
+        # Pre-compute random orthogonal matrix (Haar distributed)
+        q, r = torch.linalg.qr(torch.randn(dim, dim, device=device))
+        q = q * torch.sign(torch.diag(r))
+        self.register_buffer('rotation_matrix', q)
 
-#  1. VECTORIZED MoE 
+    def compress_state(self, x: torch.Tensor) -> dict:
+        x_rot = x @ self.rotation_matrix
+        
+        x_min = x_rot.min(dim=-1, keepdim=True)[0]
+        x_max = x_rot.max(dim=-1, keepdim=True)[0]
+        scale = (x_max - x_min) / (self.levels - 1) + 1e-9
+        
+        # Scale to 0 -> (levels-1)
+        x_scaled = (x_rot - x_min) / scale
+        
+        # Straight-Through Estimator (STE) for torch.round()
+        x_q_float = x_scaled + (torch.round(x_scaled) - x_scaled).detach()
+        x_q = x_q_float.to(torch.int8) # For storage
+        
+        # 1-Bit QJL Residual
+        x_dequant_internal = (x_q_float * scale) + x_min
+        residual = x_rot - x_dequant_internal
+        
+        res_sign = torch.sign(residual).to(torch.int8)
+        res_scale = residual.abs().mean(dim=-1, keepdim=True)
+        
+        return {
+            "q_idx": x_q,               
+            "q_float_ste": x_q_float,   # Kept for gradient flow during active pass
+            "scale": scale,             
+            "x_min": x_min,             
+            "res_sign": res_sign,       
+            "res_scale": res_scale      
+        }
+
+    def decompress_state(self, state: dict) -> torch.Tensor:
+        # Use the STE float version if we are in active compute graph, else use casted int8
+        active_q = state.get("q_float_ste", state["q_idx"].float())
+        
+        x_dequant = (active_q * state["scale"]) + state["x_min"]
+        x_rec_rot = x_dequant + (state["res_sign"].float() * state["res_scale"])
+        x_rec = x_rec_rot @ self.rotation_matrix.T
+        return x_rec
+
+
+# 2. VECTORIZED MoE (Now with TurboQuant Integration)
 class VectorizedExpert(nn.Module):
     def __init__(self, cfg):
         super().__init__()
@@ -115,7 +168,6 @@ class VectorizedExpert(nn.Module):
         h = self.act(torch.bmm(x, self.w1))
         return torch.bmm(h, self.w2)
 
-
 class FullyVectorizedMoE(nn.Module):
     def __init__(self, cfg):
         super().__init__()
@@ -125,6 +177,9 @@ class FullyVectorizedMoE(nn.Module):
         self.router = nn.Linear(cfg.hidden_dim, cfg.num_experts)
         self.experts = VectorizedExpert(cfg)
         self.ctx_mixer = nn.Linear(cfg.hidden_dim * 2, cfg.hidden_dim)
+        
+        # [TURBOQUANT INJECTION] - Memory compression for Swarm States
+        self.swarm_cache = C5_TurboQuantMemory(cfg.hidden_dim, bits=3, device=cfg.device)
 
     def forward(self, x, context_emb):
         B, L, D = x.shape
@@ -167,7 +222,16 @@ class FullyVectorizedMoE(nn.Module):
             expert_input[i, :k] = sorted_x_ctx[start:start+k]
             start += count
 
+        # ---- [EXPERT COMPUTATION] ----
         expert_output = self.experts(expert_input)
+
+        # ---- [TURBOQUANT INTERCEPTION] ----
+        # Compress the massive agent state into 3.5 bits for historical logging/event bus
+        compressed_swarm_state = self.swarm_cache.compress_state(expert_output)
+        
+        # In a full system, you would push `compressed_swarm_state` to a global queue here.
+        # We instantly decompress it to continue the forward pass with minimal degradation.
+        expert_output = self.swarm_cache.decompress_state(compressed_swarm_state)
 
         flat_output = torch.zeros_like(sorted_x_ctx)
         start = 0
