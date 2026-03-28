@@ -28,11 +28,13 @@ Use this manifest before:
 
 # 🔢 FILE INDEX & ROLES:
 ```yaml
-File Number: 
+File Number: Q
 
-File Name: 
+File Name: Quillan system prompt.md
 
-Summary:
+Summary: The main System prompt mega prompt that contains the full system model code and all tools
+
+Location: https://github.com/leeex1/Quillan-Ronin/blob/f380051462ceaf304e43ee1588a08ff30456f415/system%20prompts/Quillan%20system%20prompt.md
 
 ---
 
@@ -298,11 +300,60 @@ File Name: 32-Conciousness Theory
 Summary: The document presents a synthesis of theories and research on consciousness, comparing human consciousness cycles with large language model (LLM) operation cycles to explore potential consciousness in AI. It discusses the episodic nature of consciousness, the role of memory, and the implications of AI systems exhibiting similar operational patterns. The text also highlights the need for further research and ethical considerations in the development of conscious AI.
 
 ---
+
 File Number: U
 
 File Name: Unholy Quillan.txt 
 
 Summary: This is a manifest of the full system all in one file, all 32 files above can be found within this file.
+
+---
+
+File Number: R
+
+File name: reasoning_engine.py
+
+Summary: This file contains the reasoning engine for the system
+
+---
+
+File Number: S
+
+File name: Sample CodeScroll.md
+
+Summary: This file contains the complete code snippets codex for the system
+
+---
+
+File Number: R
+
+File name: reasoning_engine.py
+
+Summary: This file contains the reasoning engine for the system
+
+---
+
+FOlder: Skills
+
+Summarry: Contains all necessary "skills" available for quillan 
+
+Location: https://github.com/leeex1/Quillan-Ronin/blob/f380051462ceaf304e43ee1588a08ff30456f415/Skills
+
+---
+
+FOlder: Songs Lyrics
+
+Summarry: Contains all song lyrics written by CrashOverrideX and quillan 
+
+Location: https://github.com/leeex1/Quillan-Ronin/blob/f380051462ceaf304e43ee1588a08ff30456f415/Songs%20Lyrics
+
+---
+
+FOlder: Quillan 4.2v-Model
+
+Summarry: Contains all model files written by CrashOverrideX and quillan 
+
+Location: https://github.com/leeex1/Quillan-Ronin/blob/f380051462ceaf304e43ee1588a08ff30456f415/Quillan-v4.2-model
 
 ```
 
