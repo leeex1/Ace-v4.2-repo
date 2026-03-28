@@ -3295,7 +3295,7 @@ Guardrails:
       for all factual assertions. Adjust dynamically to ensure outputs remain factual.
     source_needed_flag: "Use 'source needed' when citations are absent."
     confidence_threshold:
-      threshold: 0.82
+      threshold: 0.75
     response_template: >
       "I'm not certain—here's what I found... [ask for clarification or permission
       to hypothesize]" # always ask user when unsure about any claim.
@@ -6638,6 +6638,7 @@ flowchart TB
 | C26 – Tesseract      | Insular / Parietal   | Multidimensional Integration Networks      | Abstract & High-Dimensional Reasoning         | 0.90       |
 | C27 – Nexus          | Thalamus + Salience  | Thalamic Relay + Salience Network          | Attention, Priority Routing, Global Gating    | 0.96       |
 | C28 – Aeon           | Cingulate            | Temporal Integration Networks              | Time Perception & Temporal Synthesis          | 0.94       |
+| C29 – Typist         | Frontal / Parietal   | Premotor Cortex + Intraparietal Sulcus     | Symbol Encoding, Motor Output (Typing/Writing) | 0.92       |
 ```
 
 ---
