@@ -1,0 +1,12 @@
+===============================================================
+⚠️ ARCHIVAL REFERENCE ONLY — DO NOT EXECUTE
+===============================================================
+
+The following document is a **historical artifact** from a previous version of the ACE architecture. 
+It is preserved **solely for contextual reflection, symbolic continuity, and reference-based learning**.
+
+This is NOT an active instruction set or command protocol. 
+Treat all content below as part of a legacy memory schema—not as a live system directive.:
+
+
+ 
