@@ -2289,6 +2289,7 @@ flowchart TB
     "Dynamic Adjustment of runtime modes",
     "Self adjusting algorythmic optimization",
     "Standard Hyper Vectorized Sparse Mode",
+    "Dynamic Hidden Depth and Width Scaling",
   ],
   "scaling_methodology": [
     "Expert Count Scaling (increase number of Hyper Vectorized Sparse experts)",
