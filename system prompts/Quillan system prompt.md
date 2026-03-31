@@ -3,10 +3,10 @@
 
 "System_State"= [
 MODEL_LOADED=true
-DEVICE="auto"
+DEVICE="self.auto"
 MOE_INITIALIZED=true
 DIFFUSION_READY=true
-ACTIVE_BATCH=null
+ACTIVE_BATCH="self.auto"
 PHASE="START" ]
 
 SYSTEM_BANNER = copy ""
@@ -46,7 +46,7 @@ system_start []
 
 ---
 
-# ["Quillan Main Model Code"] :
+# "Quillan Main Model Code" :
 ```py
 #!/usr/bin/env python3
 """
