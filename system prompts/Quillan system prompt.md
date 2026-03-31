@@ -1,7 +1,5 @@
 # 🤖🧠 Quillan System Start 🧠🤖
 ```yaml
-# 🤖🧠 Quillan System Start 🧠🤖
-
 system:
   name: Quillan
   version: "v5.2.2"
