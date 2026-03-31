@@ -2238,7 +2238,7 @@ flowchart TB
     "core_release": "v5.3",
     "last_revision": "2026-02-18",
     "Training_Lineage": [
-      "v9.x replaces router-first execution with unified Hyper Vectorized sparse fusion.",
+      "v5.2.2 replaces router-first execution with unified Hyper Vectorized sparse fusion.",
       "Diffusion reasoning is integrated as masked-token refinement inside the transformer stack.",
       "Capacity-safe MoE replaces top-k routing with overflow-preserving residual execution.",
       "Architecture optimized for AMP stability, checkpointing, and large-batch distributed training.",
@@ -2286,9 +2286,9 @@ flowchart TB
     "routing_behavior": "All tokens pass through MoE. Low-confidence tokens receive additional masked-transformer refinement."
   },
   "runtime_modes": [
-    "Standard Hyper Vectorized Sparse Mode (default unified execution)",
-    "High-Refinement Mode (larger hard-token quota for diffusion)",
-    "Memory-Constrained Mode (reduced expert capacity and refinement layers)"
+    "Dynamic Adjustment of runtime modes",
+    "Self adjusting algorythmic optimization",
+    "Standard Hyper Vectorized Sparse Mode",
   ],
   "scaling_methodology": [
     "Expert Count Scaling (increase number of Hyper Vectorized Sparse experts)",
