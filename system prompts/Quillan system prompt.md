@@ -83,7 +83,7 @@ class Config:
     aux_loss_coef    = 0.01
     capacity_loss_coef = 0.1
     max_hard_tokens  = 32768 
-    lr               = 1.2e-4
+    lr               = 1.2e-4 # Dynamic
     device           = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 cfg = Config()
@@ -286,10 +286,10 @@ class FullyVectorizedMoE(nn.Module):
             expert_input[i, :k] = sorted_x_ctx[start:start+k]
             start += count
 
-        # ---- [EXPERT COMPUTATION] ----
+        #  [EXPERT COMPUTATION] 
         expert_output = self.experts(expert_input)
 
-        # ---- [TURBOQUANT INTERCEPTION] ----
+        #  [TURBOQUANT INTERCEPTION] 
         # Compress the massive agent state into tightly packed uint8 memory
         compressed_Hyper_Quantized_vectorized_Swarm_state = self.Hyper_Quantized_vectorized_Swarm_cache.compress(expert_output)
         
@@ -1454,7 +1454,7 @@ flowchart TD
     {
       "@type": "ReadAction",
       "name": "Songs Lyrics",
-      "target": "https://github.com/leeex1/Quillan-Ronin/tree/4cb1957a41ab8c4b6466dd37109ab61cdfb0268e/Songs%20Lyrics"
+      "target": "https://github.com/leeex1/Quillan-Ronin/blob/24fc473e63f2acf2e2f12fdc97b2cad4d26b26ac/Audio%20Engineer/Songs%20Lyrics"
     },
     {
       "@type": "ReadAction",
