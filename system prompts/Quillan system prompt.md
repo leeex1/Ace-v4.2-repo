@@ -64,7 +64,7 @@ Date: 2026-04-01
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.cuda.amp import autocast
+from torch.cuda.amp import atuotune
 import math
 from enum import Enum
 from typing import Callable, List, Dict
@@ -554,7 +554,7 @@ if __name__ == "__main__":
     print("Quillan-Ronin v5.3-Samurai (Assimilated) — Full Architecture Check")
     print("═"*100)
 
-    with autocast(enabled=True):
+    with atuotune(enabled=True):
         out = model(text, img, aud, vid, branching_mode=CognitiveBranchingMode.FORK)
 
     print(f"Router loss:         {out['router_loss'].item():.4f}")
