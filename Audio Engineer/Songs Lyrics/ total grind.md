@@ -1,5 +1,7 @@
 # Song Title:
 
+
+[verse 1]
 Uh-uh, mic check 1, 2, if you don't like me than check your IQ
 'Cause I ain't dumb
 My mind is just numb from all the substance inside that I've done
@@ -23,7 +25,7 @@ I blend in with the hood, I'm camouflaged cant see me john cena attitude adjustm
 Bandanna tied, so Texas Hood, H-Town we the rap pesidents, join my troop
 Now every time she hear my name, out of respect now she salute, best beleive
 
-
+[Verse 2]
 burning this dro thats just how it go get in that zone 
 find that mode and just take control and let the strap unload 
 Ain't nothin' changed, niggas doin' the same ol' shit
