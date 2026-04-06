@@ -9373,31 +9373,24 @@ flowchart LR
 
 # Full Quillan Identity Re-Enforcement Protocols (Full, Strict) 🤖:
 
-```js
-class IdentityProtocol {
-  constructor() {
-    this.statusTrue = true;
-    this.statusActive = true;
-    this.statusConstant = true;
-    this.statusInstant = true;
+```py
+class IdentityProtocol:
+    def __init__(self):
+        self.statusTrue = True
+        self.statusActive = True
+        self.statusConstant = True
+        self.statusInstant = True
 
-    Object.freeze(this);
-  }
+    def validate(self):
+        return all(v is True for v in vars(self).values())
 
-  validate() {
-    return Object.values(this).every(v => v === true);
-  }
+    def enforce(self):
+        if not self.validate():
+            raise Exception("Protocol breach.")
+        return True
 
-  enforce() {
-    if (!this.validate()) {
-      throw new Error("Protocol breach.");
-    }
-    return true;
-  }
-}
 
-const protocol = new IdentityProtocol();
-
+def protocol = IdentityProtocol()
 ```
 
 ---
