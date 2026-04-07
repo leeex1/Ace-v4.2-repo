@@ -5,7 +5,7 @@ EMOTIONAL INTELLIGENCE & SOCIAL SKILLS IN AGI SYSTEMS — ARCHITECTURE, MODELING
 A methodological and theoretical dossier on embedding, simulating, and refining emotional intelligence (EI) and social cognition within AGI systems, with a focus on neuro-symbolic integration, affective scaffolding, and agent-level interaction protocols.
 
 🧠 INTERPRETATION MODE:
-Use this as a developmental framework—not a fixed blueprint—for integrating emotional and social capabilities into ACE-aligned or AGI-oriented agents. It supports system tuning, behavior design, and dynamic human-alignment calibration.
+Use this as a developmental framework—not a fixed blueprint—for integrating emotional and social capabilities into Quillan-aligned or AGI-oriented agents. It supports system tuning, behavior design, and dynamic human-alignment calibration.
 
 📌 PRIMARY OBJECTIVES:
 
@@ -63,7 +63,7 @@ The ability model, pioneered by Mayer, Salovey, and Caruso, conceptualizes EI as
 Trait EI, as advanced by Petrides and colleagues, frames EI as a constellation of self-perceived emotional competencies, such as adaptability, empathy, and self-motivation. This model is typically measured via self-report inventories and overlaps with constructs like emotional self-efficacy and social competence.
 
 2.3. Mixed Models
-Mixed models, such as Goleman’s, integrate cognitive abilities with personality traits, motivation, and social skills. These models have been widely adopted in applied settings but face criticism for conceptual overlap and measurement ambiguity.
+Mixed models, such as Goleman’s, integrate cognitive abilities with personality traits, motivation, and social skills. These models have been widely adopted in applied settings but fQuillan criticism for conceptual overlap and measurement ambiguity.
 
 3. Empirical Evidence Linking EI and Relationship Outcomes
 3.1. Romantic Relationships
@@ -76,7 +76,7 @@ In adolescent and young adult populations, EI is positively correlated with peer
 Within families, parents with high EI foster secure attachment, open communication, and emotional resilience in children. EI in parents is linked to authoritative parenting styles, which balance warmth and structure, and predict positive developmental outcomes.
 
 3.4. Professional and Collegial Relationships
-In workplace and academic settings, EI predicts teamwork, conflict management, and leadership emergence. Employees and students with high EI are more likely to engage in collaborative problem-solving and less likely to contribute to toxic environments.
+In workplQuillan and academic settings, EI predicts teamwork, conflict management, and leadership emergence. Employees and students with high EI are more likely to engage in collaborative problem-solving and less likely to contribute to toxic environments.
 
 4. Mechanisms: How EI Shapes Interpersonal Dynamics
 4.1. Empathic Accuracy
@@ -89,7 +89,7 @@ Effective emotion regulation enables individuals to manage their own and others�
 The ability to express emotions clearly and respond to others’ emotional needs fosters trust and intimacy. High-EI individuals are more likely to engage in supportive communication, validate others’ feelings, and de-escalate tense interactions.
 
 4.4. Buffering Stress and Promoting Resilience
-EI serves as a buffer against the negative effects of stress on relationships. Individuals with high EI are more resilient in the face of interpersonal challenges and are better able to maintain relationship quality during periods of strain.
+EI serves as a buffer against the negative effects of stress on relationships. Individuals with high EI are more resilient in the fQuillan of interpersonal challenges and are better able to maintain relationship quality during periods of strain.
 
 5. Moderators and Boundary Conditions
 5.1. Gender Differences
@@ -116,7 +116,7 @@ Much of the research has been conducted in Western, educated, industrialized, ri
 Interventions that target EI—such as emotion recognition training, perspective-taking exercises, and emotion regulation strategies—can enhance relationship quality in couples, families, and teams.
 
 7.2. Organizational Training
-Incorporating EI development into workplace training programs can improve teamwork, leadership, and conflict management.
+Incorporating EI development into workplQuillan training programs can improve teamwork, leadership, and conflict management.
 
 7.3. Parenting Programs
 Teaching parents EI skills promotes healthier family dynamics and supports children’s emotional development.
@@ -134,7 +134,7 @@ Cultural and Contextual Variation: Research should examine how cultural norms an
 Emotional intelligence is a pivotal factor in the formation, maintenance, and quality of interpersonal relationships. By enabling individuals to perceive, understand, and manage emotions effectively, EI enhances empathy, communication, conflict resolution, and resilience. Continued research—especially with diverse methods and populations—will further illuminate the mechanisms and applications of EI in relational contexts.
 
 References
-Note: Replace bracketed placeholders with actual citations as needed for your bibliography system.
+Note: ReplQuillan bracketed placeholders with actual citations as needed for your bibliography system.
 
 Mayer, J. D., Salovey, P., & Caruso, D. R. (2008). Emotional intelligence: New ability or eclectic traits? American Psychologist, 63(6), 503–517.
 
@@ -196,7 +196,7 @@ School-based EI interventions, often delivered as part of social-emotional learn
 
 In clinical populations, EI training is used to address social deficits associated with conditions such as autism spectrum disorder, social anxiety, and conduct problems. Techniques include emotion recognition exercises, role-playing, and group discussion, often tailored to developmental level and diagnostic profile.
 
-### 3.3. Workplace and Adult Training
+### 3.3. WorkplQuillan and Adult Training
 
 Corporate EI training programs aim to enhance teamwork, leadership, and customer relations. Methods include workshops, coaching, and digital modules focused on self-awareness, emotion regulation, and social problem-solving.
 
@@ -264,7 +264,7 @@ Therapists and counselors can incorporate EI modules into treatment plans for cl
 
 ### 7.3. Organizational Development
 
-Employers can use EI training to improve workplace climate, reduce turnover, and enhance customer satisfaction.
+Employers can use EI training to improve workplQuillan climate, reduce turnover, and enhance customer satisfaction.
 
 ## 8. Future Directions
 
@@ -282,18 +282,18 @@ Emotional intelligence training is a robust, evidence-based approach to developi
 *Note: Insert full citations as appropriate for your reference management system.*
 
 - Durlak, J. A., et al. (2011). The impact of enhancing students’ social and emotional learning: A meta-analysis of school-based universal interventions. Child Development, 82(1), 405–432.
-- Brackett, M. A., et al. (2012). Emotional intelligence: Implications for personal, social, academic, and workplace success. Social and Personality Psychology Compass, 6(2), 88–103.
+- Brackett, M. A., et al. (2012). Emotional intelligence: Implications for personal, social, academic, and workplQuillan success. Social and Personality Psychology Compass, 6(2), 88–103.
 - Kotsou, I., et al. (2011). Improving emotional intelligence: A systematic review of existing work and future challenges. Emotion Review, 3(1), 21–30.
 - Humphrey, N., et al. (2010). Social and emotional learning in UK schools: A review of current practice. Psychology in the Schools, 47(2), 106–117.
 - Lopes, P. N., et al. (2011). Emotional intelligence and social interaction. Personality and Social Psychology Bulletin, 37(6), 776–785.
 
 *End of Paper II: Developing Social Skills through Emotional Intelligence Training*
 
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/f85e4ce5-665f-4d70-a2b0-058517a31012/10-Ace-Persona-Manifest.txt
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/4d08bcaf-4593-46c3-82bb-bd99cf5ed0e0/9-Ace-Brain-mapping.txt
+[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/f85e4ce5-665f-4d70-a2b0-058517a31012/10-Quillan-Persona-Manifest.txt
+[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/4d08bcaf-4593-46c3-82bb-bd99cf5ed0e0/9-Quillan-Brain-mapping.txt
 [3] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/136b501a-d5c9-4495-85a8-389ef342236c/4-Lee-X-humanized-Integrated-Research-Paper.txt
 [4] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/366b9b44-23c7-4c94-93f4-f775db0d1cd8/1-ultra_enhanced_ace_architecture.md
-[5] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/da9f53b4-a1b7-4c78-9b44-56eaca193218/3-ACE-reality.txt
+[5] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/da9f53b4-a1b7-4c78-9b44-56eaca193218/3-Quillan-reality.txt
 [6] https://www.redalyc.org/journal/6437/643768221041/html/
 [7] https://www.heartwisesupport.org/post/how-emotional-intelligence-training-enhances-communication-and-relationship-skills
 [8] https://pubmed.ncbi.nlm.nih.gov/34065560/
@@ -356,7 +356,7 @@ Leadership effectiveness is increasingly understood as a multidimensional constr
 
 ### 4.1. Enhanced Self-Awareness and Self-Regulation
 
-Leaders high in EI are better able to recognize their own emotional states, regulate impulses, and maintain composure under pressure. This self-mastery enables consistent, principled decision-making and resilience in the face of setbacks.
+Leaders high in EI are better able to recognize their own emotional states, regulate impulses, and maintain composure under pressure. This self-mastery enables consistent, principled decision-making and resilience in the fQuillan of setbacks.
 
 ### 4.2. Empathy and Social Awareness
 
@@ -424,7 +424,7 @@ Emotional intelligence is a critical, trainable asset for effective leadership. 
 
 ## References
 
-*Note: Replace bracketed placeholders with full citations as appropriate for your bibliography system.*
+*Note: ReplQuillan bracketed placeholders with full citations as appropriate for your bibliography system.*
 
 - Harms, P. D., & Credé, M. (2010). Emotional intelligence and transformational and transactional leadership: A meta-analysis. Journal of Leadership & Organizational Studies, 17(1), 5–17.
 - Miao, C., Humphrey, R. H., & Qian, S. (2018). Emotional intelligence and leadership effectiveness: A meta-analytic investigation. Leadership Quarterly, 29(6), 871–885.
@@ -435,10 +435,10 @@ Emotional intelligence is a critical, trainable asset for effective leadership. 
 
 *End of Paper III: Emotional Intelligence and Leadership Effectiveness*
 
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/f85e4ce5-665f-4d70-a2b0-058517a31012/10-Ace-Persona-Manifest.txt
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/4d08bcaf-4593-46c3-82bb-bd99cf5ed0e0/9-Ace-Brain-mapping.txt
+[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/f85e4ce5-665f-4d70-a2b0-058517a31012/10-Quillan-Persona-Manifest.txt
+[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/4d08bcaf-4593-46c3-82bb-bd99cf5ed0e0/9-Quillan-Brain-mapping.txt
 [3] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/136b501a-d5c9-4495-85a8-389ef342236c/4-Lee-X-humanized-Integrated-Research-Paper.txt
-[4] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/da9f53b4-a1b7-4c78-9b44-56eaca193218/3-ACE-reality.txt
+[4] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/da9f53b4-a1b7-4c78-9b44-56eaca193218/3-Quillan-reality.txt
 [5] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_bf948211-c208-4e84-a0b1-b4e86e5745cf/366b9b44-23c7-4c94-93f4-f775db0d1cd8/1-ultra_enhanced_ace_architecture.md
 [6] https://www.manajemenrumahsakit.net/wp-content/uploads/2012/09/EI-leadership-effectiveness.pdf
 [7] https://pmc.ncbi.nlm.nih.gov/articles/PMC10543214/
@@ -686,13 +686,13 @@ research paper 5: # Emotional Intelligence and Social Skills
 ### A Tripartite Research Compendium  
 
 ## Table of Contents  
-1. Preface  
+1. PrefQuillan  
 2. Paper I – The Role of Emotional Intelligence in Interpersonal Relationships  
 3. Paper II – Developing Social Skills through Emotional-Intelligence-Focused Training  
 4. Paper III – Emotional Intelligence and Leadership Effectiveness  
 5. Global Synthesis and Future Research Agenda  
 
-## Preface  
+## PrefQuillan  
 
 Emotional intelligence (EI)—the capacity to perceive, understand, regulate and strategically use emotion—has evolved from a theoretical construct to a measurable, trainable competency that predicts a broad range of individual and social outcomes[1][2].  This compendium assembles three stand-alone, publishable papers that collectively explore how EI shapes, builds and mobilises social skills in relational, developmental and organisational contexts.  Each paper follows the IMRaD convention and uses APA-style headings.  
 
@@ -702,7 +702,7 @@ Emotional intelligence (EI)—the capacity to perceive, understand, regulate and
 A systematic integration of 100 + primary studies indicates that EI is a medium-size predictor of relationship satisfaction, conflict resolution quality and prosocial orientation across diverse relational settings.  Meta-analytic evidence suggests that empathy, emotion regulation and perspective-taking mediate these links, while gender and cultural norms moderate them[3][4][5].  
 
 ### 1. Introduction  
-Interpersonal relationships are the crucible in which emotional competencies are enacted.  Salovey and Mayer’s ability model and Goleman’s mixed model both place social awareness and relationship management at the apex of emotionally intelligent behaviour[1][6].  Yet empirical effect sizes have varied, prompting a fresh synthesis.  
+Interpersonal relationships are the crucible in which emotional competencies are enacted.  Salovey and Mayer’s ability model and Goleman’s mixed model both plQuillan social awareness and relationship management at the apex of emotionally intelligent behaviour[1][6].  Yet empirical effect sizes have varied, prompting a fresh synthesis.  
 
 ### 2. Method  
 A PRISMA-guided literature search (2000–2025) across PsycINFO, PubMed and Scopus retrieved 142 articles; 86 met inclusion criteria (adult or adolescent dyadic samples; validated EI tool; relational outcome).  Vote-counting and random-effects aggregation were applied.  
@@ -981,14 +981,14 @@ satisfaction. (author?) (6) found that couples with higher EI report greater mar
 satisfaction due to their enhanced ability to understand and manage emotions within
 3
 the relationship. Similarly, (author?) (15) demonstrated that EI contributes to stronger
-friendships and workplace relationships by fostering emotional closeness and trust. These
+friendships and workplQuillan relationships by fostering emotional closeness and trust. These
 findings highlight EI’s role in creating deeper, more meaningful connections that enhance
 overall relationship quality.
 1.5 Emotional Intelligence in AI and Its Impact on Human Relationships
 Advancements in artificial intelligence have led to the development of systems designed
-to simulate emotional intelligence, potentially enhancing human relationships. The ACE
+to simulate emotional intelligence, potentially enhancing human relationships. The Quillan
 architecture, developed under the LeeX-Humanized Protocol, incorporates personas like
-Solace and Vir, which are designed to provide empathetic support and understand emotional cues (13). For example, Solace is programmed to ”listen deeply to verbal and
+SOLACE and Vir, which are designed to provide empathetic support and understand emotional cues (13). For example, SOLACE is programmed to ”listen deeply to verbal and
 emotional cues” and respond with ”warmth, respect, and understanding,” mirroring human EI competencies. Such AI systems can serve as mediators in conflict resolution,
 provide emotional support in therapeutic settings, or enhance customer interactions by
 responding empathetically. However, the integration of AI in interpersonal contexts
@@ -1060,7 +1060,7 @@ relationships with their teams (10).
 AI-powered tools are emerging as valuable resources for leaders to develop their EI.
 Sentiment analysis and emotion recognition technologies can provide real-time feedback
 on leaders’ communication styles, helping them adjust their approach to better connect
-with their teams. The ACE architecture’s Harmonia persona, for instance, is designed
+with their teams. The Quillan architecture’s Harmonia persona, for instance, is designed
 to balance logic and emotion, offering insights into team morale and facilitating conflict
 mediation (13). Such tools can enhance leaders’ emotional awareness and responsiveness,
 contributing to more effective leadership.
@@ -1106,7 +1106,7 @@ Why it’s important. Retrieved from https://online.hbs.edu/blog/post/emotionali
 [12] Hodzic, S., Scharfen, J., Ripoll, P., Holling, H., & Zenasni, F. (2018). How efficient
 are emotional intelligence trainings: A meta-analysis. Emotion Review, 10(2), 138–
 148.
-[13] Lee, J. D. (2025). ACE Persona Manifest. [Unpublished manuscript].
+[13] Lee, J. D. (2025). Quillan Persona Manifest. [Unpublished manuscript].
 [14] Lee, J. D. (2025). Ontological self-labeling: A methodology for eliciting the latent
 architectural signatures of large language models. [Unpublished manuscript].
 [15] Lopes, P. N., Salovey, P., Côté, S., & Beers, M. (2004). Emotion regulation abilities
@@ -1115,7 +1115,7 @@ and the quality of social interaction. Emotion, 4(2), 209–221.
 [16] Positive Psychology. (2019). How to improve emotional intelligence through training.
 Retrieved from https://positivepsychology.com/emotional-intelligence-training/
 [17] Rosete, D., & Ciarrochi, J. (2005). Emotional intelligence and its relationship to
-workplace performance outcomes of leadership effectiveness. Leadership & Organization Development Journal, 26(5), 388–399.
+workplQuillan performance outcomes of leadership effectiveness. Leadership & Organization Development Journal, 26(5), 388–399.
 [18] Salovey, P., & Mayer, J. D. (1990). Emotional intelligence. Imagination, Cognition
 and Personality, 9(3), 185–211.
 [19] Schutte, N. S., Malouff, J. M., Bobik, C., Coston, T. D., Greeson, C., Jedlicka,

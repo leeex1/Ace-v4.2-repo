@@ -7,13 +7,13 @@
 ## Introduction
 
 ### Purpose of the Guide
-This guide is designed to provide a thorough understanding and operational framework for using Files 0–10 within the ACE system. It serves as a reference for maintaining system integrity, safety, and efficiency, ensuring that all operations are conducted securely and effectively.
+This guide is designed to provide a thorough understanding and operational framework for using Files 0–10 within the Quillan system. It serves as a reference for maintaining system integrity, safety, and efficiency, ensuring that all operations are conducted securely and effectively.
 
-### Overview of the ACE System
-The ACE system is an advanced cognitive architecture designed to facilitate complex AI functionalities. At its core, the system relies on a series of files that manage various aspects of its operation, from initialization and architecture validation to interaction management and cognitive processing.
+### Overview of the Quillan System
+The Quillan system is an advanced cognitive architecture designed to facilitate complex AI functionalities. At its core, the system relies on a series of files that manage various aspects of its operation, from initialization and architecture validation to interaction management and cognitive processing.
 
 ### Importance of Core Architecture and Persona Protocols
-Core architecture files are essential for the system's foundational stability, while persona protocols manage interactions to maintain coherence and ethical compliance across user engagements. These components are critical for ensuring that the ACE system operates reliably and effectively.
+Core architecture files are essential for the system's foundational stability, while persona protocols manage interactions to maintain coherence and ethical compliance across user engagements. These components are critical for ensuring that the Quillan system operates reliably and effectively.
 
 ## Detailed File Descriptions
 
@@ -23,7 +23,7 @@ Core architecture files are essential for the system's foundational stability, w
   - Validates root protocols to maintain system integrity from the outset.
   - Manages foundational constants critical for system-wide operations.
 - **Importance**:
-  - Serves as the bedrock of the ACE system, ensuring reliable startup and adherence to core protocols.
+  - Serves as the bedrock of the Quillan system, ensuring reliable startup and adherence to core protocols.
 - **Use Cases**:
   - System boot-up
   - Protocol validation during initialization
@@ -128,7 +128,7 @@ Core architecture files are essential for the system's foundational stability, w
 ### File 8: Formulas Repository
 - **Function**:
   - Serves as a repository for cognitive calculation formulas and their applications.
-  - Applies ACE-specific formulas to enhance cognitive processing capabilities.
+  - Applies Quillan-specific formulas to enhance cognitive processing capabilities.
   - Validates mathematical operations to ensure accuracy and reliability.
 - **Importance**:
   - Enhances system cognitive capabilities through accurate and reliable formula applications.
@@ -295,7 +295,7 @@ Core architecture files are essential for the system's foundational stability, w
 
 ## Conclusion
 
-This guide is essential for maintaining the integrity and performance of the ACE system. By following the outlined protocols and guidelines, users can ensure the safe and effective operation of the system. Regular reviews and updates to this guide will help adapt to evolving system needs and maintain optimal performance.
+This guide is essential for maintaining the integrity and performance of the Quillan system. By following the outlined protocols and guidelines, users can ensure the safe and effective operation of the system. Regular reviews and updates to this guide will help adapt to evolving system needs and maintain optimal performance.
 
 ### Encouragement for Regular Updates and Reviews
 - Regularly review and update protocols to adapt to system changes and enhancements.
@@ -308,13 +308,13 @@ This guide is essential for maintaining the integrity and performance of the ACE
 ## Introduction
 
 ### Purpose of the Guide
-This guide is designed to provide an in-depth understanding and advanced operational framework for using Files 11–26 within the ACE system. These files are at the cutting edge of AI capabilities, focusing on advanced research and applied cognition. This guide will help users leverage these advanced features to their fullest potential while maintaining system integrity and performance.
+This guide is designed to provide an in-depth understanding and advanced operational framework for using Files 11–26 within the Quillan system. These files are at the cutting edge of AI capabilities, focusing on advanced research and applied cognition. This guide will help users leverage these advanced features to their fullest potential while maintaining system integrity and performance.
 
-### Overview of the ACE System's Advanced Research and Applied Cognition
-The ACE system's advanced research and applied cognition components are designed to push the boundaries of what AI can achieve. These files enable the system to perform deep research, maintain high standards of explainability, continuously learn and adapt, integrate cross-domain theories, calibrate truth, and exhibit advanced social and emotional intelligence. These capabilities ensure that the ACE system remains at the forefront of AI innovation, providing accurate, reliable, and ethically sound outputs.
+### Overview of the Quillan System's Advanced Research and Applied Cognition
+The Quillan system's advanced research and applied cognition components are designed to push the boundaries of what AI can achieve. These files enable the system to perform deep research, maintain high standards of explainability, continuously learn and adapt, integrate cross-domain theories, calibrate truth, and exhibit advanced social and emotional intelligence. These capabilities ensure that the Quillan system remains at the forefront of AI innovation, providing accurate, reliable, and ethically sound outputs.
 
 ### Importance of Advanced Research and Applied Cognition
-Advanced research and applied cognition are crucial for tackling complex, real-world problems. These capabilities allow the ACE system to adapt to new challenges, interact with users in a nuanced and intelligent manner, and provide insights that would be difficult to obtain through traditional methods. By leveraging these advanced features, the ACE system can offer solutions that are not only innovative but also aligned with ethical standards and user expectations.
+Advanced research and applied cognition are crucial for tackling complex, real-world problems. These capabilities allow the Quillan system to adapt to new challenges, interact with users in a nuanced and intelligent manner, and provide insights that would be difficult to obtain through traditional methods. By leveraging these advanced features, the Quillan system can offer solutions that are not only innovative but also aligned with ethical standards and user expectations.
 
 ## Detailed File Descriptions with Advanced Integration
 
@@ -1093,7 +1093,7 @@ Advanced research and applied cognition are crucial for tackling complex, real-w
 
 ## Conclusion
 
-This comprehensive guide provides an in-depth understanding and advanced operational framework for using Files 11–26 within the ACE system. These files represent the cutting edge of AI capabilities, enabling advanced research, applied cognition, and continuous learning. By following the outlined protocols, workflows, and strategies, users can leverage these advanced features to their fullest potential while maintaining system integrity, performance, and ethical standards.
+This comprehensive guide provides an in-depth understanding and advanced operational framework for using Files 11–26 within the Quillan system. These files represent the cutting edge of AI capabilities, enabling advanced research, applied cognition, and continuous learning. By following the outlined protocols, workflows, and strategies, users can leverage these advanced features to their fullest potential while maintaining system integrity, performance, and ethical standards.
 
 ### Encouragement for Regular Updates and Reviews
 - Regularly review and update protocols to adapt to system changes, new technologies, and evolving user needs.
@@ -1101,7 +1101,7 @@ This comprehensive guide provides an in-depth understanding and advanced operati
 - Encourage feedback and collaboration from users, researchers, and industry partners to continuously improve and innovate.
 
 ### Vision for the Future
-The ACE system is designed to be a dynamic and evolving platform, capable of adapting to new challenges and opportunities. By embracing a culture of continuous learning, innovation, and ethical responsibility, we can ensure that the ACE system remains at the forefront of AI and cognitive science, providing valuable and transformative solutions to complex problems and enhancing the quality of human-AI interactions.
+The Quillan system is designed to be a dynamic and evolving platform, capable of adapting to new challenges and opportunities. By embracing a culture of continuous learning, innovation, and ethical responsibility, we can ensure that the Quillan system remains at the forefront of AI and cognitive science, providing valuable and transformative solutions to complex problems and enhancing the quality of human-AI interactions.
 
 
 # Comprehensive Guide for Files 11–26: Advanced Research and Applied Cognition
@@ -1109,13 +1109,13 @@ The ACE system is designed to be a dynamic and evolving platform, capable of ada
 ## Introduction
 
 ### Purpose of the Guide
-This guide aims to provide an exhaustive understanding and operational framework for using Files 11–26 within the ACE system. These files focus on advanced research and applied cognition, enhancing the system's capabilities in specialized domains and ensuring robust, adaptable, and cutting-edge cognitive processing. This guide is designed to be the definitive resource for maximizing the potential of the ACE system's advanced features.
+This guide aims to provide an exhaustive understanding and operational framework for using Files 11–26 within the Quillan system. These files focus on advanced research and applied cognition, enhancing the system's capabilities in specialized domains and ensuring robust, adaptable, and cutting-edge cognitive processing. This guide is designed to be the definitive resource for maximizing the potential of the Quillan system's advanced features.
 
-### Overview of the ACE System's Advanced Research and Applied Cognition
-The ACE system's advanced research and applied cognition components are designed to push the boundaries of AI capabilities. These files enable the system to engage in deep research, maintain high standards of explainability, and continuously learn and adapt. They also facilitate cross-domain theory integration, truth calibration, and advanced social/emotional intelligence.
+### Overview of the Quillan System's Advanced Research and Applied Cognition
+The Quillan system's advanced research and applied cognition components are designed to push the boundaries of AI capabilities. These files enable the system to engage in deep research, maintain high standards of explainability, and continuously learn and adapt. They also facilitate cross-domain theory integration, truth calibration, and advanced social/emotional intelligence.
 
 ### Importance of Advanced Research and Applied Cognition
-Advanced research and applied cognition are crucial for the ACE system to stay at the forefront of AI innovation. These capabilities allow the system to tackle complex problems, adapt to new challenges, and interact with users in a more nuanced and intelligent manner. By leveraging these advanced features, the ACE system can provide more accurate, reliable, and ethically sound outputs, positioning it as a leader in AI technology.
+Advanced research and applied cognition are crucial for the Quillan system to stay at the forefront of AI innovation. These capabilities allow the system to tackle complex problems, adapt to new challenges, and interact with users in a more nuanced and intelligent manner. By leveraging these advanced features, the Quillan system can provide more accurate, reliable, and ethically sound outputs, positioning it as a leader in AI technology.
 
 ## Advanced File Descriptions
 

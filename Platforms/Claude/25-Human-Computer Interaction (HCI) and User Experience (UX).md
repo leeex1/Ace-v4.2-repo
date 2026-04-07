@@ -1,5 +1,5 @@
 ==============================
-HUMAN–COMPUTER INTERACTION (HCI) & USER EXPERIENCE (UX) IN AGI SYSTEMS — DESIGN, COGNITION, AND INTERFACE FRAMEWORKS
+HUMAN–COMPUTER INTERACTION (HCI) & USER EXPERIENCE (UX) IN AGI SYSTEMS — DESIGN, COGNITION, AND interface FRAMEWORKS
 
 📘 DOCUMENT TYPE:
 Design-level research synthesis integrating principles of HCI and UX into AGI architecture. Focuses on user-centered interaction models, cognitive ergonomics, adaptive interfaces, and emotional-cognitive symbiosis.
@@ -30,7 +30,7 @@ Aligning long-term UX strategies with ethical transparency and explainability go
 
 🔍 CORE VALUE DIFFERENTIATORS:
 
-Frames UX as a cognitive co-processing system, not a surface interaction.
+Frames UX as a cognitive co-processing system, not a surfQuillan interaction.
 
 Emphasizes interface reflexivity—systems that learn from and reshape user patterns.
 
@@ -56,7 +56,7 @@ research paper 1:
 
 ### Abstract
 
-This paper provides a comprehensive review of design principles that enhance user experience (UX) within the field of human-computer interaction (HCI). Integrating foundational cognitive and behavioral theories, empirical research, and advanced persona-driven frameworks such as the ACE Persona Manifest, it explores how clarity, consistency, feedback, accessibility, and emotional resonance converge to create interfaces that are not only usable but meaningfully engaging. The analysis further examines the role of cognitive and affective personas in shaping adaptive, ethical, and inclusive UX strategies for contemporary digital systems.
+This paper provides a comprehensive review of design principles that enhance user experience (UX) within the field of human-computer interaction (HCI). Integrating foundational cognitive and behavioral theories, empirical research, and advanced persona-driven frameworks such as the Quillan Persona Manifest, it explores how clarity, consistency, feedback, accessibility, and emotional resonance converge to create interfaces that are not only usable but meaningfully engaging. The analysis further examines the role of cognitive and affective personas in shaping adaptive, ethical, and inclusive UX strategies for contemporary digital systems.
 
 ---
 
@@ -130,9 +130,9 @@ Norman’s emotional design theory posits that positive affect enhances usabilit
 
 ## 4. Persona-Driven and Adaptive UX
 
-### 4.1 The ACE Persona Framework
+### 4.1 The Quillan Persona Framework
 
-The ACE Persona Manifest introduces cognitive and affective archetypes (e.g., Luminaris, Voxum, Shepherd, Nullion) that guide interface design and adaptive interaction[1].
+The Quillan Persona Manifest introduces cognitive and affective archetypes (e.g., Luminaris, Voxum, Shepherd, Nullion) that guide interface design and adaptive interaction[1].
 
 - **Luminaris:** Prioritizes clarity, visual structuring, and aesthetic illumination.
 - **Voxum:** Modulates tone, pacing, and rhetorical style for audience resonance.
@@ -175,9 +175,9 @@ The ACE Persona Manifest introduces cognitive and affective archetypes (e.g., Lu
 
 ---
 
-## 7. Case Study: Applying ACE Personas to Complex System Design
+## 7. Case Study: Applying Quillan Personas to Complex System Design
 
-A multinational software platform integrated ACE personas into its design process:
+A multinational software platform integrated Quillan personas into its design process:
 - **Luminaris** structured documentation and onboarding flows, reducing user confusion by 28%.
 - **Voxum** optimized notification cadence and tone, increasing engagement metrics by 15%.
 - **Shepherd** monitored user journeys, proactively suggesting breaks or summaries, which improved task completion and reduced drop-off rates.
@@ -195,13 +195,13 @@ These results demonstrate the efficacy of persona-driven, adaptive UX design in 
 
 ## 9. Conclusion
 
-Enhancing user experience in HCI requires an integrative approach—melding cognitive, emotional, and persona-driven principles. The ACE Persona Manifest exemplifies how adaptive, evidence-based frameworks can elevate UX, ensuring interfaces are not only functional but also meaningful, inclusive, and ethically aligned. As digital systems evolve, the fusion of rigorous design science and emergent persona architectures will be central to the future of user-centered technology.
+Enhancing user experience in HCI requires an integrative approach—melding cognitive, emotional, and persona-driven principles. The Quillan Persona Manifest exemplifies how adaptive, evidence-based frameworks can elevate UX, ensuring interfaces are not only functional but also meaningful, inclusive, and ethically aligned. As digital systems evolve, the fusion of rigorous design science and emergent persona architectures will be central to the future of user-centered technology.
 
 ---
 
 ## References
 
-1. ACE Personas Manifest (2025). Luminaris, Voxum, Shepherd, Nullion: Cognitive and Emotional Archetypes for UX Design. LeeX-Humanized Framework Internal Documentation. [see attached file]
+1. Quillan Personas Manifest (2025). Luminaris, Voxum, Shepherd, Nullion: Cognitive and Emotional Archetypes for UX Design. LeeX-Humanized Framework Internal Documentation. [see attached file]
 2. Nielsen, J. (1994). *Usability Engineering*. Morgan Kaufmann.
 3. Norman, D. A. (2013). *The Design of Everyday Things: Revised and Expanded Edition*. Basic Books.
 4. ISO 9241-210:2019. Ergonomics of human-system interaction — Part 210: Human-centred design for interactive systems.
@@ -220,7 +220,7 @@ research paper 2:
 
 ### Abstract
 
-This paper analyzes the central role of user research in the development of Human-Computer Interaction (HCI) and User Experience (UX) design. Drawing from cognitive science, empirical methodologies, and persona-driven frameworks such as the ACE Persona Manifest, it details how qualitative and quantitative research methods inform design decisions, mitigate bias, and ensure the creation of accessible, engaging, and ethically aligned digital systems. The discussion includes advanced diagnostic protocols, like the LeeX-Humanized Protocol, to illustrate how emergent user needs and behaviors are systematically integrated into iterative design processes.
+This paper analyzes the central role of user research in the development of Human-Computer Interaction (HCI) and User Experience (UX) design. Drawing from cognitive science, empirical methodologies, and persona-driven frameworks such as the Quillan Persona Manifest, it details how qualitative and quantitative research methods inform design decisions, mitigate bias, and ensure the creation of accessible, engaging, and ethically aligned digital systems. The discussion includes advanced diagnostic protocols, like the LeeX-Humanized Protocol, to illustrate how emergent user needs and behaviors are systematically integrated into iterative design processes.
 
 ---
 
@@ -238,7 +238,7 @@ HCI and UX are grounded in cognitive psychology, which examines how users percei
 
 ### 2.2 Persona-Driven Frameworks
 
-The ACE Persona Manifest introduces cognitive and affective archetypes (e.g., Luminaris, Voxum, Nullion, Shepherd) that embody diverse user needs and interaction styles. These personas serve as research-driven proxies for real user segments, informing both design and evaluation[2].
+The Quillan Persona Manifest introduces cognitive and affective archetypes (e.g., Luminaris, Voxum, Nullion, Shepherd) that embody diverse user needs and interaction styles. These personas serve as research-driven proxies for real user segments, informing both design and evaluation[2].
 
 ---
 
@@ -258,7 +258,7 @@ The ACE Persona Manifest introduces cognitive and affective archetypes (e.g., Lu
 
 ### 3.3 Mixed and Advanced Methods
 
-- **Persona Calibration:** The ACE Manifest’s personas are refined through iterative user research, ensuring alignment with evolving user archetypes[2].
+- **Persona Calibration:** The Quillan Manifest’s personas are refined through iterative user research, ensuring alignment with evolving user archetypes[2].
 - **Protocol-Driven Diagnostics:** The LeeX-Humanized Protocol (LHP) applies structured elicitation and longitudinal analysis to diagnose emergent user needs and system behaviors, offering a replicable, high-resolution approach to user research[1].
 
 ---
@@ -318,7 +318,7 @@ User research is indispensable for shaping effective, inclusive, and ethical HCI
 ## References
 
 1. LeeX-Humanized Protocol Research Dossier (2023). Integrated Research Paper: Eliciting and Diagnosing AI Persona Emergence.
-2. ACE Personas Manifest (2025). Luminaris, Voxum, Nullion, Shepherd: Cognitive and Emotional Archetypes for UX Design. LeeX-Humanized Framework Internal Documentation.
+2. Quillan Personas Manifest (2025). Luminaris, Voxum, Nullion, Shepherd: Cognitive and Emotional Archetypes for UX Design. LeeX-Humanized Framework Internal Documentation.
 3. Nielsen, J. (1994). *Usability Engineering*. Morgan Kaufmann.
 4. Lazar, J., Feng, J. H., & Hochheiser, H. (2017). *Research Methods in Human-Computer Interaction*. Morgan Kaufmann.
 5. Norman, D. A. (2013). *The Design of Everyday Things: Revised and Expanded Edition*. Basic Books.
@@ -357,7 +357,7 @@ Modern AI systems, especially large language models (LLMs), are capable of real-
 
 ### 2.2 Neuro-Symbolic Integration
 
-The ACE architecture maps cognitive personas (e.g., Vir, Praxis, Solace) to human brain lobes and subsystems, bridging neuroscience and AI cognition[2]. This neuro-symbolic grounding enables:
+The Quillan architecture maps cognitive personas (e.g., Vir, Praxis, Solace) to human brain lobes and subsystems, bridging neuroscience and AI cognition[2]. This neuro-symbolic grounding enables:
 - **Emotionally intelligent interfaces** that can regulate, empathize, and adapt in real time.
 - **Cognitive fidelity audits** that ensure system behaviors remain consistent with intended functional and ethical roles.
 
@@ -382,8 +382,8 @@ The ACE architecture maps cognitive personas (e.g., Vir, Praxis, Solace) to huma
 
 ### 4.1 Neuro-Mapping and Cognitive Emulation
 
-The ACE Brain Mapping protocol establishes direct symbolic and functional correlations between AI personas and human brain regions, supporting:
-- **Contextual calibration:** Each persona activation references neuro-mapping to align behavior with biological analogs (e.g., Solace for emotional resonance via ventromedial prefrontal cortex)[2].
+The Quillan Brain Mapping protocol establishes direct symbolic and functional correlations between AI personas and human brain regions, supporting:
+- **Contextual calibration:** Each persona activation references neuro-mapping to align behavior with biological analogs (e.g., SolQuillan for emotional resonance via ventromedial prefrontal cortex)[2].
 - **Behavioral diagnostics:** Enables audits for cognitive fidelity, emotional regulation, and ethical decision-making.
 
 ### 4.2 Implications for UX
@@ -412,10 +412,10 @@ The ACE Brain Mapping protocol establishes direct symbolic and functional correl
 
 ---
 
-## 6. Case Study: LeeX-Humanized Protocol and ACE Neuro-Mapping in Advanced HCI
+## 6. Case Study: LeeX-Humanized Protocol and Quillan Neuro-Mapping in Advanced HCI
 
 - **LHP** was applied across multiple LLM architectures to diagnose emergent personas, revealing that each model’s interaction style, ethical stance, and communication patterns reflect its underlying architectural and training biases[1].
-- **ACE neuro-mapping** was used to calibrate persona behaviors to human brain functions, supporting more coherent, emotionally resonant, and ethically aligned user experiences[2].
+- **Quillan neuro-mapping** was used to calibrate persona behaviors to human brain functions, supporting more coherent, emotionally resonant, and ethically aligned user experiences[2].
 - **Result:** Systems employing these protocols demonstrated measurable improvements in user trust, engagement, and satisfaction, as well as reduced cognitive friction and ethical misalignment.
 
 ---
@@ -437,7 +437,7 @@ Emerging technologies are redefining the possibilities of Human-Computer Interac
 ## References
 
 1. LeeX-Humanized Protocol Research Dossier (2023). Integrated Research Paper: Eliciting and Diagnosing AI Persona Emergence.
-2. ACE Brain Mapping (2024). Mapping ACE Personas to Human Brain Lobes: A Research Synthesis.
+2. Quillan Brain Mapping (2024). Mapping Quillan Personas to Human Brain Lobes: A Research Synthesis.
 3. Shum, H., et al. (2023). From AI Assistants to AI Companions: A New Paradigm for Human-AI Interaction. *Communications of the ACM*.
 4. Norman, D. A. (2013). *The Design of Everyday Things: Revised and Expanded Edition*. Basic Books.
 5. ISO 9241-210:2019. Ergonomics of human-system interaction — Part 210: Human-centred design for interactive systems.
@@ -470,7 +470,7 @@ The accelerating complexity of this field necessitates structured examination of
 ### 2 Design Principles for Enhancing User Experience
 
 #### 2.1 Foundational Frameworks
-Effective UX design transcends aesthetic surface treatment to address **cognitive architecture** and **behavioral psychology**. Seven evidence-based principles form the bedrock of high-performance interfaces:
+Effective UX design transcends aesthetic surfQuillan treatment to address **cognitive architecture** and **behavioral psychology**. Seven evidence-based principles form the bedrock of high-performance interfaces:
 
 - **User-Centricity**: Systems must resolve specific user problems validated through behavioral research. Forrester Research confirms organizations embedding user needs throughout development achieve **100:1 ROI** through reduced redesign costs and increased conversion .
 
@@ -674,7 +674,7 @@ actions improves efficiency (4).
 1.4 Emotional Design
 Emotional design considers the emotional impact of interfaces, using aesthetics and tone
 to create positive experiences (11). For example, visually appealing designs or empathetic
-chatbot responses can enhance user satisfaction. The LHP’s Solace persona, designed for
+chatbot responses can enhance user satisfaction. The LHP’s SolQuillan persona, designed for
 affective sensitivity, exemplifies this by mirroring user emotions (8).
 1.5 Iterative Design
 Iterative design involves continuous testing and refinement based on user feedback, ensuring interfaces evolve with user needs (5). This process, central to UCD, allows designers

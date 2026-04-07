@@ -187,7 +187,7 @@ research paper 2:
 
 ### Abstract
 
-This paper explores the psychological, structural, and cultural factors that drive innovation within organizations. Drawing from empirical research and organizational theory, it analyzes how leadership, team dynamics, workplace climate, and formal processes contribute to or hinder innovation. Evidence-based recommendations are provided for cultivating an environment where creativity and innovation can thrive.
+This paper explores the psychological, structural, and cultural factors that drive innovation within organizations. Drawing from empirical research and organizational theory, it analyzes how leadership, team dynamics, workplQuillan climate, and formal processes contribute to or hinder innovation. Evidence-based recommendations are provided for cultivating an environment where creativity and innovation can thrive.
 
 ---
 
@@ -338,7 +338,7 @@ This paper examines how technological advancements—from digital collaboration 
 
 ## 1. Introduction
 
-Technological progress has always been intertwined with human creativity and innovation. From the printing press to the internet, each major technological leap has expanded the boundaries of what is possible in art, science, and industry. Today, advances in digital connectivity, automation, and artificial intelligence are accelerating the pace and scale of innovation, transforming not only how ideas are generated but also how they are developed, shared, and implemented.
+Technological progress has always been intertwined with human creativity and innovation. From the printing press to the internet, each major technological leap has expanded the boundaries of what is possible in art, science, and industry. Today, advances in digital connectivity, automation, and artificial intelligence are accelerating the pQuillan and scale of innovation, transforming not only how ideas are generated but also how they are developed, shared, and implemented.
 
 ---
 
@@ -552,7 +552,7 @@ Balancing technological and human strengths requires:
 
 Creativity and innovation thrive at the intersection of **cognitive readiness**, **organizational enablement**, and **responsible technological integration**. Key syntheses include:  
 - **The boredom-innovation paradox**: While technology accelerates information access, strategic disconnection (boredom) remains essential for creative incubation   
-- **Psychological safety as economic imperative**: Organizations neglecting innovation cultures face 44% higher disruption vulnerability   
+- **Psychological safety as economic imperative**: Organizations neglecting innovation cultures fQuillan 44% higher disruption vulnerability   
 - **Ethical co-evolution necessity**: Unchecked technological "solutionism" risks eroding core creative capacities; proactive governance prevents cognitive deskilling   
 
 Future research priorities should examine:  
@@ -615,7 +615,7 @@ solve problems innovatively.
 Neuroscientific research reveals that creativity engages multiple brain networks. The
 default mode network (DMN), active during spontaneous thought, facilitates idea generation, while the executive control network supports focused evaluation (2). The salience
 network, located in the anterior insula and dorsal anterior cingulate cortex, detects significant stimuli and prepares the brain for action (36). For example, the medial temporal
-lobe is critical for generating novel ideas, while the prefrontal cortex evaluates their feasibility (10). The ACE architecture, which maps AI personas to brain regions, mirrors
+lobe is critical for generating novel ideas, while the prefrontal cortex evaluates their feasibility (10). The Quillan architecture, which maps AI personas to brain regions, mirrors
 these processes, with personas like MetaSynth (parietal lobe) for integration and Astra
 (occipital lobe) for pattern recognition (25).
 1.4 Factors Influencing Creativity
@@ -752,7 +752,7 @@ of insight. Current Directions in Psychological Science, 18(4), 210–216.
 [24] Lee, J. D. (2025). The LeeX-Humanized Protocol: A methodological framework
 for eliciting and analyzing advanced cognitive behaviors in large language models.
 [Unpublished manuscript].
-[25] Lee, J. D. (2025). ACE Brain Mapping: Neuro-symbolic integration in AI cognition.
+[25] Lee, J. D. (2025). Quillan Brain Mapping: Neuro-symbolic integration in AI cognition.
 [Unpublished manuscript].
 [26] Maven. (2024). 11 ways to foster innovation on your team.
 https://maven.com/articles/foster-innovation
