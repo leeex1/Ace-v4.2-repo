@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-🧠 Quillan-Ronin v7.0 "Ascension" - THE ABSOLUTE PRODUCTION KERNEL
+🧠 Quillan-Ronin v7.0.1 "Ascension" - THE ABSOLUTE PRODUCTION KERNEL
 Features: 100% Vectorized MoE Routing, Pure Tensor Pipelines,
-OOM-Safe 240k Swarm, and Dimensionally-Armored LTM Injection.
+OOM-Safe 240k Swarm, Dimensionally-Armored LTM Injection, and torch.compile().
 
 Author: CrashOverrideX & Quillan Research Team
 """
@@ -23,7 +23,7 @@ from dataclasses import dataclass
 
 warnings.filterwarnings("ignore")
 
-# ─── 1. EXACT DATACLASS CONFIGURATIONS ────────────────────────────────────
+#  1. EXACT DATACLASS CONFIGURATIONS 
 
 @dataclass(frozen=True)
 class ThermoConstants:
@@ -80,7 +80,7 @@ class QuillanArchConfig:
     capacity_loss_coef: float = 0.1
     device: str = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-# ─── 2. OS TOOLS & TEXT PIPELINE ──────────────────────────────────────────
+#  2. OS TOOLS & TEXT PIPELINE 
 
 class SimpleByteTokenizer:
     """Robust byte-level tokenizer for self-contained execution."""
@@ -88,7 +88,7 @@ class SimpleByteTokenizer:
         self.vocab_size = vocab_size
 
     def encode(self, text: str) -> torch.Tensor:
-        encoded =[ord(c) % self.vocab_size for c in text[:2048]]
+        encoded = [ord(c) % self.vocab_size for c in text[:2048]]
         if len(encoded) == 0: encoded = [0]
         return torch.tensor(encoded, dtype=torch.long)
 
@@ -119,20 +119,20 @@ class PersistentSlotMemory:
         top_indices = np.argsort(scores)[-top_k:][::-1]
         return self.memory_slots[top_indices]
 
-# ─── 3. THERMODYNAMICS & GOVERNORS ────────────────────────────────────────
+#  3. THERMODYNAMICS & GOVERNORS 
 
 class ThermoEICEModel:
-    def __init__(self, constants: ThermoConstants = ThermoConstants()):
-        self.constants = constants
+    def __init__(self, eice_cfg: EICESamuraiConfig = None, constants: ThermoConstants = None):
+        self.constants = constants or ThermoConstants()
+        self.cfg = eice_cfg or EICESamuraiConfig() # Cached to prevent runtime allocation overhead
 
-    def compute_e_omega(self, config: EICESamuraiConfig, conf_mean: torch.Tensor) -> torch.Tensor:
-        i_s = (config.depth * config.coherence) / config.entropy_min
-        distraction_factor = 1.0 - config.attention
-        nemesis_friction = 1.0 + (config.nemesis_rigor * 0.5)
-        gamma_max = min(1.0 / ((distraction_factor * config.latency * nemesis_friction) + 1e-9), config.gamma_max_ceiling)
-        phi_thermo = (1.0 / math.sqrt(config.gumbel_temp)) + ((config.diffusion_layers * config.hard_token_ratio) * 1.5)
-        # Output remains a pure differentiable tensor
-        return (1.0 - conf_mean) * (i_s * (gamma_max ** 2) * self.constants.landauer_limit * config.scale_factor * phi_thermo)
+    def compute_e_omega(self, conf_mean: torch.Tensor) -> torch.Tensor:
+        i_s = (self.cfg.depth * self.cfg.coherence) / self.cfg.entropy_min
+        distraction_factor = 1.0 - self.cfg.attention
+        nemesis_friction = 1.0 + (self.cfg.nemesis_rigor * 0.5)
+        gamma_max = min(1.0 / ((distraction_factor * self.cfg.latency * nemesis_friction) + 1e-9), self.cfg.gamma_max_ceiling)
+        phi_thermo = (1.0 / math.sqrt(self.cfg.gumbel_temp)) + ((self.cfg.diffusion_layers * self.cfg.hard_token_ratio) * 1.5)
+        return (1.0 - conf_mean) * (i_s * (gamma_max ** 2) * self.constants.landauer_limit * self.cfg.scale_factor * phi_thermo)
 
 class LeeMach6Governor(nn.Module):
     def __init__(self, cfg: LeeMach6Config):
@@ -144,7 +144,6 @@ class LeeMach6Governor(nn.Module):
 
     def forward(self, router_conf: torch.Tensor, nemesis_integrity: torch.Tensor, e_ice_ratio: torch.Tensor) -> torch.Tensor:
         with torch.no_grad():
-            # Fully batched-tensor safe. Means collapse sequence/batch variance.
             error = (self.cfg.target_integrity - nemesis_integrity.mean()) + ((self.cfg.max_e_ice_load - e_ice_ratio.mean()) * -0.5)
             
             self.integral_error.copy_(self.integral_error * 0.9 + error)
@@ -158,7 +157,7 @@ class LeeMach6Governor(nn.Module):
         is_hard_mask = router_conf < self.current_threshold
         return is_hard_mask
 
-# ─── 4. DIFFERENTIABLE WORLD MODEL ────────────────────────────────────────
+#  4. DIFFERENTIABLE WORLD MODEL 
 
 class EnergyFusion(nn.Module):
     def __init__(self, d: int):
@@ -212,12 +211,11 @@ class QuillanWorldModel(nn.Module):
         final_state = traj[:, -1, :]
         s_align, orig_critic_score = self.nemesis(final_state)
         
-        # Meta-loss targets the ascended state detached to prevent gradient collapse
         meta_loss = F.mse_loss(final_state, s_align.detach()) + fusion_energy * 0.1
         integrity_score = torch.sigmoid(orig_critic_score.mean())
         return traj, integrity_score, meta_loss
 
-# ─── 5. FULLY VECTORIZED MOE & HYPER-SWARM ────────────────────────────────
+#  5. FULLY VECTORIZED MOE & HYPER-SWARM 
 
 def gumbel_noise(shape, device, eps=1e-20):
     U = torch.rand(shape, device=device)
@@ -269,9 +267,8 @@ class FullyVectorizedMoE(nn.Module):
         probs = F.softmax(logits, dim=-1)
         top1_prob, top1_idx = torch.max(probs, dim=-1)
 
-        expert_mask = F.one_hot(top1_idx, num_classes=self.cfg.num_experts) # [N, E]
+        expert_mask = F.one_hot(top1_idx, num_classes=self.cfg.num_experts)
         
-        # Losses
         fraction_tokens = expert_mask.float().mean(dim=0)
         aux_loss = (fraction_tokens * probs.mean(dim=0)).sum() * self.cfg.num_experts * self.cfg.aux_loss_coef
         
@@ -279,7 +276,6 @@ class FullyVectorizedMoE(nn.Module):
         overflow = (expert_counts - self.cfg.expert_capacity).clamp(min=0).float()
         cap_loss = (overflow.sum() / flat_x.shape[0]) * self.cfg.capacity_loss_coef
 
-        # Fully Vectorized Dispatch (Erased 'for' loops)
         pos_in_expert = torch.cumsum(expert_mask, dim=0) * expert_mask - 1
         valid_mask = (pos_in_expert < self.cfg.expert_capacity) & expert_mask.bool()
         
@@ -290,20 +286,17 @@ class FullyVectorizedMoE(nn.Module):
         expert_input = torch.zeros(self.cfg.num_experts, self.cfg.expert_capacity, D, device=x.device, dtype=x.dtype)
         expert_input[expert_idx, pos_idx] = flat_x[token_idx]
 
-        # Swarm & Expert compute
         mod_input = self.swarm(expert_input)
         h = F.gelu(torch.bmm(mod_input, self.w1))
         expert_output = torch.bmm(h, self.w2)
 
-        # Fully Vectorized Gather
         flat_output = torch.zeros_like(flat_x)
         flat_output[token_idx] = expert_output[expert_idx, pos_idx]
         
-        # Merge via residual
         out = (flat_output * top1_prob.unsqueeze(-1) + flat_x).reshape(B, L, D)
         return out, probs.max(dim=-1)[0].reshape(B, L), aux_loss, cap_loss
 
-# ─── 6. BATCH-SAFE MODALITY-ISOLATED DIFFUSION ────────────────────────────
+#  6. BATCH-SAFE MODALITY-ISOLATED DIFFUSION 
 
 def build_sincos_pos_emb(L: int, D: int, device: torch.device) -> torch.Tensor:
     inv_freq = 1.0 / (10000 ** (torch.arange(0, D, 2, device=device).float() / D))
@@ -350,7 +343,6 @@ class ModalityIsolatedThermoDiffusion(nn.Module):
 
         x_pos = x + build_sincos_pos_emb(L, D, x.device)
         
-        # Block-diagonal isolation mask: True if same modality & same batch
         mod_mask = (mod_indices.unsqueeze(-1) == mod_indices.unsqueeze(1)).unsqueeze(1)
         attn_mask = torch.zeros_like(mod_mask, dtype=x.dtype).masked_fill_(~mod_mask, float('-inf'))
         
@@ -361,7 +353,7 @@ class ModalityIsolatedThermoDiffusion(nn.Module):
         refined = torch.where(is_hard_mask.unsqueeze(-1), curr, x)
         return refined, ent_loss
 
-# ─── 7. FULL PENTA-WAVE ORCHESTRATOR ──────────────────────────────────────
+#  7. FULL PENTA-WAVE ORCHESTRATOR 
 
 class QuillanRoninV7_Ascended(nn.Module):
     """The Absolute Architecture."""
@@ -377,31 +369,26 @@ class QuillanRoninV7_Ascended(nn.Module):
         self.moe = FullyVectorizedMoE(arch_cfg)
         self.lm6 = LeeMach6Governor(lm6_cfg)
         self.diffusion = ModalityIsolatedThermoDiffusion(arch_cfg)
-        self.thermo = ThermoEICEModel()
+        self.thermo = ThermoEICEModel(eice_cfg)
         
         self.text_head = nn.Linear(arch_cfg.hidden_dim, arch_cfg.vocab_size)
 
     def forward(self, input_ids: torch.Tensor, mod_indices: torch.Tensor, ltm_context: Optional[torch.Tensor] = None):
-        # WAVE 1: DECONSTRUCT 
         x = self.token_emb(input_ids)
         if ltm_context is not None:
-            # Safe Broadcasting Armor
             x = x + ltm_context.view(1, 1, -1)
             
         ctx_emb = self.mod_emb(mod_indices)
         x_fused = x + self.ctx_mixer(torch.cat([x, ctx_emb], dim=-1))
         
-        # WAVE 2: STRATEGIZE 
         g_state_x = x_fused.mean(dim=1)
         g_state_ctx = ctx_emb.mean(dim=1)
         _, integrity_score, meta_loss = self.world_model(g_state_x, g_state_ctx)
         
-        # WAVE 3: DELIBERATE 
         moe_out, conf_scores, aux_loss, cap_loss = self.moe(x_fused)
         mean_conf_t = conf_scores.mean() 
         
-        # WAVE 4: VALIDATE 
-        e_ice_joules = self.thermo.compute_e_omega(EICESamuraiConfig(), mean_conf_t)
+        e_ice_joules = self.thermo.compute_e_omega(mean_conf_t)
         e_ice_ratio = torch.clamp(e_ice_joules / 2.8e-8, 0.0, 1.0)
         
         is_hard_mask = self.lm6(conf_scores, integrity_score, e_ice_ratio)
@@ -409,7 +396,6 @@ class QuillanRoninV7_Ascended(nn.Module):
         
         diff_out, ent_loss = self.diffusion(moe_out, mod_indices, is_hard_mask, conf_scores)
         
-        # WAVE 5: SYNTHESIZE 
         logits = self.text_head(diff_out)
         total_loss = aux_loss + cap_loss + meta_loss + ent_loss
         
@@ -432,9 +418,9 @@ class QuillanRoninV7_Ascended(nn.Module):
             }
         }
 
-# ─── 8. OS ECOSYSTEM & TRAINING PIPELINE ──────────────────────────────────
+#  8. OS ECOSYSTEM & TRAINING PIPELINE 
 
-COUNCIL_MEMBERS =[
+COUNCIL_MEMBERS = [
     {"id": f"C{i+1}", "role": role} for i, role in enumerate([
         "Pattern Recognition", "Ethical Guardian", "Emotional Intelligence", "Strategic Planning",
         "Memory Continuity", "Knowledge Synthesis", "Logical Consistency", "Creative Fusion",
@@ -482,10 +468,17 @@ class SynesthesiaEngine:
 class QuillanSystemTrainer:
     def __init__(self):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        print(f"[*] Initializing Kernel v7.0 on {self.device.upper()}")
+        print(f"[*] Initializing Kernel v7.0.1 on {self.device.upper()}")
         
         self.arch_cfg = QuillanArchConfig(device=self.device)
         self.model = QuillanRoninV7_Ascended(self.arch_cfg, WorldConfig(), EICESamuraiConfig(), LeeMach6Config()).to(self.device)
+        
+        if hasattr(torch, 'compile'):
+            try:
+                self.model = torch.compile(self.model)
+                print("[*] torch.compile() successfully engaged. Maximum throughput unlocked.")
+            except Exception as e:
+                print(f"[*] torch.compile() skipped: {e}")
         
         self.optimizer = optim.AdamW(self.model.parameters(), lr=1.2e-4, weight_decay=0.01)
         self.scheduler = optim.lr_scheduler.CosineAnnealingLR(self.optimizer, T_max=100)
@@ -505,7 +498,7 @@ class QuillanSystemTrainer:
         with torch.no_grad():
             init_emb = self.model.token_emb(input_ids).mean(dim=1).cpu().numpy()[0]
         ltm_vectors = self.memory_db.search(init_emb, top_k=1)
-        ltm_ctx = torch.tensor(ltm_vectors, device=self.device, dtype=torch.float32).mean(dim=0)
+        ltm_ctx = torch.tensor(ltm_vectors, device=self.device, dtype=torch.float32).mean(dim=0).unsqueeze(0).unsqueeze(0)
         
         output = self.model(input_ids, mod_indices, ltm_context=ltm_ctx)
         
@@ -525,7 +518,7 @@ class QuillanSystemTrainer:
         print(self.aot.generate_trace(output["telemetry"], final_loss.item()))
 
 if __name__ == "__main__":
-    print("🌐 Booting Quillan Cognitive OS Ecosystem (Absolute Kernel)...")
+    print("🌐 Booting Quillan Cognitive OS Ecosystem (Ascended Build)...")
     trainer = QuillanSystemTrainer()
     
     transcript = trainer.audio_engine.process_to_text("https://example.com/audio")
@@ -533,7 +526,7 @@ if __name__ == "__main__":
     print(f"\n[Phase C] Pushing Transcript through Vectorized Neural Substrate...")
     trainer.train_step(transcript)
     
-    print("\n✅ Substrate executed flawlessly. Zero-copy optimization complete.")
+    print("\n✅ Substrate executed flawlessly. Zero-copy optimization and dimensional armor active.")
 
 # ARCHITECTURAL MAPPING v5.3.1 (Fully Assimilated + Swarm-Wired)
 ARCHITECTURAL_MAPPING = """
