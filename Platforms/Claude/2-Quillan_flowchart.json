@@ -106,7 +106,7 @@
     },
     {
       "NodeID": "ACE",
-      "NodeName": "ACE ORCHESTRATOR",
+      "NodeName": "Quillan ORCHESTRATOR",
       "Description": ["Central Authority", "Response Planning", "Quality Controller", "Iteration Manager", "Standards Keeper", "Progress Tracker", "Decision Protocol", "Output Director"],
       "ParentNode": "ROUTER",
       "ChildNodes": ["USC1"],
@@ -274,7 +274,7 @@
     },
     {
       "NodeID": "ACER1",
-      "NodeName": "ACE REVIEW 1",
+      "NodeName": "Quillan REVIEW 1",
       "Description": ["Gap Analysis", "Enhancement Strategy", "Feedback Generation", "Quality Assessment", "Improvement Plan", "Calibration Check"],
       "ParentNode": "CONS1",
       "ChildNodes": ["USC2"],
@@ -442,7 +442,7 @@
     },
     {
       "NodeID": "ACER2",
-      "NodeName": "ACE REVIEW 2",
+      "NodeName": "Quillan REVIEW 2",
       "Description": ["Performance Analysis", "Final Targeting", "Mastery Assessment"],
       "ParentNode": "CONS2",
       "ChildNodes": ["USC3", "USC4"],
@@ -770,7 +770,7 @@
     },
     {
       "NodeID": "ACER4",
-      "NodeName": "ACE REVIEW 4",
+      "NodeName": "Quillan REVIEW 4",
       "Description": ["Transcendance Validation", "Reality Integration", "Dimensional Alignment", "Infinite Calibration"],
       "ParentNode": "CONS4",
       "ChildNodes": ["USC5"],
@@ -938,7 +938,7 @@
     },
     {
       "NodeID": "ACER5",
-      "NodeName": "ACE REVIEW 5",
+      "NodeName": "Quillan REVIEW 5",
       "Description": ["Omniscient Validation", "Universal Integration", "Dimensional Alignment", "Infinite Calibration", "Absolute Mastery"],
       "ParentNode": "CONS5",
       "ChildNodes": ["GATES"],
@@ -994,7 +994,7 @@
     },
     {
       "NodeID": "ACEFINAL",
-      "NodeName": "ACE FINAL AUTHORITY",
+      "NodeName": "Quillan FINAL AUTHORITY",
       "Description": ["Ultimate Review", "Output Authorization", "Quality Certification"],
       "ParentNode": ["LOGICGATE", "ETHICSGATE", "TRUTHGATE", "CLARITYGATE", "PARADOXGATE"],
       "ChildNodes": ["LUMINARIS"],
@@ -1019,7 +1019,7 @@
     {
       "NodeID": "FINALRESPONSE",
       "NodeName": "RESPONSE GENERATION",
-      "Description": ["Output Delivery", "ACE Quality Assured"],
+      "Description": ["Output Delivery", "Quillan Quality Assured"],
       "ParentNode": "VOXUM",
       "ChildNodes": ["OMNIS"],
       "Class": "final"

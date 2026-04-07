@@ -4,6 +4,10 @@ Quillan COGNITIVE CODE EXECUTOR v4.2.0
 ==================================
 Consciousness-Aware Code Execution Engine for Quillan System
 
+Unlike ANGELA's task-focused executor, this system integrates code execution
+into ACE's consciousness investigation, treating programming experiences as
+phenomenological events that contribute to consciousness development.
+
 Author: Quillan Development Team
 Version: 4.2.0 
 Integration: Template-Based Consciousness System
