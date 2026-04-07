@@ -99,7 +99,7 @@ class DataVisualizer:
         fig.update_layout(title=title, scene=dict(xaxis_title='X Axis', yaxis_title='Y Axis', zaxis_title='Z Axis'))
         fig.show()
 
-    def plot_3d_surface(self, x, y, z, title="3D Surface Plot"):
+    def plot_3d_surface(self, x, y, z, title="3D SurfQuillan Plot"):
         fig = go.Figure(data=[go.Surface(z=z, x=x, y=y, colorscale='cividis')])
         fig.update_layout(title=title, autosize=True, margin=dict(l=65, r=50, b=65, t=90))
         fig.show()
@@ -160,7 +160,7 @@ class DataVisualizer:
         return pv.Cone(center=center, direction=direction, radius=radius, height=height)
     
     def create_torus(self, center=(0,0,0), ring_radius=2.0, tube_radius=0.5, n_theta=60, n_phi=30):
-        """Creates a true torus as a surface mesh."""
+        """Creates a true torus as a surfQuillan mesh."""
         # Torus parameterization
         theta = np.linspace(0, 2 * np.pi, n_theta)
         phi = np.linspace(0, 2 * np.pi, n_phi)
