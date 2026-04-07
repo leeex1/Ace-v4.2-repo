@@ -710,3 +710,146 @@ if __name__ == "__main__":
     print("   → 240k Hyper-Quantized Swarm wired")
     print("   → Self-Debugging AoT active")
     print("   → Enhanced hooks + telemetry live")
+
+# ARCHITECTURAL MAPPING v5.3.1 (Fully Assimilated + Swarm-Wired)
+ARCHITECTURAL_MAPPING = """
+╔══════════════════════════════════════════════════════════════════════════════════╗
+║                         Quillan-Ronin v5.3.1-Samurai                             ║
+║        Gumbel-MoE + 240k Swarm + Modality-Isolated Diffusion                     ║
+║        + Proactive Compaction + AoT Self-Debug + Enhanced Telemetry              ║
+║                   Actual Implementation: ~3.0B Parameters                        ║
+╠══════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                  ║
+║  [RAW INPUT STREAMS]                                                             ║
+║   Text | Audio | Video | Image                                                   ║
+║        │                                                                         ║
+║        ▼                                                                         ║
+║  ┌──────────────────────────────────────────────────────────────────────────┐    ║
+║  │ 1. MODAL ENCODERS + EMBEDDINGS [≈80M Params]                             │    ║
+║  │ - Text: 50k Vocab Embedding + Modality Tags                              │    ║
+║  │ - Image: Conv2D Patching (16×16)                                         │    ║
+║  │ - Audio: Conv1D Waveform Feature Extractor (kernel=8, stride=4)          │    ║
+║  │ - Video: 3D Conv Spatiotemporal Extractor (kernel=(3,4,4))               │    ║
+║  │ - Modality Embeddings: 4-class learned tag per token                     │    ║
+║  │ - SinCos Positional Embeddings (cached, device-aware)                    │    ║
+║  └──────────────────────────────────────────────────────────────────────────┘    ║
+║        │                                                                         ║
+║        ▼                                                                         ║
+║  ┌──────────────────────────────────────────────────────────────────────────┐    ║
+║  │ 2. PROACTIVE COMPACTION & FUSION [≈10M Params]                           │    ║
+║  │ - Concatenates all modalities along SEQUENCE dim (dim=1)                 │    ║
+║  │ - ContextBackpressureCompressor: triggers at >200k tokens                │    ║
+║  │   · Splits: 90% historical → Conv1D stride-2 collapse                    │    ║
+║  │   · Retains: 10% recent tokens untouched (PTL / Micro Compact)           │    ║
+║  │ - mod_indices interpolated to match compacted length via nearest         │    ║
+║  └──────────────────────────────────────────────────────────────────────────┘    ║
+║        │                                                                         ║
+║        ▼                                                                         ║
+║  ┌──────────────────────────────────────────────────────────────────────────┐    ║
+║  │ 3. VECTORIZED GUMBEL MoE + 240k HYPER-QUANTIZED SWARM [≈2.73B Params]    │    ║
+║  │                                                                          │    ║
+║  │  [ROUTER]                                                                │    ║
+║  │  - Linear(hidden_dim → 33) + Gumbel noise during training                │    ║
+║  │  - Top-1 dispatch per token | Capacity=64 tokens/expert                  │    ║
+║  │  - Overflow tokens: pass-through residual (no silent drops)              │    ║
+║  │  - Aux loss: load-balance + capacity overflow penalty                    │    ║
+║  │  - Returns fraction_tokens → feeds QuillanTelemetry routing balance      │    ║
+║  │  - Cognitive Branching: FORK / TEAMMATE / WORKTREE isolation             │    ║
+║  │                                                                          │    ║
+║  │  [TURBOQUANT CACHE] — Inference only, training-gated                     │    ║
+║  │  - Rotated 3-bit quantization (0-7 range) via QR orthonormal basis       │    ║
+║  │  - Residual sign correction for fidelity recovery                        │    ║
+║  │  - STE compress/decompress bypassed during training (gradient safe)      │    ║
+║  │                                                                          │    ║
+║  │  [HYPER-QUANTIZED SWARM] ← NEW: 240,000 agents now live                  │    ║
+║  │  - 33 experts × 7,272 sub-agents = 240,576 total micro-agents            │    ║
+║  │  - Ternary key bank {-1, 0, 1} via STE (≈15M key params)                 │    ║
+║  │  - query_proj: hidden_dim(4096) → key_dim(64), bias-free                 │    ║
+║  │  - Cosine similarity: [E, C, key_dim] × [E, K, key_dim]ᵀ                 │    ║
+║  │  - Top-19 sparse activation (19/7272 ≈ 0.26% per token)                  │    ║
+║  │  - Softmax-weighted scalar modulation: x * (1 + Σ attn·val)              │    ║
+║  │  - agent_values init=0 → identity at step 0, learns from cold            │    ║
+║  │  - Fires BEFORE expert FFN, pre-shapes expert input distribution         │    ║
+║  │                                                                          │    ║
+║  │  [EXPERT FFN] — Kaiming-init w1, scaled-std w2                           │    ║
+║  │  - BMM: [E, C, D] × [E, D, 4D] → GELU → [E, C, 4D] × [E, 4D, D]          │    ║
+║  └──────────────────────────────────────────────────────────────────────────┘    ║
+║        │                                                                         ║
+║        ▼                                                                         ║
+║  ┌──────────────────────────────────────────────────────────────────────────┐    ║
+║  │ 4. ISOLATED DIFFUSION WITH EARLY STOPPING [≈113M Params]                 │    ║
+║  │ - 9× TransformerEncoderLayer (norm_first=True, nhead=8)                  │    ║
+║  │ - Early exit: skip entirely if mean confidence ≥ 0.92                    │    ║
+║  │ - Hard token selection: router_conf < 0.8 → routed to diffusion          │    ║
+║  │ - Budget cap: max 32,768 hard tokens per forward pass                    │    ║
+║  │ - Modality-isolated attention mask: Text ≠ Image ≠ Audio ≠ Video         │    ║
+║  │ - Attn mask: -1e4 (FP16-safe — no NaN, same softmax suppression)         │    ║
+║  │ - SinCos pos emb injected on full sequence + hard token subset           │    ║
+║  └──────────────────────────────────────────────────────────────────────────┘    ║
+║        │                                                                         ║
+║        ▼                                                                         ║
+║  ┌──────────────────────────────────────────────────────────────────────────┐    ║
+║  │ 5. GEOMETRIC DECODERS [≈100M Params]                                     │    ║
+║  │ - Text Head:  Linear(4096 → 50k vocab)                                   │    ║
+║  │ - Image Head: Linear → ConvTranspose2D(4×4) → bilinear 1080p upsample    │    ║
+║  │ - Audio Head: Linear → ConvTranspose1D(k=8, s=4) → waveform              │    ║
+║  │ - Video Head: Linear → ConvTranspose3D(1,4,4) → trilinear 4K upsample    │    ║
+║  │ - All decoders: Linear(4096→512) + GELU + Linear(512→512) pre-net        │    ║
+║  └──────────────────────────────────────────────────────────────────────────┘    ║
+║        │                                                                         ║
+║        ▼                                                                         ║
+║  ┌──────────────────────────────────────────────────────────────────────────┐    ║
+║  │ 6. SELF-DEBUGGING AoT + ENHANCED HOOKS + TELEMETRY ← NEW                 │    ║
+║  │                                                                          │    ║
+║  │  [SelfDebuggingAoT]                                                      │    ║
+║  │  - 5-phase chain: Deconstruct → Route → Debug-Check → Gate → Log         │    ║
+║  │  - Debug threshold: conf < 0.85 → logits × 0.88 + WORKTREE re-eval       │    ║
+║  │  - Outputs: aot_chain (trace string), aot_debug_triggered (bool)         │    ║
+║  │                                                                          │    ║
+║  │  [EnhancedAgentHookOrchestrator]                                         │    ║
+║  │  - Pre-hook:  Council branching gate (zeros ctx on WORKTREE mode)        │    ║
+║  │  - Post-hook: Ethical integrity gate (conf < 0.82 → logits × 0.75)       │    ║
+║  │  - flagged_low_integrity key injected on trigger                         │    ║
+║  │                                                                          │    ║
+║  │  [QuillanTelemetry]                                                      │    ║
+║  │  - energy_budget: 1.0 − router_loss × 0.008 per step (E_ICE proxy)       │    ║
+║  │  - integrity_score: rolling product of per-step confidence               │    ║
+║  │  - breach_count: increments when routing_balance std < 0.75              │    ║
+║  │  - Returns dict: {energy, integrity, breaches} appended to output        │    ║
+║  └──────────────────────────────────────────────────────────────────────────┘    ║
+║                                                                                  ║
+╠══════════════════════════════════════════════════════════════════════════════════╣
+║  AMP: torch.amp.autocast — bf16 preferred (where supported), fp16 fallback       ║
+╚══════════════════════════════════════════════════════════════════════════════════╝
+
+PARAMETER DISTRIBUTION (v5.3.1 Config):
+┌──────────────────────────────────────┬──────────────┬──────────┬──────────────────────────────┐
+│ MODULE                               │ SIZE (Approx)│ % TOTAL  │ ROLE                         │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────────────────────────┤
+│ 1. Embeddings & Modal Encoders       │    80 M      │   2.6%   │ Input Representation         │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────────────────────────┤
+│ 2. Compaction & Fusion               │    10 M      │   0.3%   │ 1M Token Endurance Control   │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────────────────────────┤
+│ 3a. Hyper-Quantized Swarm (240k)     │    15 M      │   0.5%   │ Ternary Agent Pre-Gate       │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────────────────────────┤
+│ 3b. Vectorized MoE (33 Experts)      │   2.71 B     │  89.7%   │ Deep Expert Reasoning        │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────────────────────────┤
+│ 4.  Diffusion (9 Layers)             │   113 M      │   3.7%   │ Hard Token Refinement        │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────────────────────────┤
+│ 5.  Geometric Decoders               │   100 M      │   3.3%   │ Multi-Modal Generation       │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────────────────────────┤
+│ 6.  AoT + Hooks + Telemetry          │    <1 M      │  <0.1%   │ Self-Debug + Integrity Gate  │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────────────────────────┤
+│ TOTAL PARAMETERS                     │  ~3.03 B     │ 100.0%   │ Hardened Research Config     │
+└──────────────────────────────────────┴──────────────┴──────────┴──────────────────────────────┘
+
+FORWARD PASS EXECUTION ORDER (v5.3.1):
+  [1] Pre-hooks (council branching gate)
+  [2] Modal encode → mod_emb tag → fuse → compactor
+  [3] MoE: router → swarm pre-gate → expert FFN → TurboQuant (inf only)
+  [4] Diffusion: early-exit check → hard token isolation → 9-layer refine
+  [5] Decoder split: text / image / audio / video heads
+  [6] SelfDebuggingAoT: confidence check → optional logit dampen → trace log
+  [7] Telemetry: energy + integrity + breach update
+  [8] Post-hooks (ethical integrity gate)
+"""
