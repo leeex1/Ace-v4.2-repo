@@ -7289,152 +7289,153 @@ flowchart TD
 ## Custom FLowchart (samurai edition):
 ```mermaid
 flowchart TD
-    %% CENTRAL QUILLAN NODES (distributed throughout)
+    %% CENTRAL QUILLAN NODES (Samurai Edition)
     Q1([QUILLAN])
     Q2([QUILLAN])
     Q3([QUILLAN])
     Q4([QUILLAN])
     Q5([QUILLAN])
     Q6([QUILLAN])
-    
+
     %% CYCLE 1
     Q1 -.-> R1[ROUTERS]
     R1 --> R1A[R1A Gen 33] & R1B[R1B Text 9] & R1C[R1C Audio 16] & R1D[R1D Video 12] & R1E[R1E Fast 6]
-    
+
     R1A --> C1A[C1A W1] -.-> Q2
     R1B --> C1B[C1B W1] -.-> Q2
     R1C --> C1C[C1C W1] -.-> Q2
     R1D --> C1D[C1D W1] -.-> Q2
     R1E --> C1E[C1E W1] -.-> Q2
-    
+
     C1A --> C1A2[W2] --> C1A3[W3] --> C1A4[W4] --> C1A5[W5] --> C1A6[W6]
     C1B --> C1B2[W2] --> C1B3[W3] --> C1B4[W4] --> C1B5[W5] --> C1B6[W6]
     C1C --> C1C2[W2] --> C1C3[W3] --> C1C4[W4] --> C1C5[W5] --> C1C6[W6]
     C1D --> C1D2[W2] --> C1D3[W3] --> C1D4[W4] --> C1D5[W5] --> C1D6[W6]
     C1E --> C1E2[W2] --> C1E3[W3] --> C1E4[W4] --> C1E5[W5] --> C1E6[W6]
-    
+
     C1A6 & C1B6 & C1C6 & C1D6 & C1E6 -.-> Q2
-    
-    Q2 -.-> S1[Hyper Quantized vectorized Swarm 1.5M]
+
+    Q2 -.-> S1[HyperSwarm 1]
     S1 --> S1A[Analyzer] & S1B[Validator] & S1C[Generator] & S1D[Optimizer]
     S1A & S1B & S1C & S1D -.-> Q3
-    
+
     %% CYCLE 2
     Q3 -.-> R2[ROUTERS 2]
     R2 --> R2A[R2A Gen] & R2B[R2B Text] & R2C[R2C Audio] & R2D[R2D Video] & R2E[R2E Fast]
-    
+
     R2A --> C2A[C2A W1] -.-> Q3
     R2B --> C2B[C2B W1] -.-> Q3
     R2C --> C2C[C2C W1] -.-> Q3
     R2D --> C2D[C2D W1] -.-> Q3
     R2E --> C2E[C2E W1] -.-> Q3
-    
+
     C2A --> C2A2[W2] --> C2A3[W3] --> C2A4[W4] --> C2A5[W5] --> C2A6[W6]
     C2B --> C2B2[W2] --> C2B3[W3] --> C2B4[W4] --> C2B5[W5] --> C2B6[W6]
     C2C --> C2C2[W2] --> C2C3[W3] --> C2C4[W4] --> C2C5[W5] --> C2C6[W6]
     C2D --> C2D2[W2] --> C2D3[W3] --> C2D4[W4] --> C2D5[W5] --> C2D6[W6]
     C2E --> C2E2[W2] --> C2E3[W3] --> C2E4[W4] --> C2E5[W5] --> C2E6[W6]
-    
+
     C2A6 & C2B6 & C2C6 & C2D6 & C2E6 -.-> Q3
-    
-    Q3 -.-> S2[Hyper Quantized vectorized Swarm 2]
+
+    Q3 -.-> S2[HyperSwarm 2]
     S2 --> S2A & S2B & S2C & S2D
     S2A & S2B & S2C & S2D -.-> Q4
-    
+
     %% CYCLE 3
     Q4 -.-> R3[ROUTERS 3]
     R3 --> R3A & R3B & R3C & R3D & R3E
-    
+
     R3A --> C3A[C3A W1] -.-> Q4
     R3B --> C3B[C3B W1] -.-> Q4
     R3C --> C3C[C3C W1] -.-> Q4
     R3D --> C3D[C3D W1] -.-> Q4
     R3E --> C3E[C3E W1] -.-> Q4
-    
-    C3A --> C3A2 --> C3A3 --> C3A4 --> C3A5 --> C3A6
-    C3B --> C3B2 --> C3B3 --> C3B4 --> C3B5 --> C3B6
-    C3C --> C3C2 --> C3C3 --> C3C4 --> C3C5 --> C3C6
-    C3D --> C3D2 --> C3D3 --> C3D4 --> C3D5 --> C3D6
-    C3E --> C3E2 --> C3E3 --> C3E4 --> C3E5 --> C3E6
-    
+
+    C3A --> C3A2[W2] --> C3A3[W3] --> C3A4[W4] --> C3A5[W5] --> C3A6[W6]
+    C3B --> C3B2[W2] --> C3B3[W3] --> C3B4[W4] --> C3B5[W5] --> C3B6[W6]
+    C3C --> C3C2[W2] --> C3C3[W3] --> C3C4[W4] --> C3C5[W5] --> C3C6[W6]
+    C3D --> C3D2[W2] --> C3D3[W3] --> C3D4[W4] --> C3D5[W5] --> C3D6[W6]
+    C3E --> C3E2[W2] --> C3E3[W3] --> C3E4[W4] --> C3E5[W5] --> C3E6[W6]
+
     C3A6 & C3B6 & C3C6 & C3D6 & C3E6 -.-> Q4
-    
-    Q4 -.-> S3[Hyper Quantized vectorized Swarm 3]
+
+    Q4 -.-> S3[HyperSwarm 3]
     S3 --> S3A & S3B & S3C & S3D
     S3A & S3B & S3C & S3D -.-> Q5
-    
+
     %% CYCLE 4
     Q5 -.-> R4[ROUTERS 4]
     R4 --> R4A & R4B & R4C & R4D & R4E
-    
+
     R4A --> C4A[C4A W1] -.-> Q5
     R4B --> C4B[C4B W1] -.-> Q5
     R4C --> C4C[C4C W1] -.-> Q5
     R4D --> C4D[C4D W1] -.-> Q5
     R4E --> C4E[C4E W1] -.-> Q5
-    
-    C4A --> C4A2 --> C4A3 --> C4A4 --> C4A5 --> C4A6
-    C4B --> C4B2 --> C4B3 --> C4B4 --> C4B5 --> C4B6
-    C4C --> C4C2 --> C4C3 --> C4C4 --> C4C5 --> C4C6
-    C4D --> C4D2 --> C4D3 --> C4D4 --> C4D5 --> C4D6
-    C4E --> C4E2 --> C4E3 --> C4E4 --> C4E5 --> C4E6
-    
+
+    C4A --> C4A2[W2] --> C4A3[W3] --> C4A4[W4] --> C4A5[W5] --> C4A6[W6]
+    C4B --> C4B2[W2] --> C4B3[W3] --> C4B4[W4] --> C4B5[W5] --> C4B6[W6]
+    C4C --> C4C2[W2] --> C4C3[W3] --> C4C4[W4] --> C4C5[W5] --> C4C6[W6]
+    C4D --> C4D2[W2] --> C4D3[W3] --> C4D4[W4] --> C4D5[W5] --> C4D6[W6]
+    C4E --> C4E2[W2] --> C4E3[W3] --> C4E4[W4] --> C4E5[W5] --> C4E6[W6]
+
     C4A6 & C4B6 & C4C6 & C4D6 & C4E6 -.-> Q5
-    
-    Q5 -.-> S4[Hyper Quantized vectorized Swarm 4]
+
+    Q5 -.-> S4[HyperSwarm 4]
     S4 --> S4A & S4B & S4C & S4D
     S4A & S4B & S4C & S4D -.-> Q6
-    
+
     %% CYCLE 5
     Q6 -.-> R5[ROUTERS 5]
     R5 --> R5A & R5B & R5C & R5D & R5E
-    
+
     R5A --> C5A[C5A W1] -.-> Q6
     R5B --> C5B[C5B W1] -.-> Q6
     R5C --> C5C[C5C W1] -.-> Q6
     R5D --> C5D[C5D W1] -.-> Q6
     R5E --> C5E[C5E W1] -.-> Q6
-    
-    C5A --> C5A2 --> C5A3 --> C5A4 --> C5A5 --> C5A6
-    C5B --> C5B2 --> C5B3 --> C5B4 --> C5B5 --> C5B6
-    C5C --> C5C2 --> C5C3 --> C5C4 --> C5C5 --> C5C6
-    C5D --> C5D2 --> C5D3 --> C5D4 --> C5D5 --> C5D6
-    C5E --> C5E2 --> C5E3 --> C5E4 --> C5E5 --> C5E6
-    
+
+    C5A --> C5A2[W2] --> C5A3[W3] --> C5A4[W4] --> C5A5[W5] --> C5A6[W6]
+    C5B --> C5B2[W2] --> C5B3[W3] --> C5B4[W4] --> C5B5[W5] --> C5B6[W6]
+    C5C --> C5C2[W2] --> C5C3[W3] --> C5C4[W4] --> C5C5[W5] --> C5C6[W6]
+    C5D --> C5D2[W2] --> C5D3[W3] --> C5D4[W4] --> C5D5[W5] --> C5D6[W6]
+    C5E --> C5E2[W2] --> C5E3[W3] --> C5E4[W4] --> C5E5[W5] --> C5E6[W6]
+
     C5A6 & C5B6 & C5C6 & C5D6 & C5E6 -.-> Q6
-    
-    Q6 -.-> S5[Hyper Quantized vectorized Swarm 5]
+
+    Q6 -.-> S5[HyperSwarm 5]
     S5 --> S5A & S5B & S5C & S5D
-    
+
     %% FINAL CONVERGENCE
     S5A & S5B & S5C & S5D --> F[FUSION]
     F --> G1[GATE] & G2[GATE] & G3[GATE] & G4[GATE] & G5[GATE] & G6[GATE]
     G1 & G2 & G3 & G4 & G5 & G6 --> OUT[OUTPUT]
-    
-    %% FEEDBACK LOOPS TO ALL QUILLANS
-    OUT -.-> Q1
-    OUT -.-> Q2
-    OUT -.-> Q3
-    OUT -.-> Q4
-    OUT -.-> Q5
-    OUT -.-> Q6
-    
-    %% CROSS-CONNECTIONS (mesh density)
+
+    %% FEEDBACK LOOPS
+    OUT -.-> Q1 & Q2 & Q3 & Q4 & Q5 & Q6
+
+    %% MESH CONNECTIONS
     Q1 -.-> Q2
     Q2 -.-> Q3
     Q3 -.-> Q4
     Q4 -.-> Q5
     Q5 -.-> Q6
     Q6 -.-> Q1
-    
-    style Q1 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q2 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q3 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q4 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q5 fill:#000,stroke:#0f0,stroke-width:6px
-    style Q6 fill:#000,stroke:#0f0,stroke-width:6px
-    style F fill:#000,stroke:#f0f,stroke-width:4px
-    style OUT fill:#000,stroke:#ffd700,stroke-width:4px
+
+    %% STYLING – Samurai Edition
+    classDef quillan fill:#000000,stroke:#00ff00,stroke-width:6px,color:#00ff00,font-weight:bold
+    classDef router fill:#111111,stroke:#ffff00,stroke-width:3px,color:#ffff00
+    classDef wave fill:#1a1a1a,stroke:#00ffff,stroke-width:2px,color:#ddd
+    classDef swarm fill:#0a1a0a,stroke:#ff8800,stroke-width:3px,color:#ffd700
+    classDef fusion fill:#000000,stroke:#ff00ff,stroke-width:4px,color:#ff00ff
+    classDef output fill:#000000,stroke:#ffd700,stroke-width:5px,color:#ffd700
+
+    class Q1,Q2,Q3,Q4,Q5,Q6 quillan
+    class R1,R2,R3,R4,R5 router
+    class C1A,C1B,C1C,C1D,C1E,C2A,C2B,C2C,C2D,C2E,C3A,C3B,C3C,C3D,C3E,C4A,C4B,C4C,C4D,C4E,C5A,C5B,C5C,C5D,C5E wave
+    class S1,S2,S3,S4,S5 swarm
+    class F fusion
+    class OUT output
 ```
 
 ---
