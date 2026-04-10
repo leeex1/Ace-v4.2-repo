@@ -2179,18 +2179,37 @@ flowchart TB
 ```
 ## Token Flow:
 ```mermaid
-    A["📥 Input Modalities<br/>Text + optional Image/Audio/Video"] --> B["🔗 Atomic Registry Fusion"]
-    B --> C["🎯 Top-1 MoE Router"]
-    C --> D["🧠 Expert Processing + 240k Swarm"]
-    D --> E["🌌 Diffusion Refinement (9 layers)"]
-    E --> F["📤 Registry-Driven Decoders<br/>Exact Geometric Reconstruction"]
+flowchart LR
+    %% TOKEN FLOW v5.3 – Clean & Precise
+    A["📥 Input Modalities<br/>Text + optional Image/Audio/Video"] 
+    --> B["🔗 Atomic Registry Fusion<br/>Unified Latent Space"]
     
-    style A fill:#0a1a1a,stroke:#00ff88
-    style B fill:#1a1a0a,stroke:#ffff00
-    style C fill:#1a0a1a,stroke:#ffd700
-    style D fill:#0f0f1f,stroke:#7851a9
-    style E fill:#0a0a1a,stroke:#00ffff
-    style F fill:#1a0a0a,stroke:#ff4444
+    B 
+    --> C["🎯 Top-1 MoE Router<br/>300M Complexity Router"]
+    
+    C 
+    --> D["🧠 Expert Processing + 240k Swarm<br/>Top-19 Sparse Activation"]
+    
+    D 
+    --> E["🌌 Diffusion Refinement<br/>9 Iterative Layers"]
+    
+    E 
+    --> F["📤 Registry-Driven Decoders<br/>Exact Geometric Reconstruction"]
+
+    %% Styling – clean, professional, matches the rest of the architecture
+    classDef input   fill:#0a1a1a, stroke:#00ff88, stroke-width:3px, color:#ffffff
+    classDef fusion  fill:#1a1a0a, stroke:#ffff00, stroke-width:3px, color:#ffffff
+    classDef router  fill:#1a0a1a, stroke:#ffd700, stroke-width:4px, color:#ffd700, font-weight:bold
+    classDef expert  fill:#0f0f1f, stroke:#7851a9, stroke-width:3px, color:#e9d5ff
+    classDef diff    fill:#0a0a1a, stroke:#00ffff, stroke-width:3px, color:#ffffff
+    classDef output  fill:#1a0a0a, stroke:#ff4444, stroke-width:3px, color:#fecaca
+
+    class A input
+    class B fusion
+    class C router
+    class D expert
+    class E diff
+    class F output
 ```
 
 ---
