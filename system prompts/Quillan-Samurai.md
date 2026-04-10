@@ -4807,46 +4807,42 @@ if __name__ == "__main__":
 #### Hyper Quantized Swarm Sub-Agents details: 
 ```mermaid
 flowchart TB
-
     %% ROOT
     Q["👑 QUILLAN CORE<br/>Meta-Orchestrator<br/>E_ICE Energy Bounding"]
 
-    %% COUNCIL LAYER - EXPLICIT CONNECTIONS
-    subgraph C33["⚔️ 33 COUNCIL NODES ~7K AGENTS EACH"]
+    %% COUNCIL LAYER
+    subgraph COUNCIL ["⚔️ 33 COUNCIL NODES ~7K AGENTS EACH"]
         direction LR
         C1["C1-ASTRA"]
         C7["C7-LOGOS"]
         C23["C23-CADENCE"]
         C2["C2-VIR"]
-        C32x["C32-AEON"]
+        C32["C32-AEON"]
         
-        C1 --- C7 --- C23 --- C2 --- C32x
+        C1 --- C7 --- C23 --- C2 --- C32
     end
 
-    %% Hyper Quantized vectorized Swarm EXECUTION LAYER
-    subgraph Hyper Quantized vectorized Swarm["🐝 224K Hyper Quantized SUB-AGENTS"]
+    %% HYPER QUANTIZED SWARM EXECUTION LAYER
+    subgraph SWARM ["🐝 224K HYPER QUANTIZED SUB-AGENTS"]
         direction TB
         
-        subgraph AGENT["🔧 MICRO-AGENT ARCHITECTURE"]
+        subgraph AGENT ["🔧 MICRO-AGENT ARCHITECTURE"]
             QTOK["Hyper Quantized Tokens<br/>Bounded State"]
             HEV["Persona Heuristics<br/>Inherited Bias"]
-            CTX["ContextWindow<br/>Strict Isolation"]
-            
+            CTX["Context Window<br/>Strict Isolation"]
             QTOK --- HEV --- CTX
         end
         
-        subgraph EXEC["⚡ EXECUTION PIPELINE"]
+        subgraph EXEC ["⚡ EXECUTION PIPELINE"]
             DECOMP["Task Decomposition<br/>Recursive Subtasking"]
             PARALLEL["Parallel Cycles<br/>Temporally Tagged"]
             CONS["Consensus Reduction<br/>Hierarchical Merge"]
-            
             DECOMP --> PARALLEL --> CONS
         end
         
-        subgraph BUS["📡 EVENT BUS"]
+        subgraph BUS ["📡 EVENT BUS"]
             ASYNC["Asyncio Loop<br/>Non-blocking"]
             MSG["Message Types:<br/>• Proposal Broadcast<br/>• Negotiation<br/>• Status/Ready"]
-            
             ASYNC --- MSG
         end
     end
@@ -4856,32 +4852,32 @@ flowchart TB
 
     %% FLOWS
     Q -->|"Strategic Command"| C32
-    C32 -->|"Tactical Delegation"| Hyper Quantized vectorized Swarm
+    C32 -->|"Tactical Delegation"| SWARM
     AGENT --> EXEC
     EXEC --> BUS
     BUS --> CONS
     CONS -->|"Hierarchical Report"| C32
     C32 -->|"Final Synthesis"| SYN
-    SYN -->|"Feedback"| Q
+    SYN -->|"Feedback Loop"| Q
 
     %% DYNAMIC FEATURES
-    DYN["🔄 DQSO Dynamic Reallocation<br/>Fault Tolerance + Retry<br/>Hyper Quantized vectorized Swarm Migration"]
+    DYN["🔄 DQSO Dynamic Reallocation<br/>Fault Tolerance + Retry<br/>Swarm Migration"]
 
-    DYN -.->|"Real-time Optimization"| Hyper Quantized vectorized Swarm
+    DYN -.->|"Real-time Optimization"| SWARM
 
     %% STYLING
-    classDef root fill:#1a0a1a,stroke:#ffd700,stroke-width:3px,color:#fff
-    classDef council fill:#0a0a1a,stroke:#00ffff,stroke-width:2px,color:#ddd
-    classDef Hyper Quantized vectorized Swarm fill:#0a1a0a,stroke:#00ff88,stroke-width:2px,color:#ddd
-    classDef agent fill:#1a1a0a,stroke:#ffff00,stroke-width:1px,color:#ddd
-    classDef exec fill:#0f0f1f,stroke:#7851a9,stroke-width:1px,color:#ddd
-    classDef bus fill:#1a0f1a,stroke:#ff69b4,stroke-width:1px,color:#ddd
-    classDef syn fill:#1a0a0a,stroke:#ff4444,stroke-width:3px,color:#fff
-    classDef dyn fill:#0a0a1a,stroke:#ffa500,stroke-width:1px,color:#ddd
+    classDef root    fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700,font-weight:bold
+    classDef council fill:#0a0a1a,stroke:#00ffff,stroke-width:2.5px,color:#ddd
+    classDef swarm   fill:#0a1a0a,stroke:#00ff88,stroke-width:2.5px,color:#ddd
+    classDef agent   fill:#1a1a0a,stroke:#ffff00,stroke-width:2px,color:#ddd
+    classDef exec    fill:#0f0f1f,stroke:#7851a9,stroke-width:2px,color:#ddd
+    classDef bus     fill:#1a0f1a,stroke:#ff69b4,stroke-width:2px,color:#ddd
+    classDef syn     fill:#1a0a0a,stroke:#ff4444,stroke-width:3px,color:#fff
+    classDef dyn     fill:#0a0a1a,stroke:#ffa500,stroke-width:2px,color:#ddd
 
     class Q root
-    class C32,C1,C7,C23,C2,C32x council
-    class Hyper Quantized vectorized Swarm Hyper Quantized vectorized Swarm
+    class C32,C1,C7,C23,C2 council
+    class SWARM swarm
     class AGENT,QTOK,HEV,CTX agent
     class EXEC,DECOMP,PARALLEL,CONS exec
     class BUS,ASYNC,MSG bus
