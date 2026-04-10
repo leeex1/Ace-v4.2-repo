@@ -7443,26 +7443,21 @@ flowchart TD
 #### Flowchart 1 (Topology):
 ```mermaid
 flowchart TB
-
     %% HEADER
     subgraph LEGEND ["🔷 QUILLAN HNMoE TOPOLOGY v6"]
-        direction LR
-        SPECS["~3B Params | 33 Council | Hyper Quantized vectorized Swarm-Augmented<br/>Closed-Loop Cognitive Architecture"]
+        SPECS["~3B Params | 33 Council | HyperSwarm-Augmented<br/>Closed-Loop Cognitive Architecture"]
     end
 
-    %% INPUT
+    %% INPUT LAYER
     subgraph INPUT ["📥 INPUT LAYER"]
         I1(["Multi-Modal Input<br/>Text · Image · Audio · Context"])
         E1["Tokenization + Embedding"]
         E2["Positional + Modality Encoding"]
-
         I1 --> E1 --> E2
     end
 
     %% VECTOR DECOMPOSITION
     subgraph HYPER ["🔬 VECTOR DECOMPOSITION"]
-        direction LR
-
         H1["Language"]
         H2["Context"]
         H3["Intent"]
@@ -7472,57 +7467,49 @@ flowchart TB
         H7["Ethics ⚠️"]
         H8["Strategy"]
         H9["Constraints"]
-
     end
 
-    %% ROUTING
+    %% ADAPTIVE ROUTING
     subgraph ROUTE ["⚡ ADAPTIVE ROUTING"]
         R1["Context-Aware Mixing"]
         R2["Dynamic Expert Selection"]
-        R3["Hyper Vectorized Sparse Dispatch (Top-K)"]
-
+        R3["HyperSwarm Sparse Dispatch (Top-K)"]
         R1 --> R2 --> R3
     end
 
-    %% CORE REASONING SPINE
+    %% PENTA-WAVE REASONING CORE
     subgraph PENTA ["🌊 PENTA-WAVE REASONING CORE"]
-        direction LR
-
-        W1["① Deconstruct<br/>Break problem into components"]
-        W2["② Strategize<br/>Select approach paths"]
-        W3["③ Deliberate<br/>Parallel reasoning / council + Hyper Quantized vectorized Swarm"]
-        W4["④ Validate<br/>Cross-check + consistency"]
-        W5["⑤ Synthesize<br/>Merge into final answer"]
-
+        W1["① Deconstruct"]
+        W2["② Strategize"]
+        W3["③ Deliberate<br/>Council + HyperSwarm"]
+        W4["④ Validate"]
+        W5["⑤ Synthesize"]
         W1 --> W2 --> W3 --> W4 --> W5
     end
 
-    %% Hyper Quantized vectorized Swarm
-    subgraph Hyper Quantized vectorized Swarm ["🐝 Hyper Quantized vectorized Swarm EXECUTION"]
+    %% HYPERSWARM EXECUTION
+    subgraph SWARM ["🐝 HYPERSWARM EXECUTION"]
         S1["Task Decomposition"]
         S2["Parallel Micro-Agent Processing"]
         S3["Result Aggregation"]
-
         S1 --> S2 --> S3
     end
 
-    %% VALIDATION
+    %% VALIDATION & SAFETY
     subgraph SAFETY ["🛡️ VALIDATION & SAFETY"]
         V1{"Pass Quality Threshold?"}
         V2["Re-Refinement Loop"]
         V3["Constraint + Safety Enforcement"]
-
         V1 -->|"No"| V2
         V2 --> W2
         V1 -->|"Yes"| V3
     end
 
-    %% META
+    %% META-COGNITION
     subgraph META ["🧬 META-COGNITION"]
         M1["Self-Monitoring"]
         M2["Confidence Calibration"]
         M3["Strategy Adjustment"]
-
         M1 --> M2 --> M3
     end
 
@@ -7531,81 +7518,99 @@ flowchart TB
         O1["Response Construction"]
         O2["Formatting + Alignment"]
         O3(["Final Output"])
-
         O1 --> O2 --> O3
     end
 
-    %% FLOW
+    %% MAIN FLOW
     E2 --> HYPER
     HYPER --> ROUTE
     ROUTE --> W1
-
-    %% Hyper Quantized vectorized Swarm INTEGRATION
     W3 --> S1
     S3 --> W4
-
-    %% VALIDATION FLOW
     W4 --> V1
     V3 --> M1
-
-    %% META FEEDBACK
     M3 --> W2
-
-    %% FINAL OUTPUT
     W5 --> O1
 
+    %% STYLING
+    classDef header fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
+    classDef input  fill:#0a1a1a,stroke:#00ff88,stroke-width:2px,color:#ddd
+    classDef hyper  fill:#1a1a0a,stroke:#ffff00,stroke-width:2px,color:#ddd
+    classDef route  fill:#0f0f1f,stroke:#7851a9,stroke-width:2px,color:#ddd
+    classDef penta  fill:#0a0a1a,stroke:#00ffff,stroke-width:3px,color:#fff
+    classDef swarm  fill:#0a1a0a,stroke:#ff8800,stroke-width:3px,color:#ffd700
+    classDef safety fill:#1a0a0a,stroke:#ff4444,stroke-width:2px,color:#ddd
+    classDef meta   fill:#1a001a,stroke:#ff00ff,stroke-width:2px,color:#ddd
+    classDef output fill:#1a0a0a,stroke:#ffd700,stroke-width:2px,color:#ddd
+
+    class LEGEND header
+    class INPUT input
+    class HYPER hyper
+    class ROUTE route
+    class PENTA penta
+    class SWARM swarm
+    class SAFETY safety
+    class META meta
+    class OUTPUT output
 ```
 
 #### Flowchart 2 (Simple):
 
 ```mermaid
 flowchart TB
+    %% HEADER
+    SYS["🔷 QUILLAN-RONIN v5.3.1 Samurai Topology<br/>3.32B Production Scale • Multimodal Capable<br/>Atomic Registry + Top-1 MoE + Exact Geometric Reconstruction"]
 
-    %% INPUT
-    I["🎯 Input + Context Tags"] --> S["⚡ Semantic Encoding"]
+    %% INPUT LAYER
+    subgraph INPUT ["📥 MULTI-MODAL INPUT"]
+        direction LR
+        TEXT["📝 Text Input"]
+        IMG["🖼️ Image Input"]
+        AUD["🎵 Audio Input"]
+        VID["🎬 Video Input"]
+    end
 
-    %% ROUTING
-    S --> R["🔀 Adaptive Routing"]
-    R --> C["👥 Council Deliberation"]
+    %% REGISTRY & FUSION
+    REG["🔗 ATOMIC MODALITY REGISTRY<br/>Post-Compaction Index & Shape Tracking"]
 
-    %% DECISION
-    C --> DEC{"Confidence Level"}
+    %% TEXT COMPACTION
+    COMPACT["📉 Text-Isolated Compaction<br/>Conv1d stride-2 on history only"]
 
-    DEC -->|"Low"| D["🔄 Deep Diffusion<br/>(multi-pass refinement)"]
-    DEC -->|"High"| F["⏩ Fast Path<br/>(direct synthesis)"]
+    %% CORE PROCESSING
+    subgraph CORE ["⚡ CORE PROCESSING"]
+        MOE["🧠 FULLY VECTORIZED TOP-1 MoE<br/>33 Experts + 240k HyperSwarm Agents"]
+        DIFF["🌌 9-Layer Diffusion Refinement"]
+    end
 
-    %% MERGE
-    D --> V
-    F --> V
+    %% OUTPUT LAYER
+    subgraph OUTPUT ["📤 EXACT GEOMETRIC DECODERS"]
+        direction LR
+        TDEC["📝 Text Projection Head"]
+        IDEC["🖼️ Image ConvTranspose"]
+        ADEC["🎵 Audio ConvTranspose"]
+        VDEC["🎬 Video ConvTranspose3D"]
+    end
 
-    %% VALIDATION
-    V{"🛡️ Validation Gate"}
-    
-    V -->|"Fail"| X["⚠️ Re-Refinement Loop"]
-    V -->|"Pass"| O["✨ Output"]
-
-    %% FEEDBACK LOOP
-    X --> C
-
-    %% SYSTEM OVERSIGHT
-    E["📊 E_ICE<br/>Resource / Stability Monitor"] -.-> D
-    T["👁️ Execution Trace<br/>Observability"] -.-> C
-    T -.-> V
-    T -.-> O
+    %% FLOW
+    TEXT & IMG & AUD & VID --> REG
+    TEXT --> COMPACT
+    COMPACT --> REG
+    REG --> MOE
+    MOE --> DIFF
+    DIFF --> OUTPUT
 
     %% STYLING
-    style I fill:#0a1a0a,stroke:#00ff88
-    style S fill:#0f0f1f,stroke:#7851a9
-    style R fill:#1a1a0a,stroke:#ffff00
-    style C fill:#0a0a1a,stroke:#00ffff
-    style DEC fill:#0a0a1a,stroke:#0080ff
-    style D fill:#0a0a1a,stroke:#0080ff
-    style F fill:#0a0a1a,stroke:#0080ff
-    style V fill:#1a0a0a,stroke:#ff4444
-    style X fill:#1a0a0a,stroke:#ff0000
-    style O fill:#1a0a1a,stroke:#ffd700,stroke-width:3px
-    style E fill:#1a0a1a,stroke:#ff00ff
-    style T fill:#1a0a1a,stroke:#ff00ff
+    classDef header  fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
+    classDef input   fill:#0a1a1a,stroke:#00ff88,stroke-width:2px,color:#ddd
+    classDef registry fill:#1a1a0a,stroke:#ffff00,stroke-width:3px,color:#ffd700
+    classDef core    fill:#0a0a1a,stroke:#00ffff,stroke-width:3px,color:#fff
+    classDef output  fill:#1a0a0a,stroke:#ff4444,stroke-width:2px,color:#ddd
+
+    class SYS header
+    class INPUT input
+    class REG registry
+    class CORE,MOE,DIFF core
+    class OUTPUT,TDEC,IDEC,ADEC,VDEC output
 ```
 
 ---
