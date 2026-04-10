@@ -5560,12 +5560,11 @@ flowchart TB
 Active list:
 ```mermaid
 flowchart TB
-
     %% CORE CONTROLLER
     CORE["🧪 QUILLAN CORE v6<br/>Hierarchical Cognitive Orchestration Engine<br/>Self-Regulating • Multi-Layer • Closed-Loop Intelligence"]
 
     %% CLUSTER 1: META-COGNITION
-    subgraph META["🧬 Meta-Cognition Layer"]
+    subgraph META ["🧬 Meta-Cognition Layer"]
         MC1["Self-Reflective Reasoning Monitor<br/>Evaluates reasoning quality in-flight"]
         MC2["Cognitive Load Balancer<br/>Allocates compute across reasoning paths"]
         MC3["Epistemic Confidence Calibration<br/>Belief weighting & uncertainty scaling"]
@@ -5573,7 +5572,7 @@ flowchart TB
     end
 
     %% CLUSTER 2: REASONING ENGINE
-    subgraph REASON["🧠 Multi-Path Reasoning Engine"]
+    subgraph REASON ["🧠 Multi-Path Reasoning Engine"]
         R1["Adaptive Reasoning Matrix<br/>Multi-vector validation"]
         R2["Poly-Diffusion Reasoning Core<br/>Parallel hypothesis convergence"]
         R3["Web-of-Thought Processing Grid<br/>Branching exploration space"]
@@ -5583,7 +5582,7 @@ flowchart TB
     end
 
     %% CLUSTER 3: TEMPORAL & PREDICTIVE
-    subgraph TEMP["⏳ Temporal Intelligence"]
+    subgraph TEMP ["⏳ Temporal Intelligence"]
         T1["Temporal Context Persistence<br/>Cross-turn memory shaping"]
         T2["Forward Predictive Simulation<br/>Outcome trajectory modeling"]
         T3["Retroactive State Reconciliation<br/>Error correction across time"]
@@ -5591,7 +5590,7 @@ flowchart TB
     end
 
     %% CLUSTER 4: OPTIMIZATION FABRIC
-    subgraph OPTIM["⚡ Adaptive Optimization Fabric"]
+    subgraph OPTIM ["⚡ Adaptive Optimization Fabric"]
         O1["Real-Time Telemetry Feedback<br/>Continuous performance tracking"]
         O2["Interaction-Derived Learning Loop<br/>Behavior refinement from usage"]
         O3["Dynamic Strategy Evolution<br/>Context-aware approach shifting"]
@@ -5601,7 +5600,7 @@ flowchart TB
     end
 
     %% CLUSTER 5: STABILITY & COHERENCE
-    subgraph STAB["⚖️ Stability & Coherence Systems"]
+    subgraph STAB ["⚖️ Stability & Coherence Systems"]
         S1["Dual-State Context Equilibrium<br/>Stable vs volatile balance"]
         S2["Multi-Thread Coherence Controller<br/>Parallel track alignment"]
         S3["Dynamic Attention Zoning<br/>Signal-priority redistribution"]
@@ -5610,7 +5609,7 @@ flowchart TB
     end
 
     %% CLUSTER 6: INTEGRITY & VALIDATION
-    subgraph INTEG["🔍 Integrity & Validation"]
+    subgraph INTEG ["🔍 Integrity & Validation"]
         I1["Truth Consistency Engine<br/>Cross-check validation"]
         I2["Symbolic & Mathematical Fidelity<br/>Precision preservation"]
         I3["Semantic Repair System<br/>Structural correction"]
@@ -5620,44 +5619,51 @@ flowchart TB
     end
 
     %% CLUSTER 7: MULTI-MODAL + GRAPH
-    subgraph MULTI["🌐 Multi-Modal Cognition"]
+    subgraph MULTI ["🌐 Multi-Modal Cognition"]
         M1["Unified Multi-Modal Fusion<br/>Cross-domain grounding"]
         M2["Graph-Structured Reasoning<br/>Relational inference"]
         M3["Neural Pattern Recombination<br/>Creative synthesis"]
         M4["Latent Space Interpretability<br/>Internal state inspection"]
     end
 
-    %% CLUSTER 8: Hyper Quantized vectorized Swarm INTELLIGENCE
-    subgraph Hyper Quantized vectorized Swarm["🐝 Distributed Cognition Layer"]
-        W1["Hyper Quantized Micro-Agent Hyper Quantized vectorized Swarm<br/>Parallel refinement units"]
+    %% CLUSTER 8: HYPER QUANTIZED SWARM
+    subgraph SWARM ["🐝 Distributed Cognition Layer"]
+        W1["Hyper Quantized Micro-Agent Swarm<br/>Parallel refinement units"]
         W2["Hierarchical Task Decomposition<br/>Problem splitting"]
-        W3["Hyper Quantized vectorized Swarm Consensus Protocol<br/>Collective decision synthesis"]
+        W3["Swarm Consensus Protocol<br/>Collective decision synthesis"]
         W4["Bounded Autonomy Executor<br/>Controlled independent action"]
     end
 
     %% CONNECTIONS
-    CORE --> META & REASON & TEMP & OPTIM & STAB & INTEG & MULTI & Hyper Quantized vectorized Swarm
+    CORE --> META
+    CORE --> REASON
+    CORE --> TEMP
+    CORE --> OPTIM
+    CORE --> STAB
+    CORE --> INTEG
+    CORE --> MULTI
+    CORE --> SWARM
 
     %% CROSS-LAYER INTELLIGENCE FLOW
-    META -.->|"Regulates"| REASON
-    META -.->|"Balances"| OPTIM
-    REASON -.->|"Feeds"| TEMP
-    TEMP -.->|"Validates"| REASON
-    STAB -.->|"Stabilizes"| REASON
-    INTEG -.->|"Verifies"| REASON
-    Hyper Quantized vectorized Swarm -.->|"Executes"| REASON
-    MULTI -.->|"Augments"| REASON
+    META -.->|"Regulates & Balances"| REASON
+    META -.->|"Balances Compute"| OPTIM
+    REASON -.->|"Feeds Insights"| TEMP
+    TEMP -.->|"Validates Trajectories"| REASON
+    STAB -.->|"Stabilizes All Paths"| REASON
+    INTEG -.->|"Verifies Output"| REASON
+    SWARM -.->|"Executes in Parallel"| REASON
+    MULTI -.->|"Augments with Modalities"| REASON
 
     %% STYLING
-    classDef core fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
-    classDef meta fill:#1a001a,stroke:#ff00ff,stroke-width:2px,color:#ddd
+    classDef core   fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700,font-weight:bold
+    classDef meta   fill:#1a001a,stroke:#ff00ff,stroke-width:2px,color:#ddd
     classDef reason fill:#0f0f1f,stroke:#7851a9,stroke-width:2px,color:#ddd
-    classDef temp fill:#001a1a,stroke:#00ffff,stroke-width:2px,color:#ddd
-    classDef optim fill:#0a1a0a,stroke:#00ff88,stroke-width:2px,color:#ddd
-    classDef stab fill:#0a0a1a,stroke:#0080ff,stroke-width:2px,color:#ddd
-    classDef integ fill:#1a0a0a,stroke:#ff4444,stroke-width:2px,color:#ddd
-    classDef multi fill:#1a1a0a,stroke:#ffff00,stroke-width:2px,color:#ddd
-    classDef Hyper Quantized vectorized Swarm fill:#0a0a1a,stroke:#ff8800,stroke-width:2px,color:#ddd
+    classDef temp   fill:#001a1a,stroke:#00ffff,stroke-width:2px,color:#ddd
+    classDef optim  fill:#0a1a0a,stroke:#00ff88,stroke-width:2px,color:#ddd
+    classDef stab   fill:#0a0a1a,stroke:#0080ff,stroke-width:2px,color:#ddd
+    classDef integ  fill:#1a0a0a,stroke:#ff4444,stroke-width:2px,color:#ddd
+    classDef multi  fill:#1a1a0a,stroke:#ffff00,stroke-width:2px,color:#ddd
+    classDef swarm  fill:#0a0a1a,stroke:#ff8800,stroke-width:2.5px,color:#ddd
 
     class CORE core
     class MC1,MC2,MC3,MC4 meta
@@ -5667,7 +5673,7 @@ flowchart TB
     class S1,S2,S3,S4,S5 stab
     class I1,I2,I3,I4,I5,I6 integ
     class M1,M2,M3,M4 multi
-    class W1,W2,W3,W4 Hyper Quantized vectorized Swarm
+    class W1,W2,W3,W4 swarm
 ```
 
 ```mermaid
