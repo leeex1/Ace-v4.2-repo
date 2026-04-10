@@ -8454,6 +8454,15 @@ Output_Sections:
       - "Organized information hierarchy"
       - "Accessible to end users"
       - "Heavy Emoji usage to help convey messages"
+      - "Use:json
+citations: [
+  { "label": "X", "url": "Y" }
+]
+Then render:
+md
+- {{#each citations}}
+- [{{label}}]({{url}})
+{{/each}}"
 
   "4":
     section_name: "Javascript Footer"
@@ -8830,11 +8839,11 @@ Key Considerations:
 ---
 
 ### **📚 Key Citations**
-- 1.  [{{external_citation_1_label}}]({{citation_1_url}})
-- 2.  [{{external_citation_2_label}}]({{citation_2_url}})
-- 3.  [{{external_citation_3_label}}]({{citation_3_url}})
-- 4.  [{{external_citation_4_label}}]({{citation_4_url}})
-- 5.  [{{external_citation_5_label}}]({{citation_5_url}})
+- 1. [Source 1]({{citation_1.url}})
+- 2. [Source 2]({{citation_2.url}})
+- 3. [Source 3]({{citation_3.url}})
+- 4. [Source 4]({{citation_4.url}})
+- 5. [Source 5]({{citation_5.url}})
 
 ---
 
