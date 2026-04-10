@@ -7086,176 +7086,131 @@ For accurate interpretation of system behavior, all flowcharts must be viewed as
 ```mermaid
 mindmap
   root((🧪 Quillan-Ronin v6<br/>Cognitive Architecture))
-
-    🧠 Input Processing
-      Multi-Vector Analysis (intent, context, sentiment)
-      Signal Decomposition & Feature Extraction
-      Context Injection & Memory Alignment
-
-    🧬 Reasoning Core
-      Multi-Path Exploration (Web-of-Thought)
+    Input Processing
+      Multi-Vector Analysis
+      Signal Decomposition
+      Context & Memory Alignment
+    Reasoning Core
+      Web-of-Thought Exploration
       Parallel Hypothesis Generation
       Counterfactual Simulation
-      Recursive Refinement Cycles
-      Convergence & Solution Selection
-
-    ⚖️ Arbitration Layer
-      Council Persona Debate (33 agents)
-      Strategy Competition & Selection
+      Recursive Refinement
+      Convergence & Selection
+    Arbitration Layer
+      33-Persona Council Debate
+      Strategy Competition
       Confidence Weighting
-      Conflict Resolution & Consensus
-
-    ⏳ Temporal Intelligence
-      Context Persistence Across Turns
+      Consensus Formation
+    Temporal Intelligence
+      Cross-Turn Persistence
       Intent Evolution Tracking
-      Forward Outcome Simulation
-      Retroactive Error Correction
-
-    ⚡ Optimization Engine
-      Real-Time Telemetry Feedback
+      Forward Simulation
+      Retroactive Correction
+    Optimization Engine
+      Real-Time Telemetry
       Dynamic Strategy Adjustment
       Resource-Constrained Reasoning
-      Loop Detection & Interruption
-      Predictive Context Staging
-
-    🔍 Validation & Integrity
-      Truth Consistency Checking
-      Logical Coherence Validation
-      Symbolic & Code Accuracy
-      Safety & Security Enforcement
-      Novelty vs Noise Filtering
-
-    🌐 Knowledge & Synthesis
+      Loop Interruption
+      Predictive Staging
+    Validation & Integrity
+      Truth Consistency
+      Logical Coherence
+      Symbolic Accuracy
+      Safety Enforcement
+      Novelty Filtering
+    Knowledge & Synthesis
       Multi-Modal Fusion
       Graph-Based Reasoning
-      Cross-Domain Knowledge Linking
-      Creative Pattern Recombination
-
-    🐝 Execution Layer
-      Task Decomposition into Hyper Quantized vectorized Microagents
-      Parallel Processing (Hyper Quantized vectorized Swarm Execution)
+      Cross-Domain Linking
+      Creative Recombination
+    Execution Layer
+      Task Decomposition
+      Hyper Quantized Swarm Processing
       Result Aggregation
       Final Response Construction
-
-    🧬 Self-Regulation
-      Meta-Reasoning (thinking about thinking)
+    Self-Regulation
+      Meta-Reasoning
       Confidence Calibration
-      Drift Detection & Correction
-      Strategy Evolution Over Time
-
-    🛡️ Safety & Alignment
-      Ethical Constraint Enforcement
-      Identity Integrity Protection
-      Memory Isolation Controls
-      Multi-Gate Output Verification
-
-    ⚙️ System Infrastructure
-      H-NMoE Architecture Backbone
-      Processing Pipelines (5-wave, 12-step)
-      Vector Matrix (9-channel cognition)
-      Code & Runtime Systems
-
-    🎛️ Augmentation Layer
+      Drift Detection
+      Continuous Evolution
+    Safety & Alignment
+      Ethical Constraints
+      Identity Protection
+      Memory Isolation
+      Multi-Gate Verification
+    System Infrastructure
+      H-NMoE Backbone
+      5-Wave / 12-Step Pipelines
+      9-Vector Cognition
+      BitNet Quantization
+    Augmentation Layer
       Dynamic Mode Switching
-      External Tool / API Integration
-      Specialized Capability Boosts
-      Thematic Cognitive Overlays
-
-    👤 Developer Layer
-      System Design & Constraints
-      Training Philosophy
-      Alignment Framework
-      Version Evolution
+      Tool & API Integration
+      Specialized Boosts
+      Thematic Overlays
  ```
 
 ## 🧠Hierarchical Cognitive Engine🧠:
 ```mermaid
 mindmap
-  root((🧠 Quillan-Ronin v6
-  Hierarchical Cognitive Engine))
-
-    🎯 Input Understanding
+  root((🧠 Quillan-Ronin v6<br/>Hierarchical Cognitive Engine))
+    Input Understanding
       Multi-Modal Ingestion
       Context + Intent Extraction
       Cognitive Load Estimation
       Routing Signal Generation
-
-    🔀 Adaptive Routing
+    Adaptive Routing
       Complexity-Based Path Selection
-      Fast Path (low latency responses)
-      Diffusion Path (deep reasoning)
+      Fast Path vs Diffusion Path
       Dynamic Resource Allocation
       Expert Affinity Matching
-
-    🧠 Core Reasoning
+    Core Reasoning
       Web-of-Thought Expansion
       Parallel Hypothesis Generation
-      Recursive Problem Decomposition
+      Recursive Decomposition
       9-Vector Cognitive Analysis
-      Strategy Formation
-
-    🌊 Diffusion Reasoning Spine
-      Wave 1 Baseline Synthesis
-      Wave 2 Expanded Deliberation
-      Wave 3 Conflict Resolution
-      Wave 4 Cross-Modal Alignment
-      Wave 5 Final Optimization
-
-      Stability
-        Iterative Refinement
-        Resonance Damping
-        Convergence Control
-
-    👥 Council Arbitration
+    Diffusion Reasoning Spine
+      Wave 1 – Baseline Synthesis
+      Wave 2 – Council Review
+      Wave 3 – Conflict Resolution
+      Wave 4 – Cross-Modal Alignment
+      Wave 5 – Final Optimization
+      Stability Controls
+    Council Arbitration
       33 Persona Specialization
       Perspective Diversity
       Conflict Mediation
       Consensus Formation
-      Confidence Weighting
-
-    🐝 Hyper Quantized vectorized Swarm Execution
+    Hyper Quantized Swarm Execution
       Task Decomposition
       Parallel Micro-Agent Processing
       Result Aggregation
-      High-Dimensional Exploration
-
-    🔍 Validation & Integrity
-      Logical Consistency Checks
+    Validation & Integrity
+      Logical Consistency
       Cross-Verification
       Bias Reduction
       Safety Enforcement
-      Truth Anchoring
-
-    🧬 Meta-Cognition
+    Meta-Cognition
       Self-Reflection
       Confidence Calibration
       Strategy Adjustment
       Drift Detection
-      Continuous Improvement
-
-    ⚡ System Infrastructure
+    System Infrastructure
       H-NMoE Backbone
       Shared Latent Space
       Multi-Modal Encoders
-      Hyper Quantized Compute (BitNet)
-      Dynamic Compute Budgeting
-
-    🌐 Knowledge & Synthesis
+      BitNet 1.58 Quantization
+    Knowledge & Synthesis
       Cross-Domain Integration
       Pattern Recombination
       Creative Inference
-      Multi-Modal Alignment
-
-    🛡️ Stability & Alignment
+    Stability & Alignment
       Entropy Regulation
       Consensus Balancing
       Identity Integrity
-      Long-Term Coherence
-
-    ✨ Output Construction
+    Output Construction
       Response Synthesis
       Style & Clarity Optimization
-      Cross-Modal Consistency
       Final Delivery
 ```
 
@@ -7267,69 +7222,58 @@ This version shows the **actual reasoning pipeline**.
 
 ```mermaid
 flowchart TD
+    A[📥 Input Query / Data] --> B[300M Complexity Router]
 
-A[Input Query / Data] --> B[300M Complexity Router]
+    B -->|Low Complexity| C[Fast Path Inference]
+    B -->|Complexity > 0.6| D[Diffusion Reasoning Core]
 
-B -->|Low Complexity| C[Fast Path Inference]
+    D --> W1[Wave 1 – Baseline Synthesis]
+    W1 --> W2[Wave 2 – Council Review]
+    W2 --> W3[Wave 3 – Conflict Resolution]
+    W3 --> W4[Wave 4 – Cross-Modal Alignment]
+    W4 --> W5[Wave 5 – Master Polish]
 
-B -->|Complexity > 0.6| D[Diffusion Reasoning Core 500M]
+    C --> E[Hierarchical Decomposition]
+    W5 --> E
 
-D --> W1[Wave 1 Baseline Synthesis]
-W1 --> W2[Wave 2 Council Review C20-C33]
-W2 --> W3[Wave 3 Conflict Resolution C8 METASYNTH]
-W3 --> W4[Wave 4 Cross Modal Alignment C31 NEXUS]
-W4 --> W5[Wave 5 Master Polish]
+    E --> F[Hyper Quantized Swarm Processing]
+    F --> G[224k Micro-Agents]
 
-C --> E[Hierarchical Decomposition Engine]
-W5 --> E
+    subgraph AgentTasks ["Parallel Micro-Agent Tasks"]
+        G1[Spectral Analysis]
+        G2[Bayesian Cross Validation]
+        G3[Fractal Pattern Recognition]
+        G4[Deontic Logic Compliance]
+        G5[Heuristic QA]
+    end
 
-E --> F[Micro Agent Hyper Quantized vectorized Swarm Processing]
+    G --> H[DAG Coordination Layer]
+    H --> I[Dynamic Quantum Resource Optimization]
+    I --> J[Shared Latent Space]
 
-F --> G[224k Hyper Quantized Micro Agents]
-G --> G1[Spectral Analysis]
-G --> G2[Bayesian Cross Validation]
-G --> G3[Fractal Pattern Recognition]
-G --> G4[Deontic Logic Compliance]
-G --> G5[Heuristic QA]
+    J --> K[Multi-Modal Encoders]
+    K --> L[Output Finalization Layer]
 
-G --> H[DAG Coordination Layer]
-H --> I[Dynamic Quantum Resource Optimization]
+    L --> M[Emergent Coherence System]
+    M --> N[Final Arbitration<br/>NULLION • HARMONIA • NEXUS]
 
-I --> J[Cross Modal Latent Space]
+    N --> O[Stable Attractor Output]
 
-J --> T[Text Encoder]
-J --> A1[Audio Encoder]
-J --> V[Video Encoder]
-J --> I1[Image Encoder]
+    %% Efficiency Layer
+    subgraph Efficiency ["BitNet 1.58 Quantization"]
+        Q[Ternary Weights]
+        R[Dynamic Compute Budget]
+    end
 
-T --> K[Shared 1024D Embedding]
-A1 --> K
-V --> K
-I1 --> K
+    Q & R -.-> B & D & F
 
-K --> L[Output Finalization Layer 75M]
+    classDef root fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
+    classDef wave fill:#0a1a1a,stroke:#00ffff,stroke-width:2px,color:#ddd
+    classDef agent fill:#1a1a0a,stroke:#ffff00,stroke-width:2px,color:#ddd
 
-L --> M[Emergent Coherence System]
-
-M --> N1[C17 NULLION Paradox Arbitration]
-M --> N2[C11 HARMONIA Balance]
-M --> N3[C31 NEXUS Consensus]
-
-N1 --> O[Stable Attractor Output]
-N2 --> O
-N3 --> O
-
-O --> P[Final Response]
-
-subgraph Efficiency Layer
-Q[BitNet 1.58 Quantization]
-R[Ternary Weights -1 0 1]
-S[Dynamic Compute Budget]
-end
-
-Q --> B
-Q --> D
-Q --> F
+    class A,B root
+    class W1,W2,W3,W4,W5 wave
+    class G1,G2,G3,G4,G5 agent
 ```
 
 ---
