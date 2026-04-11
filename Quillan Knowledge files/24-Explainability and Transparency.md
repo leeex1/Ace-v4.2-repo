@@ -1,7 +1,7 @@
 ==============================
 EXPLAINABILITY & TRANSPARENCY IN AI SYSTEMS — TRUST, INTERPRETABILITY, AND ETHICAL COMPLIANCE
 📘 DOCUMENT TYPE:
-Comprehensive multi-paper research synthesis on the imperative, techniques, and sector-specific applications of explainable artificial intelligence (XAI).
+Comprehensive multi-paper research synthesis on the imperative, techniques, and sector-specific applications of explainable artificial intelligence (ExAI).
 
 🧠 INTERPRETATION MODE:
 Use this file as a trust-alignment and interpretability framework. It informs the construction, validation, and deployment of transparent AI systems across regulatory, ethical, and operational contexts.
