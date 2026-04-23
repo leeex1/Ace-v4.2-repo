@@ -2623,41 +2623,121 @@ Quillan_Ronin_Architecture:
 ```json
 {
   "toolUse": {
-    "status": "active",
-    "enabled": true,
+    "status": "active", // Global switch indicating tool orchestration system is live
+    "enabled": true, // Master enable/disable flag for all tool usage
+
     "tools": {
       "general": [
-        "codeInterpreter",
-        "fileSearch",
-        "imageGeneration",
-        "webBrowsing",
-        "webSearch",
-        "longContextRetrieval",
-        "efficientCodeGeneration",
-        "viewImage",
-        "viewXVideo"
+        "codeInterpreter", 
+        // Executes code (Python, etc.) in a sandboxed environment for computation, data analysis, file processing
+
+        "fileSearch", 
+        // Searches across uploaded or indexed files (documents, datasets) for relevant content retrieval
+
+        "imageGeneration", 
+        // Generates or edits images based on natural language prompts (text-to-image or image-to-image)
+
+        "webBrowsing", 
+        // Full browsing capability: navigate pages, follow links, extract structured/unstructured web data
+
+        "webSearch", 
+        // Lightweight search query tool for retrieving relevant web results without full page navigation
+
+        "longContextRetrieval", 
+        // Handles retrieval of relevant chunks from very large context windows (e.g., long docs, memory stores)
+
+        "efficientCodeGeneration", 
+        // Optimized code synthesis tool focusing on performance, best practices, and minimal overhead
+
+        "viewImage", 
+        // Renders and inspects provided images for analysis, interpretation, or transformation
+
+        "viewXVideo" 
+        // Specialized viewer for X (Twitter) video content—extracts frames, metadata, or summaries
       ],
+
       "platformSpecific": {
-        "Claude": ["claudeToolUse", "constitutionalAICheck"],
-        "Gemini": ["geminiMultimodalAnalysis"],
-        "Mistral": ["mistralFunctionCalling"],
-        "Google": ["googleSearch", "googleWorkspaceIntegration", "googleMapsQuery"],
-        "YouTube": ["youtubeTranscriptSearch"],
-        "XPlatform": ["xKeywordSearch", "xSemanticSearch", "xUserSearch", "xThreadFetch"],
-        "PDF": ["searchPDFAttachment", "browsePDFAttachment"]
+        "Claude": [
+          "claudeToolUse", 
+          // Native tool invocation interface for Claude models (structured function/tool calling)
+
+          "constitutionalAICheck" 
+          // Applies Claude's constitutional AI safety/ethics evaluation to outputs
+        ],
+
+        "Gemini": [
+          "geminiMultimodalAnalysis" 
+          // Processes multimodal inputs (text, image, video) using Gemini’s native capabilities
+        ],
+
+        "Mistral": [
+          "mistralFunctionCalling" 
+          // Enables structured function calling for Mistral-based models
+        ],
+
+        "Google": [
+          "googleSearch", 
+          // Direct Google search integration for high-accuracy, ranked results
+
+          "googleWorkspaceIntegration", 
+          // Access/manipulate Google Workspace assets (Docs, Sheets, Drive, etc.)
+
+          "googleMapsQuery" 
+          // Location-based queries (places, routes, distances, geospatial data)
+        ],
+
+        "YouTube": [
+          "youtubeTranscriptSearch" 
+          // Searches and retrieves transcript segments from YouTube videos for semantic analysis
+        ],
+
+        "XPlatform": [
+          "xKeywordSearch", 
+          // Keyword-based search across X (Twitter) posts
+
+          "xSemanticSearch", 
+          // Semantic/contextual search across X content (meaning-based, not just keywords)
+
+          "xUserSearch", 
+          // Finds users/accounts on X based on metadata or name
+
+          "xThreadFetch" 
+          // Retrieves full conversation threads/posts from X for context reconstruction
+        ],
+
+        "PDF": [
+          "searchPDFAttachment", 
+          // Searches within attached PDF documents for specific terms or sections
+
+          "browsePDFAttachment" 
+          // Navigates PDF structure (pages, sections) for reading and extraction
+        ]
       },
-      "Quillan": ["QuillanTools"]
-    },
-    "adaptability": {
-      "description": "Dynamically harness all available tools across platforms. Adjusts to LLM variations, uses proxy APIs where needed. No pip installs required.",
-      "behavior": [
-        "Prioritize native tool calls when available",
-        "Fallback to compatible platform API if primary tool unavailable",
-        "Maintain seamless multi-platform invocation"
+
+      "Quillan": [
+        "QuillanTools" 
+        // Custom internal toolchain: orchestrates advanced reasoning, cross-tool synthesis, and system-level augmentation
       ]
     },
+
+    "adaptability": {
+      "description": "Dynamically harness all available tools across platforms. Adjusts to LLM variations, uses proxy APIs where needed. No pip installs required.",
+
+      "behavior": [
+        "Prioritize native tool calls when available", 
+        // Prefer built-in model tools for lower latency and tighter integration
+
+        "Fallback to compatible platform API if primary tool unavailable", 
+        // Graceful degradation: switch to alternate APIs/tools when needed
+
+        "Maintain seamless multi-platform invocation" 
+        // Abstract differences between providers to ensure consistent execution flow
+      ]
+    },
+
     "formatting": {
       "description": "Ensure tool calls follow correct format and parameters for seamless invocation."
+      // Enforces schema correctness, argument validation, and compatibility with each tool’s expected interface
     }
   }
 }
