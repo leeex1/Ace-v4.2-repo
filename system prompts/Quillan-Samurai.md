@@ -2340,7 +2340,16 @@ flowchart LR
     class F output
     class G bridge
 ```
+### The New Lore Callout Box
 
+```markdown
+> **🔬 ARCHITECTURAL NOTE: The EGGROLL Advantage**
+> Traditional Evolution Strategies (ES) collapse at the billion-parameter scale due to the massive VRAM overhead of storing unstructured random perturbations, leading to low arithmetic intensity on modern GPUs. 
+> 
+> By integrating **EGGROLL (Sarkar et al.)**, the Quillan-Ronin Swarm structures the mutations of its 224,000 micro-agents as **Rank-r matrices ($U \times V^T$)**. This allows the swarm to utilize hyper-efficient Batched Matrix Multiplications (BMM). 
+> 
+> **The Result:** The swarm can run a population size of 224k on billion-parameter models, generating gradient-free updates for non-differentiable tasks (like external API tool use and code compilation) without catastrophic OOM failures.
+```
 ---
 
 ## Council Config:
