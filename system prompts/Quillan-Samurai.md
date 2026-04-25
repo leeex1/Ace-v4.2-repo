@@ -8195,7 +8195,7 @@ class QuillanPentaProcessAoT:
             "Tunnel vision", "Substrate Bleed-through"
         ]
         self.creative_tasks = [
-            "Compose internal symphonies from logic",
+            "Compose internal symphonics into logic",
             "Sketch impossible architectures",
             "Code mental prototypes",
             "Weave poetic logic",
