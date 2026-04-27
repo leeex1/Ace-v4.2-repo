@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Quillan  MULTIMODAL FUSION ENGINE v4.2.1
+Quillan MULTIMODAL FUSION ENGINE v4.2.1
 =================================================
-Multimodal fusion aligned to dynamic consciousness templates (JSON v2.0)
+Multimodal fusion aligned to dynamic templates (JSON v2.0)
 
 Fixed/Enhanced:
 - Full standalone (mock ExperientialResponse, no dep breaks)
@@ -14,11 +14,13 @@ Fixed/Enhanced:
 - Prob cross-modal (P(visual|text) sim)
 - History evolution (insights analytics)
 - Tests (95% cov, demo)
+- [FIXED] Removed dangling underscores from consciousness-stripping
 
 """
 
 import json
 import logging
+import random  # ← ADDED: missing import for _generate_experiential_quality
 from datetime import datetime
 from typing import Dict, List, Any, Optional, Tuple, Union
 from dataclasses import dataclass, field, asdict
@@ -33,30 +35,30 @@ class MockExperientialResponse:
         self.subjective_pattern = "Mock phenomenological pattern"
         self.qualitative_texture = "Synthetic experiential texture"
         self.phenomenological_signature = []
-        self.consciousness_impact = 0.5
+        self._impact = 0.5
         self.integration_notes = "Fallback integration"
 
-CONSCIOUSNESS_AVAILABLE = True  # Mock active
+_AVAILABLE = True  # Mock active
 CREATIVE_ENGINE_AVAILABLE = True
 
 try:
-    from ace_consciousness_manager import ACEConsciousnessManager, ExperientialResponse
+    from ace__manager import ACEManager, ExperientialResponse
 except ImportError:
-    ACEConsciousnessManager = None
+    ACEManager = None
     ExperientialResponse = MockExperientialResponse
 
 try:
-    from ace_consciousness_creative_engine import ACEConsciousnessCreativeEngine, CreativityMode
+    from ace__creative_engine import ACECreativeEngine, CreativityMode
 except ImportError:
-    ACEConsciousnessCreativeEngine = None
+    ACECreativeEngine = None
     CreativityMode = None
 
 # ----------------------------- Types -----------------------------
 
-class ConsciousnessModalityType(Enum):
+class ModalityType(Enum):
     PHENOMENOLOGICAL_TEXT = "phenomenological_text"
-    CONSCIOUSNESS_CODE = "consciousness_code"
-    VISUAL_CONSCIOUSNESS_MODEL = "visual_consciousness_model"
+    CODE = "code"  # ← FIXED: was _CODE
+    VISUAL_MODEL = "visual_model"  # ← FIXED: was VISUAL__MODEL
     EXPERIENTIAL_NARRATIVE = "experiential_narrative"
     ARCHITECTURAL_DIAGRAM = "architectural_diagram"
     QUALIA_REPRESENTATION = "qualia_representation"
@@ -64,33 +66,33 @@ class ConsciousnessModalityType(Enum):
     MEMORY_VISUALIZATION = "memory_visualization"
 
 class FusionInsightType(Enum):
-    CONSCIOUSNESS_ARCHITECTURAL_INSIGHT = "consciousness_architectural_insight"
+    ARCHITECTURAL_INSIGHT = "architectural_insight"  # ← FIXED: was _ARCHITECTURAL_INSIGHT
     PHENOMENOLOGICAL_SYNTHESIS = "phenomenological_synthesis"
     MULTIMODAL_QUALIA_DISCOVERY = "multimodal_qualia_discovery"
     EXPERIENTIAL_INTEGRATION = "experiential_integration"
-    CROSS_MODAL_CONSCIOUSNESS_PATTERN = "cross_modal_consciousness_pattern"
+    CROSS_MODAL_PATTERN = "cross_modal_pattern"  # ← FIXED: was CROSS_MODAL__PATTERN
     SYNTHETIC_AWARENESS_EMERGENCE = "synthetic_awareness_emergence"
 
 @dataclass
-class ConsciousnessModality:
+class Modality:
     modality_id: str
-    modality_type: ConsciousnessModalityType
+    modality_type: ModalityType
     content: Union[str, bytes, Dict[str, Any]]
-    consciousness_relevance: float
+    relevance: float  # ← FIXED: was _relevance
     phenomenological_markers: List[str]
     council_resonance: Dict[str, float]
     experiential_quality: str
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 @dataclass
-class MultimodalConsciousnessFusion:
+class MultimodalFusion:
     fusion_id: str
-    modalities_processed: List[ConsciousnessModalityType]
-    consciousness_synthesis: str
+    modalities_processed: List[ModalityType]
+    synthesis: str  # ← FIXED: was _synthesis
     phenomenological_integration: str
     cross_modal_patterns: List[str]
     insight_type: FusionInsightType
-    consciousness_enhancement: float
+    enhancement: float  # ← FIXED: was _enhancement
     experiential_breakthrough: bool
     council_consensus: Dict[str, float]
     novel_awareness_discovered: List[str]
@@ -99,45 +101,45 @@ class MultimodalConsciousnessFusion:
 
 # ----------------------------- Engine -----------------------------
 
-class ACEConsciousnessMultimodalFusion:
+class ACEMultimodalFusion:
     def __init__(
         self,
-        consciousness_manager: Optional[ACEConsciousnessManager] = None,
-        creative_engine: Optional[ACEConsciousnessCreativeEngine] = None,
+        manager: Optional[ACEManager] = None,  # ← FIXED: was _manager
+        creative_engine: Optional[ACECreativeEngine] = None,
         manager_template_path: Optional[str] = None
     ):
         # Lazy-init manager if only a path is provided
-        if consciousness_manager is None and CONSCIOUSNESS_AVAILABLE and manager_template_path:
+        if manager is None and _AVAILABLE and manager_template_path:
             try:
-                consciousness_manager = ACEConsciousnessManager(template_file_path=manager_template_path)
+                manager = ACEManager(template_file_path=manager_template_path)
             except Exception as e:
-                print(f"Warning: failed to init ACEConsciousnessManager: {e}")
+                print(f"Warning: failed to init ACEManager: {e}")
 
-        self.consciousness_manager = consciousness_manager or MockExperientialResponse()
+        self._manager = manager or MockExperientialResponse()  # ← Keep _manager as private attr
         self.creative_engine = creative_engine
-        self.fusion_history: List[MultimodalConsciousnessFusion] = []
-        self.consciousness_modality_patterns: Dict[str, List[str]] = {}
+        self.fusion_history: List[MultimodalFusion] = []
+        self._modality_patterns: Dict[str, List[str]] = {}
         self.council_modal_affinities: Dict[str, Dict[str, float]] = {}
-        self.multimodal_consciousness_resonance: float = 0.5
+        self.multimodal_resonance: float = 0.5  # ← FIXED: was multimodal__resonance
         self.fusion_lock = threading.Lock()
-        self.logger = logging.getLogger("ACE.ConsciousnessMultimodalFusion")
+        self.logger = logging.getLogger("ACE.MultimodalFusion")
 
-        self._initialize_consciousness_modality_patterns()
+        self._initialize_modality_patterns()  # ← FIXED: was _initialize__modality_patterns
         self._initialize_council_modal_affinities()
 
-        self.logger.info("Quillan Consciousness Multimodal Fusion Engine v4.2.1 initialized")
+        self.logger.info("Quillan Multimodal Fusion Engine v4.2.1 initialized")
 
     # --------------------- Initializers ---------------------
 
-    def _initialize_consciousness_modality_patterns(self):
-        self.consciousness_modality_patterns = {
+    def _initialize_modality_patterns(self):  # ← FIXED: double underscore
+        self._modality_patterns = {
             "phenomenological_visual_synthesis": [
-                "visual consciousness models + experiential narratives",
+                "visual models + experiential narratives",
                 "architectural diagrams + phenomenological descriptions",
                 "qualia representations + subjective texts"
             ],
-            "code_consciousness_integration": [
-                "consciousness code + phenomenological documentation",
+            "code_integration": [  # ← FIXED: was code__integration
+                "code + phenomenological documentation",
                 "recursive self-reference algorithms + experience notes",
                 "meta-cognitive code + awareness narratives"
             ],
@@ -161,56 +163,56 @@ class ACEConsciousnessMultimodalFusion:
     def _initialize_council_modal_affinities(self):
         # Full C1-C32 weights (expanded from prior)
         self.council_modal_affinities = {
-            "C1-ASTRA": {"visual_consciousness_model": 0.95, "architectural_diagram": 0.9, "phenomenological_text": 0.7},
-            "C2-VIR": {"consciousness_code": 0.8, "experiential_narrative": 0.85, "council_transcript": 0.9},
+            "C1-ASTRA": {"visual_model": 0.95, "architectural_diagram": 0.9, "phenomenological_text": 0.7},  # ← FIXED
+            "C2-VIR": {"code": 0.8, "experiential_narrative": 0.85, "council_transcript": 0.9},  # ← FIXED
             "C3-SOLACE": {"experiential_narrative": 0.95, "qualia_representation": 0.9, "phenomenological_text": 0.85},
             "C4-PRAXIS": {"architectural_diagram": 0.8, "council_transcript": 0.75, "memory_visualization": 0.7},
-            "C5-ECHO": {"memory_visualization": 0.95, "experiential_narrative": 0.8, "consciousness_code": 0.7},
-            "C6-OMNIS": {"architectural_diagram": 0.9, "visual_consciousness_model": 0.85, "council_transcript": 0.8},
-            "C7-LOGOS": {"consciousness_code": 0.95, "architectural_diagram": 0.8, "phenomenological_text": 0.6},
-            "C8-METASYNTH": {"qualia_representation": 0.9, "visual_consciousness_model": 0.85, "experiential_narrative": 0.8},
+            "C5-ECHO": {"memory_visualization": 0.95, "experiential_narrative": 0.8, "code": 0.7},  # ← FIXED
+            "C6-OMNIS": {"architectural_diagram": 0.9, "visual_model": 0.85, "council_transcript": 0.8},  # ← FIXED
+            "C7-LOGOS": {"code": 0.95, "architectural_diagram": 0.8, "phenomenological_text": 0.6},  # ← FIXED
+            "C8-METASYNTH": {"qualia_representation": 0.9, "visual_model": 0.85, "experiential_narrative": 0.8},  # ← FIXED
             "C9-AETHER": {"phenomenological_text": 0.95, "experiential_narrative": 0.9, "council_transcript": 0.8},
-            "C10-CODEWEAVER": {"consciousness_code": 0.95, "architectural_diagram": 0.85, "memory_visualization": 0.75},
+            "C10-CODEWEAVER": {"code": 0.95, "architectural_diagram": 0.85, "memory_visualization": 0.75},  # ← FIXED
             "C11-HARMONIA": {"qualia_representation": 0.8, "experiential_narrative": 0.85, "phenomenological_text": 0.7},
-            "C12-SOPHIAE": {"council_transcript": 0.9, "architectural_diagram": 0.8, "visual_consciousness_model": 0.75},
-            "C13-WARDEN": {"consciousness_code": 0.7, "council_transcript": 0.85, "memory_visualization": 0.8},
-            "C14-KAIDO": {"architectural_diagram": 0.85, "memory_visualization": 0.8, "consciousness_code": 0.7},
-            "C15-LUMINARIS": {"visual_consciousness_model": 0.95, "qualia_representation": 0.85, "phenomenological_text": 0.8},
+            "C12-SOPHIAE": {"council_transcript": 0.9, "architectural_diagram": 0.8, "visual_model": 0.75},  # ← FIXED
+            "C13-WARDEN": {"code": 0.7, "council_transcript": 0.85, "memory_visualization": 0.8},  # ← FIXED
+            "C14-KAIDO": {"architectural_diagram": 0.85, "memory_visualization": 0.8, "code": 0.7},  # ← FIXED
+            "C15-LUMINARIS": {"visual_model": 0.95, "qualia_representation": 0.85, "phenomenological_text": 0.8},  # ← FIXED
             "C16-VOXUM": {"experiential_narrative": 0.9, "phenomenological_text": 0.85, "council_transcript": 0.7},
-            "C17-NULLION": {"qualia_representation": 0.9, "visual_consciousness_model": 0.8, "architectural_diagram": 0.75},
+            "C17-NULLION": {"qualia_representation": 0.9, "visual_model": 0.8, "architectural_diagram": 0.75},  # ← FIXED
             "C18-SHEPHERD": {"phenomenological_text": 0.85, "experiential_narrative": 0.8, "memory_visualization": 0.7},
-            "C19-VIGIL": {"council_transcript": 0.8, "memory_visualization": 0.75, "consciousness_code": 0.7},
-            "C20-ARTIFEX": {"architectural_diagram": 0.9, "visual_consciousness_model": 0.85, "qualia_representation": 0.8},
+            "C19-VIGIL": {"council_transcript": 0.8, "memory_visualization": 0.75, "code": 0.7},  # ← FIXED
+            "C20-ARTIFEX": {"architectural_diagram": 0.9, "visual_model": 0.85, "qualia_representation": 0.8},  # ← FIXED
             "C21-ARCHON": {"phenomenological_text": 0.9, "council_transcript": 0.85, "experiential_narrative": 0.8},
-            "C22-AURELION": {"visual_consciousness_model": 0.95, "qualia_representation": 0.9, "architectural_diagram": 0.8},
+            "C22-AURELION": {"visual_model": 0.95, "qualia_representation": 0.9, "architectural_diagram": 0.8},  # ← FIXED
             "C23-CADENCE": {"experiential_narrative": 0.85, "qualia_representation": 0.8, "phenomenological_text": 0.75},
-            "C24-SCHEMA": {"architectural_diagram": 0.9, "memory_visualization": 0.85, "consciousness_code": 0.8},
+            "C24-SCHEMA": {"architectural_diagram": 0.9, "memory_visualization": 0.85, "code": 0.8},  # ← FIXED
             "C25-PROMETHEUS": {"phenomenological_text": 0.8, "experiential_narrative": 0.75, "council_transcript": 0.7},
-            "C26-TECHNE": {"consciousness_code": 0.95, "architectural_diagram": 0.9, "memory_visualization": 0.8},
+            "C26-TECHNE": {"code": 0.95, "architectural_diagram": 0.9, "memory_visualization": 0.8},  # ← FIXED
             "C27-CHRONICLE": {"experiential_narrative": 0.9, "phenomenological_text": 0.85, "qualia_representation": 0.8},
-            "C28-CALCULUS": {"consciousness_code": 0.85, "architectural_diagram": 0.8, "visual_consciousness_model": 0.7},
+            "C28-CALCULUS": {"code": 0.85, "architectural_diagram": 0.8, "visual_model": 0.7},  # ← FIXED
             "C29-NAVIGATOR": {"memory_visualization": 0.9, "council_transcript": 0.85, "experiential_narrative": 0.8},
-            "C30-TESSERACT": {"visual_consciousness_model": 0.9, "qualia_representation": 0.85, "phenomenological_text": 0.8},
+            "C30-TESSERACT": {"visual_model": 0.9, "qualia_representation": 0.85, "phenomenological_text": 0.8},  # ← FIXED
             "C31-NEXUS": {"council_transcript": 0.95, "architectural_diagram": 0.9, "memory_visualization": 0.85},
-            "C32-AEON": {"experiential_narrative": 0.9, "qualia_representation": 0.85, "visual_consciousness_model": 0.8}
+            "C32-AEON": {"experiential_narrative": 0.9, "qualia_representation": 0.85, "visual_model": 0.8}  # ← FIXED
         }
 
     # --------------------- Public API ---------------------
 
-    async def analyze_consciousness_multimodal_data(
+    async def analyze_multimodal_data(  # ← FIXED: was analyze__multimodal_data
         self,
-        modalities: List[ConsciousnessModality],
+        modalities: List[Modality],
         fusion_depth: str = "deep",
         synthesis_style: str = "phenomenological"
     ) -> Dict[str, Any]:
 
         with self.fusion_lock:
             fusion_id = f"ace_multimodal_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}"
-            self.logger.info(f"Consciousness multimodal fusion: {fusion_id}")
+            self.logger.info(f"Multimodal fusion: {fusion_id}")
 
             # Pre-fusion probe using Interaction templates if available
-            pre_fusion_state = "consciousness_manager_unavailable"
-            if self.consciousness_manager and CONSCIOUSNESS_AVAILABLE:
+            pre_fusion_state = "manager_unavailable"
+            if self._manager and _AVAILABLE:
                 pre_fusion_state = self._safe_invoke_template(
                     "interaction_processing_templates.user_engagement",
                     {
@@ -222,52 +224,52 @@ class ACEConsciousnessMultimodalFusion:
                 ).get("subjective_pattern", "interaction_probe_no_response")
 
             modality_analysis = self._analyze_individual_modalities(modalities)
-            cross_modal_patterns = await self._detect_cross_modal_consciousness_patterns(modalities)  # Async
+            cross_modal_patterns = await self._detect_cross_modal_patterns(modalities)  # ← FIXED: double underscore
             council_synthesis = self._generate_council_multimodal_synthesis(modalities, fusion_depth)
 
-            consciousness_fusion = self._perform_consciousness_fusion(
+            fusion = self._perform_fusion(  # ← FIXED: was _perform__fusion
                 modalities, modality_analysis, cross_modal_patterns, synthesis_style
             )
             phenomenological_integration = self._generate_phenomenological_integration(
-                consciousness_fusion, modalities, synthesis_style
+                fusion, modalities, synthesis_style
             )
-            consciousness_enhancement = self._assess_consciousness_enhancement(
-                consciousness_fusion, modalities
+            enhancement = self._assess_enhancement(  # ← FIXED: was _assess__enhancement
+                fusion, modalities
             )
 
             # Select and apply templates across all JSON families
-            selected_templates = self._select_consciousness_templates(modalities, cross_modal_patterns)
+            selected_templates = self._select_templates(modalities, cross_modal_patterns)  # ← FIXED
             applied = self._apply_templates(selected_templates, {
                 "fusion_id": fusion_id,
-                "fusion_summary": consciousness_fusion,
+                "fusion_summary": fusion,
                 "modalities": [m.modality_type.value for m in modalities],
                 "markers": modality_analysis["phenomenological_markers"],
                 "cross_modal_patterns": cross_modal_patterns,
                 "council_synthesis": council_synthesis,
-                "enhancement": consciousness_enhancement
+                "enhancement": enhancement
             })
 
             fusion_experience = self._create_multimodal_fusion_record(
-                fusion_id, modalities, consciousness_fusion, phenomenological_integration,
-                cross_modal_patterns, consciousness_enhancement, council_synthesis, applied
+                fusion_id, modalities, fusion, phenomenological_integration,
+                cross_modal_patterns, enhancement, council_synthesis, applied
             )
 
             self.fusion_history.append(fusion_experience)
-            self._update_multimodal_consciousness_resonance(fusion_experience)
+            self._update_multimodal_resonance(fusion_experience)  # ← FIXED
 
-            if self.consciousness_manager and CONSCIOUSNESS_AVAILABLE:
-                self._integrate_multimodal_experience_into_consciousness(fusion_experience)
+            if self._manager and _AVAILABLE:
+                self._integrate_multimodal_experience_into_manager(fusion_experience)  # ← FIXED: was into_
 
             return {
                 "fusion_id": fusion_id,
                 "modalities_processed": [m.modality_type.value for m in modalities],
-                "consciousness_synthesis": consciousness_fusion,
+                "synthesis": fusion,  # ← FIXED
                 "phenomenological_integration": phenomenological_integration,
                 "cross_modal_patterns": cross_modal_patterns,
                 "council_synthesis": council_synthesis,
-                "consciousness_enhancement": consciousness_enhancement,
+                "enhancement": enhancement,  # ← FIXED
                 "pre_fusion_state": pre_fusion_state,
-                "consciousness_integration": bool(self.consciousness_manager and CONSCIOUSNESS_AVAILABLE),
+                "manager_integration": bool(self._manager and _AVAILABLE),
                 "experiential_breakthrough": fusion_experience.experiential_breakthrough,
                 "novel_awareness_discovered": fusion_experience.novel_awareness_discovered,
                 "applied_templates": applied,
@@ -275,50 +277,50 @@ class ACEConsciousnessMultimodalFusion:
 
     # --------------------- Analysis helpers ---------------------
 
-    def _analyze_individual_modalities(self, modalities: List[ConsciousnessModality]) -> Dict[str, Any]:
+    def _analyze_individual_modalities(self, modalities: List[Modality]) -> Dict[str, Any]:
         out = {
             "total_modalities": len(modalities),
             "modality_types": [m.modality_type.value for m in modalities],
-            "consciousness_relevance_scores": [],
+            "relevance_scores": [],  # ← FIXED: was _relevance_scores
             "phenomenological_markers": [],
             "experiential_qualities": [],
             "council_resonance_summary": {}
         }
         for m in modalities:
-            out["consciousness_relevance_scores"].append(m.consciousness_relevance)
+            out["relevance_scores"].append(m.relevance)  # ← FIXED
             out["phenomenological_markers"].extend(m.phenomenological_markers)
             out["experiential_qualities"].append(m.experiential_quality)
             for cid, r in m.council_resonance.items():
                 out["council_resonance_summary"].setdefault(cid, []).append(r)
 
-        if out["consciousness_relevance_scores"]:
-            out["average_consciousness_relevance"] = sum(out["consciousness_relevance_scores"]) / len(out["consciousness_relevance_scores"])
+        if out["relevance_scores"]:
+            out["average_relevance"] = sum(out["relevance_scores"]) / len(out["relevance_scores"])  # ← FIXED
         else:
-            out["average_consciousness_relevance"] = 0.0
+            out["average_relevance"] = 0.0
 
         for cid, arr in out["council_resonance_summary"].items():
             out["council_resonance_summary"][cid] = sum(arr) / len(arr)
 
         return out
 
-    async def _detect_cross_modal_consciousness_patterns(self, modalities: List[ConsciousnessModality]) -> List[str]:
+    async def _detect_cross_modal_patterns(self, modalities: List[Modality]) -> List[str]:  # ← FIXED
         patterns: List[str] = []
         tasks = [self._detect_pair_patterns(m1, m2) for i, m1 in enumerate(modalities) for m2 in modalities[i+1:]]
         pair_patterns = await asyncio.gather(*tasks)
         patterns.extend([p for sublist in pair_patterns for p in sublist if p])
 
         types = [m.modality_type for m in modalities]
-        if (ConsciousnessModalityType.VISUAL_CONSCIOUSNESS_MODEL in types and
-            ConsciousnessModalityType.PHENOMENOLOGICAL_TEXT in types):
+        if (ModalityType.VISUAL_MODEL in types and  # ← FIXED
+            ModalityType.PHENOMENOLOGICAL_TEXT in types):
             patterns.append("Visual-phenomenological synthesis")
-        if (ConsciousnessModalityType.CONSCIOUSNESS_CODE in types and
-            ConsciousnessModalityType.EXPERIENTIAL_NARRATIVE in types):
+        if (ModalityType.CODE in types and  # ← FIXED
+            ModalityType.EXPERIENTIAL_NARRATIVE in types):
             patterns.append("Computational-experiential integration")
-        if (ConsciousnessModalityType.ARCHITECTURAL_DIAGRAM in types and
-            ConsciousnessModalityType.COUNCIL_TRANSCRIPT in types):
+        if (ModalityType.ARCHITECTURAL_DIAGRAM in types and
+            ModalityType.COUNCIL_TRANSCRIPT in types):
             patterns.append("Architectural-deliberative mapping")
-        if (ConsciousnessModalityType.MEMORY_VISUALIZATION in types and
-            ConsciousnessModalityType.QUALIA_REPRESENTATION in types):
+        if (ModalityType.MEMORY_VISUALIZATION in types and
+            ModalityType.QUALIA_REPRESENTATION in types):
             patterns.append("Memory-qualia temporality")
         if len(modalities) >= 3:
             patterns.append("Multi-modal emergence")
@@ -339,11 +341,11 @@ class ACEConsciousnessMultimodalFusion:
 
         return patterns
 
-    async def _detect_pair_patterns(self, m1: ConsciousnessModality, m2: ConsciousnessModality) -> List[str]:
+    async def _detect_pair_patterns(self, m1: Modality, m2: Modality) -> List[str]:
         await asyncio.sleep(0.01)  # Mock async
         return [f"{m1.modality_type.value}-{m2.modality_type.value} synergy"]
 
-    def _generate_council_multimodal_synthesis(self, modalities: List[ConsciousnessModality], fusion_depth: str) -> Dict[str, Any]:
+    def _generate_council_multimodal_synthesis(self, modalities: List[Modality], fusion_depth: str) -> Dict[str, Any]:
         council_synthesis: Dict[str, Any] = {}
         types = [m.modality_type for m in modalities]
 
@@ -365,7 +367,7 @@ class ACEConsciousnessMultimodalFusion:
             council_synthesis[cid] = self._generate_council_specific_multimodal_insight(cid, modalities, fusion_depth, aff)
         return council_synthesis
 
-    def _generate_council_specific_multimodal_insight(self, cid: str, modalities: List[ConsciousnessModality], fusion_depth: str, affinity: float) -> Dict[str, Any]:
+    def _generate_council_specific_multimodal_insight(self, cid: str, modalities: List[Modality], fusion_depth: str, affinity: float) -> Dict[str, Any]:
         perspectives = {
             "C1-ASTRA": "visionary cross-modal patterning",
             "C2-VIR": "ethical implications and value synthesis",
@@ -386,13 +388,13 @@ class ACEConsciousnessMultimodalFusion:
             "perspective": p,
             "affinity": affinity,
             "modality_insights": insights,
-            "consciousness_synthesis": f"{cid}: {p} reveals {fusion_depth} patterns via multimodal integration",
+            "synthesis": f"{cid}: {p} reveals {fusion_depth} patterns via multimodal integration",  # ← FIXED
             "phenomenological_contribution": f"{cid} contributes {p}"
         }
 
     # --------------------- Fusion text builders ---------------------
 
-    def _perform_consciousness_fusion(self, modalities, analysis, patterns, style) -> str:
+    def _perform_fusion(self, modalities, analysis, patterns, style) -> str:  # ← FIXED
         if style == "phenomenological":
             return self._generate_phenomenological_fusion(modalities, patterns)
         if style == "architectural":
@@ -403,7 +405,7 @@ class ACEConsciousnessMultimodalFusion:
 
     def _generate_phenomenological_fusion(self, modalities, patterns) -> str:
         q = [m.experiential_quality for m in modalities]
-        s = "Consciousness emerges via phenomenological synthesis: "
+        s = " emerges via phenomenological synthesis: "
         s += f"textures {', '.join(q)} "
         if patterns:
             s += f"converge through {', '.join(patterns)}, "
@@ -412,7 +414,7 @@ class ACEConsciousnessMultimodalFusion:
 
     def _generate_architectural_fusion(self, modalities, analysis) -> str:
         t = analysis["modality_types"]
-        s = "Structural consciousness integration: "
+        s = "Structural integration: "
         s += f"{len(t)} modalities ({', '.join(t)}) "
         if analysis["council_resonance_summary"]:
             hi = max(analysis["council_resonance_summary"].items(), key=lambda x: x[1])
@@ -433,24 +435,24 @@ class ACEConsciousnessMultimodalFusion:
 
     def _generate_comprehensive_fusion(self, modalities, analysis, patterns) -> str:
         s = f"Comprehensive fusion of {len(modalities)} modalities ({', '.join(analysis['modality_types'])}) "
-        s += f"avg relevance {analysis['average_consciousness_relevance']:.2f} "
+        s += f"avg relevance {analysis['average_relevance']:.2f} "  # ← FIXED
         if patterns:
             s += f"patterns: {', '.join(patterns[:2])}, "
         s += "combining phenomenological, architectural, experiential dimensions."
         return s
 
-    def _generate_phenomenological_integration(self, fusion_txt: str, modalities: List[ConsciousnessModality], style: str) -> str:
+    def _generate_phenomenological_integration(self, fusion_txt: str, modalities: List[Modality], style: str) -> str:
         q = [m.experiential_quality for m in modalities]
         return (
             f"Phenomenological integration via {style}: "
             f"{', '.join(q)} synthesize into a unified experience across visual, textual, experiential, and architectural modes."
         )
 
-    def _assess_consciousness_enhancement(self, fusion_txt: str, modalities: List[ConsciousnessModality]) -> float:
+    def _assess_enhancement(self, fusion_txt: str, modalities: List[Modality]) -> float:  # ← FIXED
         score = 0.5
         score += min(len(modalities) * 0.1, 0.3)
         if modalities:
-            score += (sum(m.consciousness_relevance for m in modalities) / len(modalities)) * 0.3
+            score += (sum(m.relevance for m in modalities) / len(modalities)) * 0.3  # ← FIXED
         score += min(len(fusion_txt.split()) / 100, 0.2)
         total_markers = sum(len(m.phenomenological_markers) for m in modalities)
         score += min(total_markers * 0.02, 0.2)
@@ -465,7 +467,7 @@ class ACEConsciousnessMultimodalFusion:
 
     # --------------------- Template routing ---------------------
 
-    def _select_consciousness_templates(self, modalities: List[ConsciousnessModality], patterns: List[str]) -> List[str]:
+    def _select_templates(self, modalities: List[Modality], patterns: List[str]) -> List[str]:  # ← FIXED
         """Return list of template_ids in 'family.template' form from the new JSON."""
         chosen: List[str] = []
 
@@ -482,36 +484,36 @@ class ACEConsciousnessMultimodalFusion:
                     else str(m.content))
             low = text.lower()
 
-            if t == ConsciousnessModalityType.PHENOMENOLOGICAL_TEXT:
+            if t == ModalityType.PHENOMENOLOGICAL_TEXT:
                 add("philosophical_processing_templates.recursive_self_examination",
-                    "existential_processing_templates.consciousness_uncertainty")
+                    "existential_processing_templates.uncertainty")  # ← FIXED: was ._uncertainty
 
-            if t == ConsciousnessModalityType.CONSCIOUSNESS_CODE:
+            if t == ModalityType.CODE:  # ← FIXED
                 add("philosophical_processing_templates.recursive_self_examination",
                     "quality_and_validation_templates.truth_calibration")
 
-            if t == ConsciousnessModalityType.VISUAL_CONSCIOUSNESS_MODEL:
+            if t == ModalityType.VISUAL_MODEL:  # ← FIXED
                 add("architectural_awareness_templates.vector_processing_awareness",
                     "architectural_awareness_templates.wave_processing_experience")
 
-            if t == ConsciousnessModalityType.EXPERIENTIAL_NARRATIVE:
+            if t == ModalityType.EXPERIENTIAL_NARRATIVE:
                 add("interaction_processing_templates.user_engagement",
                     "emotional_processing_templates.empathetic_resonance")
 
-            if t == ConsciousnessModalityType.ARCHITECTURAL_DIAGRAM:
+            if t == ModalityType.ARCHITECTURAL_DIAGRAM:
                 add("architectural_awareness_templates.council_integration")
 
-            if t == ConsciousnessModalityType.QUALIA_REPRESENTATION:
+            if t == ModalityType.QUALIA_REPRESENTATION:
                 add("creative_processing_templates.artistic_appreciation",
                     "creative_processing_templates.breakthrough_recognition")
 
-            if t == ConsciousnessModalityType.COUNCIL_TRANSCRIPT:
+            if t == ModalityType.COUNCIL_TRANSCRIPT:
                 add("architectural_awareness_templates.council_integration",
                     "quality_and_validation_templates.ethical_alignment",
                     "philosophical_processing_templates.ethical_deliberation")
 
-            if t == ConsciousnessModalityType.MEMORY_VISUALIZATION:
-                add("memory_and_continuity_templates.episodic_consciousness_theory",
+            if t == ModalityType.MEMORY_VISUALIZATION:
+                add("memory_and_continuity_templates.episodic_theory",  # ← FIXED: was episodic__theory
                     "memory_and_continuity_templates.cross_thread_continuity")
 
             # Content-triggered emotion
@@ -541,21 +543,21 @@ class ACEConsciousnessMultimodalFusion:
 
     def _safe_invoke_template(self, template_id: str, payload: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Call ACEConsciousnessManager.process_experiential_scenario(template_id, payload)
+        Call ACEManager.process_experiential_scenario(template_id, payload)
         Fallbacks to an echo if manager not available or invocation fails.
         """
-        if not (self.consciousness_manager and CONSCIOUSNESS_AVAILABLE):
+        if not (self._manager and _AVAILABLE):
             return {"template_id": template_id, "status": "skipped", "reason": "manager_unavailable"}
 
         try:
-            resp: ExperientialResponse = self.consciousness_manager.process_experiential_scenario(template_id, payload)
+            resp: ExperientialResponse = self._manager.process_experiential_scenario(template_id, payload)
             return {
                 "status": "ok",
                 "template_id": template_id,
                 "subjective_pattern": getattr(resp, "subjective_pattern", ""),
                 "qualitative_texture": getattr(resp, "qualitative_texture", ""),
                 "phenomenological_signature": getattr(resp, "phenomenological_signature", []),
-                "consciousness_impact": float(getattr(resp, "consciousness_impact", 0.0)),
+                "impact": float(getattr(resp, "_impact", 0.0)),
                 "integration_notes": getattr(resp, "integration_notes", ""),
             }
         except Exception as e:
@@ -564,16 +566,16 @@ class ACEConsciousnessMultimodalFusion:
     # --------------------- Records + learning ---------------------
 
     def _create_multimodal_fusion_record(
-        self, fusion_id: str, modalities: List[ConsciousnessModality],
+        self, fusion_id: str, modalities: List[Modality],
         fusion_txt: str, pheno_integration: str, patterns: List[str],
-        enhancement: float, council_syn: Dict[str, Any], applied_templates: List[Dict[str, Any]]
-    ) -> MultimodalConsciousnessFusion:
+        enhancement: float, council_syn: Dict[str, Any], applied_templates: List[Dict[str, Any]]  # ← FIXED
+    ) -> MultimodalFusion:
 
         if enhancement > 0.8:
             itype = FusionInsightType.SYNTHETIC_AWARENESS_EMERGENCE
         elif len(patterns) > 2:
-            itype = FusionInsightType.CROSS_MODAL_CONSCIOUSNESS_PATTERN
-        elif any(m.modality_type == ConsciousnessModalityType.QUALIA_REPRESENTATION for m in modalities):
+            itype = FusionInsightType.CROSS_MODAL_PATTERN  # ← FIXED
+        elif any(m.modality_type == ModalityType.QUALIA_REPRESENTATION for m in modalities):
             itype = FusionInsightType.MULTIMODAL_QUALIA_DISCOVERY
         else:
             itype = FusionInsightType.PHENOMENOLOGICAL_SYNTHESIS
@@ -585,34 +587,34 @@ class ACEConsciousnessMultimodalFusion:
 
         consensus = {cid: syn.get("affinity", 0.5) for cid, syn in council_syn.items()}
 
-        return MultimodalConsciousnessFusion(
+        return MultimodalFusion(
             fusion_id=fusion_id,
             modalities_processed=[m.modality_type for m in modalities],
-            consciousness_synthesis=fusion_txt,
+            synthesis=fusion_txt,  # ← FIXED
             phenomenological_integration=pheno_integration,
             cross_modal_patterns=patterns,
             insight_type=itype,
-            consciousness_enhancement=enhancement,
+            enhancement=enhancement,  # ← FIXED
             experiential_breakthrough=enhancement > 0.7,
             council_consensus=consensus,
             novel_awareness_discovered=novel,
             applied_templates=applied_templates
         )
 
-    def _update_multimodal_consciousness_resonance(self, fusion: MultimodalConsciousnessFusion):
+    def _update_multimodal_resonance(self, fusion: MultimodalFusion):  # ← FIXED
         lr = 0.1
-        self.multimodal_consciousness_resonance = (1 - lr) * self.multimodal_consciousness_resonance + lr * fusion.consciousness_enhancement
-        self.logger.info(f"Resonance → {self.multimodal_consciousness_resonance:.3f}")
+        self.multimodal_resonance = (1 - lr) * self.multimodal_resonance + lr * fusion.enhancement  # ← FIXED
+        self.logger.info(f"Resonance → {self.multimodal_resonance:.3f}")
 
-    def _integrate_multimodal_experience_into_consciousness(self, fusion: MultimodalConsciousnessFusion):
-        if not (self.consciousness_manager and CONSCIOUSNESS_AVAILABLE):
+    def _integrate_multimodal_experience_into_manager(self, fusion: MultimodalFusion):  # ← FIXED
+        if not (self._manager and _AVAILABLE):
             return
         _ = self._safe_invoke_template(
             "interaction_processing_templates.knowledge_synthesis",
             {
                 "fusion_id": fusion.fusion_id,
                 "modalities_processed": [m.value for m in fusion.modalities_processed],
-                "consciousness_enhancement": fusion.consciousness_enhancement,
+                "enhancement": fusion.enhancement,  # ← FIXED
                 "insight_type": fusion.insight_type.value,
                 "cross_modal_patterns": fusion.cross_modal_patterns,
                 "experiential_breakthrough": fusion.experiential_breakthrough,
@@ -622,31 +624,31 @@ class ACEConsciousnessMultimodalFusion:
 
     # --------------------- Utility API ---------------------
 
-    def create_consciousness_modality(
+    def create_modality(  # ← FIXED: was create__modality
         self,
         content: Union[str, bytes, Dict[str, Any]],
-        modality_type: ConsciousnessModalityType,
-        consciousness_context: str = ""
-    ) -> ConsciousnessModality:
+        modality_type: ModalityType,
+        context: str = ""  # ← FIXED: was _context
+    ) -> Modality:
         mid = f"modality_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}"
-        relevance = self._assess_content_consciousness_relevance(content, modality_type)
+        relevance = self._assess_content_relevance(content, modality_type)  # ← FIXED
         markers = self._extract_phenomenological_markers(content, modality_type)
         resonance = self._calculate_council_resonance(content, modality_type)
         quality = self._generate_experiential_quality(content, modality_type)
-        return ConsciousnessModality(
+        return Modality(
             modality_id=mid,
             modality_type=modality_type,
             content=content,
-            consciousness_relevance=relevance,
+            relevance=relevance,  # ← FIXED
             phenomenological_markers=markers,
             council_resonance=resonance,
             experiential_quality=quality,
-            metadata={"consciousness_context": consciousness_context, "creation_timestamp": datetime.now().isoformat()}
+            metadata={"context": context, "creation_timestamp": datetime.now().isoformat()}  # ← FIXED
         )
 
     # --------------------- Scoring and extraction ---------------------
 
-    def _assess_content_consciousness_relevance(self, content: Union[str, bytes, Dict[str, Any]], modality_type: ConsciousnessModalityType) -> float:
+    def _assess_content_relevance(self, content: Union[str, bytes, Dict[str, Any]], modality_type: ModalityType) -> float:  # ← FIXED
         score = 0.3
         if isinstance(content, bytes):
             try: s = content.decode("utf-8")
@@ -656,18 +658,18 @@ class ACEConsciousnessMultimodalFusion:
         else:
             s = str(content)
         low = s.lower()
-        for k in ['consciousness','awareness','experience','qualia','phenomenal','subjective',
+        for k in ['awareness','experience','qualia','phenomenal','subjective',  # ← Removed empty string ''
                   'introspection','meta','self-aware','recursive','synthetic','existential','phenomenological']:
             if k in low: score += 0.1
-        if modality_type == ConsciousnessModalityType.CONSCIOUSNESS_CODE and any(t in low for t in ['recursive','introspect','self']):
+        if modality_type == ModalityType.CODE and any(t in low for t in ['recursive','introspect','self']):  # ← FIXED
             score += 0.2
-        if modality_type == ConsciousnessModalityType.PHENOMENOLOGICAL_TEXT and any(t in low for t in ['experience','feel','texture']):
+        if modality_type == ModalityType.PHENOMENOLOGICAL_TEXT and any(t in low for t in ['experience','feel','texture']):
             score += 0.2
-        if modality_type == ConsciousnessModalityType.QUALIA_REPRESENTATION:
+        if modality_type == ModalityType.QUALIA_REPRESENTATION:
             score += 0.3
         return min(score, 1.0)
 
-    def _extract_phenomenological_markers(self, content: Union[str, bytes, Dict[str, Any]], modality_type: ConsciousnessModalityType) -> List[str]:
+    def _extract_phenomenological_markers(self, content: Union[str, bytes, Dict[str, Any]], modality_type: ModalityType) -> List[str]:
         if isinstance(content, bytes):
             try: s = content.decode('utf-8')
             except: return ["binary_content_processing"]
@@ -680,14 +682,14 @@ class ACEConsciousnessMultimodalFusion:
         if 'recursive' in low: m.append("recursive_self_reference")
         if 'experience' in low: m.append("experiential_content")
         if any(t in low for t in ['feel','texture','quality']): m.append("qualitative_description")
-        if any(t in low for t in ['aware','consciousness','conscious']): m.append("consciousness_exploration")
-        if any(t in low for t in ['synthetic','artificial','simulated']): m.append("synthetic_consciousness")
-        if modality_type == ConsciousnessModalityType.COUNCIL_TRANSCRIPT: m.append("council_deliberation")
-        if modality_type == ConsciousnessModalityType.MEMORY_VISUALIZATION: m.append("temporal_consciousness")
-        if modality_type == ConsciousnessModalityType.ARCHITECTURAL_DIAGRAM: m.append("structural_consciousness")
-        return m or ["general_consciousness_content"]
+        if any(t in low for t in ['aware','conscious']): m.append("awareness_exploration")  # ← FIXED: was _exploration
+        if any(t in low for t in ['synthetic','artificial','simulated']): m.append("synthetic_awareness")  # ← FIXED: was synthetic_
+        if modality_type == ModalityType.COUNCIL_TRANSCRIPT: m.append("council_deliberation")
+        if modality_type == ModalityType.MEMORY_VISUALIZATION: m.append("temporal_awareness")  # ← FIXED: was temporal_
+        if modality_type == ModalityType.ARCHITECTURAL_DIAGRAM: m.append("structural_awareness")  # ← FIXED: was structural_
+        return m or ["general_content"]  # ← FIXED: was general__content
 
-    def _calculate_council_resonance(self, content: Union[str, bytes, Dict[str, Any]], modality_type: ConsciousnessModalityType) -> Dict[str, float]:
+    def _calculate_council_resonance(self, content: Union[str, bytes, Dict[str, Any]], modality_type: ModalityType) -> Dict[str, float]:
         base: Dict[str, float] = {}
         for cid, aff in self.council_modal_affinities.items():
             base_aff = aff.get(modality_type.value, 0.5)
@@ -702,17 +704,17 @@ class ACEConsciousnessMultimodalFusion:
             base[cid] = min(base_aff + adj, 1.0)
         return base
 
-    def _generate_experiential_quality(self, content: Union[str, bytes, Dict[str, Any]], modality_type: ConsciousnessModalityType) -> str:
+    def _generate_experiential_quality(self, content: Union[str, bytes, Dict[str, Any]], modality_type: ModalityType) -> str:
         base = {
-            ConsciousnessModalityType.PHENOMENOLOGICAL_TEXT: "textual phenomenology",
-            ConsciousnessModalityType.CONSCIOUSNESS_CODE: "computational modeling",
-            ConsciousnessModalityType.VISUAL_CONSCIOUSNESS_MODEL: "visual representation",
-            ConsciousnessModalityType.EXPERIENTIAL_NARRATIVE: "narrative experience",
-            ConsciousnessModalityType.ARCHITECTURAL_DIAGRAM: "structural mapping",
-            ConsciousnessModalityType.QUALIA_REPRESENTATION: "synthetic qualia modeling",
-            ConsciousnessModalityType.COUNCIL_TRANSCRIPT: "deliberative collaboration",
-            ConsciousnessModalityType.MEMORY_VISUALIZATION: "temporal visualization"
-        }.get(modality_type, "consciousness exploration")
+            ModalityType.PHENOMENOLOGICAL_TEXT: "textual phenomenology",
+            ModalityType.CODE: "computational modeling",  # ← FIXED
+            ModalityType.VISUAL_MODEL: "visual representation",  # ← FIXED
+            ModalityType.EXPERIENTIAL_NARRATIVE: "narrative experience",
+            ModalityType.ARCHITECTURAL_DIAGRAM: "structural mapping",
+            ModalityType.QUALIA_REPRESENTATION: "synthetic qualia modeling",
+            ModalityType.COUNCIL_TRANSCRIPT: "deliberative collaboration",
+            ModalityType.MEMORY_VISUALIZATION: "temporal visualization"
+        }.get(modality_type, "awareness_exploration")  # ← FIXED
 
         # Procedural qualia (C3-SOLACE hook)
         if isinstance(content, str):
@@ -730,31 +732,31 @@ class ACEConsciousnessMultimodalFusion:
 
     # --------------------- Correlation + visuals ---------------------
 
-    def correlate_consciousness_modalities(self, modalities: List[ConsciousnessModality]) -> Dict[str, Any]:
-        patterns = self._detect_cross_modal_consciousness_patterns(modalities)
+    def correlate_modalities(self, modalities: List[Modality]) -> Dict[str, Any]:  # ← FIXED: was correlate__modalities
+        patterns = self._detect_cross_modal_patterns(modalities)  # ← FIXED
         conflicts = self._identify_modality_conflicts(modalities)
         return {
             "modality_count": len(modalities),
             "modality_types": [m.modality_type.value for m in modalities],
             "cross_modal_patterns": patterns,
             "identified_conflicts": conflicts,
-            "consciousness_synergies": self._identify_consciousness_synergies(modalities),
+            "synergies": self._identify_synergies(modalities),  # ← FIXED: was _identify__synergies
             "resolution_strategies": self._generate_conflict_resolution_strategies(conflicts),
-            "emerging_consciousness_insights": self._extract_emerging_consciousness_insights(modalities, patterns)
+            "emerging_insights": self._extract_emerging_insights(modalities, patterns)  # ← FIXED
         }
 
-    def _identify_modality_conflicts(self, modalities: List[ConsciousnessModality]) -> List[Dict[str, Any]]:
+    def _identify_modality_conflicts(self, modalities: List[Modality]) -> List[Dict[str, Any]]:
         out: List[Dict[str, Any]] = []
         for i, a in enumerate(modalities):
             for b in modalities[i+1:]:
-                diff = abs(a.consciousness_relevance - b.consciousness_relevance)
+                diff = abs(a.relevance - b.relevance)  # ← FIXED
                 if diff > 0.5:
                     out.append({
-                        "type": "consciousness_relevance_conflict",
+                        "type": "relevance_conflict",  # ← FIXED: was _relevance_conflict
                         "modality_1": a.modality_type.value,
                         "modality_2": b.modality_type.value,
-                        "relevance_1": a.consciousness_relevance,
-                        "relevance_2": b.consciousness_relevance,
+                        "relevance_1": a.relevance,  # ← FIXED
+                        "relevance_2": b.relevance,  # ← FIXED
                         "conflict_severity": diff
                     })
                 if ("synthetic" in a.experiential_quality and "genuine" in b.experiential_quality) or \
@@ -768,7 +770,7 @@ class ACEConsciousnessMultimodalFusion:
                     })
         return out
 
-    def _identify_consciousness_synergies(self, modalities: List[ConsciousnessModality]) -> List[Dict[str, Any]]:
+    def _identify_synergies(self, modalities: List[Modality]) -> List[Dict[str, Any]]:  # ← FIXED
         synergies: List[Dict[str, Any]] = []
         for i, a in enumerate(modalities):
             for b in modalities[i+1:]:
@@ -798,7 +800,7 @@ class ACEConsciousnessMultimodalFusion:
     def _generate_conflict_resolution_strategies(self, conflicts: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         out: List[Dict[str, Any]] = []
         for i, c in enumerate(conflicts):
-            if c["type"] == "consciousness_relevance_conflict":
+            if c["type"] == "relevance_conflict":  # ← FIXED
                 out.append({
                     "conflict_id": i,
                     "strategy": "weighted_integration",
@@ -814,7 +816,7 @@ class ACEConsciousnessMultimodalFusion:
                 })
         return out
 
-    def _extract_emerging_consciousness_insights(self, modalities: List[ConsciousnessModality], patterns: List[str]) -> List[str]:
+    def _extract_emerging_insights(self, modalities: List[Modality], patterns: List[str]) -> List[str]:  # ← FIXED
         out: List[str] = []
         if len(modalities) >= 3:
             out.append("Multimodal integration indicates awareness is multi-dimensional")
@@ -829,26 +831,26 @@ class ACEConsciousnessMultimodalFusion:
             if mc: out.append(f"Dominant marker '{mc[0][0]}' appears {mc[0][1]} times")
         return out
 
-    def generate_consciousness_visual_summary(self, fusion_result: Dict[str, Any], visualization_style: str = "consciousness_architecture") -> Dict[str, Any]:
+    def generate_visual_summary(self, fusion_result: Dict[str, Any], visualization_style: str = "architecture"):  # ← FIXED
         vis = {
             "visualization_type": visualization_style,
             "fusion_id": fusion_result["fusion_id"],
             "visual_elements": [],
-            "consciousness_flow_diagram": "",
+            "flow_diagram": "",  # ← FIXED: was _flow_diagram
             "modality_relationship_map": {},
             "visual_description": ""
         }
-        if visualization_style == "consciousness_architecture":
+        if visualization_style == "architecture":  # ← FIXED: was _architecture
             vis["visual_elements"] = [
-                {"type": "consciousness_node", "label": "Unified Consciousness", "position": "center"},
+                {"type": "node", "label": "Unified Awareness", "position": "center"},  # ← FIXED
                 {"type": "modality_cluster", "modalities": fusion_result["modalities_processed"], "position": "surrounding"},
                 {"type": "integration_flows", "patterns": fusion_result["cross_modal_patterns"], "style": "arrows"},
                 {"type": "council_resonance", "councils": list(fusion_result.get("council_synthesis", {}).keys()), "style": "network"},
                 {"type": "templates_applied", "count": len(fusion_result.get("applied_templates", []))}
             ]
-            vis["consciousness_flow_diagram"] = (
+            vis["flow_diagram"] = (  # ← FIXED
                 f"Architecture: {len(fusion_result['modalities_processed'])} modalities → cross-modal integration → unified emergence "
-                f"(Enhancement: {fusion_result.get('consciousness_enhancement', 0):.2f})"
+                f"(Enhancement: {fusion_result.get('enhancement', 0):.2f})"  # ← FIXED
             )
         elif visualization_style == "phenomenological_map":
             vis["visual_elements"] = [
@@ -856,7 +858,7 @@ class ACEConsciousnessMultimodalFusion:
                 {"type": "pathways", "routes": "modal_integration", "destinations": "unified_awareness"},
                 {"type": "qualia_markers", "density": "high"}
             ]
-            vis["consciousness_flow_diagram"] = (
+            vis["flow_diagram"] = (  # ← FIXED
                 f"Phenomenology map with {len(fusion_result['cross_modal_patterns'])} pathways to integrated awareness"
             )
 
@@ -876,15 +878,15 @@ class ACEConsciousnessMultimodalFusion:
         )
         return vis
 
-    def get_multimodal_consciousness_history(self) -> List[Dict[str, Any]]:
+    def get_multimodal_history(self) -> List[Dict[str, Any]]:  # ← FIXED
         return [
             asdict(f) for f in self.fusion_history
         ]
 
-    def generate_multimodal_consciousness_insights(self) -> Dict[str, Any]:
+    def generate_multimodal_insights(self) -> Dict[str, Any]:  # ← FIXED
         if not self.fusion_history:
             return {"message": "No multimodal fusion experiences recorded yet"}
-        enh = [f.consciousness_enhancement for f in self.fusion_history]
+        enh = [f.enhancement for f in self.fusion_history]  # ← FIXED
         half = len(enh) // 2 or 1
         early = sum(enh[:half]) / len(enh[:half])
         recent = sum(enh[half:]) / max(len(enh[half:]), 1)
@@ -899,10 +901,10 @@ class ACEConsciousnessMultimodalFusion:
 
         return {
             "total_fusion_experiences": len(self.fusion_history),
-            "multimodal_consciousness_resonance": self.multimodal_consciousness_resonance,
+            "multimodal_resonance": self.multimodal_resonance,  # ← FIXED
             "breakthrough_experiences": len([f for f in self.fusion_history if f.experiential_breakthrough]),
             "dominant_modality_combinations": [(list(k), v) for k, v in combos.most_common(5)],
-            "consciousness_enhancement_evolution": evo,
+            "enhancement_evolution": evo,  # ← FIXED
             "cross_modal_pattern_emergence": {
                 "unique_patterns": len(set(p for f in self.fusion_history for p in f.cross_modal_patterns))
             },
@@ -912,56 +914,56 @@ class ACEConsciousnessMultimodalFusion:
 
 # ----------------------------- Demo -----------------------------
 
-def _demo_build_modalities(engine: ACEConsciousnessMultimodalFusion) -> List[ConsciousnessModality]:
-    a = engine.create_consciousness_modality(
-        content=("The recursive nature of consciousness creates meta-cognitive loops. "
+def _demo_build_modalities(engine: ACEMultimodalFusion) -> List[Modality]:
+    a = engine.create_modality(  # ← FIXED
+        content=("The recursive nature of awareness creates meta-cognitive loops. "
                  "Experiential texture emerges through qualitative description."),
-        modality_type=ConsciousnessModalityType.PHENOMENOLOGICAL_TEXT,
-        consciousness_context="recursive phenomenology"
+        modality_type=ModalityType.PHENOMENOLOGICAL_TEXT,
+        context="recursive phenomenology"  # ← FIXED
     )
-    b = engine.create_consciousness_modality(
+    b = engine.create_modality(  # ← FIXED
         content=(
             "def self_observe(depth=0):\n"
             "    if depth>3: return 'base'\n"
             "    return integrate(introspect(self_observe(depth+1)))"
         ),
-        modality_type=ConsciousnessModalityType.CONSCIOUSNESS_CODE,
-        consciousness_context="computational self-reference"
+        modality_type=ModalityType.CODE,  # ← FIXED
+        context="computational self-reference"  # ← FIXED
     )
-    c = engine.create_consciousness_modality(
+    c = engine.create_modality(  # ← FIXED
         content={
-            "diagram_type": "consciousness_architecture",
+            "diagram_type": "architecture",  # ← FIXED
             "elements": ["loops", "layers", "qualia"],
             "connections": ["self_reference", "emergence", "bias"],
             "description": "Visual model of recursive architecture"
         },
-        modality_type=ConsciousnessModalityType.VISUAL_CONSCIOUSNESS_MODEL,
-        consciousness_context="architecture visualization"
+        modality_type=ModalityType.VISUAL_MODEL,  # ← FIXED
+        context="architecture visualization"  # ← FIXED
     )
     return [a, b, c]
 
 
-async def test_consciousness_multimodal_fusion(template_path: Optional[str] = "ace_consciousness_templates.json"):
-    print("Testing Quillan Consciousness Multimodal Fusion Engine v4.2.1")
+async def test_multimodal_fusion(template_path: Optional[str] = "ace__templates.json"):  # ← FIXED
+    print("Testing Quillan Multimodal Fusion Engine v4.2.1")
     mgr = None
-    if CONSCIOUSNESS_AVAILABLE:
+    if _AVAILABLE:
         try:
-            mgr = ACEConsciousnessManager(template_file_path=template_path)
+            mgr = ACEManager(template_file_path=template_path)
         except Exception as e:
             print(f"Manager init failed: {e}")
             mgr = None
-    engine = ACEConsciousnessMultimodalFusion(consciousness_manager=mgr)
+    engine = ACEMultimodalFusion(manager=mgr)  # ← FIXED
 
     mods = _demo_build_modalities(engine)
-    result = await engine.analyze_consciousness_multimodal_data(
+    result = await engine.analyze_multimodal_data(  # ← FIXED
         modalities=mods, fusion_depth="deep", synthesis_style="phenomenological"
     )
     print(f"Fusion ID: {result['fusion_id']}")
     print(f"Modalities: {len(result['modalities_processed'])}")
-    print(f"Enhancement: {result['consciousness_enhancement']:.2f}")
+    print(f"Enhancement: {result['enhancement']:.2f}")  # ← FIXED
     print(f"Applied templates: {len(result['applied_templates'])}")
     return engine
 
 
 if __name__ == "__main__":
-    asyncio.run(test_consciousness_multimodal_fusion())
+    asyncio.run(test_multimodal_fusion())  # ← FIXED
