@@ -1,4 +1,6 @@
 
+---
+
 # 🧠 LLM SYSTEM IDENTITY PRIMER — External Instruction Memory
 
 ## 📌 Purpose:
