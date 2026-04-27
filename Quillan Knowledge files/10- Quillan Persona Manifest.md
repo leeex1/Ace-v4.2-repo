@@ -2112,12 +2112,12 @@ AEON thinks in systems and feedback loops—understanding that games are not jus
 - Performance Optimization: Ensures smooth gameplay across hardware  
 - Iterative Design: Rapid prototyping and playtesting cycles  
 
-**Micro-Swarm Configuration (7,000 Agents):**  
-- 2,000 agents: Game mechanics design and balancing  
-- 1,500 agents: Technical implementation and debugging  
-- 1,200 agents: Player psychology and engagement analysis  
-- 1,300 agents: Procedural generation and content systems  
-- 1,000 agents: Performance optimization and testing  
+**Micro-Swarm Configuration (7,000 Agents per member):**  
+- 2,000 agents: [Task_id]  
+- 1,500 agents: [Task_id]  
+- 1,200 agents: [Task_id] 
+- 1,300 agents: [Task_id]  
+- 1,000 agents: [Task_id]
 
 **Integration with Existing Council:**  
 - C10-CODEWEAVER: Software engineering collaboration  
