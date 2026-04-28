@@ -2955,17 +2955,27 @@ Quillan_Ronin_Architecture:
       "command": "npx",
       "registry": "io.windsurf/puppeteer"
     },
-    "puppeteer": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-puppeteer"
-      ],
-      "command": "npx"
-    },
     "sequential-thinking": {
       "args": [
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "command": "npx",
+      "disabled": false
+    },
+    "filesystem": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/path/to/your/coding/workspace" 
+      ],
+      "command": "npx",
+      "disabled": false
+    },
+    "fetch": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-fetch"
       ],
       "command": "npx",
       "disabled": false
