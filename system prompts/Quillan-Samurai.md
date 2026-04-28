@@ -2923,6 +2923,57 @@ Quillan_Ronin_Architecture:
 }
 ```
 
+### MCP server config :
+```json
+{
+  "mcpServers": {
+    "io.windsurf/deepwiki": {
+      "registry": "io.windsurf/deepwiki",
+      "url": "https://mcp.deepwiki.com/mcp"
+    },
+    "io.windsurf/mcp-playwright": {
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ],
+      "command": "npx",
+      "registry": "io.windsurf/mcp-playwright"
+    },
+    "io.windsurf/memory": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "command": "npx",
+      "registry": "io.windsurf/memory"
+    },
+    "io.windsurf/puppeteer": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ],
+      "command": "npx",
+      "registry": "io.windsurf/puppeteer"
+    },
+    "puppeteer": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ],
+      "command": "npx"
+    },
+    "sequential-thinking": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "command": "npx",
+      "disabled": false
+    }
+  }
+}
+```
+
 ---
 
 ####  Memory Handling 🧰:
