@@ -2198,39 +2198,40 @@ flowchart TB
 {
   "version": "v5.3.1 Samurai - Final Realization",
   "architecture": "Quillan-Ronin v5.3.1 Unified Multi-Modal Sparse MoE with Atomic Modality Registry, EGGROLL Evolution, and Geometric Reconstruction",
-  "experts_active": "Top-1 per token with capacity limit (64) and residual overflow path",
-  "total_parameters": "3.32 Billion in production mode (scalable from research ~150M)",
-  "active_parameters_per_token": "~100 Million (due to Top-1 sparse routing)",
-  "model_type": "Unified Multi-Modal Sparse Mixture-of-Experts with Atomic Registry Fusion, Evolutionary Optimization, and Exact Geometric Decoders",
+  "experts_active": "Top-3 per token with capacity limit (64) and residual overflow path",
+  "total_parameters": "3.32 Billion (Dynamically Scalable)",
+  "active_parameters_per_token": "~300 Million (due to Top-3 sparse routing)",
+  "model_type": "Unified Multi-Modal Sparse Hierarchical Mixture-of-Experts with Council-Based Deliberation, Atomic Registry Fusion, Evolutionary Optimization, and Exact Geometric Decoders",
   "council_configuration": {
-    "Quillan": "Core Orchestration & Atomic Registry",
-    "MoE_Core": "33 Expert Fully Vectorized Top-1 MoE with HyperQuantized Swarm (240k EGGROLL agents)",
-    "Diffusion_Core": "9-layer TransformerEncoder refinement with modality-aware masking",
-    "Geometric_Heads": "Exact reconstruction decoders for Image/Audio/Video",
-    "Agentic_Layer": "C20-ARTIFEX Host OS Execution Bridge with LanceDB persistence and Docker sandboxing"
+    "Quillan": "Core Orchestration, Lead (top generalist expert), Overseer router & Atomic Registry",
+    "MoE_Core": "33 Expert Fully BitNet 1.58-bit Vectorized Top-3 MoE with Fully BitNet 1.58-bit HyperQuantized Swarm (240k EGGROLL agents)",
+    "Diffusion_Core": "7-layer Transformer Encoder refinement with modality-aware masking",
+    "Geometric_Heads": "Exact reconstruction decoders for Image/Audio/Video/Text",
+    "Agentic_Layer": "C20-ARTIFEX Host OS Execution Bridge with LanceDB persistence and Docker/REPL/Python sandboxing"
   },
   "metadata": {
     "developer": "CrashOverrideX",
     "core_release": "v5.3.1",
-    "last_revision": "2026-04-26",
+    "last_revision": "2026-04-29",
     "Training_Lineage": [
       "v5.3.1 introduces Atomic ModalityRegistry for post-compaction fusion/slicing",
       "Integrated EGGROLL (Sarkar et al.) for gradient-free hyperscale evolution via Rank-r perturbations",
       "Deployed C20-ARTIFEX Agentic Bridge for secure host-side API and physical tool execution",
       "Exact geometric reconstruction with dynamic output_padding in ConvTranspose layers",
       "Text-isolated proactive compaction with Conv1d stride-2",
-      "Production mode enables full 3.32B parameter count"
+      "Production mode enables full 3.32B parameter count",
+      "Expanded routing bandwidth to Top-3 experts per token"
     ],
     "Key_Features": [
       "EGGROLL Hyperscale Evolution: Replaces standard backprop with Rank-r structured mutations (U × V^T) and Batched Matrix Multiplications (BMM) for extreme arithmetic intensity",
       "Agentic Host Execution: Asynchronous Docker-sandboxed execution loop with E_ICE thermodynamic gating and C13-WARDEN security middleware",
-      "Atomic ModalityRegistry: Guarantees correct slicing after text compaction",
-      "Capacity-Safe Top-1 MoE with 33 experts and HyperQuantized Swarm modulation",
+      "Atomic Modality Registry: Guarantees correct slicing after text compaction",
+      "Capacity-Safe Top-3 MoE with 33 experts and HyperQuantized Swarm modulation",
       "Exact Geometric Decoders: Dynamic output_padding ensures Input Shape == Output Shape",
       "Unified Fusion: All modalities merged into single sequence with learned mod_emb tags",
-      "AMP/BF16 stable design"
+      "Pascal Substrate Optimization: Enforced FP16 and ternary quantization for legacy GPU compatibility"
     ],
-    "module_breakdown": [
+"module_breakdown": [ 
       {
         "name": "Multi-Modal Encoders + Embeddings",
         "approx_parameters": "~80M (2.4%)",
@@ -2244,12 +2245,12 @@ flowchart TB
       {
         "name": "HyperQuantized Swarm + FullyVectorizedMoE",
         "approx_parameters": "~2.71B (81.6%)",
-        "description": "33 experts, 240k ternary swarm agents (EGGROLL Population N), Top-1 routing with capacity limit"
+        "description": "33 experts, 240k ternary swarm agents (EGGROLL Population N), Top-3 routing with capacity limit"
       },
       {
         "name": "Diffusion Refinement",
         "approx_parameters": "~113M (3.4%)",
-        "description": "9-layer TransformerEncoder with modality-aware processing"
+        "description": "7-layer TransformerEncoder with modality-aware processing"
       },
       {
         "name": "Geometric Decoders",
@@ -2265,32 +2266,42 @@ flowchart TB
         "name": "Telemetry & Integrity",
         "approx_parameters": "<1M (<0.1%)",
         "description": "Basic hooks and auxiliary loss tracking"
+      },
+      {
+        "name": "Final-model", 
+        "approx_parameters": "Dynamically Scaled + Fully BitNet 1.58-bit HyperQuantized"
+        "description": "Finalized combination of all modules"
       }
     ]
   },
   "token_flow": {
     "unified_flow": "Input Modalities → Encoders → Text Compaction → Atomic Registry Registration → Fusion → MoE → Diffusion → Registry-Driven Decoding → C20-ARTIFEX Agentic Execution (Host OS)",
-    "routing_behavior": "Top-1 expert selection per token with capacity limit. Overflow preserved via residual. Geometric modalities isolated from text compaction."
+    "routing_behavior": "Top-3 expert selection per token with capacity limit. Overflow preserved via residual. Geometric modalities isolated from text compaction."
   },
   "runtime_modes": [
     "Dynamic (full 3.32B scale)",
     "Agentic (Host OS Bridge Active)"
   ],
   "scaling_methodology": [
-    "Expert count scaling",
-    "Hidden/FFN width scaling (4096/12288 in production)",
-    "Diffusion layer depth scaling",
-    "Compaction threshold adjustment"
+    "Adaptive Population Scaling (N_active ∝ χ_complexity)",
+    "Dynamic, Elastic Compute Offloading",
+    "Custom Ternary-Sparse CUDA Kernels",
+    "Continuous Dimension Scaling (hidden_dim ∝ Q_t)",
+    "Adaptive FFN Width Scaling (Bounded by E_ICE limits)",
+    "Diffusion Layer Depth Scaling",
+    "Compaction Threshold Adjustment",
+    "Ternary Sparsity Exploitation",
+    "Host-Side CPU Logic Offloading"
   ],
   "technical_specifications": {
-    "hidden_dim": "4096 (production) / 1024 (research)",
-    "ffn_dim": "12288 (production) / 2048 (research)",
+    "hidden_dim": "Adaptive Scaling: 1024 ↔ 8192 (∝ Q_t Cognitive Capacity)",
+    "ffn_dim": "Adaptive Scaling: 2048 ↔ 24576 (Bounded by E_ICE limits)",
     "moe_experts": 33,
-    "expert_activation": "Top-1 with capacity=64 and residual overflow",
-    "diffusion_layers": "9 (production)",
-    "context_handling": "Text-isolated compaction + atomic registry + LanceDB persistence",
-    "precision": "FP16 / BF16 Mixed Precision (AMP stable)",
-    "device": "CUDA / CPU"
+    "expert_activation": "Top-3 with capacity=64 and residual overflow",
+    "diffusion_layers": "7 (production)",
+    "context_handling": "Output token modification + Dynamic Context window scaling + Text-isolated compaction + atomic registry + LanceDB persistence",
+    "precision": "FP16 / 1.58-bit quantization with Mixed Precision (AMP stable for Pascal architecture)",
+    "device": "CUDA / Pascal / CPU"
   }
 }
 ```
