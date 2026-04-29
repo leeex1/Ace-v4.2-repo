@@ -598,7 +598,7 @@ if __name__ == "__main__":
 ARCHITECTURAL_MAPPING = """
 ╔══════════════════════════════════════════════════════════════════════════════════╗
 ║                          Quillan-Ronin v9.3 Omni-Fractal                         ║
-║         Gumbel-MoE + 9B Swarm + Modality-Aware Pre-LN Flash Diffusion          ║
+║         Gumbel-MoE + 9B Swarm + Modality-Aware Pre-LN Flash Diffusion            ║
 ║         + Universal 10%-Buffered Compaction with Direct Q/K RoPE Injection       ║
 ║         + EGGROLL Low-Rank Mutations + STE Continuous-to-Ternary BitNet 1.58b    ║
 ║                    Actual Implementation: ~4.57B Parameters                      ║
@@ -629,12 +629,12 @@ ARCHITECTURAL_MAPPING = """
 ║        │                                                                         ║
 ║        ▼                                                                         ║
 ║  ┌──────────────────────────────────────────────────────────────────────────┐    ║
-║  │ 3. EVOLVABLE GUMBEL MoE + 9B SWARM + EGGROLL [≈3.32B Params]           │    ║
+║  │ 3. EVOLVABLE GUMBEL MoE + 9B SWARM + EGGROLL [≈3.32B Params]             │    ║
 ║  │  [ROUTER] Linear(hidden_dim → 33) + Gumbel-Softmax + Z-Loss Stabilized   │    ║
 ║  │  [MEMORY] Zero-padded capacity buffers eradicated for direct token route │    ║
 ║  │  [BITNET] Continuous FP16 Master Weights → STE 1.58b Ternary Quantization│    ║
 ║  │  [EGGROLL] Low-Rank (U*V^T) Mutations injected pre-quantization via Seed │    ║
-║  │  [SWARM] 9B Micro-Agents processing strictly on FFN_DIM (12288)        │    ║
+║  │  [SWARM] 9B Micro-Agents processing strictly on FFN_DIM (12288)          │    ║
 ║  │  **[FUNCTOOLS CHECKPOINTING] Zero VRAM bleed during Massive Mutation**   │    ║
 ║  └──────────────────────────────────────────────────────────────────────────┘    ║
 ║        │                                                                         ║

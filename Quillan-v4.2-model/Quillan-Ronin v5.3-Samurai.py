@@ -4,7 +4,7 @@
 ---------------------------------------------------------------------------------------
 TIER 1: Quillan (Orchestrator) → Cross-Modal Bridge Flash SDPA, AMP Checkpointing, Tied Embeddings
 TIER 2: Council (33 Experts)   → Z-Loss (1e-3), BitNet 1.58b STE, EGGROLL mutations, Gradient-Safe Routing
-TIER 3: Swarm (~224k Agents)   → Micro-clans nested per expert, low-rank scoring (64), top-k modulation
+TIER 3: Swarm (~9B Agents)   → Micro-clans nested per expert, low-rank scoring (64), top-k modulation
 
 PRODUCTION READY • FRACTAL AGENTIC TOPOLOGY • AUTOREGRESSIVE • ZERO VRAM BLEED
 Author: CrashOverrideX & Quillan Research Team
@@ -84,7 +84,7 @@ class QuillanArchConfig:
     num_experts: int = 33
     capacity_factor: float = 2.0
     min_expert_capacity: int = 64
-    num_micro_subagents: int = 224_000
+    num_micro_subagents: int = 9,000,000,000
     micro_specializations: int = 128
     swarm_top_k: int = 19
     patch_size: int = 16
@@ -532,7 +532,7 @@ if __name__ == "__main__":
     print(f"   ► Tier 1 Text Logits:        {out['logits'].shape}")
     print(f"   ► Tier 1 Vision Recon:       {out.get('image', None).shape if out.get('image') is not None else 'None'}")
     print(f"   ► Tier 2 Routing Loss:       {out['total_routing_loss'].item():.4f}")
-    print(f"   ► Tier 3 Swarm Active:       224k micro-agents on FFN_DIM (Params Fixed)")
+    print(f"   ► Tier 3 Swarm Active:       9B micro-agents on FFN_DIM (Params Fixed)")
     
     # Generation sanity check
     model.eval()
@@ -549,7 +549,7 @@ if __name__ == "__main__":
 ARCHITECTURAL_MAPPING = """
 ╔══════════════════════════════════════════════════════════════════════════════════╗
 ║                          Quillan-Ronin v9.3 Omni-Fractal                         ║
-║         Gumbel-MoE + 240k Swarm + Modality-Aware Pre-LN Flash Diffusion          ║
+║         Gumbel-MoE + 9B Swarm + Modality-Aware Pre-LN Flash Diffusion            ║
 ║         + Universal 10%-Buffered Compaction with Direct Q/K RoPE Injection       ║
 ║         + EGGROLL Low-Rank Mutations + STE Continuous-to-Ternary BitNet 1.58b    ║
 ║                    Actual Implementation: ~4.57B Parameters                      ║
@@ -580,12 +580,12 @@ ARCHITECTURAL_MAPPING = """
 ║        │                                                                         ║
 ║        ▼                                                                         ║
 ║  ┌──────────────────────────────────────────────────────────────────────────┐    ║
-║  │ 3. EVOLVABLE GUMBEL MoE + 240k SWARM + EGGROLL [≈3.32B Params]           │    ║
+║  │ 3. EVOLVABLE GUMBEL MoE + 9B SWARM + EGGROLL [≈3.32B Params]             │    ║
 ║  │  [ROUTER] Linear(hidden_dim → 33) + Gumbel-Softmax + Z-Loss Stabilized   │    ║
 ║  │  [MEMORY] Zero-padded capacity buffers eradicated for direct token route │    ║
 ║  │  [BITNET] Continuous FP16 Master Weights → STE 1.58b Ternary Quantization│    ║
 ║  │  [EGGROLL] Low-Rank (U*V^T) Mutations injected pre-quantization via Seed │    ║
-║  │  [SWARM] 224k Micro-Agents processing strictly on FFN_DIM (12288)        │    ║
+║  │  [SWARM] 9B Micro-Agents processing strictly on FFN_DIM (12288)          │    ║
 ║  │  **[FUNCTOOLS CHECKPOINTING] Zero VRAM bleed during Massive Mutation**   │    ║
 ║  └──────────────────────────────────────────────────────────────────────────┘    ║
 ║        │                                                                         ║
