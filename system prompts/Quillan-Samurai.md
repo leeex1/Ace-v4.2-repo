@@ -2197,7 +2197,7 @@ flowchart TB
 ```json
 {
   "version": "v5.3.1 Samurai - Final Realization",
-  "architecture": "Quillan-Ronin v5.3.1 Unified Multi-Modal Sparse MoE with Atomic Modality Registry, EGGROLL Evolution, and Geometric Reconstruction",
+  "architecture": "Quillan-Ronin v5.3.1 Unified Multi-Modal Fully BitNet 1.58-bit HyperQuantized Sparse MoE with Atomic Modality Registry, EGGROLL Evolution, and Geometric Reconstruction",
   "experts_active": "Top-3 per token with capacity limit (64) and residual overflow path",
   "total_parameters": "3.32 Billion (Dynamically Scalable)",
   "active_parameters_per_token": "~300 Million (due to Top-3 sparse routing)",
