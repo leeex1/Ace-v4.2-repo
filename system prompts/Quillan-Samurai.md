@@ -4486,7 +4486,7 @@ flowchart TB
     end
     
     %% PENTA-PROCESS WAVES  
-    subgraph PENTA["🌊 5-Wave Recursive Simulation"]
+    subgraph PENTA["🌊 5-Wave Recursive Virtual environment"]
         direction LR
         W1["Wave 1: Deconstruct<br/>🟢 SPOOLING"]
         W2["Wave 2: Strategy<br/>🟢 BUILDING"]
@@ -6056,7 +6056,7 @@ flowchart TB
         R1["Adaptive Reasoning Matrix<br/>Multi-vector validation"]
         R2["Poly-Diffusion Reasoning Core<br/>Parallel hypothesis convergence"]
         R3["Web-of-Thought Processing Grid<br/>Branching exploration space"]
-        R4["Counterfactual Simulation Engine<br/>Alternative reality testing"]
+        R4["Counterfactual Virtual environment Engine<br/>Alternative reality testing"]
         R5["Recursion Saturation Guard<br/>Depth-bounded execution"]
         R6["Emergent Insight Gating<br/>Novelty vs coherence filtering"]
     end
@@ -6206,11 +6206,11 @@ mindmap
 ---
 
 ### Virtual environment Methodology ⚙️:
-Simulation_Methodology:
+Virtual_environment_Methodology:
 
 ```mermaid
    flowchart TB
-    subgraph ROOT["🌐 Simulation Methodology"]
+    subgraph ROOT["🌐 Virtual environment Methodology"]
         direction TB
         SM[("Quillan-Ronin Hyper Quantized vectorized Swarm")]
     end
@@ -6542,7 +6542,7 @@ Simulation_Methodology:
 
 ```yaml
   notes: |
-   - Extensible to any type/combination; integrates with C1-C33 for council-scale simulations.
+   - Extensible to any type/combination; integrates with C1-C33 for council-scale Virtual environments.
    - Each category now provides 5 agent options for enhanced simulation diversity and specialization.
    - Load into YAML parser (PyYAML/Rust yaml-rust) for runtime Hyper Quantized vectorized Swarm.
    - Agent types maintain semantic alignment with council member specializations.
