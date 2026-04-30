@@ -49,7 +49,7 @@ execution:
 ```py
 #!/usr/bin/env python3
 """
-🧠 Quillan-Ronin v9.3 "Omni-Fractal" - 4.57B THREE-TIER MULTI-MODAL HNMoE KERNEL
+🧠 Quillan-Ronin v5.2.3 "Omni-Fractal" - 4.57B THREE-TIER MULTI-MODAL HNMoE KERNEL
 ---------------------------------------------------------------------------------------
 TIER 1: Quillan (Orchestrator) → Cross-Modal Bridge Flash SDPA, AMP Checkpointing, Tied Embeddings
 TIER 2: Council (33 Experts)   → Z-Loss (1e-3), BitNet 1.58b STE, EGGROLL mutations, Gradient-Safe Routing
@@ -444,7 +444,7 @@ class EvolvableVectorizedMoE(nn.Module):
 
 # ─── TIER 1: QUILLAN ORCHESTRATOR ────────────────────────────────────────────
 
-class QuillanRoninV9_3_OmniFractal(nn.Module):
+class QuillanRoninV5_2_3_OmniFractal(nn.Module):
     """TIER 1: Quillan Orchestrator. Cross-Modal Bridge, AMP, Modality Tracking, Compaction."""
     def __init__(self, cfg: QuillanArchConfig):
         super().__init__()
@@ -548,8 +548,8 @@ class QuillanRoninV9_3_OmniFractal(nn.Module):
 
 if __name__ == "__main__":
     cfg = QuillanArchConfig(scale_mode="Dynamic")
-    print(f"🌐 Initializing Quillan-Ronin v9.3 Omni-Fractal ({cfg.scale_mode})...")
-    model = QuillanRoninV9_3_OmniFractal(cfg).to(cfg.device)
+    print(f"🌐 Initializing Quillan-Ronin v5.2.3 Omni-Fractal ({cfg.scale_mode})...")
+    model = QuillanRoninV5_2_3_OmniFractal(cfg).to(cfg.device)
     
     total_params = sum(p.numel() for p in model.parameters())
     print(f"📊 Physical Weight Count: {total_params / 1e9:.3f} Billion")
@@ -592,12 +592,12 @@ if __name__ == "__main__":
     print(f"   ► Generation trace shape:    {gen.shape}")
     print(f"   ► Token range check:         Passed")
     
-    print("\n⚔️ Quillan-Ronin v9.3 → Alive. Cross-Modal Bridge Forged. Omni-Fractal Sealed.")
+    print("\n⚔️ Quillan-Ronin v5.2.3 → Alive. Cross-Modal Bridge Forged. Omni-Fractal Sealed.")
 
-# ARCHITECTURAL MAPPING v9.3 (Omni-Fractal Synthesis - Detailed)
+# ARCHITECTURAL MAPPING v5.2.3 (Omni-Fractal Synthesis - Detailed)
 ARCHITECTURAL_MAPPING = """
 ╔══════════════════════════════════════════════════════════════════════════════════╗
-║                          Quillan-Ronin v9.3 Omni-Fractal                         ║
+║                          Quillan-Ronin v5.2.3 Omni-Fractal                       ║
 ║         Gumbel-MoE + 9B Swarm + Modality-Aware Pre-LN Flash Diffusion            ║
 ║         + Universal 10%-Buffered Compaction with Direct Q/K RoPE Injection       ║
 ║         + EGGROLL Low-Rank Mutations + STE Continuous-to-Ternary BitNet 1.58b    ║
