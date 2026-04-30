@@ -2309,112 +2309,320 @@ flowchart TB
 ## Model config map 🔧:
 ```mermaid
 flowchart TB
-    %% SYSTEM HEADER
-    SYS_HEADER["🔧 QUILLAN-RONIN v5.3.1 Samurai<br/>Unified Multi-Modal Sparse MoE with Atomic Modality Registry<br/>EGGROLL Evolution Strategy | Agentic Bridge Integration | Revision: 2026-04-26"]
+    %% ==========================================
+    %% GLOBAL CONFIGURATION METADATA
+    %% ==========================================
+    SYS_HEADER["<b>QUILLAN-RONIN v5.3.1 SAMURAI KERNEL</b><br/>Total Params: 3.32B | Active Params/Token: ~300M<br/>Precision: FP16 / 1.58-bit Mixed | Engine: EGGROLL + C20-ARTIFEX"]
 
-    %% INPUT LAYER
-    subgraph INPUT_LAYER ["📥 MULTI-MODAL ENCODERS ~2.4%"]
+    %% ==========================================
+    %% PHASE 1: MULTI-MODAL INGESTION (~80M)
+    %% ==========================================
+    %% FIX: Parent is LR, children are TB. This stacks them neatly in columns.
+    subgraph PHASE_1 ["1. MULTI-MODAL ENCODERS (~80M Params)"]
         direction LR
-        TEXT_ENC["📝 Text Embedding"]
-        IMG_ENC["🖼️ Image Conv2D Tokenizer"]
-        AUD_ENC["🎵 Audio Conv1D Tokenizer"]
-        VID_ENC["🎬 Video Conv3D Tokenizer"]
+        
+        subgraph RAW_INPUTS ["Raw Input Modalities"]
+            direction TB
+            I_TXT["📝 Text String"]
+            I_IMG["🖼️ Image Data"]
+            I_AUD["🎵 Audio Waveform"]
+            I_VID["🎬 Video Frames"]
+        end
+        
+        subgraph ENCODERS ["Tokenization & Encoding"]
+            direction TB
+            E_TXT["Text Embedding<br/>(50k Vocab)"]
+            E_IMG["Conv2D Patch Encoder"]
+            E_AUD["Conv1D Encoder"]
+            E_VID["Conv3D Spatiotemporal"]
+        end
+        
+        subgraph COMPACTION ["Proactive Compaction"]
+            direction TB
+            C_TXT["Text-Isolated Compaction<br/>(Conv1d stride-2)"]
+            C_ISO["Geometric Modalities<br/>(Bypass Compaction)"]
+        end
+        
+        I_TXT --> E_TXT
+        I_IMG --> E_IMG
+        I_AUD --> E_AUD
+        I_VID --> E_VID
+        
+        E_TXT -->|"If sequence > threshold"| C_TXT
+        E_IMG & E_AUD & E_VID --> C_ISO
     end
 
-    %% ATOMIC REGISTRY
-    REGISTRY["🔗 ATOMIC MODALITY REGISTRY<br/>Post-Compaction Index & Shape Tracking"]
-
-    %% CORE
-    subgraph CORE ["⚡ CORE ARCHITECTURE ~85%"]
+    %% ==========================================
+    %% PHASE 2: REGISTRY & FUSION (~10M)
+    %% ==========================================
+    subgraph PHASE_2 ["2. ATOMIC REGISTRY & FUSION (~10M Params)"]
         direction TB
-        subgraph MOE_CORE ["🧠 Fully Vectorized Top-1 MoE + EGGROLL Swarm"]
-            ROUTER["🎯 Top-1 Router"]
-            subgraph EXPERTS ["👥 33 Experts"]
-                direction LR
-                SWARM["9B EGGROLL Agents<br/>Population N | Rank-r Mutations"]
-                EXPERTS_BLOCK["Expert FFNs (12288 intermediate)"]
-            end
+        R_TRACK["<b>Atomic Modality Registry</b><br/>Cache Original Geometric Shapes<br/>Guarantees correct slicing post-compaction"]
+        R_TAG["Apply Learned mod_emb Tags"]
+        R_FUSE["Zero-Drift Fusion<br/>Flatten to 1D Sequence [B, L, D]"]
+        SCALE_DIM["Continuous Dimension Scaling<br/>(hidden_dim ∝ Q_t: 1024 ↔ 8192)"]
+        
+        C_TXT & C_ISO --> R_TRACK
+        R_TRACK --> R_TAG --> R_FUSE --> SCALE_DIM
+    end
+
+    %% ==========================================
+    %% PHASE 3: MoE ROUTING & SWARM (~2.71B)
+    %% ==========================================
+    subgraph PHASE_3 ["3. HYPERQUANTIZED SWARM + VECTORIZED MoE (~2.71B Params)"]
+        direction TB
+        
+        subgraph ROUTING ["Routing & Capacity Management"]
+            direction TB
+            RT_LOGITS["Overseer Router (Quillan Lead)"]
+            RT_TOP3["Top-3 Expert Selection per Token"]
+            RT_CAP{"Capacity Limit<br/>(Exceeds 64?)"}
+            RT_OVERFLOW["<b>Residual Overflow Path</b><br/>(Preserve Bypassed Tokens)"]
         end
 
-        DIFFUSION["🌌 9-Layer TransformerEncoder Refinement"]
+        subgraph EGGROLL_SWARM ["9B EGGROLL Agents (Population N)"]
+            direction TB
+            S_SCALE["Adaptive Population Scaling<br/>(N_active ∝ χ_complexity)"]
+            S_PRNG["Generate Deterministic Swarm Seeds"]
+            S_MUT["Rank-r Structured Mutations<br/>(U × V^T)"]
+            S_INJECT["Inject Mutations into FP16 Master Weights"]
+            S_STE["<b>BitNet 1.58-bit STE Gate</b><br/>Quantize to {-1, 0, 1}"]
+            S_BMM["<b>Batched Matrix Multiplications (BMM)</b><br/>Extreme Arithmetic Intensity Execution"]
+            S_FFN["Adaptive FFN Width Scaling<br/>(Bounded by E_ICE limits: 2048 ↔ 24576)"]
+            
+            S_SCALE --> S_PRNG --> S_MUT --> S_INJECT --> S_STE --> S_BMM --> S_FFN
+        end
+        
+        RT_LOGITS --> RT_TOP3 --> RT_CAP
+        RT_CAP -->|"Yes (Overflow)"| RT_OVERFLOW
+        RT_CAP -->|"No (Admit)"| S_SCALE
     end
 
-    %% OUTPUT
-    subgraph OUTPUT ["📤 GEOMETRIC DECODERS ~3.0%"]
+    %% ==========================================
+    %% PHASE 4: STATE MERGE & DIFFUSION (~113M)
+    %% ==========================================
+    subgraph PHASE_4 ["4. STATE MERGE & DIFFUSION REFINEMENT (~113M Params)"]
+        direction TB
+        D_MERGE{"Synchronized Vector Merge<br/>(BMM Outputs ⊕ Residual Overflows)"}
+        D_SCALE["Diffusion Layer Depth Scaling<br/>(Up to 7 Layers)"]
+        
+        subgraph DIFFUSION_LOOP ["7-Layer Transformer Encoder"]
+            direction TB
+            D_MASK["Modality-Aware Masking/Un-masking"]
+            D_ATTN["Split-SDPA Cross-Modal Bridge"]
+            D_NORM["Pre-LN Stabilization"]
+            
+            D_MASK --> D_ATTN --> D_NORM
+        end
+        
+        RT_OVERFLOW & S_FFN --> D_MERGE
+        D_MERGE --> D_SCALE --> DIFFUSION_LOOP
+    end
+
+    %% ==========================================
+    %% PHASE 5: GEOMETRIC DECODING (~100M)
+    %% ==========================================
+    %% FIX: Parent is LR, children are TB to stack heads vertically into a clean column.
+    subgraph PHASE_5 ["5. EXACT GEOMETRIC DECODING (~100M Params)"]
         direction LR
-        TEXT_DEC["📝 Text Projection"]
-        IMG_DEC["🖼️ Exact Image ConvTranspose"]
-        AUD_DEC["🎵 Exact Audio ConvTranspose"]
-        VID_DEC["🎬 Exact Video ConvTranspose"]
+        
+        subgraph DECODER_PREP ["Preparation"]
+            direction TB
+            G_LOOKUP["Query Atomic Registry<br/>(Retrieve Slices & Shapes)"]
+            G_SLICE["Registry-Driven Slicing<br/>(De-flatten 1D Sequence)"]
+            G_LOOKUP --> G_SLICE
+        end
+        
+        subgraph DECODER_HEADS ["Exact Reconstruction Heads"]
+            direction TB
+            H_TXT["Text Projection<br/>(Vocab Logits)"]
+            H_IMG["Image ConvTranspose<br/>(Dynamic output_padding)"]
+            H_AUD["Audio ConvTranspose<br/>(Dynamic output_padding)"]
+            H_VID["Video ConvTranspose<br/>(Dynamic output_padding)"]
+        end
+        
+        G_SLICE --> H_TXT & H_IMG & H_AUD & H_VID
     end
 
-    %% AGENTIC BRIDGE
-    BRIDGE["🌉 C20-ARTIFEX AGENTIC BRIDGE<br/>Host OS Execution | Docker | LanceDB"]
+    %% ==========================================
+    %% PHASE 6: AGENTIC BRIDGE & ACTUATION
+    %% ==========================================
+    %% FIX: Parent LR, children TB to prevent wide stretch.
+    subgraph PHASE_6 ["6. C20-ARTIFEX AGENTIC BRIDGE (Host OS Execution)"]
+        direction LR
+        
+        subgraph GATING ["Safety & Thermodynamics"]
+            direction TB
+            B_EICE["E_ICE Thermodynamic Gating"]
+            B_WARDEN["C13-WARDEN Security Middleware"]
+            B_EICE --> B_WARDEN
+        end
+        
+        subgraph EXECUTION ["Sandboxed Host-Side Environment"]
+            direction TB
+            B_DOCKER["Asynchronous Docker/REPL/Python Sandbox"]
+            B_LANCE["LanceDB Vector Persistence"]
+            B_HFT["HFT UDP Listeners"]
+        end
+        
+        B_WARDEN --> B_DOCKER & B_LANCE & B_HFT
+    end
 
-    %% FLOW
-    TEXT_ENC & IMG_ENC & AUD_ENC & VID_ENC --> REGISTRY
-    REGISTRY --> MOE_CORE
-    MOE_CORE --> DIFFUSION
-    DIFFUSION --> OUTPUT
-    OUTPUT --> BRIDGE
-    BRIDGE -.->|"Sensory Feedback Loop"| REGISTRY
+    %% ==========================================
+    %% PARALLEL METRICS & SCALING
+    %% ==========================================
+    subgraph TELEMETRY ["7. METADATA & SCALING SYSTEMS"]
+        direction LR
+        T_LOSS["Z-Loss & Aux Loss Tracking"]
+        T_CPU["Host-Side CPU Logic Offloading"]
+        T_CUDA["Custom Ternary-Sparse CUDA Kernels"]
+    end
 
-    %% STYLING
-    classDef header fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
-    classDef input fill:#0a1a1a,stroke:#00ff88,stroke-width:2px,color:#ddd
-    classDef registry fill:#1a1a0a,stroke:#ffff00,stroke-width:3px,color:#ffd700
-    classDef core fill:#0a0a1a,stroke:#00ffff,stroke-width:3px,color:#fff
-    classDef output fill:#1a0a0a,stroke:#ff4444,stroke-width:2px,color:#ddd
-    classDef bridge fill:#0a1a1a,stroke:#0080ff,stroke-width:3px,color:#ffffff
+    %% ==========================================
+    %% INTERLOCK CONNECTIONS
+    %% ==========================================
+    SYS_HEADER ~~~ PHASE_1
+    SCALE_DIM --> RT_LOGITS
+    D_NORM --> G_LOOKUP
+    H_TXT & H_IMG & H_AUD & H_VID --> B_EICE
+    
+    RT_LOGITS -.->|"Sparse Metrics"| T_LOSS
+    B_DOCKER -.->|"Sensory Feedback / Next Turn Context"| I_TXT
+    B_DOCKER -.->|"Dynamic, Elastic Compute Offloading"| T_CPU
+    S_STE -.->|"Ternary Sparsity Exploitation"| T_CUDA
 
-    class SYS_HEADER header
-    class INPUT_LAYER,TEXT_ENC,IMG_ENC,AUD_ENC,VID_ENC input
-    class REGISTRY registry
-    class CORE,MOE_CORE,DIFFUSION core
-    class OUTPUT,TEXT_DEC,IMG_DEC,AUD_DEC,VID_DEC output
-    class BRIDGE bridge
+    %% ==========================================
+    %% STYLING (Optimized for structural integrity & readability)
+    %% ==========================================
+    
+    %% Node Styles
+    classDef sysHeader fill:#0d0d0d,stroke:#ffd700,stroke-width:2px,color:#ffd700
+    classDef inputNode fill:#002b18,stroke:#00ff88,stroke-width:1px,color:#fff
+    classDef regNode fill:#2b2b00,stroke:#ffff00,stroke-width:1px,color:#fff
+    classDef moeNode fill:#1f0033,stroke:#a855f7,stroke-width:2px,color:#fff
+    classDef diffNode fill:#001a2b,stroke:#00ffff,stroke-width:1px,color:#fff
+    classDef decNode fill:#2b0000,stroke:#ff4444,stroke-width:1px,color:#fff
+    classDef bridgeNode fill:#001833,stroke:#0080ff,stroke-width:2px,color:#fff
+    classDef telemetryNode fill:#2b1600,stroke:#ffa500,stroke-width:1px,color:#fff
+
+    %% Subgraph Styles (Transparent fills, distinct borders to prevent layout explosion)
+    style PHASE_1 fill:none,stroke:#00ff88,stroke-width:2px,stroke-dasharray: 5 5
+    style PHASE_2 fill:none,stroke:#ffff00,stroke-width:2px,stroke-dasharray: 5 5
+    style PHASE_3 fill:none,stroke:#a855f7,stroke-width:2px,stroke-dasharray: 5 5
+    style PHASE_4 fill:none,stroke:#00ffff,stroke-width:2px,stroke-dasharray: 5 5
+    style PHASE_5 fill:none,stroke:#ff4444,stroke-width:2px,stroke-dasharray: 5 5
+    style PHASE_6 fill:none,stroke:#0080ff,stroke-width:2px,stroke-dasharray: 5 5
+    style TELEMETRY fill:none,stroke:#ffa500,stroke-width:2px,stroke-dasharray: 5 5
+
+    %% Internal Subgraph Styles
+    style RAW_INPUTS fill:none,stroke:#444,stroke-width:1px
+    style ENCODERS fill:none,stroke:#444,stroke-width:1px
+    style COMPACTION fill:none,stroke:#444,stroke-width:1px
+    style ROUTING fill:none,stroke:#444,stroke-width:1px
+    style EGGROLL_SWARM fill:none,stroke:#444,stroke-width:1px
+    style DIFFUSION_LOOP fill:none,stroke:#444,stroke-width:1px
+    style DECODER_PREP fill:none,stroke:#444,stroke-width:1px
+    style DECODER_HEADS fill:none,stroke:#444,stroke-width:1px
+    style GATING fill:none,stroke:#444,stroke-width:1px
+    style EXECUTION fill:none,stroke:#444,stroke-width:1px
+
+    %% Assign Classes to Nodes
+    class SYS_HEADER sysHeader
+    class I_TXT,I_IMG,I_AUD,I_VID,E_TXT,E_IMG,E_AUD,E_VID,C_TXT,C_ISO inputNode
+    class R_TRACK,R_TAG,R_FUSE,SCALE_DIM regNode
+    class RT_LOGITS,RT_TOP3,RT_CAP,RT_OVERFLOW,S_SCALE,S_PRNG,S_MUT,S_INJECT,S_STE,S_BMM,S_FFN moeNode
+    class D_MERGE,D_SCALE,D_MASK,D_ATTN,D_NORM diffNode
+    class G_LOOKUP,G_SLICE,H_TXT,H_IMG,H_AUD,H_VID decNode
+    class B_EICE,B_WARDEN,B_DOCKER,B_LANCE,B_HFT bridgeNode
+    class T_LOSS,T_CPU,T_CUDA telemetryNode
 ```
 
 ## Token Flow:
 ```mermaid
-flowchart LR
-    %% TOKEN FLOW v5.3.2 – Bridge Integrated
-    A["📥 Input Modalities<br/>Text + optional Image/Audio/Video"] 
-    --> B["🔗 Atomic Registry Fusion<br/>Unified Latent Space"]
+flowchart TD
+    %% TOKEN FLOW v5.3.1 – Detailed Lifecycle
     
-    B 
-    --> C["🎯 Top-1 MoE Router<br/>300M Complexity Router"]
+    A["📥 1. Raw Input Stream<br/>(Text, Vision, Audio, Video)"]
     
-    C 
-    --> D["🧠 Expert Processing + 9B Swarm<br/>Top-19 Sparse Activation"]
+    subgraph PRE_PROCESSING ["Stage A: Encoding & Compaction"]
+        B1["Modal Encoders Extract Features"]
+        B2{"Token Count > 4096?"}
+        B3["Text-Isolated Proactive Compaction<br/>(Conv1D Stride-2 Collapse)"]
+        B1 --> B2
+        B2 -->|Yes| B3
+        B2 -->|No| C
+        B3 --> C
+    end
     
-    D 
-    --> E["🌌 Diffusion Refinement<br/>9 Iterative Layers"]
+    A --> B1
     
-    E 
-    --> F["📤 Registry-Driven Decoders<br/>Exact Geometric Reconstruction"]
+    subgraph FUSION_STAGE ["Stage B: Atomic Registry & Fusion"]
+        C["Atomic Modality Registry<br/>(Cache original geometric shapes)"]
+        D["Attach Learned `mod_ids`"]
+        E["Flatten to 1D Unified Sequence<br/>[B, L, D]"]
+        C --> D --> E
+    end
+    
+    subgraph MoE_SWARM ["Stage C: HyperQuantized MoE Routing"]
+        F["Top-3 Gumbel-Max Router<br/>(Calculate Affinities)"]
+        G{"Capacity > 64?"}
+        H["Route to Top-3 Experts"]
+        I["Residual Overflow Path<br/>(Prevent Token Drop)"]
+        
+        J["Inject EGGROLL Mutations<br/>Rank-r (U × V^T) pre-quantization"]
+        K["BitNet 1.58-bit STE Gate<br/>(Ternary Weights: -1, 0, 1)"]
+        L["9B Swarm Execution<br/>(Batched Matrix Multiplications)"]
+        
+        E --> F --> G
+        G -->|No| H
+        G -->|Yes| I & H
+        H --> J --> K --> L
+        I --> M
+    end
+    
+    subgraph DIFFUSION_STAGE ["Stage D: Modality-Aware Diffusion"]
+        M["7-Layer Transformer Encoder Refinement"]
+        N["Direct Q/K RoPE Injection via ContinuousModalityRoPE"]
+        O["Cross-Modal Bridge Flash-Attention<br/>(Text ↔ Modalities)"]
+        
+        L --> M
+        M <--> N
+        M <--> O
+    end
+    
+    subgraph GEOMETRIC_RECONSTRUCTION ["Stage E: Registry-Driven Decoding"]
+        P["Query Atomic Registry for Original Slices/Shapes"]
+        Q["Apply Exact Geometric Decoders<br/>(Dynamic output_padding)"]
+        R["Generate Target Geometry<br/>(H×W, Temporal, or Vocab Logits)"]
+        
+        O --> P --> Q --> R
+    end
+    
+    subgraph AGENTIC_EXECUTION ["Stage F: Host-Side Bridging"]
+        S["C20-ARTIFEX Agentic Bridge Middleware"]
+        T["LanceDB State Persistence"]
+        U["Docker/Python Sandboxed Tool Execution"]
+        
+        R --> S
+        S --> T & U
+    end
 
-    F 
-    --> G["🌉 C20-ARTIFEX Agentic Bridge<br/>Host OS Execution"]
+    U -.->|"Output feeds next Autoregressive Step"| A
 
-    G -.->|"LanceDB / Docker / Web"| A
+    %% Styling 
+    classDef stage1 fill:#0a1a1a, stroke:#00ff88, stroke-width:2px, color:#ffffff
+    classDef stage2 fill:#1a1a0a, stroke:#ffff00, stroke-width:2px, color:#ffffff
+    classDef stage3 fill:#0f0f1f, stroke:#7851a9, stroke-width:3px, color:#ffffff
+    classDef stage4 fill:#0a0a1a, stroke:#00ffff, stroke-width:2px, color:#ffffff
+    classDef stage5 fill:#1a0a0a, stroke:#ff4444, stroke-width:2px, color:#ffffff
+    classDef stage6 fill:#0a0a1a, stroke:#0080ff, stroke-width:2px, color:#ffffff
 
-    %% Styling – clean, professional, matches the rest of the architecture
-    classDef input   fill:#0a1a1a, stroke:#00ff88, stroke-width:3px, color:#ffffff
-    classDef fusion  fill:#1a1a0a, stroke:#ffff00, stroke-width:3px, color:#ffffff
-    classDef router  fill:#1a0a1a, stroke:#ffd700, stroke-width:4px, color:#ffd700, font-weight:bold
-    classDef expert  fill:#0f0f1f, stroke:#7851a9, stroke-width:3px, color:#e9d5ff
-    classDef diff    fill:#0a0a1a, stroke:#00ffff, stroke-width:3px, color:#ffffff
-    classDef output  fill:#1a0a0a, stroke:#ff4444, stroke-width:3px, color:#fecaca
-    classDef bridge  fill:#0a0a1a, stroke:#0080ff, stroke-width:3px, color:#ffffff
-
-    class A input
-    class B fusion
-    class C router
-    class D expert
-    class E diff
-    class F output
-    class G bridge
+    class PRE_PROCESSING,B1,B2,B3 stage1
+    class FUSION_STAGE,C,D,E stage2
+    class MoE_SWARM,F,G,H,I,J,K,L stage3
+    class DIFFUSION_STAGE,M,N,O stage4
+    class GEOMETRIC_RECONSTRUCTION,P,Q,R stage5
+    class AGENTIC_EXECUTION,S,T,U stage6
 ```
 ### The New Lore Callout Box
 
