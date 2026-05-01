@@ -23,136 +23,119 @@ Below is a **refactored YAML template** for Suno song generation. It preserves t
 
 This manifest-style template is designed to be **machine-parseable** or used as a prompt to a language model that compiles it for Suno.
 
+# SUNO AI GENERATION MANIFEST — MASTERING ENGINEER EDITION V3.0
+
 ```yaml
-# Song generation manifest for Suno AI (updated)
 Meta:
-  template_name: "Suno Song Generation 2026"
-  version: "2.0"
-  created_at: "{{YYYY-MM-DD}}"
-  mode: "{{image|video|audio|multimodal}}"  # optional if needed
+  template_name: "Suno Pro Audio Architecture Blueprint"
+  version: "5.5"
+  target_engine: "Suno vx.x"
+  author: "Quillan-Ronin Audio Engineering Protocol"
+
+# ── 1. SONIC ARCHITECTURE MATRIX ──
+# Define the acoustic environment to bias the latent space toward high-end studio data.
+Acoustic_Profiling:
+  rhythm_and_pocket: "[INSERT_GROOVE_E.G._140BPM_SYNCOPATED_MICRO-TIMING_PUSHED_SNARE]"
+  tracking_emulation: "[INSERT_MICS_E.G._CLOSE-MIKED_U87_VOCAL_DI_ANALOG_BASS_STEREO_OVERHEADS]"
+  spectral_balance: "[INSERT_EQ_E.G._SCOOPED_250HZ_MUD_WARM_LOW-MIDS_AIRY_12KHZ_SHELF]"
+  transient_envelope: "[INSERT_DYNAMICS_E.G._FAST-ATTACK_SNARE_SOFT-CLIPPED_KICK_PRESERVED_ATTACK]"
+  harmonic_profile: "[INSERT_SATURATION_E.G._EVEN-ORDER_TUBE_HARMONICS_TAPE_HYSTERESIS_CONSOLE_CROSSTALK]"
+  vocal_chain_topology: "[INSERT_PROCESSING_E.G._DRY_INTIMATE_LA-2A_OPTICAL_COMPRESSION_DE-ESSED]"
+  mix_bus_and_summing: "[INSERT_BUSS_E.G._SSL_G-MASTER_BUSS_GLUE_PARALLEL_DRUM_COMPRESSION]"
+  spatial_imaging_depth: "[INSERT_STAGE_E.G._LCR_PANNING_MID-SIDE_EXPANDED_BINAURAL_REAR-FIELD_PLATE_TAILS]"
+  noise_floor_character: "[INSERT_FLOOR_E.G._PRISTINE_DIGITAL_BLACK_OR_15IPS_TAPE_HISS_AND_ROOM_TONE]"
+
+# ── 2. STYLE PROMPT COMPILER ──
+# Condense the above into the exact string to be pasted into Suno's "Style" box.
+# DO NOT EXCEED 900 CHARACTERS. Focus purely on the acoustic and musical signature.
+Compiled_Style_String: "[INSERT_CONDENSED_TAGS_E.G._UK_Dubstep, tight pocket, close-miked vocal, SSL mix bus, binaural depth, crisp transients, -9 LUFS]"
 
 Intent:
-  theme: "{{Core theme or message of the song (e.g., 'overcoming loss')}}" 
-  mood: "{{Overall mood or tone (e.g., 'nostalgic', 'urgent')}}"
-  # Optional: any narrative or lyrical focus
-  narrative: "{{Short description of story or perspective (optional)}}"
+  thematic_resonance: "[INSERT_CORE_MESSAGE_OR_THEME]"
+  psychoacoustic_goal: "[INSERT_PHYSICAL_FEELING_E.G._CLAUSTROPHOBIC_VERSES_RELEASING_INTO_MASSIVE_STEREO_CHORUS]"
 
+# ── 3. INLINE DAW AUTOMATION & STRUCTURAL TIMELINE ──
+# Paste this entire section into Suno's "Lyrics" box (Max 4000 chars).
+# Use bracket tags as real-time automation lanes for the AI.
 Song:
-  title: "{{Song Title}}"
-  lyrics: |
-    [Intro::{{brief mood or instrumentation cue}}]
-    {{Insert intro lyrics here (up to ~4000 chars total)}}
-    
-    [Verse 1::{{brief cue (e.g., theme hint)}}]
-    {{Insert verse 1 lyrics here}}
-    
-    [Pre-Chorus::{{cue (optional)}}]
-    {{Insert pre-chorus lyrics (optional)}}
-    
-    [Chorus::{{brief hook or feeling}}]
-    {{Insert chorus lyrics here}}
-    
-    [Verse 2::{{cue}}]
-    {{Insert verse 2 lyrics here}}
-    
-    [Chorus::{{same hook cue as before}}]
-    {{Insert repeated chorus lyrics (or same as above)}}
-    
-    [Bridge::{{contrasting mood or key change}}]
-    {{Insert bridge lyrics here}}
-    
-    [Final Chorus::{{climax or release note}}]
-    {{Insert final chorus lyrics here}}
-    
-    [Outro::{{closing vibe (e.g., fade-out, emotional)}}
-    {{Insert outro lyrics (or leave blank if none)}}
-style: "{{comma-separated style descriptors (genre, tempo/BPM, instruments, vocal style, mood)}}"
-description: "{{A 1-2 sentence overview of the song’s style and theme}}"
-reasoning: "{{Brief explanation of why this style and structure suits the theme}}"
+  title: "[INSERT_TRACK_TITLE]"
+  lyrics_and_automation: |
+    [Intro::Mix Automation: Low-pass filter sweep, vinyl crackle, narrow mono field]
+    [INSERT_INTRO_LYRICS_OR_INSTRUMENTAL_CUES]
 
-Constraints:
-  hard:
-    - "{{Any non-negotiable requirement, e.g., 'No profanity'}}"
-    - "{{e.g., 'Do not mention brand names or trademarks'}}"
-  soft:
-    - "{{Any suggestions to avoid, e.g., 'Avoid overly simplistic rhymes'}}"
-  # Example Suno-specific guides (optional)
-  tags:
-    placement: "Put main tags (sections, mood) in the first 20-30 words【22†L84-L86】"
-    section_format: "Use [Section] tags exactly (no extra text) to control structure【22†L44-L53】"
+    [Verse 1::Tracking: Dry vocal, extreme proximity effect, sparse sub-bass, zero reverb]
+    [INSERT_VERSE_1_LYRICS]
 
-Iteration:
-  max_rounds: 3
-  strategies:
-    - "Keep style prompt fixed; tweak lyrics line-by-line【25†L229-L233】"
-    - "Ensure section tags produce full structure; add missing tags if needed【25†L135-L143】"
-    - "Adjust style descriptors based on tone feedback"
-Validation:
-  checks:
-    - "All required fields (title, lyrics, style, description, reasoning) are non-empty"
-    - "Lyrics contain at least one section tag (e.g. [Verse], [Chorus])"
-    - "Style prompt is not empty and contains genre or mood"
-    - "Length of lyrics <= 4000 characters"
-  schema: "Use the provided JSON Schema below to enforce structure."
+    [Pre-Chorus::Mix Automation: Rising HPF, stereo widening, snare roll building transient energy]
+    [INSERT_PRE_CHORUS_LYRICS]
 
+    [Chorus::Mastering: Hard-knee limiting, massive wall-of-sound, parallel drum compression, sub-harmonic exciter]
+    [INSERT_CHORUS_LYRICS]
+
+    [Verse 2::Tracking: Tape delay slapback on vocal, scooped low-mids, isolated acoustic elements]
+    [INSERT_VERSE_2_LYRICS]
+
+    [Chorus::Mastering: Full frequency spectrum, wide mid/side expansion, anthemic vocal layering]
+    [INSERT_CHORUS_2_LYRICS]
+
+    [Bridge::Psychoacoustics: Sudden phase inversion, complete silence drop, whispered dry vocal]
+    [INSERT_BRIDGE_LYRICS]
+
+    [Final Chorus::Mastering: Maximum crest factor, soaring plate reverb, fully saturated master bus]
+    [INSERT_FINAL_CHORUS_LYRICS]
+
+    [Outro::Mix Automation: High-pass filter fade, endless reverb tail, granular decay to silence]
+    [INSERT_OUTRO_LYRICS]
+
+# ── 4. ITERATION & PHASE ALIGNMENT PROTOCOLS ──
+Iteration_Protocol:
+  strategy_1_transient_repair: "If drums are muddy, inject 'slow attack VCA compression, clicky transients' into the Compiled_Style_String."
+  strategy_2_spatial_repair: "If mix is cluttered, inject 'LCR panning, surgical EQ, dry center channel' into the Compiled_Style_String."
+  strategy_3_vocal_repair: "If vocals artifact, inject 'clean unmodulated vocal, no chorus, de-essed' into the Verse tags."
 ```
-
-**Notes on this design:** 
-- We keep the rich lyric structure (Intro, Verse, Chorus, etc.) but use Suno’s preferred bracket format for tags【22†L44-L53】. 
-- The `style` field is now a **comma-separated list of phrases** (genre, BPM, instrumentation, vocal style, mood) instead of single adjectives, following Suno’s style prompt guidelines【26†L1-L4】【25†L193-202】. 
-- We added `Constraints` and `Iteration` sections. This guides any automated or manual review: for example, *hard constraints* (no profanity or copyrighted content) and *iteration strategies* (e.g. how to revise). 
-- `Validation.checks` suggests using automated checks (via a JSON Schema) to catch missing fields or oversights.
-
-# Usage Examples and Validation
-
-To illustrate how this template works in practice:
-
-- **Filling in the template:** For example, if your song is a **cinematic rock ballad**, you might set  
-  - `theme: "mourning loss with hopeful resolution"`  
-  - `mood: "somber, uplifting"`  
-  - In `Song.lyrics`, use tags like `[Intro::solo piano, atmospheric]`, `[Verse 1::quiet, reflective]`, `[Chorus::powerful, anthemic]`, etc., with actual lyrics underneath each.  
-  - In `style`, you might write: *“rock ballad, 70 bpm, piano and strings, male vocals, cinematic, emotional”* to encapsulate genre, tempo, instruments, and emotion.  
-
-- **Iterating for quality:** After generating an initial draft with these fields, review the output. Check that each tag corresponds to the intended section (add `[Pre-Chorus]` or `[Post-Chorus]` if needed) and that the style descriptors match the sound. If the vocals or instrumentation are off, tweak the relevant descriptors or add tags (e.g. `[Female Vocal]`) and regenerate. As Suno’s guides suggest, **reuse the style prompt across iterations and vary only the lyrics** to isolate changes【25†L229-L233】.  
-
-- **Validation checks:** Use the JSON Schema below to automatically verify the final output. For instance, ensure `title`, `lyrics`, `style`, `description`, and `reasoning` are all present and the `lyrics` string is not empty. A schema can catch missing or mislabeled sections before using the song. You might also run a script to count characters or scan for any prohibited words.  
-
-# JSON Schema for Template Validation
-
-This JSON Schema can be used to validate the filled template (after converting YAML to JSON) and enforce required fields and formats:
 
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Suno Song Template Schema",
+  "title": "Suno Pro Audio Architecture Blueprint Schema v4.0",
   "type": "object",
   "properties": {
     "Meta": { "type": "object" },
-    "Intent": {
+    "Acoustic_Profiling": {
       "type": "object",
       "properties": {
-        "theme": { "type": "string" },
-        "mood": { "type": "string" },
-        "narrative": { "type": "string" }
+        "rhythm_and_pocket": { "type": "string" },
+        "tracking_emulation": { "type": "string" },
+        "spectral_balance": { "type": "string" },
+        "transient_envelope": { "type": "string" },
+        "harmonic_profile": { "type": "string" },
+        "vocal_chain_topology": { "type": "string" },
+        "mix_bus_and_summing": { "type": "string" },
+        "spatial_imaging_depth": { "type": "string" },
+        "noise_floor_character": { "type": "string" }
       },
-      "required": ["theme","mood"]
+      "required": [
+        "rhythm_and_pocket", "tracking_emulation", "spectral_balance", 
+        "transient_envelope", "harmonic_profile", "vocal_chain_topology", 
+        "mix_bus_and_summing", "spatial_imaging_depth", "noise_floor_character"
+      ]
     },
-    "Song": {
-      "type": "object",
-      "properties": {
-        "title": { "type": "string" },
-        "lyrics": { "type": "string", "maxLength": 4000 }
-      },
-      "required": ["title","lyrics"]
+    "Compiled_Style_String": {
+      "type": "string",
+      "maxLength": 900,
+      "description": "Crucial: Front-load critical DSP parameters in the first 120 characters for max latent weighting."
     },
-    "style": { "type": "string" },
-    "description": { "type": "string" },
-    "reasoning": { "type": "string" },
-    "Constraints": { "type": "object" },
-    "Iteration": { "type": "object" },
-    "Validation": { "type": "object" }
+    "Intent": { 
+      "type": "object", 
+      "required": ["thematic_resonance", "psychoacoustic_goal"] 
+    },
+    "Song": { 
+      "type": "object", 
+      "required": ["title", "lyrics_and_automation"] 
+    },
+    "Iteration_Protocol": { "type": "object" }
   },
-  "required": ["Intent","Song","style","description","reasoning"],
+  "required": ["Meta", "Acoustic_Profiling", "Compiled_Style_String", "Intent", "Song", "Iteration_Protocol"],
   "additionalProperties": false
 }
 ```
