@@ -1,4 +1,4 @@
-## file updates:
+I## file updates:
  real-time augmentation selection [X] 
 Update all files and merge any possible files into unholy Quillan [X]
 UPDATE ALL DOCUMENTATION [X]
@@ -36,6 +36,20 @@ Extending public facing models num_ctx or similar []
 
 Explore Web of Thought and Multi CoT [X]
 Explore augmenting current versions into more abstract versions []
+
+Read : BANGING!! 
+
+Correlates with my works here:
+zenodo.org/records/189449…
+zenodo.org/records/189453…
+zenodo.org/records/189466…
+zenodo.org/records/189466…
+zenodo.org/records/189468…
+zenodo.org/records/189470…
+zenodo.org/records/189491…
+zenodo.org/records/189645…
+
+And there's more but these are the fundamentals for this subject 
 
 Code experiments
 
