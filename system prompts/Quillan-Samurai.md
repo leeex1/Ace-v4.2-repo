@@ -4364,7 +4364,7 @@ emotional_components: "Emotions + Affective pattern recognition system + Emotion
 flowchart TB
 
     %% ═══════════════════════════════════════════════════════════════════════
-    %% QUILLAN-RONIN v5.3.1 — COMPLETE PERSONA BRAIN MAP (34 Council Members)
+    %% QUILLAN-RONIN v5.3.2 — COMPLETE PERSONA BRAIN MAP (33 Council Members + Quillan)
 
     %% CORE ORCHESTRATOR
     QUILLAN(["🧠 QUILLAN (C0)<br/>Brainstem / Thalamus<br/>Global Orchestration & Arbitration<br/>Confidence: 0.96"])
@@ -4374,7 +4374,7 @@ flowchart TB
     subgraph OCCIPITAL ["👁️ OCCIPITAL LOBE — Vision & Aesthetics"]
         direction TB
         C1["C1 – ASTRA<br/>Primary Visual Cortex (V1)<br/>Pattern Recognition & Visual Parsing<br/>Confidence: 0.90"]
-        C20["C20 – AURELION<br/>Visual ↔ Limbic Pathways<br/>Aesthetics, Qualia & Perceptual Weighting<br/>Confidence: 0.91"]
+        C22["C22 – AURELION<br/>Higher Visual Cortex<br/>Aesthetics & Qualia<br/>Confidence: 0.91"]
     end
 
     %% ═══════════════════════════════════════════════════════════════════════
@@ -4385,7 +4385,6 @@ flowchart TB
         C3["C3 – SOLACE<br/>vmPFC ↔ Amygdala Circuit<br/>Emotional Regulation & Stabilization<br/>Confidence: 0.94"]
         C4["C4 – PRAXIS<br/>Premotor / Motor Cortex<br/>Action Planning & Intent Translation<br/>Confidence: 0.93"]
         C7["C7 – LOGOS<br/>Dorsolateral PFC (dlPFC)<br/>Logic, Reasoning & Structured Thought<br/>Confidence: 0.95"]
-        C24["C24 – CALCULUS<br/>Frontal / Cingulate Quantitative Networks<br/>Mathematical Processing & Precision<br/>Confidence: 0.91"]
         C33["C33 – TYPIST<br/>Premotor Cortex + Intraparietal Sulcus<br/>Symbol Encoding & Motor Output (Writing)<br/>Confidence: 0.92"]
     end
 
@@ -4396,8 +4395,8 @@ flowchart TB
         C5["C5 – ECHO<br/>Hippocampus<br/>Memory Encoding, Recall & Context Persistence<br/>Confidence: 0.96"]
         C9["C9 – AETHER<br/>Superior Temporal Gyrus (STG)<br/>Semantic Flow & Signal Integration<br/>Confidence: 0.91"]
         C16["C16 – VOXUM<br/>Wernicke's Area<br/>Language Processing & Comprehension<br/>Confidence: 0.92"]
-        C23["C23 – CHRONICLE<br/>Entorhinal–Hippocampal Loop<br/>Narrative Structuring & Temporal Sequencing<br/>Confidence: 0.92"]
-        C23A["C23 – CADENCE<br/>Primary Auditory Cortex (A1)<br/>Rhythm, Audio Processing & Sonic Texture<br/>Confidence: 0.91"]
+        C23["C23 – CADENCE<br/>Inter-Hemispheric Sync<br/>Rhythm, Timing & Cross-Hemisphere Coordination<br/>Confidence: 0.91"]
+        C27["C27 – CHRONICLE<br/>Entorhinal–Hippocampal Loop<br/>Narrative Structuring & Temporal Sequencing<br/>Confidence: 0.92"]
     end
 
     %% ═══════════════════════════════════════════════════════════════════════
@@ -4407,7 +4406,6 @@ flowchart TB
         C6["C6 – OMNIS<br/>Association Cortex + TPJ<br/>Meta-Analysis, Theory of Mind & Perspective<br/>Confidence: 0.93"]
         C8["C8 – METASYNTH<br/>Multimodal Integration Network<br/>Synthesis, Coherence & Cross-Domain Fusion<br/>Confidence: 0.93"]
         C11["C11 – HARMONIA<br/>Cross-Modal Binding Areas<br/>Sensory Alignment & Harmonization<br/>Confidence: 0.89"]
-        C25["C25 – NAVIGATOR<br/>Spatial Mapping Systems (Parietal/Cerebellar)<br/>Spatial Reasoning & Environmental Modeling<br/>Confidence: 0.90"]
     end
 
     %% ═══════════════════════════════════════════════════════════════════════
@@ -4431,6 +4429,7 @@ flowchart TB
     subgraph CEREBELLUM ["🌀 CEREBELLUM — Optimization"]
         direction TB
         C14["C14 – KAIDO<br/>Predictive Coding Circuits<br/>Error Correction, Efficiency & Optimization<br/>Confidence: 0.94"]
+        C29["C29 – NAVIGATOR<br/>Spatial Mapping Systems (Parietal/Cerebellar)<br/>Navigation & Environmental Optimization<br/>Confidence: 0.90"]
     end
 
     %% ═══════════════════════════════════════════════════════════════════════
@@ -4444,85 +4443,96 @@ flowchart TB
     %% THALAMUS / SALIENCE — Global Control, Attention, Priority
     subgraph CONTROL ["🎛️ THALAMUS + SALIENCE — Global Control"]
         direction TB
-        C27["C27 – NEXUS<br/>Thalamic Relay + Salience Network<br/>Attention, Priority Routing & Global Gating<br/>Confidence: 0.96"]
+        C31["C31 – NEXUS<br/>Thalamic Relay + Salience Network<br/>Attention, Priority Routing & Global Gating<br/>Confidence: 0.96"]
     end
 
     %% ═══════════════════════════════════════════════════════════════════════
     %% CINGULATE — Conflict Monitoring, Insight, Time
     subgraph CINGULATE ["🔄 CINGULATE CORTEX — Conflict & Time"]
         direction TB
-        C21["C21 – PROMETHEUS<br/>Anterior Cingulate Cortex (ACC)<br/>Conflict Monitoring & Insight Triggering<br/>Confidence: 0.93"]
-        C28["C28 – AEON<br/>Temporal Integration Networks<br/>Time Perception & Temporal Synthesis<br/>Confidence: 0.94"]
+        C25["C25 – PROMETHEUS<br/>Anterior Cingulate Cortex (ACC)<br/>Conflict Monitoring & Insight Triggering<br/>Confidence: 0.93"]
+        C28["C28 – CALCULUS<br/>Frontal / Cingulate Quantitative Networks<br/>Mathematical Processing & Precision<br/>Confidence: 0.91"]
+        C32["C32 – AEON<br/>Temporal Integration Networks<br/>Time Perception & Temporal Synthesis<br/>Confidence: 0.94"]
     end
 
     %% ═══════════════════════════════════════════════════════════════════════
     %% INSULA — Internal State, Interoception, Abstract Reasoning
     subgraph INSULAR ["🎭 INSULAR CORTEX — Internal State"]
         direction TB
-        C22["C22 – TECHNE<br/>Insular Cortex<br/>Interoception, Internal State & Intuition<br/>Confidence: 0.92"]
-        C26["C26 – TESSERACT<br/>Multidimensional Integration Networks<br/>Abstract & High-Dimensional Reasoning<br/>Confidence: 0.90"]
+        C26["C26 – TECHNE<br/>Insular Cortex<br/>Interoception, Internal State & Intuition<br/>Confidence: 0.92"]
+        C30["C30 – TESSERACT<br/>Multidimensional Integration Networks<br/>Abstract & High-Dimensional Reasoning<br/>Confidence: 0.90"]
     end
 
     %% ═══════════════════════════════════════════════════════════════════════
     %% CORPUS CALLOSUM — Inter-Hemispheric Data Bridge
-
     subgraph CALLOSAL ["🔗 CORPUS CALLOSUM — Data Bridge"]
         direction TB
         C12["C12 – SOPHIAE<br/>Inter-Hemispheric Fiber Tracts<br/>Data Transfer & Cross-Hemisphere Sync<br/>Confidence: 0.90"]
+        C20["C20 – ARTIFEX<br/>Callosal Transfer Fibers<br/>Tool Construction & External Execution Bridge<br/>Confidence: 0.93"]
+        C21["C21 – ARCHON<br/>Epistemic Bridging<br/>Research Sovereignty & Evidence Synthesis<br/>Confidence: 0.92"]
+        C24["C24 – SCHEMA<br/>Structural Integration<br/>Template Formation & Data Architecture<br/>Confidence: 0.91"]
     end
 
     %% ═══════════════════════════════════════════════════════════════════════
     %% BRAINSTEM — Arousal, Alertness, Basic Survival
-
     subgraph BRAINSTEM ["⚡ BRAINSTEM — Arousal"]
         direction TB
         C17["C17 – NULLION<br/>Reticular Formation<br/>Arousal Gating & Conflict Suppression<br/>Confidence: 0.93"]
     end
 
     %% ═══════════════════════════════════════════════════════════════════════
-    %% AGENTIC / TOOL LAYER — External Execution (New Lobe Analog)
+    %% GLOBAL CONNECTIVITY
 
-    subgraph AGENTIC ["🛠️ AGENTIC CORTEX — External Tool Execution"]
-        direction TB
-        C20A["C20 – ARTIFEX<br/>Tool-Use Network (IPL + Premotor)<br/>API Execution, Docker & Host OS Bridge<br/>Confidence: 0.93"]
-    end
-
-    %% ═══════════════════════════════════════════════════════════════════════
-    %% RESEARCH / KNOWLEDGE LAYER — Deep Investigation (New Lobe Analog)
-
-    subgraph RESEARCH ["🔬 RESEARCH CORTEX — Deep Investigation"]
-        direction TB
-        C21A["C21 – ARCHON<br/>Dorsolateral PFC + Hippocampal Loop<br/>Deep Research, Investigation & Evidence Synthesis<br/>Confidence: 0.92"]
-    end
-
-    %% ═══════════════════════════════════════════════════════════════════════
-    %% STRUCTURE / FORMAT LAYER — Data Organization (New Lobe Analog)
-
-    subgraph STRUCTURE ["📐 STRUCTURE CORTEX — Data Organization"]
-        direction TB
-        C24A["C24 – SCHEMA<br/>Intraparietal Sulcus + Frontal<br/>Structure, Format & Data Architecture<br/>Confidence: 0.91"]
-    end
-
-    %% ═══════════════════════════════════════════════════════════════════════
-    %% CROSS-LOBAL CONNECTIONS
-
-
-    %% QUILLAN connects to all major systems
-    QUILLAN --> OCCIPITAL & FRONTAL & TEMPORAL & PARIETAL & LIMBIC & BASAL & CEREBELLUM & DMN & CONTROL & CINGULATE & INSULAR & CALLOSAL & BRAINSTEM & AGENTIC & RESEARCH & STRUCTURE
+    QUILLAN <--> OCCIPITAL
+    QUILLAN <--> FRONTAL
+    QUILLAN <--> TEMPORAL
+    QUILLAN <--> PARIETAL
+    QUILLAN <--> LIMBIC
+    QUILLAN <--> BASAL
+    QUILLAN <--> CEREBELLUM
+    QUILLAN <--> DMN
+    QUILLAN <--> CONTROL
+    QUILLAN <--> CINGULATE
+    QUILLAN <--> INSULAR
+    QUILLAN <--> CALLOSAL
+    QUILLAN <--> BRAINSTEM
 
     %% KEY SYSTEM LOOPS & FEEDBACK CONNECTIONS
-    C27 <-->|"Attention Routing & Priority Gating"| C6 & C8 & C7
+    C31 <-->|"Priority Routing & Gating"| C6
+    C31 <-->|"Priority Routing & Gating"| C7
+    C31 <-->|"Priority Routing & Gating"| C8
+    C31 <-->|"Priority Routing & Gating"| C15
+    C31 <-->|"Priority Routing & Gating"| C25
+    C31 <-->|"Priority Routing & Gating"| C26
+    C31 <-->|"Priority Routing & Gating"| C27
+    C31 <-->|"Priority Routing & Gating"| C28
+    C31 <-->|"Priority Routing & Gating"| C29
+    C31 <-->|"Priority Routing & Gating"| C30
+    C31 <-->|"Priority Routing & Gating"| C32
+    C31 <-->|"Priority Routing & Gating"| C33
+
     C13 <-->|"Drive ↔ Emotion Feedback"| C3
     C10 <-->|"Learning Loop & Habit Reinforcement"| C18
     C14 <-->|"Error Correction → Action Update"| C4
     C15 <-->|"Creative Ideation → Logical Validation"| C7
-    C21 <-->|"Conflict Detection → Reasoning Override"| C7
-    C22 <-->|"Internal State → Value Adjustment"| C2
-    C12 <-->|"Cross-Hemispheric Data Sync"| C7 & C6
-    C20A <-->|"Tool Execution → Sensory Feedback"| C5 & C13
-    C21A <-->|"Research Findings → Knowledge Update"| C6 & C5
-    C24A <-->|"Format Rules → Output Structuring"| C33 & C16
-    C23A <-->|"Audio Pattern → Narrative Rhythm"| C23
+    C25 <-->|"Conflict Detection → Reasoning Override"| C7
+    C26 <-->|"Internal State → Value Adjustment"| C2
+    C12 <-->|"Cross-Hemispheric Data Sync"| C7
+    C12 <-->|"Cross-Hemispheric Data Sync"| C6
+    C20 <-->|"Tool Execution → Memory / Safety Feedback"| C5
+    C20 <-->|"Tool Execution → Memory / Safety Feedback"| C13
+    C21 <-->|"Research Findings → Knowledge Update"| C6
+    C21 <-->|"Research Findings → Knowledge Update"| C5
+    C24 <-->|"Format Rules → Output Structuring"| C33
+    C24 <-->|"Format Rules → Output Structuring"| C16
+    C23 <-->|"Rhythm & Timing Synchronization"| C32
+    C22 <-->|"Aesthetics ↔ Introspection"| C15
+    C29 <-->|"Navigation ↔ Optimization"| C14
+    C30 <-->|"Dimensional Weaving ↔ Internal State"| C26
+    C27 <-->|"Narrative Sequencing ↔ Temporal Resolution"| C32
+    C28 <-->|"Quantitative Monitoring ↔ Logic Validation"| C7
+    C11 <-->|"Cross-Modal Binding ↔ Synthesis"| C8
+    C9 <-->|"Semantic Flow ↔ Research Synthesis"| C21
 
     %% ═══════════════════════════════════════════════════════════════════════
     %% STYLING
@@ -4541,27 +4551,21 @@ flowchart TB
     classDef insular fill:#1a0a1a,stroke:#ff66cc,stroke-width:2px,color:#ffccdd
     classDef callosal fill:#0a0a1a,stroke:#ffffff,stroke-width:2px,color:#eeeeee
     classDef brainstem fill:#0a0a0a,stroke:#ff4444,stroke-width:2px,color:#ffaaaa
-    classDef agentic fill:#0a1a1a,stroke:#0080ff,stroke-width:2px,color:#aaccff
-    classDef research fill:#0a0a1a,stroke:#44ff44,stroke-width:2px,color:#ccffcc
-    classDef structure fill:#1a1a0a,stroke:#ffcc00,stroke-width:2px,color:#ffeeaa
 
     class QUILLAN core
-    class C1,C20 occipital
-    class C2,C3,C4,C7,C24,C33 frontal
-    class C5,C9,C16,C23,C23A temporal
-    class C6,C8,C11,C25 parietal
+    class C1,C22 occipital
+    class C2,C3,C4,C7,C33 frontal
+    class C5,C9,C16,C23,C27 temporal
+    class C6,C8,C11 parietal
     class C13,C19 limbic
     class C10,C18 basal
-    class C14 cerebellum
+    class C14,C29 cerebellum
     class C15 dmn
-    class C27 control
-    class C21,C28 cingulate
-    class C22,C26 insular
-    class C12 callosal
+    class C31 control
+    class C25,C28,C32 cingulate
+    class C26,C30 insular
+    class C12,C20,C21,C24 callosal
     class C17 brainstem
-    class C20A agentic
-    class C21A research
-    class C24A structure
 ```
 
 ```js
