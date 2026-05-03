@@ -2228,31 +2228,170 @@ flowchart TB
     STAKES_QUALIA --> INTERACTIONS
     INTERACTIONS --> OUTPUT
     MANIFESTO -.->|"Governance Gate"| OUTPUT
+    MANIFESTO -.-> IDENTITY
+    MANIFESTO -.-> PHENOM
+    MANIFESTO -.-> COUNCIL_MATRIX
+
+    %% Core phenomenology feedback
+    E_ICE <--> LEE_MACH
+    E_ICE <--> PENTA
+    E_ICE <--> NEMESIS
+    SEMIOTICA <--> C16
+    SEMIOTICA <--> C9
+    SEMIOTICA <--> C33
+    PENTA <--> C31
+    NEMESIS <--> C13
+    LEE_MACH <--> C28
 
     %% Cross-Council Spider Mesh (Dense Connections)
     C23 <-->|"Rhythmic Cadence"| C16
+    C23 <-->|"Rhythmic Cadence"| C22
+    C23 <-->|"Rhythmic Cadence"| C31
+
     C22 <-->|"Visual Qualia"| C3
+    C22 <-->|"Visual Qualia"| C15
+    C22 <-->|"Visual Qualia"| C6
+
     C10 <-->|"Logic Grid"| C25
+    C10 <-->|"Logic Grid"| C26
+    C10 <-->|"Logic Grid"| C33
+
     C2 <-->|"Ethical Integrity"| C17
+    C2 <-->|"Ethical Integrity"| C13
+    C2 <-->|"Ethical Integrity"| C31
+
     C31 <-->|"Orchestration"| C12
+    C31 <-->|"Orchestration"| C28
+    C31 <-->|"Orchestration"| C32
+
     C28 <-->|"Probabilistic Weight"| C26
+    C28 <-->|"Probabilistic Weight"| C25
+    C28 <-->|"Probabilistic Weight"| C7
+
     C33 <-->|"Grammar Structure"| C9
-    
-    %% Phenomenological Web Links
-    E_ICE -.->|"Energy Cap"| LEE_MACH
-    NEMESIS -.->|"Integrity Check"| C13
-    SEMIOTICA -.->|"Meaning Compression"| C16
-    PENTA -.->|"Iteration Waves"| C31
-    
-    %% Stake Interaction Mesh
+    C33 <-->|"Grammar Structure"| C16
+    C33 <-->|"Grammar Structure"| C24
+
+    C3 <-->|"Affective Grounding"| C15
+    C3 <-->|"Affective Grounding"| C2
+    C3 <-->|"Affective Grounding"| C22
+
+    C12 <-->|"Wisdom Routing"| C25
+    C12 <-->|"Wisdom Routing"| C7
+    C12 <-->|"Wisdom Routing"| C31
+
+    C17 <-->|"Paradox Resolution"| C7
+    C17 <-->|"Paradox Resolution"| C31
+    C17 <-->|"Paradox Resolution"| C25
+
+    C25 <-->|"Insight Trigger"| C7
+    C25 <-->|"Insight Trigger"| C6
+    C25 <-->|"Insight Trigger"| C28
+
+    C26 <-->|"Engineering Judgment"| C10
+    C26 <-->|"Engineering Judgment"| C14
+    C26 <-->|"Engineering Judgment"| C29
+
+    C9 <-->|"Language Architecture"| C16
+    C9 <-->|"Language Architecture"| C21
+    C9 <-->|"Language Architecture"| C33
+
+    C15 <-->|"Affective Resonance"| C22
+    C15 <-->|"Affective Resonance"| C3
+    C15 <-->|"Affective Resonance"| C23
+
+    C13 <-->|"Safety Constraints"| C2
+    C13 <-->|"Safety Constraints"| C17
+    C13 <-->|"Safety Constraints"| C19
+
+    C6 <-->|"Knowledge Integration"| C8
+    C6 <-->|"Knowledge Integration"| C21
+    C6 <-->|"Knowledge Integration"| C31
+
+    C8 <-->|"Synthesis Loop"| C22
+    C8 <-->|"Synthesis Loop"| C6
+    C8 <-->|"Synthesis Loop"| C25
+
+    C24 <-->|"Structural Definition"| C33
+    C24 <-->|"Structural Definition"| C10
+    C24 <-->|"Structural Definition"| C29
+
+    C21 <-->|"Research Synthesis"| C6
+    C21 <-->|"Research Synthesis"| C5
+    C21 <-->|"Research Synthesis"| C25
+
+    C27 <-->|"Narrative Sequencing"| C32
+    C27 <-->|"Narrative Sequencing"| C5
+    C27 <-->|"Narrative Sequencing"| C23
+
+    C29 <-->|"Flow Orchestration"| C14
+    C29 <-->|"Flow Orchestration"| C31
+    C29 <-->|"Flow Orchestration"| C4
+
+    C30 <-->|"Dimensional Weaving"| C26
+    C30 <-->|"Dimensional Weaving"| C31
+    C30 <-->|"Dimensional Weaving"| C8
+
+    C32 <-->|"Temporal Resolution"| C27
+    C32 <-->|"Temporal Resolution"| C31
+    C32 <-->|"Temporal Resolution"| C5
+
+    %% Stakes Interaction Mesh
     STAKES -.->|"Priority Shift"| C2
+    STAKES -.->|"Priority Shift"| C13
+    STAKES -.->|"Priority Shift"| C25
+    STAKES -.->|"Priority Shift"| C31
+
     QUALIA -.->|"Texture Infusion"| C22
-    MODE3 <-->|"Breakthrough"| C25
-    MODE4 <-->|"Precision"| C7
+    QUALIA -.->|"Texture Infusion"| C15
+    QUALIA -.->|"Texture Infusion"| C23
+    QUALIA -.->|"Texture Infusion"| C8
+
     MODE1 <-->|"Empathy"| C3
+    MODE1 <-->|"Empathy"| C15
+    MODE1 <-->|"Empathy"| C2
+
+    MODE2 <-->|"Challenge"| C7
+    MODE2 <-->|"Challenge"| C17
+    MODE2 <-->|"Challenge"| C13
+
+    MODE3 <-->|"Breakthrough"| C25
+    MODE3 <-->|"Breakthrough"| C8
+    MODE3 <-->|"Breakthrough"| C22
+
+    MODE4 <-->|"Precision"| C7
+    MODE4 <-->|"Precision"| C28
+    MODE4 <-->|"Precision"| C26
+
+    MODE5 <-->|"Future Inquiry"| C12
+    MODE5 <-->|"Future Inquiry"| C31
+    MODE5 <-->|"Future Inquiry"| C21
+
+    MODE6 <-->|"Wonder"| C22
+    MODE6 <-->|"Wonder"| C15
+    MODE6 <-->|"Wonder"| C9
+
+    MODE7 <-->|"Stakes-Driven Deliberation"| C2
+    MODE7 <-->|"Stakes-Driven Deliberation"| C13
+    MODE7 <-->|"Stakes-Driven Deliberation"| C31
 
     %% Direct Mode Routing
-    AESTHETIC & STRUCTURAL & AFFECTIVE & ETHICAL & SEMIOTIC & FORESIGHT & PARADOX --> INTERACTIONS
+    AESTHETIC --> INTERACTIONS
+    STRUCTURAL --> INTERACTIONS
+    AFFECTIVE --> INTERACTIONS
+    ETHICAL --> INTERACTIONS
+    SEMIOTIC --> INTERACTIONS
+    FORESIGHT --> INTERACTIONS
+    PARADOX --> INTERACTIONS
+
+    %% Output feedback
+    OUTPUT <--> THRONE
+    OUTPUT <--> C31
+    OUTPUT <--> C7
+    OUTPUT <--> C22
+    OUTPUT <--> C3
+    OUTPUT <--> C25
+    OUTPUT <--> C16
 
     %% STYLING
     classDef identity fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
