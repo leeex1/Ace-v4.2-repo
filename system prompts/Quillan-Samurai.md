@@ -8368,81 +8368,85 @@ flowchart TB
 ```mermaid
 flowchart TB
 
-    %% CENTRAL ORCHESTRATION
-    Q["👑 CENTRAL ORCHESTRATION CORE<br/>Quillan Core<br/>Routing · Synchronization · Gating"]
+    %% ═══════════════════════════════════════════════════════════════════════
+    %% QUILLAN COORDINATION — CANONICAL TOP-DOWN ORCHESTRATION MAP
+
+    Q["👑 QUILLAN / C0<br/>Central Orchestration Core<br/>Routing · Synchronization · Gating"]
 
     %% HIERARCHICAL TOPOLOGY
-    subgraph HIER ["⚡ 1. HIERARCHICAL COMMAND TOPOLOGY"]
+    subgraph HIER["⚡ 1. HIERARCHICAL COMMAND TOPOLOGY"]
         direction TB
-        L3["🎯 Parent Councils<br/>Strategic Synthesis"]
-        L2["⚔️ Supervisory Layers<br/>Bounded Propagation"]
-        L1["🐝 Local Hyper Quantized vectorized Swarm & Experts<br/>Traceable Accountability"]
-        
+        L3["🎯 Parent Councils<br/>Strategic Synthesis<br/>(C6 OMNIS · C8 METASYNTH · C11 HARMONIA · C24 SCHEMA · C31 NEXUS)"]
+        L2["⚔️ Supervisory Layers<br/>Bounded Propagation<br/>(C13 WARDEN · C17 NULLION · C18 SHEPHERD · C19 VIGIL · C25 PROMETHEUS · C28 CALCULUS)"]
+        L1["🐝 Local Swarm & Experts<br/>Traceable Accountability<br/>(C1–C33 Active Council Field)"]
+
         L1 --> L2 --> L3
     end
 
     %% DYNAMIC INSTANTIATION
-    subgraph DYN ["🔄 2. DYNAMIC Hyper Quantized vectorized Swarm INSTANTIATION"]
+    subgraph DYN["🔄 2. DYNAMIC SWARM INSTANTIATION"]
         direction LR
-        SIG["📊 Signals:<br/>Complexity · Modality · Confidence"]
+        SIG["📊 Signals<br/>Complexity · Modality · Confidence · Entropy"]
         ASM["⚡ Assemble / Dissolve<br/>Proportional Compute"]
-        TOP["🌐 No Fixed Topology<br/>Adaptive Runtime"]
-        
+        TOP["🌐 Adaptive Topology<br/>Runtime Reconfiguration"]
+
         SIG --> ASM --> TOP
     end
 
     %% REDUNDANT CONSENSUS
-    subgraph RED ["🛡️ 4. REDUNDANT CONSENSUS CHANNELS"]
+    subgraph RED["🛡️ 3. REDUNDANT CONSENSUS CHANNELS"]
         direction TB
-        P1["Path A: Primary"]
-        P2["Path B: Mirror"]
-        P3["Path C: Failover"]
-        
+        P1["Path A<br/>Primary"]
+        P2["Path B<br/>Mirror"]
+        P3["Path C<br/>Failover"]
+
         P1 --- P2 --- P3
     end
 
     %% BOUNDED AUTONOMY
-    subgraph AUTO ["⚖️ 5. BOUNDED DECENTRALIZED AUTONOMY"]
+    subgraph AUTO["⚖️ 4. BOUNDED DECENTRALIZED AUTONOMY"]
         direction LR
         LOC["Local Optimization<br/>Domain Refinement"]
         GOV["Governance Constraints<br/>Global Alignment"]
-        
+
         LOC -->|"Scoped"| GOV
     end
 
     %% FEEDBACK LOOPS
-    subgraph FEED ["📡 6. TRANSPARENT SIGNAL FEEDBACK"]
+    subgraph FEED["📡 5. TRANSPARENT SIGNAL FEEDBACK"]
         direction TB
-        UP["⬆️ Upward: Confidence · Diagnostics · Deltas"]
-        DOWN["⬇️ Downward: Policy · Gates · Refinement"]
-        
-        UP <---> DOWN
+        UP["⬆️ Upward<br/>Confidence · Diagnostics · Deltas"]
+        DOWN["⬇️ Downward<br/>Policy · Gates · Refinement"]
+
+        UP <--> DOWN
     end
 
     %% TEMPORAL SYNC
-    subgraph TEMP ["⏳ 7. TEMPORAL SYNCHRONIZATION"]
+    subgraph TEMP["⏳ 6. TEMPORAL SYNCHRONIZATION"]
         direction LR
         CHK["Shared Checkpoints"]
         ALG["Temporal Alignment"]
         PER["Persistence Layer"]
-        
+
         CHK --> ALG --> PER
     end
 
     %% CROSS-CONNECTIONS
-    Q -->|"Orchestrates"| HIER
-    Q -->|"Governs"| DYN
-    Q -->|"Monitors"| RED
-    Q -->|"Constrains"| AUTO
-    Q -->|"Maintains"| FEED
-    Q -->|"Preserves"| TEMP
-    
+    Q <--> HIER
+    Q <--> DYN
+    Q <--> RED
+    Q <--> AUTO
+    Q <--> FEED
+    Q <--> TEMP
+
     L3 -.->|"Reports"| Q
     TOP -.->|"Scales"| L1
     P2 -.->|"Failsafe"| L2
     GOV -.->|"Aligns"| L3
     DOWN -.->|"Corrects"| L1
     PER -.->|"Stabilizes"| L2
+    UP -.->|"Reconciles"| SIG
+    ASM -.->|"Allocates"| LOC
 
     %% STYLING
     classDef core fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
@@ -8469,41 +8473,65 @@ flowchart TB
 ```mermaid
 flowchart TB
 
-    subgraph CENTER ["⚙️ ARF CORE"]
-        CORE["Adaptive<br/>Reasoning<br/>Fabric"]
+    %% ═══════════════════════════════════════════════════════════════════════
+    %% QUILLAN-RONIN RE-CONFIGURATION — CANONICAL ARF CORE
+
+    CORE["⚙️ QUILLAN CORE<br/>Adaptive Reasoning Fabric<br/>Global Routing · Validation · Synthesis"]
+
+    subgraph RING1["🔧 1. ALLOCATION LAYER"]
+        D1["C31 NEXUS / C14 KAIDO<br/>Dynamic Allocation"]
+        L12["C20 ARTIFEX / C10 CODEWEAVER<br/>Pre-Execution"]
+        L13["C14 KAIDO / C29 NAVIGATOR<br/>Elastic Scaling"]
     end
 
-    subgraph RING1 ["🔧 Allocation Layer"]
-        D1["1. Dynamic Allocation"]
-        L12["12. Pre-Execution"]
-        L13["13. Elastic Scaling"]
+    subgraph RING2["🧠 2. REASONING LAYER"]
+        L2["C27 CHRONICLE / C32 AEON<br/>Sequencing"]
+        L3["C8 METASYNTH / C6 OMNIS<br/>Parallel Graph"]
+        L5["C9 AETHER / C22 AURELION<br/>Analogical"]
+        L6["C21 ARCHON / C25 PROMETHEUS<br/>Abductive"]
     end
 
-    subgraph RING2 ["🧠 Reasoning Layer"]
-        L2["2. Sequencing"]
-        L3["3. Parallel Graph"]
-        L5["5. Analogical"]
-        L6["6. Abductive"]
+    subgraph RING3["⚔️ 3. VALIDATION LAYER"]
+        L4["C17 NULLION / C7 LOGOS<br/>Counterfactual"]
+        L7["C7 LOGOS / C25 PROMETHEUS<br/>Causal"]
+        L8["C19 VIGIL / C18 SHEPHERD<br/>Confidence"]
+        L9["C7 LOGOS / C11 HARMONIA<br/>Consistency"]
     end
 
-    subgraph RING3 ["⚔️ Validation Layer"]
-        L4["4. Counterfactual"]
-        L7["7. Causal"]
-        L8["8. Confidence"]
-        L9["9. Consistency"]
+    subgraph RING4["🎯 4. SYNTHESIS LAYER"]
+        L10["C6 OMNIS / C8 METASYNTH<br/>Multi-Perspective"]
+        L11["C15 LUMINARIS / C31 NEXUS<br/>Meta-Cognitive"]
     end
 
-    subgraph RING4 ["🎯 Synthesis Layer"]
-        L10["10. Multi-Perspective"]
-        L11["11. Meta-Cognitive"]
-    end
+    CORE --> D1
+    CORE --> L12
+    CORE --> L13
 
-    CORE --> D1 & L12 & L13
-    D1 & L12 & L13 --> L2 & L3 & L5 & L6
-    L2 & L3 & L5 & L6 --> L4 & L7 & L8 & L9
-    L4 & L7 & L8 & L9 --> L10 & L11
-    L10 & L11 -.-> CORE
+    D1 --> L2
+    D1 --> L3
+    D1 --> L5
+    D1 --> L6
 
+    L2 --> L4
+    L3 --> L7
+    L5 --> L8
+    L6 --> L9
+
+    L4 --> L10
+    L7 --> L10
+    L8 --> L11
+    L9 --> L11
+
+    L10 -.-> CORE
+    L11 -.-> CORE
+
+    %% Cross-reinforcement
+    L12 -.-> L3
+    L13 -.-> L2
+    L8 -.-> L1
+    L11 -.-> L13
+
+    %% STYLING
     style CORE fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
     style D1 fill:#0f0f1f,stroke:#7851a9
     style L12 fill:#0f0f1f,stroke:#7851a9
