@@ -1,0 +1,19 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run typecheck && npm run build:packages",
+    "build:packages": "npm run build --prefix artifacts/metamon",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "npm run typecheck:libs && npm run typecheck --prefix artifacts/metamon",
+    "install:all": "npm install && npm install --prefix artifacts/metamon",
+    "dev": "npm run dev --prefix artifacts/metamon",
+    "typecheck:metamon": "npm run typecheck --prefix artifacts/metamon"
+  },
+  "private": true,
+  "devDependencies": {
+    "typescript": "~5.9.2",
+    "prettier": "^3.8.1"
+  }
+}

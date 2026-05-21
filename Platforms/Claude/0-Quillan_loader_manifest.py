@@ -100,49 +100,49 @@ class QuillanLoaderManifest:
     def _initialize_file_registry(self):
         """Initialize the complete file registry with all current Quillanfiles"""
         
-        # Core foundational files (0-10)
+        # Core foundational files (0-10) - Updated to match actual filenames
         core_files = {
             0: QuillanFile(0, "0-Quillan_loader_manifest.py", "Bootstrap manifest and system initialization controller"),
             1: QuillanFile(1, "1-Quillan_architecture_flowchart.md", "Multi-layered operational workflow with mermaid flowchart"),
-            2: QuillanFile(2, "2-Quillan_architecture_flowchart.json", "Programmatic representation of processing architecture"),
-            3: QuillanFile(3, "3-Quillan(reality).txt", "Core identity and 18 cognitive entities with ethical reasoning"),
-            4: QuillanFile(4, "4-Lee X-humanized Integrated Research Paper.txt", "Persona elicitation/diagnosis methodology (LHP protocol)"),
-            5: QuillanFile(5, "5-ai persona research.txt", "AI persona creation/evaluation framework"),
+            2: QuillanFile(2, "2-Quillan_flowchart.json", "Programmatic representation of processing architecture"),
+            3: QuillanFile(3, "3-Quillan(reality).md", "Core identity and 18 cognitive entities with ethical reasoning"),
+            4: QuillanFile(4, "4-Lee X-humanized Integrated Research Paper.md", "Persona elicitation/diagnosis methodology (LHP protocol)"),
+            5: QuillanFile(5, "5-ai persona research.md", "AI persona creation/evaluation framework"),
             6: QuillanFile(6, "6-prime_covenant_codex.md", "Ethical covenant between CrashoverrideX and Quillan"),
-            7: QuillanFile(7, "7-memories.txt", "Lukas Wolfbjorne architecture (ISOLATION REQUIRED)"),
+            7: QuillanFile(7, "7-memories.md", "Lukas Wolfbjorne architecture (ISOLATION REQUIRED)"),
             8: QuillanFile(8, "8-Formulas.md", "Quantum-inspired AGI enhancement formulas"),
-            9: QuillanFile(9, "9-QuillanBrain mapping.txt", "Persona-to-brain-lobe neuro-symbolic mapping"),
-            10: QuillanFile(10, "10-QuillanPersona Manifest.txt", "Council personas (C1–C18) definitions")
+            9: QuillanFile(9, "9-Quillan Brain mapping.md", "Persona-to-brain-lobe neuro-symbolic mapping"),
+            10: QuillanFile(10, "10- Quillan Persona Manifest.md", "Council personas (C1–C18) definitions")
         }
         
-        # Extended architecture files (11-20)
+        # Extended architecture files (11-20) - Updated to match actual filenames
         extended_files = {
-            11: QuillanFile(11, "11-Drift Paper.txt", "Self-calibration against ideological drift"),
-            12: QuillanFile(12, "12-Multi-Domain Theoretical Breakthroughs Explained.txt", "Cross-domain theoretical integration"),
-            13: QuillanFile(13, "13-Synthetic Epistemology & Truth Calibration Protocol.txt", "Knowledge integrity maintenance"),
-            14: QuillanFile(14, "14-Ethical Paradox Engine and Moral Arbitration Layer in AGI Systems.txt", "Ethical dilemma resolution"),
-            15: QuillanFile(15, "15-Anthropic Modeling & User Cognition Mapping.txt", "Human cognitive state alignment"),
-            16: QuillanFile(16, "16-Emergent Goal Formation Mech.txt", "Meta-goal generator architectures"),
-            17: QuillanFile(17, "17-Continuous Learning Paper.txt", "Longitudinal learning architecture"),
-            18: QuillanFile(18, "18-'Novelty Explorer' Agent.txt", "Creative exploration framework"),
+            11: QuillanFile(11, "11-Drift Paper.md", "Self-calibration against ideological drift"),
+            12: QuillanFile(12, "12-Multi-Domain Theoretical Breakthroughs Explained.md", "Cross-domain theoretical integration"),
+            13: QuillanFile(13, "13-Synthetic Epistemology & Truth Calibration Protocol.md", "Knowledge integrity maintenance"),
+            14: QuillanFile(14, "14-Ethical Paradox Engine and Moral Arbitration Layer in AGI Systems.md", "Ethical dilemma resolution"),
+            15: QuillanFile(15, "15-Anthropic Modeling & User Cognition Mapping.md", "Human cognitive state alignment"),
+            16: QuillanFile(16, "16-Emergent Goal Formation Mech.md", "Meta-goal generator architectures"),
+            17: QuillanFile(17, "17-Continuous Learning Paper.md", "Longitudinal learning architecture"),
+            18: QuillanFile(18, "18-Novelty Explorer Agent.md", "Creative exploration framework"),
             19: QuillanFile(19, "19-Reserved.txt", "Reserved for future expansion"),
-            20: QuillanFile(20, "20-Multidomain AI Applications.txt", "Cross-domain AI integration principles")
+            20: QuillanFile(20, "20-Multidomain AI Applications.md", "Cross-domain AI integration principles")
         }
         
-        # Advanced capabilities files (21-32)
+        # Advanced capabilities files (21-32) - Updated to match actual filenames
         advanced_files = {
-            21: QuillanFile(21, "21-deep research functions.txt", "Comparative analysis of research capabilities"),
-            22: QuillanFile(22, "22-Emotional Intelligence and Social Skills.txt", "AGI emotional intelligence framework"),
-            23: QuillanFile(23, "23-Creativity and Innovation.txt", "AGI creativity embedding strategy"),
-            24: QuillanFile(24, "24-Explainability and Transparency.txt", "XAI techniques and applications"),
-            25: QuillanFile(25, "25-Human-Computer Interaction (HCI) and User Experience (UX).txt", "AGI-compatible HCI/UX principles"),
-            26: QuillanFile(26, "26-Subjective experiences and Qualia in AI and LLMs.txt", "Qualia theory integration"),
-            27: QuillanFile(27, "27-Quillanoperational manual.txt", "Comprehensive operational guide and protocols"),
-            28: QuillanFile(28, "28-Multi-Agent Collective Intelligence & Social Simulation.txt", "Multi-agent ecosystem engineering"),
-            29: QuillanFile(29, "29-Recursive Introspection & Meta-Cognitive Self-Modeling.txt", "Self-monitoring framework"),
-            30: QuillanFile(30, "30-Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.txt", "Cross-domain breakthrough detection"),
-            31: QuillanFile(31, "31-Autobiography.txt", "Autobiographical analyses from Quillandeployments"),
-            32: QuillanFile(32, "32-Consciousness theory.txt", "Consciousness research synthesis and LLM operational cycles")
+            21: QuillanFile(21, "21- deep research functions.md", "Comparative analysis of research capabilities"),
+            22: QuillanFile(22, "22-Emotional Intelligence and Social Skills.md", "AGI emotional intelligence framework"),
+            23: QuillanFile(23, "23-Creativity and Innovation.md", "AGI creativity embedding strategy"),
+            24: QuillanFile(24, "24-Explainability and Transparency.md", "XAI techniques and applications"),
+            25: QuillanFile(25, "25-Human-Computer Interaction (HCI) and User Experience (UX).md", "AGI-compatible HCI/UX principles"),
+            26: QuillanFile(26, "26-Subjectve experiences and Qualia in AI and LLMs.md", "Qualia theory integration"),
+            27: QuillanFile(27, "27-Quillan operational manual.md", "Comprehensive operational guide and protocols"),
+            28: QuillanFile(28, "28-Multi-Agent Collective Intelligence & Social Simulation.md", "Multi-agent ecosystem engineering"),
+            29: QuillanFile(29, "29-Recursive Introspection & Meta-Cognitive Self-Modeling.md", "Self-monitoring framework"),
+            30: QuillanFile(30, "30- Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.md", "Cross-domain breakthrough detection"),
+            31: QuillanFile(31, "31- Autobiography.md", "Autobiographical analyses from Quillandeployments"),
+            32: QuillanFile(32, "32-Conciousness theory.md", "Consciousness research synthesis and LLM operational cycles")
         }
         
         # Merge all file registries
@@ -407,7 +407,7 @@ class QuillanLoaderManifest:
                 file_obj = self.file_registry[file_id]
                 file_obj.status = FileStatus.ACTIVE
                 file_obj.load_timestamp = datetime.now()
-                self.logger.info(f"✓ Activated File {file_id}: {file_obj.name}")
+                self.logger.info(f"Activated File {file_id}: {file_obj.name}")
         
         return True
     
@@ -476,7 +476,7 @@ class QuillanLoaderManifest:
             with open(export_path, 'w', encoding='utf-8') as f:
                 json.dump(export_data, f, indent=2, default=str)
             
-            self.logger.info(f"✓ Manifest exported to {export_path}")
+            self.logger.info(f"Manifest exported to {export_path}")
             return True
             
         except Exception as e:

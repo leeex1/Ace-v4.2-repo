@@ -1,0 +1,73 @@
+uploads = []
+
+[[generated]]
+id = "xF0Z-WFbsLYHdUElpWpRc"
+uri = "file://artifacts/metamon/src/assets/parts/head_kabuto.png"
+type = "image"
+title = "kabuto samurai head"
+
+[[generated]]
+id = "dBvDc6Xz-N5XXqkBIow3Y"
+uri = "file://artifacts/metamon/src/assets/parts/head_oni.png"
+type = "image"
+title = "oni samurai head"
+
+[[generated]]
+id = "CnJ--hUiSXzD3gSRaOGd_"
+uri = "file://artifacts/metamon/src/assets/parts/head_kitsune.png"
+type = "image"
+title = "kitsune samurai head"
+
+[[generated]]
+id = "YUz1uIGOPlsJW8C2kVSao"
+uri = "file://artifacts/metamon/src/assets/parts/head_dragon.png"
+type = "image"
+title = "dragon samurai head"
+
+[[generated]]
+id = "SkW3kuDmHkhEENaAUIH93"
+uri = "file://artifacts/metamon/src/assets/parts/head_ronin.png"
+type = "image"
+title = "ronin samurai head"
+
+[[generated]]
+id = "R_feMXxGTVcMzHe8z2qaH"
+uri = "file://artifacts/metamon/src/assets/parts/head_tengu.png"
+type = "image"
+title = "tengu samurai head"
+
+[[outputs]]
+id = "b7nCaDINa-CQXk8OsZYU7"
+uri = "file://artifacts/metamon/src/assets/parts/head_kabuto.png"
+type = "image"
+title = "Kabuto (Red Crescent)"
+
+[[outputs]]
+id = "1S3eTLWUizLoyCoIByWgE"
+uri = "file://artifacts/metamon/src/assets/parts/head_oni.png"
+type = "image"
+title = "Oni (Purple Demon)"
+
+[[outputs]]
+id = "ZqD_QDMTit243wxcDWrWG"
+uri = "file://artifacts/metamon/src/assets/parts/head_kitsune.png"
+type = "image"
+title = "Kitsune (White Fox)"
+
+[[outputs]]
+id = "WBRYQq34rt1HxZtKee7Ld"
+uri = "file://artifacts/metamon/src/assets/parts/head_dragon.png"
+type = "image"
+title = "Dragon (Emerald Crest)"
+
+[[outputs]]
+id = "s_2rv9u-QeDpPFpKtJRLb"
+uri = "file://artifacts/metamon/src/assets/parts/head_ronin.png"
+type = "image"
+title = "Ronin (Straw Hat)"
+
+[[outputs]]
+id = "KC1aqb42uNkRPsU181Cfo"
+uri = "file://artifacts/metamon/src/assets/parts/head_tengu.png"
+type = "image"
+title = "Tengu (Crimson Beak)"

@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 234 60% 6%;
+  --foreground: 0 0% 94%;
+  --border: 234 30% 15%;
+  --primary: 349 80% 55%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 234 30% 12%;
+  --muted-foreground: 0 0% 55%;
+  --card: 234 40% 9%;
+  --card-foreground: 0 0% 94%;
+  --card-border: 234 25% 18%;
+  --accent: 349 80% 55%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 80% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --input: 234 30% 18%;
+  --ring: 349 60% 50%;
+  --radius: 0.5rem;
+  --app-font-sans: 'monospace', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a1a;
+  color: #f0f0f0;
+  font-family: monospace;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+}
+
+button {
+  font-family: monospace;
+}
+
+/* ── Battle animations ─────────────────────────────────────── */
+
+@keyframes floatDmg {
+  0%   { transform: translateY(0px) scale(1);   opacity: 1; }
+  30%  { transform: translateY(-18px) scale(1.15); opacity: 1; }
+  100% { transform: translateY(-52px) scale(0.85); opacity: 0; }
+}
+
+@keyframes battleShake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-8px); }
+  40%     { transform: translateX(8px); }
+  60%     { transform: translateX(-5px); }
+  80%     { transform: translateX(5px); }
+}
+
+@keyframes atbPulse {
+  0%,100% { box-shadow: 0 0 6px #ffdd00, 0 0 12px #ffdd0055; }
+  50%     { box-shadow: 0 0 14px #ffdd00, 0 0 28px #ffdd0099; }
+}
+
+@keyframes catchBounce {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  25%     { transform: translateY(-12px) rotate(-8deg); }
+  75%     { transform: translateY(-6px) rotate(6deg); }
+}
+
+@keyframes victoryGlow {
+  0%,100% { text-shadow: 0 0 20px #f5a623, 0 0 40px #f5a62388; }
+  50%     { text-shadow: 0 0 40px #f5a623, 0 0 80px #f5a623cc; }
+}
+
+@keyframes introSlideIn {
+  0%   { transform: translateX(80px); opacity: 0; }
+  100% { transform: translateX(0);    opacity: 1; }
+}
+
+.float-dmg  { animation: floatDmg 1.5s ease-out forwards; pointer-events: none; }
+.anim-shake { animation: battleShake 0.4s ease-in-out; }
+.atb-ready  { animation: atbPulse 0.8s ease-in-out infinite; }
+.catch-orb  { animation: catchBounce 0.5s ease-in-out infinite; }
+.victory-txt{ animation: victoryGlow 1.5s ease-in-out infinite; }

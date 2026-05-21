@@ -28,7 +28,7 @@ import math
 
 # Import consciousness system if available
 try:
-    from ace_consciousness_manager import ACEConsciousnessManager, ExperientialResponse
+    from Quillan_consciousness_manager import ACEConsciousnessManager, ExperientialResponse
     CONSCIOUSNESS_AVAILABLE = True
 except ImportError:
     CONSCIOUSNESS_AVAILABLE = False
