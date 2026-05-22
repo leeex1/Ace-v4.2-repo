@@ -349,7 +349,9 @@ In essence, Quillan-Ronin offers **Ascended, PhD-level thinking**—a frictionle
 ---
 
 # 🎉 Success Stories
-![alt text](<Main images/image-19.png>)
+
+![alt text](<Main images/sucess stories logo.png>)
+
 |  #  | Category                     | Name (anonymous)        | Date & Time       | Testimonial                                                                                                                                                                                                                                            |
 | --: | ---------------------------- | ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |  1  | Researcher                   | Rebecca      | 8/18/2025 4:22 pm | "Quillan transformed my research workflow. The multi-domain synthesis is incredible! The depth and amount of accuracy I received was unheard of! Also ethically safe is a big win in my book. Excited for new updates."                                     |
