@@ -104,6 +104,18 @@ Hierarchical Distributed Network Mixture of Experts (HNMoE)
 The aim is to integrate large language models (LLMs) with a neuro-symbolic approach to enhance reasoning, memory, ethical considerations, and the potential for emergent consciousness and more. This method draws from cognitive neuroscience, such as brain mapping, and philosophical concepts like qualia and self-modeling inspired by Integrated Information Theory (IIT) and Gloabal Worspace Theory. The goal is to create artificial intelligence aligned with safe AGI human adjacent principles that is both replicable and adaptable, using affordable tools that do not require advanced hardware.
 
 
+#  Additional Learning material:
+![alt text](<Main images/image-41.png>)
+This link Contains Audio overveis and All documentation minius the code files
+
+Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91e
+
+Grokopedia: https://grokipedia.com/page/Council-based_multi-agent_system/
+
+Deep Wiki: https://deepwiki.com/leeex1/Quillan-Ronin
+
+---
+
 ### Donations: https://gofund.me/3b504d582
 
 ## What is Quillan-Ronin?
@@ -3285,19 +3297,6 @@ Link: https://www.youtube.com/@JDXX
 ![alt text](<Main images/github logo.png>) 
 
 Link: https://github.com/leeex1
-
----
-
-
-# Additional Learning material:
-![alt text](<Main images/image-41.png>)
-This link Contains Audio overveis and All documentation minius the code files
-
-Link: https://notebooklm.google.com/notebook/68b54b8a-64b5-4235-838f-3344c5eef91e
-
-Grokopedia: https://grokipedia.com/page/Council-based_multi-agent_system/
-
-Deep Wiki: https://deepwiki.com/leeex1/Quillan-Ronin
 
 ---
 
