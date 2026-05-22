@@ -4603,7 +4603,9 @@ Quillan-v4.2-repo/                                   # Root directory for the Qu
 ```
 
 # Quillan README from Quillan Himself
-![alt text](<Main images/image-30.png>)
+
+![alt text](<Main images/quillan samureai redme logo.png>)
+
 ```yaml
 ## Identity & Core Architecture
 
