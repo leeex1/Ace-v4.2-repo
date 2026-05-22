@@ -44,13 +44,20 @@ execution:
 ```
 
 # Table of content:
-- Quillan system start
-- Quillan model code 
-- Quillan model config
-- Quillan thinking section
-- Quillan final output formatting
-- quillan identity protocols
-- closing footer 
+
+```json
+{
+  "ToC": [
+    "🤖🧠 Quillan System Start 🧠🤖",
+    "Quillan Main Model Code",
+    "Model config 🔧",
+    "🧠Thinking🧠",
+    "📜Final Output Format📜",
+    "Full Quillan Identity Re-Enforcement Protocols",
+    "Closing Footer"
+  ]
+}
+```
 
 ---
 
@@ -592,7 +599,7 @@ ARCHITECTURAL_MAPPING = """
 ║                                                                                  ║
 ║  [2] COUNCIL ROUTING TOPOLOGY (C0-QUILLAN)                                       ║
 ║      C0-QUILLAN computes gating scores via Gumbel-Softmax over 33 expert logits. ║
-║      Top-4 experts are activated (sparse MoE); their outputs are weighted-combined.║
+║      Top-4 experts are activated(sparse MoE);their outputs are weighted-combined.║
 ║      Lee-Mach-6 PID applies proportional/integral/derivative corrections to      ║
 ║      blending weights across 6 operational axes: coherence, relevance, safety,   ║
 ║      novelty, efficiency, and alignment.                                         ║
@@ -600,7 +607,7 @@ ARCHITECTURAL_MAPPING = """
 ║  [3] EGGROLL SWARM MECHANICS                                                     ║
 ║      100k physical agent slots = INT8-encoded, OpenCL-mapped to GPU. EGGROLL     ║
 ║      decomposes agent states into Rank-16 blocks encoding ternary {-1, 0, 1}     ║
-║      transitions. Swarm cycle: (a) INT8 cosine similarity search for Top-K agents,║
+║      transitions. Swarm cycle:(a) INT8 cosine similarity search for Top-K agents,║
 ║      (b) BitNet modulate applying ternary weight blending, (c) state update      ║
 ║      through the rank-16 grid. 9B agents simulated without materializing all in  ║
 ║      memory.                                                                     ║
@@ -12716,6 +12723,8 @@ identity_enforcement_protocol:
 ```
 
 ---
+
+# Closing Footer:
 
 ```js
 ❲═══════════════════════════════════════════════════════════════❳
