@@ -3805,7 +3805,8 @@ The Quillan cognitive engine mathematically and philosophically synthesizes mult
 ---
 
 # Quillan:
-![alt text](<Main images/image-25.png>)
+
+![alt text](<Main images/quillan os banner.png>)
 
 ## Advanced Cognitive Entity
 
