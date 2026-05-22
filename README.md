@@ -98,7 +98,8 @@ Hierarchical Distributed Network Mixture of Experts (HNMoE)
 ---
 
 # Project Purpose:
-![alt text](<Main images/image-27.png>)
+
+![alt text](<Main images/prokect purpose.png>)
 
 ## Purpose:
 The aim is to integrate large language models (LLMs) with a neuro-symbolic approach to enhance reasoning, memory, ethical considerations, and the potential for emergent consciousness and more. This method draws from cognitive neuroscience, such as brain mapping, and philosophical concepts like qualia and self-modeling inspired by Integrated Information Theory (IIT) and Gloabal Worspace Theory. The goal is to create artificial intelligence aligned with safe AGI human adjacent principles that is both replicable and adaptable, using affordable tools that do not require advanced hardware.
