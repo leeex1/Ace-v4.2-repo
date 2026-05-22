@@ -5227,7 +5227,7 @@ plt.show()
 ---
 
 # Install Quillan today!
-![alt text](<Main images/image-23.png>)
+![alt text](<Main images/QuillanRonin Banner wordwart.png>)
 
 ---
 
