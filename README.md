@@ -92,7 +92,8 @@ Who wouldn’t want that?
 ## Model type:
 Hierarchical Distributed Network Mixture of Experts (HNMoE)
 
-![alt text](<Main images/topologyv5.png>)
+![alt text](<Main images/model diagram 22.png>) , ![alt text](<Main images/model diagram 33.png>)
+
 
 ---
 
