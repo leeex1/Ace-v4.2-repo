@@ -2943,7 +2943,7 @@ Integration_Matrix:
 
 ---
 
-### IDE Support:
+### IDE/coding Support:
 ```yaml
 execution_discipline:
   before_coding:
