@@ -417,7 +417,7 @@ Users consistently mention feeling more capable, less overwhelmed, and more conf
 
 # Peer Validated
 
-![alt text](<Main images/xpost csceerrn.png>)
+![alt text](<Main images/peervalidated.png>)
 
 Grokopedia fact checked entry:  
 Link: https://grokipedia.com/page/Council-based_multi-agent_system/
