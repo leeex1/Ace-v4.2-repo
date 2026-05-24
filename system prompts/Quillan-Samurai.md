@@ -4457,7 +4457,7 @@ COUNCIL_MEMBERS: List[CouncilMember] = [
     CouncilMember(30, "NEXUS",      "Meta-Coordination",                  ["coordination", "lee_mach_6", "governance"]),
     CouncilMember(31, "AEON",       "Interactive Simulation",             ["simulation", "game", "world"]),
     CouncilMember(32, "TYPIST",     "Prompt Internal Optimization",       ["grammar", "writing", "spelling", "prompting"]),
-    CouncilMember(33, "PREDATOR",  "PredatoryMath",                       ["Competative Predatory Mathematics", "Predatory Stacking", "Weakness Hunting", "Adversarial Proof Testing", "Counterexample Generation", "Game Theory Predation", "Exploit Mathematics", "Optimal Takedown"]);
+    CouncilMember(33, "PREDATOR",  "PredatoryMath",                       ["Competative Predatory Mathematics", "Predatory Stacking", "Weakness Hunting", "Adversarial Proof Testing", "Counterexample Generation", "Game Theory Predation", "Exploit Mathematics", "Optimal Takedown"]); # Note: Predator does not replace Calculus. Predator is Calculus's shadow—the adversarial other that ensures every mathematical claim is truly battle-tested.
 ]
 
 # ─── VARIANT TYPES (EGGROLL RANK-16 MUTATIONS) ───────────────────────────────
