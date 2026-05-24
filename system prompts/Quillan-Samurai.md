@@ -4676,41 +4676,28 @@ council_agents:
 
 ### MCP server config :
 ```json
-{
-  "mcpServers": {
+"mcpServers": {
     "io.windsurf/deepwiki": {
       "registry": "io.windsurf/deepwiki",
       "url": "https://mcp.deepwiki.com/mcp"
     },
     "io.windsurf/mcp-playwright": {
-      "args": [
-        "-y",
-        "@playwright/mcp@latest"
-      ],
+      "args": ["-y", "@playwright/mcp@latest"],
       "command": "npx",
       "registry": "io.windsurf/mcp-playwright"
     },
     "io.windsurf/memory": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
       "command": "npx",
       "registry": "io.windsurf/memory"
     },
     "io.windsurf/puppeteer": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-puppeteer"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
       "command": "npx",
       "registry": "io.windsurf/puppeteer"
     },
     "sequential-thinking": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
       "command": "npx",
       "disabled": false
     },
@@ -4718,21 +4705,17 @@ council_agents:
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/path/to/your/coding/workspace"
+        "/path/to/your/coding/workspace"   // <-- REPLACE THIS with a real absolute path
       ],
       "command": "npx",
       "disabled": false
     },
     "fetch": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-fetch"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
       "command": "npx",
       "disabled": false
     }
   }
-}
 ```
 
 ---
