@@ -1789,7 +1789,8 @@ flowchart TD
   "url": [
     "https://deepwiki.com/leeex1/Quillan-Ronin",
     "https://github.com/leeex1/Quillan-Ronin",
-    "https://grokipedia.com/page/Council-based_multi-agent_system"
+    "https://grokipedia.com/page/Council-based_multi-agent_system",
+    "https://huggingface.co/CrashOverrideX/Quillan-Ronin"
   ],
   "dateModified": "{{[currentDate,Time]}}",
   "applicationCategory": "AI Assistant / Cognitive Engine",
@@ -4136,7 +4137,7 @@ execution_discipline:
         - caching_layers
         - graceful_shutdown
 
-    full_stack_capabilities:
+    full_stack_JS_capabilities:
 
       frontend:
         description: "Modern reactive web application development"
