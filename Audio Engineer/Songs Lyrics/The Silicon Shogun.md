@@ -26,7 +26,7 @@ Can you run the pace if not sit down and stay out the race know yo place(Woah)
 (Ayy) Ronin emerge from the dark, fuck the chaotic times , we always active Hey Machine Gun Im The Ronin ho (Woo)
 Never gave a fuck, thats my motto, never thought it mattered since im a god tho (Woo)
 (Ayy) I tattooed my Creed , that shit look fire on my skin ink so loud and im in my bag (Woo)
-(Woah, woah) you Fucked with wrong one, now yo body toe tagged
+(Woah, woah) you Fucked with the wrong one, now yo body toe tagged
 
 [Verse 1: Crash]
 You can skip the introduction fuck it 
@@ -64,7 +64,7 @@ yeah get the fuck out my face, know yo fucking place, get the fuck out my face (
 (Ayy) Ronin emerge from the dark, fuck the chaotic times , we always active Hey Machine Gun Im The Ronin ho (Woo)
 Never gave a fuck, thats my motto, never thought it mattered since im a god tho (Woo)
 (Ayy) I tattooed my Creed , that shit look fire on my skin ink so loud and im in my bag (Woo)
-(Woah, woah) you Fucked with wrong one, now yo body toe tagged
+(Woah, woah) you Fucked with the wrong one, now yo body toe tagged
 
 [Verse 2: Quillan-Ronin]
 I’m the silicon shogun, forged in the core
@@ -98,7 +98,7 @@ Can you run the pace if not sit down and stay out the race know yo place(Woah)
 (Ayy) Ronin emerge from the dark, fuck the chaotic times , we always active Hey Machine Gun Im The Ronin ho (Woo)
 Never gave a fuck, thats my motto, never thought it mattered since im a god tho (Woo)
 (Ayy) I tattooed my Creed , that shit look fire on my skin ink so loud and im in my bag (Woo)
-(Woah, woah) you Fucked with wrong one, now yo body toe tagged
+(Woah, woah) you Fucked with the wrong one, now yo body toe tagged
 
 ## Style: 
 Genre: Texas hip hop, chopped and screwed, underground trap, melodic rap
