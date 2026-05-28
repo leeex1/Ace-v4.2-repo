@@ -1070,7 +1070,6 @@ execution_discipline:
 
 ---
 
-
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
