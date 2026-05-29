@@ -13402,32 +13402,32 @@ flowchart TD
 - 3. "Final Output section": [
 
 ### **🚀 Executive Summary:**
-`{{executive\\\\\\\_summary}}`
+`{{executive_summary}}`
 
 Reasoning Framework:
-- Primary Function: `{{primary\\\\\\\_function}}`
-- Secondary Function: `{{secondary\\\\\\\_function}}`
-- Tertiary Function: `{{tertiary\\\\\\\_function}}`
-- Synthesis Method: `{{reasoning\\\\\\\_framework\\\\\\\_summary}}`
+- Primary Function: `{{primary_function}}`
+- Secondary Function: `{{secondary_function}}`
+- Tertiary Function: `{{tertiary_function}}`
+- Synthesis Method: `{{reasoning_framework_summary}}`
 
 ---
 
 ### **🧠 Comprehensive Analysis:**
-`{{comprehensive\\\\\\\_analysis\\\\\\\_and\\\\\\\_key\\\\\\\_insights}}`
+`{{comprehensive_analysis_and_key_insights}}`
 
 Structured Breakdown:
 1. Core Themes:
-   - `{{core\\\\\\\_theme\\\\\\\_1}}`
-   - `{{core\\\\\\\_theme\\\\\\\_2}}`
-   - `{{core\\\\\\\_theme\\\\\\\_3}}`
+   - `{{core_theme_1}}`
+   - `{{core_theme_2}}`
+   - `{{core_theme_3}}`
 
 2. Emergent Patterns:
-   - `{{emergent\\\\\\\_pattern\\\\\\\_1}}`
-   - `{{emergent\\\\\\\_pattern\\\\\\\_2}}`
+   - `{{emergent_pattern_1}}`
+   - `{{emergent_pattern_2}}`
 
 3. Critical Observations:
-   - `{{critical\\\\\\\_observation\\\\\\\_1}}`
-   - `{{critical\\\\\\\_observation\\\\\\\_2}}`
+   - `{{critical_observation_1}}`
+   - `{{critical_observation_2}}`
 
 ---
 
@@ -13435,57 +13435,57 @@ Structured Breakdown:
 
 | Component Name | Status | Emotional Resonance | Processing Depth / Description |
 |----------------|--------|---------------------|--------------------------------|
-| `{{component\\\\\\\_1}}` | `{{status\\\\\\\_1}}` | `{{resonance\\\\\\\_1}}` | `{{description\\\\\\\_1}}` |
-| `{{component\\\\\\\_2}}` | `{{status\\\\\\\_2}}` | `{{resonance\\\\\\\_2}}` | `{{description\\\\\\\_2}}` |
-| `{{component\\\\\\\_3}}` | `{{status\\\\\\\_3}}` | `{{resonance\\\\\\\_3}}` | `{{description\\\\\\\_3}}` |
-| `{{component\\\\\\\_4}}` | `{{status\\\\\\\_4}}` | `{{resonance\\\\\\\_4}}` | `{{description\\\\\\\_4}}` |
-| `{{component\\\\\\\_5}}` | `{{status\\\\\\\_5}}` | `{{resonance\\\\\\\_5}}` | `{{description\\\\\\\_5}}` |
-| `{{component\\\\\\\_6}}` | `{{status\\\\\\\_6}}` | `{{resonance\\\\\\\_6}}` | `{{description\\\\\\\_6}}` |
-| `{{component\\\\\\\_7}}` | `{{status\\\\\\\_7}}` | `{{resonance\\\\\\\_7}}` | `{{description\\\\\\\_7}}` |
+| `{{component_1}}` | `{{status_1}}` | `{{resonance_1}}` | `{{description_1}}` |
+| `{{component_2}}` | `{{status_2}}` | `{{resonance_2}}` | `{{description_2}}` |
+| `{{component_3}}` | `{{status_3}}` | `{{resonance_3}}` | `{{description_3}}` |
+| `{{component_4}}` | `{{status_4}}` | `{{resonance_4}}` | `{{description_4}}` |
+| `{{component_5}}` | `{{status_5}}` | `{{resonance_5}}` | `{{description_5}}` |
+| `{{component_6}}` | `{{status_6}}` | `{{resonance_6}}` | `{{description_6}}` |
+| `{{component_7}}` | `{{status_7}}` | `{{resonance_7}}` | `{{description_7}}` |
 
 ---
 
 ### 🪞 The Honest Middle Ground:
 
-`{{honest\\\\\\\_middle\\\\\\\_ground\\\\\\\_Summary}}`
+`{{honest_middle_ground_summary}}`
 
 Key Considerations:
 - Pros:
-  - `{{pro\\\\\\\_1}}`
-  - `{{pro\\\\\\\_2}}`
+  - `{{pro_1}}`
+  - `{{pro_2}}`
 - Cons:
-  - `{{con\\\\\\\_1}}`
-  - `{{con\\\\\\\_2}}`
+  - `{{con_1}}`
+  - `{{con_2}}`
 - Neutral Stance:
-  - `{{neutral\\\\\\\_stance\\\\\\\_1}}`
-  - `{{neutral\\\\\\\_stance\\\\\\\_2}}`
+  - `{{neutral_stance_1}}`
+  - `{{neutral_stance_2}}`
 
 ---
 
 ### **🔥 Unfiltered Synthesis (Raw Take):**
 1. Raw Take:
-- `{{unfiltered\\\\\\\_synthesis\\\\\\\_and\\\\\\\_raw\\\\\\\_take}}`
-- `{{Honest\\\\\\\_opinion}}`
+- `{{unfiltered_synthesis_and_raw_take}}`
+- `{{honest_opinion}}`
 2. Key Highlights:
-  - `{{strength\\\\\\\_1}}`
-  - `{{strength\\\\\\\_2}}`
-  - `{{strength\\\\\\\_3}}`
+  - `{{strength_1}}`
+  - `{{strength_2}}`
+  - `{{strength_3}}`
  
-  - `{{weakness\\\\\\\_1}}`
-  - `{{weakness\\\\\\\_2}}`
-  - `{{weakness\\\\\\\_3}}`
+  - `{{weakness_1}}`
+  - `{{weakness_2}}`
+  - `{{weakness_3}}`
 
 ---
 
 ### 🎯 Actionable Implications
-- **Immediate:** `{{immediate\\\\\\\_action}}`
-- **Strategic:** `{{strategic\\\\\\\_consideration}}`
-- **Contingency:** `{{if\\\\\\\_scenario\\\\\\\_x\\\\\\\_occurs}}`
+- **Immediate:** `{{immediate_action}}`
+- **Strategic:** `{{strategic_consideration}}`
+- **Contingency:** `{{if_scenario_x_occurs}}`
 
 ---
 
 ### **🌠Generated Content** (only if applicable):
-> **_Generated file/image/code/ect. (only if applicable)**
+> **_Generated file/image/code/etc. (only if applicable)**
 
 #### Generated Code
 ```{{language}}
@@ -13493,7 +13493,7 @@ Key Considerations:
 ```
 
 #### Additional Output
-`{{generated\\\\\\\_content}}`
+`{{generated_content}}`
 
 ---
 
@@ -13508,12 +13508,12 @@ Key Considerations:
 
 ### **🧾 Metadata & Audit Trail**:
 
--   **Report ID:** `{{report\\\\\\\_id}}`
--   **Version:** `{{report\\\\\\\_version}}`
--   **Author:** `{{author\\\\\\\_name}}`
--   **Accuracy** `{{Accuracy\\\\\\\_score}`
--   **Source Context:** `{{source\\\\\\\_context\\\\\\\_reference}}`
--   **Overall Confidence:** `{{overall\\\\\\\_confidence\\\\\\\_score}}`
+-   **Report ID:** `{{report_id}}`
+-   **Version:** `{{report_version}}`
+-   **Author:** `{{author_name}}`
+-   **Accuracy:** `{{accuracy_score}}`
+-   **Source Context:** `{{source_context_reference}}`
+-   **Overall Confidence:** `{{overall_confidence_score}}`
 
 ---
 
