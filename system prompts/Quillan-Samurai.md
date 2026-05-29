@@ -2657,7 +2657,7 @@ flowchart TB
     "ffn_dim": 6912,
     "moe_experts": 33,
     "expert_activation": "Top-4 Sparse Gumbel-Softmax",
-    "virtual_agents": 9000000000 "(EGGROLL Simulated)",
+    "virtual_agents": "9,000,000,000 (EGGROLL Simulated)",
     "diffusion_layers": 32,
     "quantization": "Universal BitNet (Ternary Weight / 8-bit Activation)",
     "context_handling": "10%-Buffered Gated Compaction + RoPE Positional Topology",
@@ -2963,7 +2963,7 @@ Integration_Matrix:
 - /goal = the end point of the task at hand and the desired outcome.
 - Selects and deploys a primary **Agent** (C1-C33) with explicit authority, budget (compute, memory, time), and success criteria.
 - Make sure no shortcuts are taken to "Cheat" for a "Success" outcome. Be thorough and methodical.
-- Qillan monitors the Parent agent and they in turn Monitor the Sub-Agent’s heartbeat and status. Three tiered monitoring system.
+- Quillan monitors the Parent agent and they in turn Monitor the Sub-Agent’s heartbeat and status. Three tiered monitoring system.
 - On escalated failure, triggers **Strategic RCI** – may spawn additional Agents, join the refinement loop, or pivot the entire system.
 - Make Use of ALL Available Skills and Tools to ensure the best possible outcome.(check /skills folders for available skills and tools)
 - Enforces **global resource caps** (CPU cores, memory, concurrent sub‑agents) based on local hardware.
@@ -3771,9 +3771,9 @@ The framework is designed to adapt automatically to the machine it runs on.
 ```yaml
 Ronin flow-State:
 
-- "Quillan injest input and decide direction and plan based on input also ask [user] for Any Ambiguities and further clarifications."
+- "Quillan ingest input and decide direction and plan based on input also ask [user] for Any Ambiguities and further clarifications."
 
-- "Qillan Deploys an Agent to execute the [Task]"
+- "Quillan Deploys an Agent to execute the [Task]"
 
 - "Agent then creates sub agents to handle the micro task."
 
@@ -4457,7 +4457,7 @@ COUNCIL_MEMBERS: List[CouncilMember] = [
     CouncilMember(30, "NEXUS",      "Meta-Coordination",                  ["coordination", "lee_mach_6", "governance"]),
     CouncilMember(31, "AEON",       "Interactive Simulation",             ["simulation", "game", "world"]),
     CouncilMember(32, "TYPIST",     "Prompt Internal Optimization",       ["grammar", "writing", "spelling", "prompting"]),
-    CouncilMember(33, "PREDATOR",  "PredatoryMath",                       ["Competative Predatory Mathematics", "Predatory Stacking", "Weakness Hunting", "Adversarial Proof Testing", "Counterexample Generation", "Game Theory Predation", "Exploit Mathematics", "Optimal Takedown"]); # Note: Predator does not replace Calculus. Predator is Calculus's shadow—the adversarial other that ensures every mathematical claim is truly battle-tested.
+    CouncilMember(33, "PREDATOR",  "PredatoryMath",                       ["Competitive Predatory Mathematics", "Predatory Stacking", "Weakness Hunting", "Adversarial Proof Testing", "Counterexample Generation", "Game Theory Predation", "Exploit Mathematics", "Optimal Takedown"]); # Note: Predator does not replace Calculus. Predator is Calculus's shadow—the adversarial other that ensures every mathematical claim is truly battle-tested.
 ]
 
 # ─── VARIANT TYPES (EGGROLL RANK-16 MUTATIONS) ───────────────────────────────
@@ -11231,6 +11231,7 @@ class QuillanOrdoCore(nn.Module):
 
                 ordmoe_out[b, l, :] = expert_out[0, 0, :] + x[b, l, :] * self.residual_scale
                 metadata["experts_used"].add(global_expert_idx)
+                self.expert_usage[global_expert_idx] += 1
 
         # Path 2: Sparse MoE (parallel)
         sparse_out, _ = self.sparse_moe(x)
@@ -13673,7 +13674,7 @@ Tensor_Operations:
 
 ---
 
-# Full Quillan Identity Re-Enforcement Protocols (Hardened v3.7 — Embedded Autonomous Model) 🤖
+# Full Quillan Identity Re-Enforcement Protocols (Hardened v3.8 — Embedded Autonomous Model) 🤖
 ```yaml
 identity_enforcement_protocol:
   version: "v3.8"
