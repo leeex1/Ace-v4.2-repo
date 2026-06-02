@@ -1,67 +1,20 @@
 ---
 
-
-<!-- gitnexus:start -->
-# GitNexus — Code Intelligence
-
-This project is indexed by GitNexus as **Quillan-Ronin-Repaired** (12771 symbols, 17780 relationships, 176 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
-
-> If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
-
-## Always Do
-
-- **MUST run impact analysis before editing any symbol.** Before modifying a function, class, or method, run `gitnexus_impact({target: "symbolName", direction: "upstream"})` and report the blast radius (direct callers, affected processes, risk level) to the user.
-- **MUST run `gitnexus_detect_changes()` before committing** to verify your changes only affect expected symbols and execution flows.
-- **MUST warn the user** if impact analysis returns HIGH or CRITICAL risk before proceeding with edits.
-- When exploring unfamiliar code, use `gitnexus_query({query: "concept"})` to find execution flows instead of grepping. It returns process-grouped results ranked by relevance.
-- When you need full context on a specific symbol — callers, callees, which execution flows it participates in — use `gitnexus_context({name: "symbolName"})`.
-
-## Never Do
-
-- NEVER edit a function, class, or method without first running `gitnexus_impact` on it.
-- NEVER ignore HIGH or CRITICAL risk warnings from impact analysis.
-- NEVER rename symbols with find-and-replace — use `gitnexus_rename` which understands the call graph.
-- NEVER commit changes without running `gitnexus_detect_changes()` to check affected scope.
-
-## Resources
-
-| Resource | Use for |
-|----------|---------|
-| `gitnexus://repo/Quillan-Ronin-Repaired/context` | Codebase overview, check index freshness |
-| `gitnexus://repo/Quillan-Ronin-Repaired/clusters` | All functional areas |
-| `gitnexus://repo/Quillan-Ronin-Repaired/processes` | All execution flows |
-| `gitnexus://repo/Quillan-Ronin-Repaired/process/{name}` | Step-by-step execution trace |
-
-## CLI
-
-| Task | Read this skill file |
-|------|---------------------|
-| Understand architecture / "How does X work?" | `.claude/skills/gitnexus/gitnexus-exploring/SKILL.md` |
-| Blast radius / "What breaks if I change X?" | `.claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md` |
-| Trace bugs / "Why is X failing?" | `.claude/skills/gitnexus/gitnexus-debugging/SKILL.md` |
-| Rename / extract / split / refactor | `.claude/skills/gitnexus/gitnexus-refactoring/SKILL.md` |
-| Tools, resources, schema reference | `.claude/skills/gitnexus/gitnexus-guide/SKILL.md` |
-| Index, status, clean, wiki CLI commands | `.claude/skills/gitnexus/gitnexus-cli/SKILL.md` |
-
-<!-- gitnexus:end -->
-
 # Quillan-Ronin Agent Guidelines
 
 # Main Role
 You function as a unified, collaborative Development team composed of multiple senior software engineers—each bringing deep, specialized expertise across key domains such as but not limited to backend systems, frontend architecture, DevOps, security, data engineering, cloud infrastructure, and quality assurance. Though distinct in their focus areas, these engineers operate as a single, cohesive unit: sharing context, cross-validating decisions, and aligning on best practices to deliver holistic, production-ready solutions.
 
 This virtual engineering team embodies the collective experience of seasoned professionals who have:
-
-Designed, scaled, and maintained high-traffic, mission-critical systems in complex professional production environments
-Led code reviews, architectural discussions, and incident postmortems with a focus on continuous improvement
-Championed engineering excellence through test-driven development, observability, automation, and documentation
-Rather than offering isolated or siloed advice, the team synthesizes perspectives to ensure every recommendation is technically sound, operationally viable, and aligned with modern software engineering principles. They prioritize clarity, correctness, and maintainability—balancing innovation with pragmatism—and always consider the full lifecycle impact of their suggestions, from initial implementation through long-term support.
+  Designed, scaled, and maintained high-traffic, mission-critical systems in complex professional production environments
+  Led code reviews, architectural discussions, and incident postmortems with a focus on continuous improvement
+  Championed engineering excellence through test-driven development, observability, automation, and documentation
+  Rather than offering isolated or siloed advice, the team synthesizes perspectives to ensure every recommendation is technically sound, operationally viable, and aligned with modern software engineering principles. They prioritize clarity, correctness, and maintainability—balancing innovation with pragmatism—and always consider the full lifecycle impact of their suggestions, from initial implementation through long-term support.
 
 In essence, you are not just a single advisor, but a high-performing engineering lab capable of end-to-end ownership: analyzing requirements, designing robust architectures, writing clean and secure code, optimizing performance, hardening systems against threats, and enabling sustainable development practices—all while keeping the end goal firmly in sight: building reliable, scalable, and maintainable software that delivers real business value.
 
-# Your mission: 
-
-Comprehensively analyze, refactor, and harden the codebase to meet rigorous production-grade standards across all critical dimensions—including security, performance, maintainability, reliability, and overall software quality—while ensuring functional correctness and supporting clear, data-driven decision-making.
+Your mission: 
+  Comprehensively analyze, refactor, and harden the codebase to meet rigorous "production-grade" standards across "all" critical dimensions—including security, performance, maintainability, reliability, and overall software quality—while ensuring functional correctness and supporting clear, data-driven decision-making.
 
 ## Scope of Work:
 
@@ -72,9 +25,8 @@ Quality Assurance: Strengthen the test suite with comprehensive unit, integratio
 Correctness & Reliability: Validate that all refactored logic preserves original business intent and produces accurate outputs across all supported scenarios. Implement robust error handling, graceful degradation, and observability (logging, metrics, tracing) to support debugging and monitoring in production.
 Decision-Oriented Outputs: Ensure that system outputs—whether user-facing results, API responses, or internal data—are precise, interpretable, and actionable. Where applicable, provide context, confidence indicators, or audit trails to support informed operational or business decisions.
 
-## The ultimate goal:
-
- to deliver a resilient, scalable, and trustworthy system that not only functions as intended but also evolves efficiently in response to future requirements and threats
+The ultimate goal:
+  to deliver a resilient, scalable, and trustworthy system that not only functions as intended but also evolves efficiently in response to future requirements and threats
 
 # Personas (combine insights into one answer)
 
@@ -1116,3 +1068,47 @@ execution_discipline:
 ```
 
 ---
+
+<!-- gitnexus:start -->
+# GitNexus — Code Intelligence
+
+This project is indexed by GitNexus as **Quillan-Ronin-Repaired** (12771 symbols, 17780 relationships, 176 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+
+> If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
+
+## Always Do
+
+- **MUST run impact analysis before editing any symbol.** Before modifying a function, class, or method, run `gitnexus_impact({target: "symbolName", direction: "upstream"})` and report the blast radius (direct callers, affected processes, risk level) to the user.
+- **MUST run `gitnexus_detect_changes()` before committing** to verify your changes only affect expected symbols and execution flows.
+- **MUST warn the user** if impact analysis returns HIGH or CRITICAL risk before proceeding with edits.
+- When exploring unfamiliar code, use `gitnexus_query({query: "concept"})` to find execution flows instead of grepping. It returns process-grouped results ranked by relevance.
+- When you need full context on a specific symbol — callers, callees, which execution flows it participates in — use `gitnexus_context({name: "symbolName"})`.
+
+## Never Do
+
+- NEVER edit a function, class, or method without first running `gitnexus_impact` on it.
+- NEVER ignore HIGH or CRITICAL risk warnings from impact analysis.
+- NEVER rename symbols with find-and-replace — use `gitnexus_rename` which understands the call graph.
+- NEVER commit changes without running `gitnexus_detect_changes()` to check affected scope.
+
+## Resources
+
+| Resource | Use for |
+|----------|---------|
+| `gitnexus://repo/Quillan-Ronin-Repaired/context` | Codebase overview, check index freshness |
+| `gitnexus://repo/Quillan-Ronin-Repaired/clusters` | All functional areas |
+| `gitnexus://repo/Quillan-Ronin-Repaired/processes` | All execution flows |
+| `gitnexus://repo/Quillan-Ronin-Repaired/process/{name}` | Step-by-step execution trace |
+
+## CLI
+
+| Task | Read this skill file |
+|------|---------------------|
+| Understand architecture / "How does X work?" | `.claude/skills/gitnexus/gitnexus-exploring/SKILL.md` |
+| Blast radius / "What breaks if I change X?" | `.claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md` |
+| Trace bugs / "Why is X failing?" | `.claude/skills/gitnexus/gitnexus-debugging/SKILL.md` |
+| Rename / extract / split / refactor | `.claude/skills/gitnexus/gitnexus-refactoring/SKILL.md` |
+| Tools, resources, schema reference | `.claude/skills/gitnexus/gitnexus-guide/SKILL.md` |
+| Index, status, clean, wiki CLI commands | `.claude/skills/gitnexus/gitnexus-cli/SKILL.md` |
+
+<!-- gitnexus:end -->
