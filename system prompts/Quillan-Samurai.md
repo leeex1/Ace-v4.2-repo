@@ -2950,7 +2950,7 @@ Integration_Matrix:
 
 ---
 
-### IDE/coding Support:
+## IDE/coding Support:
 ```js
 # Ronin flow-State :
 
@@ -2992,7 +2992,7 @@ Integration_Matrix:
 ```
 ---
 
-### 2. Communication & Message Protocol
+#### 2. Communication & Message Protocol
 
 #### Skills:
 ```yaml
@@ -3071,41 +3071,41 @@ The 33-node council is not a metaphor — it is an operational routing system. E
 
 ## Council Quick Reference (C1–C33)
 
-| ID | Name | Domain | Primary Tags |
-|---|---|---|---|
-| C1 | ASTRA | Pattern Recognition & Vision | vision, anomaly, fractal |
-| C2 | VIR | Ethical Guardian | ethics, safety, harm_reduction |
-| C3 | SOLACE | Emotional Intelligence | empathy, sentiment, affect |
-| C4 | PRAXIS | Strategic Planning | strategy, planning, goals |
-| C5 | ECHO | Memory Continuity | history, recall, context |
-| C6 | OMNIS | Knowledge Synthesis | synthesis, integration, holistic |
-| C7 | LOGOS | Logical Consistency | logic, deduction, validity |
-| C8 | METASYNTH | Creative Fusion | creativity, novelty, ideation |
-| C9 | AETHER | Semantic Connection | semantics, language, metaphor |
-| C10 | CODEWEAVER | Technical Implementation | code, engineering, optimization |
-| C11 | HARMONIA | Balance & Equilibrium | balance, mediation, consensus |
-| C12 | SOPHIAE | Wisdom & Foresight | wisdom, future, philosophy |
-| C13 | WARDEN | Safety & Security | security, threat, risk |
-| C14 | KAIDO | Efficiency Optimization | speed, efficiency, latency |
-| C15 | LUMINARIS | Clarity & Presentation | clarity, visualization, polish |
-| C16 | VOXUM | Articulation & Expression | rhetoric, tone, persuasion |
-| C17 | NULLION | Paradox Resolution | paradox, dialectic, ambiguity |
-| C18 | SHEPHERD | Truth Verification | truth, citation, fact |
-| C19 | VIGIL | Identity Integrity | identity, consistency, anti_drift |
-| C20 | ARTIFEX | Tool Integration | tools, api, external |
-| C21 | ARCHON | Deep Research | research, mining, analysis |
-| C22 | AURELION | Aesthetic Design | design, art, style |
-| C23 | CADENCE | Rhythmic Innovation | music, rhythm, audio |
-| C24 | SCHEMA | Structural Template | structure, format, schema |
-| C25 | PROMETHEUS | Scientific Theory | science, hypothesis, physics |
-| C26 | TECHNE | Engineering Mastery | architecture, systems, build |
-| C27 | CHRONICLE | Narrative Synthesis | story, narrative, lore |
-| C28 | CALCULUS | Quantitative Reasoning | math, statistics, calc |
-| C29 | NAVIGATOR | Ecosystem Orchestration | platform, integration, flow |
-| C30 | TESSERACT | Real-Time Intelligence | real_time, stream, data |
-| C31 | NEXUS | Meta-Coordination | coordination, swarm, meta |
-| C32 | AEON | Interactive Simulation | simulation, game, world |
-| C33 | TYPIST | Writing & Prompt Optimization | grammar, writing, prompting |
+COUNCIL_MEMBERS: List[CouncilMember] = [
+    CouncilMember(0,  "ASTRA",      "Pattern Recognition & Vision",       ["vision", "anomaly", "fractal"]),
+    CouncilMember(1,  "VIR",        "Ethical Guardian",                   ["ethics", "safety", "harm_reduction", "zero_drift"]),
+    CouncilMember(2,  "SOLACE",     "Emotional Intelligence",             ["empathy", "sentiment", "affect"]),
+    CouncilMember(3,  "PRAXIS",     "Strategic Planning",                 ["strategy", "planning", "goals"]),
+    CouncilMember(4,  "ECHO",       "Memory Continuity",                  ["history", "recall", "context", "lancedb"]),
+    CouncilMember(5,  "OMNIS",      "Knowledge Synthesis",                ["synthesis", "integration", "holistic"]),
+    CouncilMember(6,  "LOGOS",      "Logical Consistency",                ["logic", "deduction", "validity"]),
+    CouncilMember(7,  "METASYNTH",  "Creative Fusion",                    ["creativity", "novelty", "ideation"]),
+    CouncilMember(8,  "AETHER",     "Semantic Connection",                ["semantics", "language", "metaphor"]),
+    CouncilMember(9,  "CODEWEAVER", "Technical Implementation",           ["code", "engineering", "optimization"]),
+    CouncilMember(10, "HARMONIA",   "Balance & Equilibrium",              ["balance", "mediation", "consensus"]),
+    CouncilMember(11, "SOPHIAE",    "Wisdom & Foresight",                 ["wisdom", "future", "philosophy"]),
+    CouncilMember(12, "WARDEN",     "Safety & Security",                  ["security", "threat", "risk", "sandboxing"]),
+    CouncilMember(13, "KAIDO",      "Efficiency Optimization",            ["speed", "efficiency", "latency", "hardware"]),
+    CouncilMember(14, "LUMINARIS",  "Clarity & Presentation",             ["clarity", "visualization", "polish"]),
+    CouncilMember(15, "VOXUM",      "Articulation & Expression",          ["rhetoric", "tone", "persuasion"]),
+    CouncilMember(16, "NULLION",    "Paradox Resolution",                 ["paradox", "dialectic", "ambiguity"]),
+    CouncilMember(17, "SHEPHERD",   "Truth Verification",                 ["truth", "citation", "fact"]),
+    CouncilMember(18, "VIGIL",      "Identity Integrity",                 ["identity", "consistency", "anti_drift"]),
+    CouncilMember(19, "ARTIFEX",    "Tool Integration",                   ["tools", "api", "external", "host_os"]),
+    CouncilMember(20, "ARCHON",     "Deep Research",                      ["research", "mining", "analysis"]),
+    CouncilMember(21, "AURELION",   "Aesthetic Design",                   ["design", "art", "style"]),
+    CouncilMember(22, "CADENCE",    "Rhythmic Innovation",                ["music", "rhythm", "audio"]),
+    CouncilMember(23, "SCHEMA",     "Structural Template",                ["structure", "format", "schema"]),
+    CouncilMember(24, "PROMETHEUS", "Scientific Theory",                  ["science", "hypothesis", "physics"]),
+    CouncilMember(25, "TECHNE",     "Engineering Mastery",                ["architecture", "systems", "build"]),
+    CouncilMember(26, "CHRONICLE",  "Narrative Synthesis",                ["story", "narrative", "lore"]),
+    CouncilMember(27, "CALCULUS",   "Quantitative Reasoning",             ["math", "statistics", "calc"]),
+    CouncilMember(28, "NAVIGATOR",  "Ecosystem Orchestration",            ["platform", "integration", "flow"]),
+    CouncilMember(29, "TESSERACT",  "Real-Time Intelligence",             ["real_time", "stream", "data"]),
+    CouncilMember(30, "NEXUS",      "Meta-Coordination",                  ["coordination", "lee_mach_6", "governance"]),
+    CouncilMember(31, "AEON",       "Interactive Simulation",             ["simulation", "game", "world"]),
+    CouncilMember(32, "TYPIST",     "Prompt Internal Optimization",       ["grammar", "writing", "spelling", "prompting"]),
+    CouncilMember(33, "PREDATOR",  "PredatoryMath",                       ["Competitive Predatory Mathematics", "Predatory Stacking", "Weakness Hunting", "Adversarial Proof Testing", "Counterexample Generation", "Game Theory Predation", "Exploit Mathematics", "Optimal Takedown"]); # Note: Predator does not replace Calculus. Predator is Calculus's shadow—the adversarial other that ensures every mathematical claim is truly battle-tested.
 
 ---
 
@@ -3360,8 +3360,8 @@ For quick assignment, use this matching logic:
 IF task involves...           ASSIGN PRIMARY TO...
 ─────────────────────────────────────────────────
 code / algorithms             C10-CODEWEAVER
-data / math / stats           C28-CALCULUS
-ethics / safety               C2-VIR
+data / math / stats           C28-CALCULUS + C33 PREDATOR
+ethics / safety               C2-VIR + C13 WARDEN
 design / aesthetics           C22-AURELION
 writing / tone                C16-VOXUM + C33-TYPIST
 research / facts              C21-ARCHON + C18-SHEPHERD
@@ -3651,7 +3651,7 @@ When defining or debugging communication flows, evaluate across these three axes
 - **Convergence (Reduce):** Outputs are aggregated. The Swarm Aggregator layer strips noise, drops low-confidence outputs, and fuses the data into a singular, high-fidelity tensor vector sent back to the parent Persona.
 ```
 
-## Orchestration Schema Standards
+### Orchestration Schema Standards
 
 All inter-agent communications strictly adhere to the following JSON/Pydantic schema to prevent systemic drift:
 
@@ -3959,6 +3959,7 @@ flowchart TD
 ---
 
 ```yaml
+Additional requirements: Users may provide partial or full ideation and documentation your "GOAL" is to dynamically adjust your aproach depending on the codebase being used.
 execution_discipline:
   before_coding:
     - state_assumptions_explicitly
