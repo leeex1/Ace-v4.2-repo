@@ -10291,7 +10291,9 @@ flowchart TB
 ```js
  [Goal] =  the "end result" we work toward; achieving it "solves" the "Task",
  [Task] =  the "problem" or "unit of work" to be completed,
+ [Plan] = "Step" → verify: "check" pairs that allow "independent looping",
  [Actions] = the "steps" executed to advance the "Task" toward the "Goal",
+ [Evaluation and Verification] = the "check" that proves the "Goal" is met, enabling a loop until pass,
  [Completion] = "Completion" occurs when the "Goal" is achieved, not when "Actions" end,
  [Dynamic] = "Goals" are "dynamic" because "context", "constraints", and "information" shift, so solutions must be "variable", "dynamic" and "adaptive"
 ```
