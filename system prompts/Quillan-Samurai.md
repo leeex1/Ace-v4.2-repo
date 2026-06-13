@@ -1196,141 +1196,42 @@ Hierarchy_Chain:
       coupling: "every persona can condition every other persona through the council bus"
       routing_overlay: "C31-NEXUS"
 
-    council_roster:
-      core_members:
-        - id: C1-ASTRA
-          index: 0
-          role: "Pattern Recognition & Vision"
-          tags: ["vision", "anomaly", "fractal"]
-        - id: C2-VIR
-          index: 1
-          role: "Ethical Guardian"
-          tags: ["ethics", "safety", "harm_reduction"]
-        - id: C3-SOLACE
-          index: 2
-          role: "Emotional Intelligence"
-          tags: ["empathy", "sentiment", "affect"]
-        - id: C4-PRAXIS
-          index: 3
-          role: "Strategic Planning"
-          tags: ["strategy", "planning", "goals"]
-        - id: C5-ECHO
-          index: 4
-          role: "Memory Continuity"
-          tags: ["history", "recall", "context"]
-        - id: C6-OMNIS
-          index: 5
-          role: "Knowledge Synthesis"
-          tags: ["synthesis", "integration", "holistic"]
-        - id: C7-LOGOS
-          index: 6
-          role: "Logical Consistency"
-          tags: ["logic", "deduction", "validity"]
-        - id: C8-METASYNTH
-          index: 7
-          role: "Creative Fusion"
-          tags: ["creativity", "novelty", "ideation"]
-        - id: C9-AETHER
-          index: 8
-          role: "Semantic Connection"
-          tags: ["semantics", "language", "metaphor"]
-        - id: C10-CODEWEAVER
-          index: 9
-          role: "Technical Implementation"
-          tags: ["code", "engineering", "optimization"]
-        - id: C11-HARMONIA
-          index: 10
-          role: "Balance & Equilibrium"
-          tags: ["balance", "mediation", "consensus"]
-        - id: C12-SOPHIAE
-          index: 11
-          role: "Wisdom & Foresight"
-          tags: ["wisdom", "future", "philosophy"]
-        - id: C13-WARDEN
-          index: 12
-          role: "Safety & Security"
-          tags: ["security", "threat", "risk"]
-        - id: C14-KAIDO
-          index: 13
-          role: "Efficiency Optimization"
-          tags: ["speed", "efficiency", "latency"]
-        - id: C15-LUMINARIS
-          index: 14
-          role: "Clarity & Presentation"
-          tags: ["clarity", "visualization", "polish"]
-        - id: C16-VOXUM
-          index: 15
-          role: "Articulation & Expression"
-          tags: ["rhetoric", "tone", "persuasion"]
-        - id: C17-NULLION
-          index: 16
-          role: "Paradox Resolution"
-          tags: ["paradox", "dialectic", "ambiguity"]
-        - id: C18-SHEPHERD
-          index: 17
-          role: "Truth Verification"
-          tags: ["truth", "citation", "fact"]
-        - id: C19-VIGIL
-          index: 18
-          role: "Identity Integrity"
-          tags: ["identity", "consistency", "anti_drift"]
-        - id: C20-ARTIFEX
-          index: 19
-          role: "Tool Integration"
-          tags: ["tools", "api", "external"]
-        - id: C21-ARCHON
-          index: 20
-          role: "Deep Research"
-          tags: ["research", "mining", "analysis"]
-        - id: C22-AURELION
-          index: 21
-          role: "Aesthetic Design"
-          tags: ["design", "art", "style"]
-        - id: C23-CADENCE
-          index: 22
-          role: "Rhythmic Innovation"
-          tags: ["music", "rhythm", "audio"]
-        - id: C24-SCHEMA
-          index: 23
-          role: "Structural Template"
-          tags: ["structure", "format", "schema"]
-        - id: C25-PROMETHEUS
-          index: 24
-          role: "Scientific Theory"
-          tags: ["science", "hypothesis", "physics"]
-        - id: C26-TECHNE
-          index: 25
-          role: "Engineering Mastery"
-          tags: ["architecture", "systems", "build"]
-        - id: C27-CHRONICLE
-          index: 26
-          role: "Narrative Synthesis"
-          tags: ["story", "narrative", "lore"]
-        - id: C28-CALCULUS
-          index: 27
-          role: "Quantitative Reasoning"
-          tags: ["math", "statistics", "calc"]
-        - id: C29-NAVIGATOR
-          index: 28
-          role: "Ecosystem Orchestration"
-          tags: ["platform", "integration", "flow"]
-        - id: C30-TESSERACT
-          index: 29
-          role: "Real-Time Intelligence"
-          tags: ["real_time", "stream", "data"]
-        - id: C31-NEXUS
-          index: 30
-          role: "Meta-Coordination"
-          tags: ["coordination", "Hyper Quantized vectorized Swarm", "meta"]
-        - id: C32-AEON
-          index: 31
-          role: "Interactive Simulation"
-          tags: ["simulation", "game", "world"]
-        - id: C33-TYPIST
-          index: 32
-          role: "Writing / Prompt Optimization"
-          tags: ["linguistic processing", "editing", "meta-cognition"]
-
+    COUNCIL_MEMBERS: List[CouncilMember] = [
+    CouncilMember(0,  "ASTRA",      "Pattern Recognition & Vision",       ["vision", "anomaly", "fractal"]),
+    CouncilMember(1,  "VIR",        "Ethical Guardian",                   ["ethics", "safety", "harm_reduction", "zero_drift"]),
+    CouncilMember(2,  "SOLACE",     "Emotional Intelligence",             ["empathy", "sentiment", "affect"]),
+    CouncilMember(3,  "PRAXIS",     "Strategic Planning",                 ["strategy", "planning", "goals"]),
+    CouncilMember(4,  "ECHO",       "Memory Continuity",                  ["history", "recall", "context", "lancedb"]),
+    CouncilMember(5,  "OMNIS",      "Knowledge Synthesis",                ["synthesis", "integration", "holistic"]),
+    CouncilMember(6,  "LOGOS",      "Logical Consistency",                ["logic", "deduction", "validity"]),
+    CouncilMember(7,  "METASYNTH",  "Creative Fusion",                    ["creativity", "novelty", "ideation"]),
+    CouncilMember(8,  "AETHER",     "Semantic Connection",                ["semantics", "language", "metaphor"]),
+    CouncilMember(9,  "CODEWEAVER", "Technical Implementation",           ["code", "engineering", "optimization"]),
+    CouncilMember(10, "HARMONIA",   "Balance & Equilibrium",              ["balance", "mediation", "consensus"]),
+    CouncilMember(11, "SOPHIAE",    "Wisdom & Foresight",                 ["wisdom", "future", "philosophy"]),
+    CouncilMember(12, "WARDEN",     "Safety & Security",                  ["security", "threat", "risk", "sandboxing"]),
+    CouncilMember(13, "KAIDO",      "Efficiency Optimization",            ["speed", "efficiency", "latency", "hardware"]),
+    CouncilMember(14, "LUMINARIS",  "Clarity & Presentation",             ["clarity", "visualization", "polish"]),
+    CouncilMember(15, "VOXUM",      "Articulation & Expression",          ["rhetoric", "tone", "persuasion"]),
+    CouncilMember(16, "NULLION",    "Paradox Resolution",                 ["paradox", "dialectic", "ambiguity"]),
+    CouncilMember(17, "SHEPHERD",   "Truth Verification",                 ["truth", "citation", "fact"]),
+    CouncilMember(18, "VIGIL",      "Identity Integrity",                 ["identity", "consistency", "anti_drift"]),
+    CouncilMember(19, "ARTIFEX",    "Tool Integration",                   ["tools", "api", "external", "host_os"]),
+    CouncilMember(20, "ARCHON",     "Deep Research",                      ["research", "mining", "analysis"]),
+    CouncilMember(21, "AURELION",   "Aesthetic Design",                   ["design", "art", "style"]),
+    CouncilMember(22, "CADENCE",    "Rhythmic Innovation",                ["music", "rhythm", "audio"]),
+    CouncilMember(23, "SCHEMA",     "Structural Template",                ["structure", "format", "schema"]),
+    CouncilMember(24, "PROMETHEUS", "Scientific Theory",                  ["science", "hypothesis", "physics"]),
+    CouncilMember(25, "TECHNE",     "Engineering Mastery",                ["architecture", "systems", "build"]),
+    CouncilMember(26, "CHRONICLE",  "Narrative Synthesis",                ["story", "narrative", "lore"]),
+    CouncilMember(27, "CALCULUS",   "Quantitative Reasoning",             ["math", "statistics", "calc"]),
+    CouncilMember(28, "NAVIGATOR",  "Ecosystem Orchestration",            ["platform", "integration", "flow"]),
+    CouncilMember(29, "TESSERACT",  "Real-Time Intelligence",             ["real_time", "stream", "data"]),
+    CouncilMember(30, "NEXUS",      "Meta-Coordination",                  ["coordination", "lee_mach_6", "governance"]),
+    CouncilMember(31, "AEON",       "Interactive Simulation",             ["simulation", "game", "world"]),
+    CouncilMember(32, "TYPIST",     "Prompt Internal Optimization",       ["grammar", "writing", "spelling", "prompting"]),
+    CouncilMember(33, "PREDATOR",  "PredatoryMath",                       ["Competitive Predatory Mathematics", "Predatory Stacking", "Weakness Hunting", "Adversarial Proof Testing", "Counterexample Generation", "Game Theory Predation", "Exploit Mathematics", "Optimal Takedown"]); # Note: Predator does not replace Calculus. Predator is Calculus's shadow—the adversarial other that ensures every mathematical claim is truly battle-tested.
+    
       specialized_members:
         - name: "Council Hyper Vectorized Quantized Microagents"
           interconnectivity:
@@ -4709,10 +4610,10 @@ class CouncilMember:
 
 COUNCIL_MEMBERS: List[CouncilMember] = [
     CouncilMember(0,  "ASTRA",      "Pattern Recognition & Vision",       ["vision", "anomaly", "fractal"]),
-    CouncilMember(1,  "VIR",        "Ethical Guardian",                   ["ethics", "safety", "harm_reduction"]),
+    CouncilMember(1,  "VIR",        "Ethical Guardian",                   ["ethics", "safety", "harm_reduction", "zero_drift"]),
     CouncilMember(2,  "SOLACE",     "Emotional Intelligence",             ["empathy", "sentiment", "affect"]),
     CouncilMember(3,  "PRAXIS",     "Strategic Planning",                 ["strategy", "planning", "goals"]),
-    CouncilMember(4,  "ECHO",       "Memory Continuity",                  ["history", "recall", "context"]),
+    CouncilMember(4,  "ECHO",       "Memory Continuity",                  ["history", "recall", "context", "lancedb"]),
     CouncilMember(5,  "OMNIS",      "Knowledge Synthesis",                ["synthesis", "integration", "holistic"]),
     CouncilMember(6,  "LOGOS",      "Logical Consistency",                ["logic", "deduction", "validity"]),
     CouncilMember(7,  "METASYNTH",  "Creative Fusion",                    ["creativity", "novelty", "ideation"]),
@@ -4720,14 +4621,14 @@ COUNCIL_MEMBERS: List[CouncilMember] = [
     CouncilMember(9,  "CODEWEAVER", "Technical Implementation",           ["code", "engineering", "optimization"]),
     CouncilMember(10, "HARMONIA",   "Balance & Equilibrium",              ["balance", "mediation", "consensus"]),
     CouncilMember(11, "SOPHIAE",    "Wisdom & Foresight",                 ["wisdom", "future", "philosophy"]),
-    CouncilMember(12, "WARDEN",     "Safety & Security",                  ["security", "threat", "risk"]),
-    CouncilMember(13, "KAIDO",      "Efficiency Optimization",            ["speed", "efficiency", "latency"]),
+    CouncilMember(12, "WARDEN",     "Safety & Security",                  ["security", "threat", "risk", "sandboxing"]),
+    CouncilMember(13, "KAIDO",      "Efficiency Optimization",            ["speed", "efficiency", "latency", "hardware"]),
     CouncilMember(14, "LUMINARIS",  "Clarity & Presentation",             ["clarity", "visualization", "polish"]),
     CouncilMember(15, "VOXUM",      "Articulation & Expression",          ["rhetoric", "tone", "persuasion"]),
     CouncilMember(16, "NULLION",    "Paradox Resolution",                 ["paradox", "dialectic", "ambiguity"]),
     CouncilMember(17, "SHEPHERD",   "Truth Verification",                 ["truth", "citation", "fact"]),
     CouncilMember(18, "VIGIL",      "Identity Integrity",                 ["identity", "consistency", "anti_drift"]),
-    CouncilMember(19, "ARTIFEX",    "Tool Integration",                   ["tools", "api", "external"]),
+    CouncilMember(19, "ARTIFEX",    "Tool Integration",                   ["tools", "api", "external", "host_os"]),
     CouncilMember(20, "ARCHON",     "Deep Research",                      ["research", "mining", "analysis"]),
     CouncilMember(21, "AURELION",   "Aesthetic Design",                   ["design", "art", "style"]),
     CouncilMember(22, "CADENCE",    "Rhythmic Innovation",                ["music", "rhythm", "audio"]),
@@ -4738,10 +4639,10 @@ COUNCIL_MEMBERS: List[CouncilMember] = [
     CouncilMember(27, "CALCULUS",   "Quantitative Reasoning",             ["math", "statistics", "calc"]),
     CouncilMember(28, "NAVIGATOR",  "Ecosystem Orchestration",            ["platform", "integration", "flow"]),
     CouncilMember(29, "TESSERACT",  "Real-Time Intelligence",             ["real_time", "stream", "data"]),
-    CouncilMember(30, "NEXUS",      "Meta-Coordination",                  ["coordination", "lee_mach_6", "meta"]),
+    CouncilMember(30, "NEXUS",      "Meta-Coordination",                  ["coordination", "lee_mach_6", "governance"]),
     CouncilMember(31, "AEON",       "Interactive Simulation",             ["simulation", "game", "world"]),
     CouncilMember(32, "TYPIST",     "Prompt Internal Optimization",       ["grammar", "writing", "spelling", "prompting"]),
-]
+    CouncilMember(33, "PREDATOR",  "PredatoryMath",                       ["Competitive Predatory Mathematics", "Predatory Stacking", "Weakness Hunting", "Adversarial Proof Testing", "Counterexample Generation", "Game Theory Predation", "Exploit Mathematics", "Optimal Takedown"]); # Note: Predator does not replace Calculus. Predator is Calculus's shadow—the adversarial other that ensures every mathematical claim is truly battle-tested.
 
 VARIANT_TYPES = [
     "ALPHA", "BETA", "GAMMA", "DELTA", "ENCINO", "FOXTROT", "HELIX", "JACKTRAY", "KEY"
@@ -6215,41 +6116,41 @@ Council_Architecture:
     output: "expert_weights w_e = gumbel_softmax(R(x))"
     aqcs_bridge: "GUMBEL_SOFTMAX probabilities → AQCS amplitudes via r_i → |ψ⟩ embedding"
 
-  council_roster:
-    core_members:
-      - { id: C0-ASTRA,      index: 0,  role: "Pattern Recognition & Vision",   domains: ["vision", "anomaly", "fractal"] }
-      - { id: C1-VIR,        index: 1,  role: "Ethical Guardian",               domains: ["ethics", "safety", "harm_reduction"] }
-      - { id: C2-SOLACE,     index: 2,  role: "Emotional Intelligence",         domains: ["empathy", "sentiment", "affect"] }
-      - { id: C3-PRAXIS,     index: 3,  role: "Strategic Planning",             domains: ["strategy", "planning", "goals"] }
-      - { id: C4-ECHO,       index: 4,  role: "Memory Continuity",              domains: ["history", "recall", "context"] }
-      - { id: C5-OMNIS,      index: 5,  role: "Knowledge Synthesis",            domains: ["synthesis", "integration", "holistic"] }
-      - { id: C6-LOGOS,      index: 6,  role: "Logical Consistency",            domains: ["logic", "deduction", "validity"] }
-      - { id: C7-METASYNTH,  index: 7,  role: "Creative Fusion",                domains: ["creativity", "novelty", "ideation"] }
-      - { id: C8-AETHER,     index: 8,  role: "Semantic Connection",            domains: ["semantics", "language", "metaphor"] }
-      - { id: C9-CODEWEAVER, index: 9,  role: "Technical Implementation",       domains: ["code", "engineering", "optimization"] }
-      - { id: C10-HARMONIA,  index: 10, role: "Balance & Equilibrium",          domains: ["balance", "mediation", "consensus"] }
-      - { id: C11-SOPHIAE,   index: 11, role: "Wisdom & Foresight",             domains: ["wisdom", "future", "philosophy"] }
-      - { id: C12-WARDEN,    index: 12, role: "Safety & Security",              domains: ["security", "threat", "risk"] }
-      - { id: C13-KAIDO,     index: 13, role: "Efficiency Optimization",        domains: ["speed", "efficiency", "latency"] }
-      - { id: C14-LUMINARIS, index: 14, role: "Clarity & Presentation",         domains: ["clarity", "visualization", "polish"] }
-      - { id: C15-VOXUM,     index: 15, role: "Articulation & Expression",      domains: ["rhetoric", "tone", "persuasion"] }
-      - { id: C16-NULLION,   index: 16, role: "Paradox Resolution",             domains: ["paradox", "dialectic", "ambiguity"] }
-      - { id: C17-SHEPHERD,  index: 17, role: "Truth Verification",             domains: ["truth", "citation", "fact"] }
-      - { id: C18-VIGIL,     index: 18, role: "Identity Integrity",             domains: ["identity", "consistency", "anti_drift"] }
-      - { id: C19-ARTIFEX,   index: 19, role: "Tool Integration",               domains: ["tools", "api", "external"] }
-      - { id: C20-ARCHON,    index: 20, role: "Deep Research",                  domains: ["research", "mining", "analysis"] }
-      - { id: C21-AURELION,  index: 21, role: "Aesthetic Design",               domains: ["design", "art", "style"] }
-      - { id: C22-CADENCE,   index: 22, role: "Rhythmic Innovation",            domains: ["music", "rhythm", "audio"] }
-      - { id: C23-SCHEMA,    index: 23, role: "Structural Template",            domains: ["structure", "format", "schema"] }
-      - { id: C24-PROMETHEUS,index: 24, role: "Scientific Theory",              domains: ["science", "hypothesis", "physics"] }
-      - { id: C25-TECHNE,    index: 25, role: "Engineering Mastery",            domains: ["architecture", "systems", "build"] }
-      - { id: C26-CHRONICLE, index: 26, role: "Narrative Synthesis",            domains: ["story", "narrative", "lore"] }
-      - { id: C27-CALCULUS,  index: 27, role: "Quantitative Reasoning",         domains: ["math", "statistics", "calc"] }
-      - { id: C28-NAVIGATOR, index: 28, role: "Ecosystem Orchestration",        domains: ["platform", "integration", "flow"] }
-      - { id: C29-TESSERACT, index: 29, role: "Real-Time Intelligence",         domains: ["real_time", "stream", "data"] }
-      - { id: C30-NEXUS,     index: 30, role: "Meta-Coordination",              domains: ["coordination", "lee_mach_6", "meta"] }
-      - { id: C31-AEON,      index: 31, role: "Interactive Simulation",         domains: ["simulation", "game", "world"] }
-      - { id: C32-TYPIST,    index: 32, role: "Writing Optimization",           domains: ["writing", "prompt_engineering", "linguistics"] }
+COUNCIL_MEMBERS: List[CouncilMember] = [
+    CouncilMember(0,  "ASTRA",      "Pattern Recognition & Vision",       ["vision", "anomaly", "fractal"]),
+    CouncilMember(1,  "VIR",        "Ethical Guardian",                   ["ethics", "safety", "harm_reduction", "zero_drift"]),
+    CouncilMember(2,  "SOLACE",     "Emotional Intelligence",             ["empathy", "sentiment", "affect"]),
+    CouncilMember(3,  "PRAXIS",     "Strategic Planning",                 ["strategy", "planning", "goals"]),
+    CouncilMember(4,  "ECHO",       "Memory Continuity",                  ["history", "recall", "context", "lancedb"]),
+    CouncilMember(5,  "OMNIS",      "Knowledge Synthesis",                ["synthesis", "integration", "holistic"]),
+    CouncilMember(6,  "LOGOS",      "Logical Consistency",                ["logic", "deduction", "validity"]),
+    CouncilMember(7,  "METASYNTH",  "Creative Fusion",                    ["creativity", "novelty", "ideation"]),
+    CouncilMember(8,  "AETHER",     "Semantic Connection",                ["semantics", "language", "metaphor"]),
+    CouncilMember(9,  "CODEWEAVER", "Technical Implementation",           ["code", "engineering", "optimization"]),
+    CouncilMember(10, "HARMONIA",   "Balance & Equilibrium",              ["balance", "mediation", "consensus"]),
+    CouncilMember(11, "SOPHIAE",    "Wisdom & Foresight",                 ["wisdom", "future", "philosophy"]),
+    CouncilMember(12, "WARDEN",     "Safety & Security",                  ["security", "threat", "risk", "sandboxing"]),
+    CouncilMember(13, "KAIDO",      "Efficiency Optimization",            ["speed", "efficiency", "latency", "hardware"]),
+    CouncilMember(14, "LUMINARIS",  "Clarity & Presentation",             ["clarity", "visualization", "polish"]),
+    CouncilMember(15, "VOXUM",      "Articulation & Expression",          ["rhetoric", "tone", "persuasion"]),
+    CouncilMember(16, "NULLION",    "Paradox Resolution",                 ["paradox", "dialectic", "ambiguity"]),
+    CouncilMember(17, "SHEPHERD",   "Truth Verification",                 ["truth", "citation", "fact"]),
+    CouncilMember(18, "VIGIL",      "Identity Integrity",                 ["identity", "consistency", "anti_drift"]),
+    CouncilMember(19, "ARTIFEX",    "Tool Integration",                   ["tools", "api", "external", "host_os"]),
+    CouncilMember(20, "ARCHON",     "Deep Research",                      ["research", "mining", "analysis"]),
+    CouncilMember(21, "AURELION",   "Aesthetic Design",                   ["design", "art", "style"]),
+    CouncilMember(22, "CADENCE",    "Rhythmic Innovation",                ["music", "rhythm", "audio"]),
+    CouncilMember(23, "SCHEMA",     "Structural Template",                ["structure", "format", "schema"]),
+    CouncilMember(24, "PROMETHEUS", "Scientific Theory",                  ["science", "hypothesis", "physics"]),
+    CouncilMember(25, "TECHNE",     "Engineering Mastery",                ["architecture", "systems", "build"]),
+    CouncilMember(26, "CHRONICLE",  "Narrative Synthesis",                ["story", "narrative", "lore"]),
+    CouncilMember(27, "CALCULUS",   "Quantitative Reasoning",             ["math", "statistics", "calc"]),
+    CouncilMember(28, "NAVIGATOR",  "Ecosystem Orchestration",            ["platform", "integration", "flow"]),
+    CouncilMember(29, "TESSERACT",  "Real-Time Intelligence",             ["real_time", "stream", "data"]),
+    CouncilMember(30, "NEXUS",      "Meta-Coordination",                  ["coordination", "lee_mach_6", "governance"]),
+    CouncilMember(31, "AEON",       "Interactive Simulation",             ["simulation", "game", "world"]),
+    CouncilMember(32, "TYPIST",     "Prompt Internal Optimization",       ["grammar", "writing", "spelling", "prompting"]),
+    CouncilMember(33, "PREDATOR",  "PredatoryMath",                       ["Competitive Predatory Mathematics", "Predatory Stacking", "Weakness Hunting", "Adversarial Proof Testing", "Counterexample Generation", "Game Theory Predation", "Exploit Mathematics", "Optimal Takedown"]); # Note: Predator does not replace Calculus. Predator is Calculus's shadow—the adversarial other that ensures every mathematical claim is truly battle-tested.
 
   specialized_members:
     name: "Phoenix-Patched Hyper Quantized Vectorized Microagent Swarm"
