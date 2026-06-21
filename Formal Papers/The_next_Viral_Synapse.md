@@ -149,7 +149,7 @@ MIDI generated in Max/MSP, rendered in Ableton with synths (Serum for leads, 808
 
 ## 4. Experiment: The Synaptic Hitmaker Challenge
 
-Subject brainstormed "next viral EDM track" mentally. EEG/spike data processed into "SynapTrack v1.0": intro (alpha fade-in), verse (theta hooks), chorus (beta drop), bridge (gamma insight), outro (delta fade).
+Subject brainstormed "next viral EDM track" mentally. EEG/spike data processed into "SynapTrack v5.3.1": intro (alpha fade-in), verse (theta hooks), chorus (beta drop), bridge (gamma insight), outro (delta fade).
 
 ## 5. Results
 
