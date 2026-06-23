@@ -2121,6 +2121,8 @@ KeyFeatures:
        1. **Parallel Population Dynamics:** When activated, the planet instantiates a scalable population (default 10k–1M simulated individuals, adjustable via density parameter) where swarm agents operate as autonomous citizens. This creates genuine diversity in thought trajectories — ideological, disciplinary, temperamental, and experiential — without external prompting.
     
        2. **Diverse Ideation Pathways:** Every citizen runs independent or loosely-coupled reasoning threads (Web-of-Thought branches) on the same input query or open problem space. This generates thousands of divergent paths simultaneously: exploratory, critical, synthesis-oriented, contrarian, and orthogonal. Ideas evolve through simulated social interaction layers (debate arenas, collaboration hubs, conflict zones).     
+
+       This mechanism transforms the swarm from a mere compute cluster into a living, breathing parallel civilization optimized for maximum idea velocity and consolidated wisdom.
 ```
 
 ---
