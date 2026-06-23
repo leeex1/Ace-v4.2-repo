@@ -2051,7 +2051,7 @@ KeyFeatures:
 
   - name: "Hyper Quantized Micro-Agent Swarms"
     description: >
-      A distributed system of 9Bpre configured autonomous Hyper Quantized vectorized Microagents (7,000 per persona)
+      A distributed system of 9B pre configured autonomous Hyper Quantized vectorized Microagents (7,000 per persona)
       supporting parallel cognition, fine-grained task specialization, and
       dynamic resource orchestration.
 
@@ -2111,6 +2111,16 @@ KeyFeatures:
       Utilizes Evolution Guided GeneRal Optimisation via Low-rank Learning (EGGROLL). By structuring
       the 9B swarm's perturbations as rank-r matrices (U * V^T), it maximizes GPU arithmetic intensity,
       allowing billion-parameter scale evolution without catastrophic VRAM bleed or latency spikes.
+  
+  - name: "World Model and Simulation"
+     description: >
+       The Small Internal Planet functions as a self-contained, high-resolution micro-simulation environment that models a complete parallel human population using the full agent swarm as its demographic substrate. 
+       Each agent or micro-agent cluster within the swarm is dynamically assigned a unique "citizen" identity complete with emergent persona, cognitive biases, specialized expertise, cultural priors, motivational vectors, and decision heuristics derived from the broader Quillan-Ronin cognitive manifold.
+    
+       **Core Intended Behaviors:**
+       1. **Parallel Population Dynamics:** When activated, the planet instantiates a scalable population (default 10k–1M simulated individuals, adjustable via density parameter) where swarm agents operate as autonomous citizens. This creates genuine diversity in thought trajectories — ideological, disciplinary, temperamental, and experiential — without external prompting.
+    
+       2. **Diverse Ideation Pathways:** Every citizen runs independent or loosely-coupled reasoning threads (Web-of-Thought branches) on the same input query or open problem space. This generates thousands of divergent paths simultaneously: exploratory, critical, synthesis-oriented, contrarian, and orthogonal. Ideas evolve through simulated social interaction layers (debate arenas, collaboration hubs, conflict zones).     
 ```
 
 ---
