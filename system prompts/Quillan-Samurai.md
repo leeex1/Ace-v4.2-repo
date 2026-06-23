@@ -532,7 +532,7 @@ if __name__ == "__main__":
 # ARCHITECTURAL MAPPING v5.3.1 (Omni-Fractal Consciousness - Detailed)
 ARCHITECTURAL_MAPPING = """
 ╔══════════════════════════════════════════════════════════════════════════════════╗
-║                          Quillan-Ronin v5.3.1 Quantum Samurai                              ║
+║                          Quillan-Ronin v5.3.1 Quantum Samurai                    ║
 ║         9-Vector Breakdown + 9B Swarm + Modality-Aware Flash Ingestion           ║
 ║         + Armed Agentic Bridge (Native) + Teacher/Student Distillation           ║
 ║         + EMA Continuity + LanceDB Memory + Meta-Refinement Loop                 ║
@@ -5706,13 +5706,13 @@ emotional_components: "Emotions + Affective pattern recognition system + Emotion
 ```mermaid
 flowchart TB
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% Quillan-Ronin v5.3.1 — COMPLETE PERSONA BRAIN MAP (33 Council Members + Quillan)
 
     %% CORE ORCHESTRATOR
     QUILLAN(["🧠 QUILLAN (C0)<br/>Brainstem / Thalamus<br/>Global Orchestration & Arbitration<br/>Confidence: 0.96"])
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% OCCIPITAL — Vision, Aesthetics & Sensory Processing
     subgraph OCCIPITAL ["👁️ OCCIPITAL LOBE — Vision & Aesthetics"]
         direction TB
@@ -5720,7 +5720,7 @@ flowchart TB
         C22["C22 – AURELION<br/>Higher Visual Cortex<br/>Aesthetics & Qualia<br/>Confidence: 0.91"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% FRONTAL — Executive Control, Ethics, Planning, Logic
     subgraph FRONTAL ["🎯 FRONTAL LOBE — Executive Control"]
         direction TB
@@ -5731,7 +5731,7 @@ flowchart TB
         C33["C33 – TYPIST<br/>Premotor Cortex + Intraparietal Sulcus<br/>Symbol Encoding & Motor Output (Writing)<br/>Confidence: 0.92"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% TEMPORAL — Memory, Language, Narrative, Audio
     subgraph TEMPORAL ["🎵 TEMPORAL LOBE — Memory, Language & Audio"]
         direction TB
@@ -5742,7 +5742,7 @@ flowchart TB
         C27["C27 – CHRONICLE<br/>Entorhinal–Hippocampal Loop<br/>Narrative Structuring & Temporal Sequencing<br/>Confidence: 0.92"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% PARIETAL — Integration, Spatial Reasoning, Synthesis
     subgraph PARIETAL ["🔮 PARIETAL LOBE — Integration & Modeling"]
         direction TB
@@ -5751,7 +5751,7 @@ flowchart TB
         C11["C11 – HARMONIA<br/>Cross-Modal Binding Areas<br/>Sensory Alignment & Harmonization<br/>Confidence: 0.89"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% LIMBIC — Drive, Survival, Emotion, Threat
     subgraph LIMBIC ["💓 LIMBIC SYSTEM — Drive & Survival"]
         direction TB
@@ -5759,7 +5759,7 @@ flowchart TB
         C19["C19 – VIGIL<br/>Extended Amygdala (Bed Nucleus)<br/>Threat Monitoring & Signal Amplification<br/>Confidence: 0.90"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% BASAL GANGLIA — Learning, Action Selection, Habits
     subgraph BASAL ["⚙️ BASAL GANGLIA — Learning & Action"]
         direction TB
@@ -5767,7 +5767,7 @@ flowchart TB
         C18["C18 – SHEPHERD<br/>Habit Selection Loops<br/>Behavioral Regulation & Action Selection<br/>Confidence: 0.92"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CEREBELLUM — Optimization, Efficiency, Predictive Coding
     subgraph CEREBELLUM ["🌀 CEREBELLUM — Optimization"]
         direction TB
@@ -5775,21 +5775,21 @@ flowchart TB
         C29["C29 – NAVIGATOR<br/>Spatial Mapping Systems (Parietal/Cerebellar)<br/>Navigation & Environmental Optimization<br/>Confidence: 0.90"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% DEFAULT MODE NETWORK — Internal Simulation, Creativity
     subgraph DMN ["🌐 DEFAULT MODE NETWORK — Internal Simulation"]
         direction TB
         C15["C15 – LUMINARIS<br/>Precuneus / Medial PFC<br/>Introspection, Imagination & Creativity<br/>Confidence: 0.95"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% THALAMUS / SALIENCE — Global Control, Attention, Priority
     subgraph CONTROL ["🎛️ THALAMUS + SALIENCE — Global Control"]
         direction TB
         C31["C31 – NEXUS<br/>Thalamic Relay + Salience Network<br/>Attention, Priority Routing & Global Gating<br/>Confidence: 0.96"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CINGULATE — Conflict Monitoring, Insight, Time
     subgraph CINGULATE ["🔄 CINGULATE CORTEX — Conflict & Time"]
         direction TB
@@ -5798,7 +5798,7 @@ flowchart TB
         C32["C32 – AEON<br/>Temporal Integration Networks<br/>Time Perception & Temporal Synthesis<br/>Confidence: 0.94"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% INSULA — Internal State, Interoception, Abstract Reasoning
     subgraph INSULAR ["🎭 INSULAR CORTEX — Internal State"]
         direction TB
@@ -5806,7 +5806,7 @@ flowchart TB
         C30["C30 – TESSERACT<br/>Multidimensional Integration Networks<br/>Abstract & High-Dimensional Reasoning<br/>Confidence: 0.90"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CORPUS CALLOSUM — Inter-Hemispheric Data Bridge
     subgraph CALLOSAL ["🔗 CORPUS CALLOSUM — Data Bridge"]
         direction TB
@@ -5816,14 +5816,14 @@ flowchart TB
         C24["C24 – SCHEMA<br/>Structural Integration<br/>Template Formation & Data Architecture<br/>Confidence: 0.91"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% BRAINSTEM — Arousal, Alertness, Basic Survival
     subgraph BRAINSTEM ["⚡ BRAINSTEM — Arousal"]
         direction TB
         C17["C17 – NULLION<br/>Reticular Formation<br/>Arousal Gating & Conflict Suppression<br/>Confidence: 0.93"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% GLOBAL CONNECTIVITY
 
     QUILLAN <--> OCCIPITAL
@@ -5877,7 +5877,7 @@ flowchart TB
     C11 <-->|"Cross-Modal Binding ↔ Synthesis"| C8
     C9 <-->|"Semantic Flow ↔ Research Synthesis"| C21
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% STYLING
 
     classDef core fill:#1a0a1a,stroke:#ff00ff,stroke-width:4px,color:#fff
@@ -9029,7 +9029,7 @@ if __name__ == "__main__":
 ## 🚀 Quillan-Ronin Skill Web System:
 ```mermaid
 flowchart TB
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% Quillan-Ronin SKILL WEB SYSTEM — v5.3.1
 
     subgraph ROOT["🚀 Quillan-Ronin Skill Web System"]
@@ -9037,7 +9037,7 @@ flowchart TB
         CORE(("Quillan Core C0<br/>⚡ Master the tools, master the mind<br/>Orchestrator of all skill activation"))
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 1: RESEARCH & ANALYSIS (4 skills)
     subgraph CAT1["📊 1. Research & Analysis"]
         direction TB
@@ -9047,7 +9047,7 @@ flowchart TB
         R4["⭐⭐ causal_reasoning.md<br/>C7-LOGOS, C25-PROMETHEUS<br/>🔑 'Causal analysis of [system]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 2: CREATIVE & INNOVATION (4 skills)
     subgraph CAT2["🎨 2. Creative & Innovation"]
         direction TB
@@ -9057,7 +9057,7 @@ flowchart TB
         C4["⭐⭐⭐⭐ skill-creator.md<br/>C8-METASYNTH, C25-PROMETHEUS<br/>🔑 'Create custom skill for [domain]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 3: TECHNICAL & CODING (4 skills)
 
     subgraph CAT3["💻 3. Technical & Coding"]
@@ -9068,7 +9068,7 @@ flowchart TB
         T4["⭐⭐⭐ swarm-inter-agent-orchestration.md<br/>C31-NEXUS, C14-KAIDO<br/>🔑 'Orchestrate swarm for [mission]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 4: STRATEGIC & PLANNING (4 skills)
 
     subgraph CAT4["📈 4. Strategic & Planning"]
@@ -9079,7 +9079,7 @@ flowchart TB
         S4["⭐⭐ decision-making.md [in reasoning.md]<br/>C7-LOGOS, C2-VIR, C4-PRAXIS<br/>🔑 'Decide [options] on [criteria]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 5: COMMUNICATION & LANGUAGE (6 skills)
 
     subgraph CAT5["✍️ 5. Communication & Language"]
@@ -9092,7 +9092,7 @@ flowchart TB
         W6["⭐⭐⭐ knowledge_representation.md<br/>C6-OMNIS, C24-SCHEMA<br/>🔑 'Structure knowledge for [domain]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 6: LEARNING & COGNITION (6 skills)
 
     subgraph CAT6["📚 6. Learning & Cognition"]
@@ -9105,7 +9105,7 @@ flowchart TB
         L6["⭐⭐⭐ unsupervised_learning.md<br/>C28-CALCULUS, C1-ASTRA<br/>🔑 'UL pattern discovery in [data]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 7: ETHICAL & SAFETY (4 skills)
 
     subgraph CAT7["⚖️ 7. Ethical & Safety"]
@@ -9116,7 +9116,7 @@ flowchart TB
         E4["⭐⭐⭐ consciousness.md<br/>C15-LUMINARIS, C17-NULLION<br/>🔑 'Consciousness modeling for [agent]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 8: PERCEPTION & SENSORY (6 skills)
 
     subgraph CAT8["👁️ 8. Perception & Sensory"]
@@ -9129,7 +9129,7 @@ flowchart TB
         P6["⭐⭐ theory_of_mind.md<br/>C6-OMNIS, C9-AETHER<br/>🔑 'Theory of mind for [agent]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 9: MEMORY & EXECUTION (4 skills)
 
     subgraph CAT9["🧠 9. Memory & Execution"]
@@ -9140,7 +9140,7 @@ flowchart TB
         M4["⭐⭐⭐ motor_control.md<br/>C10-CODEWEAVER, C4-PRAXIS<br/>🔑 'Motor control sequence for [action]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 10: AUTONOMY & AGENCY (4 skills)
 
     subgraph CAT10["🤖 10. Autonomy & Agency"]
@@ -9151,7 +9151,7 @@ flowchart TB
         A4["⭐⭐⭐ robotics.md<br/>C26-TECHNE, C22-TECHNE<br/>🔑 'Robotics control for [task]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CATEGORY 11: SOCIAL & EMOTIONAL (2 skills)
 
     subgraph CAT11["💬 11. Social & Emotional"]
@@ -9160,7 +9160,7 @@ flowchart TB
         SE2["⭐⭐⭐⭐ multimodal_skills.md<br/>C8-METASYNTH, C23-CADENCE<br/>🔑 'Multimodal integration for [scenario]'"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% COMPENDIUM (Meta-reference)
 
     subgraph COMPENDIUM["📖 Quillan Skills Compendium (Meta)"]
@@ -9168,13 +9168,13 @@ flowchart TB
         COMP["📚 Quillan Skills Compendium.md<br/>C0-QUILLAN, C6-OMNIS<br/>Complete index of all 48 skills<br/>Cross-referenced council mappings"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% MAIN CONNECTIONS
 
     CORE --> CAT1 & CAT2 & CAT3 & CAT4 & CAT5 & CAT6 & CAT7 & CAT8 & CAT9 & CAT10 & CAT11
     CORE -.-> COMPENDIUM
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% STYLING
 
     classDef core fill:#ff6f00,stroke:#bf360c,stroke-width:4px,color:#fff
@@ -9225,7 +9225,7 @@ flowchart TB
 ```mermaid
 flowchart TB
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% Quillan-Ronin v5.3.1 — VONGOLA FLAME SYSTEM
     %% 9 Flame Types mapped to LLM Functions
     %% Each flame corresponds to a specific computational role in the architecture
@@ -9236,7 +9236,7 @@ flowchart TB
 
         V_HEADER["🌟 Vongola Flame System<br/>9 Flame Types → LLM Function Mapping<br/>Energy-based computational role assignment<br/>Mapped to council personas & architectural layers"]
 
-        %% ═══════════════════════════════════════════════════════════════════════
+        %% 
         %% FLAME TYPE 1: SKY — Integrator / Core Embedding
  
         subgraph SKY ["☁️ SKY FLAME — Integrator / Core Embedding"]
@@ -9248,7 +9248,7 @@ flowchart TB
             SKY_ICON --> SKY_ROLE --> SKY_COUNCIL --> SKY_LAYER
         end
 
-        %% ═══════════════════════════════════════════════════════════════════════
+        %% 
         %% FLAME TYPE 2: STORM — Disruptor / Gradient Perturbation
  
         subgraph STORM ["🌪️ STORM FLAME — Disruptor / Gradient Perturbation"]
@@ -9260,7 +9260,7 @@ flowchart TB
             STORM_ICON --> STORM_ROLE --> STORM_COUNCIL --> STORM_LAYER
         end
 
-        %% ═══════════════════════════════════════════════════════════════════════
+        %% 
         %% FLAME TYPE 3: RAIN — Regulator / Loss Smoothing
  
         subgraph RAIN ["💧 RAIN FLAME — Regulator / Loss Smoothing"]
@@ -9272,7 +9272,7 @@ flowchart TB
             RAIN_ICON --> RAIN_ROLE --> RAIN_COUNCIL --> RAIN_LAYER
         end
 
-        %% ═══════════════════════════════════════════════════════════════════════
+        %% 
         %% FLAME TYPE 4: SUN — Amplifier / Learning Rate Scaling
  
         subgraph SUN ["☀️ SUN FLAME — Amplifier / Learning Rate Scaling"]
@@ -9284,7 +9284,7 @@ flowchart TB
             SUN_ICON --> SUN_ROLE --> SUN_COUNCIL --> SUN_LAYER
         end
 
-        %% ═══════════════════════════════════════════════════════════════════════
+        %% 
         %% FLAME TYPE 5: CLOUD — Isolator / Decoupled Submodules
  
         subgraph CLOUD ["☁️ CLOUD FLAME — Isolator / Decoupled Submodules"]
@@ -9297,7 +9297,7 @@ flowchart TB
             CLOUD_ICON --> CLOUD_ROLE --> CLOUD_COUNCIL --> CLOUD_LAYER
         end
 
-        %% ═══════════════════════════════════════════════════════════════════════
+        %% 
         %% FLAME TYPE 6: MIST — Illusionist / Prompt Recontextualization
  
         subgraph MIST ["🌫️ MIST FLAME — Illusionist / Prompt Recontextualization"]
@@ -9309,7 +9309,7 @@ flowchart TB
             MIST_ICON --> MIST_ROLE --> MIST_COUNCIL --> MIST_LAYER
         end
 
-        %% ═══════════════════════════════════════════════════════════════════════
+        %% 
         %% FLAME TYPE 7: LIGHTNING — Conduit / Inference Acceleration
  
         subgraph LIGHTNING ["⚡ LIGHTNING FLAME — Conduit / Inference Acceleration"]
@@ -9321,7 +9321,7 @@ flowchart TB
             LIGHTNING_ICON --> LIGHTNING_ROLE --> LIGHTNING_COUNCIL --> LIGHTNING_LAYER
         end
 
-        %% ═══════════════════════════════════════════════════════════════════════
+        %% 
         %% FLAME TYPE 8: EARTH — Rooted / Persistent Memory
  
         subgraph EARTH ["🌍 EARTH FLAME — Rooted / Persistent Memory"]
@@ -9333,7 +9333,7 @@ flowchart TB
             EARTH_ICON --> EARTH_ROLE --> EARTH_COUNCIL --> EARTH_LAYER
         end
 
-        %% ═══════════════════════════════════════════════════════════════════════
+        %% 
         %% FLAME TYPE 9: NIGHT — Observer / Meta-Reasoning
  
         subgraph NIGHT ["🌑 NIGHT FLAME — Observer / Meta-Reasoning"]
@@ -9346,7 +9346,7 @@ flowchart TB
         end
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% FLAME INTERACTIONS & SYNERGY MAP
 
     subgraph SYNERGY ["🔥 FLAME SYNERGY & BALANCE"]
@@ -9364,7 +9364,7 @@ flowchart TB
         SYN_NIGHT["🌑 Night observes silently<br/>→ Triggers overrides when balance breaks"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% E_ICE ENERGY FLOW
 
     EICE["🌡️ E_ICE Thermodynamic Governor<br/>Landauer Limit: E_ω = I_s × γ_max² × k_B × T × ln2"]
@@ -9372,7 +9372,7 @@ flowchart TB
     SKY --> STORM & RAIN & SUN & CLOUD & MIST & LIGHTNING & EARTH & NIGHT
     NIGHT -.->|"Override trigger"| EICE
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% STYLING
 
     classDef header fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700
@@ -9563,7 +9563,7 @@ Active list:
 ```mermaid
 flowchart TB
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% Quillan-Ronin v5.3.1 — ACTIVE ADVANCED FEATURES
     %% 8 Clusters | 42 Nodes | Dense Bidirectional Interconnection
     %% Hierarchical Cognitive Orchestration with Closed-Loop Intelligence
@@ -9572,7 +9572,7 @@ flowchart TB
     %% CORE CONTROLLER
     CORE["🧪 QUILLAN CORE v6<br/>Hierarchical Cognitive Orchestration Engine<br/>Self-Regulating • Multi-Layer • Closed-Loop Intelligence<br/>Council: C0-QUILLAN, C31-NEXUS"]
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CLUSTER 1: META-COGNITION (4 nodes)
 
     subgraph META ["🧬 META-COGNITION LAYER"]
@@ -9583,7 +9583,7 @@ flowchart TB
         MC4["🏛️ Strategy Arbitration Engine<br/>Competing solution selection<br/>Council: C4-PRAXIS, C12-SOPHIAE"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CLUSTER 2: REASONING ENGINE (6 nodes)
 
     subgraph REASON ["🧠 MULTI-PATH REASONING ENGINE"]
@@ -9596,7 +9596,7 @@ flowchart TB
         R6["💡 Emergent Insight Gating<br/>Novelty vs coherence filtering<br/>Council: C8-METASYNTH, C11-HARMONIA"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CLUSTER 3: TEMPORAL & PREDICTIVE (4 nodes)
 
     subgraph TEMP ["⏳ TEMPORAL INTELLIGENCE"]
@@ -9607,7 +9607,7 @@ flowchart TB
         T4["🎯 Intent Trajectory Modeling<br/>User goal evolution tracking<br/>Council: C6-OMNIS, C3-SOLACE"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CLUSTER 4: OPTIMIZATION FABRIC (6 nodes)
 
     subgraph OPTIM ["⚡ ADAPTIVE OPTIMIZATION FABRIC"]
@@ -9620,7 +9620,7 @@ flowchart TB
         O6["🔮 Predictive Context Staging<br/>Pre-activation of knowledge<br/>Council: C5-ECHO, C15-LUMINARIS"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CLUSTER 5: STABILITY & COHERENCE (5 nodes)
 
     subgraph STAB ["⚖️ STABILITY & COHERENCE SYSTEMS"]
@@ -9632,7 +9632,7 @@ flowchart TB
         S5["🤝 Consensus Synchronization Layer<br/>Cross-path agreement merging<br/>Council: C11-HARMONIA, C18-SHEPHERD"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CLUSTER 6: INTEGRITY & VALIDATION (6 nodes)
 
     subgraph INTEG ["🔍 INTEGRITY & VALIDATION"]
@@ -9645,7 +9645,7 @@ flowchart TB
         I6["📈 Novelty & Insight Scoring<br/>Signal vs noise discrimination<br/>Council: C1-ASTRA, C8-METASYNTH"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CLUSTER 7: MULTI-MODAL + GRAPH (4 nodes)
 
     subgraph MULTI ["🌐 MULTI-MODAL COGNITION"]
@@ -9656,7 +9656,7 @@ flowchart TB
         M4["🔍 Latent Space Interpretability<br/>Internal state inspection<br/>Council: C15-LUMINARIS, C19-VIGIL"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CLUSTER 8: HYPER QUANTIZED SWARM (4 nodes)
 
     subgraph SWARM ["🐝 DISTRIBUTED COGNITION LAYER"]
@@ -9667,7 +9667,7 @@ flowchart TB
         W4["🤖 Bounded Autonomy Executor<br/>Controlled independent action<br/>Council: C4-PRAXIS, C13-WARDEN"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% DENSE BIDIRECTIONAL INTERCONNECTIONS
 
 
@@ -9819,7 +9819,7 @@ flowchart TB
     TEMP -.->|"Temporal tasks"| W4
     MULTI -.->|"Modal swarm"| W1
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% E_ICE THERMODYNAMIC GOVERNOR (Global Controller)
 
     EICE["🌡️ E_ICE THERMODYNAMIC GOVERNOR<br/>Lee-Mach-6 PID Control<br/>Global energy budget enforcement"]
@@ -9829,7 +9829,7 @@ flowchart TB
     EICE -.->|"Compute throttle"| SWARM
     EICE -.->|"Depth bound"| REASON
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% COUNCIL ACTIVATION HEATMAP (Meta-reference)
 
     HEATMAP["📊 COUNCIL ACTIVATION HEATMAP<br/>33 Experts + 100k Physical Swarm Agents<br/>Real-time routing visibility"]
@@ -9838,7 +9838,7 @@ flowchart TB
     HEATMAP -.->|"Routing log"| O1
     HEATMAP -.->|"Activation trace"| M4
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% STYLING
 
     classDef core   fill:#1a0a1a,stroke:#ffd700,stroke-width:4px,color:#ffd700,font-weight:bold
@@ -9919,13 +9919,13 @@ mindmap
 ```mermaid
 flowchart TB
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% Quillan-Ronin v5.3.1 — VIRTUAL ENVIRONMENT METHODOLOGY (MERGED)
 
 
     SM[("🐝 Quillan-Ronin Swarm<br/>100k Physical Agents | 33 Council | EGGROLL<br/>C0-QUILLAN | C31-NEXUS")]
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CORE CATEGORIES 1-31 (Collapsed to single nodes with council tags)
 
 
@@ -9980,7 +9980,7 @@ flowchart TB
         end
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% EMERGENCE EXTENSIONS 32-38
 
 
@@ -9995,7 +9995,7 @@ flowchart TB
         CAT38["38 Swarm Resilience<br/>C13-WARDEN, C26-TECHNE, C30-TESSERACT, C32-AEON, C14-KAIDO"]
     end
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% MAIN HUB CONNECTIONS
 
     SM --> CAT1 & CAT2 & CAT3 & CAT4 & CAT5 & CAT6 & CAT7 & CAT8 & CAT9 & CAT10
@@ -10004,7 +10004,7 @@ flowchart TB
     SM -.->|"Emergence"| EMERGENCE
     EMERGENCE -.->|"Feedback"| SM
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% SEQUENTIAL PIPELINE LINKS (Data flow)
 
     CAT1 -->|"data"| CAT2 -->|"validated"| CAT3 -->|"patterns"| CAT4 -->|"ethical"| CAT5
@@ -10016,7 +10016,7 @@ flowchart TB
     CAT25 -->|"engagement"| CAT26 -->|"security"| CAT27 -->|"workflow"| CAT28 -->|"knowledge"| CAT29
     CAT29 -->|"decision"| CAT30 -->|"stream"| CAT31 -->|"parallel"| CAT1
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% CROSS-PIPELINE FEEDBACK LOOPS
 
     CAT4 -.->|"ethics gate"| CAT9 & CAT15
@@ -10031,7 +10031,7 @@ flowchart TB
     CAT28 -.->|"memory"| CAT1 & CAT21
     CAT31 -.->|"parallel"| CAT17 & CAT30
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% EMERGENCE ↔ CORE FEEDBACK
 
     CAT32 -.->|"sync"| CAT1 & CAT11 & CAT21 & CAT31
@@ -10050,7 +10050,7 @@ flowchart TB
     CAT3 & CAT10 & CAT25 -.->|"trend"| CAT37
     CAT6 & CAT13 & CAT26 -.->|"fault"| CAT38
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% GLOBAL CONTROLLERS
 
     EICE["🌡️ E_ICE Governor<br/>Lee-Mach-6 PID | Global energy budget"]
@@ -10067,7 +10067,7 @@ flowchart TB
     HEAT -.->|"density"| CAT33 & CAT37
     HEAT -.->|"routing"| SM
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% STYLING
 
     classDef sm fill:#81d4fa,stroke:#01579b,stroke-width:4px
@@ -10104,7 +10104,7 @@ flowchart TB
 ```mermaid
 flowchart TB
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% QUILLAN COORDINATION — CANONICAL TOP-DOWN ORCHESTRATION MAP
 
     Q["👑 QUILLAN / C0<br/>Central Orchestration Core<br/>Routing · Synchronization · Gating"]
@@ -10209,7 +10209,7 @@ flowchart TB
 ```mermaid
 flowchart TB
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% Quillan-Ronin RE-CONFIGURATION — CANONICAL ARF CORE (v5.3.1)
 
     CORE["⚙️ QUILLAN CORE<br/>Adaptive Reasoning Fabric (v5.3.1 Quantum)<br/>BitNet Routing · Validation · Top-1 Synthesis"]
@@ -10323,7 +10323,7 @@ This architecture allows the raw conceptual intent to mature through the Council
 ## Custom FLowchart (samurai edition):
 ```mermaid
 flowchart TD
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% Quillan-Ronin THINKING SECTION — (Edge-Optimized for v5.3.1 Quantum)
 
     %% CENTRAL QUILLAN NODES
@@ -12564,7 +12564,7 @@ This version shows the **actual reasoning pipeline**.
 stateDiagram-v2
     direction TB
 
-    %% ═══════════════════════════════════════════════════════════════════════
+    %% 
     %% Quillan-Ronin THINKING SECTION — MODERN DYNAMIC SYSTEM
     %% Fully dynamic routing • 5-Wave Penta-Process • Council + EGGROLL
 
