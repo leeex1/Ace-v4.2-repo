@@ -10,8 +10,14 @@ Speed
 Efficiency and effectiveness 
 
 Training:
+
 Pre-training: 
-Post training:
+Multi primary datasets and secondary 
+
+Post training: 
+fine tune of primary datasets 
+
+
 
 Modalities:
 Text
