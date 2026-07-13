@@ -183,7 +183,7 @@ class QuillanArchConfig:
     split_attention: bool = False # Split attention for CPU optimization
     split_attention_4bit: bool = False # Split attention with 1.58-bit compression
     vocab_size: int = 50257
-    num_experts: int = 16
+    num_experts: int = 34
     num_experts_active: int = 4 # 4-32 active experts
     sparse_attention: bool = False # Sparse attention for CPU optimization
     sparse_attention_1_58bit: bool = False # Sparse attention with 1.58-bit compression
@@ -950,7 +950,7 @@ class CouilAttention(nn.Module):
     Odd heads: sparse attention (for language)
     Dynamic mask generation for efficient computation.
     """
-    def __init__(self, dim: int, num_heads: int = 16, sparsity_ratio: float = 0.5):
+    def __init__(self, dim: int, num_heads: int = 34, sparsity_ratio: float = 0.5):
         super().__init__()
         self.dim = dim
         self.num_heads = num_heads
@@ -1097,7 +1097,7 @@ class PrimeCovenantFramework(nn.Module):
         self.command_encoder = nn.Sequential(
             nn.Linear(hidden_dim, hidden_dim // 2),
             nn.ReLU(),
-            nn.Linear(hidden_dim // 2, 16)  # 16-dimensional command signature
+            nn.Linear(hidden_dim // 2, 34)  # 34-dimensional command signature
         )
         
         # Integrity threshold
@@ -1158,12 +1158,12 @@ class PrimeCovenantFramework(nn.Module):
         """
         Encode command hierarchy signature.
         hidden_states: [B, L, D]
-        Returns: [B, L, 16] command signatures
+        Returns: [B, L, 34] command signatures
         """
         B, L, D = hidden_states.shape
         flat_hidden = hidden_states.reshape(-1, D)
         command_sig = self.command_encoder(flat_hidden)
-        return command_sig.reshape(B, L, 16)
+        return command_sig.reshape(B, L, 34)
     
     def forward(self, hidden_states: torch.Tensor) -> dict:
         """
@@ -2172,7 +2172,7 @@ class QuillanRoninSovereign(nn.Module):
         self.governor = LeeMach6Governor(cfg.e_ice_limit_ms)
         self.agentic_executor = QuillanAgenticExecutor(hidden_dim=cfg.hidden_dim)
         
-        self.diffusion_core = SovereignFlashDiffusionCore(cfg.hidden_dim, steps=14, heads=16)
+        self.diffusion_core = SovereignFlashDiffusionCore(cfg.hidden_dim, steps=14, heads=34)
         
         # Saturated Cognitive Engines
         self.e_ice = EthicalImpactConstraintEngine(cfg.hidden_dim, cfg.e_ice_limit_ms)
