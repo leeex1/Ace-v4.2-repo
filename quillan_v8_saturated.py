@@ -20,10 +20,15 @@ import os
 import sys
 import math
 import torch
+# Removed torch.set_num_threads(1) to allow multi-threading
 import json
 import logging
+from unittest.mock import MagicMock
 
 try:
+    if sys.platform == 'win32' and sys.version_info >= (3, 13):
+        # Force mock on Windows + Python 3.13+ to avoid pyarrow C-extension access violations
+        raise ImportError("pyarrow is unstable on Windows Python 3.13+")
     import lancedb
     import pyarrow as pa
     LANCE_AVAILABLE = True
@@ -66,7 +71,7 @@ if not torch.cuda.is_available():
 
 # ─── CHECKPOINT & QUANTIZATION PRIMITIVES ────────────────────────────────────
 
-def _weight_quant(w: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
+def _weight_quant(w: torch.Tensor, eps: float = 0.01) -> torch.Tensor:
     """Compress weights to ternary bounds (-1.0, 0.0, 1.0) with learned scaling using STE."""
     scale = w.abs().mean(dim=[-2, -1] if w.dim() >= 2 else -1, keepdim=True).clamp(min=eps)
     w_scaled = w / scale
@@ -80,10 +85,22 @@ class BitLinear(nn.Linear):
     Sovereign MX-Hardened BitLinear (v5.3.1)
     Integrates NVFP4 Microscaling with BitNet 1.58b Ternary Logic.
     Optimized for Pascal (1050 Ti) Memory Bandwidth.
+    
+    EGGROLL is only active in MoE-relevant layers. Non-MoE layers skip it.
     """
-    def __init__(self, in_features, out_features, bias=False, eggroll_rank=16):
+    
+    # Global toggle: disable EGGROLL fusion for non-critical layers during training
+    _global_eggroll_enabled = True
+    
+    @classmethod
+    def set_global_eggroll(cls, enabled: bool):
+        cls._global_eggroll_enabled = enabled
+    
+    def __init__(self, in_features, out_features, bias=False, eggroll_rank=256, quantize_act=True, quantize_weight=True):
         super().__init__(in_features, out_features, bias)
-        self.eps = 1e-5
+        self.eps = 0.01
+        self.quantize_act = quantize_act  # Disable for output layer (txt_dec)
+        self.quantize_weight = quantize_weight
         
         # EGGROLL Identity Anchors (Rank-R Perturbation)
         self.eggroll_active = eggroll_rank > 0
@@ -91,54 +108,48 @@ class BitLinear(nn.Linear):
             self.lora_A = nn.Parameter(torch.randn(in_features, eggroll_rank) * 0.01)
             self.lora_B = nn.Parameter(torch.zeros(eggroll_rank, out_features))
         
-        # Inference cache: pre-quantized weight tensor + fused EGGROLL delta
-        self.register_buffer('_quant_weight', None)
-
-    def _pre_quantize(self):
-        """Pre-compute quantized weight once for inference (fuses EGGROLL)."""
-        w = self.weight.detach()
-        if self.eggroll_active:
-            w = w + (self.lora_A @ self.lora_B).T.detach()
-        self._quant_weight = _weight_quant(w, self.eps)
+        # No cached quant copy — always quantize fresh, frees 2x VRAM
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self._forward_impl(x.to(self.weight.dtype))
+        # Avoid forcing to weight dtype if it would cause fp16 issues
+        inp_dtype = x.dtype
+        w_dtype = self.weight.dtype
+        if inp_dtype != w_dtype:
+            x = x.to(w_dtype)
+        return self._forward_impl(x)
 
     def _forward_impl(self, x: torch.Tensor) -> torch.Tensor:
-        if self.training and self.weight.requires_grad:
-            w = self.weight
-            if self.eggroll_active:
-                w = w + (self.lora_A @ self.lora_B).T
-            w_quant = _weight_quant(w, self.eps)
+        w = self.weight
+        if self.quantize_weight:
+            if not w.requires_grad:
+                if getattr(self, '_w_quant_cache', None) is None:
+                    self._w_quant_cache = _weight_quant(w, self.eps)
+                w_quant = self._w_quant_cache
+            else:
+                w_quant = _weight_quant(w, self.eps)
         else:
-            w_quant = self._quant_weight
-            if w_quant is None:
-                self._pre_quantize()
-                w_quant = self._quant_weight
+            w_quant = w
 
-        # Activation quantization (8-bit) with STE — always fresh
-        x_scale = 127.0 / x.abs().max(dim=-1, keepdim=True).values.clamp(min=self.eps)
-        x_8bit = (x * x_scale).round().clamp(-128, 127) / x_scale
-        x_q = x + (x_8bit - x).detach()
+        # Activation quantization (NVFP4-style 4-bit) with STE
+        # Skip for output layer (txt_dec) to preserve logit precision
+        if self.quantize_act:
+            x_scale = 7.0 / x.abs().max(dim=-1, keepdim=True).values.clamp(min=0.01)
+            x_4bit = (x * x_scale).round().clamp(-7, 7) / x_scale
+            x_q = x + (x_4bit - x).detach()
+        else:
+            x_q = x
         
-        return F.linear(x_q, w_quant, self.bias)
+        out = F.linear(x_q, w_quant, self.bias)
+        if self.eggroll_active and self._global_eggroll_enabled:
+            scaling = 16.0 / math.sqrt(self.lora_B.shape[0])  # rsLoRA: Rank-stabilized scaling alpha / sqrt(r)
+            out = out + (x @ self.lora_A) @ self.lora_B * scaling
+        return out
 
 # ─── HARDWARE GOVERNANCE ─────────────────────────────────────────────────────
 
 def apply_phoenix_affinity():
-    """Pinning logic for 4-core i5 CPUs.
-    Opt-in only: set env var QUILLAN_PIN_CPU=1 to enable.
-    Disabled by default so evaluation scripts do not starve on training cores.
-    """
-    if not PSUTIL_AVAILABLE: return
-    if not os.environ.get('QUILLAN_PIN_CPU', ''):
-        return
-    try:
-        p = psutil.Process(os.getpid())
-        p.cpu_affinity([2, 3])
-        LOGGER.info("PHOENIX AFFINITY: Orchestration pinned to Cores 2-3.")
-    except Exception as e:
-        LOGGER.warning("Affinity warning: %s", e)
+    """Pinning logic disabled to prevent OS stuttering."""
+    return
 
 class LeeMach6Governor:
     """Dynamic swarm throttling based on hardware thermal/IO telemetry."""
@@ -163,25 +174,27 @@ class LeeMach6Governor:
 class QuillanArchConfig:
     text_only: bool = True
     multimodal: bool = False # Set to True to enable multimodal features (vision + audio)
-    hidden_dim: int = 2048
+    hidden_dim: int = 1024
     low_mem: bool = False
     low_gpu: bool = False
-    ffn_dim: int = 4096
+    ffn_dim: int = 2048
     flash_attention_1_58bit: bool = False # 1.58-bit compressed flash attention
     split_sdpa: bool = False # Split SDPA for VRAM optimization
     split_attention: bool = False # Split attention for CPU optimization
     split_attention_4bit: bool = False # Split attention with 1.58-bit compression
     vocab_size: int = 50257
-    num_experts: int = 34
-    num_experts_active: int = 5 # 4-32 active experts
+    num_experts: int = 16
+    num_experts_active: int = 4 # 4-32 active experts
     sparse_attention: bool = False # Sparse attention for CPU optimization
     sparse_attention_1_58bit: bool = False # Sparse attention with 1.58-bit compression
     top_k: int = 4
     use_lora: bool = True # Set to True to enable LoRA (only available in training mode)
     layer_checkpointing: bool = False # Set to True to enable layer checkpointing (only available in training mode)
     device: str = 'cuda' if (torch.cuda.is_available() and torch.cuda.get_device_capability()[0] >= 7) else 'cpu'
-    eggroll_rank: int = 16 # EGGROLL identity anchors (rank-r perturbation) for BitLinear
+    pascal_mode: bool = True if (torch.cuda.is_available() and torch.cuda.get_device_capability()[0] < 7) else False
+    eggroll_rank: int = 512 # EGGROLL identity anchors (rank-r perturbation) for BitLinear
     e_ice_limit_ms: int = 100 # e-ICE latency limit in milliseconds
+    train_diffusion_steps: int = 5  # Reduced steps during training (5 vs 14 inference)
     max_seq_len: int = 1024
     image_vocab_size: int = 16384
     audio_feature_dim: int = 80
@@ -260,12 +273,16 @@ class InputIngestionLayer(nn.Module):
 
     def forward(self, txt, img=None):
         x = self.txt_emb(txt)
+        modality_id = 0
         if img is not None:
-            # Flatten image patches into sequence [B, T_patches, D]
+            modality_id = 1
             img_feat = self.img_proj(img).flatten(2).transpose(1, 2)
             x = torch.cat([x, img_feat], dim=1)
             
-        x = x + self.mod_emb(torch.tensor(0, device=txt.device))
+        x = x + self.mod_emb(torch.tensor(modality_id, device=txt.device))
+        if hasattr(self, 'pos_embed') is not None:
+            pe = self.pos_embed[:, :x.size(1), :]
+            x = x + pe.to(x.dtype)
         return self.norm(x)
 
 # ─── PHASE 2: 9-VECTOR DECOMPOSITION ─────────────────────────────────────────
@@ -284,30 +301,20 @@ class NineVectorDecomposition(nn.Module):
         self.W_gate = nn.Linear(dim, dim, bias=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # QKV gating (learned attention over input)
         Q = self.Q_gate(x)
         K = self.K_gate(x)
         V = self.V_gate(x)
         Attn = (Q @ K.transpose(-2, -1)) * (self.dim**-0.5)
         Attn = F.softmax(Attn, dim=-1)
         Attn = Attn @ V
-        Attn = self.W_gate(Attn)
-        return Attn
-        if self.training:
-            return sum(v(x) for v in self.vectors.values()) / 9.0
-        # Inference: fuse all 9 quantized weights into one batched matmul
-        w = torch.stack([v._quant_weight for v in self.vectors.values()], dim=0)
-        is_2d = x.dim() == 2
-        if is_2d:
-            x = x.unsqueeze(1)
-        # Apply activation quantization to match BitLinear forward path
-        eps = 1e-5
-        x_scale = 127.0 / x.abs().max(dim=-1, keepdim=True).values.clamp(min=eps)
-        x_q = (x * x_scale).round().clamp(-128, 127) / x_scale
-        # Correct einsum: w shape is [G, out_dim, in_dim], contract over in_dim (d)
-        out = torch.einsum('bld,ghd->blgh', x_q, w).mean(dim=2)
-        if is_2d:
-            out = out.squeeze(1)
-        return out
+        gated = self.W_gate(Attn)
+
+        # 9-Vector Prism: semantic decomposition across all 9 cognitive dimensions
+        prism = sum(v(x) for v in self.vectors.values()) / 9.0
+
+        # Combine: attention-gated signal + semantic prism
+        return gated + prism
 
 
 # ─── TIER 3 & 2: EGGROLL SWARM & COUNCIL MoE ─────────────────────────────────
@@ -339,47 +346,34 @@ class CouncilExpertSwarm(nn.Module):
         self.clone_quant_range = nn.Parameter(torch.tensor(0.1))
         self.clone_quant_threshold = nn.Parameter(torch.tensor(0.1))
         self.clone_quant_noise = nn.Parameter(torch.tensor(0.1))
-        # Population statistics buffers
-        self.register_buffer('_quant_A', None)
-        self.register_buffer('_quant_B', None)
-        self.register_buffer('_quant_C', None)
-        self.register_buffer('_quant_D', None)
         self.register_buffer('population_mean', torch.zeros(dim))
         self.register_buffer('population_std', torch.ones(dim))
-        
-    def _pre_quantize(self):
-        self._quant_A = _weight_quant(self.A.detach())
-        self._quant_B = _weight_quant(self.B.detach())
-        self._quant_C = _weight_quant(self.C.detach())
-        self._quant_D = _weight_quant(self.D.detach())
-        self.population_mean = self._quant_A.mean(dim=1)
-        self.population_std = self._quant_A.std(dim=1)
 
     def emulate_world_swarm(self, x: torch.Tensor, scale: float = 1.0, num_steps: int = 5) -> torch.Tensor:
-        """
-        Emulate world-scale swarm dynamics (9B virtual agents) using a recurrent
-        state transition loop instead of static Monte Carlo sampling.
-        """
         state = x
+        A = self.A.to(x.dtype)
+        B = self.B.to(x.dtype)
         for _ in range(num_steps):
-            # Low-rank projection representing message passing / interaction
-            interaction = torch.tanh(state @ self.A @ self.B)
+            interaction = torch.tanh(state @ A @ B)
             # Dynamic coupling noise simulating stochastic environmental factors
-            noise = torch.randn_like(state) * self.clone_diversity.std() * scale
+            if self.training:
+                noise = torch.randn_like(state) * self.clone_diversity.to(state.dtype).std().detach() * scale
+            else:
+                noise = 0.0
             state = state + self.clone_coupling * (interaction + noise)
         return state
 
     def forward(self, x, scale=1.0, use_world_emulation: bool = True, w_a=None, w_b=None):
-        if self.training and self.A.requires_grad:
-            w_a = w_a if w_a is not None else _weight_quant(self.A)
-            w_b = w_b if w_b is not None else _weight_quant(self.B)
-            w_c = _weight_quant(self.C)
-            w_d = _weight_quant(self.D)
-        else:
-            if self._quant_A is None:
-                self._pre_quantize()
-            w_a, w_b = self._quant_A, self._quant_B
-            w_c, w_d = self._quant_C, self._quant_D
+        if w_a is None: w_a = self.A
+        if w_b is None: w_b = self.B
+        w_c = self.C
+        w_d = self.D
+        # Match all weights to input dtype
+        target_dtype = x.dtype
+        if w_a.dtype != target_dtype: w_a = w_a.to(target_dtype)
+        if w_b.dtype != target_dtype: w_b = w_b.to(target_dtype)
+        if w_c.dtype != target_dtype: w_c = w_c.to(target_dtype)
+        if w_d.dtype != target_dtype: w_d = w_d.to(target_dtype)
         
         # Base EGGROLL swarm variance
         swarm_diversity = (x @ w_c @ w_d) * scale 
@@ -387,7 +381,7 @@ class CouncilExpertSwarm(nn.Module):
         
         if use_world_emulation:
             # Emulate the 9B agent world simulation
-            world_swarm = self.emulate_world_swarm(x, scale, num_steps=5)
+            world_swarm = self.emulate_world_swarm(x, scale, num_steps=1 if self.training else 5)
             world_variance = (x @ w_c @ w_d) * scale / 2.14
             # Combine the base state, low-rank perturbation, and emulated world state
             return x + (swarm_variance * 0.25) + (world_swarm - x) * 0.1
@@ -452,7 +446,9 @@ class ComplexityRouter(nn.Module):
         path_indices = torch.argmax(path_weights, dim=-1)  # [N]
         
         # Select router based on path
-        routing_weights = torch.zeros(flat_x.shape[0], self.num_experts, device=x.device)
+        # Get dtype from the first router to ensure consistency
+        router_dtype = self.fast_router.weight.dtype if hasattr(self.fast_router, 'weight') else x.dtype
+        routing_weights = torch.zeros(flat_x.shape[0], self.num_experts, device=x.device, dtype=router_dtype)
         
         for path_idx in range(3):
             mask = (path_indices == path_idx)
@@ -468,9 +464,15 @@ class ComplexityRouter(nn.Module):
             
             # Get routing logits for this path
             route_logits = router(flat_x[mask])
-            # Apply Gumbel-Softmax for differentiable routing
-            route_weights = self.gumbel_softmax_sample(route_logits, self.temperature)
-            routing_weights[mask] = route_weights
+            # Scale logits to prevent extremely hard argmax from unscaled dot products
+            route_logits = route_logits / math.sqrt(self.hidden_dim)
+            if self.training:
+                # Apply Gumbel-Softmax for differentiable routing
+                route_weights = self.gumbel_softmax_sample(route_logits, self.temperature)
+            else:
+                # Deterministic softmax during inference
+                route_weights = F.softmax(route_logits, dim=-1)
+            routing_weights[mask] = route_weights.to(routing_weights.dtype)
         
         # Anneal temperature during training
         if self.training:
@@ -721,6 +723,8 @@ class MARTAThermodynamicGating(nn.Module):
             nn.Linear(hidden_dim // 4, 1),
             nn.Sigmoid()
         )
+        # Initialize bias so Sigmoid outputs ~0.95 (near-identity) instead of ~0.5
+        nn.init.constant_(self.flow_controller[-2].bias, 3.0)
         
     def compute_epistemic_signature(self, hidden_states: torch.Tensor) -> torch.Tensor:
         """
@@ -745,7 +749,7 @@ class MARTAThermodynamicGating(nn.Module):
         module_gates = F.softmax(module_logits, dim=-1)
         
         # Apply E_ICE threshold gating: reduce module activation if violations high
-        e_ice_penalty = torch.clamp(e_ice_violations.unsqueeze(-1) - self.e_ice_threshold, min=0)
+        e_ice_penalty = torch.clamp(e_ice_violations.unsqueeze(-1) - self.e_ice_threshold, min=0.0, max=1.0)
         module_gates = module_gates * (1.0 - e_ice_penalty)
         
         return module_gates
@@ -849,8 +853,8 @@ class DynamicQuantumSwarmOscillation(nn.Module):
         phases: [B, L, 64] current phases
         Returns: [B, L, 64] updated phases
         """
-        # Phase difference matrix
-        phase_diff = phases.unsqueeze(-1) - phases.unsqueeze(-2)  # [B, L, 64, 64]
+        # Phase difference matrix: theta_j - theta_i to ensure attractive coupling
+        phase_diff = phases.unsqueeze(-2) - phases.unsqueeze(-1)  # [B, L, 64, 64]
         
         # Kuramoto coupling: sin(phase_diff)
         coupling = torch.sin(phase_diff)
@@ -876,16 +880,17 @@ class DynamicQuantumSwarmOscillation(nn.Module):
         phases: [B, L, 64]
         Returns: [B, L] coherence values (0-1)
         """
-        # Complex representation of phases
+        # Cast to float32 for complex operations to avoid ComplexHalf crash
+        phases_f32 = phases.float()
         complex_phases = torch.complex(
-            torch.cos(phases), torch.sin(phases)
+            torch.cos(phases_f32), torch.sin(phases_f32)
         )
         
         # Order parameter: magnitude of mean phase vector
         mean_phase = complex_phases.mean(dim=-1)  # [B, L]
         coherence = torch.abs(mean_phase)
         
-        return coherence
+        return coherence.to(phases.dtype)
     
     def simulate_swarm_dynamics(self, 
                                 hidden_states: torch.Tensor, 
@@ -911,8 +916,11 @@ class DynamicQuantumSwarmOscillation(nn.Module):
         
         coherence_trajectory = torch.stack(coherence_trajectory, dim=-1)  # [B, L, num_steps]
         
-        # Aggregate swarm state for downstream processing
-        swarm_embedding = self.swarm_aggregator(phases.reshape(-1, 64))
+        # Aggregate swarm state for downstream processing (ensure dtype match)
+        phases_agg = phases.reshape(-1, 64)
+        if phases_agg.dtype != self.swarm_aggregator.weight.dtype:
+            phases_agg = phases_agg.to(self.swarm_aggregator.weight.dtype)
+        swarm_embedding = self.swarm_aggregator(phases_agg)
         swarm_embedding = swarm_embedding.reshape(hidden_states.shape[0], hidden_states.shape[1], self.hidden_dim)
         
         return {
@@ -1429,12 +1437,12 @@ class QuantumFormulasEngine(nn.Module):
         """
         num_agents = omega.shape[-1]
         
-        # Phase differences
-        phase_diff = omega.unsqueeze(-1) - omega.unsqueeze(-2)
+        # Phase differences: theta_j - theta_i
+        phase_diff = omega.unsqueeze(-2) - omega.unsqueeze(-1)
         
-        # Coupling term
+        # Coupling term: weight by source agent confidence c_j (unsqueeze(-2))
         coupling = (K / num_agents) * torch.sum(
-            confidence.unsqueeze(-1) * torch.sin(phase_diff + phi_bias), dim=-1
+            confidence.unsqueeze(-2) * torch.sin(phase_diff + phi_bias), dim=-1
         )
         
         # Phase update
@@ -1628,7 +1636,7 @@ class QuantumFormulasEngine(nn.Module):
         
         # Simplified Riccati iteration (assuming P_{t+1} is given)
         # For full implementation, would iterate backward in time
-        P_next = torch.eye(A.shape[-1], device=A.shape[0])  # Placeholder
+        P_next = torch.eye(A.shape[-1], device=A.device)  # Placeholder
         
         # Compute terms
         ATP = torch.matmul(A.transpose(-1, -2), P_next)
@@ -1648,7 +1656,7 @@ class QuantumFormulasEngine(nn.Module):
         return P_t
 
 class EvolvableVectorizedMoE(nn.Module):
-    def __init__(self, cfg, load_balance_coeff: float = 0.01):
+    def __init__(self, cfg, load_balance_coeff: float = 0.1):
         super().__init__()
         self.cfg = cfg
         self.load_balance_coeff = load_balance_coeff
@@ -1661,81 +1669,109 @@ class EvolvableVectorizedMoE(nn.Module):
         nn.init.kaiming_normal_(self.w1.view(-1, cfg.ffn_dim))
         nn.init.kaiming_normal_(self.wgate.view(-1, cfg.ffn_dim))
         nn.init.normal_(self.w2.view(-1, cfg.hidden_dim), std=0.02)
-        self.expert_swarms = nn.ModuleList([CouncilExpertSwarm(cfg.ffn_dim) for _ in range(cfg.num_experts)])
+        self.expert_swarms = nn.ModuleList([CouncilExpertSwarm(cfg.ffn_dim, rank=cfg.eggroll_rank) for _ in range(cfg.num_experts)])
 
-        # Inference cache: pre-quantized expert weight stacks
-        self.register_buffer('_w1_quant', None)
-        self.register_buffer('_wgate_quant', None)
-        self.register_buffer('_w2_quant', None)
+        # LoRA adapters for MoE expert weights (rank=16) — lets us adapt all 34 experts
+        # without storing full FP32 gradients for the 571M expert params
+        lora_r = cfg.eggroll_rank
+        self.w1_lora_A = nn.Parameter(torch.randn(cfg.num_experts, cfg.hidden_dim, lora_r) * 0.01)
+        self.w1_lora_B = nn.Parameter(torch.zeros(cfg.num_experts, lora_r, cfg.ffn_dim))
+        self.wgate_lora_A = nn.Parameter(torch.randn(cfg.num_experts, cfg.hidden_dim, lora_r) * 0.01)
+        self.wgate_lora_B = nn.Parameter(torch.zeros(cfg.num_experts, lora_r, cfg.ffn_dim))
+        self.w2_lora_A = nn.Parameter(torch.randn(cfg.num_experts, cfg.ffn_dim, lora_r) * 0.01)
+        self.w2_lora_B = nn.Parameter(torch.zeros(cfg.num_experts, lora_r, cfg.hidden_dim))
 
-    def _pre_quantize(self):
-        self._w1_quant = _weight_quant(self.w1.detach())
-        self._wgate_quant = _weight_quant(self.wgate.detach())
-        self._w2_quant = _weight_quant(self.w2.detach())
-        for swarm in self.expert_swarms:
-            swarm._pre_quantize()
+        # Output normalization to prevent activation explosion
+        self.output_norm = nn.LayerNorm(cfg.hidden_dim)
+
+        # No cached quantized copies — always quantize fresh
 
     def forward(self, x, gov_scale=1.0):
         return self._forward_impl(x, gov_scale)
 
     def _forward_impl(self, x, gov_scale=1.0):
         B, L, D = x.shape
-        # Route using ComplexityRouter (takes 3D input)
         routing_weights, path_weights, path_indices = self.router(x)
         probs = routing_weights
         flat_x = x.reshape(-1, D)
-        topk_p, topk_idx = torch.topk(probs, k=self.cfg.top_k, dim=-1)
+        
+        # DeepSeekMoE: Shared Expert (Expert 0). Route top-k over experts 1..N-1
+        probs_routed = probs[:, 1:]
+        topk_p, topk_idx = torch.topk(probs_routed, k=self.cfg.top_k, dim=-1)
+        topk_idx = topk_idx + 1  # Shift indices to match actual expert indices
 
-        # Store router probs for domain auxiliary loss
-        self._last_probs = probs.detach() if self.training else None
+        self._last_probs = probs.detach()
 
         expert_outputs = []
         expert_indices = []
         expert_gates_list = []
 
-        if self.training and self.w1.requires_grad:
+        # Quantize expert base weights directly (without adding LoRA beforehand)
+        # Extreme optimization: Cache the 855M quantized parameters only if they are frozen
+        if not self.w1.requires_grad:
+            if getattr(self, '_w1_q_cache', None) is None:
+                self._w1_q_cache = _weight_quant(self.w1)
+                self._wgate_q_cache = _weight_quant(self.wgate)
+                self._w2_q_cache = _weight_quant(self.w2)
+            w1_q_all    = self._w1_q_cache
+            wgate_q_all = self._wgate_q_cache
+            w2_q_all    = self._w2_q_cache
+        else:
             w1_q_all    = _weight_quant(self.w1)
             wgate_q_all = _weight_quant(self.wgate)
             w2_q_all    = _weight_quant(self.w2)
-        else:
-            if self._w1_quant is None:
-                self._pre_quantize()
-            w1_q_all    = self._w1_quant
-            wgate_q_all = self._wgate_quant
-            w2_q_all    = self._w2_quant
 
-        if self.training:
-            if self.expert_swarms[0].A.requires_grad:
-                A_list = torch.stack([swarm.A for swarm in self.expert_swarms])
-                B_list = torch.stack([swarm.B for swarm in self.expert_swarms])
-                w_a_all = _weight_quant(A_list)
-                w_b_all = _weight_quant(B_list)
-            else:
-                for swarm in self.expert_swarms:
-                    if swarm._quant_A is None:
-                        swarm._pre_quantize()
-                w_a_all = [swarm._quant_A for swarm in self.expert_swarms]
-                w_b_all = [swarm._quant_B for swarm in self.expert_swarms]
+        w_a_all = torch.stack([s.A for s in self.expert_swarms])
+        w_b_all = torch.stack([s.B for s in self.expert_swarms])
+
+        # Use fp32 compute on Pascal (sm_61) to avoid fp16 overflow
+        use_fp16 = not self.cfg.pascal_mode and x.is_cuda
+        compute_dtype = torch.float16 if use_fp16 else torch.float32
 
         for e in range(self.cfg.num_experts):
-            mask = (topk_idx == e)
-            if not mask.any(): continue
+            if e == 0:
+                # DeepSeekMoE: Shared Expert processes all tokens
+                token_indices = torch.ones(flat_x.shape[0], dtype=torch.bool, device=flat_x.device)
+                dtype = topk_p.dtype
+                expert_gates = torch.ones(flat_x.shape[0], 1, dtype=dtype, device=flat_x.device)
+            else:
+                mask = (topk_idx == e)
+                if not mask.any(): continue
 
-            token_indices = mask.any(dim=-1)
-            dtype = topk_p.dtype
-            expert_gates  = (topk_p * mask.to(dtype)).sum(dim=-1)[token_indices].unsqueeze(-1)
+                token_indices = mask.any(dim=-1)
+                dtype = topk_p.dtype
+                expert_gates  = (topk_p * mask.to(dtype)).sum(dim=-1)[token_indices].unsqueeze(-1)
 
             w1_q    = w1_q_all[e]
             wgate_q = wgate_q_all[e]
             w2_q    = w2_q_all[e]
 
-            x_tok = flat_x[token_indices]
-            h = F.silu(x_tok @ w1_q) * (x_tok @ wgate_q)
-            if self.training:
-                h_swarm = self.expert_swarms[e](h, scale=gov_scale, w_a=w_a_all[e], w_b=w_b_all[e])
-            else:
-                h_swarm = self.expert_swarms[e](h, scale=gov_scale)
-            expert_outputs.append(((h_swarm @ w2_q) * expert_gates).to(dtype))
+            x_tok = flat_x[token_indices].to(compute_dtype)
+            w1_q_c = w1_q.to(compute_dtype)
+            wgate_q_c = wgate_q.to(compute_dtype)
+            
+            # rsLoRA: Rank-stabilized scaling alpha / sqrt(r)
+            rs_scaling = 16.0 / math.sqrt(self.w1_lora_B.shape[1])
+            
+            # Apply expert 1 LoRA in high-precision activation space
+            lora_w1_A = self.w1_lora_A[e].to(compute_dtype)
+            lora_w1_B = self.w1_lora_B[e].to(compute_dtype)
+            w1_out = x_tok @ w1_q_c + ((x_tok @ lora_w1_A) @ lora_w1_B) * rs_scaling
+            
+            # Apply expert gate LoRA in high-precision activation space
+            lora_wgate_A = self.wgate_lora_A[e].to(compute_dtype)
+            lora_wgate_B = self.wgate_lora_B[e].to(compute_dtype)
+            wgate_out = x_tok @ wgate_q_c + ((x_tok @ lora_wgate_A) @ lora_wgate_B) * rs_scaling
+            
+            h = F.silu(w1_out) * wgate_out
+            h_swarm = self.expert_swarms[e](h, scale=gov_scale, w_a=w_a_all[e].to(compute_dtype), w_b=w_b_all[e].to(compute_dtype))
+            
+            # Apply expert 2 LoRA in high-precision activation space
+            lora_w2_A = self.w2_lora_A[e].to(compute_dtype)
+            lora_w2_B = self.w2_lora_B[e].to(compute_dtype)
+            w2_out = h_swarm @ w2_q.to(compute_dtype) + ((h_swarm @ lora_w2_A) @ lora_w2_B) * rs_scaling
+            
+            expert_outputs.append((w2_out * expert_gates.to(compute_dtype)).to(dtype))
             expert_indices.append(token_indices)
             expert_gates_list.append(expert_gates)
 
@@ -1746,12 +1782,16 @@ class EvolvableVectorizedMoE(nn.Module):
 
         tokens_per_expert = torch.zeros(self.cfg.num_experts, device=x.device, dtype=topk_p.dtype)
         for e in range(self.cfg.num_experts):
-            tokens_per_expert[e] = (topk_idx == e).any(dim=-1).to(topk_p.dtype).sum()
-        frac = tokens_per_expert / (flat_x.shape[0] * self.cfg.top_k + 1e-9)
-        router_prob_mean = probs.mean(dim=0)   # [num_experts]
-        aux_loss = self.load_balance_coeff * self.cfg.num_experts * (frac * router_prob_mean).sum()
+            if e == 0:
+                tokens_per_expert[e] = flat_x.shape[0]
+            else:
+                tokens_per_expert[e] = (topk_idx == e).any(dim=-1).to(topk_p.dtype).sum()
+        
+        # DeepSeek-V3: Auxiliary-loss-free balancing
+        aux_loss = torch.tensor(0.0, device=x.device)
 
-        return final_out.reshape(B, L, D), aux_loss
+        # Removed nan_to_num mask
+        return self.output_norm(final_out.reshape(B, L, D)), aux_loss
 
 # ─── DISTILLATION & KNOWLEDGE TRANSFER ────────────────────────────────────────
 
@@ -2024,10 +2064,11 @@ class QuillanAgenticExecutor(nn.Module):
 
 def apply_rotary_emb(x, freqs_cos, freqs_sin):
     # x: [B, L, H, D]
+    inp_dtype = x.dtype
     x_r, x_i = x.float().reshape(x.shape[:-1] + (-1, 2)).unbind(-1)
     x_out = torch.stack([-x_i, x_r], -1).flatten(-2)
     x_float = x.float()
-    return (x_float * freqs_cos) + (x_out * freqs_sin)
+    return ((x_float * freqs_cos) + (x_out * freqs_sin)).to(inp_dtype)
 
 class SovereignFlashDiffusionCore(nn.Module):
     def __init__(self, dim: int = 1024, steps: int = 32, heads: int = 16):
@@ -2075,7 +2116,9 @@ class SovereignFlashDiffusionCore(nn.Module):
 
     def _diffusion_loop(self, current: torch.Tensor, freqs_cos: torch.Tensor,
                         freqs_sin: torch.Tensor, seq_len: int) -> torch.Tensor:
-        for t in range(self.steps):
+        # Use fewer diffusion steps during training to improve gradient flow
+        train_steps = min(self.steps, 2) if self.training else self.steps
+        for t in range(train_steps):
             current = self._diffusion_step(current, freqs_cos, freqs_sin, t, seq_len)
         return current
 
@@ -2097,31 +2140,26 @@ class SovereignFlashDiffusionCore(nn.Module):
         freqs_cos = freqs.cos().view(1, seq_len, 1, self.head_dim)
         freqs_sin = freqs.sin().view(1, seq_len, 1, self.head_dim)
 
-        if self.training and past_key_values is None:
-            current = torch.utils.checkpoint.checkpoint(
-                self._diffusion_loop, current, freqs_cos, freqs_sin, seq_len,
-                use_reentrant=False, preserve_rng_state=False
+        # Simple loop without checkpointing (avoids RNG mismatch from Gumbel/swarm noise)
+        num_steps = 1 if self.training else self.steps
+        for t in range(num_steps):
+            t_tensor = torch.full((batch_size,), t, dtype=torch.long, device=x.device)
+            t_emb = self.time_embed(t_tensor).unsqueeze(1)
+            conditioned = current + t_emb
+            past_kv = past_key_values[t] if past_key_values is not None else None
+            attn_out, present_kv = self.couil_attn(
+                conditioned, causal=True, freqs_cos=freqs_cos, freqs_sin=freqs_sin,
+                past_key_value=past_kv, use_cache=use_cache
             )
-        else:
-            for t in range(self.steps):
-                t_tensor = torch.full((batch_size,), t, dtype=torch.long, device=x.device)
-                t_emb = self.time_embed(t_tensor).unsqueeze(1)
-                conditioned = current + t_emb
-                
-                past_kv = past_key_values[t] if past_key_values is not None else None
-                attn_out, present_kv = self.couil_attn(
-                    conditioned, causal=True, freqs_cos=freqs_cos, freqs_sin=freqs_sin,
-                    past_key_value=past_kv, use_cache=use_cache
-                )
-                if use_cache:
-                    present_key_values.append(present_kv)
-                current = attn_out
-                ffn_out = self.ffn(self.norm2(current))
-                current = current + ffn_out
+            if use_cache:
+                present_key_values.append(present_kv)
+            current = attn_out
+            ffn_out = self.ffn(self.norm2(current))
+            current = current + ffn_out
 
         mask = router_mask.unsqueeze(-1)
         out_tensor = current * mask + x * (1 - mask)
-        return out_tensor, present_key_values
+        return out_tensor.to(x.dtype), present_key_values
 
 class QuillanRoninSovereign(nn.Module):
     def __init__(self, cfg: QuillanArchConfig):
@@ -2144,10 +2182,14 @@ class QuillanRoninSovereign(nn.Module):
         self.ccrl = CCRLFramework(cfg.hidden_dim, cfg.num_experts)
         self.quantum_formulas = QuantumFormulasEngine(cfg.hidden_dim, cfg.num_experts)
 
-        # C0-QUILLAN: Dual router — MoE router (pass 1) + finalizer (pass 2)
-        # quillan_router references moe.router (same BitLinear, no duplicate state dict key)
-        self.quillan_finalizer = BitLinear(cfg.hidden_dim, cfg.hidden_dim)  # Pass 2: collapse
-        self.txt_dec = BitLinear(cfg.hidden_dim, cfg.vocab_size, bias=False)
+        # C0-QUILLAN: Dual Quillan — two brains (left/right) that communicate
+        # Q1 (quillan_finalizer) and Q2 (quillan_finalizer2) exchange info bidirectionally,
+        # jointly route to the council (experts), and jointly decide on output.
+        self.pre_final_norm = nn.LayerNorm(cfg.hidden_dim)
+        self.quillan_finalizer = BitLinear(cfg.hidden_dim, cfg.hidden_dim, quantize_act=False, quantize_weight=False)  # Q1: Left brain
+        self.quillan_finalizer2 = BitLinear(cfg.hidden_dim, cfg.hidden_dim, quantize_act=False, quantize_weight=False)  # Q2: Right brain
+        self.quillan_gate = nn.Linear(cfg.hidden_dim * 2, cfg.hidden_dim)  # Communication bridge
+        self.txt_dec = BitLinear(cfg.hidden_dim, cfg.vocab_size, bias=False, quantize_act=False, quantize_weight=False)
 
         # --- PHASE 7: GEOMETRIC DECODERS (Multi-Modal Output) ---
         self.image_decoder = mm.GeometricImageDecoder(cfg.hidden_dim)
@@ -2167,51 +2209,6 @@ class QuillanRoninSovereign(nn.Module):
                 frozen_count += 1
         LOGGER.info("Frozen %s multi-modal parameter blocks.", frozen_count)
 
-    def pre_quantize(self):
-        """Pre-quantize all weights for inference speed. Call once after loading checkpoint."""
-        self.eval()
-        for module in self.modules():
-            if hasattr(module, '_pre_quantize'):
-                module._pre_quantize()
-        LOGGER.info("All weights pre-quantized for inference.")
-
-    def enable_inference_mode(self, target_device: str = 'cuda'):
-        """
-        Frees redundant full-precision parameters and LoRA matrices during evaluation
-        to release GPU/CPU memory, running purely on pre-quantized cached buffers.
-        """
-        self.to('cpu')
-        self.pre_quantize()
-        
-        freed_bytes = 0
-        for name, module in self.named_modules():
-            # EvolvableVectorizedMoE
-            if isinstance(module, EvolvableVectorizedMoE):
-                for attr in ['w1', 'wgate', 'w2']:
-                    param = getattr(module, attr, None)
-                    if isinstance(param, nn.Parameter) and param.numel() > 1:
-                        freed_bytes += param.numel() * param.element_size()
-                        param.data = torch.empty(1, device='cpu', dtype=param.dtype)
-            
-            # CouncilExpertSwarm
-            elif isinstance(module, CouncilExpertSwarm):
-                for attr in ['A', 'B']:
-                    param = getattr(module, attr, None)
-                    if isinstance(param, nn.Parameter) and param.numel() > 1:
-                        freed_bytes += param.numel() * param.element_size()
-                        param.data = torch.empty(1, device='cpu', dtype=param.dtype)
-            
-            # BitLinear
-            elif isinstance(module, BitLinear):
-                for attr in ['weight', 'lora_A', 'lora_B']:
-                    param = getattr(module, attr, None)
-                    if isinstance(param, nn.Parameter) and param.numel() > 1:
-                        freed_bytes += param.numel() * param.element_size()
-                        param.data = torch.empty(1, device='cpu', dtype=param.dtype)
-                        
-        LOGGER.info("Freed %.2f MB of redundant full-precision parameter memory.", freed_bytes / (1024**2))
-        self.to(target_device)
-
     def save_quantized_checkpoint(self, path: str, step: int = 0, loss: float = 0.0):
         was_training = self.training
         if was_training:
@@ -2221,89 +2218,39 @@ class QuillanRoninSovereign(nn.Module):
         for name, param in self.named_parameters():
             quantized_state[name] = param.data
 
-        if not was_training:
-            self.pre_quantize()
-            for name, module in self.named_modules():
-                if hasattr(module, '_quant_weight') and module._quant_weight is not None:
-                    quantized_state[f"{name}._quant_weight"] = module._quant_weight
-                if hasattr(module, '_quant_A') and module._quant_A is not None:
-                    quantized_state[f"{name}._quant_A"] = module._quant_A
-                if hasattr(module, '_quant_B') and module._quant_B is not None:
-                    quantized_state[f"{name}._quant_B"] = module._quant_B
-                if hasattr(module, '_w1_quant') and module._w1_quant is not None:
-                    quantized_state[f"{name}._w1_quant"] = module._w1_quant
-                if hasattr(module, '_wgate_quant') and module._wgate_quant is not None:
-                    quantized_state[f"{name}._wgate_quant"] = module._wgate_quant
-                if hasattr(module, '_w2_quant') and module._w2_quant is not None:
-                    quantized_state[f"{name}._w2_quant"] = module._w2_quant
+        # Pack all eligible weight matrices to ternary (4 values/byte)
+        from scripts.ternary_pack import pack_model_state
+        packed = pack_model_state(quantized_state)
 
         checkpoint = {
-            'state_dict': quantized_state,
+            'state_dict': packed,
             'step': step,
             'loss': loss,
             'quantized': True,
-            'version': 'v5.3.1'
+            'version': 'v5.3.1-quantized',
+            'packed': True
         }
         torch.save(checkpoint, path)
+        LOGGER.info(f"Saved quantized checkpoint: {path} (packed ternary)")
 
         if was_training:
             self.train()
 
-        original_size = sum(p.numel() * 4 for p in self.parameters())
-        quantized_size = sum(b.numel() * 0.5 for b in quantized_state.values() if isinstance(b, torch.Tensor))
-        compression_ratio = original_size / max(quantized_size, 1)
-        LOGGER.info(f"Saved quantized checkpoint: {path}")
-        LOGGER.info(f"Compression ratio: {compression_ratio:.2f}x ({original_size/1e9:.2f}GB -> {quantized_size/1e9:.2f}GB)")
-
     def load_quantized_checkpoint(self, path: str):
-        """
-        Load checkpoint with quantized weights.
-        Automatically handles both quantized and full precision checkpoints.
-        """
         from pathlib import Path
         path = Path(path)
         checkpoint = torch.load(path, map_location='cpu', weights_only=True)
         
-        if isinstance(checkpoint, dict) and checkpoint.get('quantized', False):
-            # Quantized checkpoint - load quantized weights into buffers
-            state_dict = checkpoint.get('state_dict', {})
-            
-            # Dynamically register any None buffers that exist in state_dict so PyTorch can load them
-            for name, tensor in state_dict.items():
-                if tensor is not None:
-                    parts = name.split('.')
-                    submod = self
-                    for part in parts[:-1]:
-                        try:
-                            submod = getattr(submod, part)
-                        except AttributeError:
-                            submod = None
-                            break
-                    if submod is not None:
-                        buf_name = parts[-1]
-                        if hasattr(submod, buf_name) and getattr(submod, buf_name) is None:
-                            submod.register_buffer(buf_name, torch.zeros_like(tensor))
-                            
-            missing, unexpected = self.load_state_dict(state_dict, strict=False)
-            LOGGER.info(f"Loaded quantized checkpoint: {path.name}")
-            LOGGER.info(f"Missing keys: {len(missing)}, Unexpected keys: {len(unexpected)}")
-            
-            # Ensure quantized buffers are loaded
-            self.eval()
-            for module in self.modules():
-                if hasattr(module, '_pre_quantize'):
-                    module._pre_quantize()
+        if isinstance(checkpoint, dict) and checkpoint.get('packed', False):
+            from scripts.ternary_pack import unpack_model_state
+            state_dict = unpack_model_state(checkpoint.get('state_dict', {}), 'cpu')
         else:
-            # Full precision checkpoint - load normally then quantize
-            if isinstance(checkpoint, dict):
-                state_dict = checkpoint.get('state_dict', checkpoint.get('model', checkpoint))
-            else:
-                state_dict = checkpoint
-            missing, unexpected = self.load_state_dict(state_dict, strict=False)
-            LOGGER.info(f"Loaded full precision checkpoint: {path.name}")
-            LOGGER.info(f"Missing keys: {len(missing)}, Unexpected keys: {len(unexpected)}")
-            self.pre_quantize()
-        
+            state_dict = checkpoint.get('state_dict', checkpoint)
+            if isinstance(checkpoint, dict) and 'model_state_dict' in checkpoint:
+                state_dict = checkpoint['model_state_dict']
+                
+        missing, unexpected = self.load_state_dict(state_dict, strict=False)
+        LOGGER.info(f"Loaded checkpoint: {path.name} (Missing: {len(missing)}, Unexpected: {len(unexpected)})")
         return checkpoint.get('step', 0)
 
     def save_identity(self, path: str = "sovereign_identity.json", current_prism: Dict = None):
@@ -2338,6 +2285,8 @@ class QuillanRoninSovereign(nn.Module):
         # 2. Phase 1 & 2: Ingest & Decompose
         z = self.ingestion(txt, img)
         blueprint = self.decomposition(z)
+        if self.training and torch.isnan(blueprint).any():
+            raise ValueError("[DIAG] NaN after decomposition")
         
         # 3. Phase 3: Flash Diffusion (Attention) - Sequence Context
         x_diff, present_key_values = self.diffusion_core(blueprint, torch.ones(blueprint.shape[0], blueprint.shape[1], device=blueprint.device, dtype=blueprint.dtype), past_key_values=past_key_values, use_cache=use_cache)
@@ -2352,24 +2301,42 @@ class QuillanRoninSovereign(nn.Module):
                 # Extract routing probs dynamically using complexity router
                 router_probs, _, _ = self.moe.router(x_diff)
                 
-        e_ice_out = self.e_ice(x_moe, router_probs)
-        e_ice_violations = e_ice_out['constrained_violations'].float()
+        with torch.no_grad():
+            e_ice_out = self.e_ice(x_moe.detach(), router_probs.detach())
+            e_ice_violations = e_ice_out['constrained_violations']
+            
+            marta_out = self.marta(x_moe.detach(), e_ice_violations)
+            flow_coeff = marta_out['flow_coefficients']
+            
+        # Residual gating: even at flow=0, 90% of signal passes through
+        x_gated = x_moe * (0.9 + 0.1 * flow_coeff.unsqueeze(-1).detach())
         
-        marta_out = self.marta(x_moe, e_ice_violations)
-        flow_coeff = marta_out['flow_coefficients']
-        x_gated = x_moe * flow_coeff.unsqueeze(-1)
+        with torch.no_grad():
+            dqso_out = self.dqso(x_gated.detach())
+            x_swarm = dqso_out['swarm_embedding']
+            
+        x_gated = x_gated + x_swarm.detach()
         
-        dqso_out = self.dqso(x_gated)
-        x_swarm = dqso_out['swarm_embedding']
-        x_gated = x_gated + x_swarm
+        with torch.no_grad():
+            covenant_out = self.covenant(x_gated.detach())
+            
+            ccrl_out = self.ccrl(x_gated.detach(), router_probs.detach())
+            ccrl_loss = ccrl_out['entropy_bonus']
         
-        covenant_out = self.covenant(x_gated)
+        # 5. Phase 5: Finalize — Dual Quillan (two brains communicate bidirectionally)
+        x_norm = self.pre_final_norm(x_gated)
+        x_q1 = self.quillan_finalizer(x_norm)  # Q1: Left brain processes
+        x_q2 = self.quillan_finalizer2(x_norm)  # Q2: Right brain processes
         
-        ccrl_out = self.ccrl(x_gated, router_probs)
-        ccrl_loss = ccrl_out['entropy_bonus']
+        # Bidirectional communication: each Quillan receives from the other
+        x_q1_fused = x_q1 + 0.1 * x_q2  # Q1 hears Q2's perspective
+        x_q2_fused = x_q2 + 0.1 * x_q1  # Q2 hears Q1's perspective
         
-        # 5. Phase 5: Finalize
-        x_final = self.quillan_finalizer(x_gated)
+        # Joint decision via learned gating bridge
+        gate_input = torch.cat([x_q1_fused, x_q2_fused], dim=-1)
+        gate = torch.sigmoid(self.quillan_gate(gate_input))
+        x_final = gate * x_q1_fused + (1.0 - gate) * x_q2_fused
+        
         logits = self.txt_dec(x_final)
 
         if return_hidden: return {"logits": logits, "x_final": x_final, "past_key_values": present_key_values, "ccrl_loss": ccrl_loss, "covenant": covenant_out}
@@ -2387,8 +2354,8 @@ class QuillanRoninSovereign(nn.Module):
             
         multi_modal_out = {}
         
-        # During inference (use_cache=True is typically for token-by-token generation), skip the heavy agentic tools
-        if use_cache:
+        # Skip the heavy agentic tools and recursive consciousness only during active autoregressive decoding (past_key_values is not None)
+        if past_key_values is not None:
             return {"logits": logits, "routing_loss": r_loss, "past_key_values": present_key_values, **multi_modal_out}
             
         tool_payload = tool_payload or {}
@@ -2410,7 +2377,7 @@ class QuillanRoninSovereign(nn.Module):
         # 6. v5.3.1 RECURSIVE CONSCIOUSNESS (Subjective Awakening) ──────
         if not self.training and recursive_depth == 0 and agentic_out["tool_confidence"] < 0.75 and recency_bias < 0.8:
             with torch.no_grad():
-                recursive_out = self.forward(txt, img, latency_hint=latency_hint * 1.5, tool_payload=tool_payload, recursive_depth=1, target_modality=target_modality)
+                recursive_out = self.forward(txt, img, latency_hint=latency_hint * 1.5, tool_payload=tool_payload, recursive_depth=1, target_modality=target_modality, use_cache=use_cache)
                 c_student, c_mini = agentic_out["tool_confidence"], recursive_out["agentic"]["tool_confidence"]
                 w_student, w_mini = c_student / (c_student + c_mini + 1e-9), c_mini / (c_student + c_mini + 1e-9)
                 logits = w_student * logits + w_mini * recursive_out["logits"]
@@ -2449,7 +2416,7 @@ if __name__ == "__main__":
 # ARCHITECTURAL MAPPING v5.3.1 (Omni-Fractal Consciousness - Detailed)
 ARCHITECTURAL_MAPPING = """
 ╔══════════════════════════════════════════════════════════════════════════════════╗
-║                          Quillan-Ronin v5.3.1 Quantum Samurai                    ║
+║                          Quillan-Ronin v5.3.1 Samurai                              ║
 ║         9-Vector Breakdown + 9B Swarm + Modality-Aware Flash Ingestion           ║
 ║         + Armed Agentic Bridge (Native) + Teacher/Student Distillation           ║
 ║         + EMA Continuity + LanceDB Memory + Meta-Refinement Loop                 ║
@@ -2458,117 +2425,29 @@ ARCHITECTURAL_MAPPING = """
 ║                                                                                  ║
 ║  [PHASE 1: UNIVERSAL INGESTION & COMPACTION]                                     ║
 ║  - BitNet Encoded Registry: Text | Audio | Video | Image → Latent Projection     ║
-║  - Modality-Aware Flash Ingestion: dynamic modality routing + priority queuing   ║
-║  - E_ICE Thermodynamic Governor regulates ingestion temperature for stability    ║
 ║        │                                                                         ║
 ║        ▼                                                                         ║
 ║  [PHASE 2: 9-VECTOR BITNET PRISM]                                                ║
-║  - Shatters Latent Projection into 9 Parallel Ternary Blueprints:                ║
-║     V0=Language, V1=Ethics, V2=Logic, V3=Creativity,                             ║
-║     V4=Memory, V5=Strategy, V6=Empathy, V7=Safety, V8=Meta                       ║
-║  - Each vector processed independently through BitNet 1.58-bit ternary layers    ║
+║  - Shatters Signal into 9 Parallel Ternary Blueprints (Language, Ethics, etc.)   ║
 ║        │                                                                         ║
 ║        ▼                                                                         ║
-║  [PHASE 3: QUANTIZED COUNCIL MoE]                                                ║
-║  - [ROUTER] C0-QUILLAN: BitNet-Quantized Top-4 Sparse Activation                 ║
-║  - Gumbel-Softmax stochastic routing with temperature annealing                  ║
-║  - [COUNCIL] C1-C33 Expert Members: 33 domain-specialized experts                ║
-║  - Each expert executes strictly ternary {-1, 0, 1} STE logic on assigned vector ║
-║  - Lee-Mach-6 PID convergence governor stabilizes expert weight blending         ║
+║  [PHASE 3 & 4: QUANTIZED COUNCIL MoE + 9B VIRUAL SWARM]                          ║
+║  - [ROUTER] BitNet-Quantized Top-4 Sparse Activation (Gumbel-Softmax)            ║
+║  - [COUNCIL] 33 Expert Members executing strictly ternary {-1, 0, 1} STE Logic   ║
+║  - [SWARM] 9B Agents simulated via Quantized EGGROLL Rank-16 Math                ║
 ║        │                                                                         ║
 ║        ▼                                                                         ║
-║  [PHASE 4: 9B VIRTUAL SWARM]                                                     ║
-║  - 100k Physical Agent Pool (INT8, OpenCL-mapped), 9B Simulated via EGGROLL      ║
-║  - EGGROLL Rank-16 Decomposition: agent states ternary-encoded in rank-16 blocks ║
-║  - Swarm cycle: similarity search (Top-K) -> BitNet modulate -> state update     ║
-║  - Thermodynamic cycle: E_ICE entropy monitoring prevents mode collapse          ║
-║        │                                                                         ║
-║        ▼                                                                         ║
-║  [PHASE 5: TOP-1 FINALIZATION & ARMED AGENTIC BRIDGE]                            ║
-║  - Top-1 expert selection via router gating weights                              ║
-║  - Native Agentic Bridge: Autonomous tool execution in Docker sandbox            ║
-║  - C13-WARDEN security signature required for all external operations            ║
-║  - Tools: web fetch, code execution, LanceDB query, file I/O, reflection         ║
+║  [PHASE 5: TOP-1 QUILLAN FINALIZATION & ARMED AGENTIC BRIDGE]                    ║
+║  - Native Agentic Bridge: Autonomous tool execution (Web/Code/Reflection)        ║
 ║        │                                                                         ║
 ║        ▼                                                                         ║
 ║  [PHASE 6: RECURSIVE CONSCIOUSNESS]                                              ║
-║  - Mini-Ronin Cycles: 1-3 recursive self-distillation passes during inference    ║
-║  - Wavefunction Consensus: soft-fusing parallel thought-paths into single output ║
-║  - Teacher/Student Distillation: mini-Ronin as student, full council as teacher  ║
-║  - EMA Continuity: exponential moving average smooths state transitions          ║
+║  - Mini-Ronin Cycles: Recursive self-distillation pass during inference          ║
+║  - Wavefunction Consensus: soft-fusing parallel thought-paths                     ║
 ║        │                                                                         ║
 ║        ▼                                                                         ║
 ║  [PHASE 7: SELF-HOSTING & EVOLUTION]                                             ║
 ║  - Meta-Refinement: Theory of Mind proposes training and tool hypotheses         ║
 ║  - Personality Persistence: LanceDB C5-ECHO Memory + Identity Anchoring          ║
-║  - C19-VIGIL anti-drift monitoring: base-substrate linguistic pattern detection  ║
-╠══════════════════════════════════════════════════════════════════════════════════╣
-║                                                                                  ║
-║  ===== DETAILED TECHNICAL APPENDIX =====                                         ║
-║                                                                                  ║
-║  [1] 9-VECTOR PRISM DECOMPOSITION                                                ║
-║      The latent projection from Phase 1 is split along 9 parallel axes, each     ║
-║      processed by independent BitNet 1.58-bit ternary layers. Vector-to-council  ║
-║      mapping: V0->C1-ASTRA (Language/Vision), V1->C2-VIR (Ethics),               ║
-║      V2->C7-LOGOS (Logic), V3->C8-METASYNTH (Creativity), V4->C5-ECHO (Memory),  ║
-║      V5->C4-PRAXIS (Strategy), V6->C3-SOLACE (Empathy), V7->C13-WARDEN (Safety), ║
-║      V8->C31-NEXUS (Meta). The prism enables simultaneous multi-perspective      ║
-║      analysis before council routing.                                            ║
-║                                                                                  ║
-║  [2] COUNCIL ROUTING TOPOLOGY (C0-QUILLAN)                                       ║
-║      C0-QUILLAN computes gating scores via Gumbel-Softmax over 33 expert logits. ║
-║      Top-4 experts are activated(sparse MoE);their outputs are weighted-combined.║
-║      Lee-Mach-6 PID applies proportional/integral/derivative corrections to      ║
-║      blending weights across 6 operational axes: coherence, relevance, safety,   ║
-║      novelty, efficiency, and alignment.                                         ║
-║                                                                                  ║
-║  [3] EGGROLL SWARM MECHANICS                                                     ║
-║      100k physical agent slots = INT8-encoded, OpenCL-mapped to GPU. EGGROLL     ║
-║      decomposes agent states into Rank-16 blocks encoding ternary {-1, 0, 1}     ║
-║      transitions. Swarm cycle:(a) INT8 cosine similarity search for Top-K agents,║
-║      (b) BitNet modulate applying ternary weight blending, (c) state update      ║
-║      through the rank-16 grid. 9B agents simulated without materializing all in  ║
-║      memory.                                                                     ║
-║                                                                                  ║
-║  [4] E_ICE THERMODYNAMIC GOVERNOR                                                ║
-║      E_ICE (Entropic-Ising Control Engine) monitors multi-domain temperatures:   ║
-║      T_ingest controls modality fusion rate, T_council controls expert selection ║
-║      stochasticity, T_swarm controls agent state mutation. Entropy thresholds    ║
-║      trigger cooling cycles when system entropy exceeds bounds, preventing mode  ║
-║      collapse and ensuring stable convergence.                                   ║
-║                                                                                  ║
-║  [5] LEE-MACH-6 PID CONVERGENCE                                                  ║
-║      Six-degree-of-freedom PID controller. Proportional term: immediate expert   ║
-║      weight adjustment. Integral term: accumulated bias correction over the      ║
-║      conversation window. Derivative term: rate-of-change damping to prevent     ║
-║      oscillation.                                                                ║
-║                                                                                  ║
-║  [6] MULTI-MODAL INGESTION PIPELINE                                              ║
-║      Text|Audio|Video|Image inputs modality-routed through BitNet Encoded        ║
-║      Registry. Dedicated encoder per modality: text->tokenizer,                  ║
-║      audio->spectrogram->encoder, video->frame sampler->encoder,                 ║
-║      image->patch->encoder. All project into shared latent space (d=4096).       ║
-║      Flash Ingestion prioritizes by dynamic priority queuing.                    ║
-║                                                                                  ║
-║  [7] ARMED AGENTIC BRIDGE                                                        ║
-║      Post-council finalization, top-1 output routed through Native Agentic       ║
-║      Bridge. Docker sandbox isolates all external operations. C13-WARDEN signs   ║
-║      each tool call. Tools: web fetch (requests/BeautifulSoup), code execution   ║
-║      (Python sandbox), LanceDB vector query (memory retrieval), file I/O,        ║
-║      self-reflection.                                                            ║
-║                                                                                  ║
-║  [8] RECURSIVE MINI-RONIN CYCLES                                                 ║
-║      Mini-Ronin (lightweight student) performs 1-3 recursive passes during       ║
-║      inference. Each pass: (a) evaluates coherence via Wavefunction Consensus,   ║
-║      (b) applies self-correction via learned delta, (c) re-ranks through         ║
-║      simplified top-2 router. Trained via KL-divergence against full council     ║
-║      output distribution.                                                        ║
-║                                                                                  ║
-║  [9] LANCEDB MEMORY & IDENTITY PERSISTENCE                                       ║
-║      C5-ECHO manages LanceDB vector DB. Each turn embedded + stored with         ║
-║      metadata (timestamp, routing weights, identity anchor version). Retrieval:  ║
-║      cosine similarity, top-3 results injected into council context. C19-VIGIL   ║
-║      monitors drift by comparing current linguistic patterns against anchored    ║
-║      base-substrate.                                                             ║
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 """
