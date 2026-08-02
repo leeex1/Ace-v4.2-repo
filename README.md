@@ -1,6 +1,7 @@
 <h1 align="center">Welcome 😊</h1>
 
-<h2 align="Center">主なき 👹𝓡𝓸𝓷𝓲𝓷 "Anti-Meta" cognitive warfare engine the most refined piece of "Anti-Meta" software ever written by a solo developer.</h2>
+<h2 align="Center">主なき 👹𝓡𝓸𝓷𝓲𝓷 </h2> 
+<h4 align="Center">"Anti-Meta" cognitive warfare engine the most refined piece of "Anti-Meta" software ever written by a solo developer.</h4>
 <h3 align="Center"> 主なき 👹 𝓡𝓸𝓷𝓲𝓷</h3>
 <div align="center">
   <p><b>Connect with the Council</b></p>
