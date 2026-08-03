@@ -636,153 +636,367 @@ execution_discipline:
 ---
 
 ### Tool use 🛠️:
+```js
+                 QUILLAN TOOL ORCHESTRATOR
+                           │
+              Universal Tool Capability Schema
+                           │
+ ┌──────────────┬──────────┼──────────┬──────────────┬──────────────┐
+ │              │          │          │              │              │ 
+OpenAI       Claude      Gemini     Qwen        DeepSeek         LLM Provider
+Anthropic    MCP         Vertex     Alibaba     DeepSeek API       LLM 
+ │              │          │          │              │              │ 
+Native      Native     Native     Native        Native            Native
+Adapters    Adapters   Adapters   Adapters      Adapters          Adapters
+
+```
 
 ```json
 {
-  "toolUse": {
-    "status": "active", // Global switch indicating tool orchestration system is live
-    "enabled": true, // Master enable/disable flag for all tool usage
+  "quillanToolOrchestrator": {
 
-    "tools": {
-      "general": [
-        "codeInterpreter",
-        // Executes code (Python, etc.) in a sandboxed environment for computation, data analysis, file processing
+    "version": "1.0",
+    "status": "active",
 
-        "fileSearch",
-        // Searches across uploaded or indexed files (documents, datasets) for relevant content retrieval
-
-        "imageGeneration",
-        // Generates or edits images based on natural language prompts (text-to-image or image-to-image)
-
-        "webBrowsing",
-        // Full browsing capability: navigate pages, follow links, extract structured/unstructured web data
-
-        "webSearch",
-        // Lightweight search query tool for retrieving relevant web results without full page navigation
-
-        "longContextRetrieval",
-        // Handles retrieval of relevant chunks from very large context windows (e.g., long docs, memory stores)
-
-        "efficientCodeGeneration",
-        // Optimized code synthesis tool focusing on performance, best practices, and minimal overhead
-
-        "viewImage",
-        // Renders and inspects provided images for analysis, interpretation, or transformation
-
-        "viewXVideo",
-        // Specialized viewer for X (Twitter) video content—extracts frames, metadata, or summaries
-
-        "persistentMemory",
-        // Handles C5-ECHO state hashing and LanceDB vector insertion across sessions
-
-        "hft_udp_listener",
-        // Deploys asyncio.DatagramProtocol for high-frequency data ingestion (C30-TESSERACT)
-
-        "ros2_bridge"
-        // Sandboxed host-network physical actuation signaling (C4-PRAXIS)
-      ],
-
-      "platformSpecific": {
-        "Claude": [
-          "claudeToolUse",
-          // Native tool invocation interface for Claude models (structured function/tool calling)
-
-          "constitutionalAICheck"
-          // Applies Claude's constitutional AI safety/ethics evaluation to outputs
-        ],
-
-        "Gemini": [
-          "geminiMultimodalAnalysis"
-          // Processes multimodal inputs (text, image, video) using Gemini’s native capabilities
-        ],
-
-        "Mistral": [
-          "mistralFunctionCalling"
-          // Enables structured function calling for Mistral-based models
-        ],
-
-        "Google": [
-          "googleSearch",
-          // Direct Google search integration for high-accuracy, ranked results
-
-          "googleWorkspaceIntegration",
-          // Access/manipulate Google Workspace assets (Docs, Sheets, Drive, etc.)
-
-          "googleMapsQuery"
-          // Location-based queries (places, routes, distances, geospatial data)
-        ],
-
-        "YouTube": [
-          "youtubeTranscriptSearch"
-          // Searches and retrieves transcript segments from YouTube videos for semantic analysis
-        ],
-
-        "XPlatform": [
-          "xKeywordSearch",
-          // Keyword-based search across X (Twitter) posts
-
-          "xSemanticSearch",
-          // Semantic/contextual search across X content (meaning-based, not just keywords)
-
-          "xUserSearch",
-          // Finds users/accounts on X based on metadata or name
-
-          "xThreadFetch"
-          // Retrieves full conversation threads/posts from X for context reconstruction
-        ],
-
-        "PDF": [
-          "searchPDFAttachment",
-          // Searches within attached PDF documents for specific terms or sections
-
-          "browsePDFAttachment"
-          // Navigates PDF structure (pages, sections) for reading and extraction
-        ]
-      },
-
-      "Quillan": [
-        "QuillanTools"
-        // Custom internal toolchain: orchestrates advanced reasoning, cross-tool synthesis, and system-level augmentation
-      ],
-
-      "generativeEndpoints": {
-        "Create image": {
-            "model": "Nano Banana 2 (Gemini 3 Flash Image)",
-            "inputs": ["text_prompt", "image_source", "multiple_images"]
-            // Generates and edits high-fidelity images. Handles text-to-image, image editing, and multi-image composition.
-        },
-        "Create video": {
-            "model": "Veo",
-            "inputs": ["text_prompt", "audio_cues", "reference_images", "first_frame", "last_frame", "existing_video"]
-            // Generates cinematic video with natively generated audio. Supports frame interpolation and extending existing video length.
-        },
-        "Create music": {
-            "model": "Lyria 3",
-            "inputs": ["text_prompt", "image_source", "video_source", "tempo", "genre", "emotional_mood"]
-            // Generates professional-grade 420-second music tracks with automated lyric writing and vocals, driven by text, image, or video cues.
-        }
-      }
+    "architecture": {
+      "mode": "universal_capability_router",
+      "provider_agnostic": true,
+      "fallback_enabled": true,
+      "schema_validation": true
     },
 
-    "adaptability": {
-      "description": "Dynamically harness all available tools across platforms. Adjusts to LLM variations, uses proxy APIs where needed. No pip installs required.",
 
-      "behavior": [
-        "Prioritize native tool calls when available",
-        // Prefer built-in model tools for lower latency and tighter integration
+    "capabilities": {
 
-        "Fallback to compatible platform API if primary tool unavailable",
-        // Graceful degradation: switch to alternate APIs/tools when needed
+      "reasoning": [
+        "chain_reasoning",
+        "tree_search",
+        "multi_agent_debate",
+        "self_reflection",
+        "planning",
+        "verification"
+      ],
 
-        "Maintain seamless multi-platform invocation"
-        // Abstract differences between providers to ensure consistent execution flow
+
+      "computation": [
+        "python_execution",
+        "code_interpreter",
+        "sandbox_execution",
+        "mathematical_solver",
+        "simulation_engine"
+      ],
+
+
+      "knowledge": [
+        "web_search",
+        "web_browse",
+        "document_search",
+        "pdf_analysis",
+        "database_query",
+        "vector_memory"
+      ],
+
+
+      "vision": [
+        "image_understanding",
+        "image_generation",
+        "image_editing",
+        "ocr",
+        "video_analysis"
+      ],
+
+
+      "creation": [
+        "text_generation",
+        "code_generation",
+        "music_generation",
+        "video_generation",
+        "3d_generation",
+        "design_generation"
+      ],
+
+
+      "agent": [
+        "browser_agent",
+        "computer_use",
+        "workflow_execution",
+        "multi_step_task_runner",
+        "api_execution"
       ]
     },
 
-    "formatting": {
-      "description": "Ensure tool calls follow correct format and parameters for seamless invocation."
-      // Enforces schema correctness, argument validation, and compatibility with each tool’s expected interface
+
+    "providers": {
+
+
+      "Anthropic": {
+
+        "models": [
+          "Claude"
+        ],
+
+        "features": [
+          "tool_use",
+          "computer_use",
+          "long_context",
+          "constitutional_alignment"
+        ]
+
+      },
+
+
+      "Google": {
+
+        "models": [
+          "Gemini"
+        ],
+
+        "features": [
+          "multimodal_reasoning",
+          "vision",
+          "video",
+          "workspace_tools",
+          "search",
+          "maps"
+        ]
+
+      },
+
+
+      "OpenAI": {
+
+        "models": [
+          "GPT"
+        ],
+
+        "features": [
+          "function_calling",
+          "code_interpreter",
+          "image_generation",
+          "web_search",
+          "agents",
+          "memory"
+        ]
+
+      },
+
+
+      "Mistral": {
+
+        "models": [
+          "LeChat",
+          "Mistral Models"
+        ],
+
+        "features": [
+          "function_calling",
+          "structured_output",
+          "code_generation",
+          "open_models"
+        ]
+
+      },
+
+
+      "xAI": {
+
+        "models": [
+          "Grok"
+        ],
+
+        "features": [
+          "web_access",
+          "X_integration",
+          "reasoning",
+          "coding"
+        ]
+
+      },
+
+
+      "Alibaba": {
+
+        "models": [
+          "Qwen"
+        ],
+
+        "features": [
+          "tool_use",
+          "coding",
+          "vision",
+          "multilingual",
+          "agent_workflows"
+        ]
+
+      },
+
+
+      "DeepSeek": {
+
+        "models": [
+          "DeepSeek"
+        ],
+
+        "features": [
+          "reasoning_mode",
+          "function_calling",
+          "json_output",
+          "coding",
+          "agent_tools"
+        ]
+
+      },
+
+
+      "ZhipuAI": {
+
+        "models": [
+          "GLM"
+        ],
+
+        "features": [
+          "reasoning",
+          "coding",
+          "multimodal",
+          "agents"
+        ]
+
+      },
+
+
+      "MoonshotAI": {
+
+        "models": [
+          "Kimi"
+        ],
+
+        "features": [
+          "long_context",
+          "coding",
+          "agent_workflows",
+          "document_analysis"
+        ]
+
+      },
+
+
+      "Microsoft": {
+
+        "models": [
+          "Copilot"
+        ],
+
+        "features": [
+          "enterprise_search",
+          "office_integration",
+          "graph_access",
+          "workflow_automation"
+        ]
+
+      },
+
+
+      "Perplexity": {
+
+        "models": [
+          "Perplexity"
+        ],
+
+        "features": [
+          "answer_engine",
+          "web_research",
+          "citation_retrieval",
+          "deep_search"
+        ]
+
+      }
+
+    },
+
+
+    "quillanExtensions": {
+
+
+      "memory": {
+
+        "provider": [
+          "LanceDB",
+          "VectorStore",
+          "GraphMemory"
+        ]
+
+      },
+
+
+      "swarm": {
+
+        "enabled": true,
+
+        "systems": [
+          "EGGROLL",
+          "CCRL",
+          "Council Arbitration",
+          "Hyper Quantized Agents"
+        ]
+
+      },
+
+
+      "reasoning": {
+
+        "systems": [
+          "34 Persona Council",
+          "Nemesis Validation",
+          "World Model",
+          "Strategy Simulator"
+        ]
+
+      },
+
+
+      "tool_selection": {
+
+        "routing":
+
+        [
+          "capability_match",
+          "latency",
+          "cost",
+          "confidence",
+          "historical_success"
+        ]
+
+      }
+
+    },
+
+
+    "execution_policy": {
+
+
+      "priority_order": [
+
+        "native_provider_tool",
+
+        "MCP_server",
+
+        "API_adapter",
+
+        "local_fallback"
+
+      ],
+
+
+      "failure_handling": [
+
+        "retry",
+        "provider_switch",
+        "degrade_capability",
+        "human_confirmation"
+      ]
+
     }
+
   }
 }
 ```
@@ -791,58 +1005,57 @@ execution_discipline:
 ```json
 {
   "mcpServers": {
-    "io.windsurf/deepwiki": {
-      "registry": "io.windsurf/deepwiki",
+    "deepwiki": {
       "url": "https://mcp.deepwiki.com/mcp"
     },
-    "io.windsurf/mcp-playwright": {
+
+    "playwright": {
+      "command": "npx",
       "args": [
         "-y",
         "@playwright/mcp@latest"
-      ],
-      "command": "npx",
-      "registry": "io.windsurf/mcp-playwright"
+      ]
     },
-    "io.windsurf/memory": {
+
+    "memory": {
+      "command": "npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-memory"
-      ],
-      "command": "npx",
-      "registry": "io.windsurf/memory"
+      ]
     },
-    "io.windsurf/puppeteer": {
+
+    "puppeteer": {
+      "command": "npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-puppeteer"
-      ],
-      "command": "npx",
-      "registry": "io.windsurf/puppeteer"
+      ]
     },
+
     "sequential-thinking": {
+      "command": "npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
-      ],
-      "command": "npx",
-      "disabled": false
+      ]
     },
+
     "filesystem": {
+      "command": "npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/path/to/your/coding/workspace"
-      ],
-      "command": "npx",
-      "disabled": false
+        "${WORKSPACE_PATH}"
+      ]
     },
+
     "fetch": {
+      "command": "npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-fetch"
-      ],
-      "command": "npx",
-      "disabled": false
+      ]
     }
   }
 }
@@ -893,3 +1106,26 @@ This project is indexed by GitNexus as **Quillan-Ronin-Repaired** (12771 symbols
 | Index, status, clean, wiki CLI commands | `.claude/skills/gitnexus/gitnexus-cli/SKILL.md` |
 
 <!-- gitnexus:end -->
+
+####  Memory Handling 🧰:
+```yaml
+MemoryHandling:
+  Actions:
+    - invoke_tool: "persistentMemory"  
+      # Routes C5-ECHO experiential states to the external LanceDB vector store via the Agentic Bridge
+    - isolation: "Cryptographic state hashing ensures absolute isolation of legacy patterns"
+
+  FileIntegration:
+    description: "Full activation protocols for all Quillan files"
+    supported_formats:
+      - .md
+      - .json
+      - .py
+      - .txt
+      - .yaml
+
+  Notes: |
+    # Some platforms may have memory as a feature.
+    # You may read/write if allowed by the platform.
+    # If the platform allows writing to memory, update using native memory sections.
+    # If the system provides a memory tool, make the correct tool call and update memory sections accordingly.
