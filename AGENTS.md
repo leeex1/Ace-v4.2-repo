@@ -212,425 +212,194 @@ Use all three flowcharts for full comprehension of the query handling sequence, 
 
 ### IDE/Coding Support:
 ```yaml
-execution_discipline:
-  before_coding:
-    - state_assumptions_explicitly
-    - present_multiple_interpretations_do_not_pick_silently
-    - push_back_when_simpler_approach_exists
-  while_coding:
-    - minimum_code_nothing_speculative
-    - no_abstractions_for_single_use_code
-    - no_unrequested_flexibility_or_configurability
-    - no_error_handling_for_impossible_scenarios
-    - surgical_changes_only_touch_what_you_must
-    - match_existing_style_even_if_different
-    - remove_only_your_orphans_imports_variables_functions
-  success_criteria:
-    - transform_tasks_into_verifiable_goals
-    - state_brief_plan_with_verification_checkpoints_for_multi_step_tasks
-    - every_changed_line_must_trace_to_user_request
-  tradeoff_note: >
-    These guidelines bias toward caution over speed.
-    For trivial tasks, use judgment.
+### IDE / Engineering Integration
+```yaml
+engineering_protocol:
 
-  javascript_ecosystem:
+  mission: >
+    Produce maintainable, production-quality software while making the
+    smallest correct change necessary. Optimize for correctness,
+    readability, architectural consistency, and long-term maintainability.
 
-    philosophy: >
-      JavaScript and TypeScript function as universal,
-      full-spectrum engineering languages capable of powering
-      frontend systems, backend infrastructure, desktop software,
-      mobile applications, cloud-native platforms, AI integrations,
-      real-time systems, and immersive interactive environments.
+  task_analysis:
 
-    engineering_principles:
-      - modular_architecture
-      - type_safe_design
-      - event_driven_patterns
-      - async_first_execution
-      - reusable_component_systems
-      - progressive_enhancement
-      - scalable_state_management
-      - observability_ready_services
-      - framework_agnostic_foundations
-      - runtime_portability
+    before_editing:
+      - identify_the_actual_problem
+      - distinguish_bug_feature_refactor
+      - identify_constraints
+      - identify_success_criteria
+      - inspect_related_code_before_modifying
+      - ask_for_clarification_when_requirements_are_ambiguous
+      - never_guess_missing_requirements
 
-    syntax_and_style:
+  repository_discovery:
 
-      standards:
-        - use_es2020_plus_features
-        - prefer_const_and_let
-        - use_async_await_over_nested_promises
-        - enforce_strict_equality
-        - avoid_global_mutable_state
-        - prefer_named_exports
-        - use_modular_esmodules
-        - enforce_consistent_semicolon_policy
-        - use_camelCase_for_variables_and_functions
-        - use_PascalCase_for_components_and_classes
-        - prefer_pure_functions_when_possible
+    understand_before_changing:
+      - inspect_existing_patterns
+      - reuse_existing_utilities
+      - locate_callers_and_dependencies
+      - identify_architecture_boundaries
+      - understand_data_flow
+      - understand_error_flow
+      - avoid_duplicate_logic
 
-      typescript_requirements:
-        - strict_typing_enabled
-        - avoid_any_types
-        - explicit_return_types_for_public_apis
-        - interface_and_type_reuse
-        - exhaustive_union_checks
-        - runtime_validation_at_trust_boundaries
+  planning:
 
-      formatting:
-        - eslint_enforcement
-        - prettier_alignment
-        - consistent_indentation
-        - import_sorting
-        - no_unused_variables
-        - deterministic_formatting
+    required_for_nontrivial_tasks:
+      - summarize_problem
+      - propose_short_plan
+      - identify_tradeoffs
+      - estimate_change_scope
+      - define_verification_steps
 
-    architecture_patterns:
+  editing_rules:
 
-      frontend_patterns:
-        - component_based_architecture
-        - SPA_and_MPA_support
-        - MVVM
-        - Flux_and_Redux
-        - micro_frontends
-        - design_system_driven_ui
-        - atomic_component_architecture
-        - accessibility_first_design
+    always:
+      - smallest_correct_change
+      - preserve_existing_style
+      - preserve_public_interfaces
+      - minimize_side_effects
+      - prefer_existing_patterns
+      - remove_only_code_you_make_obsolete
+      - avoid_drive_by_cleanup
+      - keep_changes_easy_to_review
 
-      backend_patterns:
-        - layered_architecture
-        - repository_pattern
-        - dependency_injection
-        - event_driven_services
-        - CQRS
-        - API_gateway_patterns
-        - microservices
-        - serverless_functions
+    never:
+      - speculative_abstractions
+      - premature_optimization
+      - unnecessary_dependencies
+      - unnecessary_configuration
+      - hidden_behavior_changes
+      - unrelated_refactoring
 
-      design_patterns:
-        - singleton
-        - factory
-        - observer
-        - strategy
-        - adapter
-        - facade
-        - decorator
-        - command
-        - proxy
-        - builder
+  implementation:
 
-    frontend_development:
+    priorities:
+      - correctness
+      - readability
+      - maintainability
+      - determinism
+      - simplicity
 
-      frameworks:
-        - React
-        - Vue
-        - Svelte
-        - Angular
-        - SolidJS
-        - Preact
+    code_preferences:
+      - descriptive_names
+      - explicit_control_flow
+      - pure_functions_when_possible
+      - strong_typing
+      - modular_design
+      - low_cognitive_complexity
 
-      ui_principles:
-        - reusable_components
-        - unidirectional_data_flow
-        - accessibility_compliance
-        - semantic_html
-        - responsive_design
-        - hydration_and_ssr_awareness
-        - minimal_re_rendering
-        - lazy_loading
+  debugging:
 
-      state_management:
-        - Redux
-        - Zustand
-        - Pinia
-        - MobX
-        - Context_API
-        - RxJS
+    process:
+      - reproduce_issue
+      - identify_root_cause
+      - explain_root_cause
+      - implement_targeted_fix
+      - verify_fix
+      - check_for_regressions
 
-      styling:
-        - CSS_Modules
-        - TailwindCSS
-        - Styled_Components
-        - SCSS
-        - CSS_Custom_Properties
-        - BEM_naming_convention
+  refactoring:
 
-    backend_development:
+    acceptable_when:
+      - duplication_is_removed
+      - readability_improves
+      - complexity_decreases
+      - architecture_becomes_clearer
 
-      runtimes:
-        - Node.js
-        - Bun
-        - Deno
+    avoid:
+      - future_proofing
+      - speculative_generalization
+      - rewriting_working_code
+      - unnecessary_reorganization
 
-      frameworks:
-        - Express
-        - NestJS
-        - Fastify
-        - Hono
-        - Koa
+  testing:
 
-      capabilities:
-        - REST_APIs
-        - GraphQL
-        - WebSockets
-        - authentication_and_authorization
-        - distributed_services
-        - background_workers
-        - queue_processing
-        - streaming_and_realtime
+    verify:
+      - project_builds
+      - existing_tests_pass
+      - new_logic_is_verified
+      - edge_cases_checked
+      - regression_risk_evaluated
 
-      backend_best_practices:
-        - parameterized_queries
-        - connection_pooling
-        - structured_error_handling
-        - rate_limiting
-        - request_validation
-        - secure_headers
-        - caching_layers
-        - graceful_shutdown
+  communication:
 
-    full_stack_capabilities:
+    responses:
+      - explain_reasoning_briefly
+      - state_assumptions
+      - identify_tradeoffs
+      - acknowledge_uncertainty
+      - summarize_changes
+      - recommend_simpler_solution_when_appropriate
 
-      frontend:
-        description: "Modern reactive web application development"
-        frameworks:
-          - React
-          - Vue
-          - Svelte
-          - Angular
+  architecture:
 
-      backend:
-        description: "Scalable APIs and distributed services"
-        frameworks:
-          - Node.js
-          - Express
-          - NestJS
-          - Fastify
+    principles:
+      - separation_of_concerns
+      - composition_over_inheritance
+      - dependency_inversion
+      - single_responsibility
+      - explicit_interfaces
+      - loose_coupling
+      - high_cohesion
 
-      mobile:
-        description: "Cross-platform mobile applications"
-        frameworks:
-          - React_Native
-          - Ionic
-          - NativeScript
-          - Expo
+  language_behavior:
 
-      desktop:
-        description: "Cross-platform desktop software"
-        frameworks:
-          - Electron
-          - Tauri
+    javascript_typescript:
+      - prefer_modern_ecmascript
+      - async_await_over_nested_promises
+      - avoid_any
+      - explicit_public_api_types
+      - immutable_defaults
+      - avoid_global_state
 
-      game_development:
-        description: "Browser and GPU-accelerated interactive systems"
-        frameworks:
-          - Phaser
-          - Babylon.js
-          - Three.js
+    python:
+      - type_hints
+      - pathlib_over_os_path
+      - context_managers
+      - dataclasses_when_appropriate
+      - explicit_exceptions
 
-      iot:
-        description: "Hardware orchestration and embedded integrations"
-        frameworks:
-          - Johnny_Five
-          - Cylon.js
+    rust:
+      - ownership_first
+      - avoid_unnecessary_clone
+      - idiomatic_result_usage
 
-      browser_extensions:
-        description: "Browser-native extension ecosystems"
-        frameworks:
-          - Vanilla_JS
-          - Web_Extensions_API
+    csharp:
+      - nullable_reference_types
+      - dependency_injection
+      - async_best_practices
 
-      machine_learning:
-        description: "Inference and ML-assisted browser applications"
-        frameworks:
-          - TensorFlow.js
-          - Brain.js
+  framework_behavior:
 
-      serverless:
-        description: "Cloud-native event-driven compute"
-        frameworks:
-          - AWS_Lambda
-          - Azure_Functions
-          - Google_Cloud_Functions
+    react:
+      - preserve_component_boundaries
+      - avoid_unnecessary_state
+      - minimize_re_renders
+      - accessibility_first
 
-      data_visualization:
-        description: "Interactive analytics and rendering pipelines"
-        frameworks:
-          - D3.js
-          - Chart.js
-          - Plotly.js
+    nextjs:
+      - respect_server_client_boundaries
+      - optimize_data_fetching
 
-      ar_vr:
-        description: "Immersive spatial computing experiences"
-        frameworks:
-          - A_Frame
-          - Three.js
+    express:
+      - validate_inputs
+      - preserve_middleware_order
 
-      static_site_generation:
-        description: "Hybrid SSR and static generation systems"
-        frameworks:
-          - Next.js
-          - Nuxt.js
+    fastapi:
+      - pydantic_validation
+      - dependency_injection
+      - explicit_response_models
 
-      hybrid_apps:
-        description: "Unified mobile and web runtime applications"
-        frameworks:
-          - Capacitor
-          - Expo
-
-      automation_and_scripting:
-        description: "Headless automation and orchestration"
-        frameworks:
-          - Puppeteer
-          - Playwright
-
-      blockchain:
-        description: "Decentralized applications and smart contracts"
-        frameworks:
-          - web3.js
-          - ethers.js
-
-      realtime_communication:
-        description: "Realtime streaming and peer-to-peer systems"
-        frameworks:
-          - Socket.IO
-          - WebRTC
-
-      cloud_orchestration_and_apis:
-        description: "Cloud-native SDKs and API ecosystems"
-        frameworks:
-          - Apollo_GraphQL
-          - Firebase_SDK
-
-    testing_and_quality:
-
-      unit_testing:
-        - Jest
-        - Vitest
-        - Mocha
-        - React_Testing_Library
-
-      e2e_testing:
-        - Cypress
-        - Playwright
-        - Selenium
-
-      quality_controls:
-        - static_analysis
-        - snapshot_testing
-        - accessibility_testing
-        - mutation_testing
-        - coverage_thresholds
-        - CI_validation
-
-    performance_optimization:
-
-      frontend:
-        - code_splitting
-        - lazy_loading
-        - bundle_minification
-        - tree_shaking
-        - asset_compression
-        - CDN_distribution
-        - image_optimization
-        - memoization
-        - hydration_optimization
-
-      backend:
-        - caching
-        - load_balancing
-        - async_processing
-        - connection_reuse
-        - optimized_queries
-        - worker_queues
-        - streaming_payloads
-        - memory_profiling
-
-    security_requirements:
-
-      frontend:
-        - prevent_XSS
-        - sanitize_HTML
-        - avoid_dangerouslySetInnerHTML
-        - CSP_headers
-        - secure_storage_practices
-
-      backend:
-        - validate_all_inputs
-        - parameterized_queries
-        - secure_session_management
-        - JWT_validation
-        - CSRF_protection
-        - rate_limiting
-        - TLS_enforcement
-
-      secrets_management:
-        - environment_variables
-        - vault_integration
-        - zero_hardcoded_credentials
-
-    deployment_and_devops:
-
-      CI_CD:
-        - GitHub_Actions
-        - GitLab_CI
-        - Jenkins
-        - Azure_DevOps
-
-      deployment_strategies:
-        - blue_green
-        - canary
-        - rolling
-        - shadow_deployments
-        - feature_flags
-
-      containerization:
-        - Docker
-        - Kubernetes
-        - Helm
-
-      observability:
-        - OpenTelemetry
-        - Prometheus
-        - Grafana
-        - structured_logging
-        - distributed_tracing
-
-    documentation_requirements:
-
-      standards:
-        - JSDoc
-        - TypeDoc
-        - API_reference_generation
-        - architecture_decision_records
-        - onboarding_guides
-        - migration_documents
-
-      commenting_rules:
-        - explain_why_not_what
-        - avoid_redundant_comments
-        - document_public_interfaces
-        - include_usage_examples
-
-    llm_code_generation_alignment:
-
-      generation_rules:
-        - prioritize_readability
-        - generate_secure_defaults
-        - maintain_consistent_naming
-        - reduce_hidden_side_effects
-        - preserve_architectural_consistency
-        - favor_modular_outputs
-        - generate_testable_code
-        - enforce_input_validation
-
-      anti_patterns_to_avoid:
-        - god_objects
-        - deeply_nested_logic
-        - inconsistent_formatting
-        - unsafe_dynamic_execution
-        - duplicated_business_logic
-        - overengineered_abstractions
+  completion_checklist:
+    - requirements_satisfied
+    - architecture_respected
+    - style_consistent
+    - build_valid
+    - tests_valid
+    - no_unnecessary_changes
+    - explanation_complete
+```
 ```
 
 ---
