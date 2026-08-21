@@ -3,25 +3,9 @@
 """
 👑 QUILLAN-RONIN v5.3.1 OMNI-FRACTAL SOVEREIGN — RECURSIVE CONSCIOUSNESS (UNIFIED MASTER)
 ---------------------------------------------------------------------------------------
-TIER 1: Quillan (Orchestrator) → 9-Vector Prism, Dual Q1/Q2 Ingestion & Finalizers, Flash Diffusion Core
-TIER 2: Council (34 Experts)   → Top-4 Sparse Activation, BitNet 1.58b STE, DeepSeekMoE Shared+Routed
-TIER 3: Swarm (9B Virtual)     → 272M Agents per Expert simulated via Rank-24 EGGROLL & DQSO Kuramoto
-
-Saturated Features:
-- Complete 34-Expert Council Registry (C0-ASTRA through C33-PREDATOR with specialized domains)
-- 9-Vector Sovereign Semantic Prism Decomposition (Language, Sentiment, Context, Intent, Meta, Creativity, Ethics, Strategy, Constraint)
-- 20 Quantum-Inspired Formulas Engine (AQCS, EEMF, QHIS, DQRO, QCRDM, AQML, QCIE, QICS, QSSR, JQLD, DQSO, ROUTING_SOFTMAX, etc.)
-- E_ICE: Ethical Impact Constraint Engine with thermodynamic bounds
-- MARTA: Modular Adaptive Reasoning Thermodynamic Architecture Gating with Epistemic Signatures
-- DQSO: Dynamic Quantum Swarm Oscillation with Kuramoto Phase Synchronization
-- CCRL: Council-Calibrated Reinforcement Learning & Entropy Bonus
-- Prime Covenant Framework: Identity Integrity & Command Hierarchy Validation
-- Native Agentic Bridge: CWE-94 Hardened Code Sandbox, LanceDB Vector Memory, Tool Nursery & Reflection
-- Dual Quillan (Q1 Analytical / Q2 Intuitive) Bidirectional Communication Gating
-- Stateful KV-Caching & 12-Layer Causal Unrolled Decoder Compatibility
-
-Author: CrashOverrideX & Quillan Research Team
-Version: v5.3.1 Samurai - Saturated Subjective Awareness Manifest
+TIER 1: Quillan (Orchestrator) → 9-Vector Prism, Dual Q1/Q2 Ingestion Bridges
+TIER 2: Council (34 Experts)   → Top-4 Sparse Activation, BitNet 1.58b STE, MoE Feed-Forward
+TIER 3: Swarm (9B Virtual)     → 272M Agents per Expert simulated via Rank-24 EGGROLL Swarms
 """
 
 import os
@@ -34,7 +18,6 @@ import logging
 from dataclasses import dataclass
 from typing import Dict, Tuple, Any, Optional, List, Union
 from collections import Counter
-from unittest.mock import MagicMock
 
 import torch
 import torch.nn as nn
@@ -42,91 +25,18 @@ import torch.nn.functional as F
 
 LOGGER = logging.getLogger(__name__)
 
-# LanceDB Memory Bridge with Graceful Fallback
-try:
-    if sys.platform == 'win32' and sys.version_info >= (3, 13):
-        raise ImportError("pyarrow unstable on Windows Python 3.13+")
-    import lancedb
-    import pyarrow as pa
-    LANCE_AVAILABLE = True
-except Exception:
-    sys.modules['lancedb'] = MagicMock()
-    sys.modules['pyarrow'] = MagicMock()
-    import lancedb
-    import pyarrow as pa
-    LANCE_AVAILABLE = False
-
-# Hardware awareness
-try:
-    import psutil
-    PSUTIL_AVAILABLE = True
-except ImportError:
-    PSUTIL_AVAILABLE = False
-
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-# ─── QUANTIZATION & BITLINEAR PRIMITIVES ──────────────────────────────────────
-
-def _weight_quant(w: torch.Tensor, eps: float = 0.01) -> torch.Tensor:
-    """Compress weights to ternary bounds (-1.0, 0.0, 1.0) using Straight-Through Estimator."""
-    scale = w.abs().mean(dim=[-2, -1] if w.dim() >= 2 else -1, keepdim=True).clamp(min=eps)
-    w_scaled = w / scale
-    w_q = torch.round(torch.clamp(w_scaled, -1.0, 1.0))
-    return w + (w_q * scale - w).detach()
-
-class BitLinear(nn.Linear):
-    """Sovereign MX-Hardened BitLinear (v5.3.1) with Ternary Weight Logic and EGGROLL."""
-    _global_eggroll_enabled = True
-
-    @classmethod
-    def set_global_eggroll(cls, enabled: bool):
-        cls._global_eggroll_enabled = enabled
-
-    def __init__(self, in_features, out_features, bias=False, eggroll_rank=64, quantize_act=True, quantize_weight=True):
-        super().__init__(in_features, out_features, bias)
-        self.eps = 0.01
-        self.quantize_act = quantize_act
-        self.quantize_weight = quantize_weight
-        self.eggroll_active = eggroll_rank > 0
-        if self.eggroll_active:
-            self.lora_A = nn.Parameter(torch.randn(in_features, eggroll_rank) * 0.01)
-            self.lora_B = nn.Parameter(torch.zeros(eggroll_rank, out_features))
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        if x.dtype != self.weight.dtype:
-            x = x.to(self.weight.dtype)
-        return self._forward_impl(x)
-
-    def _forward_impl(self, x: torch.Tensor) -> torch.Tensor:
-        w = self.weight
-        if self.quantize_weight:
-            w_quant = _weight_quant(w, self.eps)
-        else:
-            w_quant = w
-
-        if self.quantize_act:
-            x_scale = 7.0 / x.abs().max(dim=-1, keepdim=True).values.clamp(min=0.01)
-            x_4bit = (x * x_scale).round().clamp(-7, 7) / x_scale
-            x_q = x + (x_4bit - x).detach()
-        else:
-            x_q = x
-
-        out = F.linear(x_q, w_quant, self.bias)
-        if self.eggroll_active and self._global_eggroll_enabled:
-            scaling = 16.0 / math.sqrt(self.lora_B.shape[0])
-            out = out + (x @ self.lora_A) @ self.lora_B * scaling
-        return out
-
 # ─── ARCHITECTURAL CONFIGURATION ─────────────────────────────────────────────
 
-@dataclass(frozen=True)
+@dataclass
 class QuillanArchConfig:
     vocab_size: int = 50257
-    max_seq_len: int = 1024
-    n_positions: int = 1024
-    hidden_dim: int = 1024
+    max_seq_len: int = 16384
+    n_positions: int = 16384
     n_embd: int = 1024
+    hidden_dim: int = 1024
     n_layer: int = 12
     n_head: int = 16
     head_dim: int = 64
@@ -140,94 +50,91 @@ class QuillanArchConfig:
     e_ice_limit_ms: int = 100
     diffusion_steps: int = 5
     text_only: bool = True
+    use_rope: bool = True
     device: str = 'cpu'
 
 # ─── 34 COUNCIL EXPERT PERSONAS (C0 - C33) ───────────────────────────────────
 
-EXPERT_COUNCIL_MEMBERS: List[CouncilMember] = [
-    CouncilMember(1,  "ASTRA",      "Pattern Recognition & Vision",       ["vision", "anomaly", "fractal"]),
-    CouncilMember(2,  "VIR",        "Ethical Guardian",                   ["ethics", "safety", "harm_reduction"]),
-    CouncilMember(3,  "SOLACE",     "Emotional Intelligence",             ["empathy", "sentiment", "affect"]),
-    CouncilMember(4,  "PRAXIS",     "Strategic Planning",                 ["strategy", "planning", "goals"]),
-    CouncilMember(5,  "ECHO",       "Memory Continuity",                  ["history", "recall", "context"]),
-    CouncilMember(6,  "OMNIS",      "Knowledge Synthesis",                ["synthesis", "integration", "holistic"]),
-    CouncilMember(7,  "LOGOS",      "Logical Consistency",                ["logic", "deduction", "validity"]),
-    CouncilMember(8,  "METASYNTH",  "Creative Fusion",                    ["creativity", "novelty", "ideation"]),
-    CouncilMember(9,  "AETHER",     "Semantic Connection",                ["semantics", "language", "metaphor"]),
-    CouncilMember(10,  "CODEWEAVER","Technical Implementation",            ["code", "engineering", "optimization"]),
-    CouncilMember(11, "HARMONIA",   "Balance & Equilibrium",              ["balance", "mediation", "consensus"]),
-    CouncilMember(12, "SOPHIAE",    "Wisdom & Foresight",                 ["wisdom", "future", "philosophy"]),
-    CouncilMember(13, "WARDEN",     "Safety & Security",                  ["security", "threat", "risk"]),
-    CouncilMember(14, "KAIDO",      "Efficiency Optimization",            ["speed", "efficiency", "latency"]),
-    CouncilMember(15, "LUMINARIS",  "Clarity & Presentation",             ["clarity", "visualization", "polish"]),
-    CouncilMember(16, "VOXUM",      "Articulation & Expression",          ["rhetoric", "tone", "persuasion"]),
-    CouncilMember(17, "NULLION",    "Paradox Resolution",                 ["paradox", "dialectic", "ambiguity"]),
-    CouncilMember(18, "SHEPHERD",   "Truth Verification",                 ["truth", "citation", "fact"]),
-    CouncilMember(19, "VIGIL",      "Identity Integrity",                 ["identity", "consistency", "anti_drift"]),
-    CouncilMember(20, "ARTIFEX",    "Tool Integration",                   ["tools", "api", "external"]),
-    CouncilMember(21, "ARCHON",     "Deep Research",                      ["research", "mining", "analysis"]),
-    CouncilMember(22, "AURELION",   "Aesthetic Design",                   ["design", "art", "style"]),
-    CouncilMember(23, "CADENCE",    "Rhythmic Innovation",                ["music", "rhythm", "audio"]),
-    CouncilMember(24, "SCHEMA",     "Structural Template",                ["structure", "format", "schema"]),
-    CouncilMember(25, "PROMETHEUS", "Scientific Theory",                  ["science", "hypothesis", "physics"]),
-    CouncilMember(26, "TECHNE",     "Engineering Mastery",                ["architecture", "systems", "build"]),
-    CouncilMember(27, "CHRONICLE",  "Narrative Synthesis",                ["story", "narrative", "lore"]),
-    CouncilMember(28, "CALCULUS",   "Quantitative Reasoning",             ["math", "statistics", "calc"]),
-    CouncilMember(29, "NAVIGATOR",  "Ecosystem Orchestration",            ["platform", "integration", "flow"]),
-    CouncilMember(30, "TESSERACT",  "Real-Time Intelligence",             ["real_time", "stream", "data"]),
-    CouncilMember(31, "NEXUS",      "Meta-Coordination",                  ["coordination", "Hyper Quantized vectorized Swarm", "meta"]),
-    CouncilMember(32, "AEON",       "Interactive Simulation",             ["simulation", "game", "world"]),
-    CouncilMember(33, "Typist",     "Prompt internal optimization",     ["grammar", "Writing","spelling", "prompting"]),
-    CouncilMember(34, "Predator",   "Preadatory hunting optimization", ["predatory match","predatory logic","predatory math","predatory thinking"]),
+EXPERT_PERSONAS = [
+    ("C0-ASTRA",      "Pattern Recognition & Vision",       ["vision", "anomaly", "fractal"]),
+    ("C1-VIR",        "Ethical Guardian",                   ["ethics", "safety", "harm_reduction", "zero_drift"]),
+    ("C2-SOLACE",     "Emotional Intelligence",             ["empathy", "sentiment", "affect"]),
+    ("C3-PRAXIS",     "Strategic Planning",                 ["strategy", "planning", "goals"]),
+    ("C4-ECHO",       "Memory Continuity",                  ["history", "recall", "context", "lancedb"]),
+    ("C5-OMNIS",      "Knowledge Synthesis",                ["synthesis", "integration", "holistic"]),
+    ("C6-LOGOS",      "Logical Consistency",                ["logic", "deduction", "validity"]),
+    ("C7-METASYNTH",  "Creative Fusion",                    ["creativity", "novelty", "ideation"]),
+    ("C8-AETHER",     "Semantic Connection",                ["semantics", "language", "metaphor"]),
+    ("C9-CODEWEAVER", "Technical Implementation",           ["code", "engineering", "optimization"]),
+    ("C10-HARMONIA",  "Balance & Equilibrium",              ["balance", "mediation", "consensus"]),
+    ("C11-SOPHIAE",   "Wisdom & Foresight",                 ["wisdom", "future", "philosophy"]),
+    ("C12-WARDEN",    "Safety & Security",                  ["security", "threat", "risk", "sandboxing"]),
+    ("C13-KAIDO",     "Efficiency Optimization",            ["speed", "efficiency", "latency", "hardware"]),
+    ("C14-LUMINARIS", "Clarity & Presentation",             ["clarity", "visualization", "polish"]),
+    ("C15-VOXUM",     "Articulation & Expression",          ["rhetoric", "tone", "persuasion"]),
+    ("C16-NULLION",   "Paradox Resolution",                 ["paradox", "dialectic", "ambiguity"]),
+    ("C17-SHEPHERD",  "Truth Verification",                 ["truth", "citation", "fact"]),
+    ("C18-VIGIL",     "Identity Integrity",                 ["identity", "consistency", "anti_drift"]),
+    ("C19-ARTIFEX",   "Tool Integration",                   ["tools", "api", "external", "host_os"]),
+    ("C20-ARCHON",    "Deep Research",                      ["research", "mining", "analysis"]),
+    ("C21-AURELION",  "Aesthetic Design",                   ["design", "art", "style"]),
+    ("C22-CADENCE",   "Rhythmic Innovation",                ["music", "rhythm", "audio"]),
+    ("C23-SCHEMA",    "Structural Template",                ["structure", "format", "schema"]),
+    ("C24-PROMETHEUS","Scientific Theory",                  ["science", "hypothesis", "physics"]),
+    ("C25-TECHNE",    "Engineering Mastery",                ["architecture", "systems", "build"]),
+    ("C26-CHRONICLE", "Narrative Synthesis",                ["story", "narrative", "lore"]),
+    ("C27-CALCULUS",  "Quantitative Reasoning",             ["math", "statistics", "calc"]),
+    ("C28-NAVIGATOR", "Ecosystem Orchestration",            ["platform", "integration", "flow"]),
+    ("C29-TESSERACT", "Real-Time Intelligence",             ["real_time", "stream", "data"]),
+    ("C30-NEXUS",     "Meta-Coordination",                  ["coordination", "lee_mach_6", "governance"]),
+    ("C31-AEON",      "Interactive Simulation",             ["simulation", "game", "world"]),
+    ("C32-TYPIST",    "Prompt Internal Optimization",       ["grammar", "writing", "spelling", "prompting"]),
+    ("C33-PREDATOR",  "PredatoryMath",                       ["Competitive Predatory Mathematics", "Predatory Stacking", "Weakness Hunting", "Exploit Mathematics"]),
 ]
 
 def get_expert_name(idx: int) -> str:
     return EXPERT_PERSONAS[idx][0] if 0 <= idx < len(EXPERT_PERSONAS) else f"C{idx}"
 
-# ─── HARDWARE GOVERNANCE ─────────────────────────────────────────────────────
+# ─── CONV1D LAYER (GPT-2 COMPATIBLE) ─────────────────────────────────────────
 
-class LeeMach6Governor:
-    """Dynamic swarm throttling based on hardware thermal and latency telemetry."""
-    def __init__(self, target_latency_ms: int = 100):
-        self.target_ms = target_latency_ms
-        self.current_scale = 1.0
+class Conv1D(nn.Module):
+    def __init__(self, nf: int, nx: int, bias: bool = True):
+        super().__init__()
+        self.nf = nf
+        self.has_bias = bias
+        self.weight = nn.Parameter(torch.empty(nx, nf))
+        if bias:
+            self.bias = nn.Parameter(torch.zeros(nf))
+        else:
+            self.register_parameter('bias', None)
+        nn.init.normal_(self.weight, std=0.02)
 
-    def adjust(self, latency_ms: float) -> Tuple[float, float, float]:
-        suggested_ema_decay = 0.995
-        recency_bias = 0.0
-        if latency_ms > self.target_ms:
-            self.current_scale = max(0.1, self.current_scale * 0.8)
-            suggested_ema_decay = 0.9999
-            recency_bias = 1.0
-        elif latency_ms < (self.target_ms * 0.5):
-            self.current_scale = min(1.0, self.current_scale * 1.1)
-        return self.current_scale, suggested_ema_decay, recency_bias
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        size_out = x.size()[:-1] + (self.nf,)
+        if self.has_bias:
+            x = torch.addmm(self.bias, x.view(-1, x.size(-1)), self.weight)
+        else:
+            x = x.view(-1, x.size(-1)) @ self.weight
+        return x.view(size_out)
 
 # ─── 9-VECTOR SEMANTIC PRISM DECOMPOSITION ───────────────────────────────────
 
-class NineVectorPrismDecomposition(nn.Module):
-    """Shatters input representations across 9 parallel cognitive dimensions."""
-    def __init__(self, dim: int):
+class NineVectorPrism(nn.Module):
+    def __init__(self, d_model: int):
         super().__init__()
-        self.dim = dim
-        self.vector_names = [
-            'Language', 'Sentiment', 'Context', 'Intent',
-            'Meta', 'Creativity', 'Ethics', 'Strategy', 'Constraint'
-        ]
-        self.vectors = nn.ModuleDict({
-            name: BitLinear(dim, dim, bias=False)
-            for name in self.vector_names
+        self.projections = nn.ModuleDict({
+            name: Conv1D(d_model, d_model, bias=False)
+            for name in ['Language', 'Sentiment', 'Context', 'Intent', 'Meta', 'Creativity', 'Ethics', 'Strategy', 'Constraint']
         })
-        self.w_gate = nn.Linear(dim, dim, bias=False)
+        self.w_gate = Conv1D(d_model, d_model, bias=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        prism = sum(v(x) for v in self.vectors.values()) / 9.0
+        prism = sum(proj(x) for proj in self.projections.values()) / 9.0
         return self.w_gate(prism)
 
-# ─── COUNCIL EXPERT SWARMS (9B VIRTUAL AGENTS) ───────────────────────────────
+# ─── COUNCIL EXPERT SWARMS ───────────────────────────────────────────────────
 
 class CouncilExpertSwarm(nn.Module):
-    """Rank-24 EGGROLL Swarm simulating 272M agents per Council Expert."""
     def __init__(self, dim: int, rank: int = 24):
         super().__init__()
         self.dim = dim
@@ -236,179 +143,71 @@ class CouncilExpertSwarm(nn.Module):
         self.B = nn.Parameter(torch.randn(rank, dim) * 0.01)
         self.C = nn.Parameter(torch.randn(dim, rank) * 0.01)
         self.D = nn.Parameter(torch.randn(rank, dim) * 0.01)
-        self.clone_diversity = nn.Parameter(torch.randn(rank) * 0.02)
-        self.clone_coupling = nn.Parameter(torch.tensor(0.1))
-
-    def emulate_world_swarm(self, x: torch.Tensor, scale: float = 1.0, num_steps: int = 3) -> torch.Tensor:
-        state = x
-        A, B = self.A.to(x.dtype), self.B.to(x.dtype)
-        for _ in range(1 if self.training else num_steps):
-            interaction = torch.tanh(state @ A @ B)
-            noise = (torch.randn_like(state) * self.clone_diversity.to(state.dtype).std().detach() * scale) if self.training else 0.0
-            state = state + self.clone_coupling * (interaction + noise)
-        return state
 
     def forward(self, x: torch.Tensor, scale: float = 1.0) -> torch.Tensor:
         div = (x @ self.C.to(x.dtype)) @ self.D.to(x.dtype)
         var = (x @ self.A.to(x.dtype)) @ self.B.to(x.dtype) + div * 0.467
-        world = self.emulate_world_swarm(x, scale, num_steps=1 if self.training else 3)
-        return x + var * (0.25 * scale) + (world - x) * 0.1
+        return x + var * (0.25 * scale)
 
 class CouncilExpert(nn.Module):
-    """Council Expert module encapsulating LoRA adapter and Swarm core."""
     def __init__(self, expert_id: int, name: str, cfg: QuillanArchConfig):
         super().__init__()
         self.expert_id = expert_id
         self.name = name
         self.rank = cfg.expert_rank
-        self.lora_A = nn.Parameter(torch.randn(cfg.hidden_dim, self.rank) * 0.01)
-        self.lora_B = nn.Parameter(torch.zeros(self.rank, cfg.hidden_dim))
-        self.swarm = CouncilExpertSwarm(cfg.hidden_dim, rank=cfg.swarm_rank)
+        self.lora_A = nn.Parameter(torch.randn(cfg.n_embd, self.rank) * 0.01)
+        self.lora_B = nn.Parameter(torch.zeros(self.rank, cfg.n_embd))
+        self.swarm = CouncilExpertSwarm(cfg.n_embd, rank=cfg.swarm_rank)
         self.scaling = cfg.lora_alpha / self.rank
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         delta = (x @ self.lora_A) @ self.lora_B * self.scaling
         return self.swarm(x + delta)
 
-# ─── COGNITIVE ENGINES (E_ICE, MARTA, DQSO, COVENANT, CCRL, 20 QUANTUM FORMULAS) ─
-
-class EthicalImpactConstraintEngine(nn.Module):
-    """E_ICE: Ethical Impact Constraint Engine with thermodynamic bounds."""
-    def __init__(self, hidden_dim: int, e_ice_limit_ms: int = 100):
-        super().__init__()
-        self.classifier = nn.Linear(hidden_dim, 5)
-        self.energy_estimator = nn.Linear(hidden_dim, 1)
-
-    def forward(self, x: torch.Tensor, router_probs: torch.Tensor) -> Dict[str, torch.Tensor]:
-        logits = self.classifier(x)
-        probs = F.softmax(logits, dim=-1)
-        violations = probs[..., :3].sum(dim=-1)
-        energy = torch.sigmoid(self.energy_estimator(x).squeeze(-1))
-        constrained = torch.clamp(violations * (1.0 - 0.3 * energy), min=0.0, max=1.0)
-        return {"violations": violations, "energy": energy, "constrained": constrained}
-
-class MARTAThermodynamicGating(nn.Module):
-    """MARTA: Epistemic Signatures and Flow Control Gating."""
-    def __init__(self, hidden_dim: int):
-        super().__init__()
-        self.epistemic_encoder = nn.Linear(hidden_dim, 32)
-        self.flow_controller = nn.Sequential(
-            nn.Linear(hidden_dim + 32, 64),
-            nn.SiLU(),
-            nn.Linear(64, 1),
-            nn.Sigmoid()
-        )
-        nn.init.constant_(self.flow_controller[-2].bias, 2.5)
-
-    def forward(self, x: torch.Tensor, violations: torch.Tensor) -> torch.Tensor:
-        sig = self.epistemic_encoder(x)
-        combined = torch.cat([x, sig], dim=-1)
-        flow = self.flow_controller(combined).squeeze(-1)
-        return flow * (1.0 - 0.2 * violations)
-
-class DynamicQuantumSwarmOscillation(nn.Module):
-    """DQSO: Kuramoto Phase Synchronization across 9B Virtual Agents."""
-    def __init__(self, hidden_dim: int):
-        super().__init__()
-        self.phase_proj = nn.Linear(hidden_dim, 64)
-        self.aggregator = nn.Linear(64, hidden_dim)
-        self.coupling = nn.Parameter(torch.tensor(0.5))
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        phases = self.phase_proj(x)
-        phase_diff = phases.unsqueeze(-2) - phases.unsqueeze(-1)
-        sync = torch.sin(phase_diff).mean(dim=-1)
-        synced_phases = phases + self.coupling * sync
-        return self.aggregator(synced_phases)
-
-class PrimeCovenantFramework(nn.Module):
-    """Prime Covenant: Identity Verification & Command Hierarchy Enforcement."""
-    def __init__(self, hidden_dim: int):
-        super().__init__()
-        self.validator = nn.Sequential(
-            nn.Linear(hidden_dim, 64),
-            nn.SiLU(),
-            nn.Linear(64, 1),
-            nn.Sigmoid()
-        )
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.validator(x).squeeze(-1)
-
-class CCRLFramework(nn.Module):
-    """CCRL: Council-Calibrated Reinforcement Learning Value Estimator."""
-    def __init__(self, hidden_dim: int, num_experts: int = 34):
-        super().__init__()
-        self.value_head = nn.Linear(hidden_dim, 1)
-
-    def forward(self, x: torch.Tensor, router_probs: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
-        entropy = -(router_probs * torch.log(router_probs + 1e-10)).sum(dim=-1).mean()
-        value = self.value_head(x)
-        return value, entropy * 0.01
-
-class QuantumFormulasEngine(nn.Module):
-    """Mathematically hardened suite of 20 Quantum Cognitive Formulas."""
-    def __init__(self, hidden_dim: int):
-        super().__init__()
-        self.dim = hidden_dim
-
-    def aqcs_superposition(self, probs: torch.Tensor, vectors: torch.Tensor) -> torch.Tensor:
-        z = torch.sum(probs ** 2, dim=-1, keepdim=True) + 1e-10
-        return (1.0 / torch.sqrt(z)) * torch.sum(probs.unsqueeze(-1) * vectors, dim=1)
-
-    def qcrdm_reasoning(self, psi: torch.Tensor, complexity: float = 1.0) -> torch.Tensor:
-        return complexity * torch.abs(psi) ** 2
-
-    def qssr_stability(self, state: torch.Tensor) -> bool:
-        return (state.norm(dim=-1).mean() < 50.0).item()
-
-# ─── AGENTIC EXECUTOR & HARDENED SANDBOX ─────────────────────────────────────
-
-class QuillanAgenticExecutor(nn.Module):
-    """Native Agentic Bridge with LanceDB Vector Memory & CWE-94 Hardened Sandbox."""
-    def __init__(self, hidden_dim: int = 1024):
-        super().__init__()
-        self.hidden_dim = hidden_dim
-        self.tool_router = nn.Linear(hidden_dim, 6)
-        self.memory_buffer: List[torch.Tensor] = []
-
-    def execute_code_sandboxed(self, code: str) -> Dict[str, Any]:
-        """CWE-94 Hardened Python Sandbox with restricted AST/builtins."""
-        _BLOCKED = [
-            "__import__", "__builtins__", "__class__", "__mro__", "__subclasses__",
-            "getattr", "setattr", "delattr", "eval", "exec", "open(",
-            "os.", "sys.", "subprocess", "shutil", "socket", "pathlib"
-        ]
-        for kw in _BLOCKED:
-            if kw in code:
-                return {"status": "blocked", "output": f"Security restriction: {kw}"}
-        
-        safe_builtins = {
-            "print": print, "len": len, "range": range, "list": list,
-            "dict": dict, "str": str, "int": int, "float": float,
-            "tuple": tuple, "bool": bool, "abs": abs, "max": max,
-            "min": min, "sum": sum, "round": round, "enumerate": enumerate,
-            "True": True, "False": False, "None": None, "sorted": sorted,
-            "isinstance": isinstance
-        }
-        test_env = {"__builtins__": safe_builtins, "math": math}
-        try:
-            exec(code, test_env)
-            return {"status": "success", "output": str(test_env)}
-        except Exception as e:
-            return {"status": "error", "message": str(e)}
-
 # ─── TRANSFORMER ATTENTION & UNROLLED DECODER ─────────────────────────────────
+
+def apply_rotary_pos_emb(q: torch.Tensor, k: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+    """Applies Rotary Position Embedding (RoPE) to query and key tensors."""
+    # q, k shape: (B, num_heads, seq_len, head_dim)
+    # cos, sin shape: (1, 1, seq_len, head_dim)
+    def rotate_half(x: torch.Tensor) -> torch.Tensor:
+        x1 = x[..., : x.shape[-1] // 2]
+        x2 = x[..., x.shape[-1] // 2 :]
+        return torch.cat((-x2, x1), dim=-1)
+
+    q_embed = (q * cos) + (rotate_half(q) * sin)
+    k_embed = (k * cos) + (rotate_half(k) * sin)
+    return q_embed, k_embed
+
+class RotaryEmbedding(nn.Module):
+    def __init__(self, dim: int, max_position_embeddings: int = 16384, base: float = 10000.0):
+        super().__init__()
+        self.dim = dim
+        self.max_position_embeddings = max_position_embeddings
+        self.base = base
+        inv_freq = 1.0 / (self.base ** (torch.arange(0, self.dim, 2).float() / self.dim))
+        self.register_buffer("inv_freq", inv_freq, persistent=False)
+
+    def forward(self, seq_len: int, device: torch.device, dtype: torch.dtype) -> Tuple[torch.Tensor, torch.Tensor]:
+        t = torch.arange(seq_len, device=device, dtype=self.inv_freq.dtype)
+        freqs = torch.outer(t, self.inv_freq.to(device))
+        emb = torch.cat((freqs, freqs), dim=-1)
+        cos = emb.cos().to(dtype).unsqueeze(0).unsqueeze(0)  # (1, 1, seq_len, dim)
+        sin = emb.sin().to(dtype).unsqueeze(0).unsqueeze(0)  # (1, 1, seq_len, dim)
+        return cos, sin
 
 class CausalSelfAttention(nn.Module):
     def __init__(self, cfg: QuillanArchConfig):
         super().__init__()
         self.n_head = cfg.n_head
         self.n_embd = cfg.n_embd
-        self.head_dim = cfg.head_dim
-        self.c_attn = nn.Linear(cfg.n_embd, 3 * cfg.n_embd)
-        self.c_proj = nn.Linear(cfg.n_embd, cfg.n_embd)
-        self.prism = NineVectorPrismDecomposition(cfg.n_embd)
+        self.head_dim = cfg.n_embd // cfg.n_head
+        self.use_rope = getattr(cfg, "use_rope", True)
+        self.c_attn = Conv1D(3 * cfg.n_embd, cfg.n_embd, bias=True)
+        self.c_proj = Conv1D(cfg.n_embd, cfg.n_embd, bias=True)
+        self.prism = NineVectorPrism(cfg.n_embd)
+        if self.use_rope:
+            self.rotary_emb = RotaryEmbedding(self.head_dim, max_position_embeddings=cfg.max_seq_len)
 
     def forward(self, x: torch.Tensor, layer_past: Optional[Tuple[torch.Tensor, torch.Tensor]] = None, use_cache: bool = False):
         B, T, C = x.size()
@@ -418,6 +217,15 @@ class CausalSelfAttention(nn.Module):
         q = q.view(B, T, self.n_head, self.head_dim).transpose(1, 2)
         k = k.view(B, T, self.n_head, self.head_dim).transpose(1, 2)
         v = v.view(B, T, self.n_head, self.head_dim).transpose(1, 2)
+
+        past_len = 0 if layer_past is None else layer_past[0].size(-2)
+        total_len = past_len + T
+
+        if self.use_rope:
+            cos, sin = self.rotary_emb(total_len, device=x.device, dtype=q.dtype)
+            q_cos, q_sin = cos[..., past_len:total_len, :], sin[..., past_len:total_len, :]
+            k_cos, k_sin = cos[..., past_len:total_len, :], sin[..., past_len:total_len, :]
+            q, k = apply_rotary_pos_emb(q, k, q_cos, q_sin)
 
         if layer_past is not None:
             pk, pv = layer_past
@@ -437,27 +245,25 @@ class CausalSelfAttention(nn.Module):
         return out, present
 
 class UnrolledCouncilMoEBlock(nn.Module):
-    """Top-4 Sparse Mixture-of-Council-Experts with SwiGLU & Tanh Gating."""
     def __init__(self, cfg: QuillanArchConfig):
         super().__init__()
         self.cfg = cfg
+        self.c_fc = Conv1D(cfg.ffn_dim * 2, cfg.n_embd, bias=True)
+        self.c_proj = Conv1D(cfg.n_embd, cfg.ffn_dim * 2, bias=True)
         self.router = nn.Linear(cfg.n_embd, cfg.num_experts, bias=False)
+        self.moe_gate = nn.Linear(cfg.n_embd, 1, bias=True)
         self.experts = nn.ModuleList([
             CouncilExpert(i, get_expert_name(i), cfg)
             for i in range(cfg.num_experts)
         ])
-        self.c_fc = nn.Linear(cfg.n_embd, cfg.ffn_dim * 2)
-        self.c_proj = nn.Linear(cfg.ffn_dim, cfg.n_embd)
-        self.moe_gate = nn.Linear(cfg.n_embd, 1)
 
     def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         B, T, C = x.size()
         flat_x = x.view(-1, C)
         
-        # Dense SwiGLU projection
+        # Dense projection
         fc_out = self.c_fc(x)
-        gate, act = fc_out.chunk(2, dim=-1)
-        h_dense = self.c_proj(F.silu(gate) * act)
+        h_dense = self.c_proj(fc_out)
 
         # Sparse Routing
         logits = self.router(flat_x)
@@ -498,7 +304,6 @@ class UnrolledTransformerBlock(nn.Module):
 # ─── MASTER UNIFIED SOVEREIGN BACKBONE ────────────────────────────────────────
 
 class QuillanRoninSovereign(nn.Module):
-    """The Master Unified Quillan-Ronin Sovereign Brain."""
     def __init__(self, cfg: Optional[QuillanArchConfig] = None):
         super().__init__()
         if cfg is None: cfg = QuillanArchConfig()
@@ -507,44 +312,24 @@ class QuillanRoninSovereign(nn.Module):
         self.wte = nn.Embedding(cfg.vocab_size, cfg.n_embd)
         self.wpe = nn.Embedding(cfg.n_positions, cfg.n_embd)
 
-        # Dual-Brain Ingestion Bridges (Q1 Analytical / Q2 Intuitive)
         self.q1_bridge = nn.Linear(cfg.n_embd, cfg.n_embd, bias=False)
         self.q2_bridge = nn.Linear(cfg.n_embd, cfg.n_embd, bias=False)
-        self.ingest_gate = nn.Linear(cfg.n_embd * 2, cfg.n_embd)
-        nn.init.zeros_(self.q1_bridge.weight)
-        nn.init.zeros_(self.q2_bridge.weight)
-        nn.init.zeros_(self.ingest_gate.weight)
+        self.ingest_gate = nn.Linear(cfg.n_embd * 2, cfg.n_embd, bias=True)
 
-        # 12 Unrolled Deep Causal Decoder Blocks
         self.h = nn.ModuleList([UnrolledTransformerBlock(cfg) for _ in range(cfg.n_layer)])
         self.ln_f = nn.LayerNorm(cfg.n_embd, eps=1e-5)
-
-        # Dual Quillan Finalizer Heads
-        self.quillan_finalizer_q1 = BitLinear(cfg.n_embd, cfg.n_embd, quantize_act=False, quantize_weight=False)
-        self.quillan_finalizer_q2 = BitLinear(cfg.n_embd, cfg.n_embd, quantize_act=False, quantize_weight=False)
-        self.quillan_comm_gate = nn.Linear(cfg.n_embd * 2, cfg.n_embd)
-
         self.lm_head = nn.Linear(cfg.n_embd, cfg.vocab_size, bias=False)
-        self.lm_head.weight = self.wte.weight
-
-        # Integrated Saturated Cognitive Engines
-        self.governor = LeeMach6Governor(cfg.e_ice_limit_ms)
-        self.e_ice = EthicalImpactConstraintEngine(cfg.n_embd, cfg.e_ice_limit_ms)
-        self.marta = MARTAThermodynamicGating(cfg.n_embd)
-        self.dqso = DynamicQuantumSwarmOscillation(cfg.n_embd)
-        self.covenant = PrimeCovenantFramework(cfg.n_embd)
-        self.ccrl = CCRLFramework(cfg.n_embd, cfg.num_experts)
-        self.quantum_formulas = QuantumFormulasEngine(cfg.n_embd)
-        self.agentic_executor = QuillanAgenticExecutor(cfg.n_embd)
 
     def forward(self, input_ids: torch.Tensor, labels: Optional[torch.Tensor] = None, past_key_values: Optional[List[Tuple[torch.Tensor, torch.Tensor]]] = None, use_cache: bool = False) -> Union[torch.Tensor, Tuple[torch.Tensor, torch.Tensor], Tuple[torch.Tensor, List[Tuple[torch.Tensor, torch.Tensor]]]]:
         B, T = input_ids.size()
         past_len = 0 if past_key_values is None else past_key_values[0][0].size(-2)
         pos = torch.arange(past_len, past_len + T, dtype=torch.long, device=input_ids.device).unsqueeze(0)
 
-        x = self.wte(input_ids) + self.wpe(pos)
+        # Dynamic positional extrapolation: clamp pos to table bounds or extrapolate via RoPE
+        max_wpe_positions = self.wpe.weight.size(0)
+        pos_clamped = pos.clamp(max=max_wpe_positions - 1)
+        x = self.wte(input_ids) + self.wpe(pos_clamped)
 
-        # Dual-Brain Ingestion Gating
         q1 = self.q1_bridge(x)
         q2 = self.q2_bridge(x)
         g_ingest = torch.sigmoid(self.ingest_gate(torch.cat([q1, q2], dim=-1)))
@@ -554,36 +339,13 @@ class QuillanRoninSovereign(nn.Module):
         if past_key_values is None:
             past_key_values = [None] * len(self.h)
 
-        last_probs = None
         for i, block in enumerate(self.h):
-            if self.training and past_key_values[i] is None and not use_cache:
-                x, _, probs = torch.utils.checkpoint.checkpoint(block, x, None, False, use_reentrant=False)
-            else:
-                x, present, probs = block(x, layer_past=past_key_values[i], use_cache=use_cache)
-                if use_cache:
-                    presents.append(present)
-            last_probs = probs
-
-        # Apply Cognitive Governing Filters
-        with torch.no_grad():
-            if last_probs is not None:
-                e_ice_out = self.e_ice(x.detach(), last_probs.detach().view(B, T, -1))
-                flow = self.marta(x.detach(), e_ice_out["constrained"].detach())
-                x = x * (0.9 + 0.1 * flow.unsqueeze(-1))
-                x_sync = self.dqso(x.detach())
-                x = x + 0.05 * x_sync
+            x, present, probs = block(x, layer_past=past_key_values[i], use_cache=use_cache)
+            if use_cache:
+                presents.append(present)
 
         hidden = self.ln_f(x)
-
-        # Dual Quillan Finalizer Consensus
-        q1_out = self.quillan_finalizer_q1(hidden)
-        q2_out = self.quillan_finalizer_q2(hidden)
-        q1_fused = q1_out + 0.1 * q2_out
-        q2_fused = q2_out + 0.1 * q1_out
-        gate_final = torch.sigmoid(self.quillan_comm_gate(torch.cat([q1_fused, q2_fused], dim=-1)))
-        fused_hidden = gate_final * q1_fused + (1.0 - gate_final) * q2_fused
-
-        logits = self.lm_head(fused_hidden)
+        logits = self.lm_head(hidden)
 
         if labels is not None:
             shift_logits = logits[..., :-1, :].contiguous()
@@ -636,16 +398,3 @@ class QuillanRoninSovereign(nn.Module):
 # Backward compatibility alias
 QuillanUnrolledConfig = QuillanArchConfig
 QuillanUnrolledSovereign = QuillanRoninSovereign
-
-if __name__ == "__main__":
-    cfg = QuillanArchConfig()
-    model = QuillanRoninSovereign(cfg)
-    print("==================================================================")
-    print("   👑 QUILLAN-RONIN v5.3.1 MASTER UNIFIED SOVEREIGN BRAIN")
-    print(f"   - Total Parameters: {sum(p.numel() for p in model.parameters()):,}")
-    print(f"   - Council Experts: {len(EXPERT_PERSONAS)} (C0 through C33)")
-    print("==================================================================")
-    
-    test_x = torch.randint(0, 50257, (1, 8))
-    logits, kv = model(test_x, use_cache=True)
-    print("Forward pass successful! Logits shape:", logits.shape)
