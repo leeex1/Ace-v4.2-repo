@@ -115,3 +115,11 @@ Iteration_Protocol:
   strategy_1_transient_repair: "If the rap verses lack punch, add 'syncopated trap snare, punchy 808' to the Compiled_Style_String."
   strategy_2_spatial_repair: "If the chorus isn't big enough, emphasize 'wall of sound guitars, massive modern synths' in the chorus tags."
   strategy_3_vocal_repair: "If the transition from rap to scream feels jarring, inject 'dynamic vocal distortion ramp' into the pre-chorus tags."
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

@@ -14,7 +14,7 @@ Your datasets are now properly loaded and ready for training:
 
 ### **Option 1: Quick Training (JSONL Data)**
 ```bash
-cd Quillan-v4.2-model
+cd Quillan-v5.3.1
 python train_real_data.py
 ```
 
@@ -78,3 +78,9 @@ Edit `data_loader.py` to:
 4. **Test Results**: Use inference scripts
 
 Your custom LLM is ready to learn from your unique datasets! 🚀
+
+
+## Connections
+- [[00 - Meta/03 - Training & Model.md|Training & Model MOC]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/03 - Training & Model.md]]

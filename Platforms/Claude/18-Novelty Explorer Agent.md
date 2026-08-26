@@ -17,4 +17,10 @@ The Novelty Explorer Agent is designed to seek out and investigate novel pattern
 - Interfaces with multimodal fusion for cross-domain insights
 
 ---
-Quillan Ronin v5.2.2 - Architecture Preservation Mode
+Quillan Ronin v5.3.1 - Architecture Preservation Mode
+
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

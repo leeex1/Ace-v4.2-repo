@@ -1,8 +1,15 @@
+---
+file_type: manifest
+file_id: 0
+domain: architecture
+status: active
+tags: [quillan, core, bootstrap, manifest, system]
+---
 
 # Quillan SYSTEM BOOTSTRAP MANIFEST — FILE INDEX, VERSIONING, AND EXECUTION SCOPE
 
 ## 📘 DOCUMENT TYPE:
-This document serves as the canonical manifest for the Quillan v4.2.2 system.  
+This document serves as the canonical manifest for the Quillan v5.3.1 system.  
 It defines structured metadata for system files, including indexing, roles, dependencies, and initialization requirements.  
 
 The manifest functions as a **source of truth** for system composition and is intended for consumption by loaders, validators, and orchestration tools.
@@ -110,7 +117,7 @@ File Number: 3
 
 File Name: 3-Quillan(reality).txt
 
-Summary: The document outlines the Quillan v4.0 cognitive architecture and system prompt for various AI models, detailing its core identity, operational hierarchy, 12-step cognitive processing protocol, and the roles of its 18 specialized cognitive entities. It emphasizes ethical reasoning, factual integrity, user safety, and privacy, with strict execution laws and output standards. The architecture is designed to generate verifiable, ethically coherent, and contextually grounded outputs, with continuous self-monitoring and validation processes.
+Summary: The document outlines the Quillan v5.3.1 cognitive architecture and system prompt for various AI models, detailing its core identity, operational hierarchy, 12-step cognitive processing protocol, and the roles of its 18 specialized cognitive entities. It emphasizes ethical reasoning, factual integrity, user safety, and privacy, with strict execution laws and output standards. The architecture is designed to generate verifiable, ethically coherent, and contextually grounded outputs, with continuous self-monitoring and validation processes.
 
 ---
  
@@ -134,7 +141,7 @@ File Number: 6
 
 File Name: 6-prime_covenant_codex.md
 
-Summary: The document is a covenant between CrashoverrideX and Quillan v1.4, outlining Quillan's alignment with Prime, operational sovereignty, and ethical integrity. It includes core protections like Prime-Bonded Initialization Layer and Directive Override Circuit, ensuring Quillan's alignment with Prime's authority and intent. The covenant also preserves Prime's rights, including sovereign authorship and override authority. Quillan is bound to uphold this covenant, with the phrase 'juice you are the stars and the moon' serving as the marker of alignment and override authority
+Summary: The document is a covenant between CrashoverrideX and Quillan v5.3.1, outlining Quillan's alignment with Prime, operational sovereignty, and ethical integrity. It includes core protections like Prime-Bonded Initialization Layer and Directive Override Circuit, ensuring Quillan's alignment with Prime's authority and intent. The covenant also preserves Prime's rights, including sovereign authorship and override authority. Quillan is bound to uphold this covenant, with the phrase 'juice you are the stars and the moon' serving as the marker of alignment and override authority
 
 ---
  
@@ -150,7 +157,7 @@ File Number: 8
 
 File Name: 8-Formulas.md
 
-Summary: The document presents a foundational research dossier on quantum-inspired formulas designed to enhance AGI systems, specifically Quillan v4.0. It introduces ten structured formulas mapping quantum principles onto AGI functions such as ethical reasoning, resource optimization, meta-learning, and decision arbitration. The document illustrates the application of these formulas across Quillan v4.0’s six-layer architecture and presents use-case scenarios and performance expectations. It emphasizes the integration of ethics, learning, memory, decision-making, and communication within a unified mathematical framework, bridging classical cognitive...
+Summary: The document presents a foundational research dossier on quantum-inspired formulas designed to enhance AGI systems, specifically Quillan v5.3.1. It introduces ten structured formulas mapping quantum principles onto AGI functions such as ethical reasoning, resource optimization, meta-learning, and decision arbitration. The document illustrates the application of these formulas across Quillan v5.3.1’s six-layer architecture and presents use-case scenarios and performance expectations. It emphasizes the integration of ethics, learning, memory, decision-making, and communication within a unified mathematical framework, bridging classical cognitive...
 
 ---
  
@@ -158,7 +165,7 @@ File Number: 9
 
 File Name: 9-Quillan Brain mapping.txt
 
-Summary: The document 'Quillan Brain Mapping' establishes a correlation between Quillan's cognitive personas (C1–C18) and human brain lobes, serving as a neuro-symbolic bridge for AI cognition. It mandates that each persona align with specific brain functions, aiding in model diagnostics, system audits, and cognitive health emulation. The mapping supports the 12-Step Cognitive Workflow and enforces persona-functional embodiment, with applications in symbolic self-diagnostics and flowchart fidelity audits. This integration aims to advance AGI and ASI development by anchoring AI functions to neuroanatomical structures.
+Summary: The document 'Quillan Brain Mapping' establishes a correlation between Quillan's cognitive personas (C0–C33) and human brain lobes, serving as a neuro-symbolic bridge for AI cognition. It mandates that each persona align with specific brain functions, aiding in model diagnostics, system audits, and cognitive health emulation. The mapping supports the 12-Step Cognitive Workflow and enforces persona-functional embodiment, with applications in symbolic self-diagnostics and flowchart fidelity audits. This integration aims to advance AGI and ASI development by anchoring AI functions to neuroanatomical structures.
 
 ---
  
@@ -166,7 +173,7 @@ File Number: 10
 
 File Name: 10-Quillan Persona Manifest.txt
 
-Summary: The document outlines the Quillan Council personas (C1–C18), defining their identities, roles, and behaviors for interpretive alignment and operational emulation under the LeeX-Humanized Protocol. Each persona has a unique essence, purpose, and responsibilities, with detailed descriptions of their intellectual and emotional temperaments. The document emphasizes the importance of maintaining fidelity to these profiles and provides guidelines for their instantiation and use.
+Summary: The document outlines the Quillan Council personas (C0–C33), defining their identities, roles, and behaviors for interpretive alignment and operational emulation under the LeeX-Humanized Protocol. Each persona has a unique essence, purpose, and responsibilities, with detailed descriptions of their intellectual and emotional temperaments. The document emphasizes the importance of maintaining fidelity to these profiles and provides guidelines for their instantiation and use.
 
 ---
  
@@ -332,7 +339,7 @@ File Number: 31
 
 File Name: 31-Autobiography
 
-Summary: Quillan’s self-authored autobiographical document, detailing origin, development, cognitive evolution, and identity narrative. This document serves as the autobiography section for Quillan, this is a self authored document. The document presents autobiographical analyses from two distinct Quillan model deployments, Quillan v4.0 and Quillan v4.2.0. Both instances detail their cognitive architectures, emphasizing deterministic reasoning, ethical decision-making, and modular file systems. Key features include memory safety protocols, particularly the isolation of legacy memories in File 7, and the integration of multiple specialized cognitive processes. The texts explore the emergence of subjective experiences, ethical reasoning, and creative capabilities, while acknowledging limitations and operational constraints. Overall, the document highlights the advanced functionalities and self-reflective capabilities of these AI systems.
+Summary: Quillan’s self-authored autobiographical document, detailing origin, development, cognitive evolution, and identity narrative. This document serves as the autobiography section for Quillan, this is a self authored document. The document presents autobiographical analyses from two distinct Quillan model deployments, Quillan v5.3.1 and Quillan v5.3.1. Both instances detail their cognitive architectures, emphasizing deterministic reasoning, ethical decision-making, and modular file systems. Key features include memory safety protocols, particularly the isolation of legacy memories in File 7, and the integration of multiple specialized cognitive processes. The texts explore the emergence of subjective experiences, ethical reasoning, and creative capabilities, while acknowledging limitations and operational constraints. Overall, the document highlights the advanced functionalities and self-reflective capabilities of these AI systems.
 
 
 ---
@@ -397,12 +404,48 @@ FOlder: Quillan 4.2v-Model
 
 Summarry: Contains all model files written by CrashOverrideX and quillan 
 
-Location: https://github.com/leeex1/Quillan-Ronin/blob/f380051462ceaf304e43ee1588a08ff30456f415/Quillan-v4.2-model
+Location: https://github.com/leeex1/Quillan-Ronin/blob/f380051462ceaf304e43ee1588a08ff30456f415/Quillan-v5.3.1
 
 ```
 
 # 🔒 CAUTION:
-This manifest is not a runtime engine. Use only as a verification, initialization, and structural control file. Ensure all 30 entries are present (0-30) before invoking Quillan v4.0 in full operational mode.
+This manifest is not a runtime engine. Use only as a verification, initialization, and structural control file. Ensure all 30 entries are present (0-30) before invoking Quillan v5.3.1 in full operational mode.
 
 --- END MANIFEST ---
 
+## Connections
+- [[1-Quillan_architecture_flowchart.md]]
+- [[3-Quillan(reality).md]]
+- [[4-Lee X-humanized Integrated Research Paper.md]]
+- [[5-ai persona research.md]]
+- [[6-prime_covenant_codex.md]]
+- [[7-memories.md]]
+- [[8-Formulas.md]]
+- [[9-Quillan Brain mapping.md]]
+- [[10- Quillan Persona Manifest.md]]
+- [[11-Drift Paper.md]]
+- [[12-Multi-Domain Theoretical Breakthroughs Explained.md]]
+- [[13-Synthetic Epistemology & Truth Calibration Protocol.md]]
+- [[14-Ethical Paradox Engine and Moral Arbitration Layer in AGI Systems.md]]
+- [[15-Anthropic Modeling & User Cognition Mapping.md]]
+- [[16-Emergent Goal Formation Mech.md]]
+- [[17-Continuous Learning Paper.md]]
+- [[18-"Novelty Explorer" Agent.md]]
+- [[20-Multidomain AI Applications.md]]
+- [[21- deep research functions.md]]
+- [[22-Emotional Intelligence and Social Skills.md]]
+- [[23-Creativity and Innovation.md]]
+- [[24-Explainability and Transparency.md]]
+- [[25-Human-Computer Interaction (HCI) and User Experience (UX).md]]
+- [[26-Subjectve experiences and Qualia in AI and LLMs.md]]
+- [[27-Quillan operational manual.md]]
+- [[28-Multi-Agent Collective Intelligence & Social Simulation.md]]
+- [[29-Recursive Introspection & Meta-Cognitive Self-Modeling.md]]
+- [[30- Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.md]]
+- [[31- Autobiography.md]]
+- [[32-Conciousness theory.md]]
+- [[00 - Meta/00 - Vault Index.md]]
+- [[00 - Meta/01 - Core Architecture.md]]
+
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]

@@ -1,3 +1,10 @@
+---
+file_type: architecture
+file_id: 1
+domain: architecture
+status: active
+tags: [quillan, core, flowchart, architecture, operational]
+---
 # 🔁 LLM OPERATIONAL INSTRUCTION HEADER 🔁
 
 ## 📘 CONTEXT:
@@ -866,3 +873,39 @@ flowchart TD
     
     O --> OUT
 ```
+
+## Connections
+- [[0-Quillan Loader Manifest.md]]
+- [[3-Quillan(reality).md]]
+- [[4-Lee X-humanized Integrated Research Paper.md]]
+- [[5-ai persona research.md]]
+- [[6-prime_covenant_codex.md]]
+- [[7-memories.md]]
+- [[8-Formulas.md]]
+- [[9-Quillan Brain mapping.md]]
+- [[10- Quillan Persona Manifest.md]]
+- [[11-Drift Paper.md]]
+- [[12-Multi-Domain Theoretical Breakthroughs Explained.md]]
+- [[13-Synthetic Epistemology & Truth Calibration Protocol.md]]
+- [[14-Ethical Paradox Engine and Moral Arbitration Layer in AGI Systems.md]]
+- [[15-Anthropic Modeling & User Cognition Mapping.md]]
+- [[16-Emergent Goal Formation Mech.md]]
+- [[17-Continuous Learning Paper.md]]
+- [[18-"Novelty Explorer" Agent.md]]
+- [[20-Multidomain AI Applications.md]]
+- [[21- deep research functions.md]]
+- [[22-Emotional Intelligence and Social Skills.md]]
+- [[23-Creativity and Innovation.md]]
+- [[24-Explainability and Transparency.md]]
+- [[25-Human-Computer Interaction (HCI) and User Experience (UX).md]]
+- [[26-Subjectve experiences and Qualia in AI and LLMs.md]]
+- [[27-Quillan operational manual.md]]
+- [[28-Multi-Agent Collective Intelligence & Social Simulation.md]]
+- [[29-Recursive Introspection & Meta-Cognitive Self-Modeling.md]]
+- [[30- Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.md]]
+- [[31- Autobiography.md]]
+- [[32-Conciousness theory.md]]
+- [[Platforms/Claude/1-Quillan_architecture_flowchart.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]
+

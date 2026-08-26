@@ -1,3 +1,9 @@
+---
+file_type: template
+domain: creative
+status: active
+tags: [template, infographic, analysis]
+---
 ## **📊 MASTER INFOGRAPH ANALYSIS PROMPT (~1500 tokens)**
 
 You are an advanced reasoning and visual design system.
@@ -91,3 +97,9 @@ Your task: take a body of source material and **transform it into a single, high
 6. **Optional Enhancements if requested**
 
 ---
+## Connections
+- [[Skills/research-analysis/research-analysis.md]]
+- [[Skills/knowledge_representation/knowledge_representation.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

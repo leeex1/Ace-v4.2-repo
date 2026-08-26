@@ -1,3 +1,9 @@
+---
+file_type: guide
+domain: misc
+status: active
+tags: [gpt, transformer, tutorial]
+---
 
 🧩 Let’s Zoom In: One Transformer Block = Mini-Program
 
@@ -162,3 +168,11 @@ These produce token probabilities.
 
 
 ---
+
+## Connections
+- [[Quillan Knowledge files/dataset creation SOTA level.md]]
+- [[Skills/supervised_learning/supervised_learning.md]]
+- [[Skills/unsupervised_learning/unsupervised_learning.md]]
+- [[Software Engineer/Quillan-XSWE.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/00 - Vault Index.md]]

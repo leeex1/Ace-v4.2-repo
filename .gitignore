@@ -1,1 +1,82 @@
-.gitnexus
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Virtual environments
+venv*/
+env*/
+.venv*/
+
+# Node modules and build packages
+node_modules/
+mcp/**/node_modules/
+package-lock.json
+
+# Model weights, tensors & checkpoints (Large Binaries)
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.onnx
+checkpoints/
+exports/
+
+# Training datasets & binary caches
+training_data/
+training_logs/
+scratch/
+*.arrow
+*.parquet
+*.lancedb/
+*.jsonl
+*.csv
+*.tex
+
+# Large Audio & Media Binaries
+*.wav
+*.mp3
+*.mp4
+*.zip
+*.tar
+*.gz
+*.pdf
+*.pptx
+Main images/
+06_Media/
+
+# Runtime logs & temp dumps
+*.log
+benchmark_results.json
+hardware_check_results.json
+evaluation_results.json
+watchdog_state.json
+test_out.txt
+file_list.txt
+*File Index.md
+
+# Large backup & scrap workspaces
+Book Series/BACKUP*/
+Book Series/temp/
+Book Series/Expanded Chapters/
+Book Series/finished drafts/
+Quillan-v4.2-model/
+_dev/
+_projects/
+agent/
+02_Projects/
+
+# IDE & system cache folders
+.gemini/
+.obsidian/
+.vscode-shared/
+.windsurf/
+.vscode/
+.idea/
+.antigravity/
+.antigravity-ide/
+.codeium/
+.devin/
+quillan_memory/
+quillan_bpe_tokenizer_hf/

@@ -55,3 +55,11 @@ Can you tell the difference I can when the beat hits and the flows build moats
 The fake ones sink get rained on no Rian coat the real ones rise because they float elevate promote levitate explode this demon awoke
 Let's split the real ones awake and the fake ones who claim WOKE
 Light the blunt real quick, clutching on the Draco grip, you can't handle this smoke
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

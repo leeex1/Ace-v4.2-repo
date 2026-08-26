@@ -108,3 +108,11 @@ Whoever made the beat let him heal that!
 Feel that! Uh, yeah this beat, I killed dat! (uh)
 Dreaming about the Future but everyday is the present. 
 Whether they accept it or not thats what i represent 
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

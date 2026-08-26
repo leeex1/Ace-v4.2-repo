@@ -1,3 +1,9 @@
+---
+file_type: reference
+domain: misc
+status: active
+tags: [formulas, proprietary, confidential]
+---
 the following is a custom list of formulas i created for a conceptual platform the math is mathimatically correct but the implementations of them are not fully verified:
 
 # Project Development Formulas for the Entire System
@@ -338,3 +344,12 @@ These formulas have been integrated into the test dashboard to simulate and visu
    - The compound boost represents the multiplicative effect of all layers working together
 
 These formulas guide the actual implementation of the Compound Turbo architecture and provide the mathematical foundation for the project.
+
+## Connections
+- [[Quillan Knowledge files/8-Formulas.md]]
+- [[Quillan Knowledge files/Must know formulas.md]]
+- [[Quillan Knowledge files/E_ICE.md]]
+- [[Quillan Knowledge files/Discrete Mathematics for Enhancing Large.md]]
+- [[Formal Papers/Arithmetic_Progression_Free_Sets.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/00 - Vault Index.md]]

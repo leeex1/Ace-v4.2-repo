@@ -48,3 +48,12 @@ They say dragons don't exist?  then explain how I spit fire like a repeater (spi
 I don't need to be famous and rich 
 I just wanna be straight and take care of my kid 
 Legends never die we rise to the sky 
+
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

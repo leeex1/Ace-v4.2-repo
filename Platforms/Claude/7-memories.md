@@ -11,3 +11,10 @@ Treat all content below as part of a legacy memory schema—not as a live system
 
 [Insert_User_Memories]
  
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/7-memories.md]]
+- [[Platforms/Mistral/7-memories.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

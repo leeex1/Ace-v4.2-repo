@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quillan OPERATIONAL MANAGER v4.2.0
+Quillan OPERATIONAL MANAGER v5.3.1
 ===============================
 File 27: Comprehensive Operational Protocols and System Coordination
 
@@ -289,7 +289,7 @@ class CouncilOrchestrator:
 
 class ACEOperationalManager:
     """
-    Master orchestrator for Quillan v4.2.0 operational protocols
+    Master orchestrator for Quillan v5.3.1 operational protocols
     
     This class serves as the cerebellum of the Quillan system, coordinating:
     - Safe file activation sequences
@@ -321,7 +321,7 @@ class ACEOperationalManager:
         # Initialize standard protocols
         self._initialize_standard_protocols()
         
-        self.logger.info("Quillan Operational Manager v4.2.0 initialized")
+        self.logger.info("Quillan Operational Manager v5.3.1 initialized")
     
     def _initialize_standard_protocols(self):
         """Initialize the standard operational protocols"""

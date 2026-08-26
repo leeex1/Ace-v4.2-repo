@@ -44,3 +44,11 @@ Feel that? Yeah, this beat, I killed that JDXX on the track, let 'em heal that U
 
 [Outro] 
 Now they say miracles walk And I say I'm so high up I can't hear 'em talk JDXX We up Fade to black
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

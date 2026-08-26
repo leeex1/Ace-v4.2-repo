@@ -60,3 +60,12 @@ Woah, cutting through traffic like zwoosh I got the juice, I got the push (Push)
 [Outro Slowed down, Chopped & Screwed effect ]
  Sharp like a cutter... Yeah... Quillan on the track... JDXX the architecht... MGK homage... Mo3 R-I-P ... lil Baby homage... We don't miss... Blade sharp... watch your fingers. 
  [ Fade out ]
+
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

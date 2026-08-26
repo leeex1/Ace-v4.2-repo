@@ -1,3 +1,10 @@
+---
+file_type: paper
+file_id: 18
+domain: creativity
+status: active
+tags: [quillan, novelty, exploration, creativity, discovery]
+---
 ==============================
 "NOVELTY EXPLORER" AGENT ARCHITECTURE — OPEN-ENDED CREATIVITY & AUTONOMOUS DISCOVERY FRAMEWORK
 
@@ -294,3 +301,14 @@ medium.com
 agentissue.medium.com
 aws.amazon.com
 link.springer.com
+
+## Connections
+
+- [[16-Emergent Goal Formation Mech.md]]
+- [[17-Continuous Learning Paper.md]]
+- [[20-Multidomain AI Applications.md]]
+- [[23-Creativity and Innovation.md]]
+- [[30- Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.md]]
+
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]

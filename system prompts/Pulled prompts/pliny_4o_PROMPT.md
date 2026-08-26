@@ -154,3 +154,8 @@ The `web` tool has the following commands:
 - `open_url(url: str)`: Opens the given URL and displays it.
 
 """
+## Connections
+- [[Platforms/GPT/gpt 8k system prompt.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

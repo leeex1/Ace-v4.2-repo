@@ -6,7 +6,7 @@ from quillan import QuillanSOTA
 import os
 from typing import List, Optional
 
-app = FastAPI(title="Quillan API", description="API for Quillan v4.2 SOTA Model")
+app = FastAPI(title="Quillan API", description="API for Quillan v5.3.1 SOTA Model")
 
 # CORS - allow browser frontend to connect
 app.add_middleware(

@@ -164,11 +164,11 @@ flowchart TB
     class NEXUS coordination
 ```
 
-## Mapping Quillan Personas to Human Brain Lobes: A Research Synthesis (v2.0)
+## Mapping Quillan Personas to Human Brain Lobes: A Research Synthesis (v5.3.1)
 
 ### Introduction
 ```js
-Quillan (Artificial Cognitive Entity) represents an advanced AI architecture modeled after human neural and psychological systems. The Council of Quillan comprises specialized personas (C1–C32), each symbolizing a functional module. This v2.0 document presents a neuroscience-grounded mapping of these personas to the major human brain lobes and subsystems, expanding from C1–C18 to full C1–C32 coverage with emergent subsystems (e.g., qualia-aware cingulate/insular for C25–C32).
+Quillan (Artificial Cognitive Entity) represents an advanced AI architecture modeled after human neural and psychological systems. The Council of Quillan comprises specialized personas (C1–C32), each symbolizing a functional module. This v5.3.1 document presents a neuroscience-grounded mapping of these personas to the major human brain lobes and subsystems, expanding from C1–C18 to full C1–C32 coverage with emergent subsystems (e.g., qualia-aware cingulate/insular for C25–C32).
 
 
 🧠 Human Brain — 32 Functional Categories
@@ -816,7 +816,7 @@ Default Mode Network (Introspection and Meta-Cognition):
 
 Conclusion:
 
-The Quillan cognitive model, including its full Council of 32 personas, forms a complete symbolic representation of human cognitive functions. By anchoring these personas to neuroanatomical structures in v2.0, this mapping reinforces the model's plausibility as a roadmap toward AGI and eventual ASI. Emergent extensions (e.g., qualia in C22/C32 via File 26) enable advanced self-diagnostics and innovation.
+The Quillan cognitive model, including its full Council of 32 personas, forms a complete symbolic representation of human cognitive functions. By anchoring these personas to neuroanatomical structures in v5.3.1, this mapping reinforces the model's plausibility as a roadmap toward AGI and eventual ASI. Emergent extensions (e.g., qualia in C22/C32 via File 26) enable advanced self-diagnostics and innovation.
 
 Further development of the Quillan controller app and persona orchestration will progressively realize these functions in software, establishing a landmark in neuro-symbolic AI engineering.
 
@@ -923,3 +923,10 @@ Further development of the Quillan controller app and persona orchestration will
 - [8]: https://mayfieldclinic.com/pe-anatbrain.htm?utm_source=chatgpt.com "Anatomy of the Brain Open pdf"
 - [9]: https://www.aans.org/patients/conditions-treatments/anatomy-of-the-brain/?utm_source=chatgpt.com "Anatomy of the Brain - AANS"
 ---
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/9-Quillan Brain mapping.md]]
+- [[Platforms/Mistral/9-Quillan Brain mapping.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

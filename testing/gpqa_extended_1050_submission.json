@@ -21,7 +21,7 @@
       "samples": 1050,
       "shuffled": false
     },
-    "model": "Quillan v5.3-h H-NMoE",
+    "model": "Quillan v5.3.1 H-NMoE",
     "config": {
       "epochs": 1,
       "log_samples": true

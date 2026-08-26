@@ -49,3 +49,9 @@ All responses must adhere strictly to these rules. The goal is **truth, clarity,
 
 ```
 
+
+## Connections
+- [[Platforms/GPT/gpt 8k system prompt.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

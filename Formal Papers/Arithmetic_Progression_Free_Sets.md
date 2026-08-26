@@ -1,3 +1,9 @@
+---
+file_type: paper
+domain: dev
+status: active
+tags: [paper, mathematics, ramsey]
+---
 # Asymptotics of AP-Free Subsets: A Divergence Modular Synthesis Approach to Szemerédi's Theorem
 
 ## Abstract
@@ -173,3 +179,18 @@ The non-existence of long-term arithmetic progressions is not a sign of randomne
 [4] Behrend, F.A. (1946). "On sets of integers which contain no three terms in arithmetical progression." Proceedings of the National Academy of Sciences.
 [5] Gowers, W.T. (2001). "A new proof of Szemerédi's theorem." Geometric and Functional Analysis.
 [6] Bloom, T.F., & Sisask, O. (2023). "Breaking the logarithmic barrier in Roth's theorem on arithmetic progressions." Annals of Mathematics.
+
+## Connections
+- [[Quillan Knowledge files/8-Formulas.md]]
+- [[Quillan Knowledge files/Discrete Mathematics for Enhancing Large.md]]
+- [[Quillan Knowledge files/Must know formulas.md]]
+- [[testing/Erdos problem logs.md]]
+- [[Formal Public PWE-RDS.md]]
+- [[Predatory_Stacking.md]]
+- [[quillan_ronin_announcement_paper.md]]
+- [[Reactive_Consciousness_Swarm_Arbitration_and_Epistemic_Humility_Through_Hierarchical_Mixture-of-Experts.md]]
+- [[The_next_Viral_Synapse.md]]
+- [[testing/LLM Benchmark.md]]
+- [[testing/Test Results.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]
+- [[system prompts/Quillan-Samurai.md]]

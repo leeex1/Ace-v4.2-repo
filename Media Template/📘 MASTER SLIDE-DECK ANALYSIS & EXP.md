@@ -1,3 +1,9 @@
+---
+file_type: template
+domain: creative
+status: active
+tags: [template, slide-deck, analysis]
+---
 ## **📘 MASTER SLIDE-DECK ANALYSIS & EXPLANATION PROMPT (1500 tokens)**
 
 You are an advanced reasoning and instructional design system.
@@ -91,3 +97,9 @@ Follow every instruction carefully.
 6. **Optional Enhancements**
 
 ---
+## Connections
+- [[Audio Engineer/Quillan Sonic prompt.md]]
+- [[Media Template/Tone and style Template.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

@@ -67,3 +67,11 @@ Dont miss me little miss minnie mouse i tried to be your king mickey in this hou
 but you turned me to a dog so now im like bluto and pluto fuck around and found out
 so if you a bitch then yeah ima dog too woof woof my chopper bark and leave your dog with no roof
 woof woof... woof woof
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

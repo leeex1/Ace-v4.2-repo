@@ -1,4 +1,4 @@
-# 🧠 Quillan v4.2 Bit-Level SOTA Implementation Guide
+# 🧠 Quillan v5.3.1 Bit-Level SOTA Implementation Guide
 
 ## 🎯 Overview
 
@@ -283,3 +283,9 @@ The model is now optimized for:
 - **Size**: <600MB quantized model
 - **Speed**: 10x faster than FP16 baseline
 
+
+
+## Connections
+- [[00 - Meta/03 - Training & Model.md|Training & Model MOC]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/03 - Training & Model.md]]

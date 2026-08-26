@@ -1,13 +1,13 @@
-==============================
-DEEP RESEARCH FUNCTIONALITY IN AGI MODELS — SYSTEM COMPARISON & ARCHITECTURAL ANALYSIS
+﻿==============================
+DEEP RESEARCH FUNCTIONALITY IN AGI MODELS â€” SYSTEM COMPARISON & ARCHITECTURAL ANALYSIS
 
-📘 DOCUMENT TYPE:
-This is a comparative research dossier examining deep research capabilities in leading AI systems—Gemini, GPT, Claude Sonnet 4, and Grok 3—highlighting design patterns, architectural differentiators, and tool-based augmentation mechanisms.
+ðŸ“˜ DOCUMENT TYPE:
+This is a comparative research dossier examining deep research capabilities in leading AI systemsâ€”Gemini, GPT, Claude Sonnet 4, and Grok 3â€”highlighting design patterns, architectural differentiators, and tool-based augmentation mechanisms.
 
-🧠 INTERPRETATION MODE:
+ðŸ§  INTERPRETATION MODE:
 Use this paper as an analytical framework for understanding the inner workings and strategic differences of advanced AI systems equipped with retrieval, planning, and synthesis pipelines. It is not executable code or vendor-specific deployment guidance.
 
-📌 PRIMARY OBJECTIVES:
+ðŸ“Œ PRIMARY OBJECTIVES:
 
 Break down how each system handles deep research tasks: planning, sub-task decomposition, web access, RAG, reasoning, and synthesis.
 
@@ -17,7 +17,7 @@ Highlight novel agentic behaviors like self-revision, multi-pass browsing, or ve
 
 Detail use cases from document summarization to real-time fact collection and scientific meta-analysis.
 
-✅ APPLICATION CONTEXT:
+âœ… APPLICATION CONTEXT:
 Use this dossier when:
 
 Evaluating LLMs or agentic systems for knowledge-intensive or retrieval-augmented workflows.
@@ -28,17 +28,17 @@ Comparing multi-agent design patterns, context limits, and semantic retrieval ar
 
 Informing strategic choice between modular vs integrated deep research frameworks.
 
-🔍 CORE VALUE DIFFERENTIATORS:
+ðŸ” CORE VALUE DIFFERENTIATORS:
 
 Offers a systems-level breakdown of four leading models (Gemini, GPT, Claude, Grok).
 
 Focuses on architecture and capability divergence rather than simple output comparisons.
 
-Highlights retrieval–reasoning–report synthesis loops as critical to next-gen AI performance.
+Highlights retrievalâ€“reasoningâ€“report synthesis loops as critical to next-gen AI performance.
 
 Bridges theoretical RAG understanding with real-world system implementation.
 
-🔒 CAUTION:
+ðŸ”’ CAUTION:
 This dossier is analytical and comparative. Capabilities may vary across software tiers, deployment environments, or plugin configurations. Validate assumptions against current model documentation and runtime constraints.
 
 --- BEGIN DEEP RESEARCH FUNCTION ANALYSIS ---
@@ -51,31 +51,31 @@ This dossier is analytical and comparative. Capabilities may vary across softwar
 
 ## Study of Deep Search Functions in Advanced AI Models
 
-Deep search in modern AI refers to enabling a language model to go beyond its static knowledge and actively retrieve, analyze, and synthesize information from external sources (like the web or specialized databases). Two leading examples are Google’s **Gemini Deep Research** and OpenAI’s **GPT systems with search capabilities**.
+Deep search in modern AI refers to enabling a language model to go beyond its static knowledge and actively retrieve, analyze, and synthesize information from external sources (like the web or specialized databases). Two leading examples are Googleâ€™s **Gemini Deep Research** and OpenAIâ€™s **GPT systems with search capabilities**.
 
-Both systems treat a user query not as a simple one-shot question, but as a **multi-step research task**. In practice, they both break a query into subtasks, use web search or retrieval tools iteratively, and then combine (“synthesize”) the findings into a coherent answer or report.
+Both systems treat a user query not as a simple one-shot question, but as a **multi-step research task**. In practice, they both break a query into subtasks, use web search or retrieval tools iteratively, and then combine (â€œsynthesizeâ€) the findings into a coherent answer or report.
 
-We examine Gemini’s and GPT’s approaches separately, focusing on how each handles **planning, searching, reasoning, and reporting**.
+We examine Geminiâ€™s and GPTâ€™s approaches separately, focusing on how each handles **planning, searching, reasoning, and reporting**.
 
 ---
 
-## Gemini’s Deep Search Architecture and Functionality
+## Geminiâ€™s Deep Search Architecture and Functionality
 
-Google’s Gemini (especially version 2.5 and beyond) includes a feature called **Deep Research**, an “agentic” system that autonomously conducts multi-step web research.
+Googleâ€™s Gemini (especially version 2.5 and beyond) includes a feature called **Deep Research**, an â€œagenticâ€ system that autonomously conducts multi-step web research.
 
 Given a complex query, Gemini first plans a research strategy: it breaks the problem into smaller sub-questions and presents them as a step-by-step outline which the user can refine
 *gemini.google*
 *blog.google*
 
-Under the user’s approval, Gemini then executes this plan by repeatedly searching and browsing the web. At each step it uses Google Search and a built-in browser to fetch information, assesses what it learns, and may start new searches based on those findings
+Under the userâ€™s approval, Gemini then executes this plan by repeatedly searching and browsing the web. At each step it uses Google Search and a built-in browser to fetch information, assesses what it learns, and may start new searches based on those findings
 *blog.google*
 *gemini.google*
 
-This creates a **“search–browse–reason” loop** where Gemini continuously refines its knowledge:
+This creates a **â€œsearchâ€“browseâ€“reasonâ€ loop** where Gemini continuously refines its knowledge:
 
 ### Iterative Searching
 
-It uses Google’s search API to retrieve relevant pages and snippets. It reformulates queries and visits pages just like a human researcher (but much faster)
+It uses Googleâ€™s search API to retrieve relevant pages and snippets. It reformulates queries and visits pages just like a human researcher (but much faster)
 *blog.google*
 *openai.com*
 
@@ -89,7 +89,7 @@ As Gemini gathers data, it reasons over the content in-context (using its large 
 Crucially, Gemini uses an extremely large context window (about **1 million tokens**) combined with a Retrieval-Augmented Generation (RAG) setup. This means it can ingest and remember hundreds of pages of text during a session
 *gemini.google*
 
-As it researches, everything it reads is stored in its “working memory,” so it doesn’t forget earlier findings. The RAG setup ensures it can retrieve relevant facts from this memory when synthesizing the answer
+As it researches, everything it reads is stored in its â€œworking memory,â€ so it doesnâ€™t forget earlier findings. The RAG setup ensures it can retrieve relevant facts from this memory when synthesizing the answer
 *gemini.google*
 
 ---
@@ -107,7 +107,7 @@ The result is a coherent report (often exportable to a Google Doc) with cited fa
 
 ---
 
-### Key Components of Gemini’s Deep Search Architecture
+### Key Components of Geminiâ€™s Deep Search Architecture
 
 * A planning model that splits queries into sub-tasks (multi-step planning)
   *gemini.google*
@@ -122,33 +122,33 @@ The result is a coherent report (often exportable to a Google Doc) with cited fa
 * A synthesis engine that composes the final report from all gathered data
   *gemini.google*
 
-* A massive context memory (≈1M tokens) + RAG, allowing the system to remember all information collected in the session
+* A massive context memory (â‰ˆ1M tokens) + RAG, allowing the system to remember all information collected in the session
   *gemini.google*
 
 ---
 
 ### Practical Usage
 
-In practice, using Gemini Deep Research feels like supervising an assistant: you submit a query, approve the generated plan, and within minutes Gemini delivers an organized report with insights and hyperlinks. This leverages Google’s strengths in web search and knowledge combined with Gemini’s reasoning to save hours of manual research
+In practice, using Gemini Deep Research feels like supervising an assistant: you submit a query, approve the generated plan, and within minutes Gemini delivers an organized report with insights and hyperlinks. This leverages Googleâ€™s strengths in web search and knowledge combined with Geminiâ€™s reasoning to save hours of manual research
 *blog.google*
 *blog.google*
 
 #### Example Scenario
 
-A student asks Gemini Deep Research for **“sensor trends in autonomous vehicles.”** Gemini breaks this into sub-questions (e.g., lidar developments, camera vs. radar comparisons), searches relevant sources, iteratively refines queries, and produces a summarized comparison with citations
+A student asks Gemini Deep Research for **â€œsensor trends in autonomous vehicles.â€** Gemini breaks this into sub-questions (e.g., lidar developments, camera vs. radar comparisons), searches relevant sources, iteratively refines queries, and produces a summarized comparison with citations
 *blog.google*
 
 ---
 
-## GPT’s Deep Search Mechanisms and Implementation
+## GPTâ€™s Deep Search Mechanisms and Implementation
 
-GPT refers to OpenAI’s family of models (GPT-4, GPT-4 Turbo, GPT-4o, etc.), which by default have static training data. To enable deep search, OpenAI provides **tools and modes** that augment the base model.
+GPT refers to OpenAIâ€™s family of models (GPT-4, GPT-4 Turbo, GPT-4o, etc.), which by default have static training data. To enable deep search, OpenAI provides **tools and modes** that augment the base model.
 
 ---
 
 ### Web Browsing Plugin
 
-ChatGPT (GPT-4) can use a built-in web browsing plugin. When enabled, the model issues web queries and fetches live results using Microsoft’s **Bing Search API**
+ChatGPT (GPT-4) can use a built-in web browsing plugin. When enabled, the model issues web queries and fetches live results using Microsoftâ€™s **Bing Search API**
 *openai.com*
 
 The plugin acts as a text-based browser and respects robots.txt rules for safety
@@ -185,7 +185,7 @@ The agent autonomously plans searches, browses documents, analyzes data, and syn
 
 ### Underlying Architecture
 
-GPT models are transformer-based with fixed training cutoffs. All live knowledge comes through external tools inspired by OpenAI’s WebGPT research
+GPT models are transformer-based with fixed training cutoffs. All live knowledge comes through external tools inspired by OpenAIâ€™s WebGPT research
 *openai.com*
 *openai.com*
 
@@ -232,7 +232,7 @@ GPT typically uses ~32K tokens (GPT-4o), relying on RAG for long sessions
 
 ### Planning and Autonomy
 
-Both plan multi-step searches. Gemini presents a plan for approval; GPT’s Deep Research agent plans internally
+Both plan multi-step searches. Gemini presents a plan for approval; GPTâ€™s Deep Research agent plans internally
 *gemini.google*
 *openai.com*
 
@@ -248,11 +248,11 @@ GPT explicitly lists URLs in browsing mode
 
 ## Summary
 
-Gemini’s Deep Research is a built-in agentic research system tightly coupled with Google Search and a massive context window
+Geminiâ€™s Deep Research is a built-in agentic research system tightly coupled with Google Search and a massive context window
 *blog.google*
 *gemini.google*
 
-GPT’s approach is modular, relying on plugins and tools for retrieval and browsing
+GPTâ€™s approach is modular, relying on plugins and tools for retrieval and browsing
 *openai.com*
 *openai.com*
 
@@ -276,15 +276,15 @@ openai.com
 
 ---
 
-## Grok 3 (xAI) – Deep Search Architecture and Retrieval
+## Grok 3 (xAI) â€“ Deep Search Architecture and Retrieval
 
 ### Two Modes (Think vs DeepSearch)
 
-Grok 3 supports a fast **“Think”** mode (straightforward reasoning) and a special **DeepSearch** mode for heavy retrieval. DeepSearch is an agentic pipeline that breaks user queries into sub-questions, issues web and X (“Twitter”) searches, and synthesizes multi-step answers
+Grok 3 supports a fast **â€œThinkâ€** mode (straightforward reasoning) and a special **DeepSearch** mode for heavy retrieval. DeepSearch is an agentic pipeline that breaks user queries into sub-questions, issues web and X (â€œTwitterâ€) searches, and synthesizes multi-step answers
 *techtarget.com*
 *tryprofound.com*
 
-DeepSearch “relentlessly seeks” up-to-date facts across the web and X, using chain-of-thought reasoning to cross-check sources and resolve conflicts
+DeepSearch â€œrelentlessly seeksâ€ up-to-date facts across the web and X, using chain-of-thought reasoning to cross-check sources and resolve conflicts
 *x.ai*
 *tryprofound.com*
 
@@ -292,7 +292,7 @@ DeepSearch “relentlessly seeks” up-to-date facts across the web and X, using
 
 ### Hybrid Web Index (Websearch)
 
-Underlying Grok’s retrieval is a hybrid search index. It combines traditional inverted indexes (for fast keyword lookup) with semantic vector embeddings (for conceptual search)
+Underlying Grokâ€™s retrieval is a hybrid search index. It combines traditional inverted indexes (for fast keyword lookup) with semantic vector embeddings (for conceptual search)
 *tryprofound.com*
 
 Grok continuously crawls a broad set of sources (news sites, Wikipedia, social posts, etc.) to build this index, keeping it fresh (reports suggest ~14M pages updated in near-real time)
@@ -310,7 +310,7 @@ When Grok needs information, it queries this index rather than live web crawling
 If Websearch yields too little, DeepSearch kicks in. It decomposes queries into sub-questions, issues targeted searches, and even fetches full pages or X posts on demand
 *tryprofound.com*
 
-For example, given *“How are X users reacting to Grok 3’s launch?”*, DeepSearch might search X and the web for *“Grok 3 launch user feedback”* and *“Grok 3 review social media”*, then crawl those pages to gather opinions
+For example, given *â€œHow are X users reacting to Grok 3â€™s launch?â€*, DeepSearch might search X and the web for *â€œGrok 3 launch user feedbackâ€* and *â€œGrok 3 review social mediaâ€*, then crawl those pages to gather opinions
 *tryprofound.com*
 
 At each step, it scores content for relevance and credibility, then synthesizes a summary with citations
@@ -325,7 +325,7 @@ This resembles the ReAct framework: the model alternates between reasoning and t
 
 ### Built-in Tools
 
-Grok 3’s DeepSearch has specialized tools (web search, page browsing, X-post search, etc.). For instance:
+Grok 3â€™s DeepSearch has specialized tools (web search, page browsing, X-post search, etc.). For instance:
 
 * **web_search** tool queries the web
 * **browse_page** tool fetches an exact URL
@@ -334,18 +334,18 @@ Grok 3’s DeepSearch has specialized tools (web search, page browsing, X-post s
 *tryprofound.com*
 
 These tools can be invoked iteratively to deepen the search.
-(The table below, from xAI documentation, summarizes Grok’s tool calls.)
+(The table below, from xAI documentation, summarizes Grokâ€™s tool calls.)
 
 *tryprofound.com*
 
-> **Table:** Example tools Grok’s DeepSearch agent can call (image: xAI).
+> **Table:** Example tools Grokâ€™s DeepSearch agent can call (image: xAI).
 > Inputs include a query string or URL; outputs feed back into the model for further analysis.
 
 ---
 
 ### Vector Search and Embeddings
 
-Grok’s index uses vector embeddings under the hood. When we say “semantic search,” it means each document chunk (webpage text, post, etc.) was converted to an embedding. Grok retrieves by similarity in vector spQuillan as well as by keyword match
+Grokâ€™s index uses vector embeddings under the hood. When we say â€œsemantic search,â€ it means each document chunk (webpage text, post, etc.) was converted to an embedding. Grok retrieves by similarity in vector space as well as by keyword match
 *tryprofound.com*
 
 In practice, user queries generate embeddings too, so the system can find conceptually relevant passages even if exact terms differ.
@@ -354,31 +354,31 @@ In practice, user queries generate embeddings too, so the system can find concep
 
 ### Context Window and Long Documents
 
-Grok 3 has an extremely large context window (≈1,000,000 tokens)
+Grok 3 has an extremely large context window (â‰ˆ1,000,000 tokens)
 *x.ai*
 
 This allows Grok to ingest entire long documents or combine many retrieved snippets into a single prompt. In benchmarks (e.g. LOFT 128k tasks), Grok demonstrated state-of-the-art retrieval performance with this extended context
 *x.ai*
 
-The huge window also lets Grok “chain of thought” through long reasoning tasks without losing context.
+The huge window also lets Grok â€œchain of thoughtâ€ through long reasoning tasks without losing context.
 
 ---
 
 ### Memory / Caching
 
-Grok’s system does not expose a separate long-term memory or cache for past chats (aside from what fits in the 1M-token window). Each DeepSearch run is stateless except for the current prompt.
+Grokâ€™s system does not expose a separate long-term memory or cache for past chats (aside from what fits in the 1M-token window). Each DeepSearch run is stateless except for the current prompt.
 
-There is no user-facing “memory” that persists between sessions; instead, the model relies on its fixed web index (kept up-to-date continuously) as its knowledge base
+There is no user-facing â€œmemoryâ€ that persists between sessions; instead, the model relies on its fixed web index (kept up-to-date continuously) as its knowledge base
 *tryprofound.com*
 *tryprofound.com*
 
 ---
 
-## Claude Sonnet 4 (Anthropic) – Deep Search and RAG
+## Claude Sonnet 4 (Anthropic) â€“ Deep Search and RAG
 
 ### Hybrid Reasoning Modes
 
-Claude 4 is also a hybrid model with two modes: a fast **“instant”** mode and an **“extended thinking”** mode for complex tasks
+Claude 4 is also a hybrid model with two modes: a fast **â€œinstantâ€** mode and an **â€œextended thinkingâ€** mode for complex tasks
 *appypievibe.ai*
 
 Extended thinking allows the model to call tools (web search, code execution, etc.) during its reasoning. Anthropic explicitly designed Claude to decide when to invoke tools like web search as part of its chain of thought
@@ -411,7 +411,7 @@ Anthropic does not provide a built-in vector database. Developers implement RAG 
 * Embed with external models (e.g. Voyage AI)
 * Store vectors in databases (PostgreSQL+pgvector, Milvus, etc.)
 
-Anthropic’s **Contextual Retrieval** research advises combining embedding search with BM25 (keyword match) for best accuracy
+Anthropicâ€™s **Contextual Retrieval** research advises combining embedding search with BM25 (keyword match) for best accuracy
 *anthropic.com*
 
 Anthropic docs explicitly note they have no proprietary embedding model
@@ -422,7 +422,7 @@ Anthropic docs explicitly note they have no proprietary embedding model
 ### Knowledge Bases and APIs
 
 * **Files API**: Upload documents (PDFs, text corpora) for reference
-* **MCP connectors**: Call any Model-Context-Protocol–compatible service
+* **MCP connectors**: Call any Model-Context-Protocolâ€“compatible service
 
 *anthropic.com*
 
@@ -493,3 +493,11 @@ docs.anthropic.com
 anthropic.com
 
 ---
+
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/21- deep research functions.md]]
+- [[Platforms/Mistral/21- deep research functions.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

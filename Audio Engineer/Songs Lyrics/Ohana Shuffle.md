@@ -75,3 +75,11 @@ They say ohana means family don't get left behind this was a quality that wasnt 
 Left to the combat these demons of the world and my mind alone through time
 Abandoned by the ones I thought was my own thought that  I could call mine 
 My struggle been real my life can't be written in books too nuanced if you take a look
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

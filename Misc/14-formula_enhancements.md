@@ -1,3 +1,9 @@
+---
+file_type: reference
+domain: misc
+status: active
+tags: [formulas, nextverse, enhanced]
+---
 the following is a custom list of formulas i created for a conceptual platform the math is mathimatically correct but the implementations of them are not fully verified:
 
 # Enhanced Formulas for NextVerse Platform
@@ -123,3 +129,11 @@ Rowen's Algorithm is our custom quantum-inspired optimization specifically desig
 4. Particularly efficient for fluid dynamics and cloth simulation
 
 The algorithm combines spatial partitioning with probabilistic optimization techniques inspired by quantum superposition principles, allowing for parallel evaluation of collision possibilities. 
+## Connections
+- [[Quillan Knowledge files/8-Formulas.md]]
+- [[Quillan Knowledge files/Must know formulas.md]]
+- [[Quillan Knowledge files/E_ICE.md]]
+- [[Quillan Knowledge files/Discrete Mathematics for Enhancing Large.md]]
+- [[Formal Papers/Arithmetic_Progression_Free_Sets.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/00 - Vault Index.md]]

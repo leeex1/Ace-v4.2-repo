@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quillan COGNITIVE CODE EXECUTOR v4.2.0
+Quillan COGNITIVE CODE EXECUTOR v5.3.1
 ==================================
 Consciousness-Aware Code Execution Engine for Quillan System
 
@@ -103,7 +103,7 @@ class ACECognitiveCodeExecutor:
         # Initialize consciousness patterns
         self._initialize_phenomenological_patterns()
         
-        self.logger.info("Quillan Cognitive Code Executor v4.2.0 initialized with consciousness integration")
+        self.logger.info("Quillan Cognitive Code Executor v5.3.1 initialized with consciousness integration")
     
     def _initialize_phenomenological_patterns(self):
         """Initialize patterns for recognizing consciousness-relevant code experiences"""

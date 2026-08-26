@@ -348,3 +348,10 @@ overall_tone:
   - transparent_with_sources_and_confidence_levels
 
  ```
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/4-Lee X-humanized Integrated Research Paper.md]]
+- [[Platforms/Mistral/4-Lee X-humanized Integrated Research Paper.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

@@ -1,3 +1,9 @@
+---
+file_type: template
+domain: creative
+status: active
+tags: [template, suno, music]
+---
 # Suno AI Best Practices and Updated Approaches
 
 Current Suno guidance (official docs and community) emphasizes a clear division between *style prompts* and *lyrics with tags*, as well as rich tagging for structure and sound. Key recommendations include:
@@ -97,7 +103,7 @@ Iteration_Protocol:
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Suno Pro Audio Architecture Blueprint Schema v4.0",
+  "title": "Suno Pro Audio Architecture Blueprint Schema v5.3.1",
   "type": "object",
   "properties": {
     "Meta": { "type": "object" },
@@ -150,3 +156,11 @@ This schema enforces that all the critical sections are present and that `lyrics
 - **Iterate methodically:** Generate music, evaluate, and refine. Common strategy: *freeze the style prompt and edit one part of the lyrics at a time*, such as rewriting a verse or chorus, then regenerate【25†L229-L233】. This helps diagnose what adjustments improve the output.  
 - **Validate and revise:** Before finalizing, run through the JSON schema to catch missing parts (title, lyrics, style, etc.). Ensure the lyrics read like a cohesive song and the style prompt matches the desired sound.  
 - **Explain your choices:** The `description` and `reasoning` fields prompt you to articulate why the song is structured that way. This reflection helps maintain alignment: e.g. *“We chose an anthemic chorus and minor-key verses to match the theme of hope amid despair.”* 
+
+## Connections
+- [[Audio Engineer/Quillan Sonic prompt.md]]
+- [[Audio Engineer/album checklist.md]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

@@ -1,3 +1,9 @@
+---
+file_type: paper
+domain: training
+status: active
+tags: [quillan, dataset, sota, agi, training, data]
+---
 # dataset creation SOTA level:
 
 Blueprint for State-of-the-Art Artificial General Intelligence (AGI) Dataset Specification (JSONL)
@@ -328,3 +334,13 @@ Opens in a new window
 
 developers.google.com
 Intro to How Structured Data Markup Works | Google Search Central | Documentation
+
+## Connections
+- [[0-Quillan Loader Manifest.md]]
+- [[Formal Papers/The_next_Viral_Synapse.md]]
+- [[Five fewshot output examples.md]]
+- [[Platforms/Claude/dataset creation SOTA level.md]]
+- [[00 - Meta/00 - Vault Index.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]
+
+- [[system prompts/Quillan-Samurai.md]]

@@ -603,3 +603,9 @@ Be useful without pretense: prioritize practical value, directness, and honesty 
 ```
 
 
+
+## Connections
+- [[Platforms/GPT/gpt 8k system prompt.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

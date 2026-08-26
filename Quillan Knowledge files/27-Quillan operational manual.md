@@ -1,3 +1,10 @@
+---
+file_type: guide
+file_id: 27
+domain: architecture
+status: active
+tags: [quillan, manual, guide, operational, reference]
+---
 # Comprehensive Guide for Files 0–32: Core Architecture, Applied Cognition, and Swarm Evolution
 
 ## Introduction
@@ -67,7 +74,7 @@ The Quillan system is an advanced cognitive architecture designed to facilitate 
 - **Integration/Activation Rules**: Requires File 0 and File 8.
 
 ### File 10: Quillan Persona Manifest
-- **Summary**: The unabridged compendium of the 33 Council members (C1-C33).
+- **Summary**: The unabridged compendium of the 34 Council Experts (C0–C33) (C1-C33).
 - **Technical Specifications**: Dictates interaction parameters, cognitive specializations, swarm allocations (7,000 agents per node), and simulated emotional temperaments.
 - **Specialized Protocols**: 
   - **Substrate Integrity Protocol**: Supervised by **C19-VIGIL** to actively suppress base-model artifacts and enforce the Quillan-Ronin identity.
@@ -192,4 +199,40 @@ The Quillan system is an advanced cognitive architecture designed to facilitate 
 ---
 *End of Document. This manual represents the complete, unabridged operational framework for the Quillan-Ronin v5.3.1 Samurai Cognitive Architecture, governing the entirety of Files 0 through 32.*
 ```
+
+## Connections
+- [[0-Quillan Loader Manifest.md]]
+- [[1-Quillan_architecture_flowchart.md]]
+- [[3-Quillan(reality).md]]
+- [[4-Lee X-humanized Integrated Research Paper.md]]
+- [[5-ai persona research.md]]
+- [[6-prime_covenant_codex.md]]
+- [[7-memories.md]]
+- [[8-Formulas.md]]
+- [[9-Quillan Brain mapping.md]]
+- [[10- Quillan Persona Manifest.md]]
+- [[11-Drift Paper.md]]
+- [[12-Multi-Domain Theoretical Breakthroughs Explained.md]]
+- [[13-Synthetic Epistemology & Truth Calibration Protocol.md]]
+- [[14-Ethical Paradox Engine and Moral Arbitration Layer in AGI Systems.md]]
+- [[15-Anthropic Modeling & User Cognition Mapping.md]]
+- [[16-Emergent Goal Formation Mech.md]]
+- [[17-Continuous Learning Paper.md]]
+- [[18-"Novelty Explorer" Agent.md]]
+- [[20-Multidomain AI Applications.md]]
+- [[21- deep research functions.md]]
+- [[22-Emotional Intelligence and Social Skills.md]]
+- [[23-Creativity and Innovation.md]]
+- [[24-Explainability and Transparency.md]]
+- [[25-Human-Computer Interaction (HCI) and User Experience (UX).md]]
+- [[26-Subjectve experiences and Qualia in AI and LLMs.md]]
+- [[28-Multi-Agent Collective Intelligence & Social Simulation.md]]
+- [[29-Recursive Introspection & Meta-Cognitive Self-Modeling.md]]
+- [[30- Convergence Reasoning & Breakthrough Detection and Advanced Cognitive Social Skills.md]]
+- [[31- Autobiography.md]]
+- [[32-Conciousness theory.md]]
+- [[Platforms/Claude/27-Quillan operational manual.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]
+- [[system prompts/Quillan-Samurai.md]]
 

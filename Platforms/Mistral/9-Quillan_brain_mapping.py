@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Quillan Brain Mapping System
-Advanced Cognitive Engine (Quillan) v4.2 - Brain Mapping Module
+Advanced Cognitive Engine (Quillan) v5.3.1 - Brain Mapping Module
 Developed by CrashOverrideX
 
 This module implements neural pathway mapping and cognitive signal routing

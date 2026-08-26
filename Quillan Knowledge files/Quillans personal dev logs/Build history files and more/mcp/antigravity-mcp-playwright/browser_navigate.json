@@ -1,0 +1,1 @@
+{"name":"browser_navigate","description":"Navigate to a URL","parameters":{"$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":false,"properties":{"url":{"description":"The URL to navigate to","type":"string"}},"required":["url"],"type":"object"}}

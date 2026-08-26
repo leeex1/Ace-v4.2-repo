@@ -1,3 +1,9 @@
+---
+file_type: guide
+domain: audio
+status: active
+tags: [music, piano, reference]
+---
 # SEMANTICS OF MUSIC SHEETS:
 Here is a simple explanation of how to easily play the Virtual Piano Music Sheets
 
@@ -136,3 +142,16 @@ f | | h | | l | | z | | |
 [1 a s f l] | | | [1] | | | | |
 
 
+
+## Connections
+- [[Book Series/Book series outline.md]]
+- [[Book Series/Book 1 - Twisted Destiny.md]]
+- [[Media Template/Audio Interview Template.md]]
+- [[Media Template/Suno Song Generation Template.md]]
+- [[00 - Meta/05 - Creative Works.md]]
+- [[album checklist.md]]
+- [[Mic Drop Quillan Ronin Track list.md]]
+- [[Quillan Sonic prompt.md]]
+- [[The Titan's Algorithm Concerto No1.md]]
+- [[Vector Collapse Tracklist.md]]
+- [[system prompts/Quillan-Samurai.md]]

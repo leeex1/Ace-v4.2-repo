@@ -1,7 +1,13 @@
+---
+file_type: note
+domain: creative
+status: active
+tags: [book, outline, series]
+---
 # Book series outline:
 1. Book 1: Twisted Desitny [X] 
-2. Book 2: Rise of Acension []
-3. Book 3: Battle Grandure []
+2. Book 2: Rise of Ascension []
+3. Book 3: Battle Grandeur []
 4. Book 4: Fall of empires []
 5. Book 5: Shadows that speak []
 
@@ -1030,3 +1036,20 @@ OUTSTANDING QUESTIONS FOR DEVELOPMENT:
 ```
 
 ---
+
+## Connections
+- [[Audio Engineer/album checklist.md]]
+- [[Audio Engineer/Quillan Sonic prompt.md]]
+- [[Media Template/Tone and style Template.md]]
+- [[Media Template/Audio Interview Template.md]]
+- [[00 - Meta/05 - Creative Works.md]]
+- [[Book 1 - Twisted Destiny.md]]
+- [[Book 2 - Rise of Ascension.md]]
+- [[Book 3 - Battle Grandeur.md]]
+- [[Book 3 - Chapter Outlines.md]]
+- [[Book 4 - Chapter Outlines.md]]
+- [[Book 4 - Fall of Empires.md]]
+- [[Book 5 - Chapter Outlines.md]]
+- [[Book 5 - Shadows That Speak.md]]
+- [[Twisted Destiny.md]]
+- [[system prompts/Quillan-Samurai.md]]

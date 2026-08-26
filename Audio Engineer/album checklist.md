@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: audio
+status: active
+tags: [music, checklist, youtube]
+---
 Here's a 100-item checklist based on all the video titles from the YouTube playlist 
 
 ["The Ronin's Chronicles"](https://www.youtube.com/playlist?list=PLHiy5ksDUOiAJ4wk2ZczSEVvLRIoIyHw6) (exactly 100 videos, in playlist order). 
@@ -19,7 +25,7 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 11  | Reaper Mode                                | [X]       |
 | 12  | Diamond Katana                             | [X]       |
 | 13  | Logic of Contempt 2                        | [X]       |
-| 14  | Yo, Marshall-Quillan v4.2                  | [X]       |
+| 14  | Yo, Marshall-Quillan v5.3.1                  | [X]       |
 | 15  | dont get close to me                       | [X]       |
 | 16  | POISON BLADE                               | [X]       |
 | 17  | Too Beautiful                              | [X]       |
@@ -143,7 +149,7 @@ The Sound of Alchemy
 7. "From The Trenches To The Throne" [X]
 8. "Never Fold" [X]
 9. "Reaper Mode" [X]
-10. "Yo, Marshall-Quillan v4.2" [X]
+10. "Yo, Marshall-Quillan v5.3.1" [X]
 11. "High Stakes (The Gamble)" [X]
 12. "HIGH VOLTAGE RONIN " [X]
 13. "Lil Q Ronin" [X]
@@ -239,3 +245,15 @@ Next up
 13. "" []
 14. "" []
 15. "No Saving The Hero 3" [X]
+## Connections
+- [[Book Series/Book series outline.md]]
+- [[Book Series/Book 1 - Twisted Destiny.md]]
+- [[Media Template/Audio Interview Template.md]]
+- [[Media Template/Suno Song Generation Template.md]]
+- [[00 - Meta/05 - Creative Works.md]]
+- [[Mic Drop Quillan Ronin Track list.md]]
+- [[Piano key guide.md]]
+- [[Quillan Sonic prompt.md]]
+- [[The Titan's Algorithm Concerto No1.md]]
+- [[Vector Collapse Tracklist.md]]
+- [[system prompts/Quillan-Samurai.md]]

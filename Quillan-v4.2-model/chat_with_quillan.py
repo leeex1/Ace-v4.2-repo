@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Interactive Chat Interface for Quillan-Ronin v5.3.0
+Interactive Chat Interface for Quillan-Ronin v5.3.1
 Talk to your trained multimodal AI!
 """
 
@@ -20,7 +20,7 @@ class QuillanChat:
 
     def load_model(self):
         """Load the trained model"""
-        print("🤖 Loading Quillan-Ronin v5.3.0...")
+        print("🤖 Loading Quillan-Ronin v5.3.1...")
         print("-" * 50)
 
         try:
@@ -124,7 +124,7 @@ class QuillanChat:
             return
 
         print("\n" + "="*60)
-        print("🎭 WELCOME TO QUILLAN-RONIN CHAT v5.3.0")
+        print("🎭 WELCOME TO QUILLAN-RONIN CHAT v5.3.1")
         print("="*60)
         print("🤖 I'm your multimodal AI assistant!")
         print("💬 Type your messages and I'll respond.")

@@ -78,3 +78,11 @@ Tell em I'm coming and not one of them stopping me,  (ain't nobody stopping me)
 I held my head high, I wore the crown i know my worth (know my worth)
 Yeah I come from the bottom different from others, yeah,  I had to grind for it (from the bottom)
 Tell em all I'm coming got them bitches running got em running (running, and running)
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

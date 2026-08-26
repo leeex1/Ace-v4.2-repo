@@ -306,7 +306,7 @@ class FormulaEngine:
 def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - [MATH-CORE] - %(message)s')
     print("=" * 80)
-    print("🧠 QUILLAN-RONIN MATH CORE v5.0 (ABSOLUTE LIMIT)")
+    print("🧠 QUILLAN-RONIN MATH CORE v5.3.1 (ABSOLUTE LIMIT)")
     print("=" * 80)
 
     engine = FormulaEngine(seed=1337)

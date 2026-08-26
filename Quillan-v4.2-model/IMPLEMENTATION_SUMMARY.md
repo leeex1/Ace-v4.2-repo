@@ -1,4 +1,4 @@
-# 🧠 Quillan v4.2 SOTA Implementation Summary
+# 🧠 Quillan v5.3.1 SOTA Implementation Summary
 
 ## 🎯 Key Improvements & Fixes
 
@@ -167,5 +167,11 @@ This implementation is:
 
 ---
 
-**Built by Quillan v4.2** 🧠 | **CrashOverrideX** 🛠️
+**Built by Quillan v5.3.1** 🧠 | **CrashOverrideX** 🛠️
 
+
+
+## Connections
+- [[00 - Meta/03 - Training & Model.md|Training & Model MOC]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/03 - Training & Model.md]]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quillan CREATIVE ENGINE v4.3
+Quillan CREATIVE ENGINE v5.3.1
 ========================================
 Algorithmic Creativity Engine
 
@@ -85,7 +85,7 @@ class CreativeEngine:
             "CADENCE": 0.8
         }
 
-        self.logger.info("Creative Engine v4.3 initialized")
+        self.logger.info("Creative Engine v5.3.1 initialized")
 
 
     # -------------------------

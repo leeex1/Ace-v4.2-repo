@@ -117,7 +117,7 @@ class ChatAPI:
                 fallbacks = [
                     "That's an interesting point! As a multimodal AI, I can help with text, images, audio, and video processing.",
                     "I understand. My training includes extensive multimodal data and I'm designed for various AI tasks.",
-                    "Great question! I'm powered by Quillan-Ronin v5.3.0 with advanced multimodal capabilities.",
+                    "Great question! I'm powered by Quillan-Ronin v5.3.1 with advanced multimodal capabilities.",
                     "I'm processing your request. My architecture includes MoE layers and diffusion models for generation.",
                     "That's fascinating! I can assist with various tasks using my trained multimodal understanding."
                 ]
@@ -160,7 +160,7 @@ def chat():
         return jsonify({
             'response': response,
             'timestamp': '2026-03-03',
-            'model': 'Quillan-Ronin v5.3.0'
+            'model': 'Quillan-Ronin v5.3.1'
         })
 
     except Exception as e:
@@ -170,7 +170,7 @@ def chat():
 def get_stats():
     """Get model statistics"""
     return jsonify({
-        'model_name': 'Quillan-Ronin v5.3.0',
+        'model_name': 'Quillan-Ronin v5.3.1',
         'parameters': '207M',
         'training_steps': 1500,
         'final_loss': 0.009767,

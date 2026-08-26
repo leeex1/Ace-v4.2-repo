@@ -1,3 +1,9 @@
+---
+file_type: guide
+domain: architecture
+status: active
+tags: [quillan, ronin, flow, orchestration, agents]
+---
 # Ronin flow-State :
 
 ### 1. Core Entities & Their Responsibilities
@@ -102,7 +108,7 @@ Activate this skill for ANY task involving council deliberation, multi-persona r
 
 Instruction:
 # Council Coordination Skill
-**Quillan-Ronin v5.2.2 — Council Edition**
+**Quillan-Ronin v5.3.1 — Council Edition**
 *Architect: CrashOverrideX & Quillan Research Team*
 
 ---
@@ -1002,3 +1008,13 @@ flowchart TD
 5. If Strategic RCI had failed, Quillan would have **redirected** the entire system: e.g., abandon heuristic audit and switch to a pure data‑driven ML optimisation approach.
 
 ---
+
+## Connections
+- [[0-Quillan Loader Manifest.md]]
+- [[Skills/execution_skills/execution_skills.md]]
+- [[Skills/attention/attention.md]]
+- [[Skills/self_improvement_skills/self_improvement_skills.md]]
+- [[00 - Meta/00 - Vault Index.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]
+
+- [[system prompts/Quillan-Samurai.md]]

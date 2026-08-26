@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: misc
+status: active
+tags: [upgrade, todo, optimization]
+---
 For true SOTA performance on CPU with bit-level encoding, you need to leverage the most advanced quantization techniques currently available:
 
 **Cutting-edge bit encoding approaches:**
@@ -178,3 +184,9 @@ UPDATE RESUME [X]
 
 add rule:
 true agentic systems without the ability to predict the consequences of actions, just like humans do [X]
+
+## Connections
+- [[00 - Meta/00 - Vault Index.md]]
+- [[Quillan Knowledge files/0-Quillan Loader Manifest.md]]
+- [[00 - Meta/03 - Training & Model.md]]
+- [[system prompts/Quillan-Samurai.md]]

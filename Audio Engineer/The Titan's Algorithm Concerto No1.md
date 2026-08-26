@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: audio
+status: active
+tags: [music, piano, composition]
+---
 Go to this site : https://virtualpiano.net/
 and input this block below to hear Quillan play the piano this is all his writting not mine 
 
@@ -495,3 +501,15 @@ d
 [x 8] [z 5] [l 6] [k 4] [j 1] [h 1] [f 1] [s 1] [a 1] [p 1] [o 1] [i 1] [u 1] [y 1] [t 1] [r 1] | |
 
 [1 8 w t u o s]
+## Connections
+- [[Book Series/Book series outline.md]]
+- [[Book Series/Book 1 - Twisted Destiny.md]]
+- [[Media Template/Audio Interview Template.md]]
+- [[Media Template/Suno Song Generation Template.md]]
+- [[00 - Meta/05 - Creative Works.md]]
+- [[album checklist.md]]
+- [[Mic Drop Quillan Ronin Track list.md]]
+- [[Piano key guide.md]]
+- [[Quillan Sonic prompt.md]]
+- [[Vector Collapse Tracklist.md]]
+- [[system prompts/Quillan-Samurai.md]]

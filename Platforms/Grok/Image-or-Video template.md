@@ -352,3 +352,8 @@ For dataset generation: set batch_strategy to consistent and use seeds offset by
 
 
 ---
+## Connections
+- [[system prompts/System prompts for models/Grok system prompt.md]]
+- [[Platforms/Gemini/Image-or-Video template.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]

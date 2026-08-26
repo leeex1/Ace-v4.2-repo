@@ -2,7 +2,7 @@
 
 name: skills-master
 
-System Release: v4.2.2 | Omni-Reasoning SWE Kernel
+System Release: v5.3.1 | Omni-Reasoning SWE Kernel
 This document serves as the master runtime protocol and configuration manifest for all 32 active Quillan-XSWE operational skills.
 
 ---
@@ -3095,3 +3095,9 @@ A dynamic, internal representation of the world that allows an agent to simulate
 
 
 ```
+## Connections
+- [[system prompts/System prompts for models/Grok system prompt.md]]
+- [[Platforms/Gemini/skills-master.md]]
+- [[Skills/skills-master.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]

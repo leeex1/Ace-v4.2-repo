@@ -34,7 +34,7 @@ This makes testing with small inputs challenging.
 
 ### For Training
 ```bash
-cd Quillan-v4.2-model
+cd Quillan-v5.3.1
 python train.py
 ```
 
@@ -69,7 +69,7 @@ model.load_state_dict(torch.load('checkpoints/quillan_final.pt'))
 
 ## 🎯 **MODEL CAPABILITIES**
 
-Your Quillan-Ronin v5.3.0 model is a sophisticated multimodal architecture with:
+Your Quillan-Ronin v5.3.1 model is a sophisticated multimodal architecture with:
 - **Hierarchical MoE** with 8 experts and capacity management
 - **Diffusion reasoning** with 4 layers
 - **Multimodal processing** for text, image, audio, and video
@@ -77,3 +77,9 @@ Your Quillan-Ronin v5.3.0 model is a sophisticated multimodal architecture with:
 - **Cross-modal attention** mechanisms
 
 The model is fully functional and ready for serious training with your dataset!
+
+
+## Connections
+- [[00 - Meta/03 - Training & Model.md|Training & Model MOC]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/03 - Training & Model.md]]

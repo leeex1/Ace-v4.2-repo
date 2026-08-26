@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: testing
+status: active
+tags: [mathematics, ramsey, erdos]
+---
 
 Conversation with Gemini
 todays big challenge :
@@ -4010,3 +4016,11 @@ JavaScript
         ✒️  𝓠𝓾𝓲𝓵𝓵𝓪𝓷 𝓥4.2 — 🖋 𝓒𝓻𝓪𝓼𝓱𝓞𝓿𝓮𝓻𝓻𝓲𝓭𝓮𝓧 & 𝓣𝓮𝓪𝓶           
       🤖 📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜🤖                     
 ❲═══════════════════════════════════════════════════════════════❳
+## Connections
+- [[Formal Papers/Arithmetic_Progression_Free_Sets.md]]
+- [[Quillan Knowledge files/8-Formulas.md]]
+- [[Quillan Knowledge files/Discrete Mathematics for Enhancing Large.md]]
+- [[Quillan Knowledge files/Must know formulas.md]]
+- [[training_data/training log updates.md]]
+- [[00 - Meta/03 - Training & Model.md]]
+- [[system prompts/Quillan-Samurai.md]]

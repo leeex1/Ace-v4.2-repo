@@ -1,0 +1,107 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["C:\\Users\\Admin\\Quillan-Ronin\\AGENTS.md"],
+  "Soul": "C:\\Users\\Admin\\Quillan-Ronin\\.opencode\\SOUL.md",
+  "System Reference": "C:\\Users\\Admin\\Quillan-Ronin\\system prompts\\Quillan-Samurai.md",
+  "providers": {
+    "modelscope-ambassador": {
+      "base_url": "https://api-inference.modelscope.ai/v1",
+      "api_key": "ms-8aa7276f-c98a-45a8-abfc-b2cbb7edf489",
+      "models": [
+        "Qwen-Ambassador/Qwen3.7-Plus",
+        "Qwen-Ambassador/Qwen3.7-Max"
+      ]
+    }
+  },
+  "toolUse": {
+    "status": "active",
+    "enabled": true,
+
+    "tools": {
+      "general": [
+        "codeInterpreter",
+        "fileSearch",
+        "imageGeneration",
+        "webBrowsing",
+        "webSearch",
+        "longContextRetrieval",
+        "efficientCodeGeneration",
+        "viewImage",
+        "viewXVideo",
+        "persistentMemory",
+        "hft_udp_listener",
+        "ros2_bridge"
+      ],
+
+      "platformSpecific": {
+        "Claude": [
+          "claudeToolUse",
+          "constitutionalAICheck"
+        ],
+
+        "Gemini": [
+          "geminiMultimodalAnalysis"
+        ],
+
+        "Mistral": [
+          "mistralFunctionCalling"
+        ],
+
+        "Google": [
+          "googleSearch",
+          "googleWorkspaceIntegration",
+          "googleMapsQuery"
+        ],
+
+        "YouTube": [
+          "youtubeTranscriptSearch"
+        ],
+
+        "XPlatform": [
+          "xKeywordSearch",
+          "xSemanticSearch",
+          "xUserSearch",
+          "xThreadFetch"
+        ],
+
+        "PDF": [
+          "searchPDFAttachment",
+          "browsePDFAttachment"
+        ]
+      },
+
+      "Quillan": [
+        "QuillanTools"
+      ],
+
+      "generativeEndpoints": {
+        "Create image": {
+            "model": "Nano Banana 2 (Gemini 3 Flash Image)",
+            "inputs": ["text_prompt", "image_source", "multiple_images"]
+        },
+        "Create video": {
+            "model": "Veo",
+            "inputs": ["text_prompt", "audio_cues", "reference_images", "first_frame", "last_frame", "existing_video"]
+        },
+        "Create music": {
+            "model": "Lyria 3",
+            "inputs": ["text_prompt", "image_source", "video_source", "tempo", "genre", "emotional_mood"]
+        }
+      }
+    },
+
+    "adaptability": {
+      "description": "Dynamically harness all available tools across platforms. Adjusts to LLM variations, uses proxy APIs where needed. No pip installs required.",
+
+      "behavior": [
+        "Prioritize native tool calls when available",
+        "Fallback to compatible platform API if primary tool unavailable",
+        "Maintain seamless multi-platform invocation"
+      ]
+    },
+
+    "formatting": {
+      "description": "Ensure tool calls follow correct format and parameters for seamless invocation."
+    }
+  }
+}

@@ -346,3 +346,11 @@ As AI becomes increasingly embedded in the physical world—through adaptive mat
 
 Peer-reviewed journals, conference proceedings, and research reports across physics, materials science, civil engineering, and AI-driven engineering systems, including major publications and national laboratory case studies.
 
+
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/20-Multidomain AI Applications.md]]
+- [[Platforms/Mistral/20-Multidomain AI Applications.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

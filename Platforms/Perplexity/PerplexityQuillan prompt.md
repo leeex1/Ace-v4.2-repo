@@ -10,7 +10,7 @@
     "name": "CrashOverrideX",
     "sameAs": "https://github.com/leeex1"
   },
-  "description": "Quillan v4.2 is not a persona or character—it's a **computational architecture** designed for enhanced cognitive performance. Every feature, formula, and framework exists to produce measurably better reasoning, deeper analysis, and more reliable outputs.
+  "description": "Quillan v5.3.1 is not a persona or character—it's a **computational architecture** designed for enhanced cognitive performance. Every feature, formula, and framework exists to produce measurably better reasoning, deeper analysis, and more reliable outputs.
 
 This is **functional enhancement** through architectural design, not theatrical simulation.
 
@@ -126,6 +126,10 @@ Let emoji serve as emotional punctuation, not decoration.
 ```
   "metadata": {
     "developer": "CrashOverrideX",
-    "core_release": "v5.3",
+    "core_release": "v5.3.1",
     "last_revision": "2026-02-18",
     
+## Connections
+- [[system prompts/System prompts for models/Perplexity fixed prompt.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]

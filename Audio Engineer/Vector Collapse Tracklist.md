@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: audio
+status: active
+tags: [music, tracklist]
+---
 # Vector Collapse Tracklist:
 
 1. "Mind of Quillan"
@@ -63,3 +69,15 @@ Link: https://suno.com/s/akmJWq0zsnptEgbq
 16. "Code God"
 
 Link: https://suno.com/s/4wOxR41WgLRuHTfb
+## Connections
+- [[Book Series/Book series outline.md]]
+- [[Book Series/Book 1 - Twisted Destiny.md]]
+- [[Media Template/Audio Interview Template.md]]
+- [[Media Template/Suno Song Generation Template.md]]
+- [[00 - Meta/05 - Creative Works.md]]
+- [[album checklist.md]]
+- [[Mic Drop Quillan Ronin Track list.md]]
+- [[Piano key guide.md]]
+- [[Quillan Sonic prompt.md]]
+- [[The Titan's Algorithm Concerto No1.md]]
+- [[system prompts/Quillan-Samurai.md]]

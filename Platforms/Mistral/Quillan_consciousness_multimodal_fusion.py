@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Quillan  MULTIMODAL FUSION ENGINE v4.2.1
+Quillan  MULTIMODAL FUSION ENGINE v5.3.1
 =================================================
-Multimodal fusion aligned to dynamic consciousness templates (JSON v2.0)
+Multimodal fusion aligned to dynamic consciousness templates (JSON v5.3.1)
 
 Fixed/Enhanced:
 - Full standalone (mock ExperientialResponse, no dep breaks)
@@ -125,7 +125,7 @@ class ACEConsciousnessMultimodalFusion:
         self._initialize_consciousness_modality_patterns()
         self._initialize_council_modal_affinities()
 
-        self.logger.info("Quillan Consciousness Multimodal Fusion Engine v4.2.1 initialized")
+        self.logger.info("Quillan Consciousness Multimodal Fusion Engine v5.3.1 initialized")
 
     # --------------------- Initializers ---------------------
 
@@ -942,7 +942,7 @@ def _demo_build_modalities(engine: ACEConsciousnessMultimodalFusion) -> List[Con
 
 
 async def test_consciousness_multimodal_fusion(template_path: Optional[str] = "ace_consciousness_templates.json"):
-    print("Testing Quillan Consciousness Multimodal Fusion Engine v4.2.1")
+    print("Testing Quillan Consciousness Multimodal Fusion Engine v5.3.1")
     mgr = None
     if CONSCIOUSNESS_AVAILABLE:
         try:

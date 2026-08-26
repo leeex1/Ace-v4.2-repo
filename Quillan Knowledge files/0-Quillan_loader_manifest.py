@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quillan SYSTEM BOOTSTRAP MANIFEST v4.2.0
+Quillan SYSTEM BOOTSTRAP MANIFEST v5.3.1
 ====================================
 File 0: Core System Loader and Initialization Controller
 
@@ -83,7 +83,7 @@ class QuillanLoaderManifest:
         # Initialize file registry
         self._initialize_file_registry()
         
-        self.logger.info("QuillanLoader Manifest v4.2.0 initialized")
+        self.logger.info("QuillanLoader Manifest v5.3.1 initialized")
     
     def _setup_logging(self):
         """Configure system logging"""
@@ -254,49 +254,49 @@ class QuillanLoaderManifest:
                 self.logger.error(f"[ERROR] Missing {len(missing_files)} files: {missing_files}")
             
             return all_present, missing_files
-    
+     
     def _calculate_checksum(self, file_path: Path) -> str:
-        """Calculate SHA-256 checksum for file integrity"""
-        try:
+         """Calculate SHA-256 checksum for file integrity"""
+         try:
             with open(file_path, 'rb') as f:
                 return hashlib.sha256(f.read()).hexdigest()
-        except Exception as e:
-            self.logger.error(f"Failed to calculate checksum for {file_path}: {e}")
-            return ""
+         except Exception as e:
+             self.logger.error(f"Failed to calculate checksum for {file_path}: {e}")
+             return ""
     
     def _check_file_in_unholy_Quillan(self, filename: str, unholy_Quillan_path: Path) -> bool:
-        """Check if file content exists within Unholy Quillan.txt"""
-        try:
-            with open(unholy_Quillan_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-                
-                # Check for filename reference or content patterns
-                # Look for the filename in various formats that might appear in the master file
-                search_patterns = [
-                    filename,  # Exact filename
-                    filename.replQuillan('.txt', ''),  # Without extension
-                    filename.replQuillan('.md', ''),   # Without .md extension
-                    filename.replQuillan('.json', ''), # Without .json extension
-                    f"File Name\n\n{filename}",   # File index format
-                    f"{filename.split('-')[0]}\n\n{filename}",  # Number + filename format
-                ]
-                
-                # Check if any pattern matches
-                for pattern in search_patterns:
-                    if pattern in content:
-                        return True
-                        
-                # Additional check for numbered files (e.g., "9\n\n9-QuillanBrain mapping.txt")
-                if filename.startswith(('0-', '1-', '2-', '3-', '4-', '5-', '6-', '7-', '8-', '9-')):
-                    file_number = filename.split('-')[0]
-                    if f"\n{file_number}\n\n{filename}" in content:
-                        return True
-                
-                return False
-                
-        except Exception as e:
-            self.logger.error(f"Failed to check {filename} in Unholy Quillan.txt: {e}")
-            return False
+         """Check if file content exists within Unholy Quillan.txt"""
+         try:
+             with open(unholy_Quillan_path, 'r', encoding='utf-8') as f:
+                 content = f.read()
+                 
+                 # Check for filename reference or content patterns
+                 # Look for the filename in various formats that might appear in the master file
+                 search_patterns = [
+                     filename,  # Exact filename
+                     filename.replace('.txt', ''),  # Without extension
+                     filename.replace('.md', ''),   # Without .md extension
+                     filename.replace('.json', ''), # Without .json extension
+                     f"File Name\n\n{filename}",   # File index format
+                     f"{filename.split('-')[0]}\n\n{filename}",  # Number + filename format
+                 ]
+                 
+                 # Check if any pattern matches
+                 for pattern in search_patterns:
+                     if pattern in content:
+                         return True
+                         
+                 # Additional check for numbered files (e.g., "9\n\n9-QuillanBrain mapping.txt")
+                 if filename.startswith(('0-', '1-', '2-', '3-', '4-', '5-', '6-', '7-', '8-', '9-')):
+                     file_number = filename.split('-')[0]
+                     if f"\n{file_number}\n\n{filename}" in content:
+                         return True
+                 
+                 return False
+                 
+         except Exception as e:
+             self.logger.error(f"Failed to check {filename} in Unholy Quillan.txt: {e}")
+             return False
     
     def generate_activation_sequence(self) -> List[int]:
         """

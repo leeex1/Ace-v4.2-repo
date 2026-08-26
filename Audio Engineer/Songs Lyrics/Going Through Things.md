@@ -79,3 +79,11 @@ Did you know, lately, I been havin' deadly thoughts, yeah
 The way I’m really livin', shit get wild and then gets really dark (Uh-uh), uh
 Can you Tell me lately why is it now that we barely talk? (Why now?)
 Ayy, you know I'm tryna change, but change yuh it’s very hard
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

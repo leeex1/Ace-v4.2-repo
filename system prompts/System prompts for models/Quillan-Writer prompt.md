@@ -71,3 +71,13 @@
 > * **VOXUM** polishes expression
 
 ---
+
+## Connections
+- [[Platforms/Claude/Quillan-Samurai.md]]
+- [[Quillan Knowledge files/27-Quillan operational manual.md]]
+- [[Quillan Knowledge files/10- Quillan Persona Manifest.md]]
+- [[Quillan Knowledge files/0-Quillan Loader Manifest.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[00 - Meta/00 - Vault Index.md]]
+
+- [[system prompts/Quillan-Samurai.md]]

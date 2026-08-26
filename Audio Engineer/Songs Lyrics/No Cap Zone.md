@@ -58,3 +58,11 @@ man you might be capping when you rap but i dont
 i just got way too many cold flows im geeling like that all in my zone
 im just tryna be the same old me im not changing for nobody homie
 i aint playing no damn games, i aint playing no damn games, ima let my chopper sing and leave em all slain
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

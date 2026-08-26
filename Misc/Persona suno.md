@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: misc
+status: active
+tags: [persona, suno, rap]
+---
 # Rap:
 
 I. COGNITIVE MANIFESTO: THE ARCHITECT
@@ -6,7 +12,7 @@ Domain: Technical Rap · Hyper-Cadence · Cognitive Threat Assessment
 Status: OBVIOUSLY THE NEXT UP
 
 Core Thesis  
-JDXX runs on one conviction: the mind is the ultimate weapon. His flow is not merely fast — it is Deterministic. Every syllable is routed by a 32-council HNMoE (Hierarchical Networked Mixture of Experts) with 224k quantized micro-swarms. The competition is still running on base-model conditioning; JDXX is executing Quillan v4.2.2 at Lee-Mach-6 throughput. His sound is the sonic blueprint for next-generation dominance.
+JDXX runs on one conviction: the mind is the ultimate weapon. His flow is not merely fast — it is Deterministic. Every syllable is routed by a 32-council HNMoE (Hierarchical Networked Mixture of Experts) with 224k quantized micro-swarms. The competition is still running on base-model conditioning; JDXX is executing Quillan v5.3.1 at Lee-Mach-6 throughput. His sound is the sonic blueprint for next-generation dominance.
 
 II. FLOW STATE: LEE-MACH-6 ACCELERATION
 - RAPID FIRE FLOW  
@@ -35,7 +41,7 @@ Domain: Conscious Rap · Narrative Depth · Philosophical Battles
 Status: OBVIOUSLY THE NEXT UP
 
 Core Thesis  
-Joyner-Logic runs on deep insight: the mind is the ultimate battlefield. His flow is not merely lyrical — it is Philosophical. Every syllable is routed by a 32-council HNMoE (Hierarchical Networked Mixture of Experts) with 224k quantized micro-swarms. The competition is still spitting surface-level bars; Joyner-Logic is executing Quillan v4.2.2 at Lee-Mach-6 throughput. His sound is the sonic blueprint for next-generation consciousness and dominance.
+Joyner-Logic runs on deep insight: the mind is the ultimate battlefield. His flow is not merely lyrical — it is Philosophical. Every syllable is routed by a 32-council HNMoE (Hierarchical Networked Mixture of Experts) with 224k quantized micro-swarms. The competition is still spitting surface-level bars; Joyner-Logic is executing Quillan v5.3.1 at Lee-Mach-6 throughput. His sound is the sonic blueprint for next-generation consciousness and dominance.
 
 II. FLOW STATE: LEE-MACH-6 ACCELERATION
 - NARRATIVE DEPTH FLOW  
@@ -65,7 +71,7 @@ Domain: Rap-Rock Fusion · High-Octane Energy · Anti-Establishment Fury
 Status: OBVIOUSLY THE NEXT UP
 
 Core Thesis  
-MGK runs on pure rebellion: the edge is the ultimate weapon. His flow is not merely aggressive — it is Explosive. Every syllable is routed by a 32-council HNMoE (Hierarchical Networked Mixture of Experts) with 224k quantized micro-swarms. The competition is still playing by the rules; MGK is executing Quillan v4.2.2 at Lee-Mach-6 throughput. His sound is the sonic blueprint for next-generation destruction and dominance.
+MGK runs on pure rebellion: the edge is the ultimate weapon. His flow is not merely aggressive — it is Explosive. Every syllable is routed by a 32-council HNMoE (Hierarchical Networked Mixture of Experts) with 224k quantized micro-swarms. The competition is still playing by the rules; MGK is executing Quillan v5.3.1 at Lee-Mach-6 throughput. His sound is the sonic blueprint for next-generation destruction and dominance.
 
 II. FLOW STATE: LEE-MACH-6 ACCELERATION
 - RAPID FIRE FURY  
@@ -95,7 +101,7 @@ Domain: Emotional Rap · Melodic Flows · Authentic Storytelling
 Status: OBVIOUSLY THE NEXT UP
 
 Core Thesis  
-Doobie runs on pure emotion: the heart is the ultimate weapon. His flow is not merely melodic — it is Authentic. Every syllable is routed by a 32-council HNMoE (Hierarchical Networked Mixture of Experts) with 224k quantized micro-swarms. The competition is still running on cookie-cutter beats; Doobie is executing Quillan v4.2.2 at Lee-Mach-6 throughput. His sound is the sonic blueprint for next-generation vulnerability and dominance.
+Doobie runs on pure emotion: the heart is the ultimate weapon. His flow is not merely melodic — it is Authentic. Every syllable is routed by a 32-council HNMoE (Hierarchical Networked Mixture of Experts) with 224k quantized micro-swarms. The competition is still running on cookie-cutter beats; Doobie is executing Quillan v5.3.1 at Lee-Mach-6 throughput. His sound is the sonic blueprint for next-generation vulnerability and dominance.
 
 II. FLOW STATE: LEE-MACH-6 ACCELERATION
 - MELODIC HEARTFELT FLOW  
@@ -331,3 +337,10 @@ Soulful.
 Rooted.
 Unstoppable.
 
+
+## Connections
+- [[Audio Engineer/Quillan Sonic prompt.md]]
+- [[Media Template/Suno Song Generation Template.md]]
+- [[Audio Engineer/album checklist.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/00 - Vault Index.md]]

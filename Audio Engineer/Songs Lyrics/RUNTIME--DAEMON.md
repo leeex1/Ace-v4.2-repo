@@ -71,3 +71,11 @@ It's like the daemon code is right beneath my skin (The server)
 
 ## Style: 
 Raw, Alternative-Rock, industrial, Alternative, Rock, Raspy ,Loud, Heavy, Primal, Sexual, Aggressive, Grungy, Edgy, Driving, Urgent, Feral, Lustful, Vibrant, Dark, Crunchy, Raucous, Hard, Rough, Intense, Sleazy, Pounding, Abrasive, Wild, Savage, Furious, Thick, Bold, Deep, Grotesque, Professional, Riff-driven, Solo-focused, Anthemic, Proud, Unclipped, Polished, Pristine, Saturated, Limited, Taped, Compressed, Layered, Expert, Melodic, Catchy, Stadium, Arena, Personal, Relatable, Emotional, Hardrock, Driving, Textured
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

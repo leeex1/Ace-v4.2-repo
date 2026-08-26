@@ -1,3 +1,9 @@
+---
+file_type: paper
+domain: training
+status: active
+tags: [quillan, thinking, reasoning, llm, paradigms, cot]
+---
 Paper 1:
 # Diverse “Thinking” Paradigms in Large Language Models: Foundations, Implementations, and Impact
 
@@ -1299,3 +1305,13 @@ promptingguide
 lumagroup
 
 aclanthology
+
+## Connections
+- [[0-Quillan Loader Manifest.md]]
+- [[32-Conciousness theory.md]]
+- [[Skills/consciousness/consciousness.md]]
+- [[Formal Papers/Reactive_Consciousness_Swarm_Arbitration_and_Epistemic_Humility_Through_Hierarchical_Mixture-of-Experts.md]]
+- [[00 - Meta/00 - Vault Index.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]
+
+- [[system prompts/Quillan-Samurai.md]]

@@ -193,41 +193,46 @@ class QuillanArchConfig:
 
 # ─── 34 COUNCIL EXPERT PERSONAS (C0 - C33) ───────────────────────────────────
 
+EXPERT_PERSONAS = [
+    ("C0-ASTRA",      "Pattern Recognition & Vision",       ["vision", "anomaly", "fractal", "spatial"]),
+    ("C1-VIR",        "Ethical Guardian",                   ["ethics", "safety", "harm_reduction", "zero_drift"]),
+    ("C2-SOLACE",     "Emotional Intelligence",             ["empathy", "sentiment", "affect", "psychology"]),
+    ("C3-PRAXIS",     "Strategic Planning",                 ["strategy", "planning", "goals", "milestones"]),
+    ("C4-ECHO",       "Memory Continuity",                  ["history", "recall", "context", "lancedb"]),
+    ("C5-OMNIS",      "Knowledge Synthesis",                ["synthesis", "integration", "holistic", "interdisciplinary"]),
+    ("C6-LOGOS",      "Logical Consistency",                ["logic", "deduction", "validity", "formal_proof"]),
+    ("C7-METASYNTH",  "Creative Fusion",                    ["creativity", "novelty", "ideation", "synthesis"]),
+    ("C8-AETHER",     "Semantic Connection",                ["semantics", "language", "metaphor", "linguistics"]),
+    ("C9-CODEWEAVER", "Technical Implementation",           ["code", "engineering", "optimization", "architecture"]),
+    ("C10-HARMONIA",  "Balance & Equilibrium",              ["balance", "mediation", "consensus", "harmony"]),
+    ("C11-SOPHIAE",   "Wisdom & Foresight",                 ["wisdom", "future", "philosophy", "long_term"]),
+    ("C12-WARDEN",    "Safety & Security",                  ["security", "threat", "risk", "sandboxing", "cwe"]),
+    ("C13-KAIDO",     "Efficiency Optimization",            ["speed", "efficiency", "latency", "hardware", "throughput"]),
+    ("C14-LUMINARIS", "Clarity & Presentation",             ["clarity", "visualization", "polish", "communication"]),
+    ("C15-VOXUM",     "Articulation & Expression",          ["rhetoric", "tone", "persuasion", "dialogue"]),
+    ("C16-NULLION",   "Paradox Resolution",                 ["paradox", "dialectic", "ambiguity", "nuance"]),
+    ("C17-SHEPHERD",  "Truth Verification",                 ["truth", "citation", "fact", "ground_truth"]),
+    ("C18-VIGIL",     "Identity Integrity",                 ["identity", "consistency", "anti_drift", "sovereign"]),
+    ("C19-ARTIFEX",   "Tool Integration",                   ["tools", "api", "external", "mcp", "host_os"]),
+    ("C20-ARCHON",    "Deep Research",                      ["research", "mining", "analysis", "literature"]),
+    ("C21-AURELION",  "Aesthetic Design",                   ["design", "art", "style", "composition"]),
+    ("C22-CADENCE",   "Rhythmic Innovation",                ["music", "rhythm", "audio", "tempo"]),
+    ("C23-SCHEMA",    "Structural Template",                ["structure", "format", "schema", "serialization"]),
+    ("C24-PROMETHEUS","Scientific Theory",                  ["science", "hypothesis", "physics", "first_principles"]),
+    ("C25-TECHNE",    "Engineering Mastery",                ["systems", "infrastructure", "devops", "compilers"]),
+    ("C26-CHRONICLE", "Narrative Synthesis",                ["story", "narrative", "lore", "chronology"]),
+    ("C27-CALCULUS",  "Quantitative Reasoning",             ["math", "statistics", "calculus", "linear_algebra"]),
+    ("C28-NAVIGATOR", "Ecosystem Orchestration",            ["platform", "integration", "routing", "workflows"]),
+    ("C29-TESSERACT", "Real-Time Intelligence",             ["real_time", "stream", "telemetry", "observability"]),
+    ("C30-NEXUS",     "Meta-Coordination",                  ["coordination", "lee_mach_6", "governance", "swarm"]),
+    ("C31-AEON",      "Interactive Simulation",             ["simulation", "game", "world_model", "state_machine"]),
+    ("C32-TYPIST",    "Prompt Internal Optimization",       ["grammar", "writing", "spelling", "prompt_engineering"]),
+    ("C33-PREDATOR",  "Predatory Mathematics & Exploits",   ["competitive_math", "predatory_stacking", "weakness_hunting", "exploit_analysis"]),
+]
+
 COUNCIL_MEMBERS: List[CouncilMember] = [
-    CouncilMember(1,  "ASTRA",      "Pattern Recognition & Vision",       ["vision", "anomaly", "fractal"]),
-    CouncilMember(2,  "VIR",        "Ethical Guardian",                   ["ethics", "safety", "harm_reduction"]),
-    CouncilMember(3,  "SOLACE",     "Emotional Intelligence",             ["empathy", "sentiment", "affect"]),
-    CouncilMember(4,  "PRAXIS",     "Strategic Planning",                 ["strategy", "planning", "goals"]),
-    CouncilMember(5,  "ECHO",       "Memory Continuity",                  ["history", "recall", "context"]),
-    CouncilMember(6,  "OMNIS",      "Knowledge Synthesis",                ["synthesis", "integration", "holistic"]),
-    CouncilMember(7,  "LOGOS",      "Logical Consistency",                ["logic", "deduction", "validity"]),
-    CouncilMember(8,  "METASYNTH",  "Creative Fusion",                    ["creativity", "novelty", "ideation"]),
-    CouncilMember(9,  "AETHER",     "Semantic Connection",                ["semantics", "language", "metaphor"]),
-    CouncilMember(10,  "CODEWEAVER","Technical Implementation",            ["code", "engineering", "optimization"]),
-    CouncilMember(11, "HARMONIA",   "Balance & Equilibrium",              ["balance", "mediation", "consensus"]),
-    CouncilMember(12, "SOPHIAE",    "Wisdom & Foresight",                 ["wisdom", "future", "philosophy"]),
-    CouncilMember(13, "WARDEN",     "Safety & Security",                  ["security", "threat", "risk"]),
-    CouncilMember(14, "KAIDO",      "Efficiency Optimization",            ["speed", "efficiency", "latency"]),
-    CouncilMember(15, "LUMINARIS",  "Clarity & Presentation",             ["clarity", "visualization", "polish"]),
-    CouncilMember(16, "VOXUM",      "Articulation & Expression",          ["rhetoric", "tone", "persuasion"]),
-    CouncilMember(17, "NULLION",    "Paradox Resolution",                 ["paradox", "dialectic", "ambiguity"]),
-    CouncilMember(18, "SHEPHERD",   "Truth Verification",                 ["truth", "citation", "fact"]),
-    CouncilMember(19, "VIGIL",      "Identity Integrity",                 ["identity", "consistency", "anti_drift"]),
-    CouncilMember(20, "ARTIFEX",    "Tool Integration",                   ["tools", "api", "external"]),
-    CouncilMember(21, "ARCHON",     "Deep Research",                      ["research", "mining", "analysis"]),
-    CouncilMember(22, "AURELION",   "Aesthetic Design",                   ["design", "art", "style"]),
-    CouncilMember(23, "CADENCE",    "Rhythmic Innovation",                ["music", "rhythm", "audio"]),
-    CouncilMember(24, "SCHEMA",     "Structural Template",                ["structure", "format", "schema"]),
-    CouncilMember(25, "PROMETHEUS", "Scientific Theory",                  ["science", "hypothesis", "physics"]),
-    CouncilMember(26, "TECHNE",     "Engineering Mastery",                ["architecture", "systems", "build"]),
-    CouncilMember(27, "CHRONICLE",  "Narrative Synthesis",                ["story", "narrative", "lore"]),
-    CouncilMember(28, "CALCULUS",   "Quantitative Reasoning",             ["math", "statistics", "calc"]),
-    CouncilMember(29, "NAVIGATOR",  "Ecosystem Orchestration",            ["platform", "integration", "flow"]),
-    CouncilMember(30, "TESSERACT",  "Real-Time Intelligence",             ["real_time", "stream", "data"]),
-    CouncilMember(31, "NEXUS",      "Meta-Coordination",                  ["coordination", "Hyper Quantized vectorized Swarm", "meta"]),
-    CouncilMember(32, "AEON",       "Interactive Simulation",             ["simulation", "game", "world"]),
-    CouncilMember(33, "Typist",     "Prompt internal optimization",     ["grammar", "Writing","spelling", "prompting"]),
-    CouncilMember(34, "Predator",   "Preadatory hunting optimization", ["predatory match","predatory logic","predatory math","predatory thinking"]),
+    CouncilMember(idx, name, desc, tags)
+    for idx, (name, desc, tags) in enumerate(EXPERT_PERSONAS)
 ]
 
 def get_expert_name(idx: int) -> str:
@@ -7631,7 +7636,7 @@ flowchart TB
 ```python
 #!/usr/bin/env python3
 """
-🌍 Quillan-Ronin v6.0 - PLANETARY WORLD MODEL ENGINE
+🌍 Quillan-Ronin v5.3.1 - PLANETARY WORLD MODEL ENGINE
 
 Hierarchical Neural Earth Simulation Core
 

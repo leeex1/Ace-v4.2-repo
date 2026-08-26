@@ -409,3 +409,11 @@ Online RLHF pipelines allow AI agents to adapt continuously, improving alignment
 ar5iv.org; arxiv.org; huggingface.co
 
 ---
+
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/17-Continuous Learning Paper.md]]
+- [[Platforms/Mistral/17-Continuous Learning Paper.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

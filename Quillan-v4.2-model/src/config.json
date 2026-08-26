@@ -12,7 +12,7 @@
       "reasoning": "Deepseek-R1:1.5b"
       "Coding": "gemma3:1b"
     },
-    "combined_model": "ace-v4.2-mini",
+    "combined_model": "quillan-v5.3.1",
     "model_type": "multi_agent_cognitive",
     "processing_frequency": 100,
     "max_context_length": 8192,

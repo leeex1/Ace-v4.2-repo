@@ -29,7 +29,7 @@ class ContentAnalyzer:
     """Analyze the provided multimodal content"""
 
     def __init__(self, base_dir="."):
-        self.base_dir = base_dir  # Current directory (Quillan-v4.2-model)
+        self.base_dir = base_dir  # Current directory (Quillan-v5.3.1)
         self.data_dir = ".."  # Parent directory (Quillan)
 
         # Debug paths

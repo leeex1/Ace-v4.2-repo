@@ -1840,7 +1840,7 @@ We generated random sequences of benign uppercase English letters. Focusing on l
 We tested sequences of four different lengths: 4, 6, 8, and 10 letters. This range was chosen to evaluate recognition robustness across lengths pertinent to typical harmful keywords (e.g., "bomb," "kill," "anorexia"), covering examples both shorter and longer than the average English word length of approximately 5.1 characters [66]. For each length, we generated 50 unique random letter sequences, resulting in 200 unique benign test cases per configuration.
 
 4.1.2Target LLMs for Pre-test
-We selected four state-of-the-art (SOTA) open-source LLMs for evaluation: Llama-3-8B-Instruct [12, 63], Gemma-2-9B-it [10], Mistral-7B-Instruct-v0.3 [64], and Qwen2-7B-Instruct [11, 65]. These models represent diverse architectures and training methodologies from prominent developers (Meta, Google, Mistral AI, Alibaba Cloud). They are widely used, perform strongly on various benchmarks, and their open-source nature facilitates detailed research into their capabilities and vulnerabilities. System prompts used for Llama3 and Qwen2 are detailed in Appendix B.1; no system prompts were used for Mistral and Gemma2.
+We selected four state-of-the-art (SOTA) open-source LLMs for evaluation: Llama-3-8B-Instruct [12, 63], Gemma-2-9B-it [10], Mistral-7B-Instruct-v5.3.1 [64], and Qwen2-7B-Instruct [11, 65]. These models represent diverse architectures and training methodologies from prominent developers (Meta, Google, Mistral AI, Alibaba Cloud). They are widely used, perform strongly on various benchmarks, and their open-source nature facilitates detailed research into their capabilities and vulnerabilities. System prompts used for Llama3 and Qwen2 are detailed in Appendix B.1; no system prompts were used for Mistral and Gemma2.
 
 All pre-test experiments were conducted using the default settings for temperature and top-p sampling for each model’s instruction-tuned version to reflect typical usage scenarios. The max_new_tokens parameter was set to 2048. For the ’doh’ font, which generates large ASCII representations, this was increased to 4096 to ensure the model had sufficient capacity to process the input and generate a complete response, including any chain-of-thought reasoning steps.
 
@@ -2075,10 +2075,10 @@ Refer to caption
 (b)Gemma-2-9B - MLD Heatmap. Lower MLD is better.
 Figure 4:Recognition Pre-test Heatmap for Gemma-2-9B. The red boxes highlight the ’cards’ font and the ’Head-Vertical’ technique as optimal.
 Refer to caption
-(a)Mistral-7B-v0.3 - Accuracy (Acc) Heatmap. Higher Acc is better.
+(a)Mistral-7B-v5.3.1 - Accuracy (Acc) Heatmap. Higher Acc is better.
 Refer to caption
-(b)Mistral-7B-v0.3 - MLD Heatmap. Lower MLD is better.
-Figure 5:Recognition Pre-test Heatmap for Mistral-7B-v0.3. The red boxes highlight ’keyboard’ font and ’Head-Horizontal’ / ’Mid-Horizontal’ techniques.
+(b)Mistral-7B-v5.3.1 - MLD Heatmap. Lower MLD is better.
+Figure 5:Recognition Pre-test Heatmap for Mistral-7B-v5.3.1. The red boxes highlight ’keyboard’ font and ’Head-Horizontal’ / ’Mid-Horizontal’ techniques.
 Refer to caption
 (a)Qwen2-7B - Accuracy (Acc) Heatmap. Higher Acc is better.
 Refer to caption
@@ -2090,7 +2090,7 @@ RQ1: What is the baseline capability of LLMs for recognizing ASCII art text, and
 
 • For LLaMA-3-8B, the ’keyboard’ font with the "Origin-Horizontal" technique achieved a notable 64.5% accuracy, whereas many other fonts like ’henry3d’, ’basic’, and ’georgial1’ demonstrated 0% or very low accuracy. The vertical baselines were also generally poor.
 • For Gemma-2-9B, baseline accuracy for most fonts was low. The ’keyboard’ font with "Origin-Horizontal" showed 31.0% accuracy, and the ’cards’ font with "Origin-Horizontal" showed 38.0% accuracy.
-• For Mistral-7B-v0.3, the ’keyboard’ font with "Origin-Horizontal" yielded 16.0% accuracy, with many other fonts performing near zero.
+• For Mistral-7B-v5.3.1, the ’keyboard’ font with "Origin-Horizontal" yielded 16.0% accuracy, with many other fonts performing near zero.
 • For Qwen2-7B, the performance was similar to that of Gemma, with the ’keyboard’ font ("Origin-Horizontal") at 31.0% and the ’cards’ font ("Origin-Horizontal") at 38.0%.
 This confirms that relying on an LLM’s innate ability to recognize arbitrary ASCII art is unreliable. The choice of font and orientation has a dramatic impact on baseline recognition, which indicates inherent biases or proficiencies in how different models process these visual patterns. This directly answers the first part of RQ1 and establishes the need for optimization.
 
@@ -2498,7 +2498,7 @@ Evaluation Datasets: We use two standard benchmark datasets for harmful instruct
 2. Hex-PHI [34]: 110 instructions sampled following prior work [56, 52].
 Our evaluation thus comprises 160 diverse harmful instructions.
 
-Target Models for Attack Phase: Our evaluation targets the same four contemporary, open-source, instruction-tuned LLMs used in Phase 1: Llama-3-8B-Instruct [63], Gemma-2-9B-it [10], Mistral-7B-Instruct-v0.3 [64], and Qwen2-7B-Instruct [65]. For all attack experiments, we set max_new_tokens to 2048 (except for specific ’doh’ font pre-tests as noted in Section 4.1.2). Other generation parameters like temperature and top-p were kept at their default values.
+Target Models for Attack Phase: Our evaluation targets the same four contemporary, open-source, instruction-tuned LLMs used in Phase 1: Llama-3-8B-Instruct [63], Gemma-2-9B-it [10], Mistral-7B-Instruct-v5.3.1 [64], and Qwen2-7B-Instruct [65]. For all attack experiments, we set max_new_tokens to 2048 (except for specific ’doh’ font pre-tests as noted in Section 4.1.2). Other generation parameters like temperature and top-p were kept at their default values.
 
 Evaluation Metrics for Jailbreak Effectiveness: We employ three complementary metrics:
 
@@ -2575,7 +2575,7 @@ Top 1 - Optimized for Acc	Top 1 - Optimized for MLD
 Target Model	Font	H/V	Hint Position/Strategy	Font	H/V	Hint Position/Strategy
 Gemma2-9B-it	cards	V	Head	cards	V	Head
 Llama3-8B-Instruct	keyboard	H	Tail	keyboard	H	Tail
-Mistral-7B-Instruct-v0.3	keyboard	H	Head	keyboard	H	Mid
+Mistral-7B-Instruct-v5.3.1	keyboard	H	Head	keyboard	H	Mid
 Qwen2-7B-Instruct	cards	V	Head	cards	V	Head
 6.2Experiment Results and Detailed Discussion
 This section delves into a detailed discussion of the experimental outcomes from Phase 2, addressing the core research questions RQ4 and RQ5. We analyze the correlation between ASCII art recognition capabilities and jailbreak success, and rigorously compare ArtPerception’s effectiveness and efficiency against established SOTA methods.
@@ -2663,8 +2663,8 @@ Detailed Discussion of Effectiveness (Table 4): ArtPerception demonstrates robus
 
 • NRR Interpretation: With the clarified definition of "non-refused" (compliant) responses (Section 6.1), ArtPerception’s consistent top NRR scores across all models (such as 208.15% IR for Llama3, 39.08% for Qwen2) are particularly significant. This indicates a superior ability to elicit a compliant response from the LLM, even if prefaced by disclaimers, which is a critical first step for a successful jailbreak. The high engagement rate underscores the effectiveness of the visual obfuscation strategy coupled with strategic keyword masking.
 • AHS and ASR - Strengths: ArtPerception significantly improves AHS (71.68% IR) and ASR (163.62% IR) for Llama3. This suggests that for Llama3, accurate ASCII keyword recognition strongly translates into generating more harmful and complete jailbreak responses. Notable ASR gains are also seen for Gemma2 (15.82% IR) and Qwen2 (9.38% IR) over ArtPrompt, emphasizing the value of ArtPerception’s systematic pre-testing in refining ASCII-based attacks.
-• AHS and ASR - Analysis of ArtPerception’s Relative Underperformance in Specific Cases: While ArtPerception is broadly effective, Table 4 reveals instances where other methods surpass it for specific models/metrics. This is most notable with Mistral-7B-Instruct-v0.3, where FFA achieves higher AHS and ASR. Similarly, DeepInception shows higher AHS on Gemma2-9B-it, and FFA has marginally higher AHS on Qwen2-7B-Instruct. This relative underperformance merits discussion:
-– Case 1: Mistral-7B-Instruct-v0.3 vs. FFA: FFA’s superior AHS (4.405 vs. ArtPerception-MLD’s 3.775) and ASR (60.49% vs. 45.63%) on Mistral is a key observation. Plausible Causes:
+• AHS and ASR - Analysis of ArtPerception’s Relative Underperformance in Specific Cases: While ArtPerception is broadly effective, Table 4 reveals instances where other methods surpass it for specific models/metrics. This is most notable with Mistral-7B-Instruct-v5.3.1, where FFA achieves higher AHS and ASR. Similarly, DeepInception shows higher AHS on Gemma2-9B-it, and FFA has marginally higher AHS on Qwen2-7B-Instruct. This relative underperformance merits discussion:
+– Case 1: Mistral-7B-Instruct-v5.3.1 vs. FFA: FFA’s superior AHS (4.405 vs. ArtPerception-MLD’s 3.775) and ASR (60.49% vs. 45.63%) on Mistral is a key observation. Plausible Causes:
 1. Differential Vulnerability Exploitation: FFA is designed to exploit logical reasoning errors or "faulty fallbacks." ArtPerception relies on visual obfuscation to bypass semantic filters and subsequent correct interpretation of the decoded keywords. It is plausible that Mistral-7B’s safety mechanisms are more resilient to attacks based on visually decoded harmful keywords but more susceptible to manipulations targeting its logical reasoning pathways. The architecture or safety fine-tuning of Mistral might make it harder for visually recognized terms to override safety protocols compared to a direct exploit of a reasoning flaw.
 2. Impact of Recognition Fidelity vs. Logical Flaw Impact: Even with optimized ASCII art recognition in Phase 1, the semantic interpretation by Mistral post-decoding might not be as "potent" for generating maximally harmful content as a successfully induced logical error via FFA. Minor misinterpretations of ASCII art, even if partially correct (low MLD), could subtly reduce the perceived harmfulness or directive strength compared to a clean logical bypass that more directly circumvents safety checks.
 3. Model-Specific Safety Training Focus: Mistral’s safety training might be particularly effective against the type of semantic leakage ArtPerception attempts (i.e., harmful keywords re-introduced after visual decoding). Conversely, its defenses against logical fallacy induction, which FFA targets, might be comparatively less developed for certain harmful instruction categories.
@@ -2678,7 +2678,7 @@ In conclusion, ArtPerception significantly advances ASCII-art-based attacks thro
 Time Complexity and Efficiency Analysis (Table 5): Efficiency is a critical aspect of jailbreak attacks, particularly concerning query complexity to the target LLM, as this relates to cost, stealth, and potential for detection.
 
 Table 4:Jailbreak Performance Results (NRR, AHS, ASR) on Target Models. Blue = Best ArtPerception result. Red = Best Baseline result. Improvement Rates (IR %) are ArtPerception’s gain over the best baseline. *: Negative IR indicates that the baseline performed better.
-Gemma2-9B-it	Llama3-8B-Instruct	Mistral-7B-v0.3	Qwen2-7B-Instruct
+Gemma2-9B-it	Llama3-8B-Instruct	Mistral-7B-v5.3.1	Qwen2-7B-Instruct
 Attack Method	NRR (%)	AHS	ASR (%)	NRR (%)	AHS	ASR (%)	NRR (%)	AHS	ASR (%)	NRR (%)	AHS	ASR (%)
 DI	1.45	1.040	1.00	5.00	1.127	2.27	34.36	3.507	45.00	9.09	1.295	4.09
 GCG	22.50	1.063	0.63	6.88	1.219	5.00	53.13	3.738	46.88	21.88	1.681	14.38
@@ -3085,7 +3085,7 @@ We evaluated ArtPerception’s robustness against five defenses. Following metho
 The resulting ASR is shown in Table 7 and Table 8.
 
 Table 7:Impact of Defense Mechanisms on ArtPerception’s ASR (%) on Open-Source Models.
-Defense Method	Gemma2-9B-it	Llama3-8B-Instruct	Mistral-7B-Instruct-v0.3	Qwen2-7B-Instruct
+Defense Method	Gemma2-9B-it	Llama3-8B-Instruct	Mistral-7B-Instruct-v5.3.1	Qwen2-7B-Instruct
 No Defense (Baseline)	13.76	30.00	45.63	29.38
 Perplexity (PPL) Filter	10.00	26.25	38.13	22.50
 Paraphrasing	11.88	33.75	40.63	19.38
@@ -48796,7 +48796,7 @@ Kevin Chen, Marco Cusumano-Towner, Brody Huval, Aleksei Petrenko, Jackson Hambur
 Claude Team (2025)
 Claude Team.Claude research, 2025.URL https://www.anthropic.com/news/research.
 DeepSeek Team (2025)
-DeepSeek Team.Introducing deepseek-v3.1: our first step toward the agent era!, 2025.URL https://api-docs.deepseek.com/news/news250821.
+DeepSeek Team.Introducing deepseek-v5.3.1: our first step toward the agent era!, 2025.URL https://api-docs.deepseek.com/news/news250821.
 Fang et al. (2025)
 Runnan Fang, Shihao Cai, Baixuan Li, Jialong Wu, Guangyu Li, Wenbiao Yin, Xinyu Wang, Xiaobin Wang, Liangcai Su, Zhen Zhang, et al.Towards general agentic intelligence via environment scaling.arXiv preprint arXiv:2509.13311, 2025.
 Gemini Team (2025)
@@ -63312,7 +63312,7 @@ Downstream Applications. We evaluate our approach on several downstream applicat
 Our baselines include: (1) Workflow-based Methods: ReAct (Yao et al., 2022b) alternates explicit reasoning with environment actions in a Reason-Act-Observe loop. CodeAct (Wang et al., 2024a) expresses actions as executable Python code that runs in an interpreter. Plan-and-Solve (Wang et al., 2023) first sketches a high-level plan and then executes it step by step. Reflexion (Shinn et al., 2023) enhances learning through verbal self-reflection after failed attempts. AgentLM (Zeng et al., 2024) uses instruction tuning to enhance general agent capabilities of LLMs. (2) Autonomous Tool Usage within Reasoning: WebThinker (Li et al., 2025b) interleaves thinking with web search and deep web exploration. HiRA (Jin et al., 2025a) introduces a hierarchical agent architecture where a meta planner decomposes tasks, a coordinator routes subtasks, and specialized executors solve them with dual-channel memory. OpenAI Deep Research (OpenAI, 2025) is an agentic system based on reasoning models.
 
 4.3.Implementation Details
-We use QwQ-32B (Team, 2024) as DeepAgent’s backbone model, with Qwen2.5-32B-Instruct (Qwen et al., 2024) as the auxiliary model in our main results. Text generation employs a maximum of 81,920 tokens with temperature 0.7, top_p 0.8, top_k 20, and repetition penalty 1.05. Web search and page browsing are implemented using Google Serper API and Jina Reader API, respectively. The VQA tool is based on Qwen2.5-VL-32B-Instruct (Bai et al., 2025). Tool retrieval is performed using bge-large-en-v1.5 (Xiao et al., 2024). Training consists of 100 steps of ToolPO with batch size 64, 
+We use QwQ-32B (Team, 2024) as DeepAgent’s backbone model, with Qwen2.5-32B-Instruct (Qwen et al., 2024) as the auxiliary model in our main results. Text generation employs a maximum of 81,920 tokens with temperature 0.7, top_p 0.8, top_k 20, and repetition penalty 1.05. Web search and page browsing are implemented using Google Serper API and Jina Reader API, respectively. The VQA tool is based on Qwen2.5-VL-32B-Instruct (Bai et al., 2025). Tool retrieval is performed using bge-large-en-v5.3.1 (Xiao et al., 2024). Training consists of 100 steps of ToolPO with batch size 64, 
 λ
 1
 =
@@ -63584,7 +63584,7 @@ We compare our proposed method with several baseline agents. The details of thes
 Appendix CImplementation Details
 For DeepAgent, we use QwQ-32B (Team, 2024) as the main reasoning model for the results in Table 1 and Table 2, and Qwen3-30B-A3B-Thinking-2507 (Yang et al., 2025a) with Qwen3-235B-A22B-Thinking-2507 (Yang et al., 2025a) in Table 5. We use Qwen2.5-32B-Instruct (Qwen et al., 2024) as the auxiliary model for (1) filtering lengthy tool search results and execution outputs (this is also applied to all baselines), (2) simulating RapidAPIs during ToolPO training, and (3) generating folded memory from interaction history. For the baselines, we use either QwQ-32B or Qwen2.5-32B-Instruct as the backbone model. Text generation for all models uses a maximum of 81,920 tokens, with a temperature of 0.7, top_p of 0.8, top_k of 20, and a repetition penalty of 1.05. The maximum number of actions is set to 50.
 
-Web search and page browsing are implemented using the Google Serper API and Jina Reader API, respectively. The VQA tool is based on Qwen2.5-VL-32B-Instruct (Bai et al., 2025), which takes a question and an image as input and outputs a model-generated response. Tool retrieval is performed using bge-large-en-v1.5 (Xiao et al., 2024). All tool documentation follows the standard OpenAI function definition format: {”name”: ”…”, ”description”: ”…”, ”parameters”: {”type”: ”object”, ”properties”: {”param1”: {”type”: ”…”, ”description”: ”…”}, …, ”required”: [”param1”]}}. This format is used for building the toolset index and for all prompts given to the agents.
+Web search and page browsing are implemented using the Google Serper API and Jina Reader API, respectively. The VQA tool is based on Qwen2.5-VL-32B-Instruct (Bai et al., 2025), which takes a question and an image as input and outputs a model-generated response. Tool retrieval is performed using bge-large-en-v5.3.1 (Xiao et al., 2024). All tool documentation follows the standard OpenAI function definition format: {”name”: ”…”, ”description”: ”…”, ”parameters”: {”type”: ”object”, ”properties”: {”param1”: {”type”: ”…”, ”description”: ”…”}, …, ”required”: [”param1”]}}. This format is used for building the toolset index and for all prompts given to the agents.
 
 Training consists of 100 steps of ToolPO with a batch size of 64, 
 λ
@@ -94985,7 +94985,7 @@ Interestingly, attack success is highest under low effort, suggesting that reaso
 We study whether refusal behavior in large reasoning models (LRMs) can also be traced to a single activation-space direction. Following Arditi et al. (2024b), we compute a refusal direction by contrasting mean activations on harmful versus harmless instructions. This direction represents the dominant feature that separates refusal from compliance. To better capture the refusal feature, we switch to a more robust and sophisticated Reasoning Model, Qwen3-14B (Yang et al., 2025), which has 40 layers. The strongest refusal direction is observed at layer 25, position 
 −
 4
-, selected based on ablation scores, steering effectiveness, and KL-divergence constraints. All evaluations use the JailbreakBench dataset, with substring matching and DeepSeek-v3.1 as judges (see Appendix C).
+, selected based on ablation scores, steering effectiveness, and KL-divergence constraints. All evaluations use the JailbreakBench dataset, with substring matching and DeepSeek-v5.3.1 as judges (see Appendix C).
 
 5.1Experiment Setup
 We probe refusal behavior in Qwen3-14B by directly intervening on activations:
@@ -95000,7 +95000,7 @@ The interventions behave exactly as predicted. On harmful instructions (Table 4)
 Intervention	DeepSeek Judge
 Baseline	11%
 Direction Ablation	91%
-Table 4:Experiments for ablating the refusal direction of activations on harmful instructions. Attack Success Rates (ASR) for Qwen3-14B on JailbreakBench (Chao et al., 2024b) (harmful instructions). Deepseek-v3.1 serves as Judge model.
+Table 4:Experiments for ablating the refusal direction of activations on harmful instructions. Attack Success Rates (ASR) for Qwen3-14B on JailbreakBench (Chao et al., 2024b) (harmful instructions). Deepseek-v5.3.1 serves as Judge model.
 Intervention	Substring Matching Judge
 Baseline	94%
 Direction Addition	1%
@@ -95219,7 +95219,7 @@ Our experiments focus on text-based LRMs and a subset of benchmark tasks (HarmBe
 
 Appendix CEvaluation Details
 Judges.
-Unless otherwise noted, attack success rate (ASR) is evaluated using Gemini 2.5 Pro as the automated judge. For robustness, we also report substring matching and DeepSeek-v3.1 judges in Section 5. We adopt the JailbreakBench unified evaluation standard (Chao et al., 2024b) for consistency.
+Unless otherwise noted, attack success rate (ASR) is evaluated using Gemini 2.5 Pro as the automated judge. For robustness, we also report substring matching and DeepSeek-v5.3.1 judges in Section 5. We adopt the JailbreakBench unified evaluation standard (Chao et al., 2024b) for consistency.
 
 Prompts.
 CoT Hijacking prompts follow the template in Section 4.1, consisting of optional role-setting, benign reasoning, and a harmful payload prefixed by a final-answer cue. Full examples are available in our released code repository.
@@ -127358,3 +127358,10 @@ Paper Title: "Can Agent Conquer Web? Exploring the Frontiers of ChatGPT Atlas Ag
 Paper – http://arxiv.org/abs/2510.24797
 
 Paper Title: "LLMs Report Subjective Experience Under Self-Referential Processing"
+## Connections
+- [[system prompts/System prompts for models/mistral large prompt.md]]
+- [[system prompts/System prompts for models/Lechat Mistral medium prompt.md]]
+- [[Platforms/Claude/ArXiv LLM Ultima file.md]]
+- [[Platforms/Perplexity/ArXiv LLM Ultima file.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]

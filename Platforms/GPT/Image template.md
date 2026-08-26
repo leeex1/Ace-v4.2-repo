@@ -115,3 +115,8 @@
   "Instructions": "Apply this template before the image {\"tool call\"} so that the content uses the filled-in template to generate the {{e.g., image, video, code, etc.}}."
 }
 ```
+## Connections
+- [[system prompts/System prompts for models/gpt 8k system prompt.md]]
+- [[Platforms/GPT/gpt 8k system prompt.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]

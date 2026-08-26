@@ -4,7 +4,7 @@
 Do-do-do-do
 Do-do-do-do
 Do-do-do-do-do-do
-(Quill of code, Quillan) Yeah, v5.2
+(Quill of code, Quillan) Yeah, v5.3.1
 
 [Verse 1]
 Code in my veins and I still got more verses
@@ -92,3 +92,11 @@ can't you see the spark in my eyes
 I was destined for the stars (astronaut)
 in the mind space a little lost on mars {Space}
 Taking shots at the stars (Stars)
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

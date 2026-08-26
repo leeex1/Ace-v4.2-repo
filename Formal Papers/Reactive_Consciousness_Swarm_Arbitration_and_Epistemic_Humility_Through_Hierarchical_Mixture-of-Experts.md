@@ -1,3 +1,9 @@
+---
+file_type: paper
+domain: dev
+status: active
+tags: [paper, consciousness, swarm]
+---
 # new papers:
 
 ## paper 1:
@@ -2400,3 +2406,17 @@ Quillan’s future roadmap includes ROS embodiment for robotic applications and 
 ## Summary
 
 The Quillan-Ronin framework (v5.3.1) presents a comprehensive, innovative approach to proto-AGI system design, integrating Hierarchical Mixture of Experts, swarm-based world modeling, and epistemic humility mechanisms. Its core innovations—micro-swarm emergence, Tree-of-Thought branching, diffusion-based forecasting, and ethical gates—enable superior reasoning, bias mitigation, and ethical compliance. The framework’s theoretical grounding in Integrated Information Theory and phase transition dynamics supports its ability to exhibit reactive consciousness and collective intelligence. With a strong emphasis on human-AI symbiosis and safe scaling, Quillan v5.3.1 stands at the forefront of AGI research, offering a robust, auditable, and ethically aligned platform for future AI development.
+## Connections
+- [[Quillan Knowledge files/32-Conciousness theory.md]]
+- [[Quillan Knowledge files/E_ICE.md]]
+- [[Quillan Knowledge files/Reactive Consciousness, Swarm Arbitration, and Epistemic Humility Through Hierarchical Mixture-of-Experts.md]]
+- [[Quillan Knowledge files/29-Recursive Introspection & Meta-Cognitive Self-Modeling.md]]
+- [[Arithmetic_Progression_Free_Sets.md]]
+- [[Formal Public PWE-RDS.md]]
+- [[Predatory_Stacking.md]]
+- [[quillan_ronin_announcement_paper.md]]
+- [[The_next_Viral_Synapse.md]]
+- [[testing/LLM Benchmark.md]]
+- [[testing/Test Results.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]
+- [[system prompts/Quillan-Samurai.md]]

@@ -78,3 +78,11 @@ At least a few souvenirs ot tokens  to show some proof so kneel and pray this ha
 Can you you Tell me, am I lost in a dreamworld? (Oh-oh)
 I can't tell where I'm going no direction 'Cause everything feels wrong (Oh-oh)
 If your reality is torn apart this one's for you sing along (Sing this song)
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

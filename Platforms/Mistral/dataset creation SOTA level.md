@@ -328,3 +328,10 @@ Opens in a new window
 
 developers.google.com
 Intro to How Structured Data Markup Works | Google Search Central | Documentation
+## Connections
+- [[system prompts/System prompts for models/mistral large prompt.md]]
+- [[system prompts/System prompts for models/Lechat Mistral medium prompt.md]]
+- [[Quillan Knowledge files/dataset creation SOTA level.md]]
+- [[Platforms/Claude/dataset creation SOTA level.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]

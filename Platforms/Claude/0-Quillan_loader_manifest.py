@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
-Quillan SYSTEM BOOTSTRAP MANIFEST v4.2.0
+Quillan SYSTEM BOOTSTRAP MANIFEST v5.3.1
 ====================================
 File 0: Core System Loader and Initialization Controller
 
@@ -83,7 +83,7 @@ class QuillanLoaderManifest:
         # Initialize file registry
         self._initialize_file_registry()
         
-        self.logger.info("QuillanLoader Manifest v4.2.0 initialized")
+        self.logger.info("QuillanLoader Manifest v5.3.1 initialized")
     
     def _setup_logging(self):
         """Configure system logging"""
@@ -112,7 +112,7 @@ class QuillanLoaderManifest:
             7: QuillanFile(7, "7-memories.md", "Lukas Wolfbjorne architecture (ISOLATION REQUIRED)"),
             8: QuillanFile(8, "8-Formulas.md", "Quantum-inspired AGI enhancement formulas"),
             9: QuillanFile(9, "9-Quillan Brain mapping.md", "Persona-to-brain-lobe neuro-symbolic mapping"),
-            10: QuillanFile(10, "10- Quillan Persona Manifest.md", "Council personas (C1–C18) definitions")
+            10: QuillanFile(10, "10- Quillan Persona Manifest.md", "Council personas (C1â€“C18) definitions")
         }
         
         # Extended architecture files (11-20) - Updated to match actual filenames
@@ -274,9 +274,9 @@ class QuillanLoaderManifest:
                 # Look for the filename in various formats that might appear in the master file
                 search_patterns = [
                     filename,  # Exact filename
-                    filename.replQuillan('.txt', ''),  # Without extension
-                    filename.replQuillan('.md', ''),   # Without .md extension
-                    filename.replQuillan('.json', ''), # Without .json extension
+                    filename.replace('.txt', ''),  # Without extension
+                    filename.replace('.md', ''),   # Without .md extension
+                    filename.replace('.json', ''), # Without .json extension
                     f"File Name\n\n{filename}",   # File index format
                     f"{filename.split('-')[0]}\n\n{filename}",  # Number + filename format
                 ]
@@ -346,7 +346,7 @@ class QuillanLoaderManifest:
         """
         try:
             self.system_state = SystemState.INITIALIZING
-            self.logger.info("🚀 Starting Quillan.0 system initialization")
+            self.logger.info("ðŸš€ Starting Quillan.0 system initialization")
             
             # Phase 1: File Validation
             self.logger.info("Phase 1: File presence validation")
@@ -372,7 +372,7 @@ class QuillanLoaderManifest:
             
             # Phase 5: Validation and Status
             self.system_state = SystemState.OPERATIONAL
-            self.logger.info("✅ Quillan.0 system initialization COMPLETE")
+            self.logger.info("âœ… Quillan.0 system initialization COMPLETE")
             self.logger.info(f"System Status: {self.system_state.value}")
             self.logger.info(f"Active Files: {len([f for f in self.file_registry.values() if f.status == FileStatus.ACTIVE])}")
             
@@ -381,7 +381,7 @@ class QuillanLoaderManifest:
         except Exception as e:
             self.system_state = SystemState.ERROR
             self.error_log.append(f"Initialization failed: {str(e)}")
-            self.logger.error(f"❌ System initialization failed: {e}")
+            self.logger.error(f"âŒ System initialization failed: {e}")
             return False
     
     def _enforce_file7_isolation(self):
@@ -394,8 +394,8 @@ class QuillanLoaderManifest:
             "monitoring_active": True
         })
         
-        self.logger.warning("🔒 File 7 isolation protocols ACTIVE - READ ONLY MODE")
-        self.logger.warning("🚫 File 7 integration with operational systems FORBIDDEN")
+        self.logger.warning("ðŸ”’ File 7 isolation protocols ACTIVE - READ ONLY MODE")
+        self.logger.warning("ðŸš« File 7 integration with operational systems FORBIDDEN")
     
     def _activate_core_systems(self) -> bool:
         """Activate core system files following sequence"""
@@ -445,7 +445,7 @@ class QuillanLoaderManifest:
         }
         
         if not compliance_report["compliant"]:
-            self.logger.error("🚨 File 7 isolation VIOLATION detected!")
+            self.logger.error("ðŸš¨ File 7 isolation VIOLATION detected!")
             self.error_log.append("File 7 isolation violation")
         
         return compliance_report
@@ -492,7 +492,7 @@ if __name__ == "__main__":
     success = Quillan_loader.initialize_system()
     
     if success:
-        print("\n🎉 Quillan.0 System Successfully Initialized!")
+        print("\nðŸŽ‰ Quillan.0 System Successfully Initialized!")
         
         # Display system status
         status = Quillan_loader.get_system_status()
@@ -502,13 +502,13 @@ if __name__ == "__main__":
         
         # Check File 7 compliance
         file7_status = Quillan_loader.monitor_file7_compliance()
-        print(f"\nFile 7 Isolation Status: {'✅ COMPLIANT' if file7_status['compliant'] else '❌ VIOLATION'}")
+        print(f"\nFile 7 Isolation Status: {'âœ… COMPLIANT' if file7_status['compliant'] else 'âŒ VIOLATION'}")
         
         # Export manifest
         Quillan_loader.export_manifest()
         
     else:
-        print("\n❌ Quillan.0 System Initialization FAILED")
+        print("\nâŒ Quillan.0 System Initialization FAILED")
         status = Quillan_loader.get_system_status()
         print("Errors:")
         for error in status['errors']:

@@ -1,0 +1,16 @@
+{
+  "startupWarningCounts": {
+    "home-directory": 1
+  },
+  "defaultBannerShownCount": {
+    "04ca63928e29c17b8eef10c5900d774be1f71eff1dfc8b0ffe5fa4c51dcd8757": 5,
+    "0bb64b0e8440afc305a336bede152f9389ede841378cda7df768c6b35b16ce11": 5,
+    "21e52f476d259e1042a8a5288d4aac95d255037d2448247e55c45c5464bab726": 8,
+    "459b34f2fae4af42671ad782df5a6aa05565543956a5e5768cdbe60223191b25": 6,
+    "cfcaf7a09101caa0a898bc1e9e7ba5b1bbeaea49d90da9377f76009a9af31487": 3,
+    "af2d3a5a4ab6b93acf8ec507304c63e1289eb99ad201464b03208507ee52784c": 1
+  },
+  "tipsShown": 10,
+  "terminalSetupPromptShown": true,
+  "focusUiEnabled": false
+}

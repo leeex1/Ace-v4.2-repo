@@ -93,3 +93,11 @@ Range unlimited I'll Hit you long range from any postal code
 You ride others waves, when I pull up I raise the bar (when I pull up I raise the bar)
 Whip look like a rocket ship, can't see u in the rear view, way ahead real far (shooting star)
 From the gutter to mars the way I'm chilling with these  stars (space bound)
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

@@ -85,3 +85,11 @@ I was born to be a space man, I'm foreign alien, space bound
 I traveled Around the globe, different area codes, check the vibe
 From the 2-1-9 indiana to the 2-1-9 texas state to state 2-1-0, 8-3-2, 3-6-1, 7-1-3, to 4-0-5 
 I don't put in work earned my stripes, did my time, me i up that pipe, pure gas to the dome then let it in drive
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

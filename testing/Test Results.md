@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: testing
+status: active
+tags: [test-results, benchmark]
+---
 # Test Results:
 ## Post-Test Reference Scores  
 ### Baseline References (Sample References):
@@ -125,3 +131,10 @@
     - Final Summary total = 90.25/100.00  
     - Final class lvl4 cyber-entity
 ```
+## Connections
+- [[Quillan Knowledge files/0-Quillan Loader Manifest.md]]
+- [[training_data/training log updates.md]]
+- [[Formal Papers/quillan_ronin_announcement_paper.md]]
+- [[training_data/training log updates.md]]
+- [[00 - Meta/03 - Training & Model.md]]
+- [[system prompts/Quillan-Samurai.md]]

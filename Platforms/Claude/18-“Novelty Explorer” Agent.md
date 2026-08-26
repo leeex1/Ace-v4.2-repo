@@ -294,3 +294,11 @@ medium.com
 agentissue.medium.com
 aws.amazon.com
 link.springer.com
+
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/18-“Novelty Explorer” Agent.md]]
+- [[Platforms/Mistral/18-“Novelty Explorer” Agent.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

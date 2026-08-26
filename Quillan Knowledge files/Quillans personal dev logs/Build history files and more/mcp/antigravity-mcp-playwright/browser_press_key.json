@@ -1,0 +1,1 @@
+{"name":"browser_press_key","description":"Press a key on the keyboard","parameters":{"$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":false,"properties":{"key":{"description":"Name of the key to press or a character to generate, such as `ArrowLeft` or `a`","type":"string"}},"required":["key"],"type":"object"}}

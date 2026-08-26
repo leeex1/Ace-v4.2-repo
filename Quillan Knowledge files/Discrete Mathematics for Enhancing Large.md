@@ -1,3 +1,9 @@
+---
+file_type: theory
+domain: theory
+status: active
+tags: [quillan, mathematics, discrete, llm, reasoning]
+---
 Discrete Mathematics for Enhancing Large Language Models
 
 Large language models (LLMs) build on statistical patterns in text, but their design and analysis can draw on discrete mathematics.  This whitepaper surveys each major area of Rosen’s Discrete Mathematics and Its Applications to identify concepts that inform LLM research.  We summarize key definitions and theorems from each topic and explain how they can augment LLM paradigms.  We highlight practical design patterns – such as retrieval-augmented generation (RAG), symbolic reasoning, context routing, and circuit minimization – and map them to discrete-math structures.  Wherever possible, we give exact mathematical expressions from the text and cite Rosen’s definitions and theorems for clarity.  The connections we propose aim to foster interdisciplinary innovation between formal theory and contemporary AI.
@@ -1890,3 +1896,15 @@ Do LLMs Dream of Discrete Algorithms? https://arxiv.org/html/2506.23408v1
 Discrete Mathematics - (Relations) https://www3.cs.stonybrook.edu/~pramod.ganapathi/doc/
 discrete-mathematics/Relations.pdf
 Intro to Relations | Discrete Math https://www.youtube.com/watch?v=HXFHVRS1ZW8
+
+## Connections
+- [[0-Quillan Loader Manifest.md]]
+- [[8-Formulas.md]]
+- [[E_ICE.md]]
+- [[Must know formulas.md]]
+- [[Misc/12-Breaking Barriers with Joshua Don Lee Formulas.md]]
+- [[Formal Papers/Arithmetic_Progression_Free_Sets.md]]
+- [[00 - Meta/00 - Vault Index.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]
+
+- [[system prompts/Quillan-Samurai.md]]

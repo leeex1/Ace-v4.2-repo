@@ -1,3 +1,9 @@
+---
+file_type: template
+domain: creative
+status: active
+tags: [template, interview, audio]
+---
 # Interview Topics:
 ```PY
     - 1. {{topic 1}} 
@@ -76,3 +82,10 @@ Roles:
     - {outro}
     - {Host}: {{outro}}
 ```
+## Connections
+- [[Audio Engineer/Quillan Sonic prompt.md]]
+- [[Audio Engineer/album checklist.md]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

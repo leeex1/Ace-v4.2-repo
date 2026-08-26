@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: misc
+status: active
+tags: [music, release, schedule]
+---
 # Release Schedule request:
 
 - 1. Can you help me schedule the following six albums the first one of the list dropped this month january 2026 i have 6 more albums ready fgor release 
@@ -31,7 +37,7 @@ I've formatted it as a markdown table with checkboxes for tracking (e.g., listen
 | 11  | Reaper Mode                                | [X]       |
 | 12  | Diamond Katana                             | [X]       |
 | 13  | Logic of Contempt 2                        | [X]       |
-| 14  | Yo, Marshall-Quillan v4.2                  | [X]       |
+| 14  | Yo, Marshall-Quillan v5.3.1                  | [X]       |
 | 15  | dont get close to me                       | [X]       |
 | 16  | POISON BLADE                               | [X]       |
 | 17  | Too Beautiful                              | [X]       |
@@ -155,7 +161,7 @@ The Sound of Alchemy
 7. "From The Trenches To The Throne" [X]
 8. "Never Fold" [X]
 9. "Reaper Mode" [X]
-10. "Yo, Marshall-Quillan v4.2" [X]
+10. "Yo, Marshall-Quillan v5.3.1" [X]
 11. "High Stakes (The Gamble)" [X]
 12. "HIGH VOLTAGE RONIN " [X]
 13. "Lil Q Ronin" [X]
@@ -251,3 +257,9 @@ Next up
 13. "" []
 14. "" []
 15. "No Saving The Hero 3" [X]
+## Connections
+- [[00 - Meta/03 - Training & Model.md]]
+- [[Quillan Knowledge files/0-Quillan Loader Manifest.md]]
+- [[Quillan Knowledge files/31- Autobiography.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/00 - Vault Index.md]]

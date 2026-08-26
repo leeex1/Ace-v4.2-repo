@@ -1,3 +1,9 @@
+---
+file_type: reference
+domain: misc
+status: active
+tags: [mermaid, architecture, hnmoe]
+---
 Mermaid chart 1 :
 ```mermaid
 flowchart TD
@@ -182,3 +188,10 @@ flowchart TD
     
     O --> OUT 
 ```
+## Connections
+- [[Quillan Knowledge files/1-Quillan_architecture_flowchart.md]]
+- [[Quillan Knowledge files/9-Quillan Brain mapping.md]]
+- [[Software Engineer/Quillan-XSWE.md]]
+- [[Skills/planning_and_task_decomposition/planning_and_task_decomposition.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/00 - Vault Index.md]]

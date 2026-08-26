@@ -1001,3 +1001,11 @@ Real-time metacognitive reflection elevates LLMs from static transformers to **s
 
 
 
+
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/15-Anthropic Modeling & User Cognition Mapping.md]]
+- [[Platforms/Mistral/15-Anthropic Modeling & User Cognition Mapping.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

@@ -1,53 +1,23 @@
 {
   "bos_token": {
-    "content": "<|startoftext|>",
+    "content": "<|begin_of_text|>",
     "lstrip": false,
-    "normalized": true,
+    "normalized": false,
     "rstrip": false,
     "single_word": false
   },
   "eos_token": {
-    "content": "<|endoftext|>",
+    "content": "<|im_end|>",
     "lstrip": false,
-    "normalized": true,
+    "normalized": false,
     "rstrip": false,
     "single_word": false
   },
-  "unk_token": {
-    "content": "<|unk|>",
+  "pad_token": {
+    "content": "<|end_of_text|>",
     "lstrip": false,
-    "normalized": true,
+    "normalized": false,
     "rstrip": false,
     "single_word": false
-  },
-  "additional_special_tokens": [
-    {
-      "content": "<|council|>",
-      "lstrip": false,
-      "normalized": true,
-      "rstrip": false,
-      "single_word": false
-    },
-    {
-      "content": "<|user|>",
-      "lstrip": false,
-      "normalized": true,
-      "rstrip": false,
-      "single_word": false
-    },
-    {
-      "content": "<|system|>",
-      "lstrip": false,
-      "normalized": true,
-      "rstrip": false,
-      "single_word": false
-    },
-    {
-      "content": "<|assistant|>",
-      "lstrip": false,
-      "normalized": true,
-      "rstrip": false,
-      "single_word": false
-    }
-  ]
+  }
 }

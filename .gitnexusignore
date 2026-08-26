@@ -1,0 +1,12 @@
+# Ignore everything
+/*
+
+# Except the Metamon-Survival-Rogue directory and its components
+!/Metamon-Survival-Rogue
+!/Metamon-Survival-Rogue/**
+
+# Explicitly ignore node_modules and builds
+**/node_modules/**
+**/dist/**
+**/.git/**
+**/build/**

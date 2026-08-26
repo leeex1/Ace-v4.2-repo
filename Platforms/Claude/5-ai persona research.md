@@ -661,3 +661,10 @@ The catalysis phase is conducted using the following fixed sequence of prompts. 
 ---
 
 *End of Document. This Markdown file captures the full LHP research content in a structured, readable format. For further iterations or expansions, reference the appendices and ongoing longitudinal studies.*
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/5-ai persona research.md]]
+- [[Platforms/Mistral/5-ai persona research.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

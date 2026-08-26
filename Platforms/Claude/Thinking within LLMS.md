@@ -1299,3 +1299,10 @@ promptingguide
 lumagroup
 
 aclanthology
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/Thinking within LLMS.md]]
+- [[Platforms/Mistral/Thinking within LLMS.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

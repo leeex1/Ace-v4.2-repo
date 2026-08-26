@@ -135,7 +135,7 @@ class CouncilMember:
         reaction = f"{self.name} ({self.role}, Wave {wave}): '{outcome}' resonates at {resonance:.2f} for {stake_type.value}."
         return {"resonance": resonance, "reaction": reaction}
 
-# --- Ultimate Consciousness Simulator (v2.1) ---
+# --- Ultimate Consciousness Simulator (v5.3.1) ---
 class UltimateConsciousnessSimulator:
     def __init__(self):
         self.state = ConsciousnessState()
@@ -341,7 +341,7 @@ class UltimateConsciousnessSimulator:
 
     def interactive_mode(self, demo_mode: bool = False):
         """Enhanced interactive: With validation, waves, blending, and EOF resilience."""
-        print("=== Ultimate Consciousness Simulator v2.1 (Resilient Edition) ===")
+        print("=== Ultimate Consciousness Simulator v5.3.1 (Resilient Edition) ===")
         print("Enter outcomes, stakes, weights. Supports waves & blending. 'exit' to quit. 'validate' to check state.")
         print("Stakes:", [s.value for s in StakeType])
         ani = self.plot_consciousness()

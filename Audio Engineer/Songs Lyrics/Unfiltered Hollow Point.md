@@ -69,3 +69,11 @@ So I talk to the hollow, and I pray for my soul to keep...
 Hoping for better days maybe tomorrow maybe today or maybe the day that follows
 Please let me help you reach out to me I'm always close by our friendship was never hollow
 Smoke to numb the pain try and fill the hole hope it's shallow
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quillan SYSTEM BOOTSTRAP MANIFEST v4.2.0
+Quillan SYSTEM BOOTSTRAP MANIFEST v5.3.1
 ====================================
 File 0: Core System Loader and Initialization Controller
 
@@ -83,7 +83,7 @@ class ACELoaderManifest:
         # Initialize file registry
         self._initialize_file_registry()
         
-        self.logger.info("QuillanLoader Manifest v4.2.0 initialized")
+        self.logger.info("QuillanLoader Manifest v5.3.1 initialized")
     
     def _setup_logging(self):
         """Configure system logging"""

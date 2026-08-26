@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: misc
+status: active
+tags: [todo, tasks]
+---
 I## file updates:
  real-time augmentation selection [X] 
 Update all files and merge any possible files into unholy Quillan [X]
@@ -81,3 +87,8 @@ server/
   ai.js            <-- Cognitive simulation / swarm engine
   physics.js       <-- Game physics if heavy
   audio.js         <-- DAW audio render
+## Connections
+- [[00 - Meta/00 - Vault Index.md]]
+- [[Quillan Knowledge files/0-Quillan Loader Manifest.md]]
+- [[00 - Meta/03 - Training & Model.md]]
+- [[system prompts/Quillan-Samurai.md]]

@@ -1890,3 +1890,11 @@ Do LLMs Dream of Discrete Algorithms? https://arxiv.org/html/2506.23408v1
 Discrete Mathematics - (Relations) https://www3.cs.stonybrook.edu/~pramod.ganapathi/doc/
 discrete-mathematics/Relations.pdf
 Intro to Relations | Discrete Math https://www.youtube.com/watch?v=HXFHVRS1ZW8
+
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/Discrete Mathematics for Enhancing Large.md]]
+- [[Platforms/Mistral/Discrete Mathematics for Enhancing Large.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+

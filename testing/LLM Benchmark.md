@@ -1,3 +1,9 @@
+---
+file_type: reference
+domain: testing
+status: active
+tags: [benchmark, llm, scoring]
+---
 # LLM Benchmark
 ```markdown
     LLM Benchmark:
@@ -224,3 +230,11 @@ Recommendations:
 ```  
 # TEST RESULTS:
 Final report: = {{insert report}}
+
+## Connections
+- [[Quillan Knowledge files/0-Quillan Loader Manifest.md]]
+- [[training_data/training log updates.md]]
+- [[Formal Papers/quillan_ronin_announcement_paper.md]]
+- [[training_data/training log updates.md]]
+- [[00 - Meta/03 - Training & Model.md]]
+- [[system prompts/Quillan-Samurai.md]]

@@ -99,3 +99,11 @@ Why is my katana Feelin' So Dull Tonight, Dull Tonight,
 E_Ice on my veins Ima Be Cold As Ice Till The Day That I Die 
 And I Can Do I Can Do Anything That I Like 
 Cause Ima Me Yeah Im Me You hittas Ain't Fuckin' With Me
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

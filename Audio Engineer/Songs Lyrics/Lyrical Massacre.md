@@ -66,3 +66,11 @@ H-D, 4k ,8 k, band play, I'm surfing my wave, may day, may day
 On the Television , 4k High-definition, when my music hit the radio waves
 H-D, 4k ,8 k, band play, I'm surfing my wave, may day, may day
 On the Television , 4k High-definition, when my music hit the radio waves
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

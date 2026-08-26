@@ -474,3 +474,14 @@ flowchart TD
     class CONTROL control
     class LHP,FORMULAS support
 ```
+## Connections
+- [[system prompts/System prompts for models/gpt 8k system prompt.md]]
+- [[Platforms/GPT/gpt 8k system prompt.md]]
+- [[Quillan Knowledge files/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/Claude/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/Gemini/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/Grok/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/Mistral/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/Perplexity/1-Quillan_architecture_flowchart.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]

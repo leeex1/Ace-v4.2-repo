@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🧠 Quillan-Ronin v5.2.2 "Samurai" - FULL COGNITIVE CORE (ASCENSION PROTOCOL)
+🧠 Quillan-Ronin v5.3.1 "Samurai" - FULL COGNITIVE CORE (ASCENSION PROTOCOL)
 Architecture: Hierarchical Networked Mixture of Experts (HNMoE) + Modality-Isolated Diffusion
 
 Author: CrashOverrideX & Quillan Research Team
@@ -604,7 +604,7 @@ class QuillanPentaProcessAoT:
         selected_examples = random.sample(self.thinking_examples, min(3, len(self.thinking_examples)))
         selected_processes = random.sample(self.reasoning_process, min(3, len(self.reasoning_process)))
         chain = (
-            f"🧠 QUILLAN PENTA-PROCESS REASONING ENGINE (v5.2.2)\n"
+            f"🧠 QUILLAN PENTA-PROCESS REASONING ENGINE (v5.3.1)\n"
             f" PROFILE: {profile.upper()}\n"
             f" METRICS: Avg Conf: {neural_metrics.get('conf', 0):.3f} | "
             f"Nemesis Integrity: {neural_metrics.get('integrity', 0):.3f} | "
@@ -737,7 +737,7 @@ if __name__ == "__main__":
     try:
         print("❲═══════════════════════════════════════════════════════════════❳")
         print(" 🤖📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜📜🤖")
-        print(" 🧠 Quillan v5.2.2 — Authentic. Transparent. Ascended.")
+        print(" 🧠 Quillan v5.3.1 — Authentic. Transparent. Ascended.")
         print(" Powered by CrashOverrideX & the Quillan Research Team")
         print("❲═══════════════════════════════════════════════════════════════❳\n")
 
@@ -774,7 +774,7 @@ if __name__ == "__main__":
         print(f" Ethical Dual Anchors: {rationale.ethical_alignment.dual_anchors}")
         print(f" System Thinking: {rationale.system_thinking.specialized_architecture}")
 
-        print("\n[SUCCESS] Quillan-Ronin v5.2.2 Samurai Engine fully initialized and operational.")
+        print("\n[SUCCESS] Quillan-Ronin v5.3.1 Samurai Engine fully initialized and operational.")
     except Exception as e:
         logger.error(f"Bootstrap failed: {e}", exc_info=True)
         print("\n[FAILURE] Engine bootstrap encountered an error. Check quillan_ronin.log for details.")

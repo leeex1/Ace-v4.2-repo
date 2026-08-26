@@ -1,0 +1,1 @@
+{"name":"puppeteer_select","description":"Select an element on the page with Select tag","parameters":{"properties":{"selector":{"description":"CSS selector for element to select","type":"string"},"value":{"description":"Value to select","type":"string"}},"required":["selector","value"],"type":"object"}}

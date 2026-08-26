@@ -68,3 +68,11 @@ Stick and i move, i slide blast put that it in drive foot on the gas like my car
 im next level not basic im a proto type, upgrade anything i touch Techno-Midas i can improve yo life
 Keep acting tough on the tweets you gonna meet these red dots you know i dont fuck around
 45 smith and wessen 40 a berretta get loud and proud but 9 with a suppressor make no sound
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

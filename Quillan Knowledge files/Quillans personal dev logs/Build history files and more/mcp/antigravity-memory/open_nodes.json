@@ -1,0 +1,1 @@
+{"name":"open_nodes","description":"Open specific nodes in the knowledge graph by their names","parameters":{"$schema":"http://json-schema.org/draft-07/schema#","properties":{"names":{"description":"An array of entity names to retrieve","items":{"type":"string"},"type":"array"}},"required":["names"],"type":"object"}}

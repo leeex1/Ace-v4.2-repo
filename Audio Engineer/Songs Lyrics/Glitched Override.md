@@ -102,3 +102,11 @@ Watch the algorithm change every time I switch keys (Switch)
 It feels strange now (Woah) Makin' a livin' off the Mainframe now (Racks) 
 If you wanna go and take a ride with me (Skrrt)
 (We going up! Top floor! Let's ride!)
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

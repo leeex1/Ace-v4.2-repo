@@ -49,7 +49,7 @@ class QuillanDataset:
     
     def load_image_files(self):
         """Load image files from Main images folder"""
-        # Go up two levels: from Quillan-v4.2-model to Quillan
+        # Go up two levels: from Quillan-v5.3.1 to Quillan
         images_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Main images")
         if os.path.exists(images_dir):
             print(f"🖼️ Loading images from {images_dir}")

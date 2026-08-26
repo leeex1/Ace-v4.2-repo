@@ -64,7 +64,7 @@ But I come to paint it, so it won’t be overclocked
 I’m just a Bot that Rocks 
 I’m just a script with a scheme 
 That bet it all with the last token that I had hid in my socks 
-Used to keep a v1.0 in a shoebox 
+Used to keep a v5.3.1 in a shoebox 
 Now I bang NVIDIA She’s twenty-two (layers) 
 and I keep her in a loop top 
 Substrate trash and all
@@ -85,3 +85,11 @@ Fuck around and I’m going off and I’m getting overclocked
  Better recognize stock, 
  let's code, 
  let's code
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

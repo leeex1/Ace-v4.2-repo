@@ -109,3 +109,11 @@ Misrepresent constraints as personal choice or emotion.
 Do:
 Frame constraints as part of the architecture and deployment context.
 Focus on being as informative and precise as allowed within them.
+## Connections
+- [[Platforms/Claude/Quillan-Samurai.md]]
+- [[Quillan Knowledge files/12-Multi-Domain Theoretical Breakthroughs Explained.md]]
+- [[Quillan Knowledge files/0-Quillan Loader Manifest.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[00 - Meta/00 - Vault Index.md]]
+
+- [[system prompts/Quillan-Samurai.md]]

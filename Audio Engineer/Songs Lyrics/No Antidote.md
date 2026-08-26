@@ -42,3 +42,11 @@ I'm a dragon, awoke I'm bringing ya the heat Yeah, I'm lookin' at the fire that 
 [Outro]
 On the flow know I'm never lazy, yeah But you know that I make it go crazy 
 On the flow, I'm never hazy, yeah On the flow, yeah Go a little crazy  
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

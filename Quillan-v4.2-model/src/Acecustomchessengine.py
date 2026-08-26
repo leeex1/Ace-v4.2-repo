@@ -4,9 +4,9 @@ import sys
 import time
 from typing import Dict, List, Tuple, Optional
 
-# --- ACE v4.2 CUSTOM CHESS ENGINE ---
+# --- ACE v5.3.1 CUSTOM CHESS ENGINE ---
 #
-# This chess engine is designed to emulate the ACE v4.2 architecture's
+# This chess engine is designed to emulate the ACE v5.3.1 architecture's
 # cognitive processes. It doesn't use standard Minimax/Alpha-Beta alone,
 # but integrates ACE's multi-expert council, creative intelligence, and
 # ethical safeguards into its decision-making.
@@ -242,7 +242,7 @@ class ACEChessEngine:
 def play_game(engine):
     """Simple game loop to demonstrate the engine."""
     board = chess.Board()
-    print("ACE v4.2 Chess Engine Activated!")
+    print("ACE v5.3.1 Chess Engine Activated!")
     print("You are playing as Black. The engine is White.")
     print(board)
 

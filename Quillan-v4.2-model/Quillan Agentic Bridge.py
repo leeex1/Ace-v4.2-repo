@@ -51,11 +51,11 @@ class QuillanAgenticExecutor:
 
     # ====================== HANDLERS ======================
     async def codeInterpreter(self, tool_call: ToolCall) -> Dict:
-        # (Same solid implementation from v1.1 - omitted for brevity)
+        # (Same solid implementation from v5.3.1 - omitted for brevity)
         ...
 
     async def webBrowsing(self, tool_call: ToolCall) -> Dict:
-        # (Same aiohttp + safe truncation from v1.1)
+        # (Same aiohttp + safe truncation from v5.3.1)
         ...
 
     async def persistentMemory(self, tool_call: ToolCall) -> Dict:

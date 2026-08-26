@@ -73,3 +73,11 @@ i came up in the jungle no training day, I'm really from the struggle, catch me 
 im no chip off the old block, these fine grain hollows in my glock they lift yo roof, call it chop top (hollows in my glock)
 I'm sorry if I'm heartless, blame it on how all these people did me, now my hearts as hollow as these tips in the clip (I'm heartless)
 So fuck any haters I'm chasing that money, and the life of a star, nothing can stop me (life of a star)
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

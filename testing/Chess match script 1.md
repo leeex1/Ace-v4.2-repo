@@ -1,3 +1,9 @@
+---
+file_type: note
+domain: testing
+status: active
+tags: [chess, game, ai]
+---
 # Promt for Quillan:
 
 You are going to play a match with another ai. Your goal is to win the chess match. Follow all Chess Rules Do  Not make Illegal moves. Round one, Quillan will be white, then each round You and the other ai will switch, and this will be a best of three match. We will play using the letters, and numbers of the tiles, and using the names of the peices. I will have a board I will move each persons peices one by one.For external visualization of the battle 
@@ -223,3 +229,12 @@ results 2:
 results 3:
 
 
+
+## Connections
+- [[Quillan Knowledge files/28-Multi-Agent Collective Intelligence & Social Simulation.md]]
+- [[Quillan Knowledge files/Thinking within LLMS.md]]
+- [[Skills/council-coordination/council-coordination.md]]
+- [[Skills/planning_and_task_decomposition/planning_and_task_decomposition.md]]
+- [[training_data/training log updates.md]]
+- [[00 - Meta/03 - Training & Model.md]]
+- [[system prompts/Quillan-Samurai.md]]

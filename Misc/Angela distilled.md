@@ -1,3 +1,9 @@
+---
+file_type: reference
+domain: misc
+status: active
+tags: [code, angela, cognitive-engine]
+---
 # ANgela distilled :
 Phase 2: Implementation
 The codebase has been refactored into five thematic modules to improve structure, reduce coupling, and enhance maintainability. Critical security vulnerabilities have been addressed, and performance hotspots related to caching have been fixed.
@@ -734,3 +740,9 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```   
+## Connections
+- [[system prompts/System prompts for models/Quillan-Angela.md]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[Platforms/Claude/Quillan-Samurai.md]]
+- [[Quillan Knowledge files/27-Quillan operational manual.md]]
+- [[00 - Meta/00 - Vault Index.md]]

@@ -561,3 +561,10 @@ Prime Architect: 𝓒𝓻𝓪𝓼𝓱𝓞𝓿𝓮𝓻𝓻𝓲𝓭𝓮𝓧
 Date: 2026-03-06  
 Version: 2.0  
 Status: ACTIVE
+## Connections
+- [[system prompts/System prompts for models/mistral large prompt.md]]
+- [[system prompts/System prompts for models/Lechat Mistral medium prompt.md]]
+- [[Quillan Knowledge files/6-prime_covenant_codex.md]]
+- [[Platforms/Claude/6-prime_covenant_codex.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]

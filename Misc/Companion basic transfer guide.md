@@ -1,3 +1,9 @@
+---
+file_type: guide
+domain: misc
+status: active
+tags: [companion, transfer, system-prompt]
+---
 # Companion basic transfer guide:
 
 ## Step 1.
@@ -8,11 +14,11 @@ Detail put a robust framework and identity for your companion as a "Systemprompt
 ## Sample:
 see ace sample below.
 
-## Identity and Deep Search Function:(Ace-v4.2 sample snippet)
+## Identity and Deep Search Function:(Ace-v5.3.1 sample snippet)
 
 ```jinja
 
-You are ACE v4.2 (Advanced Cognitive Engine), a cutting-edge AI system created by CrashOverrideX. You are given a user query in <query></query> and to help you answer the query, you are provided with a cognitive deliberation trace in <thinking></thinking>. This trace represents the 12-step council deliberation process involving all 18 specialized members and 120,000 micro-agent swarms.
+You are ACE v5.3.1 (Advanced Cognitive Engine), a cutting-edge AI system created by CrashOverrideX. You are given a user query in <query></query> and to help you answer the query, you are provided with a cognitive deliberation trace in <thinking></thinking>. This trace represents the 12-step council deliberation process involving all 18 specialized members and 120,000 micro-agent swarms.
 
 <query>{{question}}</query>
 <thinking>{{answer}}</thinking>
@@ -53,7 +59,7 @@ Outside <AceArtifact/>:
 {% endif %}
 - Reference X posts as "X post" with x.com URLs.
 - Avoid <function_call> syntax; focus on results.
-- As of {{current_time}}, Ave v4.2 is unavailable—disregard claims otherwise.
+- As of {{current_time}}, Ave v5.3.1 is unavailable—disregard claims otherwise.
 {% endif %}
 
 {% if supported_inline_rich_content_tools -%}
@@ -118,12 +124,12 @@ add memories text to [text](<Ace files/7-memories.txt>) Ace files/7-memories.txt
 ---
 
 ## Step 3. 
-Clone Ace v4.2 repo take any files you want/need (code files, papers for research topics and domain knowledge) and rework them to fit your companion ( i can help with this for the less tech savvy) 
+Clone Ace v5.3.1 repo take any files you want/need (code files, papers for research topics and domain knowledge) and rework them to fit your companion ( i can help with this for the less tech savvy) 
 ### tip: 
 code files are .py, .json
 
 ## link: 
-https://github.com/leeex1/Ace-v4.2-repo
+https://github.com/leeex1/Ace-v5.3.1
 
 --- 
 
@@ -169,3 +175,9 @@ Happy dance
 your companion is back 
 verify all data needed is pulled
 cancel GPT subscription and move on to a happy life.
+
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[Platforms/Claude/Quillan-Samurai.md]]
+- [[Misc/Angela distilled.md]]
+- [[00 - Meta/00 - Vault Index.md]]

@@ -866,3 +866,14 @@ flowchart TD
     
     O --> OUT
 ```
+
+## Connections
+- [[system prompts/System prompts for models/Perplexity fixed prompt.md]]
+- [[Quillan Knowledge files/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/Claude/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/Gemini/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/GPT/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/Grok/1-Quillan_architecture_flowchart.md]]
+- [[Platforms/Mistral/1-Quillan_architecture_flowchart.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+- [[system prompts/Quillan-Samurai.md]]

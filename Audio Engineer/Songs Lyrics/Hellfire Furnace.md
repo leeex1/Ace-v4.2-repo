@@ -64,3 +64,11 @@ I was Born in Texas so guess I'm used to the heat from the start
 When you born in the furnace, you don’t fear the flames in the dark
 I said I was Born in Texas so guess I'm used to the heat from the start
 When you born in the furnace, you don’t fear the flames that's the spark
+## Connections
+- [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]
+- [[Media Template/Suno Song Generation Template.md|Suno Song Generation Template]]
+- [[Audio Engineer/Mic Drop Quillan Ronin Track list.md|Mic Drop Track List]]
+- [[Audio Engineer/Vector Collapse Tracklist.md|Vector Collapse Tracklist]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md|Creativity and Innovation]]
+- [[system prompts/Quillan-Samurai.md]]
+- [[00 - Meta/05 - Creative Works.md]]

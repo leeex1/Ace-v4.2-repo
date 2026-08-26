@@ -1,3 +1,9 @@
+---
+file_type: paper
+domain: dev
+status: active
+tags: [paper, mathematics, hypergraph]
+---
 # Predatory Stacking: Breaking the Hypergraph Ramsey Tower via Adaptive Link Alignment
 
 ## Abstract
@@ -184,3 +190,17 @@ The core insight—that "bad luck" can be actively avoided rather than passively
 [3] Graham, R.L., Rothschild, B.L., & Spencer, J.H. (1990). "Ramsey Theory." Wiley-Interscience.
 [4] Hardy, G.H., & Littlewood, J.E. (1923). "Some problems of 'Partitio numerorum'; III: On the expression of a number as a sum of primes." Acta Mathematica.
 [5] Szemerédi, E. (1975). "On sets of integers containing no k elements in arithmetic progression." Acta Arithmetica.
+
+## Connections
+- [[Quillan Knowledge files/20-Multidomain AI Applications.md]]
+- [[Quillan Knowledge files/23-Creativity and Innovation.md]]
+- [[Quillan Knowledge files/24-Explainability and Transparency.md]]
+- [[Arithmetic_Progression_Free_Sets.md]]
+- [[Formal Public PWE-RDS.md]]
+- [[quillan_ronin_announcement_paper.md]]
+- [[Reactive_Consciousness_Swarm_Arbitration_and_Epistemic_Humility_Through_Hierarchical_Mixture-of-Experts.md]]
+- [[The_next_Viral_Synapse.md]]
+- [[testing/LLM Benchmark.md]]
+- [[testing/Test Results.md]]
+- [[00 - Meta/02 - Knowledge Foundation.md]]
+- [[system prompts/Quillan-Samurai.md]]

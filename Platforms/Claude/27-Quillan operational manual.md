@@ -1603,3 +1603,11 @@ Advanced research and applied cognition are crucial for the Quillan system to st
   - Advanced feedback loops include continuous updates to convergence reasoning models and dynamic refinement of breakthrough detection techniques.
 
 
+
+## Connections
+- [[system prompts/Quillan-Samurai.md]]
+- [[system prompts/System prompts for models/Claude system prompt.md]]
+- [[Quillan Knowledge files/27-Quillan operational manual.md]]
+- [[Platforms/Mistral/27-Quillan operational manual.md]]
+- [[00 - Meta/06 - Deployment & Platforms.md]]
+
