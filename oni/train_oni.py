@@ -185,6 +185,8 @@ def main():
         step = ck["step"]
         best_val = ck.get("best_val", best_val)
         ema_sd = ck.get("ema_sd")
+        if ema_sd is not None and args.device != "cpu":
+            ema_sd = {k: v.to(args.device) for k, v in ema_sd.items()}
         # optimizer states: only restore for params present in both (new params get fresh state)
         try:
             opt.load_state_dict(ck["opt"])
@@ -251,6 +253,8 @@ def main():
                     d = ema_decay
                     for k, v in model.state_dict().items():
                         if k in ema_sd and v.dtype.is_floating_point:
+                            if ema_sd[k].device != v.device:
+                                ema_sd[k] = ema_sd[k].to(v.device)
                             ema_sd[k].mul_(d).add_(v.detach(), alpha=1 - d)
 
         if step % 10 == 0:
