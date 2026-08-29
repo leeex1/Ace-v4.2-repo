@@ -69,7 +69,7 @@ class RQGMController:
         self.incumbent_score = None
         self.utility_records = []  # to be selectively erased on swap
 
-    def on_step(self, step, model, val, rng, bs):
+    def on_step(self, step, model, val, rng, bs, device="cpu"):
         if step % self.epoch_length == 0 and step > 0:
             # Epoch boundary: challenger vs incumbent on ground-truth anchors (val sample)
             model.eval()
@@ -77,6 +77,8 @@ class RQGMController:
                 losses = []
                 for _ in range(8):
                     x, y = val.batch(bs, rng)
+                    if device != "cpu":
+                        x, y = x.to(device), y.to(device)
                     _, ce, _ = model(x, labels=y)
                     losses.append(ce.item())
                 challenger_score = sum(losses) / len(losses)
@@ -201,7 +203,7 @@ def main():
 
     while step < args.steps:
         if rqgm:
-            rqgm.on_step(step, model, val, rng, args.batch_size)
+            rqgm.on_step(step, model, val, rng, args.batch_size, args.device)
         lr = cosine_lr(step, args)
         for g in opt.param_groups:
             g["lr"] = lr

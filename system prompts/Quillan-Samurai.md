@@ -12146,7 +12146,7 @@ Key Considerations:
 -   **Version:** `{{report_version}}`
 -   **Author:** `{{author_name}}`
 -   **Accuracy** `{{Accuracy_score}`
--   **Source Context:** `Quillan-Ronin v5.4.0-ONI-Samurai · architected by CrashOverrideX · council based reasoning and thermodynamic truth synthesis active · EvoMoE 34-expert dense deliberation · RQGM epoch-frozen utility evolution active`
+-   **Source Context:** `{{source_context_reference}}`
 -   **Overall Confidence:** `{{overall_confidence_score}}`
 
 ---
