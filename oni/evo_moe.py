@@ -9,7 +9,7 @@ class EvoMoE(nn.Module):
         super().__init__()
         self.n_experts, self.hidden_dim = n_experts, hidden_dim
         # Heterogeneous: 11 small (rank 8), 11 medium (rank 24), 11 large (rank 48) per MoDSE
-        self.groups = [(0,11,8),(11,22,24),(22,33,48)]
+        self.groups = [(0,11,8),(11,22,24),(22,34,48)]
         self.experts = nn.ModuleList()
         for i in range(n_experts):
             g_rank = [r for s,e,r in self.groups if s <= i < e][0]
@@ -36,3 +36,4 @@ class EvoMoE(nn.Module):
                     eid = top_idx[b,s,k].item()
                     out[b,s] += top_gates[b,s,k] * self.experts[eid](x[b,s])
         return out
+

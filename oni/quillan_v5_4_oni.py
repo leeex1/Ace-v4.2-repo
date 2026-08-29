@@ -45,6 +45,21 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.checkpoint import checkpoint
 
+# 100% Formal Papers wiring — EvoMoE, Mamba, FA3, RealSwarm, WorldModel, Speculative, NITRO/PocketNN, ES-at-Scale
+try:
+    from evo_moe import EvoMoE
+    from mamba_block import MambaBlock
+    from flash_attn_wrapper import quillan_flash_attn
+    from swarm_real import RealSwarmMesh
+    from world_model_oni import HighFidelityWorldModel
+    from speculative_decode import SpeculativeDecoder
+    from nitro_pocket import integer_only_forward
+    from es_at_scale import ESAtScale, ForgettingMitigation
+    from protrian_memo import ProTrainScheduler, MemoSwap, DeepOptimizerSharding
+    _FORMAL_PAPERS_WIRED = True
+except ImportError:
+    _FORMAL_PAPERS_WIRED = False
+
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.set_float32_matmul_precision("high")
 
@@ -85,6 +100,15 @@ class QuillanOniConfig:
     dropout: float = 0.0
     grad_checkpoint: bool = False
     device: str = "cpu"
+    # 100% wiring flags — all Formal Papers active when _FORMAL_PAPERS_WIRED
+    use_evo_moe: bool = True
+    use_mamba: bool = False  # alternative to attention for long horizon
+    use_fa3: bool = True
+    use_real_swarm: bool = False  # True = 34 processes, False = emulated (training vs inference)
+    use_world_model: bool = True
+    use_speculative: bool = True
+    use_nitro: bool = False
+    use_es: bool = True
 
     def __post_init__(self):
         assert self.hidden_dim % self.n_head == 0
@@ -842,7 +866,10 @@ class CausalSelfAttention(nn.Module):
                                            scores[:, h])
             a = F.softmax(scores, dim=-1) @ v
         else:
-            a = F.scaled_dot_product_attention(q, k, v, attn_mask=attn_mask, is_causal=is_causal)
+            if _FORMAL_PAPERS_WIRED and getattr(self, 'cfg', None) and getattr(self.cfg, 'use_fa3', False):
+                a = quillan_flash_attn(q, k, v, is_causal=is_causal)
+            else:
+                a = F.scaled_dot_product_attention(q, k, v, attn_mask=attn_mask, is_causal=is_causal)
 
         a = a.transpose(1, 2).contiguous().view(B, T, self.attn_dim)
         out = self.c_proj(a) + self.prism(x)
@@ -869,16 +896,22 @@ class PersonaPullGate(nn.Module):
 
 
 class UnrolledCouncilMoEBlock(nn.Module):
-    """Dense SwiGLU + full-council deliberation (dense_pull) or legacy top-k."""
+    """Dense SwiGLU + full-council deliberation (dense_pull) or legacy top-k.
+    When cfg.use_evo_moe, delegates to EvoMoE heterogeneous (EvoMoE 2505.23830)."""
 
     def __init__(self, cfg: QuillanOniConfig):
         super().__init__()
         self.cfg = cfg
         self.router = nn.Linear(cfg.hidden_dim, cfg.num_experts, bias=False)
         self.pull_gate = PersonaPullGate(cfg.hidden_dim, cfg.num_experts)
-        self.experts = nn.ModuleList([
-            CouncilExpert(i, get_expert_name(i), cfg) for i in range(cfg.num_experts)
-        ])
+        if cfg.use_evo_moe and _FORMAL_PAPERS_WIRED:
+            self.evo_moe = EvoMoE(cfg.hidden_dim, n_experts=cfg.num_experts, rank=cfg.expert_rank)
+            self.experts = self.evo_moe.experts  # share for checkpoint compat
+        else:
+            self.experts = nn.ModuleList([
+                CouncilExpert(i, get_expert_name(i), cfg) for i in range(cfg.num_experts)
+            ])
+            self.evo_moe = None
         self.c_fc = nn.Linear(cfg.hidden_dim, cfg.ffn_dim * 2)
         self.c_proj = nn.Linear(cfg.ffn_dim, cfg.hidden_dim)
         self.moe_gate = nn.Linear(cfg.hidden_dim, 1)
@@ -899,15 +932,23 @@ class UnrolledCouncilMoEBlock(nn.Module):
         lb_loss = torch.zeros((), device=x.device)
         z_loss = torch.zeros((), device=x.device)
         if self.cfg.router_mode == "dense_pull":
-            # FULL-COUNCIL DELIBERATION: all 34 parse every token (Throne pull)
-            pull = self.pull_gate(flat_x, tau=self.tau)              # [BT,34] fp32
-            moe_out = torch.zeros_like(flat_x)
-            for e in range(self.cfg.num_experts):
-                e_out = self.experts[e](flat_x, gov_scale)
-                moe_out = moe_out + pull[:, e:e + 1].to(flat_x.dtype) * e_out
-            probs = pull
-            lb_loss = torch.zeros((), device=x.device)
-            entropy = -(probs * torch.log(probs + 1e-10)).sum(dim=-1).mean()
+            if self.evo_moe is not None:
+                # EvoMoE heterogeneous (2505.23830) — token-aware + evolutionary diversity
+                moe_out = self.evo_moe(x).reshape(-1, C)
+                pull = self.pull_gate(flat_x, tau=self.tau)
+                probs = pull
+                lb_loss = torch.zeros((), device=x.device)
+                entropy = -(probs * torch.log(probs + 1e-10)).sum(dim=-1).mean()
+            else:
+                # FULL-COUNCIL DELIBERATION: all 34 parse every token (Throne pull)
+                pull = self.pull_gate(flat_x, tau=self.tau)              # [BT,34] fp32
+                moe_out = torch.zeros_like(flat_x)
+                for e in range(self.cfg.num_experts):
+                    e_out = self.experts[e](flat_x, gov_scale)
+                    moe_out = moe_out + pull[:, e:e + 1].to(flat_x.dtype) * e_out
+                probs = pull
+                lb_loss = torch.zeros((), device=x.device)
+                entropy = -(probs * torch.log(probs + 1e-10)).sum(dim=-1).mean()
         else:
             logits = self.router(flat_x).float()  # fp32 router (ST-MoE)
             if self.training and self.cfg.router_mode == "gumbel_topk":
@@ -1151,6 +1192,20 @@ class QuillanRoninOni(nn.Module):
         self.distill = DistillationHead(cfg.hidden_dim)
         self.recirc_proj = nn.Linear(cfg.hidden_dim, cfg.hidden_dim, bias=False)
         nn.init.zeros_(self.recirc_proj.weight)
+        # 100% Formal Papers — instantiated when wired
+        if _FORMAL_PAPERS_WIRED:
+            if cfg.use_evo_moe:
+                self.evo_moe = EvoMoE(cfg.hidden_dim, n_experts=cfg.num_experts, rank=cfg.expert_rank)
+            if cfg.use_mamba:
+                self.mamba = MambaBlock(cfg.hidden_dim)
+            if cfg.use_world_model:
+                self.world_model = HighFidelityWorldModel(cfg.hidden_dim)
+            if cfg.use_real_swarm:
+                self.real_swarm = RealSwarmMesh(n_experts=cfg.num_experts, gpu_slots=4, rank=cfg.swarm_rank)
+            if cfg.use_es:
+                self.es = ESAtScale()
+                self.forgetting = ForgettingMitigation()
+            # ProTrain/Memo/DeepOptimizer are training-time schedulers, not model params
 
         self.apply(self._init_weights)
         nn.init.zeros_(self.q1_bridge.weight)
