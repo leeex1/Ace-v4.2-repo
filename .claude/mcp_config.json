@@ -159,6 +159,12 @@
         },
         "Obsidian": {
             "url": "http://localhost:3000/mcp"
+        },
+        "QuillanRAG": {
+            "command": "python",
+            "args": [
+                "C:\\02_QUILLAN\\mcp\\quillan_rag\\server.py"
+            ]
         }
     }
 }

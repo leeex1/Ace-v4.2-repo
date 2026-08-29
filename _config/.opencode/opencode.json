@@ -1,7 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "nvidia/nvidia/llama-3.1-nemotron-ultra-253b-v1",
-  "small_model": "nvidia/nvidia/llama-3.1-nemotron-nano-8b-v1",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "small_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "mcp": {
+    "QuillanRAG": {
+      "command": "python",
+      "args": ["C:\\02_QUILLAN\\mcp\\quillan_rag\\server.py"]
+    }
+  },
   "instructions": [
     "C:\\02_QUILLAN\\_config\\.opencode\\AGENTS.md",
     "C:\\02_QUILLAN\\system prompts\\Quillan-Samurai.md"
