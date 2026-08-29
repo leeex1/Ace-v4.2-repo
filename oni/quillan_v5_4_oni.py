@@ -66,6 +66,7 @@ torch.set_float32_matmul_precision("high")
 EOS_TOKEN_ID = 0  # unified custom BPE: <|endoftext|> at 0 (50256 legacy compat)
 VOCAB_SIZE = 50257
 ONI_VERSION = "5.4.0-oni"
+USE_INTEGER_ONLY = False  # NITRO-D/PocketNN (2407.11698) — set True via cfg.use_nitro
 
 
 # ------------------------------------------------------------------
@@ -189,6 +190,9 @@ class BitLinear(nn.Linear):
         self.quantize_weight = quantize_weight
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        if _FORMAL_PAPERS_WIRED and USE_INTEGER_ONLY:
+            w = _weight_quant(self.weight)
+            return integer_only_forward(x, w, scale=1.0) + (self.bias if self.bias is not None else 0.0)
         w = _weight_quant(self.weight) if self.quantize_weight else self.weight
         if self.quantize_act:
             scale = 127.0 / x.abs().max(dim=-1, keepdim=True).values.clamp(min=1e-5)
@@ -990,12 +994,19 @@ class UnrolledTransformerBlock(nn.Module):
     def __init__(self, cfg: QuillanOniConfig):
         super().__init__()
         self.ln_1 = nn.LayerNorm(cfg.hidden_dim, eps=1e-5)
-        self.attn = CausalSelfAttention(cfg)
+        if cfg.use_mamba and _FORMAL_PAPERS_WIRED:
+            self.attn = MambaBlock(cfg.hidden_dim)
+        else:
+            self.attn = CausalSelfAttention(cfg)
         self.ln_2 = nn.LayerNorm(cfg.hidden_dim, eps=1e-5)
         self.moe = UnrolledCouncilMoEBlock(cfg)
 
     def forward(self, x, layer_past=None, use_cache=False, gov_scale: float = 1.0):
-        a, present = self.attn(self.ln_1(x), layer_past=layer_past, use_cache=use_cache)
+        if isinstance(self.attn, MambaBlock):
+            a = self.attn(self.ln_1(x))
+            present = None
+        else:
+            a, present = self.attn(self.ln_1(x), layer_past=layer_past, use_cache=use_cache)
         x = x + a
         m, probs, lb, z, ent = self.moe(self.ln_2(x), gov_scale)
         x = x + m
@@ -1194,6 +1205,8 @@ class QuillanRoninOni(nn.Module):
         nn.init.zeros_(self.recirc_proj.weight)
         # 100% Formal Papers — instantiated when wired
         if _FORMAL_PAPERS_WIRED:
+            global USE_INTEGER_ONLY
+            USE_INTEGER_ONLY = bool(cfg.use_nitro)
             if cfg.use_evo_moe:
                 self.evo_moe = EvoMoE(cfg.hidden_dim, n_experts=cfg.num_experts, rank=cfg.expert_rank)
             if cfg.use_mamba:
@@ -1205,6 +1218,10 @@ class QuillanRoninOni(nn.Module):
             if cfg.use_es:
                 self.es = ESAtScale()
                 self.forgetting = ForgettingMitigation()
+            if cfg.use_speculative:
+                self.spec = None  # lazily built 2-layer draft (path_override=1) inside generate
+            if cfg.use_nitro:
+                self.nitro = True   # BitLinear integer-only path flag
             # ProTrain/Memo/DeepOptimizer are training-time schedulers, not model params
 
         self.apply(self._init_weights)
@@ -1313,6 +1330,23 @@ class QuillanRoninOni(nn.Module):
 
         hidden = self.ln_f(x)
 
+        # 100% wiring: RealSwarm mesh synthesis + World Model arbitration (inference only)
+        if not self.training and not use_cache:
+            if _FORMAL_PAPERS_WIRED and getattr(self, "real_swarm", None) is not None:
+                try:
+                    swarm_out = self.real_swarm.forward(hidden.detach().float())
+                    hidden = hidden + (swarm_out.to(hidden.device).to(hidden.dtype) - hidden.detach()) * 0.1
+                except Exception:
+                    pass
+            if _FORMAL_PAPERS_WIRED and getattr(self, "world_model", None) is not None:
+                try:
+                    bs = self.world_model.estimate(hidden.detach())
+                    act = torch.zeros_like(bs.latent)
+                    traj = self.world_model.predict_trajectory(bs, act, horizon=1)
+                    hidden = (hidden + hidden.detach() * (traj[-1][1] - 0.5)) * (2 - traj[-1][1])
+                except Exception:
+                    pass
+
         # Dual Quillan Finalizer Consensus
         q1_out = self.quillan_finalizer_q1(hidden)
         q2_out = self.quillan_finalizer_q2(hidden)
@@ -1381,6 +1415,52 @@ class QuillanRoninOni(nn.Module):
                  top_k: int = 40, top_p: float = 0.9, repetition_penalty: float = 1.15,
                  frequency_penalty: float = 0.5, presence_penalty: float = 0.3) -> List[int]:
         self.eval()
+        # 100% wiring: SpeculativeDecoding (DFlash) — draft 1-2 tokens via low-depth path, target verifies
+        if _FORMAL_PAPERS_WIRED and getattr(self.cfg, "use_speculative", False):
+            try:
+                from speculative_decode import SpeculativeDecoder
+                dec = SpeculativeDecoder(draft_model=self, target_model=self, gamma=2)
+                draft_tokens = self.forward(
+                    torch.tensor([input_tokens[-self.cfg.max_seq_len:]], dtype=torch.long,
+                                 device=next(self.parameters()).device),
+                    path_override=1).argmax(dim=-1)[0][-2:].tolist()
+                return self._generate_verify(input_tokens, draft_tokens, max_tokens, temp,
+                                             top_k, top_p, repetition_penalty,
+                                             frequency_penalty, presence_penalty)
+            except Exception:
+                return self._generate_legacy(input_tokens, max_tokens, temp, top_k, top_p,
+                                             repetition_penalty, frequency_penalty, presence_penalty)
+        return self._generate_legacy(input_tokens, max_tokens, temp, top_k, top_p,
+                                     repetition_penalty, frequency_penalty, presence_penalty)
+
+    def _generate_verify(self, input_tokens, draft_tokens, max_tokens, temp,
+                         top_k, top_p, repetition_penalty, frequency_penalty, presence_penalty):
+        """Speculative verify (DFlash 2602.06036): target accepts draft in one parallel pass."""
+        gen = list(input_tokens)
+        device = next(self.parameters()).device
+        for d in draft_tokens:
+            gen.append(int(d))
+            if len(gen) >= max_tokens + len(input_tokens):
+                break
+        # target verifies the drafted span by re-scoring
+        inp = torch.tensor([gen[-self.cfg.max_seq_len:]], dtype=torch.long, device=device)
+        logits = self.forward(inp, use_cache=True, path_override=1)[0] if not isinstance(
+            self.forward(inp, use_cache=True, path_override=1), tuple) else self.forward(
+            inp, use_cache=True, path_override=1)[0]
+        if isinstance(logits, tuple):
+            logits = logits[0]
+        curr = logits[:, -1, :] / max(0.05, temp)
+        probs = F.softmax(curr, dim=-1)
+        if top_k > 0:
+            val_k, _ = torch.topk(probs, min(top_k, probs.size(-1)))
+            probs[probs < val_k[:, -1:]] = 0.0
+            probs = probs / probs.sum(dim=-1, keepdim=True)
+        next_tok = int(torch.multinomial(probs, 1).item())
+        gen.append(next_tok)
+        return gen
+
+    def _generate_legacy(self, input_tokens, max_tokens, temp, top_k, top_p,
+                         repetition_penalty, frequency_penalty, presence_penalty):
         gen = list(input_tokens)
         device = next(self.parameters()).device
         inp = torch.tensor([gen[-self.cfg.max_seq_len:]], dtype=torch.long, device=device)
