@@ -10780,7 +10780,7 @@ flowchart TD
 
     %% CYCLE 1: DECONSTRUCTION
     Q1 -.-> R1[ROUTERS]
-    R1 --> R1A[R1A Gen 33] & R1B[R1B Text 9] & R1C[R1C Audio 16] & R1D[R1D Video 12] & R1E[R1E Fast 6]
+    R1 --> R1A[R1A Council 34] & R1B[R1B Text 9] & R1C[R1C Audio 16] & R1D[R1D Video 12] & R1E[R1E Fast 6]
 
     R1A --> C1A[C1A W1] -.-> Q2
     R1B --> C1B[C1B W1] -.-> Q2
@@ -10935,98 +10935,61 @@ stateDiagram-v2
 
     [*] --> Token_Stream_Ingest
 
-    %% ─── ENCODING + FUSION ───
-    Token_Stream_Ingest --> Modality_Encoding
-    Modality_Encoding --> Registry_Assembly
-    Registry_Assembly --> Sequence_Fusion
+    %% ─── THRONE INTAKE & 9-VECTOR PRISM ───
+    Token_Stream_Ingest --> Nine_Vector_Prism_Sharding
+    Nine_Vector_Prism_Sharding --> Couil_Hybrid_RoPE_Attention
+    Couil_Hybrid_RoPE_Attention --> EvoMoE_Router_Scoring
 
-    %% ─── COMPACTION ───
-    Sequence_Fusion --> Compaction_Check
-    Compaction_Check --> Compacted : if L > threshold
-    Compaction_Check --> Unchanged : else
+    %% ─── EVOMOE DENSE PULL DELIBERATION (v5.4.0-ONI) ───
+    EvoMoE_Router_Scoring --> Dense_Council_Deliberation
 
-    Compacted --> Token_Set
-    Unchanged --> Token_Set
+    state Dense_Council_Deliberation {
+        [*] --> Council_34_Experts_Deliberation
+        [*] --> Shared_Expert_Invariant_Path
 
-    %% ─── TOKEN-LEVEL ROUTING ───
-    Token_Set --> Router_Logits
-    Router_Logits --> Gumbel_Softmax
-
-    Gumbel_Softmax --> Top3_Selection
-
-    %% ─── FAN-OUT (CRITICAL CHANGE) ───
-    Top3_Selection --> Fanout_To_Experts
-
-    state Fanout_To_Experts {
-        [*] --> Expert_1_Path
-        [*] --> Expert_2_Path
-        [*] --> Expert_3_Path
-
-        state Expert_1_Path {
-            [*] --> Mutate_1
-            Mutate_1 --> Quantize_1
-            Quantize_1 --> FFN_1
-            FFN_1 --> Swarm_1
-            Swarm_1 --> Project_1
-            Project_1 --> [*]
+        state Council_34_Experts_Deliberation {
+            [*] --> Pull_Gate_fp32_Scaling
+            Pull_Gate_fp32_Scaling --> BitNet_1_58b_STE_Quant
+            BitNet_1_58b_STE_Quant --> CouncilExpertSwarm_Rank8
+            CouncilExpertSwarm_Rank8 --> Project_Consensus
+            Project_Consensus --> [*]
         }
 
-        state Expert_2_Path {
-            [*] --> Mutate_2
-            Mutate_2 --> Quantize_2
-            Quantize_2 --> FFN_2
-            FFN_2 --> Swarm_2
-            Swarm_2 --> Project_2
-            Project_2 --> [*]
-        }
-
-        state Expert_3_Path {
-            [*] --> Mutate_3
-            Mutate_3 --> Quantize_3
-            Quantize_3 --> FFN_3
-            FFN_3 --> Swarm_3
-            Swarm_3 --> Project_3
-            Project_3 --> [*]
+        state Shared_Expert_Invariant_Path {
+            [*] --> Shared_FFN_Forward
+            Shared_FFN_Forward --> Shared_Representation_Add
+            Shared_Representation_Add --> [*]
         }
     }
 
-    %% ─── WEIGHTED MERGE (NEW CORE STATE) ───
-    Fanout_To_Experts --> Weighted_Aggregation
+    %% ─── FUSION & THERMODYNAMIC REFINEMENT ───
+    Dense_Council_Deliberation --> Langevin_Thermo_Diffusion
 
-    Weighted_Aggregation --> Residual_Add
-    Residual_Add --> MoE_Output
-
-    %% ─── DIFFUSION STACK ───
-    MoE_Output --> Diffusion_Stack
-
-    state Diffusion_Stack {
-        [*] --> L1
-        L1 --> L2
-        L2 --> L3
-        L3 --> L4
-        L4 --> L5
-        L5 --> L6
-        L6 --> L7
-        L7 --> L8
-        L8 --> L9
-        L9 --> [*]
+    state Langevin_Thermo_Diffusion {
+        [*] --> Confidence_Gate_Check
+        Confidence_Gate_Check --> Fast_Pass : if conf >= 0.70
+        Confidence_Gate_Check --> Langevin_Refinement_Steps : if conf < 0.70 (hard tokens)
+        Langevin_Refinement_Steps --> Entropy_Bound_Stabilize
+        Entropy_Bound_Stabilize --> [*]
+        Fast_Pass --> [*]
     }
 
-    %% ─── DECODING ───
-    Diffusion_Stack --> Modality_Slicing
+    %% ─── ONI ARBITRATION & SPECULATIVE DECODING ───
+    Langevin_Thermo_Diffusion --> High_Fidelity_World_Model_Check
+    High_Fidelity_World_Model_Check --> Speculative_Decoder_DFlash
 
-    Modality_Slicing --> Text_Decode
-    Modality_Slicing --> Image_Decode
-    Modality_Slicing --> Audio_Decode
-    Modality_Slicing --> Video_Decode
+    state Speculative_Decoder_DFlash {
+        [*] --> Draft_Low_Depth_Tokens
+        Draft_Low_Depth_Tokens --> Target_Single_Pass_Verify
+        Target_Single_Pass_Verify --> Accept_or_Correct
+        Accept_or_Correct --> [*]
+    }
 
-    Text_Decode --> Output_Final
-    Image_Decode --> Output_Final
-    Audio_Decode --> Output_Final
-    Video_Decode --> Output_Final
-
+    %% ─── OUTPUT ───
+    Speculative_Decoder_DFlash --> Output_Final
     Output_Final --> [*]
 ```
+
 
 ---
 
