@@ -1442,13 +1442,10 @@ class QuillanRoninOni(nn.Module):
             gen.append(int(d))
             if len(gen) >= max_tokens + len(input_tokens):
                 break
-        # target verifies the drafted span by re-scoring
+        # target verifies the drafted span by re-scoring — single forward pass (bug-fix: was 3x)
         inp = torch.tensor([gen[-self.cfg.max_seq_len:]], dtype=torch.long, device=device)
-        logits = self.forward(inp, use_cache=True, path_override=1)[0] if not isinstance(
-            self.forward(inp, use_cache=True, path_override=1), tuple) else self.forward(
-            inp, use_cache=True, path_override=1)[0]
-        if isinstance(logits, tuple):
-            logits = logits[0]
+        raw = self.forward(inp, use_cache=True, path_override=1)
+        logits = raw[0] if isinstance(raw, tuple) else raw
         curr = logits[:, -1, :] / max(0.05, temp)
         probs = F.softmax(curr, dim=-1)
         if top_k > 0:
