@@ -98,11 +98,15 @@ def export_to_gguf(checkpoint_path: str, output_file: str):
     state_dict = ckpt.get("model", ckpt.get("model_state_dict", ckpt))
     cfg = ckpt.get("cfg", {})
     
-    writer = GGUFWriter(str(out_path), "quillan")
+    # NOTE: arch must be "llama" for Ollama/llama.cpp compatibility.
+    # llama-quantize validates against a known-arch allowlist; "quillan" causes exit 1.
+    # We store the real architecture identity in general.source_arch metadata.
+    writer = GGUFWriter(str(out_path), "llama")
     
     # Metadata
     writer.add_name("Quillan-Ronin-v5.4.0-ONI")
-    writer.add_context_length(cfg.get("max_seq_len", 512))
+    writer.add_string("general.source_arch", "quillan_ronin_v540_oni")
+    writer.add_context_length(cfg.get("max_seq_len", 2048))
     writer.add_embedding_length(cfg.get("hidden_dim", 1024))
     writer.add_block_count(cfg.get("n_layer", 12))
     writer.add_head_count(cfg.get("n_head", 16))

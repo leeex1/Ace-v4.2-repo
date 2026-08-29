@@ -34,17 +34,27 @@ scratch/
 *.csv
 *.tex
 
-# Large Audio & Media Binaries
-*.wav
-*.mp3
+# Large Media Binaries - Videos always ignored (too large for git)
 *.mp4
+*.mkv
+*.avi
+*.mov
+*.webm
+*.wmv
 *.zip
 *.tar
 *.gz
-*.pdf
 *.pptx
-Main images/
-06_Media/
+
+# Audio, images, text are now tracked (pushed to HuggingFace via git-lfs if needed)
+# *.mp3 - TRACKED
+# *.wav - TRACKED
+# *.flac - TRACKED
+# *.m4a - TRACKED
+
+# Media folders - videos subfolder ignored, everything else tracked
+06_Media/videos/
+# Audio Engineer and outputs/music are fully tracked
 
 # Runtime logs & temp dumps
 *.log
@@ -80,3 +90,24 @@ agent/
 .devin/
 quillan_memory/
 quillan_bpe_tokenizer_hf/
+
+# Personal & Private Files - NEVER commit
+*resume*
+*Resume*
+*curriculum vitae*
+*cover letter*
+*Cover Letter*
+_config/Resume markdown.md
+_config/resume*
+testing/Dev test/check_resume_status.py
+
+# Oversized files (>100MB) - keep local only
+*.msi
+*.exe
+
+# Game beta clients - NDA protected, NEVER commit
+Soulframe*
+soulframe*
+*beta*client*
+*game*installer*
+06_Media/audio/audio breakdowns lm notebook/The_Quillan-Ronin_Samurai_AI_Swarm.m4a
