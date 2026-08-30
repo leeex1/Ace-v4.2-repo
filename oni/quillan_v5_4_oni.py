@@ -224,11 +224,9 @@ class NineVectorPrismDecomposition(nn.Module):
         self.w_gate = nn.Linear(dim, dim, bias=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        # High-performance parallel batched GEMM across all 9 semantic vectors
-        w_stacked = torch.stack([_weight_quant(v.weight) for v in self.vectors.values()])  # [9, dim, dim]
-        # x is [B, L, D], expand to [9, B, L, D] via broadcasting
-        x_shards = torch.matmul(x.unsqueeze(0), w_stacked.transpose(-1, -2))  # [9, B, L, D]
-        prism = x_shards.mean(dim=0)  # [B, L, D]
+        # Exact parallel batched GEMM across all 9 semantic vectors simultaneously
+        w_stacked = torch.stack([_weight_quant(v.weight) for v in self.vectors.values()])  # [9, D_out, D_in]
+        prism = torch.einsum('bld,ned->ble', x, w_stacked) / 9.0  # [B, L, D]
         return self.w_gate(prism)
 
 
