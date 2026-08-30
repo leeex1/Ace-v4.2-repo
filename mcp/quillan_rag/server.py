@@ -14,7 +14,32 @@ import httpx, chromadb
 from chromadb.config import Settings
 from fastmcp import FastMCP
 
-NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
+def _get_api_key() -> str:
+    key = os.environ.get("NVIDIA_API_KEY", "")
+    if key:
+        return key.strip()
+    # Check Windows User Environment if on Windows
+    if os.name == "nt":
+        try:
+            import winreg
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Environment") as regkey:
+                val, _ = winreg.QueryValueEx(regkey, "NVIDIA_API_KEY")
+                if val:
+                    return str(val).strip()
+        except Exception:
+            pass
+    # Check local .env if present (gitignored)
+    env_file = Path(r"C:\02_QUILLAN\.env")
+    if env_file.exists():
+        try:
+            for line in env_file.read_text(encoding="utf-8").splitlines():
+                if line.startswith("NVIDIA_API_KEY="):
+                    return line.split("=", 1)[1].strip().strip("\"'")
+        except Exception:
+            pass
+    return ""
+
+NVIDIA_API_KEY = _get_api_key()
 NIM_BASE       = "https://integrate.api.nvidia.com/v1"
 EMBED_MODEL    = "nvidia/nemotron-3-embed-1b"
 GEN_MODEL      = "nvidia/nemotron-3-super-120b-a12b"
