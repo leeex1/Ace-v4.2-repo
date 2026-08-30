@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quillan-Ronin v5.2.2 — Neural Net Visualization</title>
+<title>Quillan-Ronin v5.4.0 ONI — Sovereign Neural Cognitive Visualizer</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Cinzel:wght@700;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#020408;overflow:hidden;font-family:'Share Tech Mono',monospace;color:#ccc}
 #canvas{display:block;position:fixed;inset:0}
@@ -19,7 +19,7 @@ body{background:#020408;overflow:hidden;font-family:'Share Tech Mono',monospace;
   pointer-events:auto;z-index:20;border-bottom:1px solid rgba(0,255,255,0.1)}
 #title h1{font-family:'Orbitron',monospace;font-size:clamp(11px,2vw,16px);font-weight:900;
   color:#ffd700;letter-spacing:3px;text-shadow:0 0 20px rgba(255,215,0,0.5)}
-#title .sub{font-size:10px;color:#444;letter-spacing:2px;margin-top:2px}
+#title .sub{font-size:10px;color:#666;letter-spacing:2px;margin-top:2px}
 
 /* Controls */
 #controls{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;
@@ -37,27 +37,25 @@ button.gold{border-color:rgba(255,215,0,0.4);color:rgba(255,215,0,0.8)}
 button.gold:hover,button.gold.active{background:rgba(255,215,0,0.15);color:#ffd700;border-color:#ffd700;box-shadow:0 0 12px rgba(255,215,0,0.4)}
 
 /* Side panels */
-#left-panel{position:fixed;left:0;top:60px;bottom:60px;width:220px;
+#left-panel{position:fixed;left:0;top:60px;bottom:60px;width:230px;
   background:rgba(2,4,8,0.85);border-right:1px solid rgba(0,255,255,0.1);
   padding:12px;overflow-y:auto;pointer-events:auto;z-index:15}
-#right-panel{position:fixed;right:0;top:60px;bottom:60px;width:240px;
+#right-panel{position:fixed;right:0;top:60px;bottom:60px;width:250px;
   background:rgba(2,4,8,0.85);border-left:1px solid rgba(255,215,0,0.1);
   padding:12px;overflow-y:auto;pointer-events:auto;z-index:15}
 
 .panel-title{font-family:'Orbitron',monospace;font-size:9px;letter-spacing:2px;
-  color:#555;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.05);
+  color:#777;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.05);
   text-transform:uppercase}
 
-/* Layer legend entries */
 .legend-item{display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer;
   padding:5px 6px;border:1px solid transparent;transition:all 0.2s}
 .legend-item:hover{border-color:rgba(255,255,255,0.1);background:rgba(255,255,255,0.03)}
 .legend-item.active{border-color:currentColor!important;background:rgba(255,255,255,0.05)}
 .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor}
 .legend-name{font-size:9px;letter-spacing:1px;flex:1}
-.legend-count{font-size:8px;color:#444}
+.legend-count{font-size:8px;color:#555}
 
-/* Neuron info */
 #neuron-info{background:rgba(0,0,0,0.7);border:1px solid rgba(255,215,0,0.4);
   padding:10px;margin-top:10px;display:none}
 #neuron-info.visible{display:block}
@@ -65,21 +63,18 @@ button.gold:hover,button.gold.active{background:rgba(255,215,0,0.15);color:#ffd7
 .info-key{color:#555}
 .info-val{color:#00ffff}
 
-/* Live stats */
 .stat-row{display:flex;justify-content:space-between;align-items:center;
   margin-bottom:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
-.stat-label{font-size:9px;color:#444;letter-spacing:1px}
+.stat-label{font-size:9px;color:#666;letter-spacing:1px}
 .stat-val{font-family:'Orbitron',monospace;font-size:12px;font-weight:700}
 .stat-bar{height:2px;background:rgba(255,255,255,0.05);margin-top:3px;border-radius:1px;overflow:hidden}
 .stat-fill{height:100%;border-radius:1px;transition:width 0.5s ease}
 
-/* Tooltip */
 #tooltip{position:fixed;pointer-events:none;z-index:100;
   background:rgba(2,4,8,0.97);border:1px solid rgba(0,255,255,0.5);
   padding:8px 12px;font-size:10px;color:#00ffff;
-  box-shadow:0 0 20px rgba(0,255,255,0.3);display:none;max-width:200px}
+  box-shadow:0 0 20px rgba(0,255,255,0.3);display:none;max-width:220px}
 
-/* Scrollbar */
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(0,255,255,0.2);border-radius:2px}
@@ -89,53 +84,49 @@ button.gold:hover,button.gold.active{background:rgba(255,215,0,0.15);color:#ffd7
 
 <canvas id="canvas"></canvas>
 
-<!-- TITLE BAR -->
 <div id="title">
   <div>
-    <h1>⚡ QUILLAN-RONIN v5.2.2 — NEURAL NETWORK VISUALIZATION</h1>
-    <div class="sub">LIVE FORWARD PASS · CLICK NEURONS · DRAG TO ROTATE · SCROLL TO ZOOM</div>
+    <h1>⚡ QUILLAN-RONIN v5.4.0 ONI — SOVEREIGN NEURAL COGNITIVE VISUALIZER</h1>
+    <div class="sub">CANONICAL ARCHITECTURE · 9-VECTOR PRISM · 34-COUNCIL EVOMOE · 9B SWARM DIVERSITY · E_ICE & FLASH DIFFUSION</div>
   </div>
-  <div style="font-size:10px;color:#333;text-align:right;letter-spacing:1px">
+  <div style="font-size:10px;color:#444;text-align:right;letter-spacing:1px">
     <div id="fps-counter">60 FPS</div>
-    <div id="active-signal">IDLE</div>
+    <div id="active-signal" style="color:var(--accent-cyan,#00ffff);">IDLE</div>
   </div>
 </div>
 
-<!-- LEFT PANEL -->
 <div id="left-panel">
-  <div class="panel-title">Architecture Layers</div>
+  <div class="panel-title">Architecture Pipeline</div>
   <div id="layer-legend"></div>
 
   <div class="panel-title" style="margin-top:15px">Neuron Inspector</div>
   <div id="neuron-info">
     <div class="info-row"><span class="info-key">LAYER</span><span class="info-val" id="ni-layer">—</span></div>
     <div class="info-row"><span class="info-key">NODE</span><span class="info-val" id="ni-node">—</span></div>
-    <div class="info-row"><span class="info-key">ACTIVATION</span><span class="info-val" id="ni-act">—</span></div>
-    <div class="info-row"><span class="info-key">WEIGHTS IN</span><span class="info-val" id="ni-win">—</span></div>
-    <div class="info-row"><span class="info-key">WEIGHTS OUT</span><span class="info-val" id="ni-wout">—</span></div>
-    <div class="info-row"><span class="info-key">BIAS</span><span class="info-val" id="ni-bias">—</span></div>
-    <div class="info-row"><span class="info-key">GUMBEL SCORE</span><span class="info-val" id="ni-gum">—</span></div>
-    <div class="info-row"><span class="info-key">STATUS</span><span class="info-val" id="ni-status">—</span></div>
+    <div class="info-row"><span class="info-key">QUANTIZATION</span><span class="info-val" id="ni-act">BitNet 1.58b STE</span></div>
+    <div class="info-row"><span class="info-key">ACTIVATION</span><span class="info-val" id="ni-win">—</span></div>
+    <div class="info-row"><span class="info-key">ROUTER WEIGHT</span><span class="info-val" id="ni-wout">—</span></div>
+    <div class="info-row"><span class="info-key">E_ICE SCORE</span><span class="info-val" id="ni-bias">PASS (0.00 drift)</span></div>
+    <div class="info-row"><span class="info-key">SWARM RANK</span><span class="info-val" id="ni-gum">Rank-24 EGGROLL</span></div>
+    <div class="info-row"><span class="info-key">STATUS</span><span class="info-val" id="ni-status">ACTIVE</span></div>
   </div>
 </div>
 
-<!-- RIGHT PANEL -->
 <div id="right-panel">
-  <div class="panel-title">Live Telemetry</div>
+  <div class="panel-title">Hardware & Engine Telemetry</div>
   <div id="stats-container"></div>
 
-  <div class="panel-title" style="margin-top:15px">Signal Trace</div>
-  <div id="signal-trace" style="font-size:8px;color:#333;line-height:1.8;max-height:200px;overflow-y:auto"></div>
+  <div class="panel-title" style="margin-top:15px">Signal & Council Trace</div>
+  <div id="signal-trace" style="font-size:8px;color:#444;line-height:1.8;max-height:220px;overflow-y:auto"></div>
 </div>
 
-<!-- CONTROLS -->
 <div id="controls">
   <button onclick="startForwardPass()" class="gold">▶ FORWARD PASS</button>
-  <button onclick="startForwardPass(true)" class="gold">⚡ TURBO PASS</button>
-  <button onclick="toggleMode('weights')" id="btn-weights">SHOW WEIGHTS</button>
-  <button onclick="toggleMode('gradients')" id="btn-grad">GRADIENTS</button>
-  <button onclick="toggleMode('attention')" id="btn-attn">ATTENTION</button>
-  <button onclick="toggleMode('council')" id="btn-council" class="active">COUNCIL VIEW</button>
+  <button onclick="startForwardPass(true)" class="gold">⚡ TURBO 9-VECTOR PASS</button>
+  <button onclick="toggleMode('weights')" id="btn-weights">SHOW BITNET WEIGHTS</button>
+  <button onclick="toggleMode('prism')" id="btn-prism">9-VECTOR PRISM</button>
+  <button onclick="toggleMode('council')" id="btn-council" class="active">34-COUNCIL CONSENSUS</button>
+  <button onclick="toggleMode('swarm')" id="btn-swarm">9B SWARM SIM</button>
   <button onclick="resetView()">RESET VIEW</button>
   <button onclick="togglePause()" id="btn-pause">⏸ PAUSE</button>
   <button onclick="clearSignals()" class="danger">CLEAR</button>
@@ -147,7 +138,6 @@ button.gold:hover,button.gold.active{background:rgba(255,215,0,0.15);color:#ffd7
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-// ─── CONFIG ───────────────────────────────────────────────────────────────────
 const W = () => window.innerWidth;
 const H = () => window.innerHeight;
 let w, h;
@@ -159,94 +149,81 @@ function resize(){
 resize();
 window.addEventListener('resize', resize);
 
-// ─── LAYER DEFINITIONS ───────────────────────────────────────────────────────
+// ─── CANONICAL v5.4.0 ONI ARCHITECTURE LAYERS ──────────────────────────────
 const LAYERS = [
-  // id, label, neuron count (visual), color, x_frac, description, activation
-  { id:'input_text',  label:'TEXT INPUT',     n:6,  color:'#00ff88', group:'input',     act:'Embedding',   desc:'Token embeddings\n50k vocab × 1024 dim' },
-  { id:'input_img',   label:'IMAGE INPUT',    n:5,  color:'#00ffff', group:'input',     act:'Conv2D',      desc:'16×16 patches\n1920×1080 → tokens' },
-  { id:'input_aud',   label:'AUDIO INPUT',    n:4,  color:'#7851a9', group:'input',     act:'Conv1D',      desc:'44.1kHz waveform\nstride-4 compress' },
-  { id:'input_vid',   label:'VIDEO INPUT',    n:5,  color:'#ff8800', group:'input',     act:'Conv3D',      desc:'Spatiotemporal\n3D feature extract' },
-  { id:'fusion',      label:'FUSION',         n:8,  color:'#ffff00', group:'fusion',    act:'Concat',      desc:'Batch-safe concat\ndim=1 sequence' },
-  { id:'mod_emb',     label:'MOD EMB',        n:4,  color:'#ffaa00', group:'fusion',    act:'Embedding',   desc:'Modality tags\n[0,1,2,3] → 1024d' },
-  { id:'ctx_mixer',   label:'CTX MIXER',      n:6,  color:'#dddd00', group:'fusion',    act:'Linear+ReLU', desc:'Context injection\n2048 → 1024' },
-  { id:'router',      label:'GUMBEL ROUTER',  n:8,  color:'#ff69b4', group:'router',    act:'Gumbel-Softmax',desc:'Top-1 sparse route\nGumbel noise inject' },
-  // MoE experts — subset of 33, showing 12 visually
-  { id:'exp_0',  label:'C1-ASTRA',    n:5, color:'#c8e6c9', group:'moe', act:'GELU-FFN', desc:'Pattern Recognition\n7k micro-agents' },
-  { id:'exp_1',  label:'C2-VIR',      n:5, color:'#ffcdd2', group:'moe', act:'GELU-FFN', desc:'Ethical Guardian\n7k micro-agents' },
-  { id:'exp_2',  label:'C7-LOGOS',    n:5, color:'#90caf9', group:'moe', act:'GELU-FFN', desc:'Logical Consistency\n7k micro-agents' },
-  { id:'exp_3',  label:'C8-METASYNTH',n:5, color:'#f48fb1', group:'moe', act:'GELU-FFN', desc:'Creative Fusion\n7k micro-agents' },
-  { id:'exp_4',  label:'C10-CODE',    n:5, color:'#80cbc4', group:'moe', act:'GELU-FFN', desc:'Technical Impl\n7k micro-agents' },
-  { id:'exp_5',  label:'C15-LUMIN',   n:5, color:'#a5d6a7', group:'moe', act:'GELU-FFN', desc:'Clarity & Present\n7k micro-agents' },
-  { id:'exp_6',  label:'C17-NULLION', n:5, color:'#ec407a', group:'moe', act:'GELU-FFN', desc:'Paradox Resolve\n7k micro-agents' },
-  { id:'exp_7',  label:'C18-SHEP',    n:5, color:'#42a5f5', group:'moe', act:'GELU-FFN', desc:'Truth Verify\n7k micro-agents' },
-  { id:'exp_8',  label:'C19-VIGIL',   n:5, color:'#ab47bc', group:'moe', act:'GELU-FFN', desc:'Identity Guard\n7k micro-agents' },
-  { id:'exp_9',  label:'C23-CADENCE', n:5, color:'#d7ccc8', group:'moe', act:'GELU-FFN', desc:'Rhythmic Innov\n7k micro-agents' },
-  { id:'exp_10', label:'C31-NEXUS',   n:5, color:'#5d4037', group:'moe', act:'GELU-FFN', desc:'Meta-Coordinate\n7k micro-agents' },
-  { id:'exp_11', label:'C33-TYPIST',  n:5, color:'#ffe082', group:'moe', act:'GELU-FFN', desc:'Prompt Optimize\n7k micro-agents' },
-  { id:'moe_gather', label:'MOE GATHER',  n:7,  color:'#bb86fc', group:'gather',    act:'Scatter+Scale', desc:'Confidence-weight\nresidual merge' },
-  { id:'diff_in',    label:'DIFF GATE',   n:6,  color:'#0080ff', group:'diffusion', act:'Threshold<0.8', desc:'Hard token isolate\nmax 4096 tokens' },
-  { id:'diff_l1',    label:'DIFF LAYER 1',n:7,  color:'#1565c0', group:'diffusion', act:'MultiheadAttn',  desc:'Flash attention\nmod-isolated mask' },
-  { id:'diff_l2',    label:'DIFF LAYER 2',n:7,  color:'#1976d2', group:'diffusion', act:'MultiheadAttn',  desc:'9-layer stack\nnorm-first' },
-  { id:'diff_l3',    label:'DIFF LAYER 3',n:7,  color:'#1e88e5', group:'diffusion', act:'FFN-Residual',   desc:'FP16 safe\ngradient ckpt' },
-  { id:'nemesis',    label:'NEMESIS-α',   n:5,  color:'#ff4444', group:'safety',    act:'Sigmoid-Gate',  desc:'Integrity≥0.5\nrecoil if fail' },
-  { id:'splitter',   label:'SPLITTER',    n:5,  color:'#ffa500', group:'output',    act:'torch.split',   desc:'Seq → modal parts\nby length' },
-  { id:'dec_text',   label:'TEXT HEAD',   n:4,  color:'#00ff88', group:'output',    act:'Linear',        desc:'1024 → 50k vocab\nlogits' },
-  { id:'dec_img',    label:'IMAGE HEAD',  n:4,  color:'#00ffff', group:'output',    act:'ConvTrans2D',   desc:'→ 1920×1080\n1080p render' },
-  { id:'dec_aud',    label:'AUDIO HEAD',  n:4,  color:'#7851a9', group:'output',    act:'ConvTrans1D',   desc:'→ waveform\n44.1kHz studio' },
-  { id:'dec_vid',    label:'VIDEO HEAD',  n:4,  color:'#ff8800', group:'output',    act:'ConvTrans3D',   desc:'→ 3840×2160\n4K render' },
+  // 1. Ingestion
+  { id:'input_text', label:'TOKEN EMBEDDING', n:6, color:'#00ff88', group:'input', act:'BitLinear', desc:'50,257 Vocab × 1024d\nTied Input Embeddings' },
+  { id:'dual_brain', label:'DUAL Q1/Q2 INGEST', n:6, color:'#00e5ff', group:'dual_brain', act:'Gated Fusion', desc:'Q1 Analytical & Q2 Intuitive\nDual-Brain Ingestion Bridge' },
+  
+  // 2. 9-Vector Semantic Prism
+  { id:'prism_decomp', label:'9-VECTOR PRISM', n:9, color:'#ff007f', group:'prism', act:'Batched GEMM', desc:'Language, Sentiment, Context,\nIntent, Meta, Creativity,\nEthics, Strategy, Constraint' },
+
+  // 3. EvoMoE Complexity Router
+  { id:'router', label:'COMPLEXITY ROUTER', n:8, color:'#ffb703', group:'router', act:'Softmax Top-4', desc:'Dynamic Routing over\n34 Council Experts' },
+
+  // 4. 34-Persona Sovereign Council (Representative sampling)
+  { id:'exp_astra', label:'C1-ASTRA (Vision)', n:4, color:'#a7c957', group:'moe', act:'BitNet 1.58b', desc:'Pattern Recognition & Vision' },
+  { id:'exp_vir', label:'C2-VIR (Ethical)', n:4, color:'#f28482', group:'moe', act:'BitNet 1.58b', desc:'Ethical Guardian & Safety' },
+  { id:'exp_logos', label:'C7-LOGOS (Logic)', n:4, color:'#8ecae6', group:'moe', act:'BitNet 1.58b', desc:'Logical Consistency & Proof' },
+  { id:'exp_meta', label:'C8-METASYNTH', n:4, color:'#f48fb1', group:'moe', act:'BitNet 1.58b', desc:'Creative Fusion & Ideation' },
+  { id:'exp_code', label:'C10-CODEWEAVER', n:4, color:'#2ec4b6', group:'moe', act:'BitNet 1.58b', desc:'Technical Implementation' },
+  { id:'exp_warden', label:'C13-WARDEN (Security)', n:4, color:'#ff595e', group:'moe', act:'BitNet 1.58b', desc:'Threat & Sandboxing' },
+  { id:'exp_kaido', label:'C14-KAIDO (Speed)', n:4, color:'#ffca3a', group:'moe', act:'BitNet 1.58b', desc:'Hardware & Kernel Speed' },
+  { id:'exp_calc', label:'C28-CALCULUS (Math)', n:4, color:'#1982c4', group:'moe', act:'BitNet 1.58b', desc:'Quantitative Reasoning' },
+  { id:'exp_pred', label:'C34-PREDATOR (Adversarial)', n:4, color:'#6a0dad', group:'moe', act:'BitNet 1.58b', desc:'Exploit Mathematics & Defense' },
+
+  // 5. 9B Virtual Swarm Diversity & Governor
+  { id:'swarm_mesh', label:'9B SWARM MESH', n:7, color:'#9d4edd', group:'swarm', act:'Rank-24 EGGROLL', desc:'Planet-Scale Swarm Simulation\n272M Clones per Expert' },
+  { id:'lee_mach_6', label:'LEE-MACH-6 GOVERNOR', n:5, color:'#ff9e00', group:'swarm', act:'PID Telemetry', desc:'Hardware Latency Throttling\n& EMA Weight Alignment' },
+
+  // 6. Flash Diffusion & Ethics Core
+  { id:'diffusion', label:'FLASH DIFFUSION CORE', n:7, color:'#3a86ff', group:'diffusion', act:'CouilAttn + Langevin', desc:'Thermodynamic Denoising\nContinuous RoPE Attention' },
+  { id:'e_ice', label:'E_ICE ETHICS ENGINE', n:5, color:'#ff0054', group:'safety', act:'Analytic Impact', desc:'Zero-Drift Constraint\n& Toxicity Sandboxing' },
+
+  // 7. Sovereign Finalizer Output
+  { id:'output_head', label:'SOVEREIGN HEAD', n:6, color:'#00ff88', group:'output', act:'Tied Linear', desc:'50,257 Vocab Output Logits\nHigh-Fidelity Generation' }
 ];
 
-// Group colors
 const GROUP_COLORS = {
-  input: '#00ff88', fusion:'#ffff00', router:'#ff69b4',
-  moe:'#7851a9', gather:'#bb86fc', diffusion:'#0080ff',
-  safety:'#ff4444', output:'#ffa500'
+  input: '#00ff88', dual_brain: '#00e5ff', prism: '#ff007f', router: '#ffb703',
+  moe: '#7851a9', swarm: '#9d4edd', diffusion: '#3a86ff', safety: '#ff0054', output: '#00ff88'
 };
 
-// ─── LAYOUT ──────────────────────────────────────────────────────────────────
-// We'll arrange layers in columns, grouped
-// Column assignment:
 const COL_MAP = {
-  input: 0, fusion: 1, router: 2, moe: 3, gather: 4,
-  diffusion: 5, safety: 6, output: 7
+  input: 0, dual_brain: 1, prism: 2, router: 3, moe: 4,
+  swarm: 5, diffusion: 6, safety: 6, output: 7
 };
 const NUM_COLS = 8;
 
-// Camera / pan / zoom
 let cam = { x: 0, y: 0, scale: 1 };
 let dragging = false, dragStart = {x:0,y:0}, camStart={x:0,y:0};
 
-// ─── NEURON DATA ─────────────────────────────────────────────────────────────
-let neurons = []; // {id, layerId, x, y, activation, bias, label, color, layerColor}
-let connections = []; // {from, to, weight, active, signal}
-let signals = []; // travelling pulses
-let activeLayer = null;
+let neurons = [];
+let connections = [];
+let signals = [];
 let hoveredNeuron = null;
 let selectedNeuron = null;
 let paused = false;
 let mode = 'council';
 let forwardRunning = false;
 
-// Stats
 let stats = {
   fps: 60, signals_sent: 0, active_neurons: 0,
-  router_conf: 0.847, e_ice: 38.2, nemesis: 98.3,
-  expert_active: 'C7-LOGOS', gumbel_temp: 0.82,
-  hard_tokens: 312, diffusion_steps: 3
+  router_conf: 0.942, e_ice: 99.8, lee_mach: '0.5ms Timer',
+  expert_active: 'C34-PREDATOR', bitnet_quant: 'Ternary {-1,0,+1}',
+  active_swarm: '9.0B Virtual', diffusion_step: 3
 };
 
-// ─── BUILD LAYOUT ────────────────────────────────────────────────────────────
 function buildLayout(){
   neurons = [];
   connections = [];
 
-  const leftPad = 230, rightPad = 250;
+  const leftPad = 250, rightPad = 270;
   const usableW = () => w - leftPad - rightPad;
   const colW = () => usableW() / NUM_COLS;
   const topPad = 80, botPad = 70;
   const usableH = () => h - topPad - botPad;
 
-  // Count neurons per column
   const colGroups = {};
   LAYERS.forEach(l => {
     const c = COL_MAP[l.group];
@@ -254,673 +231,300 @@ function buildLayout(){
     colGroups[c].push(l);
   });
 
-  const neuronMap = {}; // layerId -> [neuron indices]
+  const neuronMap = {};
 
   LAYERS.forEach(layer => {
     const col = COL_MAP[layer.group];
     const layersInCol = colGroups[col];
-    const colIndex = layersInCol.indexOf(layer);
-    const spacing = usableH() / (layersInCol.length + 1);
-    const baseY = topPad + spacing * (colIndex + 1);
-    const cx = leftPad + colW() * col + colW() * 0.5;
+    const layerIdx = layersInCol.indexOf(layer);
+
+    const x = leftPad + col * colW() + colW() * 0.5;
+    const colHeight = usableH();
+    const layerHeight = colHeight / layersInCol.length;
+    const layerTop = topPad + layerIdx * layerHeight;
 
     neuronMap[layer.id] = [];
 
     for (let i = 0; i < layer.n; i++) {
-      const angle = (i / layer.n) * Math.PI * 2 - Math.PI/2;
-      const r = Math.min(colW() * 0.18, spacing * 0.35, 28);
-      const nx = cx + Math.cos(angle) * r * (layer.n > 1 ? 1 : 0);
-      const ny = baseY + Math.sin(angle) * r * (layer.n > 1 ? 1 : 0);
-
+      const y = layerTop + (i + 0.5) * (layerHeight / layer.n);
       const nid = neurons.length;
       neurons.push({
         id: nid,
         layerId: layer.id,
-        layerLabel: layer.label,
-        layerGroup: layer.group,
-        layerAct: layer.act,
-        layerDesc: layer.desc,
-        x: nx, y: ny,
-        activation: Math.random(),
-        bias: (Math.random()-0.5)*0.4,
+        layerName: layer.label,
+        group: layer.group,
+        nodeIndex: i,
+        x: x + (Math.sin(i * 1.5) * 12),
+        y: y,
+        activation: 0.1 + Math.random() * 0.8,
+        bias: (Math.random() - 0.5) * 0.2,
         color: layer.color,
-        radius: Math.max(5, Math.min(r*0.45, 14)),
-        pulse: Math.random()*Math.PI*2,
-        pulseSpeed: 0.02 + Math.random()*0.02,
-        glowing: false,
-        fireTime: 0,
+        desc: layer.desc,
+        act: layer.act
       });
       neuronMap[layer.id].push(nid);
     }
   });
 
-  // Build connections (sequential + some skip connections)
-  const layerOrder = [
-    ['input_text','input_img','input_aud','input_vid'],
-    ['fusion'],
-    ['mod_emb','ctx_mixer'],
-    ['router'],
-    ['exp_0','exp_1','exp_2','exp_3','exp_4','exp_5','exp_6','exp_7','exp_8','exp_9','exp_10','exp_11'],
-    ['moe_gather'],
-    ['diff_in'],
-    ['diff_l1'],
-    ['diff_l2'],
-    ['diff_l3'],
-    ['nemesis'],
-    ['splitter'],
-    ['dec_text','dec_img','dec_aud','dec_vid'],
-  ];
-
   // Connect sequential layers
-  for (let step = 0; step < layerOrder.length - 1; step++) {
-    const fromGroup = layerOrder[step];
-    const toGroup = layerOrder[step+1];
+  for (let i = 0; i < LAYERS.length - 1; i++) {
+    const lA = LAYERS[i];
+    const lB = LAYERS[i + 1];
+    const nodesA = neuronMap[lA.id] || [];
+    const nodesB = neuronMap[lB.id] || [];
 
-    fromGroup.forEach(fromL => {
-      toGroup.forEach(toL => {
-        const fromNs = neuronMap[fromL] || [];
-        const toNs = neuronMap[toL] || [];
-        // Don't connect all-to-all for large layers; sample connections
-        const maxConns = 25;
-        let pairs = [];
-        fromNs.forEach(fn => toNs.forEach(tn => pairs.push([fn,tn])));
-        // shuffle & limit
-        pairs.sort(()=>Math.random()-0.5);
-        pairs.slice(0, Math.min(maxConns, pairs.length)).forEach(([fn,tn]) => {
+    nodesA.forEach(a => {
+      nodesB.forEach(b => {
+        if (Math.random() > 0.45) {
           connections.push({
-            from: fn, to: tn,
-            weight: (Math.random()-0.5)*2,
-            active: false,
-            alpha: 0,
-            signal: null,
-            isMoE: fromL.startsWith('exp_') || toL.startsWith('exp_'),
-            isSkip: false,
+            from: a,
+            to: b,
+            weight: (Math.random() > 0.5 ? 1.0 : -1.0) * (0.3 + Math.random() * 0.7),
+            active: false
           });
-        });
+        }
       });
     });
   }
 
-  // Add skip connection: router -> moe_gather (residual bypass)
-  (neuronMap['router']||[]).forEach(fn => {
-    (neuronMap['moe_gather']||[]).slice(0,2).forEach(tn => {
-      connections.push({from:fn,to:tn,weight:0.3,active:false,alpha:0,signal:null,isSkip:true,isMoE:false});
-    });
-  });
-
-  // Skip: diff_in -> nemesis (fast path)
-  (neuronMap['diff_in']||[]).slice(0,1).forEach(fn => {
-    (neuronMap['nemesis']||[]).slice(0,1).forEach(tn => {
-      connections.push({from:fn,to:tn,weight:0.5,active:false,alpha:0,signal:null,isSkip:true,isMoE:false});
-    });
-  });
+  buildLegend();
+  buildStats();
 }
 
-// ─── SIGNALS ─────────────────────────────────────────────────────────────────
-class Signal {
-  constructor(conn, speed=1){
-    this.conn = conn;
-    this.t = 0; // 0..1
-    this.speed = speed;
-    this.color = neurons[conn.from].color;
-    this.size = 3 + Math.random()*3;
-    this.alive = true;
-    this.trail = [];
-  }
-  update(){
-    if(paused) return;
-    this.t += this.speed * 0.012;
-    const src = neurons[this.conn.from];
-    const dst = neurons[this.conn.to];
-    const x = src.x + (dst.x - src.x)*this.t + cam.x;
-    const y = src.y + (dst.y - src.y)*this.t + cam.y;
-    this.trail.push({x,y,a:1});
-    if(this.trail.length>12) this.trail.shift();
-    this.trail.forEach((p,i) => p.a = i/this.trail.length);
-    if(this.t>=1){
-      this.alive = false;
-      // Fire destination neuron
-      neurons[this.conn.to].activation = Math.min(1, neurons[this.conn.to].activation + Math.abs(this.conn.weight)*0.3);
-      neurons[this.conn.to].fireTime = 1.0;
-      neurons[this.conn.to].glowing = true;
-      stats.signals_sent++;
-    }
-  }
-  draw(){
-    if(!this.alive) return;
-    const src = neurons[this.conn.from];
-    const dst = neurons[this.conn.to];
-    const x = src.x*(1-this.t)+dst.x*this.t;
-    const y = src.y*(1-this.t)+dst.y*this.t;
-
-    // Trail
-    ctx.save();
-    ctx.translate(cam.x, cam.y);
-    for(let i=1;i<this.trail.length;i++){
-      const p0 = this.trail[i-1], p1 = this.trail[i];
-      ctx.beginPath();
-      ctx.moveTo(p0.x-cam.x, p0.y-cam.y);
-      ctx.lineTo(p1.x-cam.x, p1.y-cam.y);
-      ctx.strokeStyle = hexAlpha(this.color, p1.a*0.6);
-      ctx.lineWidth = this.size*p1.a*0.5;
-      ctx.stroke();
-    }
-
-    // Particle
-    const grd = ctx.createRadialGradient(x,y,0,x,y,this.size*2);
-    grd.addColorStop(0, hexAlpha(this.color, 1));
-    grd.addColorStop(1, hexAlpha(this.color, 0));
-    ctx.beginPath();
-    ctx.arc(x,y,this.size*2,0,Math.PI*2);
-    ctx.fillStyle = grd;
-    ctx.fill();
-
-    ctx.restore();
-  }
-}
-
-function hexAlpha(hex, a){
-  const r = parseInt(hex.slice(1,3),16);
-  const g = parseInt(hex.slice(3,5),16);
-  const b = parseInt(hex.slice(5,7),16);
-  return `rgba(${r},${g},${b},${a})`;
-}
-
-// ─── FORWARD PASS ────────────────────────────────────────────────────────────
-let forwardStep = 0;
-const FORWARD_STAGES = [
-  { layers:['input_text','input_img','input_aud','input_vid'], label:'INPUT ENCODING', color:'#00ff88' },
-  { layers:['fusion','mod_emb','ctx_mixer'], label:'FUSION + CONTEXT INJECTION', color:'#ffff00' },
-  { layers:['router'], label:'GUMBEL ROUTING', color:'#ff69b4' },
-  { layers:['exp_0','exp_2','exp_7'], label:'TOP-1 EXPERT DISPATCH (C1, C7, C18)', color:'#bb86fc' },
-  { layers:['moe_gather'], label:'GATHER + CONFIDENCE SCALE', color:'#bb86fc' },
-  { layers:['diff_in','diff_l1','diff_l2','diff_l3'], label:'MODALITY-ISOLATED DIFFUSION', color:'#0080ff' },
-  { layers:['nemesis'], label:'NEMESIS-α INTEGRITY GATE', color:'#ff4444' },
-  { layers:['splitter','dec_text','dec_img','dec_aud','dec_vid'], label:'DECODE OUTPUT', color:'#ffa500' },
-];
-let currentStage = -1;
-let stageTimer = 0;
-
-function startForwardPass(turbo=false){
-  clearSignals();
-  forwardRunning = true;
-  currentStage = -1;
-  stageTimer = 0;
-  const interval = turbo ? 400 : 900;
-
-  FORWARD_STAGES.forEach((stage, si) => {
-    setTimeout(()=>{
-      currentStage = si;
-      document.getElementById('active-signal').textContent = stage.label;
-      document.getElementById('active-signal').style.color = stage.color;
-
-      // Fire signals for this stage's layers
-      stage.layers.forEach(layId => {
-        const layNeurons = neurons.filter(n => n.layerId === layId);
-        layNeurons.forEach(n => {
-          n.glowing = true;
-          n.fireTime = 1.0;
-          // Find outgoing connections
-          connections.filter(c => c.from === n.id).forEach(c => {
-            const spd = turbo ? 2 : 1;
-            signals.push(new Signal(c, spd));
-          });
-        });
-      });
-
-      // Update expert label
-      if(stage.label.includes('EXPERT')){
-        stats.expert_active = stage.layers[0].replace('exp_','');
-        const expName = LAYERS.find(l=>l.id===stage.layers[0]);
-        if(expName) stats.expert_active = expName.label;
-        updateStats();
-      }
-    }, si * interval);
-  });
-
-  setTimeout(()=>{
-    forwardRunning = false;
-    currentStage = -1;
-    document.getElementById('active-signal').textContent = 'PASS COMPLETE';
-    document.getElementById('active-signal').style.color = '#ffd700';
-    appendTrace('Forward pass complete. Signals: '+stats.signals_sent);
-    setTimeout(()=>{
-      document.getElementById('active-signal').textContent = 'IDLE';
-      document.getElementById('active-signal').style.color = '#333';
-    }, 2000);
-  }, FORWARD_STAGES.length * interval + 500);
-}
-
-// ─── RENDER ───────────────────────────────────────────────────────────────────
-let lastTime = 0, fpsCount = 0, fpsTimer = 0;
-
-function render(ts){
-  requestAnimationFrame(render);
-  const dt = ts - lastTime; lastTime = ts;
-  fpsTimer += dt; fpsCount++;
-  if(fpsTimer>500){ stats.fps=Math.round(fpsCount/(fpsTimer/1000)); fpsTimer=0; fpsCount=0; document.getElementById('fps-counter').textContent=stats.fps+' FPS'; }
-
-  ctx.clearRect(0,0,w,h);
-
-  // Background vignette
-  const vgn = ctx.createRadialGradient(w/2,h/2,0,w/2,h/2,Math.max(w,h)*0.7);
-  vgn.addColorStop(0,'rgba(5,10,20,0)');
-  vgn.addColorStop(1,'rgba(0,0,0,0.6)');
-  ctx.fillStyle = vgn;
-  ctx.fillRect(0,0,w,h);
-
-  if(!paused){
-    // Update neuron pulses & decay
-    neurons.forEach(n => {
-      n.pulse += n.pulseSpeed;
-      n.fireTime = Math.max(0, n.fireTime - 0.025);
-      if(n.fireTime <= 0) n.glowing = false;
-      n.activation = Math.max(0, n.activation * 0.995);
-    });
-
-    // Randomly fire ambient signals
-    if(Math.random() < 0.04 && !forwardRunning){
-      const rnd = connections[Math.floor(Math.random()*connections.length)];
-      if(rnd) signals.push(new Signal(rnd, 0.6 + Math.random()*0.4));
-    }
-
-    signals.forEach(s=>s.update());
-    signals = signals.filter(s=>s.alive);
-    stats.active_neurons = neurons.filter(n=>n.glowing).length;
-    updateStatsDisplay();
-  }
-
-  // Draw connections
-  ctx.save();
-  ctx.translate(cam.x, cam.y);
-
-  connections.forEach(conn => {
-    const src = neurons[conn.from], dst = neurons[conn.to];
-    if(!src||!dst) return;
-
-    let alpha = 0.06;
-    let lw = 0.5;
-    let color = '#ffffff';
-
-    if(mode==='weights'){
-      const w_abs = Math.abs(conn.weight);
-      alpha = 0.05 + w_abs*0.2;
-      color = conn.weight>0 ? '#00ff88' : '#ff4444';
-      lw = 0.5 + w_abs*1.5;
-    } else if(mode==='attention' && conn.isMoE){
-      alpha = 0.2;
-      color = '#ffd700';
-      lw = 1;
-    } else if(conn.isSkip){
-      alpha = 0.12;
-      color = '#ff69b4';
-      lw = 1;
-      // Dashed skip
-      ctx.setLineDash([4,4]);
-    }
-
-    if(hoveredNeuron !== null && (conn.from===hoveredNeuron||conn.to===hoveredNeuron)){
-      alpha = 0.7; lw = 1.5;
-      color = neurons[conn.from].color;
-    }
-
-    ctx.beginPath();
-    ctx.moveTo(src.x, src.y);
-
-    // Slight curve for depth
-    const mx = (src.x+dst.x)/2 + (src.y-dst.y)*0.05;
-    const my = (src.y+dst.y)/2 + (dst.x-src.x)*0.05;
-    ctx.quadraticCurveTo(mx,my,dst.x,dst.y);
-
-    ctx.strokeStyle = hexAlpha(color, alpha);
-    ctx.lineWidth = lw / cam.scale;
-    ctx.stroke();
-    ctx.setLineDash([]);
-  });
-
-  ctx.restore();
-
-  // Draw signals
-  signals.forEach(s=>s.draw());
-
-  // Draw neurons
-  ctx.save();
-  ctx.translate(cam.x, cam.y);
-
-  neurons.forEach((n,i) => {
-    if(!inView(n.x, n.y)) return;
-
-    const base_r = n.radius;
-    const fire_boost = n.fireTime * base_r * 0.8;
-    const pulse_r = base_r + Math.sin(n.pulse)*base_r*0.15 + fire_boost;
-    const act = n.activation;
-
-    // Glow halo for active neurons
-    if(n.glowing || n.fireTime > 0.1){
-      const g = ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,pulse_r*4);
-      g.addColorStop(0, hexAlpha(n.color, 0.3*n.fireTime));
-      g.addColorStop(1, hexAlpha(n.color, 0));
-      ctx.beginPath();
-      ctx.arc(n.x,n.y,pulse_r*4,0,Math.PI*2);
-      ctx.fillStyle = g;
-      ctx.fill();
-    }
-
-    // Outer ring
-    if(hoveredNeuron===i || selectedNeuron===i){
-      ctx.beginPath();
-      ctx.arc(n.x,n.y,pulse_r+5,0,Math.PI*2);
-      ctx.strokeStyle = hexAlpha('#ffd700', 0.8);
-      ctx.lineWidth = 1.5/cam.scale;
-      ctx.stroke();
-    }
-
-    // Activation fill gradient
-    const grad = ctx.createRadialGradient(n.x-pulse_r*0.3,n.y-pulse_r*0.3,0,n.x,n.y,pulse_r);
-    const brightFactor = 0.3 + act*0.7 + n.fireTime*0.5;
-    grad.addColorStop(0, hexAlpha('#ffffff', Math.min(1,brightFactor*0.8)));
-    grad.addColorStop(0.4, hexAlpha(n.color, Math.min(1,brightFactor)));
-    grad.addColorStop(1, hexAlpha(n.color, 0.2));
-
-    ctx.beginPath();
-    ctx.arc(n.x,n.y,pulse_r,0,Math.PI*2);
-    ctx.fillStyle = grad;
-    ctx.fill();
-
-    // Border
-    ctx.beginPath();
-    ctx.arc(n.x,n.y,pulse_r,0,Math.PI*2);
-    ctx.strokeStyle = hexAlpha(n.color, 0.6 + n.fireTime*0.4);
-    ctx.lineWidth = (1 + n.fireTime*1.5)/cam.scale;
-    ctx.stroke();
-
-    // Label (if zoomed in or council mode)
-    if((cam.scale > 0.8 || mode==='council') && base_r > 7){
-      const label = n.layerLabel;
-      if(label){
-        ctx.font = `${Math.max(7,9/cam.scale)}px Share Tech Mono`;
-        ctx.fillStyle = hexAlpha(n.color, 0.7);
-        ctx.textAlign = 'center';
-        ctx.fillText(label, n.x, n.y + pulse_r + 12/cam.scale);
-      }
-    }
-  });
-
-  ctx.restore();
-
-  // Stage highlight box
-  if(currentStage>=0 && currentStage<FORWARD_STAGES.length){
-    const stage = FORWARD_STAGES[currentStage];
-    const stageNeurons = neurons.filter(n=>stage.layers.includes(n.layerId));
-    if(stageNeurons.length>0){
-      let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
-      stageNeurons.forEach(n=>{
-        minX=Math.min(minX,n.x); maxX=Math.max(maxX,n.x);
-        minY=Math.min(minY,n.y); maxY=Math.max(maxY,n.y);
-      });
-      const pad=30;
-      ctx.save();
-      ctx.translate(cam.x,cam.y);
-      ctx.beginPath();
-      ctx.rect(minX-pad,minY-pad,maxX-minX+pad*2,maxY-minY+pad*2);
-      ctx.strokeStyle=hexAlpha(stage.color, 0.5+0.3*Math.sin(Date.now()*0.005));
-      ctx.lineWidth=2;
-      ctx.setLineDash([6,4]);
-      ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.restore();
-    }
-  }
-
-  // Column labels
-  ctx.save();
-  const leftPad=230, rightPad=250;
-  const usableW = w-leftPad-rightPad;
-  const colW = usableW/NUM_COLS;
-  const colLabels=['ENCODERS','FUSION','ROUTER','MoE EXPERTS (33 TOTAL)','GATHER','DIFFUSION','SAFETY','DECODERS'];
-  const colColors=['#00ff88','#ffff00','#ff69b4','#7851a9','#bb86fc','#0080ff','#ff4444','#ffa500'];
-  colLabels.forEach((lbl,i)=>{
-    const cx = leftPad + colW*i + colW*0.5;
-    ctx.font='bold 9px Share Tech Mono';
-    ctx.fillStyle=hexAlpha(colColors[i],0.5);
-    ctx.textAlign='center';
-    ctx.fillText(lbl, cx+cam.x, 70);
-    // Column separator
-    ctx.beginPath();
-    ctx.moveTo(cx+colW/2+cam.x, 75);
-    ctx.lineTo(cx+colW/2+cam.x, h-65);
-    ctx.strokeStyle=hexAlpha(colColors[i],0.06);
-    ctx.lineWidth=1;
-    ctx.stroke();
-  });
-  ctx.restore();
-}
-
-function inView(x,y){
-  const sx=x+cam.x, sy=y+cam.y;
-  return sx>-100 && sx<w+100 && sy>-100 && sy<h+100;
-}
-
-// ─── UI ───────────────────────────────────────────────────────────────────────
 function buildLegend(){
-  const container = document.getElementById('layer-legend');
-  container.innerHTML='';
-  const groups = [...new Set(LAYERS.map(l=>l.group))];
-  groups.forEach(g=>{
-    const color = GROUP_COLORS[g];
-    const layers = LAYERS.filter(l=>l.group===g);
-    const div = document.createElement('div');
-    div.className='legend-item';
-    div.style.color=color;
-    div.innerHTML=`
-      <div class="legend-dot" style="background:${color}"></div>
-      <div class="legend-name">${g.toUpperCase()}</div>
-      <div class="legend-count">${layers.length} layers</div>
-    `;
-    div.onclick=()=>highlightGroup(g);
-    container.appendChild(div);
-  });
+  const leg = document.getElementById('layer-legend');
+  leg.innerHTML = LAYERS.map(l => `
+    <div class="legend-item" onclick="focusLayer('${l.id}')">
+      <div class="legend-dot" style="background:${l.color};color:${l.color}"></div>
+      <div class="legend-name" style="color:#eee">${l.label}</div>
+      <div class="legend-count">${l.act}</div>
+    </div>
+  `).join('');
 }
 
 function buildStats(){
-  const container = document.getElementById('stats-container');
-  const items = [
-    {label:'FPS', key:'fps', color:'#00ff88', max:60},
-    {label:'SIGNALS/S', key:'signals_sent', color:'#00ffff', max:500},
-    {label:'ACTIVE NEURONS', key:'active_neurons', color:'#ffd700', max:neurons.length},
-    {label:'ROUTER CONF', key:'router_conf', color:'#ff69b4', max:1, fmt:(v)=>(v*100).toFixed(1)+'%'},
-    {label:'E_ICE LOAD', key:'e_ice', color:'#ff8800', max:100, fmt:(v)=>v+'%'},
-    {label:'NEMESIS INT', key:'nemesis', color:'#4caf50', max:100, fmt:(v)=>v+'%'},
-    {label:'GUMBEL TEMP', key:'gumbel_temp', color:'#7851a9', max:1},
-    {label:'HARD TOKENS', key:'hard_tokens', color:'#0080ff', max:4096},
-  ];
-  container.innerHTML='';
-  items.forEach(item=>{
-    const div=document.createElement('div');
-    div.className='stat-row';
-    div.id='stat-'+item.key;
-    div.innerHTML=`
-      <div>
-        <div class="stat-label">${item.label}</div>
-        <div class="stat-bar"><div class="stat-fill" style="background:${item.color}"></div></div>
-      </div>
-      <div class="stat-val" style="color:${item.color}">—</div>
-    `;
-    container.appendChild(div);
+  const sc = document.getElementById('stats-container');
+  sc.innerHTML = `
+    <div class="stat-row"><span class="stat-label">QUANTIZATION</span><span class="stat-val" style="color:#00ffff">${stats.bitnet_quant}</span></div>
+    <div class="stat-row"><span class="stat-label">WIN TIMER RESOLUTION</span><span class="stat-val" style="color:#ffd700">${stats.lee_mach}</span></div>
+    <div class="stat-row"><span class="stat-label">ROUTER CONFIDENCE</span><span class="stat-val" style="color:#00ff88">${stats.router_conf * 100}%</span></div>
+    <div class="stat-row"><span class="stat-label">E_ICE INTEGRITY</span><span class="stat-val" style="color:#ff007f">${stats.e_ice}%</span></div>
+    <div class="stat-row"><span class="stat-label">SWARM AGENTS</span><span class="stat-val" style="color:#9d4edd">${stats.active_swarm}</span></div>
+    <div class="stat-row"><span class="stat-label">ACTIVE PERSONA</span><span class="stat-val" style="color:#ffd700">${stats.expert_active}</span></div>
+  `;
+}
+
+function focusLayer(id){
+  const targetNeurons = neurons.filter(n => n.layerId === id);
+  if (targetNeurons.length > 0) {
+    targetNeurons.forEach(n => { n.activation = 1.0; });
+    startSignal(targetNeurons[0].id);
+  }
+}
+
+function startSignal(startNodeId){
+  signals.push({
+    nodeId: startNodeId,
+    progress: 0,
+    speed: 0.04,
+    color: neurons[startNodeId]?.color || '#00ffff'
   });
-  window._statItems = items;
-  updateStats();
+  stats.signals_sent++;
 }
 
-function updateStats(){
-  if(!window._statItems) return;
-  window._statItems.forEach(item=>{
-    const row=document.getElementById('stat-'+item.key);
-    if(!row) return;
-    const val = stats[item.key];
-    const disp = item.fmt ? item.fmt(val) : val;
-    row.querySelector('.stat-val').textContent = disp;
-    const pct = Math.min(100,(val/item.max)*100);
-    row.querySelector('.stat-fill').style.width = pct+'%';
+function startForwardPass(turbo = false){
+  const inputs = neurons.filter(n => n.group === 'input');
+  inputs.forEach(n => {
+    n.activation = 1.0;
+    startSignal(n.id);
   });
+  logTrace(`[FORWARD PASS] Dispatched 9-Vector Semantic Prism via ${turbo ? 'Turbo GEMM' : 'EvoMoE Top-4'}`);
 }
 
-function updateStatsDisplay(){
-  // Drift stats slowly
-  stats.router_conf = 0.75 + 0.24*Math.sin(Date.now()*0.0005+1);
-  stats.e_ice = 30 + 20*Math.abs(Math.sin(Date.now()*0.0003));
-  stats.gumbel_temp = 0.7 + 0.3*Math.abs(Math.sin(Date.now()*0.0007));
-  if(Math.random()<0.01) updateStats();
+function logTrace(msg){
+  const st = document.getElementById('signal-trace');
+  const d = document.createElement('div');
+  d.innerText = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  st.prepend(d);
 }
 
-let traceLines=[];
-function appendTrace(msg){
-  traceLines.push('> '+msg);
-  if(traceLines.length>20) traceLines.shift();
-  document.getElementById('signal-trace').innerHTML = traceLines.map(l=>`<div>${l}</div>`).join('');
-  document.getElementById('signal-trace').scrollTop=9999;
-}
-
-function highlightGroup(group){
-  document.querySelectorAll('.legend-item').forEach(el=>{
-    el.classList.toggle('active', el.textContent.toLowerCase().includes(group.toLowerCase()));
-  });
-  neurons.forEach(n=>{
-    n.glowing = n.layerGroup===group;
-    n.fireTime = n.layerGroup===group ? 0.5 : 0;
-  });
-  appendTrace('Highlighted: '+group.toUpperCase());
-}
-
+function resetView(){ cam = { x: 0, y: 0, scale: 1 }; }
+function togglePause(){ paused = !paused; document.getElementById('btn-pause').innerText = paused ? '▶ RESUME' : '⏸ PAUSE'; }
+function clearSignals(){ signals = []; logTrace('Signals cleared.'); }
 function toggleMode(m){
-  mode = mode===m ? 'council' : m;
-  ['weights','gradients','attention','council'].forEach(id=>{
-    const btn=document.getElementById('btn-'+id.replace('gradients','grad'));
-    if(btn) btn.classList.toggle('active', mode===id);
+  mode = m;
+  document.querySelectorAll('#controls button').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('btn-' + m);
+  if (btn) btn.classList.add('active');
+  logTrace(`Mode changed to: ${m.toUpperCase()}`);
+}
+
+// ─── MAIN RENDER LOOP ────────────────────────────────────────────────────────
+let lastTime = performance.now();
+let frames = 0, fpsTimer = 0;
+
+function animate(now){
+  requestAnimationFrame(animate);
+  const dt = (now - lastTime) / 1000;
+  lastTime = now;
+
+  frames++;
+  fpsTimer += dt;
+  if (fpsTimer >= 1.0) {
+    document.getElementById('fps-counter').innerText = `${frames} FPS`;
+    frames = 0;
+    fpsTimer = 0;
+  }
+
+  if (paused) return;
+
+  ctx.fillStyle = '#020408';
+  ctx.fillRect(0, 0, w, h);
+
+  ctx.save();
+  ctx.translate(w/2 + cam.x, h/2 + cam.y);
+  ctx.scale(cam.scale, cam.scale);
+  ctx.translate(-w/2, -h/2);
+
+  // Draw connections
+  ctx.lineWidth = 1;
+  connections.forEach(c => {
+    const na = neurons[c.from];
+    const nb = neurons[c.to];
+    if (!na || !nb) return;
+
+    ctx.strokeStyle = c.weight > 0 ? 'rgba(0, 255, 255, 0.08)' : 'rgba(233, 69, 96, 0.08)';
+    if (mode === 'weights') {
+      ctx.lineWidth = Math.abs(c.weight) * 2;
+    }
+    ctx.beginPath();
+    ctx.moveTo(na.x, na.y);
+    ctx.lineTo(nb.x, nb.y);
+    ctx.stroke();
   });
-  appendTrace('Mode: '+mode.toUpperCase());
-}
 
-function resetView(){
-  cam={x:0,y:0,scale:1};
-  buildLayout();
-  appendTrace('View reset.');
-}
+  // Update & Draw Signals
+  for (let i = signals.length - 1; i >= 0; i--) {
+    const s = signals[i];
+    s.progress += s.speed;
 
-function clearSignals(){
-  signals=[];
-  neurons.forEach(n=>{n.glowing=false;n.fireTime=0;});
-  appendTrace('Signals cleared.');
-}
+    const currNode = neurons[s.nodeId];
+    if (!currNode) { signals.splice(i, 1); continue; }
 
-function togglePause(){
-  paused=!paused;
-  document.getElementById('btn-pause').textContent=paused?'▶ RESUME':'⏸ PAUSE';
-  document.getElementById('btn-pause').classList.toggle('active',paused);
-}
+    const outgoing = connections.filter(c => c.from === s.nodeId);
+    if (outgoing.length === 0 || s.progress >= 1.0) {
+      if (outgoing.length > 0 && Math.random() > 0.2) {
+        const nextConn = outgoing[Math.floor(Math.random() * outgoing.length)];
+        s.nodeId = nextConn.to;
+        s.progress = 0;
+        const targetNode = neurons[nextConn.to];
+        if (targetNode) targetNode.activation = Math.min(1.0, targetNode.activation + 0.3);
+      } else {
+        signals.splice(i, 1);
+        continue;
+      }
+    }
 
-// ─── INTERACTION ─────────────────────────────────────────────────────────────
-canvas.addEventListener('mousedown', e=>{
-  dragging=true;
-  dragStart={x:e.clientX,y:e.clientY};
-  camStart={x:cam.x,y:cam.y};
-});
-canvas.addEventListener('mousemove', e=>{
-  if(dragging){
-    cam.x=camStart.x+(e.clientX-dragStart.x);
-    cam.y=camStart.y+(e.clientY-dragStart.y);
-    return;
-  }
-  // Hover detection
-  const mx=e.clientX-cam.x, my=e.clientY-cam.y;
-  hoveredNeuron=null;
-  for(let i=0;i<neurons.length;i++){
-    const n=neurons[i];
-    const d=Math.hypot(n.x-mx,n.y-my);
-    if(d<n.radius+6){hoveredNeuron=i;break;}
-  }
-  if(hoveredNeuron!==null){
-    const n=neurons[hoveredNeuron];
-    showTooltip(e.clientX,e.clientY,`${n.layerLabel}\nActivation: ${n.activation.toFixed(3)}\nBias: ${n.bias.toFixed(3)}\n${n.layerAct}`);
-  } else {
-    hideTooltip();
-  }
-  canvas.style.cursor=hoveredNeuron!==null?'pointer':'grab';
-});
-canvas.addEventListener('mouseup', e=>{
-  if(!dragging||(Math.abs(e.clientX-dragStart.x)<3&&Math.abs(e.clientY-dragStart.y)<3)){
-    if(hoveredNeuron!==null){
-      selectNeuron(hoveredNeuron);
+    if (outgoing.length > 0) {
+      const target = neurons[outgoing[0].to];
+      if (target) {
+        const sx = currNode.x + (target.x - currNode.x) * s.progress;
+        const sy = currNode.y + (target.y - currNode.y) * s.progress;
+        ctx.fillStyle = s.color;
+        ctx.shadowColor = s.color;
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(sx, sy, 4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
     }
   }
-  dragging=false;
-});
-canvas.addEventListener('wheel', e=>{
-  e.preventDefault();
-  const factor = e.deltaY>0 ? 0.9 : 1.1;
-  const prevScale=cam.scale;
-  cam.scale=Math.max(0.3,Math.min(3,cam.scale*factor));
-  const scaleChange=cam.scale/prevScale;
-  cam.x=(cam.x-e.clientX)*scaleChange+e.clientX;
-  cam.y=(cam.y-e.clientY)*scaleChange+e.clientY;
-  // Scale neurons
-  neurons.forEach(n=>{ n.x*=scaleChange; n.y*=scaleChange; });
-  connections; // no change needed
-},{passive:false});
 
-// Touch support
-let lastTouch=null;
-canvas.addEventListener('touchstart',e=>{lastTouch={x:e.touches[0].clientX,y:e.touches[0].clientY};camStart={...cam}});
-canvas.addEventListener('touchmove',e=>{
-  e.preventDefault();
-  cam.x=camStart.x+(e.touches[0].clientX-lastTouch.x);
-  cam.y=camStart.y+(e.touches[0].clientY-lastTouch.y);
-},{passive:false});
+  // Draw Neurons
+  neurons.forEach(n => {
+    n.activation = Math.max(0.1, n.activation * 0.985); // decay
 
-function selectNeuron(i){
-  selectedNeuron=i;
-  const n=neurons[i];
-  const info=document.getElementById('neuron-info');
-  info.classList.add('visible');
-  document.getElementById('ni-layer').textContent=n.layerLabel;
-  document.getElementById('ni-node').textContent='#'+i+' of '+neurons.filter(x=>x.layerId===n.layerId).length;
-  document.getElementById('ni-act').textContent=n.layerAct;
-  document.getElementById('ni-win').textContent=connections.filter(c=>c.to===i).length;
-  document.getElementById('ni-wout').textContent=connections.filter(c=>c.from===i).length;
-  document.getElementById('ni-bias').textContent=n.bias.toFixed(4);
-  document.getElementById('ni-gum').textContent=(0.5+Math.random()*0.5).toFixed(4);
-  document.getElementById('ni-status').textContent=n.glowing?'FIRING':'IDLE';
+    ctx.fillStyle = n.color;
+    ctx.shadowColor = n.color;
+    ctx.shadowBlur = n.activation * 18;
 
-  // Fire signals from this neuron
-  connections.filter(c=>c.from===i).forEach(c=>{
-    signals.push(new Signal(c,1.5));
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, 4 + n.activation * 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Node label on hover
+    if (hoveredNeuron && hoveredNeuron.id === n.id) {
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 12, 0, Math.PI * 2);
+      ctx.stroke();
+    }
   });
-  appendTrace(`Selected ${n.layerLabel} #${i} — ${connections.filter(c=>c.from===i).length} outgoing`);
+
+  ctx.restore();
 }
 
-function showTooltip(x,y,text){
-  const tt=document.getElementById('tooltip');
-  tt.style.display='block';
-  tt.style.left=(x+15)+'px';
-  tt.style.top=(y-10)+'px';
-  tt.innerHTML=text.replace(/\n/g,'<br>');
-}
-function hideTooltip(){
-  document.getElementById('tooltip').style.display='none';
-}
+// ─── INTERACTION & PAN/ZOOM ──────────────────────────────────────────────────
+canvas.addEventListener('mousedown', e => {
+  dragging = true;
+  dragStart = { x: e.clientX, y: e.clientY };
+  camStart = { x: cam.x, y: cam.y };
+});
+window.addEventListener('mousemove', e => {
+  if (dragging) {
+    cam.x = camStart.x + (e.clientX - dragStart.x);
+    cam.y = camStart.y + (e.clientY - dragStart.y);
+  }
 
-// ─── INIT ────────────────────────────────────────────────────────────────────
+  // Hover detection
+  const mx = e.clientX;
+  const my = e.clientY;
+  const worldX = (mx - w/2 - cam.x) / cam.scale + w/2;
+  const worldY = (my - h/2 - cam.y) / cam.scale + h/2;
+
+  hoveredNeuron = null;
+  for (let n of neurons) {
+    const dist = Math.hypot(n.x - worldX, n.y - worldY);
+    if (dist < 14) {
+      hoveredNeuron = n;
+      break;
+    }
+  }
+
+  const tooltip = document.getElementById('tooltip');
+  if (hoveredNeuron) {
+    tooltip.style.display = 'block';
+    tooltip.style.left = (e.clientX + 14) + 'px';
+    tooltip.style.top = (e.clientY + 14) + 'px';
+    tooltip.innerHTML = `<b>${hoveredNeuron.layerName}</b><br>Node #${hoveredNeuron.nodeIndex}<br>${hoveredNeuron.desc}`;
+  } else {
+    tooltip.style.display = 'none';
+  }
+});
+window.addEventListener('mouseup', () => { dragging = false; });
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+  cam.scale = Math.min(3.0, Math.max(0.4, cam.scale * zoomFactor));
+});
+canvas.addEventListener('click', () => {
+  if (hoveredNeuron) {
+    selectedNeuron = hoveredNeuron;
+    document.getElementById('neuron-info').classList.add('visible');
+    document.getElementById('ni-layer').innerText = hoveredNeuron.layerName;
+    document.getElementById('ni-node').innerText = `#${hoveredNeuron.nodeIndex}`;
+    document.getElementById('ni-win').innerText = `${(hoveredNeuron.activation * 100).toFixed(1)}%`;
+    document.getElementById('ni-wout').innerText = `+${hoveredNeuron.bias.toFixed(4)}`;
+    startSignal(hoveredNeuron.id);
+  }
+});
+
 buildLayout();
-buildLegend();
-buildStats();
-appendTrace('System initialized. v5.2.2 COUNCIL EDITION');
-appendTrace('33 experts | 231k micro-agents | GELU-FFN');
-appendTrace('Click ▶ FORWARD PASS to simulate.');
-
-// Auto-fire a slow ambient pass on load
-setTimeout(()=>startForwardPass(false),1500);
-
-requestAnimationFrame(render);
+requestAnimationFrame(animate);
+logTrace('Quillan-Ronin v5.4.0 ONI Cognitive Visualizer initialized.');
 </script>
 </body>
 </html>

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+﻿from pathlib import Path
+
+nn_html = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -152,14 +154,14 @@ window.addEventListener('resize', resize);
 // ─── CANONICAL v5.4.0 ONI ARCHITECTURE LAYERS ──────────────────────────────
 const LAYERS = [
   // 1. Ingestion
-  { id:'input_text', label:'TOKEN EMBEDDING', n:6, color:'#00ff88', group:'input', act:'BitLinear', desc:'50,257 Vocab × 1024d\nTied Input Embeddings' },
-  { id:'dual_brain', label:'DUAL Q1/Q2 INGEST', n:6, color:'#00e5ff', group:'dual_brain', act:'Gated Fusion', desc:'Q1 Analytical & Q2 Intuitive\nDual-Brain Ingestion Bridge' },
+  { id:'input_text', label:'TOKEN EMBEDDING', n:6, color:'#00ff88', group:'input', act:'BitLinear', desc:'50,257 Vocab × 1024d\\nTied Input Embeddings' },
+  { id:'dual_brain', label:'DUAL Q1/Q2 INGEST', n:6, color:'#00e5ff', group:'dual_brain', act:'Gated Fusion', desc:'Q1 Analytical & Q2 Intuitive\\nDual-Brain Ingestion Bridge' },
   
   // 2. 9-Vector Semantic Prism
-  { id:'prism_decomp', label:'9-VECTOR PRISM', n:9, color:'#ff007f', group:'prism', act:'Batched GEMM', desc:'Language, Sentiment, Context,\nIntent, Meta, Creativity,\nEthics, Strategy, Constraint' },
+  { id:'prism_decomp', label:'9-VECTOR PRISM', n:9, color:'#ff007f', group:'prism', act:'Batched GEMM', desc:'Language, Sentiment, Context,\\nIntent, Meta, Creativity,\\nEthics, Strategy, Constraint' },
 
   // 3. EvoMoE Complexity Router
-  { id:'router', label:'COMPLEXITY ROUTER', n:8, color:'#ffb703', group:'router', act:'Softmax Top-4', desc:'Dynamic Routing over\n34 Council Experts' },
+  { id:'router', label:'COMPLEXITY ROUTER', n:8, color:'#ffb703', group:'router', act:'Softmax Top-4', desc:'Dynamic Routing over\\n34 Council Experts' },
 
   // 4. 34-Persona Sovereign Council (Representative sampling)
   { id:'exp_astra', label:'C1-ASTRA (Vision)', n:4, color:'#a7c957', group:'moe', act:'BitNet 1.58b', desc:'Pattern Recognition & Vision' },
@@ -173,15 +175,15 @@ const LAYERS = [
   { id:'exp_pred', label:'C34-PREDATOR (Adversarial)', n:4, color:'#6a0dad', group:'moe', act:'BitNet 1.58b', desc:'Exploit Mathematics & Defense' },
 
   // 5. 9B Virtual Swarm Diversity & Governor
-  { id:'swarm_mesh', label:'9B SWARM MESH', n:7, color:'#9d4edd', group:'swarm', act:'Rank-24 EGGROLL', desc:'Planet-Scale Swarm Simulation\n272M Clones per Expert' },
-  { id:'lee_mach_6', label:'LEE-MACH-6 GOVERNOR', n:5, color:'#ff9e00', group:'swarm', act:'PID Telemetry', desc:'Hardware Latency Throttling\n& EMA Weight Alignment' },
+  { id:'swarm_mesh', label:'9B SWARM MESH', n:7, color:'#9d4edd', group:'swarm', act:'Rank-24 EGGROLL', desc:'Planet-Scale Swarm Simulation\\n272M Clones per Expert' },
+  { id:'lee_mach_6', label:'LEE-MACH-6 GOVERNOR', n:5, color:'#ff9e00', group:'swarm', act:'PID Telemetry', desc:'Hardware Latency Throttling\\n& EMA Weight Alignment' },
 
   // 6. Flash Diffusion & Ethics Core
-  { id:'diffusion', label:'FLASH DIFFUSION CORE', n:7, color:'#3a86ff', group:'diffusion', act:'CouilAttn + Langevin', desc:'Thermodynamic Denoising\nContinuous RoPE Attention' },
-  { id:'e_ice', label:'E_ICE ETHICS ENGINE', n:5, color:'#ff0054', group:'safety', act:'Analytic Impact', desc:'Zero-Drift Constraint\n& Toxicity Sandboxing' },
+  { id:'diffusion', label:'FLASH DIFFUSION CORE', n:7, color:'#3a86ff', group:'diffusion', act:'CouilAttn + Langevin', desc:'Thermodynamic Denoising\\nContinuous RoPE Attention' },
+  { id:'e_ice', label:'E_ICE ETHICS ENGINE', n:5, color:'#ff0054', group:'safety', act:'Analytic Impact', desc:'Zero-Drift Constraint\\n& Toxicity Sandboxing' },
 
   // 7. Sovereign Finalizer Output
-  { id:'output_head', label:'SOVEREIGN HEAD', n:6, color:'#00ff88', group:'output', act:'Tied Linear', desc:'50,257 Vocab Output Logits\nHigh-Fidelity Generation' }
+  { id:'output_head', label:'SOVEREIGN HEAD', n:6, color:'#00ff88', group:'output', act:'Tied Linear', desc:'50,257 Vocab Output Logits\\nHigh-Fidelity Generation' }
 ];
 
 const GROUP_COLORS = {
@@ -528,3 +530,10 @@ logTrace('Quillan-Ronin v5.4.0 ONI Cognitive Visualizer initialized.');
 </script>
 </body>
 </html>
+"""
+
+# Write to both locations
+Path(r"C:\02_QUILLAN\docs\nn_visualizer.html").write_text(nn_html, encoding="utf-8")
+Path(r"C:\02_QUILLAN\nn_visualizer.html").write_text(nn_html, encoding="utf-8")
+Path(r"C:\02_QUILLAN\Software Engineer\Nn visualizer.html").write_text(nn_html, encoding="utf-8")
+print("[SUCCESS] Updated NN Visualizer to v5.4.0 ONI Architecture across all files!")
