@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quillan-Ronin | Sovereign NFT Gallery & Minting DApp</title>
+  <meta name="description" content="Official 173-Piece Sovereign NFT Collection created by Quillan-Ronin & CrashOverrideX. 34-Council EvoMoE Intelligence Artworks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07070c;
+      --bg-card: rgba(18, 18, 28, 0.85);
+      --accent-red: #e94560;
+      --accent-cyan: #00f0ff;
+      --accent-gold: #ffb703;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-glow: rgba(233, 69, 96, 0.3);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background */
+    .ambient-glow {
+      position: fixed;
+      top: -20%; left: 50%;
+      transform: translateX(-50%);
+      width: 1000px; height: 600px;
+      background: radial-gradient(circle, rgba(233, 69, 96, 0.15) 0%, rgba(0, 240, 255, 0.05) 50%, transparent 80%);
+      filter: blur(120px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky; top: 0;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 7, 12, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand h1 { font-family: 'Cinzel', serif; font-size: 20px; letter-spacing: 2px; color: #fff; }
+    .brand span { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--accent-cyan); }
+
+    .nav-actions { display: flex; gap: 14px; }
+    .btn {
+      padding: 10px 22px; border-radius: 6px; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.25s ease; border: none; font-family: 'Outfit', sans-serif;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-red), #b82a44);
+      color: #fff; box-shadow: 0 4px 18px rgba(233, 69, 96, 0.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(233, 69, 96, 0.6); }
+    .btn-secondary { background: rgba(255, 255, 255, 0.06); color: var(--text-main); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
+
+    /* Hero */
+    .hero {
+      position: relative; z-index: 1; text-align: center; padding: 70px 20px 40px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block; padding: 6px 16px; border-radius: 50px;
+      background: rgba(233, 69, 96, 0.12); border: 1px solid var(--accent-red);
+      font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--accent-red); margin-bottom: 20px;
+    }
+    .hero h2 {
+      font-family: 'Cinzel', serif; font-size: 48px; font-weight: 900; line-height: 1.15;
+      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 18px;
+    }
+    .hero p { font-size: 16px; color: var(--text-muted); line-height: 1.6; max-width: 680px; margin: 0 auto 30px; }
+
+    /* Stats Bar */
+    .stats-bar {
+      display: flex; justify-content: center; gap: 40px; margin: 30px 0 50px;
+    }
+    .stat-item { text-align: center; }
+    .stat-val { font-size: 28px; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: var(--accent-cyan); }
+    .stat-lbl { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Filters */
+    .controls-container {
+      position: relative; z-index: 1; max-width: 1200px; margin: 0 auto 30px; padding: 0 20px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px;
+    }
+    .filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-pill {
+      padding: 8px 16px; border-radius: 30px; background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.08); font-size: 12px; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    .filter-pill.active, .filter-pill:hover {
+      background: var(--accent-red); color: #fff; border-color: var(--accent-red);
+      box-shadow: 0 0 12px rgba(233, 69, 96, 0.4);
+    }
+    .search-input {
+      padding: 10px 18px; border-radius: 30px; background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; font-size: 13px; outline: none; width: 260px;
+    }
+
+    /* Grid */
+    .nft-grid {
+      position: relative; z-index: 1; max-width: 1200px; margin: 0 auto 80px; padding: 0 20px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px;
+    }
+    .nft-card {
+      background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column;
+      cursor: pointer; position: relative;
+    }
+    .nft-card:hover {
+      transform: translateY(-6px); border-color: var(--accent-red);
+      box-shadow: 0 12px 30px rgba(233, 69, 96, 0.25);
+    }
+    .card-img-wrap {
+      width: 100%; height: 260px; background: #111; overflow: hidden; position: relative;
+    }
+    .card-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;
+    }
+    .nft-card:hover .card-img-wrap img { transform: scale(1.06); }
+    .rarity-tag {
+      position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 4px;
+      font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace; text-transform: uppercase;
+    }
+    .rarity-Mythic { background: var(--accent-gold); color: #000; }
+    .rarity-Legendary { background: var(--accent-cyan); color: #000; }
+    .rarity-Epic { background: #a855f7; color: #fff; }
+    .rarity-Rare { background: #3b82f6; color: #fff; }
+
+    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+    .card-council { font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; }
+    .card-foot {
+      display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 12px; margin-top: auto;
+    }
+    .token-id { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--accent-red); font-weight: 600; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
+      display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;
+    }
+    .modal-card {
+      background: #10101a; border: 1px solid var(--accent-red); border-radius: 16px;
+      max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; display: flex; flex-wrap: wrap;
+      box-shadow: 0 0 50px rgba(233, 69, 96, 0.35); position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.1);
+      border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 18px;
+    }
+    .modal-img-col { flex: 1; min-width: 320px; background: #000; }
+    .modal-img-col img { width: 100%; height: 100%; object-fit: contain; max-height: 480px; }
+    .modal-info-col { flex: 1.2; min-width: 320px; padding: 30px; display: flex; flex-direction: column; gap: 16px; }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 40px 20px; text-align: center;
+      font-size: 13px; color: var(--text-muted); position: relative; z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <header>
+    <div class="brand">
+      <h1>QUILLAN-RONIN</h1>
+      <span>SOVEREIGN NFT DROP</span>
+    </div>
+    <div class="nav-actions">
+      <a href="https://huggingface.co/CrashOverrideX/Quillan-Ronin" target="_blank" class="btn btn-secondary">Architecture Model</a>
+      <button class="btn btn-primary" id="connectWalletBtn">Connect Wallet</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-badge">OFFICIAL 173-PIECE GENESIS COLLECTION</div>
+      <h2>SOVEREIGN SOUL ARTWORKS</h2>
+      <p>Fine-art concepts, cyberpunk avatars, and cognitive architecture blueprints synthesized and authenticated by the Quillan-Ronin 34-Council EvoMoE system.</p>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-val">173</div>
+          <div class="stat-lbl">Total Artworks</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">34</div>
+          <div class="stat-lbl">Council Personas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">0.00 MATIC</div>
+          <div class="stat-lbl">Base Gas Mint</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">ERC-721</div>
+          <div class="stat-lbl">Standard</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="controls-container">
+      <div class="filter-pills" id="rarityFilters">
+        <button class="filter-pill active" data-filter="all">All (173)</button>
+        <button class="filter-pill" data-filter="Mythic">Mythic</button>
+        <button class="filter-pill" data-filter="Legendary">Legendary</button>
+        <button class="filter-pill" data-filter="Epic">Epic</button>
+        <button class="filter-pill" data-filter="Rare">Rare</button>
+      </div>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search artwork or persona...">
+    </section>
+
+    <!-- Grid -->
+    <section class="nft-grid" id="nftGrid">
+      <!-- Injected via JavaScript -->
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="nftModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-img-col">
+        <img id="modalImg" src="" alt="NFT Artwork">
+      </div>
+      <div class="modal-info-col">
+        <h3 id="modalTitle" style="font-size: 22px; font-weight: 800;"></h3>
+        <p id="modalCouncil" style="font-family: 'JetBrains Mono', monospace; color: var(--accent-cyan); font-size: 13px;"></p>
+        <p id="modalDesc" style="color: var(--text-muted); font-size: 14px; line-height: 1.6;"></p>
+        <div id="modalTraits" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;"></div>
+        <button class="btn btn-primary" id="mintDirectBtn" style="width: 100%; justify-content: center; margin-top: auto;">Mint to Connected Wallet</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Quillan-Ronin Sovereign AI Ecosystem &bull; Engineered by CrashOverrideX &bull; Licensed under Apache 2.0</p>
+  </footer>
+
+  <script>
+    // Sample preview list generated from our 173 collection manifest
+    const RARITIES = ['Mythic', 'Legendary', 'Epic', 'Rare'];
+    const COUNCILS = ['C9-CODEWEAVER', 'C0-ASTRA', 'C1-VIR', 'C3-PRAXIS', 'C20-ARCHON', 'C33-PREDATOR', 'C7-METASYNTH'];
+    const TITLES = [
+      "Cyberpunk Ronin Sovereign Portrait", "Architect Ronin Blueprint", "Code Weaver Ronin PFP",
+      "Cosmic Ronin Void Synthesis", "Creative Fusion Ronin Card", "Predatory Mathematics Card",
+      "Truth Calibration Ronin", "Harmonia Sovereign Balance", "Luminaris Lightyear Beacon",
+      "Oni Flagship Samurai Core", "Autonomous Agent Bridge", "High Fidelity World Model"
+    ];
+
+    const grid = document.getElementById('nftGrid');
+    const modal = document.getElementById('nftModal');
+    const modalClose = document.getElementById('modalClose');
+    const searchInput = document.getElementById('searchInput');
+
+    let allItems = [];
+    for (let i = 1; i <= 173; i++) {
+      const rarity = RARITIES[i % RARITIES.length];
+      const council = COUNCILS[i % COUNCILS.length];
+      const title = `Quillan Ronin #${i}: ${TITLES[i % TITLES.length]}`;
+      allItems.push({ id: i, title, rarity, council });
+    }
+
+    function renderGrid(items) {
+      grid.innerHTML = items.map(item => `
+        <div class="nft-card" onclick="openModal(${item.id})">
+          <div class="card-img-wrap">
+            <div class="rarity-tag rarity-${item.rarity}">${item.rarity}</div>
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #181828, #0a0a14); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono'; font-size: 14px; color: var(--accent-red);">
+              [ARTWORK #${item.id}]
+            </div>
+          </div>
+          <div class="card-body">
+            <div>
+              <div class="card-title">${item.title}</div>
+              <div class="card-council">${item.council}</div>
+            </div>
+            <div class="card-foot">
+              <span class="token-id">#${item.id.toString().padStart(3, '0')}</span>
+              <span style="font-size: 11px; color: var(--accent-cyan);">ERC-721</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderGrid(allItems);
+
+    // Filtering
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        const filtered = filter === 'all' ? allItems : allItems.filter(x => x.rarity === filter);
+        renderGrid(filtered);
+      });
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      const filtered = allItems.filter(x => x.title.toLowerCase().includes(q) || x.council.toLowerCase().includes(q));
+      renderGrid(filtered);
+    });
+
+    function openModal(id) {
+      const item = allItems.find(x => x.id === id);
+      document.getElementById('modalTitle').innerText = item.title;
+      document.getElementById('modalCouncil').innerText = `Affiliation: ${item.council}`;
+      document.getElementById('modalDesc').innerText = `Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX. Edition: #${item.id}/173.`;
+      document.getElementById('modalTraits').innerHTML = `
+        <div style="background: rgba(255,255,255,0.04); padding: 10px; border-radius: 6px;">
+          <div style="font-size: 10px; color: var(--text-muted);">RARITY</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--accent-red);">${item.rarity}</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.04); padding: 10px; border-radius: 6px;">
+          <div style="font-size: 10px; color: var(--text-muted);">COUNCIL</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--accent-cyan);">${item.council.split(' ')[0]}</div>
+        </div>
+      `;
+      modal.style.display = 'flex';
+    }
+
+    modalClose.addEventListener('click', () => { modal.style.display = 'none'; });
+    window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+
+    document.getElementById('connectWalletBtn').addEventListener('click', () => {
+      alert('🦊 Web3 Wallet Connector initialized! Connect MetaMask, Phantom, or Coinbase Wallet to mint.');
+    });
+  </script>
+</body>
+</html>
