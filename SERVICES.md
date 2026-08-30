@@ -77,7 +77,10 @@ I'm a solo dev who built a multi-agent system (**Quillan-Ronin**) that lets me d
 | [Hugging Face](https://huggingface.co/CrashOverrideX/Quillan-Ronin) | Model weights + full knowledge base (v8.1) |
 | [DeepWiki](https://deepwiki.com/leeex1/Quillan-Ronin) | Auto-generated docs of the entire system |
 | [Grokipedia](https://grokipedia.com/page/Council-based_multi-agent_system) | Technical writeup on the council architecture |
-| [YouTube — JDXX](https://youtube.com/@JDXX) | Process videos, builds, breakdowns |
+| [YouTube — Human Tracks](https://youtube.com/playlist?list=PLHiy5ksDUOiBmySNqRcPAXaJPsaGwP2aH&si=HQAJQ7I5yX88SCv0) | Human-crafted tracks, vocals & freestyles |
+| [YouTube — AI Music](https://youtube.com/playlist?list=PLHiy5ksDUOiAJ4wk2ZczSEVvLRIoIyHw6&si=tdrh4VaEuuyCT1Ph) | AI-generated tracks & Suno stems |
+| [YouTube — DA Flame Mix](https://youtube.com/playlist?list=PLHiy5ksDUOiBM_Hf3lqbvjlMYDoa5NALx&si=MggLCxWXCWF93ThT) | Cyberphonk & drill mixes |
+| [YouTube — Ronin Vault](https://youtube.com/playlist?list=PLHiy5ksDUOiAfKO7tmKo2TZ9gdt6Ia1rP&si=KDT0T3izR-zsjvJE) | Extended game scores & synthwave |
 | [Genius — JDXX](https://genius.com/artists/Jdxx) | Lyrics |
 | [Genius — Quillan-Ronin](https://genius.com/artists/Quillan-ronin) | Agent-written lyrics |
 | [Suno](https://suno.com/@crashoverride_x) | Generated music |
