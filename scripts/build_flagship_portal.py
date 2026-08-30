@@ -1,4 +1,5 @@
 import json
+import datetime
 from pathlib import Path
 
 docs_dir = Path(r"C:\02_QUILLAN\docs")
@@ -7,12 +8,17 @@ with open(nft_data_file, "r", encoding="utf-8") as f:
     items = json.load(f)
 
 js_items = json.dumps(items, indent=2)
+build_ts = datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S")
 
 html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- BUILD: {build_ts} -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Quillan-Ronin v5.4.0 ONI | Sovereign 3D Cognitive AI Ecosystem</title>
   <meta name="description" content="Official 3D Cyberpunk ecosystem portal for Quillan-Ronin v5.4.0 ONI. 34-Council EvoMoE, 9-Vector Semantic Prism, 3D Neural Net Visualizer, Web3 Music & NFT Vault.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
