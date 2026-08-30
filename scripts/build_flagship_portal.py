@@ -848,8 +848,6 @@ html_content = f"""<!DOCTYPE html>
       if (typeof window.ethereum !== 'undefined') {{
         try {{
           const accounts = await window.ethereum.request({{ method: 'eth_requestAccounts' }});
-          if (accounts && accounts.length > 
- 'eth_requestAccounts' }});
           if (accounts && accounts.length > 0) handleAccount(accounts[0]);
         }} catch (err) {{
           alert('Wallet connection rejected: ' + err.message);
@@ -858,6 +856,7 @@ html_content = f"""<!DOCTYPE html>
         alert('Please enable Brave Wallet or install MetaMask.');
       }}
     }});
+
 
     checkWallet();
   </script>
