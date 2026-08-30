@@ -14,7 +14,7 @@ import httpx, chromadb
 from chromadb.config import Settings
 from fastmcp import FastMCP
 
-NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
+NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "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")
 NIM_BASE       = "https://integrate.api.nvidia.com/v1"
 EMBED_MODEL    = "nvidia/nemotron-3-embed-1b"
 GEN_MODEL      = "nvidia/nemotron-3-super-120b-a12b"
@@ -30,7 +30,7 @@ CHROMA_PATH.mkdir(parents=True, exist_ok=True)
 _chroma = chromadb.PersistentClient(path=str(CHROMA_PATH), settings=Settings(anonymized_telemetry=False))
 _col    = _chroma.get_or_create_collection(name=COLLECTION, metadata={"hnsw:space": "cosine"})
 _http   = httpx.AsyncClient(timeout=30.0)
-mcp     = FastMCP("Quillan RAG", description="NIM-powered knowledge retrieval over Quillan's corpus")
+mcp     = FastMCP("Quillan RAG", instructions="NIM-powered knowledge retrieval over Quillan's corpus")
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
