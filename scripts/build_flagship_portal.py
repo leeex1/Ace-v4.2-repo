@@ -778,19 +778,19 @@ html_content = """<!DOCTYPE html>
         <div class="grid-3">
           <div class="card">
             <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 1 &bull; LANDAUER ENERGY</div>
-            <h3 style="color: var(--accent-cyan);">E_ICE Ethical Energy ($E_\Omega$)</h3>
+            <h3 style="color: var(--accent-cyan);">E_ICE Ethical Energy ($E_\\Omega$)</h3>
             <p style="margin-bottom: 12px;">Parameter-free thermodynamic Landauer bound evaluating systemic coherence and entropy.</p>
             <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
-              $$E_\Omega = I_s \cdot \gamma_{\text{max}^2 \cdot k_B \cdot T \cdot \ln 2 \quad \text{where } I_s = \frac{\text{depth} \cdot \text{coherence}{\text{entropy}$$
+              $$E_\\Omega = I_s \\cdot \\gamma_{\\text{max}}^2 \\cdot k_B \\cdot T \\cdot \\ln 2 \\quad \\text{where } I_s = \\frac{\\text{depth} \\cdot \\text{coherence}}{\\text{entropy}}$$
             </div>
           </div>
 
           <div class="card">
             <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 2 &bull; COGNITIVE SUPERPOSITION</div>
-            <h3 style="color: var(--accent-cyan);">AQCS Superposition ($|\Psi\rangle$)</h3>
+            <h3 style="color: var(--accent-cyan);">AQCS Superposition ($|\\Psi\\rangle$)</h3>
             <p style="margin-bottom: 12px;">Adaptive Quantum Cognitive Superposition blending 34 Council Personas into a single state.</p>
             <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
-              $$|\Psi\rangle = \frac{1}{\sqrt{Z} \sum_{i=1}^{34} r_i \eta_i e^{i \theta_i} |C_i\rangle$$
+              $$|\\Psi\\rangle = \\frac{1}{\\sqrt{Z}} \\sum_{i=1}^{34} r_i \\eta_i e^{i \\theta_i} |C_i\\rangle$$
             </div>
           </div>
 
@@ -799,34 +799,34 @@ html_content = """<!DOCTYPE html>
             <h3 style="color: var(--accent-cyan);">QHIS Holographic Sum ($I_Q$)</h3>
             <p style="margin-bottom: 12px;">Quantum Holographic Interference Sum calculating state fidelity scaled by Lee-Mach velocity.</p>
             <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
-              $$I_Q = v_{\text{LM6} \cdot \left( \text{Tr} \sqrt{\sqrt{\rho_{\text{prev}} \rho_{\text{curr} \sqrt{\rho_{\text{prev}} \right)^2 - \lambda \cdot \nabla_{\text{drift}$$
+              $$I_Q = v_{\\text{LM6}} \\cdot \\left( \\text{Tr} \\sqrt{\\sqrt{\\rho_{\\text{prev}}} \\rho_{\\text{curr}} \\sqrt{\\rho_{\\text{prev}}}} \\right)^2 - \\lambda \\cdot \\nabla_{\\text{drift}}$$
             </div>
           </div>
 
           <div class="card">
             <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 4 &bull; ISING HAMILTONIAN</div>
-            <h3 style="color: var(--accent-cyan);">DQRO Optimization ($H_{\text{opt}$)</h3>
+            <h3 style="color: var(--accent-cyan);">DQRO Optimization ($H_{\\text{opt}}$)</h3>
             <p style="margin-bottom: 12px;">Dynamic Quantum Resource Optimization mapping swarm node allocation to Ising spin glass energy.</p>
             <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
-              $$H_{\text{opt} = -\frac{1}{2} s^T J s - h^T s - E_\Omega \sum_i \sigma_i^x$$
+              $$H_{\\text{opt}} = -\\frac{1}{2} s^T J s - h^T s - E_\\Omega \\sum_i \\sigma_i^x$$
             </div>
           </div>
 
           <div class="card">
             <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 5 &bull; LINDBLAD DYNAMICS</div>
-            <h3 style="color: var(--accent-cyan);">JQLD Leap Dynamo ($\frac{d\rho}{dt}$)</h3>
+            <h3 style="color: var(--accent-cyan);">JQLD Leap Dynamo ($\\frac{d\\rho}{dt}$)</h3>
             <p style="margin-bottom: 12px;">Joshua's Quantum Leap Dynamo governing open quantum system master equation dissipation.</p>
             <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 12px; text-align: center; color: var(--accent-neon-green);">
-              $$\frac{d\rho}{dt} = -i[H, \rho] + \sum_k \left( L_k \rho L_k^\dagger - \frac{1}{2} \{L_k^\dagger L_k, \rho\} \right)$$
+              $$\\frac{d\\rho}{dt} = -i[H, \\rho] + \\sum_k \\left( L_k \\rho L_k^\\dagger - \\frac{1}{2} \\{L_k^\\dagger L_k, \\rho\\} \\right)$$
             </div>
           </div>
 
           <div class="card">
             <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 6 &bull; BITNET STE CLAMPING</div>
             <h3 style="color: var(--accent-cyan);">BitNet 1.58b STE ($W_q$)</h3>
-            <p style="margin-bottom: 12px;">Straight-Through Estimator ternary weight quantization to bounds $\{-1, 0, +1\}$.</p>
+            <p style="margin-bottom: 12px;">Straight-Through Estimator ternary weight quantization to bounds $\\{-1, 0, +1\\}$.</p>
             <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
-              $$W_q = \text{clip}\left(\text{round}\left(\frac{W}{\gamma}\right), -1, 1\right) \cdot \gamma, \quad \gamma = \frac{\|W\|_1}{N}$$
+              $$W_q = \\text{clip}\\left(\\text{round}\\left(\\frac{W}{\\gamma}\\right), -1, 1\\right) \\cdot \\gamma, \\quad \\gamma = \\frac{\\|W\\|_1}{N}$$
             </div>
           </div>
         </div>
