@@ -1,4 +1,7 @@
----
+import json
+from pathlib import Path
+
+clean_skill_md = """---
 name: image_video_generation
 description: Canonical Media Generation Template (Schema v3.0) for professional cinema, commercial videography, and generative image pipelines.
 ---
@@ -452,3 +455,36 @@ A comprehensive, industry-standard specification for directing, cinematography, 
 - [[00 - Meta/06 - Deployment & Platforms.md]]
 - [[system prompts/Quillan-Samurai.md]]
 - [[00 - Meta/05 - Creative Works.md]]
+"""
+
+# 1. Save as Workspace Skill
+skill_dir = Path(r'C:\02_QUILLAN\.agents\skills\image_video_generation')
+skill_dir.mkdir(parents=True, exist_ok=True)
+(skill_dir / 'SKILL.md').write_text(clean_skill_md, encoding='utf-8')
+print('Created Workspace Skill:', skill_dir / 'SKILL.md')
+
+# 2. Save across all Platform template files
+target_files = [
+    Path(r'C:\02_QUILLAN\Platforms\Gemini\Image-or-Video template.md'),
+    Path(r'C:\02_QUILLAN\Platforms\GPT\Image template.md'),
+    Path(r'C:\02_QUILLAN\Platforms\Grok\Image-or-Video template.md'),
+    Path(r'C:\02_QUILLAN\Platforms\Claude\Image-or-Video template.md'),
+    Path(r'C:\02_QUILLAN\templates\Image-Video-Generation-Template.md')
+]
+
+for tf in target_files:
+    tf.parent.mkdir(parents=True, exist_ok=True)
+    tf.write_text(clean_skill_md, encoding='utf-8')
+    print('Updated:', tf)
+
+# 3. Save raw JSON spec in templates
+raw_json_start = clean_skill_md.find('```json\n{\n  "Meta"') + 8
+raw_json_end = clean_skill_md.find('\n```\n\n---')
+if raw_json_start != -1 and raw_json_end != -1:
+    raw_json = clean_skill_md[raw_json_start:raw_json_end]
+    templates_dir = Path(r'C:\02_QUILLAN\templates')
+    templates_dir.mkdir(parents=True, exist_ok=True)
+    (templates_dir / 'media_generation_manifest_v3.json').write_text(raw_json, encoding='utf-8')
+    print('Created standalone template:', templates_dir / 'media_generation_manifest_v3.json')
+
+print('[SUCCESS] Image-Video-Generation-Template deployed cleanly across workspace skills and platform files!')
