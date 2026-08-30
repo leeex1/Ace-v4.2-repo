@@ -1277,16 +1277,17 @@
     </section>
 
     
-    <!-- TAB 3: CYBER SOUND & JUKEBOX -->
+    
+    <!-- TAB 3: CYBER SOUND & MASTER JUKEBOX -->
     <section class="tab-content" id="tab-media">
       <div class="hero">
-        <div class="hero-badge" style="color: var(--accent-gold); border-color: var(--accent-gold);">ORIGINAL SOUNDTRACK & MULTIMEDIA VAULT</div>
-        <h2 style="background: linear-gradient(135deg, #fff, var(--accent-gold), var(--accent-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SOVEREIGN SOUNDSCAPE & CYBER JUKEBOX</h2>
-        <p style="max-width: 780px; margin: 0 auto 20px; font-size: 14.5px; color: var(--text-main);">
-          Original cyber-phonk, synthwave, drill, and orchestral compositions crafted by CrashOverrideX. Multi-platform streaming available across Spotify, YouTube, Suno, and Genius.
+        <div class="hero-badge" style="color: var(--accent-gold); border-color: var(--accent-gold);">100% REAL AUDIO PLAYBACK · OFFICIAL SOUNDTRACK VAULT</div>
+        <h2 style="background: linear-gradient(135deg, #fff, var(--accent-gold), var(--accent-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SOVEREIGN SOUNDSCAPE & MASTER JUKEBOX</h2>
+        <p style="max-width: 820px; margin: 0 auto 20px; font-size: 14.5px; color: var(--text-main);">
+          Original cyber-phonk, synthwave, drill, and orchestral compositions crafted by CrashOverrideX. Multi-platform streaming available across Spotify, YouTube, Suno, and Genius. Click any track below for instant real audio playback:
         </p>
         
-        <!-- Featured Playlists & Spotify Drops Banner -->
+        <!-- Featured Playlists & Spotify Streaming Badges -->
         <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
           <a href="https://open.spotify.com/search/the%20sound%20of%20alchemy%20jdxx" target="_blank" class="btn btn-primary" style="background: #1db954; color: #000; font-weight: 800;">
             🟢 Spotify: "The Sound of Alchemy" ↗
@@ -1294,37 +1295,40 @@
           <a href="https://open.spotify.com/search/mic%20drop%20quillan%20ronin" target="_blank" class="btn btn-primary" style="background: #1db954; color: #000; font-weight: 800;">
             🟢 Spotify: "Mic Drop Quillan Ronin" ↗
           </a>
-          <a href="https://youtube.com/@JDXX" target="_blank" class="btn btn-secondary" style="border-color: #ff0000; color: #ff6666;">
-            ▶️ YouTube: DA Flame Mix & Ronin Chronicles ↗
+          <a href="https://youtube.com/playlist?list=PLHiy5ksDUOiBmySNqRcPAXaJPsaGwP2aH&si=HQAJQ7I5yX88SCv0" target="_blank" class="btn btn-secondary" style="border-color: #ffd700; color: #ffd700;">
+            ▶️ YouTube (Human Stuff) ↗
+          </a>
+          <a href="https://youtube.com/playlist?list=PLHiy5ksDUOiAJ4wk2ZczSEVvLRIoIyHw6&si=tdrh4VaEuuyCT1Ph" target="_blank" class="btn btn-secondary" style="border-color: #00f0ff; color: #00f0ff;">
+            ▶️ YouTube (AI Stuff) ↗
           </a>
         </div>
       </div>
 
-      <!-- Interactive Audio Player Bar -->
-      <div class="card" style="border: 1px solid var(--accent-gold); background: rgba(8,12,24,0.95); margin-bottom: 30px; box-shadow: 0 0 35px rgba(255,215,0,0.15);">
+      <!-- Real Interactive Audio Player Bar -->
+      <div class="card" style="border: 1px solid var(--accent-gold); background: rgba(8,12,24,0.95); margin-bottom: 30px; box-shadow: 0 0 35px rgba(255,215,0,0.18);">
+        <audio id="realMasterAudio" preload="auto"></audio>
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
           <div style="display:flex; align-items:center; gap:16px;">
-            <button id="masterPlayBtn" onclick="toggleAudioPlay()" style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg, #ffd700, #ff8800); border:none; color:#000; font-size:22px; font-weight:900; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 0 20px rgba(255,215,0,0.5);">▶</button>
+            <button id="masterPlayBtn" onclick="toggleRealMasterPlay()" style="width:54px; height:54px; border-radius:50%; background:linear-gradient(135deg, #ffd700, #ff8800); border:none; color:#000; font-size:22px; font-weight:900; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 0 22px rgba(255,215,0,0.5);">▶</button>
             <div>
-              <div id="nowPlayingTitle" style="font-family:'Cinzel'; font-size:17px; font-weight:700; color:#fff;">Agent Ronin (Sovereign Theme)</div>
-              <div id="nowPlayingArtist" style="font-size:12px; color:var(--accent-gold);">CrashOverrideX · Official Soundtrack</div>
+              <div id="nowPlayingTitle" style="font-family:'Cinzel'; font-size:17px; font-weight:700; color:#fff;">Agent Ronin</div>
+              <div id="nowPlayingArtist" style="font-size:12px; color:var(--accent-gold);">Quillan OST · CrashOverrideX</div>
             </div>
           </div>
-          <div style="display:flex; align-items:center; gap:14px;">
+          <div style="display:flex; align-items:center; gap:14px; flex-grow:1; max-width:480px;">
             <span id="audioCurrentTime" style="font-family:'JetBrains Mono'; font-size:12px; color:var(--text-muted);">0:00</span>
-            <input type="range" id="audioSeekBar" min="0" max="100" value="0" style="width:220px; accent-color:var(--accent-gold); cursor:pointer;">
-            <span id="audioDuration" style="font-family:'JetBrains Mono'; font-size:12px; color:var(--text-muted);">3:45</span>
+            <input type="range" id="audioSeekBar" min="0" max="100" value="0" step="0.1" style="width:100%; accent-color:var(--accent-gold); cursor:pointer;">
+            <span id="audioDuration" style="font-family:'JetBrains Mono'; font-size:12px; color:var(--text-muted);">3:32</span>
           </div>
           <div style="display:flex; align-items:center; gap:10px;">
             <span style="font-size:14px;">🔊</span>
-            <input type="range" id="audioVolumeBar" min="0" max="100" value="80" style="width:90px; accent-color:var(--accent-cyan); cursor:pointer;">
+            <input type="range" id="audioVolumeBar" min="0" max="1" value="0.85" step="0.01" style="width:90px; accent-color:var(--accent-cyan); cursor:pointer;">
           </div>
         </div>
       </div>
 
-      
-      <!-- Featured Playlists Grid (Verified YouTube Playlists) -->
-      <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">🔥 Official YouTube Playlists & Collections</h3>
+      <!-- Verified YouTube Playlists Grid -->
+      <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">🔥 Official YouTube Playlists & Mixes</h3>
       <div class="grid-3" style="gap: 16px; margin-bottom: 36px;">
         
         <div class="card" style="border-left: 4px solid var(--accent-gold);">
@@ -1357,10 +1361,8 @@
 
       </div>
 
-
-      
-      <!-- Track List Table (Official 'The Sound of Alchemy' & 'Mic Drop' Tracklist) -->
-      <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">🎧 Official Discography & Stem Vault ("The Sound of Alchemy" + "Mic Drop")</h3>
+      <!-- Real Track Table -->
+      <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">🎧 Full Real Audio Track Library (18 Tracks Loaded)</h3>
       <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border-glow);">
         <table style="width:100%; border-collapse:collapse; text-align:left; font-size:13px;">
           <thead>
@@ -1374,91 +1376,246 @@
             </tr>
           </thead>
           <tbody>
+            
             <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
               <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">01</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Born to be a Spaceman</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Futuristic Trap / Vocals</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:35</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Born to be a Spaceman', '3:35')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Agent Ronin</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyber Drill / Phonk</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:32</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_Agent_Ronin_.mp3', 'Agent Ronin', 'Quillan OST', '3:32')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
             </tr>
+    
             <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
               <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">02</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">The Rotary Cannon</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Heavy Industrial Phonk</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:18</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('The Rotary Cannon', '3:18')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Chrome Heart Syndrome</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyberpunk Trap</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:12</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_CHROME_HEART_SYNDROME_.mp3', 'Chrome Heart Syndrome', 'Quillan OST', '3:12')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
             </tr>
+    
             <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
               <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">03</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">The Ronin's Requiem</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">From Ground Zero</td>
               <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Japanese Strings + Orchestral</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">4:12</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('The Ronin\'s Requiem', '4:12')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Aggressive Freestyle</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:41</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_From_Ground_Zero_.mp3', 'From Ground Zero', 'The Sound of Alchemy', '3:41')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
             </tr>
+    
             <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
               <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">04</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Southside Houston</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Kingdoms of Dust and Flame</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Epic Orchestral Trap</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">4:02</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_Kingdoms_of_Dust_and_Flame_.mp3', 'Kingdoms of Dust and Flame', 'Quillan OST', '4:02')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">05</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Quantize These Lightyears</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Synthwave Odyssey</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:30</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_Quantize_these_Lightyears_.mp3', 'Quantize These Lightyears', 'Quillan OST', '3:30')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">06</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Quillan's Back</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Mic Drop Album</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Raw Heavy Phonk</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">2:58</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_QUILLAN'S_BACK_.mp3', 'Quillan\'s Back', 'Mic Drop Album', '2:58')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">07</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Runtime Daemon</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Industrial Electro</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:25</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_RUNTIME__DAEMON_.mp3', 'Runtime Daemon', 'The Sound of Alchemy', '3:25')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">08</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Southside Sovereign Ronin</td>
               <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
               <td style="padding:12px 16px; color:var(--accent-cyan);">Houston Chopped & Screwed 808</td>
               <td style="padding:12px 16px; color:var(--text-muted);">3:50</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Southside Houston', '3:50')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_Southside_Sovereign_Ronin_.mp3', 'Southside Sovereign Ronin', 'The Sound of Alchemy', '3:50')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
             </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">05</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Mic Drop (Quillan-Ronin)</td>
-              <td style="padding:12px 16px; color:var(--accent-red);">Mic Drop Album</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Raw Freestyle Drill</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">2:48</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Mic Drop (Quillan-Ronin)', '2:48')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">06</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Agent Ronin</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyber Drill / Phonk</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:45</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Agent Ronin', '3:45')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">07</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Chrome Heart Syndrome</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyberpunk Trap</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:12</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Chrome Heart Syndrome', '3:12')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">08</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Kingdoms of Dust and Flame</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Epic Orchestral Trap</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">4:02</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Kingdoms of Dust and Flame', '4:02')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
-            </tr>
+    
             <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
               <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">09</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Quantize These Lightyears</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Synthwave Odyssey</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:30</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Quantize These Lightyears', '3:30')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">The Promise of Time</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Melodic Acoustic Trap</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:15</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_The_Promise_of_Time_.mp3', 'The Promise of Time', 'The Sound of Alchemy', '3:15')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
             </tr>
+    
             <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
               <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">10</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Visceral Livewire</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyber Metal Fusion</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:08</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_Visceral_Livewire_.mp3', 'Visceral Livewire', 'The Sound of Alchemy', '3:08')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">11</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Walk the Talk</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Mic Drop Album</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Fast Drill Flow</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">2:52</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/_Walk_the_talk_.mp3', 'Walk the Talk', 'Mic Drop Album', '2:52')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">12</td>
               <td style="padding:12px 16px; font-weight:600; color:#fff;">Ronin Bushido</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Quillan OST</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
               <td style="padding:12px 16px; color:var(--accent-cyan);">Traditional Koto + 808</td>
               <td style="padding:12px 16px; color:var(--text-muted);">3:40</td>
-              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Ronin Bushido', '3:40')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/Ronin_Bushido.mp3', 'Ronin Bushido', 'Quillan OST', '3:40')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
             </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">13</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Ronin Sonata</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Classical Piano Stems</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">2:45</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/Ronin_Sonata.mp3', 'Ronin Sonata', 'Quillan OST', '2:45')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">14</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">I Don't Relate</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Human Vocals</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Raw Lyricism</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">2:30</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/I_Don't_Relate.mp3', 'I Don\'t Relate', 'Human Vocals', '2:30')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">15</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">I Must Be High</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Human Vocals</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Chill Ambient Rap</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:10</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/I_Must_Be_High.mp3', 'I Must Be High', 'Human Vocals', '3:10')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">16</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Prodigal Son</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Spiritual Trap</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:20</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/Prodigal_Son.mp3', 'Prodigal Son', 'The Sound of Alchemy', '3:20')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">17</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Mob Life (Freestyle)</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Freestyle Vault</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Freestyle Flow</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">2:15</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/Mob_Life_-_JDXX_JDXX_freestyle_lilbaby_JDXX.mp3', 'Mob Life (Freestyle)', 'Freestyle Vault', '2:15')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">18</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Big TX (Freestyle)</td>
+              <td style="padding:12px 16px; color:var(--accent-gold);">Freestyle Vault</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Southern 808 Vocals</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:45</td>
+              <td style="padding:12px 16px; text-align:right;">
+                <button onclick="playRealTrack('audio/Big_TX_-_JDXX_JDXX_freestyle_lilbaby_JDXX_AI_Music_(Vocals).mp3', 'Big TX (Freestyle)', 'Freestyle Vault', '3:45')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
+                  ▶ Play Real Audio
+                </button>
+              </td>
+            </tr>
+    
           </tbody>
         </table>
       </div>
-
     </section>
+
 
 
     <!-- TAB 4: PAPERS & RESEARCH -->
