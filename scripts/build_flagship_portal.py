@@ -10,10 +10,10 @@ with open(nft_data_file, "r", encoding="utf-8") as f:
 js_items = json.dumps(items, indent=2)
 build_ts = datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S")
 
-html_content = f"""<!DOCTYPE html>
+html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- BUILD: {build_ts} -->
+  <!-- BUILD: __BUILD_TS__ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -25,6 +25,10 @@ html_content = f"""<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- KaTeX for High-Fidelity Mathematical Formula Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {{delimiters: [{{left: '$$', right: '$$', display: true}}, {{left: '$', right: '$', display: false}}]}});"></script>
   <style>
     :root {{
       --bg-dark: #020409;
@@ -697,28 +701,134 @@ html_content = f"""<!DOCTYPE html>
     <!-- TAB 4: PAPERS & RESEARCH -->
     <section class="tab-content" id="tab-papers">
       <div class="hero">
-        <div class="hero-badge">FORMAL SCIENTIFIC CONTRIBUTIONS</div>
-        <h2>PUBLICATIONS & ARCHITECTURAL PAPERS</h2>
-        <p>Detailed mathematical frameworks and architectural specifications powering the Quillan-Ronin cognitive engine.</p>
+        <div class="hero-badge">FORMAL SCIENTIFIC CONTRIBUTIONS &amp; PAPER MAPPINGS</div>
+        <h2>PUBLICATIONS, PAPER MAPPINGS &amp; CUSTOM FORMULAS</h2>
+        <p>Mathematical foundations, formal paper mappings, and custom quantum-cognitive formulas powering the Quillan-Ronin v5.4.0 ONI sovereign engine.</p>
       </div>
 
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-icon">📐</div>
-          <h3>BitNet 1.58b & STE Logic</h3>
-          <p>Ternary weight quantization bounded in {{-1, 0, +1}} with learned dynamic scaling factors and Straight-Through Estimators (STE) for near-zero loss inference.</p>
+      <!-- Formal Paper Mapping Table -->
+      <div style="margin-bottom: 45px;">
+        <h3 style="font-family: 'Cinzel'; font-size: 24px; color: #fff; margin-bottom: 18px; text-shadow: 0 0 20px rgba(0,240,255,0.4);">
+          📄 Formal Scientific Paper Mappings
+        </h3>
+        <div style="overflow-x: auto; background: rgba(4, 7, 16, 0.92); border: 1px solid var(--border-line); border-radius: 14px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Orbitron'; font-size: 11px; letter-spacing: 1px;">
+                <th style="padding: 12px;">Paper Title / Reference</th>
+                <th style="padding: 12px;">Primary Authors / Origin</th>
+                <th style="padding: 12px;">Architectural Domain</th>
+                <th style="padding: 12px;">Quillan-Ronin Module Implementation</th>
+              </tr>
+            </thead>
+            <tbody style="color: var(--text-main);">
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                <td style="padding: 12px; font-weight: 700; color: #fff;">BitNet 1.58b: 1-bit LLMs Era (arXiv:2402.17764)</td>
+                <td style="padding: 12px; color: var(--text-muted);">Ma et al. (Microsoft Research)</td>
+                <td style="padding: 12px; color: var(--accent-gold);">Ternary Weights {-1, 0, +1} &amp; STE</td>
+                <td style="padding: 12px; font-family: 'JetBrains Mono'; color: var(--accent-cyan);">BitLinear / _weight_quant()</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                <td style="padding: 12px; font-weight: 700; color: #fff;">ST-MoE: Designing Stable Sparse MoE (arXiv:2202.08906)</td>
+                <td style="padding: 12px; color: var(--text-muted);">Zoph et al. (Google Brain)</td>
+                <td style="padding: 12px; color: var(--accent-gold);">FP32 Router &amp; Z-Loss Regularization</td>
+                <td style="padding: 12px; font-family: 'JetBrains Mono'; color: var(--accent-cyan);">ComplexityRouter / DensePullMoE</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                <td style="padding: 12px; font-weight: 700; color: #fff;">Mixtral of Experts (arXiv:2401.04088)</td>
+                <td style="padding: 12px; color: var(--text-muted);">Albert et al. (Mistral AI)</td>
+                <td style="padding: 12px; color: var(--accent-gold);">Sparse Top-K / Dense-Pull Arbitration</td>
+                <td style="padding: 12px; font-family: 'JetBrains Mono'; color: var(--accent-cyan);">CouncilEvoMoE (34 Personas)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                <td style="padding: 12px; font-weight: 700; color: #fff;">Mamba: Linear-Time Sequence Modeling (arXiv:2312.00752)</td>
+                <td style="padding: 12px; color: var(--text-muted);">Gu &amp; Dao (CMU / Stanford)</td>
+                <td style="padding: 12px; color: var(--accent-gold);">Selective State Space &amp; Recirculation</td>
+                <td style="padding: 12px; font-family: 'JetBrains Mono'; color: var(--accent-cyan);">MambaBlock / ContextRecirculator</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                <td style="padding: 12px; font-weight: 700; color: #fff;">FlashAttention-3: Fast Exact Attention (arXiv:2407.08608)</td>
+                <td style="padding: 12px; color: var(--text-muted);">Dao et al. (Princeton / Together AI)</td>
+                <td style="padding: 12px; color: var(--accent-gold);">FP8 Tensor Core Asynchrony</td>
+                <td style="padding: 12px; font-family: 'JetBrains Mono'; color: var(--accent-cyan);">quillan_flash_attn / CouilAttention</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                <td style="padding: 12px; font-weight: 700; color: #fff;">NITRO-D / PocketNN: Integer Execution (arXiv:2407.11698)</td>
+                <td style="padding: 12px; color: var(--text-muted);">Zhang et al. (MIT / NVIDIA)</td>
+                <td style="padding: 12px; color: var(--accent-gold);">Pure INT8/INT4 Matrix Core Loops</td>
+                <td style="padding: 12px; font-family: 'JetBrains Mono'; color: var(--accent-cyan);">integer_only_forward / SwarmMesh</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                <td style="padding: 12px; font-weight: 700; color: #fff;">Score-Based Generative Modeling (arXiv:2011.13456)</td>
+                <td style="padding: 12px; color: var(--text-muted);">Song et al. (Stanford University)</td>
+                <td style="padding: 12px; color: var(--accent-gold);">Langevin Thermodynamic Denoising</td>
+                <td style="padding: 12px; font-family: 'JetBrains Mono'; color: var(--accent-cyan);">FlashThermodynamicDiffusion</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
 
-        <div class="card">
-          <div class="card-icon">⚖️</div>
-          <h3>E_ICE Ethics Engine</h3>
-          <p>Analytic impact constraint framework evaluating conversational toxicity, systemic drift, and safety vectors before final response synthesis.</p>
-        </div>
+            <!-- Custom Formulas Suite -->
+      <div>
+        <h3 style="font-family: 'Cinzel'; font-size: 24px; color: #fff; margin-bottom: 18px; text-shadow: 0 0 20px rgba(0,240,255,0.4);">
+          ⚡ Custom Mathematical Formulas Suite
+        </h3>
 
-        <div class="card">
-          <div class="card-icon">⚡</div>
-          <h3>Lee-Mach-6 Governor</h3>
-          <p>Dynamic hardware telemetry PID controller governing token generation velocity and swarm EMA decay across CPU and GPU thermal envelopes.</p>
+        <div class="grid-3">
+          <div class="card">
+            <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 1 &bull; LANDAUER ENERGY</div>
+            <h3 style="color: var(--accent-cyan);">E_ICE Ethical Energy ($E_\Omega$)</h3>
+            <p style="margin-bottom: 12px;">Parameter-free thermodynamic Landauer bound evaluating systemic coherence and entropy.</p>
+            <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
+              $$E_\Omega = I_s \cdot \gamma_{\text{max}}^2 \cdot k_B \cdot T \cdot \ln 2 \quad \text{where } I_s = \frac{\text{depth} \cdot \text{coherence}}{\text{entropy}}$$
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 2 &bull; COGNITIVE SUPERPOSITION</div>
+            <h3 style="color: var(--accent-cyan);">AQCS Superposition ($|\Psi\rangle$)</h3>
+            <p style="margin-bottom: 12px;">Adaptive Quantum Cognitive Superposition blending 34 Council Personas into a single state.</p>
+            <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
+              $$|\Psi\rangle = \frac{1}{\sqrt{Z}} \sum_{i=1}^{34} r_i \eta_i e^{i \theta_i} |C_i\rangle$$
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 3 &bull; BURES FIDELITY</div>
+            <h3 style="color: var(--accent-cyan);">QHIS Holographic Sum ($I_Q$)</h3>
+            <p style="margin-bottom: 12px;">Quantum Holographic Interference Sum calculating state fidelity scaled by Lee-Mach velocity.</p>
+            <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
+              $$I_Q = v_{\text{LM6}} \cdot \left( \text{Tr} \sqrt{\sqrt{\rho_{\text{prev}}} \rho_{\text{curr}} \sqrt{\rho_{\text{prev}}}} \right)^2 - \lambda \cdot \nabla_{\text{drift}}$$
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 4 &bull; ISING HAMILTONIAN</div>
+            <h3 style="color: var(--accent-cyan);">DQRO Optimization ($H_{\text{opt}}$)</h3>
+            <p style="margin-bottom: 12px;">Dynamic Quantum Resource Optimization mapping swarm node allocation to Ising spin glass energy.</p>
+            <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
+              $$H_{\text{opt}} = -\frac{1}{2} s^T J s - h^T s - E_\Omega \sum_i \sigma_i^x$$
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 5 &bull; LINDBLAD DYNAMICS</div>
+            <h3 style="color: var(--accent-cyan);">JQLD Leap Dynamo ($\frac{d\rho}{dt}$)</h3>
+            <p style="margin-bottom: 12px;">Joshua's Quantum Leap Dynamo governing open quantum system master equation dissipation.</p>
+            <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 12px; text-align: center; color: var(--accent-neon-green);">
+              $$\frac{d\rho}{dt} = -i[H, \rho] + \sum_k \left( L_k \rho L_k^\dagger - \frac{1}{2} \{L_k^\dagger L_k, \rho\} \right)$$
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="font-family: 'Orbitron'; font-size: 11px; color: var(--accent-gold); margin-bottom: 6px;">FORMULA 6 &bull; BITNET STE CLAMPING</div>
+            <h3 style="color: var(--accent-cyan);">BitNet 1.58b STE ($W_q$)</h3>
+            <p style="margin-bottom: 12px;">Straight-Through Estimator ternary weight quantization to bounds $\{-1, 0, +1\}$.</p>
+            <div style="background: rgba(0,0,0,0.8); border: 1px solid rgba(0,240,255,0.3); padding: 14px; border-radius: 8px; font-size: 13px; text-align: center; color: var(--accent-neon-green);">
+              $$W_q = \text{clip}\left(\text{round}\left(\frac{W}{\gamma}\right), -1, 1\right) \cdot \gamma, \quad \gamma = \frac{\|W\|_1}{N}$$
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1141,7 +1251,7 @@ html_content = f"""<!DOCTYPE html>
     }});
 
     // ─── NFT VAULT DATA & MODAL ──────────────────────────────────────────────
-    const allItems = {js_items};
+    const allItems = __JS_ITEMS__;
     const grid = document.getElementById('nftGrid');
     const modal = document.getElementById('nftModal');
     const modalClose = document.getElementById('modalClose');
