@@ -3,136 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quillan-Ronin v5.4.0 ONI — Sovereign 3D Neural Network Model Viewer</title>
+<title>Quillan-Ronin v5.4.0 ONI Sovereign Neural Model Viewer</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Cinzel:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap");
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#020408;overflow:hidden;font-family:'JetBrains Mono',monospace;color:#ccc;width:100vw;height:100vh}
-#canvas{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:1}
-
-/* HUD Header */
-#title{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
-  padding:10px 20px;background:linear-gradient(180deg,rgba(2,4,8,0.98) 0%,rgba(2,4,8,0.8) 80%,transparent 100%);
-  pointer-events:auto;z-index:20;border-bottom:1px solid rgba(0,240,255,0.15);backdrop-filter:blur(8px)}
-#title h1{font-family:'Orbitron',monospace;font-size:clamp(11px,1.8vw,14px);font-weight:900;
-  color:#ffd700;letter-spacing:2px;text-shadow:0 0 15px rgba(255,215,0,0.4)}
-#title .sub{font-size:9.5px;color:#00f0ff;letter-spacing:1.5px;margin-top:2px}
-
-/* Controls */
-#controls{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;
-  flex-wrap:wrap;gap:8px;padding:10px 16px;
-  background:linear-gradient(0deg,rgba(2,4,8,0.98) 0%,rgba(2,4,8,0.8) 80%,transparent 100%);
-  pointer-events:auto;z-index:20;border-top:1px solid rgba(0,240,255,0.15);backdrop-filter:blur(8px)}
-button{background:rgba(10,15,25,0.9);border:1px solid rgba(0,240,255,0.3);color:rgba(0,240,255,0.9);
-  padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;cursor:pointer;
-  letter-spacing:0.5px;border-radius:4px;transition:all 0.2s}
-button:hover,button.active{background:rgba(0,240,255,0.18);color:#00ffff;border-color:#00ffff;
-  box-shadow:0 0 12px rgba(0,240,255,0.4);transform:translateY(-1px)}
-button.danger{border-color:rgba(255,68,68,0.4);color:rgba(255,68,68,0.9)}
-button.danger:hover{background:rgba(255,68,68,0.2);color:#ff4444;border-color:#ff4444;box-shadow:0 0 12px rgba(255,68,68,0.4)}
-button.gold{border-color:rgba(255,215,0,0.4);color:rgba(255,215,0,0.9)}
-button.gold:hover,button.gold.active{background:rgba(255,215,0,0.2);color:#ffd700;border-color:#ffd700;box-shadow:0 0 12px rgba(255,215,0,0.4)}
-
-/* Side panels */
-#left-panel{position:fixed;left:10px;top:55px;bottom:55px;width:200px;
-  background:rgba(4,7,16,0.85);border:1px solid rgba(0,240,255,0.12);border-radius:8px;
-  padding:10px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(10px)}
-#right-panel{position:fixed;right:10px;top:55px;bottom:55px;width:220px;
-  background:rgba(4,7,16,0.85);border:1px solid rgba(255,215,0,0.12);border-radius:8px;
-  padding:10px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(10px)}
-
-.panel-title{font-family:'Orbitron',monospace;font-size:9px;letter-spacing:1.5px;
-  color:#888;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,0.06);
-  text-transform:uppercase}
-
-.legend-item{display:flex;align-items:center;gap:6px;margin-bottom:6px;cursor:pointer;
-  padding:4px 6px;border-radius:4px;border:1px solid transparent;transition:all 0.2s}
-.legend-item:hover{border-color:rgba(0,240,255,0.3);background:rgba(0,240,255,0.06)}
-.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor}
-.legend-name{font-size:9px;letter-spacing:0.5px;flex:1;color:#ddd}
-
-#neuron-info{background:rgba(0,0,0,0.7);border:1px solid rgba(255,215,0,0.4);border-radius:6px;
-  padding:8px;margin-top:8px;display:none}
-#neuron-info.visible{display:block}
+body{background:#020408;overflow:hidden;font-family:"JetBrains Mono",monospace;color:#ccc;width:100vw;height:100vh}
+canvas{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:1}
+#hud-top{position:fixed;top:0;left:0;right:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:linear-gradient(180deg,rgba(2,4,8,0.98) 0%,rgba(2,4,8,0.6) 100%);border-bottom:1px solid rgba(0,240,255,0.18);backdrop-filter:blur(12px);z-index:30}
+#hud-top h1{font-family:Orbitron;font-size:12px;font-weight:900;color:#ffd700;letter-spacing:2px;text-shadow:0 0 18px rgba(255,215,0,0.5)}
+.hud-meta{font-size:9px;color:#00f0ff;letter-spacing:1px;display:flex;gap:18px;align-items:center}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:#00ff88;box-shadow:0 0 8px #00ff88;animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+#fps-counter{font-family:Orbitron;font-size:10px;font-weight:700;color:#00ff88}
+#left-panel{position:fixed;left:8px;top:54px;bottom:58px;width:198px;background:rgba(4,7,16,0.92);border:1px solid rgba(0,240,255,0.14);border-radius:10px;padding:10px;overflow-y:auto;z-index:20;backdrop-filter:blur(14px)}
+.panel-title{font-family:Orbitron;font-size:8px;letter-spacing:1.5px;color:#444;margin-bottom:8px;padding-bottom:4px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.05)}
+.legend-item{display:flex;align-items:center;gap:7px;margin-bottom:5px;cursor:pointer;padding:4px 6px;border-radius:5px;border:1px solid transparent;transition:all 0.2s}
+.legend-item:hover{border-color:rgba(0,240,255,0.3);background:rgba(0,240,255,0.07)}
+.legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.legend-name{font-size:8.5px;color:#ccc}
+.legend-sub{font-size:7px;color:#555}
+#node-info{background:rgba(0,0,0,0.65);border:1px solid rgba(255,215,0,0.35);border-radius:6px;padding:9px;margin-top:9px;display:none}
+#node-info.visible{display:block}
 .info-row{display:flex;justify-content:space-between;margin-bottom:4px;font-size:8.5px}
-.info-key{color:#666}
-.info-val{color:#00ffff;font-weight:700}
-
-.stat-row{display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:6px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
-.stat-label{font-size:8.5px;color:#777;letter-spacing:0.5px}
-.stat-val{font-family:'Orbitron',monospace;font-size:10.5px;font-weight:700}
-
-#tooltip{position:fixed;pointer-events:none;z-index:100;
-  background:rgba(4,7,16,0.95);border:1px solid rgba(0,240,255,0.6);border-radius:6px;
-  padding:8px 12px;font-size:9.5px;color:#fff;
-  box-shadow:0 0 20px rgba(0,240,255,0.3);display:none;max-width:240px;line-height:1.4}
-
-/* Live Token Stream Bar */
-#token-stream-bar{
-  position:fixed;bottom:48px;left:220px;right:240px;display:flex;align-items:center;gap:8px;
-  background:rgba(4,7,16,0.85);border:1px solid rgba(0,240,255,0.15);border-radius:6px;
-  padding:4px 12px;font-size:9px;color:var(--accent-neon-green,#00ff88);pointer-events:none;z-index:15;
-  overflow:hidden;white-space:nowrap;backdrop-filter:blur(6px);
-}
-
+.info-key{color:#555}.info-val{color:#00f0ff;font-weight:700}
+#right-panel{position:fixed;right:8px;top:54px;bottom:58px;width:218px;background:rgba(4,7,16,0.92);border:1px solid rgba(255,215,0,0.12);border-radius:10px;padding:10px;overflow-y:auto;z-index:20;backdrop-filter:blur(14px)}
+.stat-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.stat-label{font-size:7.5px;color:#666;letter-spacing:.5px;text-transform:uppercase}
+.stat-val{font-family:Orbitron;font-size:9.5px;font-weight:700}
+#sig-trace{font-size:8px;color:#555;line-height:1.7;max-height:180px;overflow-y:auto;margin-top:8px}
+#token-bar{position:fixed;bottom:50px;left:214px;right:234px;height:28px;display:flex;align-items:center;gap:8px;overflow:hidden;background:rgba(4,7,16,0.9);border:1px solid rgba(0,240,255,0.14);border-radius:6px;padding:0 12px;font-size:8.5px;color:#00ff88;pointer-events:none;z-index:20;backdrop-filter:blur(6px)}
+#controls{position:fixed;bottom:0;left:0;right:0;height:48px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;padding:0 16px;background:linear-gradient(0deg,rgba(2,4,8,0.98) 0%,rgba(2,4,8,0.6) 100%);border-top:1px solid rgba(0,240,255,0.15);z-index:30;backdrop-filter:blur(12px)}
+button{background:rgba(10,15,25,0.9);border:1px solid rgba(0,240,255,0.25);color:rgba(0,240,255,0.85);padding:5px 13px;font-family:"JetBrains Mono";font-size:9px;font-weight:700;cursor:pointer;letter-spacing:.5px;border-radius:4px;transition:all 0.2s}
+button:hover,button.active{background:rgba(0,240,255,0.16);color:#00ffff;border-color:#00ffff;box-shadow:0 0 14px rgba(0,240,255,0.45);transform:translateY(-1px)}
+button.gold{border-color:rgba(255,215,0,0.35);color:rgba(255,215,0,.85)}
+button.gold:hover,button.gold.active{background:rgba(255,215,0,0.18);color:#ffd700;border-color:#ffd700;box-shadow:0 0 14px rgba(255,215,0,0.45)}
+button.red{border-color:rgba(255,0,85,0.35);color:rgba(255,0,85,.85)}
+button.red:hover{background:rgba(255,0,85,0.18);color:#ff0055;border-color:#ff0055}
+#tooltip{position:fixed;pointer-events:none;z-index:200;background:rgba(4,7,16,0.97);border:1px solid rgba(0,240,255,0.55);border-radius:8px;padding:10px 14px;font-size:9px;color:#fff;box-shadow:0 0 28px rgba(0,240,255,0.3);display:none;max-width:260px;line-height:1.5}
 ::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:rgba(0,240,255,0.2);border-radius:2px}
+::-webkit-scrollbar-thumb{background:rgba(0,240,255,0.18);border-radius:2px}
 </style>
 </head>
 <body>
-
 <canvas id="canvas"></canvas>
 
-<div id="title">
+<div id="hud-top">
   <div>
-    <h1>⚡ QUILLAN-RONIN v5.4.0 ONI — SOVEREIGN NEURAL MODEL VIEWER</h1>
-    <div class="sub">CANONICAL 8-STAGE TENSOR PIPELINE · AUTO-CENTERED 3D ARCHITECTURE GRAPH</div>
+    <h1>&#9889; QUILLAN-RONIN v5.4.0 ONI &mdash; SOVEREIGN MODEL VIEWER</h1>
+    <div style="font-size:8px;color:#333;letter-spacing:1.5px;margin-top:2px">34-COUNCIL EvoMoE &nbsp;|&nbsp; 9-VECTOR PRISM &nbsp;|&nbsp; BitNet 1.58b STE &nbsp;|&nbsp; RANK-24 EGGROLL</div>
   </div>
-  <div style="font-size:9.5px;color:#666;text-align:right;">
-    <div id="fps-counter" style="color:#00ff88;">60 FPS</div>
-    <div id="active-signal" style="color:#00ffff;">ACTIVE TOKEN STREAM</div>
+  <div class="hud-meta">
+    <div class="pulse-dot"></div>
+    <span id="live-mode-label">COUNCIL DELIBERATION</span>
+    <span id="fps-counter">60 FPS</span>
   </div>
 </div>
 
 <div id="left-panel">
-  <div class="panel-title">8-Stage Model Pipeline</div>
+  <div class="panel-title">Architecture Pipeline</div>
   <div id="layer-legend"></div>
-
-  <div class="panel-title" style="margin-top:10px">Selected Tensor Node</div>
-  <div id="neuron-info">
-    <div class="info-row"><span class="info-key">STAGE</span><span class="info-val" id="ni-layer">—</span></div>
-    <div class="info-row"><span class="info-key">NODE ID</span><span class="info-val" id="ni-node">—</span></div>
-    <div class="info-row"><span class="info-key">QUANTIZATION</span><span class="info-val" id="ni-act">BitNet 1.58b STE</span></div>
-    <div class="info-row"><span class="info-key">FORWARD ACTIVATION</span><span class="info-val" id="ni-win">—</span></div>
-    <div class="info-row"><span class="info-key">ROUTING GATE</span><span class="info-val" id="ni-wout">—</span></div>
-    <div class="info-row"><span class="info-key">E_ICE AUDIT</span><span class="info-val" id="ni-bias">PASS (0.00 drift)</span></div>
+  <div class="panel-title" style="margin-top:10px">Selected Node</div>
+  <div id="node-info">
+    <div class="info-row"><span class="info-key">STAGE</span><span class="info-val" id="ni-stage">&mdash;</span></div>
+    <div class="info-row"><span class="info-key">NODE ID</span><span class="info-val" id="ni-node">&mdash;</span></div>
+    <div class="info-row"><span class="info-key">QUANTIZATION</span><span class="info-val" id="ni-quant">BitNet STE</span></div>
+    <div class="info-row"><span class="info-key">ACTIVATION</span><span class="info-val" id="ni-act">&mdash;</span></div>
+    <div class="info-row"><span class="info-key">GATE WEIGHT</span><span class="info-val" id="ni-gate">&mdash;</span></div>
+    <div class="info-row"><span class="info-key">E_ICE AUDIT</span><span class="info-val" id="ni-ice" style="color:#00ff88">PASS</span></div>
   </div>
 </div>
 
 <div id="right-panel">
-  <div class="panel-title">Runtime & Hardware Telemetry</div>
+  <div class="panel-title">Runtime Telemetry</div>
   <div id="stats-container"></div>
-
-  <div class="panel-title" style="margin-top:10px">Signal & Token Tracing</div>
-  <div id="signal-trace" style="font-size:8px;color:#777;line-height:1.6;max-height:200px;overflow-y:auto"></div>
+  <div class="panel-title" style="margin-top:10px">Signal Trace</div>
+  <div id="sig-trace"></div>
 </div>
 
-<div id="token-stream-bar">
-  <span style="color:#ffd700;font-weight:700;">[LIVE FORWARD STREAM]:</span>
-  <span id="liveTokenFlow">&lt;|startoftext|&gt; &rarr; 9-Vector Contraction &rarr; Top-4 Deliberation &rarr; Flash Langevin Diffusion &rarr; Output Logits</span>
+<div id="token-bar">
+  <span style="color:#ffd700;font-weight:700">[PIPELINE]:</span>
+  <span id="live-token">TOKEN-EMB &rarr; DUAL-INGEST &rarr; 9-VEC-PRISM &rarr; ROUTER &rarr; 34-COUNCIL &rarr; 9B-SWARM &rarr; DIFFUSION &rarr; LOGITS</span>
 </div>
 
 <div id="controls">
-  <button onclick="startForwardPass()" class="gold">▶ DISPATCH TOKEN PULSE</button>
-  <button onclick="startForwardPass(true)" class="gold">⚡ TURBO 9-VECTOR GEMM</button>
-  <button onclick="toggleMode('weights')" id="btn-weights">BITNET STE WEIGHTS</button>
-  <button onclick="toggleMode('prism')" id="btn-prism">9-VECTOR PRISM</button>
-  <button onclick="toggleMode('council')" id="btn-council" class="active">34-COUNCIL CONSENSUS</button>
-  <button onclick="toggleMode('swarm')" id="btn-swarm">9B SWARM SIM</button>
-  <button onclick="autoCenter(true)">🎯 RE-CENTER GRAPH</button>
-  <button onclick="togglePause()" id="btn-pause">⏸ PAUSE</button>
+  <button onclick="doFullPass()" class="gold">&#9654; DISPATCH TOKEN</button>
+  <button onclick="doTurboPass()" class="gold">&#9889; TURBO GEMM</button>
+  <button onclick="setMode('council')" id="btn-council" class="active">34-COUNCIL</button>
+  <button onclick="setMode('prism')" id="btn-prism">9-VEC PRISM</button>
+  <button onclick="setMode('weights')" id="btn-weights">BitNet WEIGHTS</button>
+  <button onclick="setMode('swarm')" id="btn-swarm">9B SWARM</button>
+  <button onclick="setMode('eice')" id="btn-eice" class="red">E_ICE AUDIT</button>
+  <button onclick="reCenter()">&#127919; CENTER</button>
+  <button onclick="togglePause()" id="btn-pause">&#9208; PAUSE</button>
 </div>
 
 <div id="tooltip"></div>
@@ -140,444 +102,317 @@ button.gold:hover,button.gold.active{background:rgba(255,215,0,0.2);color:#ffd70
 <script>
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+let W = canvas.width = window.innerWidth;
+let H = canvas.height = window.innerHeight;
 
-let w = 1200;
-let h = 800;
-
-// ─── CANONICAL v5.4.0 ONI ARCHITECTURE LAYERS ──────────────────────────────
+// ── CANONICAL QUILLAN-RONIN v5.4.0 ONI ARCHITECTURE ──────────────────────
 const STAGES = [
-  // 0. Input & Embedding
-  { id:'input_text', label:'1. TOKEN EMBEDDING', n:6, col:0, color:'#00ff88', act:'BitLinear', desc:'50,257 Vocab × 1024d\nTied Input Embeddings + RoPE' },
-  
-  // 1. Dual Brain Ingest Bridge
-  { id:'dual_brain', label:'2. DUAL Q1/Q2 INGEST', n:6, col:1, color:'#00e5ff', act:'Gated Fusion', desc:'Q1 Analytical & Q2 Intuitive\nDual-Brain Ingestion Bridge' },
-  
-  // 2. 9-Vector Semantic Prism
-  { id:'prism_decomp', label:'3. 9-VECTOR PRISM', n:9, col:2, color:'#ff007f', act:'Parallel GEMM', desc:'Language, Sentiment, Context, Intent, Meta, Creativity, Ethics, Strategy, Constraint' },
-  
-  // 3. Complexity Router
-  { id:'router', label:'4. COMPLEXITY ROUTER', n:8, col:3, color:'#ffb703', act:'Top-4 Softmax', desc:'Dynamic Complexity Gating over\n34 Sovereign Council Personas' },
-  
-  // 4. 34-Council EvoMoE (Represented across 4 core cluster pillars)
-  { id:'exp_cog', label:'5A. COGNITIVE CLUSTER', n:6, col:4, color:'#a7c957', act:'BitNet 1.58b', desc:'C1-ASTRA, C6-OMNIS, C7-LOGOS, C25-PROMETHEUS, C28-CALCULUS' },
-  { id:'exp_sec', label:'5B. SECURITY & ADVERSARIAL', n:6, col:4, color:'#ff595e', act:'BitNet 1.58b', desc:'C2-VIR, C13-WARDEN, C18-SHEPHERD, C19-VIGIL, C34-PREDATOR' },
-  { id:'exp_exec', label:'5C. EXECUTION & MASTERY', n:6, col:4, color:'#2ec4b6', act:'BitNet 1.58b', desc:'C4-PRAXIS, C10-CODEWEAVER, C14-KAIDO, C20-ARTIFEX, C26-TECHNE' },
-  { id:'exp_meta', label:'5D. CREATIVE & SYSTEM', n:6, col:4, color:'#f48fb1', act:'BitNet 1.58b', desc:'C3-SOLACE, C8-METASYNTH, C9-AETHER, C15-LUMINARIS, C30-TESSERACT' },
-
-  // 5. 9B Virtual Swarm Mesh & Governor
-  { id:'swarm_mesh', label:'6. 9B SWARM MESH', n:7, col:5, color:'#9d4edd', act:'Rank-24 EGGROLL', desc:'Planet-Scale Agent Diversity\n272M Clones per Expert + Lee-Mach-6 PID' },
-
-  // 6. Flash Thermodynamic Diffusion & Ethics
-  { id:'diffusion', label:'7. FLASH DIFFUSION & E_ICE', n:7, col:6, color:'#3a86ff', act:'Langevin + E_ICE', desc:'14-Step Thermodynamic Denoising\nZero-Drift Toxicity Constraint' },
-
-  // 7. Output Vocabulary Logits
-  { id:'output_head', label:'8. SOVEREIGN FINALIZER', n:6, col:7, color:'#00ff88', act:'Tied Softmax', desc:'50,257 Output Vocabulary Logits\nHigh-Fidelity Autoregressive Output' }
+  {id:'embed', col:0, label:'TOKEN\nEMBEDDING', n:7, color:'#00ff88', glow:'#00ff8830', shape:'rect', tag:'1',
+   quant:'Tied Embeddings + RoPE', desc:'50,257 vocab x 1024d\nRoPE positional encoding\nTied input/output weights'},
+  {id:'ingest', col:1, label:'DUAL Q1/Q2\nINGEST', n:7, color:'#00e5ff', glow:'#00e5ff30', shape:'diamond', tag:'2',
+   quant:'Gated Sigmoid Fusion', desc:'Q1 Analytical + Q2 Intuitive\nEntropy-regularized gate\ng*Q1 + (1-g)*Q2'},
+  {id:'prism', col:2, label:'9-VECTOR\nSEMANTIC PRISM', n:9, color:'#ff007f', glow:'#ff007f30', shape:'hex', tag:'3',
+   quant:'Parallel GEMM x9', desc:'Language - Sentiment - Context\nIntent - Meta - Creativity\nEthics - Strategy - Constraint'},
+  {id:'router', col:3, label:'COMPLEXITY\nROUTER', n:8, color:'#ffb703', glow:'#ffb70330', shape:'rect', tag:'4',
+   quant:'Top-4 Softmax Dispatch', desc:'Complexity classifier 3-way\nFast / Balanced / Diffusion\nTop-4 expert gating probs'},
+  {id:'cog', col:4, label:'COGNITIVE\nCLUSTER 5A', n:6, color:'#a7c957', glow:'#a7c95730', shape:'hex', tag:'5A',
+   quant:'BitNet 1.58b STE', desc:'C0-ASTRA - C6-LOGOS - C5-OMNIS\nC27-CALCULUS - C24-PROMETHEUS\nC11-SOPHIAE'},
+  {id:'sec', col:4, label:'SECURITY\nADVERSARIAL 5B', n:5, color:'#ff595e', glow:'#ff595e30', shape:'hex', tag:'5B',
+   quant:'BitNet 1.58b STE', desc:'C1-VIR - C12-WARDEN\nC17-SHEPHERD - C18-VIGIL\nC33-PREDATOR'},
+  {id:'exec', col:4, label:'EXECUTION\nCLUSTER 5C', n:5, color:'#2ec4b6', glow:'#2ec4b630', shape:'hex', tag:'5C',
+   quant:'BitNet 1.58b STE', desc:'C3-PRAXIS - C9-CODEWEAVER\nC13-KAIDO - C19-ARTIFEX\nC25-TECHNE'},
+  {id:'creative', col:4, label:'CREATIVE\nSYSTEM 5D', n:5, color:'#f48fb1', glow:'#f48fb130', shape:'hex', tag:'5D',
+   quant:'BitNet 1.58b STE', desc:'C2-SOLACE - C7-METASYNTH\nC8-AETHER - C14-LUMINARIS\nC29-TESSERACT'},
+  {id:'swarm', col:5, label:'9B SWARM\nMESH', n:8, color:'#9d4edd', glow:'#9d4edd30', shape:'circle', tag:'6',
+   quant:'Rank-24 EGGROLL INT4', desc:'272M virtual clones / expert\nLee-Mach-6 PID governor\nWorld emulation 5-step Markov'},
+  {id:'diffusion', col:6, label:'FLASH DIFFUSION\nE_ICE', n:7, color:'#3a86ff', glow:'#3a86ff30', shape:'diamond', tag:'7',
+   quant:'Langevin 14-Step + E_ICE', desc:'Thermodynamic Flash Diffusion\n14 Langevin denoising steps\nE_ICE zero-drift toxicity audit'},
+  {id:'output', col:7, label:'SOVEREIGN\nFINALIZER', n:7, color:'#00ff88', glow:'#00ff8830', shape:'rect', tag:'8',
+   quant:'Tied Softmax Logits', desc:'50,257 output vocabulary logits\nAutoregressive decoding\nEMA continuity smoothing'}
 ];
 
-const NUM_COLS = 8;
-
-let cam = { x: 0, y: 0, scale: 1 };
-let dragging = false, dragStart = {x:0,y:0}, camStart={x:0,y:0};
-
-let neurons = [];
-let connections = [];
-let signals = [];
-let hoveredNeuron = null;
-let selectedNeuron = null;
-let paused = false;
-let mode = 'council';
-
-let stats = {
-  fps: 60, signals_sent: 0,
-  router_conf: 0.942, e_ice: 99.8, lee_mach: '0.5ms Locked',
-  expert_active: 'C34-PREDATOR & C7-LOGOS', bitnet_quant: 'Ternary {-1,0,+1}',
-  active_swarm: '9.0B Virtual Mesh'
-};
+const NUM_COLS = 8, NODE_R = 9, COL_SPACING = 168;
+let cam = {x:0, y:0, scale:1};
+let dragging = false, dragStart = {x:0,y:0}, camStart = {x:0,y:0};
+let nodes = [], conns = [], signals = [];
+let hovNode = null, paused = false, mode = 'council';
+let time = 0, lastT = performance.now(), frames = 0, fpsAcc = 0;
+let tele = {sigs:0, routerConf:.9421, eice:99.8, leeMach:'0.5ms Locked',
+  expertActive:'C34-PREDATOR + C6-LOGOS', swarmAgents:'9.0B Virtual', bitnet:'{-1, 0, +1}'};
 
 function buildLayout(){
-  neurons = [];
-  connections = [];
-
-  // Spacing layout relative to virtual coordinates
-  const totalCols = NUM_COLS;
-  const colSpacing = 160;
-  const totalW = totalCols * colSpacing;
-  const totalH = 560;
-
-  const colGroups = {};
-  STAGES.forEach(s => {
-    if (!colGroups[s.col]) colGroups[s.col] = [];
-    colGroups[s.col].push(s);
-  });
-
-  const neuronMap = {};
-
+  nodes = []; conns = [];
+  const cg = {};
+  STAGES.forEach(s => { if(!cg[s.col]) cg[s.col]=[]; cg[s.col].push(s); });
+  const TOTAL_H = H - 140, TOP = 60, nm = {};
   STAGES.forEach(stage => {
-    const colX = stage.col * colSpacing;
-    const stagesInCol = colGroups[stage.col];
-    const stageIdx = stagesInCol.indexOf(stage);
-
-    const stageHeight = totalH / stagesInCol.length;
-    const stageTop = stageIdx * stageHeight;
-
-    neuronMap[stage.id] = [];
-
-    for (let i = 0; i < stage.n; i++) {
-      const y = stageTop + (i + 0.5) * (stageHeight / stage.n);
-      const nid = neurons.length;
-      neurons.push({
-        id: nid,
-        stageId: stage.id,
-        stageLabel: stage.label,
-        col: stage.col,
-        nodeIndex: i,
-        x: colX + (Math.sin(i * 1.5) * 8),
-        y: y,
-        activation: 0.3 + Math.random() * 0.7,
-        bias: (Math.random() - 0.5) * 0.2,
-        color: stage.color,
-        desc: stage.desc,
-        act: stage.act
+    const colX = stage.col * COL_SPACING;
+    const sc = cg[stage.col], si = sc.indexOf(stage);
+    const slotH = TOTAL_H / sc.length;
+    const slotTop = TOP + si * slotH;
+    nm[stage.id] = [];
+    for(let i = 0; i < stage.n; i++){
+      const y = slotTop + (i+1)*(slotH/(stage.n+1));
+      const nid = nodes.length;
+      nodes.push({
+        id:nid, stageId:stage.id, stageLabel:stage.label, col:stage.col, nodeIdx:i,
+        x: colX + (Math.sin(i*2.1+stage.col)*6), y,
+        color:stage.color, glow:stage.glow, shape:stage.shape,
+        desc:stage.desc, act:stage.quant, tag:stage.tag,
+        activation:.25+Math.random()*.5, bias:(Math.random()-.5)*.4, phase:Math.random()*Math.PI*2
       });
-      neuronMap[stage.id].push(nid);
+      nm[stage.id].push(nid);
     }
   });
-
-  // Connect columns sequentially
-  for (let c = 0; c < NUM_COLS - 1; c++) {
-    const fromStages = STAGES.filter(s => s.col === c);
-    const toStages = STAGES.filter(s => s.col === c + 1);
-
-    const fromNodes = [];
-    fromStages.forEach(s => { fromNodes.push(...(neuronMap[s.id] || [])); });
-
-    const toNodes = [];
-    toStages.forEach(s => { toNodes.push(...(neuronMap[s.id] || [])); });
-
-    fromNodes.forEach(a => {
-      toNodes.forEach(b => {
-        if (Math.random() > 0.5) {
-          connections.push({
-            from: a,
-            to: b,
-            weight: (Math.random() > 0.5 ? 1.0 : -1.0) * (0.3 + Math.random() * 0.7),
-            active: false
-          });
-        }
-      });
-    });
+  for(let c = 0; c < NUM_COLS-1; c++){
+    const fSts = STAGES.filter(s=>s.col===c);
+    const tSts = STAGES.filter(s=>s.col===c+1);
+    const fn=[]; fSts.forEach(s=>fn.push(...(nm[s.id]||[])));
+    const tn=[]; tSts.forEach(s=>tn.push(...(nm[s.id]||[])));
+    fn.forEach(a => tn.forEach(b => {
+      if(c===3 || c===4 || Math.random()>.42)
+        conns.push({from:a, to:b, weight:(Math.random()>.5?1:-1)*(.3+Math.random()*.7), brightness:0});
+    }));
   }
-
-  buildLegend();
-  buildStats();
-  autoCenter(false);
+  buildLegend(); buildStats(); reCenter();
 }
 
-function autoCenter(animateCam = true){
-  if (neurons.length === 0) return;
-
-  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-  neurons.forEach(n => {
-    if (n.x < minX) minX = n.x;
-    if (n.x > maxX) maxX = n.x;
-    if (n.y < minY) minY = n.y;
-    if (n.y > maxY) maxY = n.y;
-  });
-
-  const netW = maxX - minX;
-  const netH = maxY - minY;
-  const netCenterX = (minX + maxX) / 2;
-  const netCenterY = (minY + maxY) / 2;
-
-  const targetScale = Math.min((w - 280) / netW, (h - 140) / netH, 1.15);
-  const targetX = 0;
-  const targetY = 0;
-
-  cam.scale = Math.max(0.55, targetScale);
-  cam.x = (w / 2) - netCenterX * cam.scale;
-  cam.y = (h / 2) - netCenterY * cam.scale;
-}
-
-function resize(){
-  w = canvas.width = window.innerWidth || 1200;
-  h = canvas.height = window.innerHeight || 800;
-  buildLayout();
+function reCenter(){
+  if(!nodes.length) return;
+  let mx=Infinity,xm=-Infinity,my=Infinity,ym=-Infinity;
+  nodes.forEach(n=>{if(n.x<mx)mx=n.x;if(n.x>xm)xm=n.x;if(n.y<my)my=n.y;if(n.y>ym)ym=n.y;});
+  const nw=xm-mx, nh=ym-my, cx=(mx+xm)/2, cy=(my+ym)/2;
+  cam.scale = Math.min((W-260)/Math.max(nw,1), (H-140)/Math.max(nh,1), 1.25);
+  cam.scale = Math.max(.42, cam.scale);
+  cam.x = W/2 - cx*cam.scale;
+  cam.y = H/2 - cy*cam.scale;
 }
 
 function buildLegend(){
-  const leg = document.getElementById('layer-legend');
-  if (!leg) return;
-  leg.innerHTML = STAGES.map(s => `
-    <div class="legend-item" onclick="focusStage('${s.id}')">
-      <div class="legend-dot" style="background:${s.color};color:${s.color}"></div>
-      <div class="legend-name">${s.label}</div>
-    </div>
-  `).join('');
+  const leg = document.getElementById('layer-legend'); if(!leg) return;
+  const seen = new Set();
+  leg.innerHTML = STAGES.filter(s=>{const k=s.col+'_'+s.tag; if(seen.has(k)) return false; seen.add(k); return true;})
+    .map(s=>`<div class="legend-item" onclick="focusStage('${s.id}')">
+      <div class="legend-dot" style="background:${s.color};box-shadow:0 0 6px ${s.color}"></div>
+      <div><div class="legend-name">${s.tag}. ${s.label.split('\\n').join(' ')}</div>
+      <div class="legend-sub">${s.quant}</div></div></div>`).join('');
 }
 
 function buildStats(){
-  const sc = document.getElementById('stats-container');
-  if (!sc) return;
+  const sc = document.getElementById('stats-container'); if(!sc) return;
   sc.innerHTML = `
-    <div class="stat-row"><span class="stat-label">QUANTIZATION</span><span class="stat-val" style="color:#00ffff">${stats.bitnet_quant}</span></div>
-    <div class="stat-row"><span class="stat-label">WIN TIMER RESOLUTION</span><span class="stat-val" style="color:#ffd700">${stats.lee_mach}</span></div>
-    <div class="stat-row"><span class="stat-label">ROUTER CONFIDENCE</span><span class="stat-val" style="color:#00ff88">${(stats.router_conf * 100).toFixed(1)}%</span></div>
-    <div class="stat-row"><span class="stat-label">E_ICE INTEGRITY</span><span class="stat-val" style="color:#ff007f">${stats.e_ice}%</span></div>
-    <div class="stat-row"><span class="stat-label">SWARM AGENTS</span><span class="stat-val" style="color:#9d4edd">${stats.active_swarm}</span></div>
-    <div class="stat-row"><span class="stat-label">ACTIVE PERSONA</span><span class="stat-val" style="color:#ffd700">${stats.expert_active}</span></div>
-  `;
+    <div class="stat-row"><span class="stat-label">QUANTIZATION</span><span class="stat-val" style="color:#00f0ff;font-size:8.5px">${tele.bitnet}</span></div>
+    <div class="stat-row"><span class="stat-label">WIN_KERNEL TIMER</span><span class="stat-val" style="color:#ffd700">${tele.leeMach}</span></div>
+    <div class="stat-row"><span class="stat-label">ROUTER CONFIDENCE</span><span class="stat-val" style="color:#00ff88">${(tele.routerConf*100).toFixed(2)}%</span></div>
+    <div class="stat-row"><span class="stat-label">E_ICE INTEGRITY</span><span class="stat-val" style="color:#ff0055">${tele.eice}%</span></div>
+    <div class="stat-row"><span class="stat-label">SWARM AGENTS</span><span class="stat-val" style="color:#a855f7;font-size:8.5px">${tele.swarmAgents}</span></div>
+    <div class="stat-row"><span class="stat-label">ACTIVE PERSONAS</span><span class="stat-val" style="color:#ffd700;font-size:8px">${tele.expertActive}</span></div>`;
 }
+
+function spawnSignal(nid, color, speed){
+  signals.push({nodeId:nid, progress:0, speed:speed||.028, color});
+  tele.sigs++;
+}
+
+function doFullPass(turbo){
+  const ins = nodes.filter(n=>n.col===0);
+  ins.forEach(n=>{n.activation=1; spawnSignal(n.id, n.color, turbo?.06:.028);});
+  const ws = ['TOKEN:0042','QUERY:SOLVE','INPUT:REASON','PROMPT:GENERATE'];
+  document.getElementById('live-token').textContent = ws[Math.floor(Math.random()*ws.length)]
+    +' -> EMB -> DUAL-INGEST -> 9-PRISM -> ROUTER -> 34-COUNCIL -> 9B-SWARM -> DIFFUSION -> LOGITS';
+  logTrace('[DISPATCH] '+(turbo?'Turbo GEMM':'EvoMoE Top-4')+' forward pass initiated');
+}
+function doTurboPass(){ doFullPass(true); }
 
 function focusStage(id){
-  const targetNeurons = neurons.filter(n => n.stageId === id);
-  if (targetNeurons.length > 0) {
-    targetNeurons.forEach(n => { n.activation = 1.0; });
-    startSignal(targetNeurons[0].id);
-  }
-}
-
-function startSignal(startNodeId){
-  signals.push({
-    nodeId: startNodeId,
-    progress: 0,
-    speed: 0.032,
-    color: neurons[startNodeId]?.color || '#00ffff'
-  });
-  stats.signals_sent++;
-}
-
-const tokenWords = [
-  "&lt;|startoftext|&gt;", "PRISM::SPLIT[9]", "COUNCIL::DELIBERATE", "BITNET::STE[-1,0,+1]",
-  "SWARM::EGGROLL[24]", "DIFFUSION::LANGEVIN", "E_ICE::AUDIT_PASS", "HEAD::LOGITS_DENSE",
-  "&lt;|thought_vector|&gt;", "CONSENSUS[Top4]", "ATTENTION::ROPE"
-];
-
-function startForwardPass(turbo = false){
-  const inputs = neurons.filter(n => n.col === 0);
-  inputs.forEach(n => {
-    n.activation = 1.0;
-    startSignal(n.id);
-  });
-  const word = tokenWords[Math.floor(Math.random() * tokenWords.length)];
-  document.getElementById('liveTokenFlow').innerHTML = `${word} &rarr; 9-Vector Contraction &rarr; Top-4 Deliberation &rarr; Diffusion &rarr; Logits`;
-  logTrace(`[DISPATCH] Forward pass across 8 stages (${turbo ? 'Turbo GEMM' : 'EvoMoE Top-4'})`);
+  nodes.filter(n=>n.stageId===id).forEach(n=>{n.activation=1; spawnSignal(n.id, n.color, .04);});
 }
 
 function logTrace(msg){
-  const st = document.getElementById('signal-trace');
-  if (!st) return;
+  const st = document.getElementById('sig-trace'); if(!st) return;
   const d = document.createElement('div');
-  d.innerText = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  d.innerHTML = '<span style="color:#333">'+new Date().toLocaleTimeString()+'</span> <span style="color:#555">'+msg+'</span>';
   st.prepend(d);
+  while(st.children.length>30) st.removeChild(st.lastChild);
 }
 
-function togglePause(){ paused = !paused; document.getElementById('btn-pause').innerText = paused ? '▶ RESUME' : '⏸ PAUSE'; }
-function toggleMode(m){
-  mode = m;
-  document.querySelectorAll('#controls button').forEach(b => b.classList.remove('active'));
-  const btn = document.getElementById('btn-' + m);
-  if (btn) btn.classList.add('active');
-  logTrace(`Mode: ${m.toUpperCase()}`);
+function hexPath(cx,cy,r){
+  ctx.beginPath();
+  for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3; i===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));}
+  ctx.closePath();
+}
+function diamondPath(cx,cy,r){
+  ctx.beginPath();ctx.moveTo(cx,cy-r*1.35);ctx.lineTo(cx+r,cy);ctx.lineTo(cx,cy+r*1.35);ctx.lineTo(cx-r,cy);ctx.closePath();
 }
 
-// ─── MAIN RENDER LOOP ────────────────────────────────────────────────────────
-let lastTime = performance.now();
-let frames = 0, fpsTimer = 0;
+function drawNode(n, t){
+  const act = n.activation;
+  const pulse = 1+.12*Math.sin(t*2+n.phase);
+  const r = (NODE_R + act*5) * pulse;
+  // Outer glow
+  const gr = r + 10 + act*14;
+  const grd = ctx.createRadialGradient(n.x,n.y,r*.4,n.x,n.y,gr);
+  const a16 = Math.floor(act*140+50).toString(16).padStart(2,'0');
+  grd.addColorStop(0, n.color+a16); grd.addColorStop(1, n.color+'00');
+  ctx.fillStyle=grd; ctx.beginPath(); ctx.arc(n.x,n.y,gr,0,Math.PI*2); ctx.fill();
+  // Core
+  ctx.shadowColor=n.color; ctx.shadowBlur=act*24+8; ctx.fillStyle=n.color;
+  if(n.shape==='hex') hexPath(n.x,n.y,r);
+  else if(n.shape==='diamond') diamondPath(n.x,n.y,r);
+  else if(n.shape==='circle'){ctx.beginPath();ctx.arc(n.x,n.y,r,0,Math.PI*2);}
+  else {ctx.beginPath();ctx.roundRect(n.x-r*1.6/2,n.y-r*.9/2,r*1.6,r*.9,3);}
+  ctx.fill(); ctx.shadowBlur=0;
+  // Highlight
+  const ig = ctx.createRadialGradient(n.x-r*.3,n.y-r*.35,0,n.x,n.y,r*.9);
+  ig.addColorStop(0,'rgba(255,255,255,0.38)'); ig.addColorStop(1,'rgba(255,255,255,0)');
+  ctx.fillStyle=ig;
+  if(n.shape==='hex') hexPath(n.x,n.y,r);
+  else if(n.shape==='diamond') diamondPath(n.x,n.y,r);
+  else if(n.shape==='circle'){ctx.beginPath();ctx.arc(n.x,n.y,r,0,Math.PI*2);}
+  else {ctx.beginPath();ctx.roundRect(n.x-r*1.6/2,n.y-r*.9/2,r*1.6,r*.9,3);}
+  ctx.fill();
+  // Hover ring
+  if(hovNode && hovNode.id===n.id){
+    ctx.strokeStyle='#fff'; ctx.lineWidth=1.5; ctx.shadowColor='#fff'; ctx.shadowBlur=12;
+    ctx.beginPath(); ctx.arc(n.x,n.y,r+7,0,Math.PI*2); ctx.stroke(); ctx.shadowBlur=0;
+  }
+}
+
+function drawConn(c){
+  const na=nodes[c.from], nb=nodes[c.to]; if(!na||!nb) return;
+  let alpha=.06, lw=.8;
+  const br=c.brightness||0;
+  if(mode==='weights'){alpha=Math.abs(c.weight)*.3+.05;lw=Math.abs(c.weight)*2+.5;}
+  else if(mode==='prism'&&na.col===2){alpha=.22;lw=1.2;}
+  else if(mode==='council'&&(na.col===3||na.col===4)){alpha=.16;lw=1;}
+  else if(mode==='swarm'&&na.col===5){alpha=.2;lw=1.2;}
+  else if(mode==='eice'&&na.col===6){alpha=.28;lw=1.5;}
+  if(br>.01){alpha=Math.min(.9,alpha+br*.75);lw*=(1+br*3);c.brightness*=.87;}
+  ctx.strokeStyle = c.weight>0?('rgba(0,240,255,'+alpha+')'):'rgba(255,0,85,'+alpha+')';
+  ctx.lineWidth=lw; ctx.shadowBlur=0;
+  ctx.beginPath(); ctx.moveTo(na.x,na.y); ctx.lineTo(nb.x,nb.y); ctx.stroke();
+}
+
+function drawSignals(){
+  for(let i=signals.length-1;i>=0;i--){
+    const s=signals[i];
+    s.progress+=s.speed;
+    const cn=nodes[s.nodeId]; if(!cn){signals.splice(i,1);continue;}
+    const out=conns.filter(c=>c.from===s.nodeId);
+    if(!out.length||s.progress>=1){
+      if(out.length&&Math.random()>.15){
+        const nxt=out[Math.floor(Math.random()*out.length)];
+        nxt.brightness=(nxt.brightness||0)+.92;
+        s.nodeId=nxt.to; s.progress=0;
+        const tn=nodes[nxt.to]; if(tn) tn.activation=Math.min(1,tn.activation+.42);
+      }else{signals.splice(i,1);continue;}
+    }
+    if(out.length){
+      const tg=nodes[out[0].to]; if(!tg) continue;
+      const px=cn.x+(tg.x-cn.x)*s.progress, py=cn.y+(tg.y-cn.y)*s.progress;
+      const og=ctx.createRadialGradient(px,py,0,px,py,8);
+      og.addColorStop(0,'#fff'); og.addColorStop(.35,s.color); og.addColorStop(1,s.color+'00');
+      ctx.fillStyle=og; ctx.shadowColor=s.color; ctx.shadowBlur=18;
+      ctx.beginPath(); ctx.arc(px,py,8,0,Math.PI*2); ctx.fill(); ctx.shadowBlur=0;
+    }
+  }
+}
+
+function drawColLabels(){
+  const seen=new Set();
+  STAGES.forEach(stage=>{
+    const k=stage.col+'_'+stage.id; if(seen.has(k)) return; seen.add(k);
+    const sn=nodes.filter(n=>n.stageId===stage.id); if(!sn.length) return;
+    const topY=Math.min(...sn.map(n=>n.y)), botY=Math.max(...sn.map(n=>n.y));
+    const cx=sn[0].x, pH=botY-topY+60, pY=topY-32, pW=78;
+    const bg=ctx.createLinearGradient(cx-pW/2,pY,cx-pW/2,pY+pH);
+    bg.addColorStop(0,stage.glow); bg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=bg; ctx.beginPath(); ctx.roundRect(cx-pW/2,pY,pW,pH,8); ctx.fill();
+    ctx.fillStyle=stage.color; ctx.globalAlpha=.88;
+    ctx.font='bold 7.5px JetBrains Mono'; ctx.textAlign='center';
+    stage.label.split('\n').forEach((line,li)=>ctx.fillText(line,cx,pY+10+li*11));
+    ctx.globalAlpha=1;
+  });
+}
+
+function drawGrid(){
+  ctx.strokeStyle='rgba(0,240,255,0.022)'; ctx.lineWidth=.8;
+  const gs=44;
+  for(let gx=0;gx<W;gx+=gs){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}
+  for(let gy=0;gy<H;gy+=gs){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+}
 
 function animate(now){
   requestAnimationFrame(animate);
-  const dt = (now - lastTime) / 1000;
-  lastTime = now;
-
-  frames++;
-  fpsTimer += dt;
-  if (fpsTimer >= 1.0) {
-    const el = document.getElementById('fps-counter');
-    if (el) el.innerText = `${frames} FPS`;
-    frames = 0;
-    fpsTimer = 0;
-  }
-
-  if (paused) return;
-
-  ctx.fillStyle = '#020408';
-  ctx.fillRect(0, 0, w, h);
-
-  // Background Grid
-  ctx.strokeStyle = 'rgba(0, 240, 255, 0.03)';
-  ctx.lineWidth = 1;
-  const gridSize = 40;
-  for (let gx = 0; gx < w; gx += gridSize) {
-    ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, h); ctx.stroke();
-  }
-  for (let gy = 0; gy < h; gy += gridSize) {
-    ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(w, gy); ctx.stroke();
-  }
-
-  ctx.save();
-  ctx.translate(cam.x, cam.y);
-  ctx.scale(cam.scale, cam.scale);
-
-  // Draw connections
-  ctx.lineWidth = 1;
-  connections.forEach(c => {
-    const na = neurons[c.from];
-    const nb = neurons[c.to];
-    if (!na || !nb) return;
-
-    ctx.strokeStyle = c.weight > 0 ? 'rgba(0, 240, 255, 0.1)' : 'rgba(255, 0, 85, 0.1)';
-    if (mode === 'weights') {
-      ctx.lineWidth = Math.abs(c.weight) * 2.2;
-    }
-    ctx.beginPath();
-    ctx.moveTo(na.x, na.y);
-    ctx.lineTo(nb.x, nb.y);
-    ctx.stroke();
-  });
-
-  // Update & Draw Signals
-  for (let i = signals.length - 1; i >= 0; i--) {
-    const s = signals[i];
-    s.progress += s.speed;
-
-    const currNode = neurons[s.nodeId];
-    if (!currNode) { signals.splice(i, 1); continue; }
-
-    const outgoing = connections.filter(c => c.from === s.nodeId);
-    if (outgoing.length === 0 || s.progress >= 1.0) {
-      if (outgoing.length > 0 && Math.random() > 0.2) {
-        const nextConn = outgoing[Math.floor(Math.random() * outgoing.length)];
-        s.nodeId = nextConn.to;
-        s.progress = 0;
-        const targetNode = neurons[nextConn.to];
-        if (targetNode) targetNode.activation = Math.min(1.0, targetNode.activation + 0.35);
-      } else {
-        signals.splice(i, 1);
-        continue;
-      }
-    }
-
-    if (outgoing.length > 0) {
-      const target = neurons[outgoing[0].to];
-      if (target) {
-        const sx = currNode.x + (target.x - currNode.x) * s.progress;
-        const sy = currNode.y + (target.y - currNode.y) * s.progress;
-        ctx.fillStyle = s.color;
-        ctx.shadowColor = s.color;
-        ctx.shadowBlur = 12;
-        ctx.beginPath();
-        ctx.arc(sx, sy, 4.5, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-    }
-  }
-
-  // Draw Neurons
-  neurons.forEach(n => {
-    n.activation = Math.max(0.15, n.activation * 0.985);
-
-    ctx.fillStyle = n.color;
-    ctx.shadowColor = n.color;
-    ctx.shadowBlur = n.activation * 20;
-
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, 4 + n.activation * 5, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
-
-    if (hoveredNeuron && hoveredNeuron.id === n.id) {
-      ctx.strokeStyle = '#fff';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 12, 0, Math.PI * 2);
-      ctx.stroke();
-    }
-  });
-
+  const dt=(now-lastT)/1000; lastT=now;
+  frames++; fpsAcc+=dt;
+  if(fpsAcc>=1){document.getElementById('fps-counter').textContent=frames+' FPS';frames=0;fpsAcc=0;}
+  time+=dt;
+  if(paused) return;
+  ctx.fillStyle='#020408'; ctx.fillRect(0,0,W,H);
+  drawGrid();
+  ctx.save(); ctx.translate(cam.x,cam.y); ctx.scale(cam.scale,cam.scale);
+  drawColLabels();
+  conns.forEach(c=>drawConn(c));
+  drawSignals();
+  nodes.forEach(n=>{n.activation=Math.max(.15,n.activation*.992);drawNode(n,time);});
   ctx.restore();
+  // Scanlines
+  ctx.fillStyle='rgba(0,0,0,0.04)';
+  for(let y=0;y<H;y+=4) ctx.fillRect(0,y,W,1);
 }
 
-// ─── INTERACTION & PAN/ZOOM ──────────────────────────────────────────────────
-canvas.addEventListener('mousedown', e => {
-  dragging = true;
-  dragStart = { x: e.clientX, y: e.clientY };
-  camStart = { x: cam.x, y: cam.y };
+canvas.addEventListener('mousedown',e=>{dragging=true;dragStart={x:e.clientX,y:e.clientY};camStart={x:cam.x,y:cam.y};});
+window.addEventListener('mouseup',()=>dragging=false);
+window.addEventListener('mousemove',e=>{
+  if(dragging){cam.x=camStart.x+(e.clientX-dragStart.x);cam.y=camStart.y+(e.clientY-dragStart.y);return;}
+  const wx=(e.clientX-cam.x)/cam.scale, wy=(e.clientY-cam.y)/cam.scale;
+  hovNode=null;
+  for(const n of nodes){if(Math.hypot(n.x-wx,n.y-wy)<16){hovNode=n;break;}}
+  const tip=document.getElementById('tooltip');
+  if(hovNode&&tip){
+    tip.style.display='block';tip.style.left=(e.clientX+16)+'px';tip.style.top=(e.clientY+12)+'px';
+    tip.innerHTML='<b style="color:'+hovNode.color+'">'+hovNode.stageLabel.split('\n').join(' ')+'</b><br><span style="color:#888">Node #'+hovNode.nodeIdx+' &bull; '+hovNode.act+'</span><br><span style="font-size:8.5px;color:#666;white-space:pre-line">'+hovNode.desc+'</span>';
+  }else if(tip) tip.style.display='none';
 });
-window.addEventListener('mousemove', e => {
-  if (dragging) {
-    cam.x = camStart.x + (e.clientX - dragStart.x);
-    cam.y = camStart.y + (e.clientY - dragStart.y);
-  }
-
-  // World coordinates
-  const mx = e.clientX;
-  const my = e.clientY;
-  const worldX = (mx - cam.x) / cam.scale;
-  const worldY = (my - cam.y) / cam.scale;
-
-  hoveredNeuron = null;
-  for (let n of neurons) {
-    const dist = Math.hypot(n.x - worldX, n.y - worldY);
-    if (dist < 14) {
-      hoveredNeuron = n;
-      break;
-    }
-  }
-
-  const tooltip = document.getElementById('tooltip');
-  if (hoveredNeuron && tooltip) {
-    tooltip.style.display = 'block';
-    tooltip.style.left = (e.clientX + 14) + 'px';
-    tooltip.style.top = (e.clientY + 14) + 'px';
-    tooltip.innerHTML = `<b style="color:${hoveredNeuron.color}">${hoveredNeuron.stageLabel}</b><br><span style="color:#aaa">Node #${hoveredNeuron.nodeIndex} &bull; ${hoveredNeuron.act}</span><br><span style="font-size:8.5px;color:#888;">${hoveredNeuron.desc}</span>`;
-  } else if (tooltip) {
-    tooltip.style.display = 'none';
-  }
+canvas.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.09:.91;cam.scale=Math.min(3,Math.max(.35,cam.scale*f));},{passive:false});
+canvas.addEventListener('click',()=>{
+  if(!hovNode) return;
+  document.getElementById('node-info').classList.add('visible');
+  document.getElementById('ni-stage').textContent=hovNode.stageLabel.split('\n').join(' ');
+  document.getElementById('ni-node').textContent='Node #'+hovNode.nodeIdx;
+  document.getElementById('ni-act').textContent=(hovNode.activation*100).toFixed(1)+'%';
+  document.getElementById('ni-gate').textContent=(hovNode.bias>0?'+':'')+hovNode.bias.toFixed(4);
+  spawnSignal(hovNode.id,hovNode.color,.04);
 });
-window.addEventListener('mouseup', () => { dragging = false; });
-canvas.addEventListener('wheel', e => {
-  e.preventDefault();
-  const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
-  cam.scale = Math.min(2.5, Math.max(0.4, cam.scale * zoomFactor));
-});
-canvas.addEventListener('click', () => {
-  if (hoveredNeuron) {
-    selectedNeuron = hoveredNeuron;
-    document.getElementById('neuron-info').classList.add('visible');
-    document.getElementById('ni-layer').innerText = hoveredNeuron.stageLabel;
-    document.getElementById('ni-node').innerText = `Node #${hoveredNeuron.nodeIndex}`;
-    document.getElementById('ni-win').innerText = `${(hoveredNeuron.activation * 100).toFixed(1)}%`;
-    document.getElementById('ni-wout').innerText = `+${hoveredNeuron.bias.toFixed(4)}`;
-    startSignal(hoveredNeuron.id);
-  }
-});
+window.addEventListener('resize',()=>{W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;buildLayout();});
+window.addEventListener('message',e=>{if(e.data==='activate'||e.data?.action==='activate'){reCenter();doFullPass();}});
 
-window.addEventListener('resize', resize);
-window.addEventListener('message', (e) => {
-  if (e.data === 'activate' || e.data?.action === 'activate') {
-    resize();
-    autoCenter(true);
-    startForwardPass();
-  }
-});
+function setMode(m){
+  mode=m;
+  document.querySelectorAll('#controls button').forEach(b=>b.classList.remove('active'));
+  const b=document.getElementById('btn-'+m); if(b) b.classList.add('active');
+  document.getElementById('live-mode-label').textContent=m.toUpperCase()+' MODE';
+  logTrace('[MODE] Switched to '+m.toUpperCase());
+}
+function togglePause(){paused=!paused;document.getElementById('btn-pause').textContent=paused?'Resume':'Pause';}
 
-setInterval(() => {
-  if (!paused && neurons.length > 0) {
-    const inputs = neurons.filter(n => n.col === 0);
-    if (inputs.length > 0) {
-      const lucky = inputs[Math.floor(Math.random() * inputs.length)];
-      lucky.activation = 1.0;
-      startSignal(lucky.id);
-    }
-  }
-}, 1200);
+setInterval(()=>{
+  if(paused||!nodes.length) return;
+  const ins=nodes.filter(n=>n.col===0);
+  if(ins.length){const r=ins[Math.floor(Math.random()*ins.length)];r.activation=.9;spawnSignal(r.id,r.color,.032);}
+},1100);
 
-resize();
-autoCenter(false);
-startForwardPass();
+const personas=['C34-PREDATOR + C6-LOGOS','C0-ASTRA + C7-METASYNTH','C1-VIR + C12-WARDEN','C4-PRAXIS + C25-TECHNE','C9-CODEWEAVER + C28-CALCULUS'];
+let pIdx=0;
+setInterval(()=>{tele.expertActive=personas[pIdx=(pIdx+1)%personas.length];buildStats();},4200);
+setInterval(()=>{tele.routerConf=.88+Math.random()*.12;buildStats();},6000);
+
+buildLayout();
 requestAnimationFrame(animate);
-logTrace('Quillan-Ronin v5.4.0 ONI Neural Architecture Graph initialized.');
+doFullPass();
+logTrace('Quillan-Ronin v5.4.0 ONI model viewer initialized.');
+logTrace('34-Council EvoMoE | 9-Vector Prism | BitNet 1.58b STE | Rank-24 EGGROLL');
 </script>
 </body>
 </html>
