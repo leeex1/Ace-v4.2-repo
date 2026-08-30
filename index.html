@@ -1064,6 +1064,131 @@
     </section>
 
 
+    
+    <!-- TAB: INTERACTIVE SHADERS & 3D CODE DEMOS -->
+    <section class="tab-content" id="tab-demos">
+      <div class="hero">
+        <div class="hero-badge" style="color: var(--accent-neon-green); border-color: var(--accent-neon-green);">LIVE WEBGL SHADERS & 3D SIMULATIONS</div>
+        <h2 style="background: linear-gradient(135deg, #fff, var(--accent-neon-green), var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">⚡ INTERACTIVE CODE & PHYSICS LAB</h2>
+        <p style="max-width: 820px; margin: 0 auto 20px; font-size: 14.5px; color: var(--text-main);">
+          Real-time procedural GLSL raymarching shaders, 34-node gravitational particle dynamics, and Three.js cognitive field simulations extracted from the Quillan-Ronin sovereign architecture.
+        </p>
+      </div>
+
+      <!-- Demo Selector Grid -->
+      <div class="grid-3" style="gap: 16px; margin-bottom: 28px;">
+        
+        <div class="card demo-card" onclick="loadDemo('dual_brain_swarm')" style="cursor:pointer; border:1px solid var(--accent-cyan); background:rgba(0,240,255,0.04);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-cyan);">THREE.JS 3D</span>
+            <span style="font-size:10px; color:var(--accent-gold); background:rgba(255,215,0,0.1); padding:2px 6px; border-radius:4px;">ACTIVE</span>
+          </div>
+          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Dual-Brain & 34-Node Mesh</h4>
+          <p style="font-size:12px; color:var(--text-muted);">Alpha & Beta router icosahedrons with 34 orbital expert node filaments and 9B particle cloud.</p>
+        </div>
+
+        <div class="card demo-card" onclick="loadDemo('neural_fractal_wave')" style="cursor:pointer; border:1px solid var(--border-line);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-neon-green);">GLSL RAYMARCHER</span>
+            <span style="font-size:10px; color:var(--text-muted);">PROCEDURAL</span>
+          </div>
+          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Neural Fractal Field</h4>
+          <p style="font-size:12px; color:var(--text-muted);">Real-time volumetric raymarching shader generating pulsing fractal cognition waves.</p>
+        </div>
+
+        <div class="card demo-card" onclick="loadDemo('gravitational_lattice')" style="cursor:pointer; border:1px solid var(--border-line);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-purple);">PHYSICS SIMULATION</span>
+            <span style="font-size:10px; color:var(--text-muted);">GRAVITATIONAL</span>
+          </div>
+          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Gravitational Token Lattice</h4>
+          <p style="font-size:12px; color:var(--text-muted);">34-body N-body gravitational solver simulating token attraction in sparse MoE routing.</p>
+        </div>
+
+        <div class="card demo-card" onclick="loadDemo('holographic_matrix')" style="cursor:pointer; border:1px solid var(--border-line);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-red);">GLSL SHADER</span>
+            <span style="font-size:10px; color:var(--text-muted);">CYBERPUNK</span>
+          </div>
+          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Holographic Cyber Grid</h4>
+          <p style="font-size:12px; color:var(--text-muted);">Neon scanline lattice with dynamic audio-reactive ripple distortion and chromatic dispersion.</p>
+        </div>
+
+        <div class="card demo-card" onclick="loadDemo('particle_superposition')" style="cursor:pointer; border:1px solid var(--border-line);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-gold);">THREE.JS PARTICLES</span>
+            <span style="font-size:10px; color:var(--text-muted);">QUANTUM</span>
+          </div>
+          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Quantum Superposition Ring</h4>
+          <p style="font-size:12px; color:var(--text-muted);">10,000 GPU instanced particles collapsing into deterministic eigenvalues on user mouse hover.</p>
+        </div>
+
+        <div class="card demo-card" onclick="loadDemo('bitnet_tensor_field')" style="cursor:pointer; border:1px solid var(--border-line);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-cyan);">TENSOR DYNAMICS</span>
+            <span style="font-size:10px; color:var(--text-muted);">BITNET 1.58B</span>
+          </div>
+          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">BitNet Ternary Tensor Mesh</h4>
+          <p style="font-size:12px; color:var(--text-muted);">3D visualization of ternary weight bounds {-1, 0, +1} forming sovereign crystalline clusters.</p>
+        </div>
+
+      </div>
+
+      <!-- Live Interactive Canvas Screen -->
+      <div style="background: #030611; border: 1px solid var(--border-glow); border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 0 40px rgba(0,240,255,0.15);">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:rgba(8,12,24,0.9); border-bottom:1px solid var(--border-line);">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="display:inline-block; width:10px; height:10px; background:var(--accent-neon-green); border-radius:50%; box-shadow:0 0 8px var(--accent-neon-green);"></span>
+            <span id="demoTitle" style="font-family:'JetBrains Mono'; font-size:13px; color:#fff; font-weight:700;">Dual-Brain & 34-Node Mesh Simulation</span>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button onclick="toggleWireframe()" class="btn btn-secondary" style="font-size:11px; padding:4px 10px;">Wireframe: ON</button>
+            <button onclick="resetDemoCamera()" class="btn btn-secondary" style="font-size:11px; padding:4px 10px;">Reset View</button>
+          </div>
+        </div>
+        <div id="demoCanvasContainer" style="width:100%; height:550px; position:relative; background:#010206;">
+          <canvas id="interactiveDemoCanvas" style="width:100%; height:100%; display:block;"></canvas>
+        </div>
+      </div>
+    </section>
+
+
+    
+      <!-- AUTHOR INSPIRATIONS & NARRATIVE ARCHITECTURE -->
+      <div style="margin-top: 50px;">
+        <h3 style="font-family: 'Cinzel'; font-size: 24px; color: #fff; margin-bottom: 8px;">📚 Narrative & Worldbuilding Inspirations</h3>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
+          The cognitive worldbuilding and deep narrative architecture behind Quillan-Ronin draws from foundational literary titans of fantasy, sci-fi, and investigative suspense:
+        </p>
+        <div class="grid-3" style="gap: 14px;">
+          <div class="card" style="border: 1px solid rgba(255,215,0,0.25);">
+            <h4 style="font-size: 15px; color: var(--accent-gold); margin-bottom: 4px;">J.K. Rowling</h4>
+            <p style="font-size: 12px; color: var(--text-muted);">Intricate magical systems, hidden academic secrets, and profound character depth.</p>
+          </div>
+          <div class="card" style="border: 1px solid rgba(255,0,85,0.25);">
+            <h4 style="font-size: 15px; color: var(--accent-red); margin-bottom: 4px;">George R.R. Martin</h4>
+            <p style="font-size: 12px; color: var(--text-muted);">Multi-faction politics, high-stakes council dynamics, and realistic consequences.</p>
+          </div>
+          <div class="card" style="border: 1px solid rgba(0,240,255,0.25);">
+            <h4 style="font-size: 15px; color: var(--accent-cyan); margin-bottom: 4px;">Peter R. Stone (Forager Series)</h4>
+            <p style="font-size: 12px; color: var(--text-muted);">Post-apocalyptic exploration, scavenged technology, and sovereign grit.</p>
+          </div>
+          <div class="card" style="border: 1px solid rgba(168,85,247,0.25);">
+            <h4 style="font-size: 15px; color: var(--accent-purple); margin-bottom: 4px;">Mercedes Lackey</h4>
+            <p style="font-size: 12px; color: var(--text-muted);">Telepathic companions, ethical bonds, and rich world lore tapestry.</p>
+          </div>
+          <div class="card" style="border: 1px solid rgba(0,255,136,0.25);">
+            <h4 style="font-size: 15px; color: var(--accent-neon-green); margin-bottom: 4px;">J.R.R. Tolkien</h4>
+            <p style="font-size: 12px; color: var(--text-muted);">Mythological scale, deep linguistic foundations, and ancient wisdom councils.</p>
+          </div>
+          <div class="card" style="border: 1px solid rgba(255,215,0,0.25);">
+            <h4 style="font-size: 15px; color: var(--accent-gold); margin-bottom: 4px;">Preston & Child (Thunderhead)</h4>
+            <p style="font-size: 12px; color: var(--text-muted);">Scientific mystery, ancient high-tech archaeology, and high-tension analysis.</p>
+          </div>
+        </div>
+      </div>
+
+
     <!-- TAB 2: 3D NEURAL CANVAS -->
     <section class="tab-content" id="tab-nnvis">
       <div class="hero" style="margin-bottom: 20px;">
@@ -1086,220 +1211,140 @@
       </div>
     </section>
 
-    <!-- TAB 3: CYBER SOUND & MEDIA -->
+    
+    <!-- TAB 3: CYBER SOUND & JUKEBOX -->
     <section class="tab-content" id="tab-media">
       <div class="hero">
-        <div class="hero-badge">OFFICIAL SOUNDTRACK & MULTIMEDIA VAULT</div>
-        <h2>SOVEREIGN SOUNDSCAPE & CYBER JUKEBOX</h2>
-        <p>Original high-fidelity audio productions, instrumental stems, and cyberpunk multimedia crafted by CrashOverrideX.</p>
+        <div class="hero-badge" style="color: var(--accent-gold); border-color: var(--accent-gold);">ORIGINAL SOUNDTRACK & MULTIMEDIA VAULT</div>
+        <h2 style="background: linear-gradient(135deg, #fff, var(--accent-gold), var(--accent-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SOVEREIGN SOUNDSCAPE & CYBER JUKEBOX</h2>
+        <p style="max-width: 780px; margin: 0 auto 20px; font-size: 14.5px; color: var(--text-main);">
+          Original cyber-phonk, synthwave, drill, and orchestral compositions crafted by CrashOverrideX. Multi-platform streaming available across Spotify, YouTube, Suno, and Genius.
+        </p>
+        
+        <!-- Featured Playlists & Spotify Drops Banner -->
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
+          <a href="https://open.spotify.com/search/the%20sound%20of%20alchemy%20jdxx" target="_blank" class="btn btn-primary" style="background: #1db954; color: #000; font-weight: 800;">
+            🟢 Spotify: "The Sound of Alchemy" ↗
+          </a>
+          <a href="https://open.spotify.com/search/mic%20drop%20quillan%20ronin" target="_blank" class="btn btn-primary" style="background: #1db954; color: #000; font-weight: 800;">
+            🟢 Spotify: "Mic Drop Quillan Ronin" ↗
+          </a>
+          <a href="https://youtube.com/@JDXX" target="_blank" class="btn btn-secondary" style="border-color: #ff0000; color: #ff6666;">
+            ▶️ YouTube: DA Flame Mix & Ronin Chronicles ↗
+          </a>
+        </div>
       </div>
 
-      <div class="track-grid">
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">⚡</div>
-              <div>
-                <div class="track-title">Gravity Lock</div>
-                <div class="track-genre">Cyberpunk Electro-Bass</div>
-              </div>
+      <!-- Interactive Audio Player Bar -->
+      <div class="card" style="border: 1px solid var(--accent-gold); background: rgba(8,12,24,0.95); margin-bottom: 30px; box-shadow: 0 0 35px rgba(255,215,0,0.15);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+          <div style="display:flex; align-items:center; gap:16px;">
+            <button id="masterPlayBtn" onclick="toggleAudioPlay()" style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg, #ffd700, #ff8800); border:none; color:#000; font-size:22px; font-weight:900; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 0 20px rgba(255,215,0,0.5);">▶</button>
+            <div>
+              <div id="nowPlayingTitle" style="font-family:'Cinzel'; font-size:17px; font-weight:700; color:#fff;">Agent Ronin (Sovereign Theme)</div>
+              <div id="nowPlayingArtist" style="font-size:12px; color:var(--accent-gold);">CrashOverrideX · Official Soundtrack</div>
             </div>
-            <div class="track-desc">Razor-sharp synth leads and heavy sub-frequencies engineered for deep focus and cognitive alignment.</div>
           </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/gravity_lock.mp3', 'Gravity Lock')">▶ Play</button>
-            <a href="assets/audio/gravity_lock.mp3" download class="btn btn-secondary">↓ MP3</a>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span id="audioCurrentTime" style="font-family:'JetBrains Mono'; font-size:12px; color:var(--text-muted);">0:00</span>
+            <input type="range" id="audioSeekBar" min="0" max="100" value="0" style="width:220px; accent-color:var(--accent-gold); cursor:pointer;">
+            <span id="audioDuration" style="font-family:'JetBrains Mono'; font-size:12px; color:var(--text-muted);">3:45</span>
           </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:14px;">🔊</span>
+            <input type="range" id="audioVolumeBar" min="0" max="100" value="80" style="width:90px; accent-color:var(--accent-cyan); cursor:pointer;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Playlists Grid -->
+      <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">🔥 Featured Playlists & Stems</h3>
+      <div class="grid-3" style="gap: 16px; margin-bottom: 36px;">
+        
+        <div class="card" style="border-left: 4px solid var(--accent-red);">
+          <span style="font-size:10.5px; font-weight:800; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:2px 8px; border-radius:4px;">YOUTUBE PLAYLIST</span>
+          <h4 style="font-size:16px; color:#fff; margin:8px 0 4px;">DA Flame Mix</h4>
+          <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:12px;">High-tempo cyberphonk, 808 glides, and sovereign rap flows crafted with AI neural mastering.</p>
+          <a href="https://youtube.com/@JDXX" target="_blank" class="btn btn-secondary" style="font-size:11px; width:100%; justify-content:center;">Listen on YouTube →</a>
         </div>
 
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">🌌</div>
-              <div>
-                <div class="track-title">Dreaming in the Sky</div>
-                <div class="track-genre">Ambient Thermodynamic Wave</div>
-              </div>
-            </div>
-            <div class="track-desc">Atmospheric relaxation soundscape bridging melodic cadence with Langevin thermodynamic waveforms.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/dreaming_in_the_sky.mp3', 'Dreaming in the Sky')">▶ Play</button>
-            <a href="assets/audio/dreaming_in_the_sky.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
+        <div class="card" style="border-left: 4px solid var(--accent-gold);">
+          <span style="font-size:10.5px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.1); padding:2px 8px; border-radius:4px;">YOUTUBE PLAYLIST</span>
+          <h4 style="font-size:16px; color:#fff; margin:8px 0 4px;">Rocka Flame Mix</h4>
+          <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:12px;">Cyber-metal fusion with industrial distortion, electric guitars, and heavy synth basslines.</p>
+          <a href="https://youtube.com/@JDXX" target="_blank" class="btn btn-secondary" style="font-size:11px; width:100%; justify-content:center;">Listen on YouTube →</a>
         </div>
 
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">⚔️</div>
-              <div>
-                <div class="track-title">Prodigal Son</div>
-                <div class="track-genre">Sovereign Ronin Anthem</div>
-              </div>
-            </div>
-            <div class="track-desc">High-tempo aggressive flow celebrating autonomous survival, resilience, and sovereign engineering.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/prodigal_son.mp3', 'Prodigal Son')">▶ Play</button>
-            <a href="assets/audio/prodigal_son.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
+        <div class="card" style="border-left: 4px solid var(--accent-cyan);">
+          <span style="font-size:10.5px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.1); padding:2px 8px; border-radius:4px;">YOUTUBE CHRONICLES</span>
+          <h4 style="font-size:16px; color:#fff; margin:8px 0 4px;">The Ronin Chronicles</h4>
+          <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:12px;">Narrative-driven lore audio tracks detailing the rise of the sovereign 34-agent council.</p>
+          <a href="https://youtube.com/@JDXX" target="_blank" class="btn btn-secondary" style="font-size:11px; width:100%; justify-content:center;">Listen on YouTube →</a>
         </div>
 
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">🔋</div>
-              <div>
-                <div class="track-title">HIGH VOLTAGE RONIN</div>
-                <div class="track-genre">Overclocked Synthwave</div>
-              </div>
-            </div>
-            <div class="track-desc">Pulse-pounding distortion and hard-hitting kicks from *The Sound of Alchemy* master album collection.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/high_voltage_ronin.mp3', 'HIGH VOLTAGE RONIN')">▶ Play</button>
-            <a href="assets/audio/high_voltage_ronin.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
-        </div>
+      </div>
 
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">🐉</div>
-              <div>
-                <div class="track-title">Chimera Flow</div>
-                <div class="track-genre">Multi-Vector Linguistic Flow</div>
-              </div>
-            </div>
-            <div class="track-desc">Intricate multi-syllabic rhyme structures reflecting the 9-Vector Semantic Prism in motion.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/chimera_flow.mp3', 'Chimera Flow')">▶ Play</button>
-            <a href="assets/audio/chimera_flow.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
-        </div>
-
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">🔥</div>
-              <div>
-                <div class="track-title">Hellfire Furnace</div>
-                <div class="track-genre">Industrial Metal / Cyberpunk</div>
-              </div>
-            </div>
-            <div class="track-desc">Heavy industrial rhythm and metallic timbre forging high-temperature cognitive resilience.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/hellfire_furnace.mp3', 'Hellfire Furnace')">▶ Play</button>
-            <a href="assets/audio/hellfire_furnace.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
-        </div>
-
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">💎</div>
-              <div>
-                <div class="track-title">Chrome Heart Syndrome</div>
-                <div class="track-genre">Futuristic Melodic Trap</div>
-              </div>
-            </div>
-            <div class="track-desc">Glitchy autotuned vocal harmonies blending human sentiment with cold cybernetic architecture.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/chrome_heart_syndrome.mp3', 'Chrome Heart Syndrome')">▶ Play</button>
-            <a href="assets/audio/chrome_heart_syndrome.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
-        </div>
-
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">📐</div>
-              <div>
-                <div class="track-title">Quantize These Lightyears</div>
-                <div class="track-genre">Mathematical Ode / BitNet STE</div>
-              </div>
-            </div>
-            <div class="track-desc">Lyrical treatise celebrating ternary weight states and cosmic computation across deep space.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/quantize_lightyears.mp3', 'Quantize These Lightyears')">▶ Play</button>
-            <a href="assets/audio/quantize_lightyears.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
-        </div>
-
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">👑</div>
-              <div>
-                <div class="track-title">QUILLAN'S BACK</div>
-                <div class="track-genre">Orchestral Resurrection</div>
-              </div>
-            </div>
-            <div class="track-desc">Triumphant horns and cinematic strings heralding the arrival of the v5.4.0 ONI sovereign engine.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/quillans_back.mp3', 'QUILLAN\'S BACK')">▶ Play</button>
-            <a href="assets/audio/quillans_back.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
-        </div>
-
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">⛩️</div>
-              <div>
-                <div class="track-title">Ronin Bushido</div>
-                <div class="track-genre">Samurai Trap / Flute Fusion</div>
-              </div>
-            </div>
-            <div class="track-desc">Traditional shakuhachi melodies layered with 808 sub-bass honoring ancient warrior discipline.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/ronin_bushido.mp3', 'Ronin Bushido')">▶ Play</button>
-            <a href="assets/audio/ronin_bushido.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
-        </div>
-
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">💻</div>
-              <div>
-                <div class="track-title">Coder Music</div>
-                <div class="track-genre">Deep Flow-State Techno</div>
-              </div>
-            </div>
-            <div class="track-desc">Minimalist looping synth textures engineered for uninterrupted 12-hour programming sprints.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/coder_music.mp3', 'Coder Music')">▶ Play</button>
-            <a href="assets/audio/coder_music.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
-        </div>
-
-        <div class="track-card">
-          <div>
-            <div class="track-header">
-              <div class="track-avatar">🤖</div>
-              <div>
-                <div class="track-title">Agent Ronin</div>
-                <div class="track-genre">Cyber-Agent Protocol</div>
-              </div>
-            </div>
-            <div class="track-desc">Stealth frequencies and low-end atmospheric rumbles powering agentic autopilot task execution.</div>
-          </div>
-          <div class="track-actions">
-            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/agent_ronin.mp3', 'Agent Ronin')">▶ Play</button>
-            <a href="assets/audio/agent_ronin.mp3" download class="btn btn-secondary">↓ MP3</a>
-          </div>
-        </div>
+      <!-- Track List Table -->
+      <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">🎧 Track Vault & Stems</h3>
+      <div class="card" style="padding:0; overflow:hidden;">
+        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:13px;">
+          <thead>
+            <tr style="background:rgba(0,240,255,0.06); border-bottom:1px solid var(--border-line); color:var(--text-muted);">
+              <th style="padding:12px 16px;">#</th>
+              <th style="padding:12px 16px;">Track Title</th>
+              <th style="padding:12px 16px;">Genre / Vibe</th>
+              <th style="padding:12px 16px;">Duration</th>
+              <th style="padding:12px 16px; text-align:right;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">01</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Agent Ronin</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyber Drill / Phonk</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:45</td>
+              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Agent Ronin', '3:45')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">02</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Chrome Heart Syndrome</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyberpunk Trap</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:12</td>
+              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Chrome Heart Syndrome', '3:12')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">03</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Kingdoms of Dust and Flame</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Epic Orchestral Trap</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">4:02</td>
+              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Kingdoms of Dust and Flame', '4:02')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">04</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Quantize These Lightyears</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Synthwave Odyssey</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:30</td>
+              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Quantize These Lightyears', '3:30')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">05</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Quillan's Back</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Raw Heavy Phonk</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">2:58</td>
+              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Quillan\'s Back', '2:58')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
+              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">06</td>
+              <td style="padding:12px 16px; font-weight:600; color:#fff;">Ronin Bushido</td>
+              <td style="padding:12px 16px; color:var(--accent-cyan);">Japanese Traditional Strings + 808</td>
+              <td style="padding:12px 16px; color:var(--text-muted);">3:40</td>
+              <td style="padding:12px 16px; text-align:right;"><button onclick="playTrack('Ronin Bushido', '3:40')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px;">▶ Play</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
+
 
     <!-- TAB 4: PAPERS & RESEARCH -->
     <section class="tab-content" id="tab-papers">
