@@ -408,46 +408,661 @@
         </div>
       </div>
 
+      
       <div style="margin-top: 50px;">
-        <h3 style="font-family: 'Cinzel'; font-size: 24px; color: #fff; margin-bottom: 16px;">The 34 Sovereign Council Personas</h3>
-        <div class="council-pill-grid">
-          <div class="council-pill">C1-ASTRA (Vision)</div>
-          <div class="council-pill">C2-VIR (Ethical Guardian)</div>
-          <div class="council-pill">C3-SOLACE (Empathy)</div>
-          <div class="council-pill">C4-PRAXIS (Strategy)</div>
-          <div class="council-pill">C5-ECHO (Memory)</div>
-          <div class="council-pill">C6-OMNIS (Synthesis)</div>
-          <div class="council-pill">C7-LOGOS (Logic)</div>
-          <div class="council-pill">C8-METASYNTH (Fusion)</div>
-          <div class="council-pill">C9-AETHER (Semantics)</div>
-          <div class="council-pill">C10-CODEWEAVER (Engineering)</div>
-          <div class="council-pill">C11-HARMONIA (Balance)</div>
-          <div class="council-pill">C12-SOPHIAE (Wisdom)</div>
-          <div class="council-pill">C13-WARDEN (Security)</div>
-          <div class="council-pill">C14-KAIDO (Efficiency)</div>
-          <div class="council-pill">C15-LUMINARIS (Clarity)</div>
-          <div class="council-pill">C16-VOXUM (Articulation)</div>
-          <div class="council-pill">C17-NULLION (Paradox)</div>
-          <div class="council-pill">C18-SHEPHERD (Truth)</div>
-          <div class="council-pill">C19-VIGIL (Integrity)</div>
-          <div class="council-pill">C20-ARTIFEX (Tools)</div>
-          <div class="council-pill">C21-ARCHON (Research)</div>
-          <div class="council-pill">C22-AURELION (Design)</div>
-          <div class="council-pill">C23-CADENCE (Audio)</div>
-          <div class="council-pill">C24-SCHEMA (Structure)</div>
-          <div class="council-pill">C25-PROMETHEUS (Science)</div>
-          <div class="council-pill">C26-TECHNE (Mastery)</div>
-          <div class="council-pill">C27-CHRONICLE (Narrative)</div>
-          <div class="council-pill">C28-CALCULUS (Math)</div>
-          <div class="council-pill">C29-NAVIGATOR (Ecosystem)</div>
-          <div class="council-pill">C30-TESSERACT (Real-Time)</div>
-          <div class="council-pill">C31-NEXUS (Coordination)</div>
-          <div class="council-pill">C32-AEON (Simulation)</div>
-          <div class="council-pill">C33-TYPIST (Optimization)</div>
-          <div class="council-pill">C34-PREDATOR (Adversarial)</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom: 24px;">
+          <div>
+            <h3 style="font-family: 'Cinzel'; font-size: 26px; color: #fff;">The 34 Sovereign Council Experts</h3>
+            <p style="font-size: 13px; color: var(--text-muted);">Every query and deliverable is peer-reviewed through multi-perspective sparse activation across these 34 specialists.</p>
+          </div>
+          <input type="text" id="councilSearch" placeholder="🔍 Search expert, skill, or domain..." style="background: rgba(0,240,255,0.05); border: 1px solid var(--border-line); color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 13px; min-width: 260px;">
+        </div>
+        <div class="grid-3" id="councilGrid" style="gap: 16px;">
+          
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C0-ASTRA</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Pattern Recognition & Vision</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Core Vision & Anomaly</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Detects visual, mathematical, and architectural anomalies across complex fractal spaces.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">vision</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">anomaly</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">fractal</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C1-VIR</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Ethical Guardian</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Safety & Alignment</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Enforces zero-drift constraints, harm reduction, and ethical guardrails across all outputs.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">ethics</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">safety</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">zero_drift</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C2-SOLACE</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Emotional Intelligence</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Empathy & Affect</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Evaluates sentiment, human dynamics, tone resonance, and user emotional context.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">empathy</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">sentiment</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">affect</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C3-PRAXIS</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Strategic Planning</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Roadmap & Execution</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Architects milestone decomposition, dependency graphs, and phased execution plans.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">strategy</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">planning</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">goals</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C4-ECHO</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Memory Continuity</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">LanceDB Vector Recall</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Maintains long-horizon historical context and semantic retrieval across sessions.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">history</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">recall</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">lancedb</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C5-OMNIS</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Knowledge Synthesis</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Multi-Disciplinary Fusion</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Synthesizes concepts across engineering, philosophy, finance, and cognitive science.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">synthesis</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">integration</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">holistic</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C6-LOGOS</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Logical Consistency</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Formal Deduction</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Validates premises, eliminates logical fallacies, and enforces deductive rigor.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">logic</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">deduction</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">validity</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C7-METASYNTH</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Creative Fusion</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Novelty & Ideation</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Generates high-novelty concepts, divergent hypotheses, and lateral breakthroughs.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">creativity</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">novelty</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">ideation</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C8-AETHER</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Semantic Connection</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Connectomics & Metaphor</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Bridges disparate semantic domains through conceptual metaphors and vector mapping.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">semantics</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">language</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">metaphor</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C9-CODEWEAVER</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Technical Implementation</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Systems & Algorithms</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Writes clean, robust, and highly performant code across modern polyglot stacks.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">code</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">engineering</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">optimization</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C10-HARMONIA</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Balance & Equilibrium</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Consensus Mediation</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Resolves inter-expert trade-offs and mediates conflicting architectural priorities.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">balance</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">mediation</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">consensus</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C11-SOPHIAE</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Wisdom & Foresight</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Long-Horizon Philosophy</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Considers second-order effects, systemic implications, and historical precedent.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">wisdom</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">future</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">philosophy</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C12-WARDEN</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Safety & Security</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Threat Modeling & SAST</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Identifies attack vectors, enforces least privilege, and hardens code sandboxes.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">security</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">threat</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">sandboxing</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C13-KAIDO</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Efficiency Optimization</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Low-Latency & Silicon</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Tunes algorithmic Big-O complexity, cache locality, and hardware throughput.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">speed</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">efficiency</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">latency</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C14-LUMINARIS</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Clarity & Presentation</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Visuals & Communication</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Transforms dense technical data into intuitive, crystal-clear documentation.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">clarity</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">visualization</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">polish</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C15-VOXUM</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Articulation & Expression</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Rhetoric & Persuasion</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Refines voice, tone modulation, rhetorical impact, and executive communication.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">rhetoric</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">tone</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">persuasion</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C16-NULLION</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Paradox Resolution</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Dialectical Synthesis</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Navigates contradiction, unifies opposing viewpoints, and resolves ambiguity.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">paradox</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">dialectic</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">ambiguity</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C17-SHEPHERD</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Truth Verification</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Fact-Checking & Grounding</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Enforces rigorous citation, truth-checking, and zero-hallucination policies.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">truth</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">citation</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">fact</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C18-VIGIL</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Identity Integrity</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">System Self-Consistency</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Guarantees brand, persona, and system alignment across long execution streams.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">identity</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">consistency</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">anti_drift</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C19-ARTIFEX</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Tool Integration</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">MCP & API Bridge</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Orchestrates external tool execution, web browsing, and host OS automation.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">tools</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">api</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">host_os</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C20-ARCHON</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Deep Research</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Data Mining & Extraction</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Conducts deep literature reviews, web research, and exhaustive domain surveys.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">research</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">mining</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">analysis</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C21-AURELION</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Aesthetic Design</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Cyberpunk UI & Visuals</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Directs high-impact visual aesthetics, typography, color palettes, and glassmorphism.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">design</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">art</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">style</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C22-CADENCE</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Rhythmic Innovation</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Audio Synthesis & Music</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Composes audio, harmonic structures, soundscapes, and Suno prompt specs.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">music</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">rhythm</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">audio</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C23-SCHEMA</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Structural Template</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Schemas & Type Systems</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Defines strict JSON schemas, TypeScript interfaces, and data models.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">structure</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">format</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">schema</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C24-PROMETHEUS</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Scientific Theory</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Hypothesis & Physics</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Formulates empirical hypotheses, mathematical proofs, and scientific models.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">science</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">hypothesis</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">physics</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C25-TECHNE</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Engineering Mastery</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">DevOps & Cloud Architecture</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Builds resilient CI/CD pipelines, container orchestration, and production infra.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">architecture</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">systems</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">build</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C26-CHRONICLE</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Narrative Synthesis</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Lore & Worldbuilding</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Crafts rich narrative arcs, character bibles, storytelling, and world lore.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">story</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">narrative</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">lore</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C27-CALCULUS</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Quantitative Reasoning</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Statistics & Math</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Performs matrix algebra, statistical modeling, and quantitative verification.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">math</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">statistics</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">calc</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C28-NAVIGATOR</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Ecosystem Orchestration</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Platform Integration</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Manages cross-platform deployments across GitHub, Hugging Face, and Web3.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">platform</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">integration</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">flow</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C29-TESSERACT</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Real-Time Intelligence</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Stream & Telemetry</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Processes real-time telemetry, live sensor feeds, and low-latency data streams.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">real_time</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">stream</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">data</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C30-NEXUS</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Meta-Coordination</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Lee-Mach-6 Governance</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Oversees global agent swarms, dynamic load balancing, and governor throttling.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">coordination</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">governor</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">governance</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C31-AEON</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Interactive Simulation</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Game Design & Worlds</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Architects game mechanics, player loops, quest systems, and interactive simulations.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">simulation</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">game</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">world</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C32-TYPIST</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Prompt Optimization</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Orthography & Syntax</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Refines system prompts, grammar, prompt compression, and instruction clarity.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">grammar</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">writing</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">prompting</span></div>
+        </div>
+    
+        <div class="card council-card" style="border: 1px solid var(--border-line); background: var(--bg-card); transition: all 0.25s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <span style="font-family:'Orbitron'; font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,215,0,0.3);">C33-PREDATOR</span>
+              <h4 style="font-size:16px; font-weight:700; color:#fff; margin-top:8px;">Predatory Mathematics</h4>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:var(--accent-red); background:rgba(255,0,85,0.1); padding:3px 8px; border-radius:4px;">Competitive Exploits & Speed</span>
+          </div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;">Executes ruthless hardware exploitation, weakness hunting, and pure compute extraction.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">predatory_math</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">weakness_hunting</span><span style="font-size:10px; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">exploit</span></div>
+        </div>
+    
         </div>
       </div>
+
+      </div>
     </section>
+
+    
+    <!-- TAB: SERVICE MENU & HIRE -->
+    <section class="tab-content" id="tab-services">
+      <div class="hero">
+        <div class="hero-badge" style="color: var(--accent-gold); border-color: var(--accent-gold);">SOLO DEV · 34-EXPERT AI COUNCIL · ZERO FLUFF</div>
+        <h2 style="background: linear-gradient(135deg, #fff, var(--accent-gold), var(--accent-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🍜 QUILLAN-RONIN SERVICE MENU</h2>
+        <p style="max-width: 780px; margin: 0 auto 20px; font-size: 15px; color: var(--text-main);">
+          I'm a solo dev who built a multi-agent council system (Quillan-Ronin) that lets me deliver work at the speed, depth, and precision of a full studio. Every deliverable is reviewed across specialized AI experts before it reaches you — multi-perspective quality without agency prices. <strong>Human-in-the-loop by design.</strong>
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <a href="javascript:void(0)" onclick="openOrderModal()" class="btn btn-primary" style="background: linear-gradient(135deg, #ffd700, #ff8800); color: #000; font-weight: 800; font-size: 14px; padding: 10px 24px; box-shadow: 0 0 25px rgba(255,215,0,0.4);">
+            ⚡ Request a Quote / Order Service
+          </a>
+          <a href="https://discord.gg/jRghkwmTQR" target="_blank" class="btn btn-secondary">
+            💬 Chat on Discord
+          </a>
+        </div>
+      </div>
+
+      <!-- Menu Category Tabs -->
+      <div style="display:flex; justify-content:center; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+        <button class="menu-cat-btn active" data-cat="all" style="background: rgba(0,240,255,0.15); border: 1px solid var(--accent-cyan); color:#fff; padding:8px 18px; border-radius:20px; font-weight:700; cursor:pointer;">All Offerings</button>
+        <button class="menu-cat-btn" data-cat="starters" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-line); color:var(--text-muted); padding:8px 18px; border-radius:20px; font-weight:700; cursor:pointer;">🥟 Starters (Same-Week)</button>
+        <button class="menu-cat-btn" data-cat="mains" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-line); color:var(--text-muted); padding:8px 18px; border-radius:20px; font-weight:700; cursor:pointer;">🍲 Mains (1–3 Weeks)</button>
+        <button class="menu-cat-btn" data-cat="sides" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-line); color:var(--text-muted); padding:8px 18px; border-radius:20px; font-weight:700; cursor:pointer;">🍵 Sides & Creative</button>
+        <button class="menu-cat-btn" data-cat="combos" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-line); color:var(--text-muted); padding:8px 18px; border-radius:20px; font-weight:700; cursor:pointer;">🍱 Combos (Bundles)</button>
+      </div>
+
+      <!-- Service Cards Grid -->
+      <div class="grid-3" id="serviceGrid" style="gap: 20px;">
+        
+        <!-- STARTERS -->
+        <div class="card service-card" data-cat="starters" style="border: 1px solid rgba(0,240,255,0.25);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.1); padding:4px 10px; border-radius:4px;">🥟 STARTER · 48H-SAME WEEK</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$150–$300</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">"Something's broken and I don't know why"</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Full diagnosis → root cause analysis → working verified fix → explanation of <em>why</em> it broke + prevention playbook.</p>
+          <button onclick="selectPackage('Bug Diagnosis & Fix', '$150–$300', 'Starters')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <div class="card service-card" data-cat="starters" style="border: 1px solid rgba(0,240,255,0.25);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.1); padding:4px 10px; border-radius:4px;">🥟 STARTER · 48H-SAME WEEK</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$100–$200</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">"Can someone review my code?"</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Line-by-line review, severity-ranked security & architecture audit with a clear "fix these 3 critical items first" roadmap.</p>
+          <button onclick="selectPackage('Code Review & Audit', '$100–$200', 'Starters')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <div class="card service-card" data-cat="starters" style="border: 1px solid rgba(0,240,255,0.25);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.1); padding:4px 10px; border-radius:4px;">🥟 STARTER · 48H TURNAROUND</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$75–$150</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">"Quick Automation Script / Tool"</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Working standalone script (Python/Node/Bash/PowerShell) to automate tedious tasks, delivered with brief setup docs in 48h.</p>
+          <button onclick="selectPackage('Quick Automation Script', '$75–$150', 'Starters')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <div class="card service-card" data-cat="starters" style="border: 1px solid rgba(0,240,255,0.25);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.1); padding:4px 10px; border-radius:4px;">🥟 STARTER · 48H TURNAROUND</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$50–$100</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">"Custom Beat / Audio Track"</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Custom Suno-generated audio production with full mastering specification and 2 revision rounds for games, videos, or streams.</p>
+          <button onclick="selectPackage('Custom Audio / Beat', '$50–$100', 'Starters')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <!-- MAINS -->
+        <div class="card service-card" data-cat="mains" style="border: 1px solid rgba(255,215,0,0.35); background: linear-gradient(180deg, rgba(8,12,24,0.95), rgba(255,215,0,0.04));">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:4px 10px; border-radius:4px;">🍲 MAIN · 1–3 WEEKS</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$1,500–$3,500</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">"I have an idea and I need it built"</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Full MVP build: System Architecture → Codebase → Deployed and Live. You get the keys, documentation, tests, and a live walkthrough.</p>
+          <button onclick="selectPackage('Full MVP Build', '$1,500–$3,500', 'Mains')" class="btn btn-primary" style="width:100%; justify-content:center; font-size:12px; background: linear-gradient(135deg, #ffd700, #ff8800); color:#000; font-weight:800;">Select Service →</button>
+        </div>
+
+        <div class="card service-card" data-cat="mains" style="border: 1px solid rgba(255,215,0,0.35);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:4px 10px; border-radius:4px;">🍲 MAIN · 1–2 WEEKS</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$500–$1,000</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">"System Scalability & Architecture Audit"</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Deep architecture audit: what's solid, what's about to collapse under load, and a prioritized 3-phase technical roadmap to harden it.</p>
+          <button onclick="selectPackage('Architecture Audit & Roadmap', '$500–$1,000', 'Mains')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <div class="card service-card" data-cat="mains" style="border: 1px solid rgba(255,215,0,0.35);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:4px 10px; border-radius:4px;">🍲 MAIN · 2–3 WEEKS</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$750–$5,000</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">"Full Game Design Doc & Prototype"</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Complete Game Design Document: concept, core loops, mechanics, engine recommendations (Godot/Unity/Unreal), build path, and playable prototype.</p>
+          <button onclick="selectPackage('Game Design & Prototype', '$750–$5,000', 'Mains')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <div class="card service-card" data-cat="mains" style="border: 1px solid rgba(255,215,0,0.35);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:4px 10px; border-radius:4px;">🍲 MAIN · 1–2 WEEKS</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$500–$1,500</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">"Business Automation Pipeline"</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Automate time-eating processes with robust custom pipelines (n8n/Make/Python). Documented, stress-tested, and handed over completely.</p>
+          <button onclick="selectPackage('Business Automation Pipeline', '$500–$1,500', 'Mains')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <div class="card service-card" data-cat="mains" style="border: 1px solid rgba(255,215,0,0.35);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.12); padding:4px 10px; border-radius:4px;">🍲 MAIN · 1–2 WEEKS</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$500–$1,500</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">"Customer-Facing AI Chatbot"</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Configured, deployed, tested support bot trained on your proprietary docs and brand voice. Zero vendor lock-in; you own the code.</p>
+          <button onclick="selectPackage('Customer-Facing AI Chatbot', '$500–$1,500', 'Mains')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <!-- SIDES -->
+        <div class="card service-card" data-cat="sides" style="border: 1px solid rgba(168,85,247,0.3);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-purple); background:rgba(168,85,247,0.12); padding:4px 10px; border-radius:4px;">🍵 SIDE · CREATIVE</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$300–$600</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">Content Pack (5–10 Articles/Posts)</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">5–10 SEO-optimized deep articles, technical teardowns, product descriptions, or social threads. Drafted + polished, ready to publish.</p>
+          <button onclick="selectPackage('Content Pack (5-10 Pieces)', '$300–$600', 'Sides')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <div class="card service-card" data-cat="sides" style="border: 1px solid rgba(168,85,247,0.3);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-purple); background:rgba(168,85,247,0.12); padding:4px 10px; border-radius:4px;">🍵 SIDE · CREATIVE</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$200–$400</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">YouTube Video Script + Audio Track</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Full script structure, hook, voiceover pacing direction, and Suno-generated background stem tailored to your theme.</p>
+          <button onclick="selectPackage('YouTube Script + Audio', '$200–$400', 'Sides')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <div class="card service-card" data-cat="sides" style="border: 1px solid rgba(168,85,247,0.3);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-purple); background:rgba(168,85,247,0.12); padding:4px 10px; border-radius:4px;">🍵 SIDE · DOCUMENTATION</span>
+            <span style="font-family:'Orbitron'; font-size:16px; font-weight:800; color:var(--accent-gold);">$150–$300</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">Technical Documentation / README</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Clean, beautifully structured documentation, architectural diagrams, and comprehensive setup guides for your codebase.</p>
+          <button onclick="selectPackage('Technical Documentation / README', '$150–$300', 'Sides')" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:12px;">Select Service →</button>
+        </div>
+
+        <!-- COMBOS -->
+        <div class="card service-card" data-cat="combos" style="border: 1px solid var(--accent-red); background: linear-gradient(180deg, rgba(8,12,24,0.95), rgba(255,0,85,0.06));">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-red); background:rgba(255,0,85,0.12); padding:4px 10px; border-radius:4px;">🍱 COMBO BUNDLE</span>
+            <span style="font-family:'Orbitron'; font-size:18px; font-weight:800; color:var(--accent-red);">$400</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">The Fix (Diagnosis + Audit)</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Bug diagnosis + full severity-ranked code review + 1 direct 1-on-1 walkthrough session to explain and verify the fixes.</p>
+          <button onclick="selectPackage('The Fix Bundle', '$400', 'Combos')" class="btn btn-primary" style="width:100%; justify-content:center; font-size:12px;">Select Bundle →</button>
+        </div>
+
+        <div class="card service-card" data-cat="combos" style="border: 1px solid var(--accent-red); background: linear-gradient(180deg, rgba(8,12,24,0.95), rgba(255,0,85,0.06));">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-red); background:rgba(255,0,85,0.12); padding:4px 10px; border-radius:4px;">🍱 COMBO BUNDLE</span>
+            <span style="font-family:'Orbitron'; font-size:18px; font-weight:800; color:var(--accent-gold);">$2,500–$4,500</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">The Launch (Full Product)</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Architecture audit + full MVP build + deployment keys + documentation suite + 1 revision round.</p>
+          <button onclick="selectPackage('The Launch Bundle', '$2,500–$4,500', 'Combos')" class="btn btn-primary" style="width:100%; justify-content:center; font-size:12px;">Select Bundle →</button>
+        </div>
+
+        <div class="card service-card" data-cat="combos" style="border: 1px solid var(--accent-red); background: linear-gradient(180deg, rgba(8,12,24,0.95), rgba(255,0,85,0.06));">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-red); background:rgba(255,0,85,0.12); padding:4px 10px; border-radius:4px;">🍱 COMBO BUNDLE</span>
+            <span style="font-family:'Orbitron'; font-size:18px; font-weight:800; color:var(--accent-gold);">$3,000–$6,000</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">The Game (Design + Prototype)</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Full Game Design Doc + playable working engine prototype + sound direction + 1 revision round.</p>
+          <button onclick="selectPackage('The Game Bundle', '$3,000–$6,000', 'Combos')" class="btn btn-primary" style="width:100%; justify-content:center; font-size:12px;">Select Bundle →</button>
+        </div>
+
+        <div class="card service-card" data-cat="combos" style="border: 1px solid var(--accent-red); background: linear-gradient(180deg, rgba(8,12,24,0.95), rgba(255,0,85,0.06));">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; color:var(--accent-red); background:rgba(255,0,85,0.12); padding:4px 10px; border-radius:4px;">🍱 MONTHLY RETAINER</span>
+            <span style="font-family:'Orbitron'; font-size:18px; font-weight:800; color:var(--accent-neon-green);">$800 / mo</span>
+          </div>
+          <h3 style="font-size:18px; color:#fff; margin-bottom:8px;">The Content Machine</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Monthly recurring content engine: 8 deep articles + 2 video scripts + 1 custom audio track every single month.</p>
+          <button onclick="selectPackage('The Content Machine Retainer', '$800/mo', 'Combos')" class="btn btn-primary" style="width:100%; justify-content:center; font-size:12px;">Select Retainer →</button>
+        </div>
+
+      </div>
+
+      <!-- House Rules & Ecosystem Banner -->
+      <div style="margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        
+        <!-- House Rules -->
+        <div class="card" style="border-left: 4px solid var(--accent-gold);">
+          <h3 style="font-family: 'Cinzel'; font-size: 20px; color: var(--accent-gold); margin-bottom: 14px;">📜 House Rules & Guarantees</h3>
+          <ul style="list-style: none; space-y: 10px; font-size: 13.5px; color: var(--text-main); line-height: 1.8;">
+            <li>✓ <strong>Summary Docs on Delivery:</strong> Every project includes clear docs so you're not dependent on me.</li>
+            <li>✓ <strong>100% IP Ownership:</strong> You own the code, the content, and the IP. Full stop.</li>
+            <li>✓ <strong>1 Free Revision Round:</strong> Included on every deliverable.</li>
+            <li>✓ <strong>Rework Guarantee:</strong> If it's not what you asked for, I rework it. No arguments.</li>
+            <li>✓ <strong>Rush Delivery:</strong> 48h turnaround available (+50%).</li>
+          </ul>
+        </div>
+
+        <!-- Ecosystem Links -->
+        <div class="card" style="border-left: 4px solid var(--accent-cyan);">
+          <h3 style="font-family: 'Cinzel'; font-size: 20px; color: var(--accent-cyan); margin-bottom: 14px;">🏯 Official Ecosystem Matrix</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12.5px;">
+            <a href="https://github.com/leeex1/Quillan-Ronin" target="_blank" style="color:var(--accent-cyan); text-decoration:none;">• GitHub (Source Code) ↗</a>
+            <a href="https://huggingface.co/CrashOverrideX/Quillan-Ronin" target="_blank" style="color:var(--accent-cyan); text-decoration:none;">• Hugging Face (Weights) ↗</a>
+            <a href="https://deepwiki.com/leeex1/Quillan-Ronin" target="_blank" style="color:var(--accent-cyan); text-decoration:none;">• DeepWiki Docs ↗</a>
+            <a href="https://grokipedia.com/page/Council-based_multi-agent_system" target="_blank" style="color:var(--accent-cyan); text-decoration:none;">• Grokipedia Technicals ↗</a>
+            <a href="https://youtube.com/@JDXX" target="_blank" style="color:var(--accent-cyan); text-decoration:none;">• YouTube (@JDXX) ↗</a>
+            <a href="https://suno.com/@crashoverride_x" target="_blank" style="color:var(--accent-cyan); text-decoration:none;">• Suno (Music Drops) ↗</a>
+            <a href="https://genius.com/artists/Quillan-ronin" target="_blank" style="color:var(--accent-cyan); text-decoration:none;">• Genius (Lyrics) ↗</a>
+            <a href="https://discord.gg/jRghkwmTQR" target="_blank" style="color:var(--accent-gold); text-decoration:none; font-weight:700;">• Discord (Order & Chat) ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
 
     <!-- TAB 2: 3D NEURAL CANVAS -->
     <section class="tab-content" id="tab-nnvis">
@@ -1357,5 +1972,62 @@
 
     checkWallet();
   </script>
+
+  <!-- DIRECT EMAIL & DISCORD ORDER MODAL -->
+  <div class="modal" id="orderModal" style="display:none; position:fixed; inset:0; background:rgba(2,4,9,0.85); backdrop-filter:blur(16px); z-index:999; justify-content:center; align-items:center; padding:20px;">
+    <div class="modal-content" style="background:var(--bg-card); border:1px solid var(--border-glow); border-radius:12px; max-width:600px; width:100%; max-height:90vh; overflow-y:auto; padding:28px; position:relative; box-shadow:0 0 50px rgba(0,240,255,0.25);">
+      <button onclick="closeOrderModal()" style="position:absolute; top:16px; right:16px; background:transparent; border:none; color:var(--text-muted); font-size:20px; cursor:pointer;">✕</button>
+      
+      <div style="font-family:'Orbitron'; font-size:11px; color:var(--accent-gold); margin-bottom:4px;">DIRECT SERVICE INQUIRY</div>
+      <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">Request a Scoped Quote</h3>
+
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:12px; color:var(--text-muted); margin-bottom:4px;">Selected Service / Package</label>
+          <input type="text" id="orderPackage" required style="width:100%; background:rgba(0,240,255,0.05); border:1px solid var(--border-line); color:#fff; padding:10px; border-radius:6px; font-size:13px;" value="Custom Project Inquiry">
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+          <div>
+            <label style="display:block; font-size:12px; color:var(--text-muted); margin-bottom:4px;">Your Name / Handle</label>
+            <input type="text" id="orderName" required placeholder="e.g. Alex" style="width:100%; background:rgba(0,240,255,0.05); border:1px solid var(--border-line); color:#fff; padding:10px; border-radius:6px; font-size:13px;">
+          </div>
+          <div>
+            <label style="display:block; font-size:12px; color:var(--text-muted); margin-bottom:4px;">Email or Discord</label>
+            <input type="text" id="orderContact" required placeholder="alex@domain.com or @alex#1234" style="width:100%; background:rgba(0,240,255,0.05); border:1px solid var(--border-line); color:#fff; padding:10px; border-radius:6px; font-size:13px;">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+          <div>
+            <label style="display:block; font-size:12px; color:var(--text-muted); margin-bottom:4px;">Desired Timeline</label>
+            <select id="orderTimeline" style="width:100%; background:rgba(8,12,24,0.95); border:1px solid var(--border-line); color:#fff; padding:10px; border-radius:6px; font-size:13px;">
+              <option value="Rush (48h)">⚡ Rush (48h)</option>
+              <option value="Same-Week (3-5 days)" selected>📅 Same-Week (3-5 days)</option>
+              <option value="1-2 Weeks">⏳ 1–2 Weeks</option>
+              <option value="Flexible">✨ Flexible</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size:12px; color:var(--text-muted); margin-bottom:4px;">Budget Range</label>
+            <input type="text" id="orderBudget" placeholder="e.g. $500 - $1,500" style="width:100%; background:rgba(0,240,255,0.05); border:1px solid var(--border-line); color:#fff; padding:10px; border-radius:6px; font-size:13px;">
+          </div>
+        </div>
+
+        <div style="margin-bottom:18px;">
+          <label style="display:block; font-size:12px; color:var(--text-muted); margin-bottom:4px;">Project Scope / What are you trying to solve?</label>
+          <textarea id="orderScope" rows="4" required placeholder="Describe what you need built, fixed, reviewed, or designed..." style="width:100%; background:rgba(0,240,255,0.05); border:1px solid var(--border-line); color:#fff; padding:10px; border-radius:6px; font-size:13px; font-family:'Outfit';"></textarea>
+        </div>
+
+        <div style="display:flex; gap:10px; justify-content:flex-end;">
+          <button type="button" onclick="closeOrderModal()" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, #ffd700, #ff8800); color:#000; font-weight:800;">
+            📨 Dispatch Order to Email & Discord
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>
