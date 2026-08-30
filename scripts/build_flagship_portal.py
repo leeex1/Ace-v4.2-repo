@@ -14,7 +14,7 @@ html_content = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quillan-Ronin | Sovereign Multi-Agent Cognitive Architecture</title>
-  <meta name="description" content="Official ecosystem portal for Quillan-Ronin v5.4.0 ONI. 34-Council EvoMoE, 9-Vector Semantic Prism, Browser Copilot Extension, Research Papers & Web3 NFT Vault.">
+  <meta name="description" content="Official ecosystem portal for Quillan-Ronin v5.4.0 ONI. 34-Council EvoMoE, 9-Vector Semantic Prism, Interactive Neural Net Visualizer, Browser Copilot & Web3 NFT Vault.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -59,6 +59,7 @@ html_content = f"""<!DOCTYPE html>
       z-index: 100;
       padding: 16px 40px;
       display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
     }}
     .brand {{ display: flex; align-items: center; gap: 14px; }}
     .brand h1 {{
@@ -73,11 +74,11 @@ html_content = f"""<!DOCTYPE html>
       padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(0, 240, 255, 0.2);
     }}
 
-    .nav-tabs {{ display: flex; gap: 6px; }}
+    .nav-tabs {{ display: flex; gap: 6px; flex-wrap: wrap; }}
     .tab-btn {{
       background: transparent; border: none; color: var(--text-muted);
-      font-family: 'Outfit', sans-serif; font-size: 13.5px; font-weight: 600;
-      padding: 8px 16px; border-radius: 8px; cursor: pointer;
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+      padding: 8px 14px; border-radius: 8px; cursor: pointer;
       transition: all 0.25s ease;
     }}
     .tab-btn:hover {{ color: #fff; background: rgba(255, 255, 255, 0.05); }}
@@ -87,9 +88,9 @@ html_content = f"""<!DOCTYPE html>
       box-shadow: 0 0 15px rgba(233, 69, 96, 0.2);
     }}
 
-    .nav-actions {{ display: flex; gap: 12px; align-items: center; }}
+    .nav-actions {{ display: flex; gap: 10px; align-items: center; }}
     .btn {{
-      padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 700;
+      padding: 8px 16px; border-radius: 8px; font-size: 12.5px; font-weight: 700;
       cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
       transition: all 0.25s ease; font-family: 'Outfit', sans-serif;
     }}
@@ -104,7 +105,7 @@ html_content = f"""<!DOCTYPE html>
     }}
     .btn-secondary:hover {{ background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); }}
 
-    main {{ position: relative; z-index: 1; max-width: 1300px; margin: 0 auto; padding: 40px 24px 80px; }}
+    main {{ position: relative; z-index: 1; max-width: 1300px; margin: 0 auto; padding: 36px 24px 80px; }}
     .tab-content {{ display: none; }}
     .tab-content.active {{ display: block; animation: fadeIn 0.4s ease; }}
 
@@ -113,40 +114,40 @@ html_content = f"""<!DOCTYPE html>
       to {{ opacity: 1; transform: translateY(0); }}
     }}
 
-    .hero {{ text-align: center; margin-bottom: 50px; }}
+    .hero {{ text-align: center; margin-bottom: 40px; }}
     .hero-badge {{
       display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px;
       color: var(--accent-gold); background: rgba(255, 183, 3, 0.1);
       padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(255, 183, 3, 0.3);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }}
     .hero h2 {{
-      font-family: 'Cinzel', serif; font-size: 42px; font-weight: 900;
-      letter-spacing: 1px; margin-bottom: 14px;
+      font-family: 'Cinzel', serif; font-size: 38px; font-weight: 900;
+      letter-spacing: 1px; margin-bottom: 12px;
       background: linear-gradient(135deg, #fff 30%, var(--accent-cyan) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }}
-    .hero p {{ max-width: 780px; margin: 0 auto; color: var(--text-muted); font-size: 16px; }}
+    .hero p {{ max-width: 780px; margin: 0 auto; color: var(--text-muted); font-size: 15px; }}
 
-    .grid-3 {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-top: 30px; }}
+    .grid-3 {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-top: 24px; }}
     
     .card {{
       background: var(--bg-card); border: 1px solid var(--border-line);
-      border-radius: 14px; padding: 26px; backdrop-filter: blur(12px);
+      border-radius: 14px; padding: 24px; backdrop-filter: blur(12px);
       transition: all 0.3s ease; position: relative; overflow: hidden;
     }}
     .card:hover {{
       border-color: var(--border-glow); transform: translateY(-4px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
     }}
-    .card-icon {{ font-size: 32px; margin-bottom: 14px; }}
-    .card h3 {{ font-size: 19px; font-weight: 700; margin-bottom: 8px; color: #fff; }}
-    .card p {{ color: var(--text-muted); font-size: 14px; line-height: 1.6; }}
+    .card-icon {{ font-size: 30px; margin-bottom: 12px; }}
+    .card h3 {{ font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #fff; }}
+    .card p {{ color: var(--text-muted); font-size: 13.5px; line-height: 1.6; }}
 
     pre {{
       background: #050508; border: 1px solid var(--border-line);
-      border-radius: 8px; padding: 14px; font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px; color: var(--accent-cyan); overflow-x: auto; margin: 12px 0;
+      border-radius: 8px; padding: 12px; font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--accent-cyan); overflow-x: auto; margin: 10px 0;
     }}
 
     .council-pill-grid {{
@@ -156,11 +157,27 @@ html_content = f"""<!DOCTYPE html>
     .council-pill {{
       background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-line);
       border-radius: 8px; padding: 10px 12px; font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px; transition: all 0.2s ease;
+      font-size: 11px; transition: all 0.2s ease;
     }}
     .council-pill:hover {{
       background: rgba(0, 240, 255, 0.08); border-color: rgba(0, 240, 255, 0.3);
       color: var(--accent-cyan);
+    }}
+
+    /* NN Visualizer Frame */
+    .nn-container {{
+      background: #020408;
+      border: 1px solid var(--border-glow);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(0, 240, 255, 0.15);
+      position: relative;
+    }}
+    .nn-toolbar {{
+      background: rgba(10, 15, 25, 0.95);
+      border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+      padding: 10px 18px;
+      display: flex; justify-content: space-between; align-items: center;
     }}
 
     .controls-container {{
@@ -242,6 +259,7 @@ html_content = f"""<!DOCTYPE html>
     
     <nav class="nav-tabs">
       <button class="tab-btn active" data-tab="architecture">👑 Architecture</button>
+      <button class="tab-btn" data-tab="nnvis">🧠 NN Visualizer</button>
       <button class="tab-btn" data-tab="papers">📄 Papers & Research</button>
       <button class="tab-btn" data-tab="extension">🧩 Copilot Extension</button>
       <button class="tab-btn" data-tab="huggingface">🌐 Hugging Face Hub</button>
@@ -255,6 +273,7 @@ html_content = f"""<!DOCTYPE html>
   </header>
 
   <main>
+    <!-- TAB 1: ARCHITECTURE -->
     <section class="tab-content active" id="tab-architecture">
       <div class="hero">
         <div class="hero-badge">CANONICAL SOVEREIGN COGNITIVE SYSTEM</div>
@@ -326,6 +345,29 @@ html_content = f"""<!DOCTYPE html>
       </div>
     </section>
 
+    <!-- TAB 2: NEURAL NET VISUALIZER -->
+    <section class="tab-content" id="tab-nnvis">
+      <div class="hero" style="margin-bottom: 20px;">
+        <div class="hero-badge">3D INTERACTIVE GRAPH SIMULATION</div>
+        <h2>INTERACTIVE NEURAL NETWORK VISUALIZER</h2>
+        <p>Real-time interactive canvas simulation of the Quillan-Ronin architecture layers, neuron activations, live forward pass signals, and telemetry.</p>
+      </div>
+
+      <div class="nn-container">
+        <div class="nn-toolbar">
+          <div style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent-cyan); display: flex; align-items: center; gap: 8px;">
+            <span style="display:inline-block; width:8px; height:8px; background:var(--accent-cyan); border-radius:50%; box-shadow:0 0 8px var(--accent-cyan);"></span>
+            LIVE 3D COGNITIVE CANVAS
+          </div>
+          <a href="nn_visualizer.html" target="_blank" class="btn btn-primary" style="padding: 6px 14px; font-size: 11.5px;">
+            Open Fullscreen Visualizer ↗
+          </a>
+        </div>
+        <iframe src="nn_visualizer.html" style="width: 100%; height: 800px; border: none; background: #020408; display: block;" title="Quillan Neural Network Visualizer"></iframe>
+      </div>
+    </section>
+
+    <!-- TAB 3: PAPERS & RESEARCH -->
     <section class="tab-content" id="tab-papers">
       <div class="hero">
         <div class="hero-badge">FORMAL SCIENTIFIC CONTRIBUTIONS</div>
@@ -354,6 +396,7 @@ html_content = f"""<!DOCTYPE html>
       </div>
     </section>
 
+    <!-- TAB 4: EXTENSION -->
     <section class="tab-content" id="tab-extension">
       <div class="hero">
         <div class="hero-badge">BROWSER COPILOT EXTENSION</div>
@@ -383,6 +426,7 @@ html_content = f"""<!DOCTYPE html>
       </div>
     </section>
 
+    <!-- TAB 5: HUGGING FACE HUB -->
     <section class="tab-content" id="tab-huggingface">
       <div class="hero">
         <div class="hero-badge">OPEN SOURCE DATASETS & MODELS</div>
@@ -414,6 +458,7 @@ html_content = f"""<!DOCTYPE html>
       </div>
     </section>
 
+    <!-- TAB 6: NFT VAULT -->
     <section class="tab-content" id="tab-vault">
       <div class="hero">
         <div class="hero-badge">GENESIS 173-PIECE COLLECTION</div>
@@ -439,6 +484,7 @@ html_content = f"""<!DOCTYPE html>
     </section>
   </main>
 
+  <!-- Modal -->
   <div class="modal-overlay" id="nftModal">
     <div class="modal-card">
       <button class="modal-close" id="modalClose">&times;</button>
@@ -594,4 +640,4 @@ with open(docs_dir / "index.html", "w", encoding="utf-8") as f:
 with open(Path(r"C:\02_QUILLAN\index.html"), "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("[SUCCESS] Grand Sovereign Portal generated successfully!")
+print("[SUCCESS] Grand Sovereign Portal with NN Visualizer generated successfully!")
