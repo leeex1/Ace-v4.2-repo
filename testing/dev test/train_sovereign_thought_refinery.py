@@ -29,7 +29,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from _dev.quillan_v8_saturated import QuillanRoninSovereign, QuillanArchConfig
 
-API_KEY = "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"
+API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 API_BASE = "https://integrate.api.nvidia.com/v1"
 
 enc = tiktoken.get_encoding("gpt2")

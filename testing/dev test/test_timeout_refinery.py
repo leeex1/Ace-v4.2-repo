@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import requests, time
 
-API_KEY = "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"
+API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 API_BASE = "https://integrate.api.nvidia.com/v1"
 
 headers = {
