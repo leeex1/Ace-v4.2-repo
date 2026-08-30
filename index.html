@@ -1313,13 +1313,15 @@
 
     
     
-    <!-- TAB 3: CYBER SOUND & MASTER JUKEBOX -->
+    
+    
+    <!-- TAB 3: CYBER SOUND & MASTER JUKEBOX (97 ON-DEMAND TRACKS) -->
     <section class="tab-content" id="tab-media">
       <div class="hero">
-        <div class="hero-badge" style="color: var(--accent-gold); border-color: var(--accent-gold);">100% REAL AUDIO PLAYBACK · OFFICIAL SOUNDTRACK VAULT</div>
+        <div class="hero-badge" style="color: var(--accent-gold); border-color: var(--accent-gold);">97 REAL AUDIO TRACKS LOADED · ON-DEMAND JUKEBOX</div>
         <h2 style="background: linear-gradient(135deg, #fff, var(--accent-gold), var(--accent-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SOVEREIGN SOUNDSCAPE & MASTER JUKEBOX</h2>
         <p style="max-width: 820px; margin: 0 auto 20px; font-size: 14.5px; color: var(--text-main);">
-          Original cyber-phonk, synthwave, drill, and orchestral compositions crafted by CrashOverrideX. Multi-platform streaming available across Spotify, YouTube, Suno, and Genius. Click any track below for instant real audio playback:
+          Original cyber-phonk, synthwave, drill, and orchestral compositions crafted by CrashOverrideX. Multi-platform streaming available across Spotify, YouTube, Suno, and Genius. Listen to all <strong>97 verified tracks</strong> on demand:
         </p>
         
         <!-- Featured Playlists & Spotify Streaming Badges -->
@@ -1340,20 +1342,20 @@
       </div>
 
       <!-- Real Interactive Audio Player Bar -->
-      <div class="card" style="border: 1px solid var(--accent-gold); background: rgba(8,12,24,0.95); margin-bottom: 30px; box-shadow: 0 0 35px rgba(255,215,0,0.18);">
+      <div class="card" style="border: 1px solid var(--accent-gold); background: rgba(8,12,24,0.95); margin-bottom: 24px; box-shadow: 0 0 35px rgba(255,215,0,0.18); position:sticky; top:80px; z-index:80; backdrop-filter:blur(20px);">
         <audio id="realMasterAudio" preload="auto"></audio>
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
           <div style="display:flex; align-items:center; gap:16px;">
-            <button id="masterPlayBtn" onclick="toggleRealMasterPlay()" style="width:54px; height:54px; border-radius:50%; background:linear-gradient(135deg, #ffd700, #ff8800); border:none; color:#000; font-size:22px; font-weight:900; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 0 22px rgba(255,215,0,0.5);">▶</button>
+            <button id="masterPlayBtn" onclick="toggleRealMasterPlay()" style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg, #ffd700, #ff8800); border:none; color:#000; font-size:22px; font-weight:900; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 0 22px rgba(255,215,0,0.5);">▶</button>
             <div>
-              <div id="nowPlayingTitle" style="font-family:'Cinzel'; font-size:17px; font-weight:700; color:#fff;">Agent Ronin</div>
+              <div id="nowPlayingTitle" style="font-family:'Cinzel'; font-size:16px; font-weight:700; color:#fff;">Agent Ronin</div>
               <div id="nowPlayingArtist" style="font-size:12px; color:var(--accent-gold);">Quillan OST · CrashOverrideX</div>
             </div>
           </div>
           <div style="display:flex; align-items:center; gap:14px; flex-grow:1; max-width:480px;">
             <span id="audioCurrentTime" style="font-family:'JetBrains Mono'; font-size:12px; color:var(--text-muted);">0:00</span>
             <input type="range" id="audioSeekBar" min="0" max="100" value="0" step="0.1" style="width:100%; accent-color:var(--accent-gold); cursor:pointer;">
-            <span id="audioDuration" style="font-family:'JetBrains Mono'; font-size:12px; color:var(--text-muted);">3:32</span>
+            <span id="audioDuration" style="font-family:'JetBrains Mono'; font-size:12px; color:var(--text-muted);">--:--</span>
           </div>
           <div style="display:flex; align-items:center; gap:10px;">
             <span style="font-size:14px;">🔊</span>
@@ -1364,7 +1366,7 @@
 
       <!-- Verified YouTube Playlists Grid -->
       <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">🔥 Official YouTube Playlists & Mixes</h3>
-      <div class="grid-3" style="gap: 16px; margin-bottom: 36px;">
+      <div class="grid-3" style="gap: 16px; margin-bottom: 30px;">
         
         <div class="card" style="border-left: 4px solid var(--accent-gold);">
           <span style="font-size:10.5px; font-weight:800; color:var(--accent-gold); background:rgba(255,215,0,0.1); padding:2px 8px; border-radius:4px;">OFFICIAL PLAYLIST</span>
@@ -1396,260 +1398,1298 @@
 
       </div>
 
-      <!-- Real Track Table -->
-      <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">🎧 Full Real Audio Track Library (18 Tracks Loaded)</h3>
-      <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border-glow);">
-        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:13px;">
-          <thead>
-            <tr style="background:rgba(0,240,255,0.08); border-bottom:1px solid var(--border-line); color:var(--text-muted);">
-              <th style="padding:12px 16px;">#</th>
-              <th style="padding:12px 16px;">Track Title</th>
-              <th style="padding:12px 16px;">Album / Project</th>
-              <th style="padding:12px 16px;">Genre / Vibe</th>
-              <th style="padding:12px 16px;">Duration</th>
-              <th style="padding:12px 16px; text-align:right;">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">01</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Agent Ronin</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyber Drill / Phonk</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:32</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_Agent_Ronin_.mp3', 'Agent Ronin', 'Quillan OST', '3:32')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <!-- Real 97-Track Searchable & Scrollable Library -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:12px;">
+        <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin:0;">🎧 Complete On-Demand Audio Vault (97 Tracks)</h3>
+        <div style="position:relative; width:320px;">
+          <input type="text" id="trackSearchInput" oninput="filterTracks()" placeholder="🔍 Search songs, albums, vibes..." style="width:100%; background:rgba(8,12,24,0.9); border:1px solid var(--accent-cyan); border-radius:6px; padding:8px 14px; color:#fff; font-size:12.5px; outline:none; box-shadow:0 0 15px rgba(0,240,255,0.15);">
+        </div>
+      </div>
+
+      <!-- Scrollable Track Container -->
+      <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border-glow); max-height:550px; display:flex; flex-direction:column;">
+        <div style="overflow-y:auto; flex-grow:1;">
+          <table style="width:100%; border-collapse:collapse; text-align:left; font-size:13px;">
+            <thead style="position:sticky; top:0; background:rgba(4,8,18,0.98); z-index:10; border-bottom:1px solid var(--border-line);">
+              <tr style="color:var(--text-muted);">
+                <th style="padding:12px 14px;">#</th>
+                <th style="padding:12px 14px;">Track Title</th>
+                <th style="padding:12px 14px;">Album / Vault</th>
+                <th style="padding:12px 14px;">Genre / Flow</th>
+                <th style="padding:12px 14px;">File Size</th>
+                <th style="padding:12px 14px; text-align:right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="trackTableBody">
+              
+      <tr class="track-row" data-title="0 lead vocal" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">01</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">0 Lead Vocal</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/0_Lead_Vocal.mp3', '0 Lead Vocal', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">02</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Chrome Heart Syndrome</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyberpunk Trap</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:12</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_CHROME_HEART_SYNDROME_.mp3', 'Chrome Heart Syndrome', 'Quillan OST', '3:12')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="12 gauge drunk" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">02</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">12 Gauge Drunk</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">9.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/12_Gauge_Drunk.mp3', '12 Gauge Drunk', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">03</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">From Ground Zero</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Aggressive Freestyle</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:41</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_From_Ground_Zero_.mp3', 'From Ground Zero', 'The Sound of Alchemy', '3:41')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="1 lead vocal" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">03</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">1 Lead Vocal</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/1_Lead_Vocal.mp3', '1 Lead Vocal', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">04</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Kingdoms of Dust and Flame</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Epic Orchestral Trap</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">4:02</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_Kingdoms_of_Dust_and_Flame_.mp3', 'Kingdoms of Dust and Flame', 'Quillan OST', '4:02')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="2 the promise of time" data-album="the sound of alchemy" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">04</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">2 The Promise of Time</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">The Sound of Alchemy</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Cyber Trap / Drill</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/2_The_Promise_of_Time_.mp3', '2 The Promise of Time', 'The Sound of Alchemy', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">05</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Quantize These Lightyears</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Synthwave Odyssey</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:30</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_Quantize_these_Lightyears_.mp3', 'Quantize These Lightyears', 'Quillan OST', '3:30')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="am i real" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">05</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Am i Real</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">4.8 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Am_i_Real_.mp3', 'Am i Real', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">06</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Quillan's Back</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Mic Drop Album</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Raw Heavy Phonk</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">2:58</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_QUILLAN'S_BACK_.mp3', 'Quillan\'s Back', 'Mic Drop Album', '2:58')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="big tx - jdxx jdxx freestyle lilbaby jdxx ai music (vocals)" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">06</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Big TX - JDXX JDXX freestyle lilbaby JDXX AI Music (Vocals)</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">8.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Big_TX_-_JDXX_JDXX_freestyle_lilbaby_JDXX_AI_Music_(Vocals).mp3', 'Big TX - JDXX JDXX freestyle lilbaby JDXX AI Music (Vocals)', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">07</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Runtime Daemon</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Industrial Electro</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:25</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_RUNTIME__DAEMON_.mp3', 'Runtime Daemon', 'The Sound of Alchemy', '3:25')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="born to be a spaceman" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">07</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Born To Be A Spaceman</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Born_To_Be_A_Spaceman.mp3', 'Born To Be A Spaceman', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">08</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Southside Sovereign Ronin</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Houston Chopped & Screwed 808</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:50</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_Southside_Sovereign_Ronin_.mp3', 'Southside Sovereign Ronin', 'The Sound of Alchemy', '3:50')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="candle in the night -jdxx" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">08</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Candle in the Night -JDXX</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">4.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Candle_in_the_Night_-JDXX.mp3', 'Candle in the Night -JDXX', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">09</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">The Promise of Time</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Melodic Acoustic Trap</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:15</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_The_Promise_of_Time_.mp3', 'The Promise of Time', 'The Sound of Alchemy', '3:15')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="chrome heart dial tone" data-album="quillan ost / score" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">09</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Chrome Heart Dial Tone</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Quillan OST / Score</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Orchestral Synthwave</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">12.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Chrome_Heart_Dial_Tone.mp3', 'Chrome Heart Dial Tone', 'Quillan OST / Score', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">10</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Visceral Livewire</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Cyber Metal Fusion</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:08</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_Visceral_Livewire_.mp3', 'Visceral Livewire', 'The Sound of Alchemy', '3:08')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="coder music" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">10</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Coder Music</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Coder_Music.mp3', 'Coder Music', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">11</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Walk the Talk</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Mic Drop Album</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Fast Drill Flow</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">2:52</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/_Walk_the_talk_.mp3', 'Walk the Talk', 'Mic Drop Album', '2:52')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="dj stop and scratch free sound effect (sfx) 2025" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">11</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">DJ STOP and SCRATCH FREE SOUND EFFECT (SFX) 2025</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">0.1 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/DJ_STOP_and_SCRATCH_FREE_SOUND_EFFECT_(SFX)_2025.mp3', 'DJ STOP and SCRATCH FREE SOUND EFFECT (SFX) 2025', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">12</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Ronin Bushido</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Traditional Koto + 808</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:40</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/Ronin_Bushido.mp3', 'Ronin Bushido', 'Quillan OST', '3:40')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="goat devastation" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">12</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">GOAT Devastation</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">11.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/GOAT_Devastation_.mp3', 'GOAT Devastation', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">13</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Ronin Sonata</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Quillan OST</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Classical Piano Stems</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">2:45</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/Ronin_Sonata.mp3', 'Ronin Sonata', 'Quillan OST', '2:45')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="human on the beat" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">13</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">HUMAN on THE BEAT</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">10.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/HUMAN_on_THE_BEAT.mp3', 'HUMAN on THE BEAT', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">14</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">I Don't Relate</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Human Vocals</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Raw Lyricism</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">2:30</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/I_Don't_Relate.mp3', 'I Don\'t Relate', 'Human Vocals', '2:30')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="i don't relate" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">14</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">I Don't Relate</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">4.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/I_Don\'t_Relate.mp3', 'I Don\'t Relate', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">15</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">I Must Be High</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Human Vocals</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Chill Ambient Rap</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:10</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/I_Must_Be_High.mp3', 'I Must Be High', 'Human Vocals', '3:10')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="i must be high" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">15</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">I Must Be High</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/I_Must_Be_High.mp3', 'I Must Be High', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">16</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Prodigal Son</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">The Sound of Alchemy</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Spiritual Trap</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:20</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/Prodigal_Son.mp3', 'Prodigal Son', 'The Sound of Alchemy', '3:20')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="mob life - jdxx jdxx freestyle lilbaby jdxx" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">16</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Mob Life - JDXX JDXX freestyle lilbaby JDXX</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">3.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Mob_Life_-_JDXX_JDXX_freestyle_lilbaby_JDXX.mp3', 'Mob Life - JDXX JDXX freestyle lilbaby JDXX', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">17</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Mob Life (Freestyle)</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Freestyle Vault</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Freestyle Flow</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">2:15</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/Mob_Life_-_JDXX_JDXX_freestyle_lilbaby_JDXX.mp3', 'Mob Life (Freestyle)', 'Freestyle Vault', '2:15')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="nsync - bye bye bye (karaoke version)" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">17</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">NSYNC - Bye Bye Bye (Karaoke Version)</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/NSYNC_-_Bye_Bye_Bye_(Karaoke_Version).mp3', 'NSYNC - Bye Bye Bye (Karaoke Version)', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.04)'" onmouseout="this.style.background='transparent'">
-              <td style="padding:12px 16px; color:var(--accent-gold); font-weight:700;">18</td>
-              <td style="padding:12px 16px; font-weight:600; color:#fff;">Big TX (Freestyle)</td>
-              <td style="padding:12px 16px; color:var(--accent-gold);">Freestyle Vault</td>
-              <td style="padding:12px 16px; color:var(--accent-cyan);">Southern 808 Vocals</td>
-              <td style="padding:12px 16px; color:var(--text-muted);">3:45</td>
-              <td style="padding:12px 16px; text-align:right;">
-                <button onclick="playRealTrack('audio/Big_TX_-_JDXX_JDXX_freestyle_lilbaby_JDXX_AI_Music_(Vocals).mp3', 'Big TX (Freestyle)', 'Freestyle Vault', '3:45')" class="btn btn-secondary" style="padding:5px 12px; font-size:11.5px; border-color:rgba(0,240,255,0.3);">
-                  ▶ Play Real Audio
-                </button>
-              </td>
-            </tr>
+      <tr class="track-row" data-title="new project" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">18</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">New Project</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">10.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/New_Project.mp3', 'New Project', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
     
-          </tbody>
-        </table>
+      <tr class="track-row" data-title="new project - voice audio" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">19</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">New Project - Voice Audio</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">20.1 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/New_Project_-_Voice_Audio.wav', 'New Project - Voice Audio', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="new project - voice audio (1)" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">20</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">New Project - Voice Audio (1)</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">30.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/New_Project_-_Voice_Audio_(1).wav', 'New Project - Voice Audio (1)', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="new project - voice audio (2)" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">21</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">New Project - Voice Audio (2)</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">16.6 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/New_Project_-_Voice_Audio_(2).wav', 'New Project - Voice Audio (2)', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="not what i was" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">22</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Not What i Was</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">3.6 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Not_What_i_Was.mp3', 'Not What i Was', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="prodigal son" data-album="the sound of alchemy" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">23</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Prodigal Son</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">The Sound of Alchemy</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Cyber Trap / Drill</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Prodigal_Son.mp3', 'Prodigal Son', 'The Sound of Alchemy', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="reverse scratch with bass drop sfx starting with that classic rewind recdord" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">24</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Reverse Scratch With Bass Drop Sfx starting With That Classic Rewind Recdord</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">0.1 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Reverse_Scratch_With_Bass_Drop_Sfx_starting_With_That_Classic_Rewind_Recdord.mp3', 'Reverse Scratch With Bass Drop Sfx starting With That Classic Rewind Recdord', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="reverse scratch with bass drop sfx starting with that classic rewind record" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">25</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Reverse Scratch With Bass Drop Sfx starting With That Classic Rewind Record</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">0.1 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Reverse_Scratch_With_Bass_Drop_Sfx_starting_With_That_Classic_Rewind_Record.mp3', 'Reverse Scratch With Bass Drop Sfx starting With That Classic Rewind Record', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="ronin bushido" data-album="quillan ost / score" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">26</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Ronin Bushido</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Quillan OST / Score</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Orchestral Synthwave</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.8 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Ronin_Bushido.mp3', 'Ronin Bushido', 'Quillan OST / Score', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="ronin sonata" data-album="quillan ost / score" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">27</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Ronin Sonata</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Quillan OST / Score</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Orchestral Synthwave</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">3.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Ronin_Sonata.mp3', 'Ronin Sonata', 'Quillan OST / Score', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="shine brighter" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">28</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Shine Brighter</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.6 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Shine_Brighter.mp3', 'Shine Brighter', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="southside houston" data-album="the sound of alchemy" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">29</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Southside Houston</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">The Sound of Alchemy</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Cyber Trap / Drill</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Southside_Houston.mp3', 'Southside Houston', 'The Sound of Alchemy', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="the darker side" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">30</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">The Darker Side</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">8.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/The_Darker_Side.mp3', 'The Darker Side', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="the masterless warrior" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">31</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">The Masterless Warrior</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">8.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/The_Masterless_Warrior.mp3', 'The Masterless Warrior', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="tricky illusions" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">32</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Tricky Illusions</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">7.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Tricky_Illusions.mp3', 'Tricky Illusions', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="vengeance anthem" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">33</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Vengeance Anthem</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">2.9 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/Vengeance_Anthem.mp3', 'Vengeance Anthem', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="afterlife exstension" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">34</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Afterlife Exstension</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.3 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Afterlife_Exstension_.mp3', 'Afterlife Exstension', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="agent ronin" data-album="quillan ost / score" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">35</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Agent Ronin</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Quillan OST / Score</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Orchestral Synthwave</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">4.9 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Agent_Ronin_.mp3', 'Agent Ronin', 'Quillan OST / Score', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="chrome heart syndrome" data-album="quillan ost / score" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">36</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">CHROME HEART SYNDROME</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Quillan OST / Score</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Orchestral Synthwave</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.6 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_CHROME_HEART_SYNDROME_.mp3', 'CHROME HEART SYNDROME', 'Quillan OST / Score', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="clout starz" data-album="mic drop (freestyles)" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">37</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">CLOUT STARZ</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Mic Drop (Freestyles)</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Raw Phonk Flow</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">10.3 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_CLOUT_STARZ_.mp3', 'CLOUT STARZ', 'Mic Drop (Freestyles)', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="chimera flow" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">38</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Chimera Flow</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Chimera_Flow_.mp3', 'Chimera Flow', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="cloudy minded art" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">39</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Cloudy Minded Art</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">8.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Cloudy_Minded_Art_.mp3', 'Cloudy Minded Art', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="code-bender" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">40</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Code-bender</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">11.3 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Code-bender_.mp3', 'Code-bender', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="dead air" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">41</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Dead Air</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">9.8 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Dead_Air_.mp3', 'Dead Air', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="design 2 defy" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">42</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Design 2 Defy</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">9.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Design_2_Defy_.mp3', 'Design 2 Defy', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="dreaming in the sky" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">43</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Dreaming in the Sky</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Dreaming_in_the_Sky_.mp3', 'Dreaming in the Sky', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="fallen angel" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">44</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Fallen Angel</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">7.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Fallen_Angel_.mp3', 'Fallen Angel', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="from ground zero" data-album="the sound of alchemy" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">45</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">From Ground Zero</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">The Sound of Alchemy</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Cyber Trap / Drill</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.8 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_From_Ground_Zero_.mp3', 'From Ground Zero', 'The Sound of Alchemy', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="from the trenches to the throne" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">46</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">From The Trenches To The Throne</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.9 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_From_The_Trenches_To_The_Throne_.mp3', 'From The Trenches To The Throne', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="glass lungs" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">47</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Glass Lungs</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">8.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Glass_Lungs_.mp3', 'Glass Lungs', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="guerro from the south side ghetto" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">48</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Guerro from the South side Ghetto</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Guerro_from_the_South_side_Ghetto_.mp3', 'Guerro from the South side Ghetto', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="high voltage ronin" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">49</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">HIGH VOLTAGE RONIN</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">4.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_HIGH_VOLTAGE_RONIN_.mp3', 'HIGH VOLTAGE RONIN', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="heartless blackcat (lead vocal)" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">50</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Heartless Blackcat (Lead Vocal)</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Heartless_Blackcat_(Lead_Vocal).mp3', 'Heartless Blackcat (Lead Vocal)', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="hellfire furnace" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">51</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Hellfire Furnace</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Hellfire_Furnace_.mp3', 'Hellfire Furnace', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="hi, i'm the ronin" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">52</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Hi, I'm the Ronin</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Hi,_I\'m_the_Ronin_.mp3', 'Hi, I\'m the Ronin', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="kingdoms of dust and flame" data-album="quillan ost / score" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">53</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Kingdoms of Dust and Flame</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Quillan OST / Score</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Orchestral Synthwave</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Kingdoms_of_Dust_and_Flame_.mp3', 'Kingdoms of Dust and Flame', 'Quillan OST / Score', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="kyūdō" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">54</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Kyūdō</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Kyūdō_.mp3', 'Kyūdō', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="lightning flash" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">55</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Lightning Flash</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Lightning_Flash_.mp3', 'Lightning Flash', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="load the ammo" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">56</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Load the Ammo</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.6 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Load_the_Ammo_.mp3', 'Load the Ammo', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="loaded statement" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">57</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Loaded Statement</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">8.6 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Loaded_Statement_.mp3', 'Loaded Statement', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="melting chrome heart" data-album="quillan ost / score" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">58</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Melting Chrome Heart</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Quillan OST / Score</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Orchestral Synthwave</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Melting_Chrome_Heart_.mp3', 'Melting Chrome Heart', 'Quillan OST / Score', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="miss minnie" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">59</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Miss Minnie</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.1 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Miss_Minnie_.mp3', 'Miss Minnie', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="moonlight mirage" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">60</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Moonlight Mirage</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">14.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Moonlight_Mirage_.mp3', 'Moonlight Mirage', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="moving along" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">61</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Moving along</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">11.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Moving_along_.mp3', 'Moving along', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="nicole’s song ❤️" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">62</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Nicole’s Song ❤️</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Nicole’s_Song_❤️.mp3', 'Nicole’s Song ❤️', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="nicole’s song ❤️ (1)" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">63</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Nicole’s Song ❤️ (1)</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">4.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Nicole’s_Song_❤️_(1).mp3', 'Nicole’s Song ❤️ (1)', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="poisonous cycles" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">64</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Poisonous Cycles</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">11.6 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Poisonous_Cycles_.mp3', 'Poisonous Cycles', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="pressure of life" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">65</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Pressure of life</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">10.1 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Pressure_of_life_.mp3', 'Pressure of life', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="professional model" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">66</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Professional Model</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.3 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Professional_Model_.mp3', 'Professional Model', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="quillan's back" data-album="mic drop (freestyles)" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">67</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">QUILLAN'S BACK</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Mic Drop (Freestyles)</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Raw Phonk Flow</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_QUILLAN\'S_BACK_.mp3', 'QUILLAN\'S BACK', 'Mic Drop (Freestyles)', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="quantize these lightyears" data-album="quillan ost / score" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">68</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Quantize these Lightyears</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Quillan OST / Score</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Orchestral Synthwave</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.9 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Quantize_these_Lightyears_.mp3', 'Quantize these Lightyears', 'Quillan OST / Score', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="runtime daemon" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">69</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">RUNTIME DAEMON</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_RUNTIME__DAEMON_.mp3', 'RUNTIME DAEMON', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="reaper in the rearview" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">70</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Reaper in the Rearview</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.1 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Reaper_in_the_Rearview_.mp3', 'Reaper in the Rearview', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="redline overdrive" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">71</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Redline Overdrive</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">12.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Redline_Overdrive_.mp3', 'Redline Overdrive', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="rival specimen" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">72</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Rival Specimen</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">10.8 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Rival_Specimen_.mp3', 'Rival Specimen', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="ronin glitch army" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">73</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Ronin Glitch Army</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">7.1 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Ronin_Glitch_Army_.mp3', 'Ronin Glitch Army', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="ronin in the shadow" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">74</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Ronin in the shadow</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">7.9 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Ronin_in_the_shadow_.mp3', 'Ronin in the shadow', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="satirical villain" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">75</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Satirical Villain</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Satirical_Villain_.mp3', 'Satirical Villain', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="shattered through the fire" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">76</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Shattered Through the Fire</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">11.5 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Shattered_Through_the_Fire_.mp3', 'Shattered Through the Fire', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="sinking in the deep" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">77</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Sinking in the Deep</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">11.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Sinking_in_the_Deep_.mp3', 'Sinking in the Deep', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="southside sovereign ronin" data-album="the sound of alchemy" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">78</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Southside Sovereign Ronin</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">The Sound of Alchemy</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Cyber Trap / Drill</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">9.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Southside_Sovereign_Ronin_.mp3', 'Southside Sovereign Ronin', 'The Sound of Alchemy', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="static and bone" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">79</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Static and Bone</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">9.3 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Static_and_Bone_.mp3', 'Static and Bone', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="super goat" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">80</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Super GOAT</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.3 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Super_GOAT_.mp3', 'Super GOAT', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="the promise of time" data-album="the sound of alchemy" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">81</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">The Promise of Time</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">The Sound of Alchemy</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Cyber Trap / Drill</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_The_Promise_of_Time_.mp3', 'The Promise of Time', 'The Sound of Alchemy', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="the ronin's requiem" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">82</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">The Ronin's Requiem</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_The_Ronin\'s_Requiem_.mp3', 'The Ronin\'s Requiem', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="the rotary cannon" data-album="the sound of alchemy" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">83</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">The Rotary Cannon</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">The Sound of Alchemy</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Cyber Trap / Drill</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">4.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_The_Rotary_Cannon_.mp3', 'The Rotary Cannon', 'The Sound of Alchemy', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="underground rapper" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">84</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Underground Rapper</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.8 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Underground_Rapper_.mp3', 'Underground Rapper', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="unfiltered hollow point" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">85</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Unfiltered Hollow Point</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Unfiltered_Hollow_Point_.mp3', 'Unfiltered Hollow Point', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="venom filled blood" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">86</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Venom Filled Blood</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.3 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Venom_Filled_Blood_.mp3', 'Venom Filled Blood', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="visceral livewire" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">87</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Visceral Livewire</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">5.7 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Visceral_Livewire_.mp3', 'Visceral Livewire', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="walk the talk" data-album="mic drop (freestyles)" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">88</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Walk the talk</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Mic Drop (Freestyles)</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Raw Phonk Flow</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">9.3 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Walk_the_talk_.mp3', 'Walk the talk', 'Mic Drop (Freestyles)', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="worth a hit" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">89</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">Worth A Hit</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">9.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_Worth_A_Hit_.mp3', 'Worth A Hit', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="daemon in my mind" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">90</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">daemon in my mind</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">11.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_daemon_in_my_mind_.mp3', 'daemon in my mind', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="heaven-bound and hell-born (1)" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">91</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">heaven-bound and hell-born (1)</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">10.9 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_heaven-bound_and_hell-born_(1).mp3', 'heaven-bound and hell-born (1)', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="heaven-bound and hell-born" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">92</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">heaven-bound and hell-born</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.4 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/_heaven-bound_and_hell-born_.mp3', 'heaven-bound and hell-born', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="introduction to lucifer" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">93</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">introduction to Lucifer</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">3.1 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/introduction_to_Lucifer.mp3', 'introduction to Lucifer', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="play with a g" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">94</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">play with a g</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">7.6 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/play_with_a_g.mp3', 'play with a g', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="style 1" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">95</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">style 1</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.8 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/style_1.mp3', 'style 1', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="vocsl blsvk vsy" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">96</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">vocsl blsvk vsy</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">6.0 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/vocsl_blsvk_vsy.mp3', 'vocsl blsvk vsy', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+      <tr class="track-row" data-title="“ghost in the static”" data-album="ronin vault archives" style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <td style="padding:10px 14px; color:var(--accent-gold); font-weight:700; font-size:12px;">97</td>
+        <td style="padding:10px 14px; font-weight:600; color:#fff; font-size:13px;">“Ghost in the Static”</td>
+        <td style="padding:10px 14px; color:var(--accent-gold); font-size:12px;">Ronin Vault Archives</td>
+        <td style="padding:10px 14px; color:var(--accent-cyan); font-size:12px;">Underground Acoustic / Stems</td>
+        <td style="padding:10px 14px; color:var(--text-muted); font-size:11.5px;">8.2 MB</td>
+        <td style="padding:10px 14px; text-align:right;">
+          <button onclick="playRealTrack('audio/“Ghost_in_the_Static”.mp3', '“Ghost in the Static”', 'Ronin Vault Archives', 'On-Demand')" class="btn btn-secondary" style="padding:4px 10px; font-size:11px; border-color:rgba(0,240,255,0.35);">
+            ▶ Play
+          </button>
+        </td>
+      </tr>
+    
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
+
+
 
 
 
