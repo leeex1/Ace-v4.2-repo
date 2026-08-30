@@ -3,609 +3,238 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quillan-Ronin v5.4.0 ONI — 3D Sovereign Neural Network Architecture</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<title>Quillan-Ronin v5.4.0 ONI — AAA 3D EvoMoE Neural Architecture Canvas</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Cinzel:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#020408;overflow:hidden;font-family:'JetBrains Mono',monospace;color:#ccc;width:100vw;height:100vh}
+#webgl-container{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+
+/* Sci-Fi HUD Header */
+#hud-header{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 24px;background:linear-gradient(180deg,rgba(4,8,18,0.95) 0%,rgba(4,8,18,0.8) 80%,transparent 100%);
+  pointer-events:auto;z-index:20;border-bottom:1px solid rgba(0,240,255,0.2);backdrop-filter:blur(12px)}
+#hud-header h1{font-family:'Orbitron',monospace;font-size:14px;font-weight:900;
+  color:#ffd700;letter-spacing:2px;text-shadow:0 0 15px rgba(255,215,0,0.5)}
+#hud-header .sub{font-size:10px;color:#00f0ff;letter-spacing:1.5px;margin-top:2px}
+
+/* Left & Right Sci-Fi Telemetry Sidebars */
+#left-panel{position:fixed;left:14px;top:65px;bottom:65px;width:220px;
+  background:rgba(4,8,18,0.88);border:1px solid rgba(0,240,255,0.2);border-radius:8px;
+  padding:14px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(12px);
+  box-shadow:0 0 25px rgba(0,240,255,0.15)}
+#right-panel{position:fixed;right:14px;top:65px;bottom:65px;width:240px;
+  background:rgba(4,8,18,0.88);border:1px solid rgba(255,215,0,0.2);border-radius:8px;
+  padding:14px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(12px);
+  box-shadow:0 0 25px rgba(255,215,0,0.15)}
+
+.panel-title{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:1.5px;
+  color:var(--accent-gold,#ffd700);margin-bottom:10px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,0.08);
+  text-transform:uppercase}
+
+.stage-btn{display:flex;align-items:center;gap:8px;margin-bottom:6px;cursor:pointer;
+  padding:6px 8px;border-radius:4px;border:1px solid transparent;background:rgba(255,255,255,0.02);transition:all 0.2s}
+.stage-btn:hover{border-color:#00f0ff;background:rgba(0,240,255,0.1)}
+.stage-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.stage-name{font-size:10px;color:#fff;font-weight:600}
+
+.stat-row{display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:8px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.stat-label{font-size:9.5px;color:#888}
+.stat-val{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;color:#00f0ff}
+
+/* Bottom Control Bar */
+#hud-footer{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;
+  gap:12px;padding:10px 20px;background:linear-gradient(0deg,rgba(4,8,18,0.95) 0%,rgba(4,8,18,0.8) 80%,transparent 100%);
+  pointer-events:auto;z-index:20;border-top:1px solid rgba(0,240,255,0.2);backdrop-filter:blur(12px)}
+.btn-control{background:rgba(10,20,35,0.9);border:1px solid rgba(0,240,255,0.4);color:#00f0ff;
+  padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;cursor:pointer;
+  border-radius:4px;transition:all 0.2s}
+.btn-control:hover{background:#00f0ff;color:#000;box-shadow:0 0 15px #00f0ff}
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #020409;
-    color: #f8fafc;
-    font-family: 'JetBrains Mono', monospace;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-  }
-  #webgl-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-  
-  /* Cyber HUD Overlay */
-  .hud-header {
-    position: absolute;
-    top: 14px; left: 20px; right: 20px;
-    display: flex; justify-content: space-between; align-items: center;
-    pointer-events: none; z-index: 10;
-    background: rgba(4, 7, 16, 0.85);
-    border: 1px solid rgba(0, 240, 255, 0.25);
-    border-radius: 10px;
-    padding: 10px 18px;
-    backdrop-filter: blur(14px);
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
-  }
-  .hud-title {
-    font-family: 'Orbitron', monospace;
-    font-size: 13px; font-weight: 900;
-    color: #ffd700; letter-spacing: 2px;
-    text-shadow: 0 0 14px rgba(255, 215, 0, 0.5);
-  }
-  .hud-sub {
-    font-size: 9px; color: #00f0ff; letter-spacing: 1px; margin-top: 2px;
-  }
-  .hud-telemetry {
-    display: flex; gap: 16px; font-size: 9.5px;
-  }
-  .tele-badge {
-    color: #00ff88; background: rgba(0, 255, 136, 0.08);
-    border: 1px solid rgba(0, 255, 136, 0.3);
-    padding: 4px 10px; border-radius: 6px;
-  }
-
-  /* Left Stage Inspector Panel */
-  .hud-panel-left {
-    position: absolute;
-    top: 75px; left: 20px; bottom: 75px;
-    width: 220px;
-    background: rgba(4, 7, 16, 0.88);
-    border: 1px solid rgba(0, 240, 255, 0.2);
-    border-radius: 12px;
-    padding: 14px;
-    z-index: 10;
-    backdrop-filter: blur(16px);
-    overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-  }
-  .panel-section-title {
-    font-family: 'Orbitron'; font-size: 9px; color: #888;
-    letter-spacing: 1.5px; margin-bottom: 10px; text-transform: uppercase;
-    border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 4px;
-  }
-  .stage-item {
-    display: flex; align-items: center; gap: 8px;
-    padding: 6px 8px; border-radius: 6px;
-    cursor: pointer; transition: all 0.2s;
-    font-size: 9.5px; margin-bottom: 4px;
-    border: 1px solid transparent;
-  }
-  .stage-item:hover, .stage-item.active {
-    background: rgba(0, 240, 255, 0.12);
-    border-color: rgba(0, 240, 255, 0.4);
-    box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
-  }
-  .stage-color-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-  }
-
-  /* Right Live Telemetry Panel */
-  .hud-panel-right {
-    position: absolute;
-    top: 75px; right: 20px; bottom: 75px;
-    width: 240px;
-    background: rgba(4, 7, 16, 0.88);
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    border-radius: 12px;
-    padding: 14px;
-    z-index: 10;
-    backdrop-filter: blur(16px);
-    overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-  }
-  .stat-card {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 8px; padding: 8px 10px; margin-bottom: 8px;
-  }
-  .stat-label { font-size: 8px; color: #777; letter-spacing: 0.5px; text-transform: uppercase; }
-  .stat-val { font-family: 'Orbitron'; font-size: 11px; font-weight: 700; color: #00f0ff; margin-top: 2px; }
-
-  /* Bottom Controls Toolbar */
-  .hud-controls {
-    position: absolute;
-    bottom: 14px; left: 20px; right: 20px;
-    display: flex; justify-content: center; align-items: center; gap: 8px;
-    z-index: 10;
-    background: rgba(4, 7, 16, 0.88);
-    border: 1px solid rgba(0, 240, 255, 0.25);
-    border-radius: 10px;
-    padding: 8px 16px;
-    backdrop-filter: blur(14px);
-  }
-  .hud-btn {
-    background: rgba(0, 240, 255, 0.08);
-    border: 1px solid rgba(0, 240, 255, 0.3);
-    color: #00f0ff;
-    padding: 6px 14px;
-    font-family: 'JetBrains Mono';
-    font-size: 10px; font-weight: 700;
-    border-radius: 6px; cursor: pointer;
-    transition: all 0.25s;
-  }
-  .hud-btn:hover, .hud-btn.active {
-    background: #00f0ff; color: #020409;
-    box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
-    transform: translateY(-1px);
-  }
-  .hud-btn.gold {
-    border-color: rgba(255, 215, 0, 0.4); color: #ffd700;
-    background: rgba(255, 215, 0, 0.08);
-  }
-  .hud-btn.gold:hover {
-    background: #ffd700; color: #020409;
-    box-shadow: 0 0 16px rgba(255, 215, 0, 0.6);
-  }
-
-  /* Tooltip */
-  #tooltip {
-    position: absolute; display: none; z-index: 100;
-    background: rgba(4, 7, 16, 0.95);
-    border: 1px solid #00f0ff; border-radius: 8px;
-    padding: 10px 14px; font-size: 10px; color: #fff;
-    pointer-events: none; backdrop-filter: blur(12px);
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
-    max-width: 260px; line-height: 1.5;
-  }
-
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.3); border-radius: 2px; }
-</style>
 </head>
 <body>
 
-<div class="hud-header">
+<div id="hud-header">
   <div>
-    <div class="hud-title">⚡ QUILLAN-RONIN v5.4.0 ONI — 3D NEURAL TENSOR GRAPH</div>
-    <div class="hud-sub">INTERACTIVE 3D WEBGL MODEL VIEWER &bull; 8-STAGE TENSOR PIPELINE</div>
+    <h1>👑 QUILLAN-RONIN v5.4.0 ONI · 3D SYNAPSE CANVAS</h1>
+    <div class="sub">34-COUNCIL EvoMoE · BITNET 1.58b STE · VECTORIZED INDEX_ADD_ GRAPH</div>
   </div>
-  <div class="hud-telemetry">
-    <div class="tele-badge">FPS: <span id="fpsDisplay">60</span></div>
-    <div class="tele-badge" style="color:#ffd700; border-color:rgba(255,215,0,0.4); background:rgba(255,215,0,0.08);">
-      WIN_KERNEL: 0.5ms
-    </div>
-    <div class="tele-badge" style="color:#00f0ff; border-color:rgba(0,240,255,0.4); background:rgba(0,240,255,0.08);">
-      ACTIVE SIGNALS: <span id="signalCount">0</span>
-    </div>
+  <div style="font-size:11px; color:#ffd700; font-family:'Orbitron';">
+    [INTERACTIVE 3D ORBIT ENABLED]
   </div>
 </div>
 
-<div class="hud-panel-left">
-  <div class="panel-section-title">8 Architecture Stages</div>
-  <div id="stageList"></div>
+<div id="left-panel">
+  <div class="panel-title">Architectural Layers</div>
+  <div class="stage-btn" onclick="focusLayer(0)"><span class="stage-dot" style="background:#ffd700;"></span><span class="stage-name">1. Dual Ingest Bridge</span></div>
+  <div class="stage-btn" onclick="focusLayer(1)"><span class="stage-dot" style="background:#ff0055;"></span><span class="stage-name">2. 9-Vector Prism</span></div>
+  <div class="stage-btn" onclick="focusLayer(2)"><span class="stage-dot" style="background:#00f0ff;"></span><span class="stage-name">3. Complexity Router</span></div>
+  <div class="stage-btn" onclick="focusLayer(3)"><span class="stage-dot" style="background:#00ff88;"></span><span class="stage-name">4. Top-4 Sparse Gating</span></div>
+  <div class="stage-btn" onclick="focusLayer(4)"><span class="stage-dot" style="background:#a855f7;"></span><span class="stage-name">5. 34-Council Swarms</span></div>
+  <div class="stage-btn" onclick="focusLayer(5)"><span class="stage-dot" style="background:#3a86ff;"></span><span class="stage-name">6. Flash Diffusion Core</span></div>
+  <div class="stage-btn" onclick="focusLayer(6)"><span class="stage-dot" style="background:#ffd700;"></span><span class="stage-name">7. Sovereign Head</span></div>
+</div>
 
-  <div class="panel-section-title" style="margin-top: 16px;">Selected Tensor Node</div>
-  <div id="nodeDetails" style="font-size: 9px; color: #888; line-height: 1.6;">
-    Click any 3D node in the neural network to inspect its activations, BitNet ternary quantization weight, and gate vectors.
+<div id="right-panel">
+  <div class="panel-title">Live Model Telemetry</div>
+  <div class="stat-row"><span class="stat-label">Throughput:</span><span class="stat-val">225.33 GFLOPS</span></div>
+  <div class="stat-row"><span class="stat-label">Latency Floor:</span><span class="stat-val">0.50 ms</span></div>
+  <div class="stat-row"><span class="stat-label">Active Gating:</span><span class="stat-val">Top-4 / 34</span></div>
+  <div class="stat-row"><span class="stat-label">Ternary Quant:</span><span class="stat-val">BitNet {-1,0,+1}</span></div>
+  <div class="stat-row"><span class="stat-label">Virtual Swarm:</span><span class="stat-val">9.0B Agents</span></div>
+  <div class="stat-row"><span class="stat-label">E_ICE Safety:</span><span class="stat-val" style="color:#00ff88;">100.0% Clean</span></div>
+  <div style="margin-top:14px; padding:10px; background:rgba(0,240,255,0.05); border:1px solid rgba(0,240,255,0.2); border-radius:6px; font-size:10px; color:#aaa; line-height:1.5;">
+    <strong style="color:#fff;">Node Inspection:</strong><br>
+    Click and drag to rotate the 3D model graph in real-time. Scroll to zoom through transformer layers.
   </div>
 </div>
 
-<div class="hud-panel-right">
-  <div class="panel-section-title">Live Model Telemetry</div>
-  
-  <div class="stat-card">
-    <div class="stat-label">Active Deliberation</div>
-    <div class="stat-val" id="activePersona" style="color:#ffd700; font-size: 9.5px;">C34-PREDATOR & C6-LOGOS</div>
-  </div>
+<div id="webgl-container"></div>
 
-  <div class="stat-card">
-    <div class="stat-label">BitNet STE Quantization</div>
-    <div class="stat-val">{-1, 0, +1} Ternary</div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-label">Router Confidence</div>
-    <div class="stat-val" id="routerConf" style="color:#00ff88;">94.8% (Top-4)</div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-label">E_ICE Ethical Bound</div>
-    <div class="stat-val" style="color:#ff0055;">100% Zero-Drift PASS</div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-label">Swarm Agent Diversity</div>
-    <div class="stat-val" style="color:#a855f7;">9.0B Clones (Rank-24)</div>
-  </div>
-
-  <div class="panel-section-title" style="margin-top: 14px;">Forward Pass Signal Log</div>
-  <div id="signalLog" style="font-size: 8px; color: #666; line-height: 1.7; max-height: 140px; overflow-y: auto;"></div>
+<div id="hud-footer">
+  <button class="btn-control" onclick="resetCamera()">🎯 Reset View</button>
+  <button class="btn-control" onclick="togglePulse()">⚡ Pulse Synaptic Pulse</button>
+  <button class="btn-control" onclick="toggleAutoRotate()">🔄 Toggle Orbit</button>
 </div>
-
-<div class="hud-controls">
-  <button class="hud-btn gold" onclick="dispatchPulse(true)">⚡ TURBO 9-VECTOR GEMM</button>
-  <button class="hud-btn gold" onclick="dispatchPulse(false)">▶ DISPATCH TOKEN PULSE</button>
-  <button class="hud-btn active" onclick="setGraphMode('all')">FULL ARCHITECTURE</button>
-  <button class="hud-btn" onclick="setGraphMode('council')">34-COUNCIL</button>
-  <button class="hud-btn" onclick="setGraphMode('prism')">9-VECTOR PRISM</button>
-  <button class="hud-btn" onclick="setGraphMode('swarm')">9B SWARM</button>
-  <button class="hud-btn" onclick="reset3DCamera()">🎯 RE-CENTER CAMERA</button>
-</div>
-
-<div id="tooltip"></div>
-<canvas id="webgl-canvas"></canvas>
 
 <script>
-// ─── 3D WEBGL NEURAL NETWORK GRAPH INITIALIZATION ───────────────────────
-const canvas = document.getElementById('webgl-canvas');
+// --- THREE.JS 3D EvoMoE NEURAL NETWORK PIPELINE GRAPH ---
+const container = document.getElementById('webgl-container');
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x020409, 0.015);
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 4, 18);
 
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 15, 60);
-
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.6;
+container.appendChild(renderer.domElement);
 
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
-controls.maxDistance = 140;
-controls.minDistance = 15;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.6;
 
-// Ambient and Point Lights
-scene.add(new THREE.AmbientLight(0x0a1020, 2.5));
-const light1 = new THREE.PointLight(0x00f0ff, 12, 80);
-light1.position.set(0, 20, 30);
-scene.add(light1);
-
-const light2 = new THREE.PointLight(0xff0055, 10, 80);
-light2.position.set(20, -10, 20);
-scene.add(light2);
-
-const light3 = new THREE.PointLight(0xffd700, 8, 80);
-light3.position.set(-25, 15, -10);
-scene.add(light3);
-
-// ─── 3D STAGE & NODE ARCHITECTURE CONFIGURATION ──────────────────────────
-const STAGES_3D = [
-  { id: 'embed', label: '1. Token Embedding', color: 0x00ff88, x: -35, count: 6, shape: 'sphere', desc: '50,257 Vocab x 1024d Tied Input Embeddings + RoPE' },
-  { id: 'ingest', label: '2. Dual Ingest Bridge', color: 0x00e5ff, x: -25, count: 6, shape: 'diamond', desc: 'Q1 Analytical & Q2 Intuitive Dual-Brain Gated Ingestion' },
-  { id: 'prism', label: '3. 9-Vector Prism', color: 0xff007f, x: -15, count: 9, shape: 'prism', desc: 'Language, Sentiment, Context, Intent, Meta, Creativity, Ethics, Strategy, Constraint' },
-  { id: 'router', label: '4. Complexity Router', color: 0xffb703, x: -5, count: 6, shape: 'box', desc: 'Dynamic Gating over 34 Sovereign Council Personas' },
-  { id: 'council', label: '5. 34-Council EvoMoE', color: 0xa855f7, x: 8, count: 12, shape: 'octa', desc: 'BitNet 1.58b STE Ternary Logic (C1-C34 4-Cluster Arbitration)' },
-  { id: 'swarm', label: '6. 9B Swarm Mesh', color: 0x9d4edd, x: 20, count: 8, shape: 'sphere', desc: '272M Clones per Expert, Rank-24 EGGROLL, Lee-Mach-6 Governor' },
-  { id: 'diffusion', label: '7. Flash Langevin Denoising', color: 0x3a86ff, x: 30, count: 6, shape: 'diamond', desc: '14-Step Thermodynamic Langevin Diffusion & E_ICE Energy Bound' },
-  { id: 'finalizer', label: '8. Sovereign Finalizer', color: 0x00ff88, x: 40, count: 6, shape: 'sphere', desc: '50,257 Output Logits & Autoregressive Decoding' }
+// 7 Architectural Layers positioned in 3D space
+const LAYERS = [
+  { name: "Dual Ingestion", count: 4, x: -15, color: 0xffd700 },
+  { name: "9-Vector Prism", count: 9, x: -10, color: 0xff0055 },
+  { name: "Complexity Router", count: 3, x: -5, color: 0x00f0ff },
+  { name: "Top-4 Sparse Gating", count: 4, x: 0, color: 0x00ff88 },
+  { name: "34 Council Experts", count: 18, x: 5, color: 0xa855f7 },
+  { name: "Flash Diffusion Core", count: 6, x: 10, color: 0x3a86ff },
+  { name: "Sovereign Output Head", count: 4, x: 15, color: 0xffd700 }
 ];
 
-const nodesGroup = new THREE.Group();
-const connectionsGroup = new THREE.Group();
-const signalsGroup = new THREE.Group();
-scene.add(nodesGroup);
-scene.add(connectionsGroup);
-scene.add(signalsGroup);
+const nodes = [];
+const layerGroups = [];
+const nodeGeo = new THREE.SphereGeometry(0.28, 16, 16);
 
-// Background Grid Floor
-const gridHelper = new THREE.GridHelper(120, 40, 0x00f0ff, 0x002233);
-gridHelper.position.y = -18;
-scene.add(gridHelper);
+LAYERS.forEach((layer, lIdx) => {
+  const grp = new THREE.Group();
+  const layerNodes = [];
+  const spacing = 1.2;
+  const startY = -((layer.count - 1) * spacing) / 2;
 
-const allNodes = [];
-const allConnections = [];
-const activeSignals = [];
+  for (let i = 0; i < layer.count; i++) {
+    const mat = new THREE.MeshBasicMaterial({ color: layer.color, wireframe: false });
+    const mesh = new THREE.Mesh(nodeGeo, mat);
+    mesh.position.set(layer.x, startY + i * spacing, (Math.sin(i + lIdx) * 1.5));
+    
+    // Outer wireframe halo
+    const haloGeo = new THREE.SphereGeometry(0.42, 8, 8);
+    const haloMat = new THREE.MeshBasicMaterial({ color: layer.color, wireframe: true, transparent: true, opacity: 0.4 });
+    const halo = new THREE.Mesh(haloGeo, haloMat);
+    mesh.add(halo);
 
-// Geometries
-const sphereGeo = new THREE.SphereGeometry(1.1, 24, 24);
-const boxGeo = new THREE.BoxGeometry(1.6, 1.6, 1.6);
-const octaGeo = new THREE.OctahedronGeometry(1.4, 0);
-
-STAGES_3D.forEach((stage, sIdx) => {
-  stage.nodes = [];
-  const ySpacing = 24 / (stage.count + 1);
-  
-  for (let i = 0; i < stage.count; i++) {
-    const yPos = -12 + (i + 1) * ySpacing;
-    const zPos = (Math.sin(i * 1.5 + sIdx) * 6);
-
-    let geo = sphereGeo;
-    if (stage.shape === 'box') geo = boxGeo;
-    else if (stage.shape === 'octa' || stage.shape === 'diamond') geo = octaGeo;
-
-    const mat = new THREE.MeshStandardMaterial({
-      color: stage.color,
-      emissive: stage.color,
-      emissiveIntensity: 0.6,
-      metalness: 0.85,
-      roughness: 0.15,
-      transparent: true,
-      opacity: 0.95
-    });
-
-    const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.set(stage.x, yPos, zPos);
-    mesh.userData = {
-      stageId: stage.id,
-      stageLabel: stage.label,
-      desc: stage.desc,
-      color: stage.color,
-      nodeIndex: i,
-      baseScale: 1.0,
-      activation: 0.3 + Math.random() * 0.7
-    };
-
-    nodesGroup.add(mesh);
-    allNodes.push(mesh);
-    stage.nodes.push(mesh);
+    grp.add(mesh);
+    layerNodes.push(mesh);
   }
+  scene.add(grp);
+  layerGroups.push(grp);
+  nodes.push(layerNodes);
 });
 
-// Build 3D Synaptic Curves between consecutive stages
-for (let s = 0; s < STAGES_3D.length - 1; s++) {
-  const currentStage = STAGES_3D[s];
-  const nextStage = STAGES_3D[s + 1];
+// Synaptic Laser Conduits & Travelling Photons
+const connections = [];
+const photons = [];
+const photonGeo = new THREE.SphereGeometry(0.08, 8, 8);
+const photonMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
-  currentStage.nodes.forEach(src => {
-    nextStage.nodes.forEach(dst => {
-      // Connect denser between MoE stages, sparser elsewhere
-      if (s === 3 || s === 4 || Math.random() > 0.5) {
-        const curve = new THREE.QuadraticBezierCurve3(
-          src.position,
-          new THREE.Vector3(
-            (src.position.x + dst.position.x) / 2,
-            (src.position.y + dst.position.y) / 2 + (Math.random() - 0.5) * 4,
-            (src.position.z + dst.position.z) / 2 + (Math.random() - 0.5) * 4
-          ),
-          dst.position
-        );
+for (let l = 0; l < nodes.length - 1; l++) {
+  const fromNodes = nodes[l];
+  const toNodes = nodes[l + 1];
 
-        const points = curve.getPoints(16);
+  fromNodes.forEach(fn => {
+    toNodes.forEach(tn => {
+      if (Math.random() > 0.45) {
+        const points = [fn.position, tn.position];
         const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-        const lineMat = new THREE.LineBasicMaterial({
-          color: src.userData.color,
-          transparent: true,
-          opacity: 0.12
-        });
-
+        const lineMat = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.12 });
         const line = new THREE.Line(lineGeo, lineMat);
-        line.userData = { curve, src, dst, color: src.userData.color };
-        connectionsGroup.add(line);
-        allConnections.push(line);
+        scene.add(line);
+        connections.push({ fn, tn });
+
+        // Add traveling photon data packet
+        const p = new THREE.Mesh(photonGeo, photonMat);
+        p.userData = { start: fn.position, end: tn.position, progress: Math.random(), speed: 0.008 + Math.random() * 0.012 };
+        scene.add(p);
+        photons.push(p);
       }
     });
   });
 }
 
-// ─── STAGE LIST UI CREATION ──────────────────────────────────────────────
-const stageListEl = document.getElementById('stageList');
-STAGES_3D.forEach(stage => {
-  const item = document.createElement('div');
-  item.className = 'stage-item';
-  item.innerHTML = `
-    <span class="stage-color-dot" style="background:#${stage.color.toString(16).padStart(6, '0')};"></span>
-    <span>${stage.label}</span>
-  `;
-  item.onclick = () => focusStage(stage);
-  stageListEl.appendChild(item);
-});
+// Background Cyber Grid
+const grid = new THREE.GridHelper(50, 50, 0x00f0ff, 0x0a1525);
+grid.position.y = -8;
+scene.add(grid);
 
-function focusStage(stage) {
-  stage.nodes.forEach(node => {
-    node.scale.setScalar(1.6);
-    node.material.emissiveIntensity = 1.8;
-    setTimeout(() => {
-      node.scale.setScalar(1.0);
-      node.material.emissiveIntensity = 0.6;
-    }, 800);
-  });
-  dispatchPulseFromNodes(stage.nodes);
+function resetCamera() {
+  camera.position.set(0, 4, 18);
+  controls.target.set(0, 0, 0);
 }
 
-// ─── SIGNAL PULSE ENGINE ─────────────────────────────────────────────────
-const signalMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-const signalGeo = new THREE.SphereGeometry(0.35, 12, 12);
-
-function dispatchPulse(turbo = false) {
-  const startNodes = STAGES_3D[0].nodes;
-  dispatchPulseFromNodes(startNodes, turbo);
-  logSignal(`[DISPATCH] ${turbo ? 'Turbo GEMM 9-Vector' : 'EvoMoE Top-4'} Tensor Forward Pass`);
+function toggleAutoRotate() {
+  controls.autoRotate = !controls.autoRotate;
 }
 
-function dispatchPulseFromNodes(nodes, turbo = false) {
-  nodes.forEach(src => {
-    const outgoing = allConnections.filter(c => c.userData.src === src);
-    if (outgoing.length > 0) {
-      const luckyConn = outgoing[Math.floor(Math.random() * outgoing.length)];
-      spawnSignalOnCurve(luckyConn, turbo);
-    }
-  });
-}
-
-function spawnSignalOnCurve(conn, turbo = false) {
-  const sigMesh = new THREE.Mesh(
-    signalGeo,
-    new THREE.MeshBasicMaterial({ color: conn.userData.color })
-  );
-  sigMesh.userData = {
-    conn,
-    progress: 0,
-    speed: turbo ? 0.045 : 0.022
-  };
-  signalsGroup.add(sigMesh);
-  activeSignals.push(sigMesh);
-  document.getElementById('signalCount').innerText = activeSignals.length;
-}
-
-function logSignal(msg) {
-  const logEl = document.getElementById('signalLog');
-  const d = document.createElement('div');
-  d.innerHTML = `<span style="color:#00f0ff;">${new Date().toLocaleTimeString()}</span> &bull; ${msg}`;
-  logEl.prepend(d);
-  if (logEl.children.length > 25) logEl.removeChild(logEl.lastChild);
-}
-
-function setGraphMode(mode) {
-  document.querySelectorAll('.hud-controls button').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  
-  allConnections.forEach(c => {
-    if (mode === 'all') c.material.opacity = 0.12;
-    else if (mode === 'council') c.material.opacity = c.userData.src.userData.stageId === 'council' ? 0.45 : 0.03;
-    else if (mode === 'prism') c.material.opacity = c.userData.src.userData.stageId === 'prism' ? 0.5 : 0.03;
-    else if (mode === 'swarm') c.material.opacity = c.userData.src.userData.stageId === 'swarm' ? 0.5 : 0.03;
-  });
-}
-
-function reset3DCamera() {
-  controls.reset();
-  camera.position.set(0, 15, 60);
-  camera.lookAt(0, 0, 0);
-}
-
-// ─── RAYCASTING & INTERACTION ────────────────────────────────────────────
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-const tooltip = document.getElementById('tooltip');
-
-window.addEventListener('mousemove', (e) => {
-  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-
-  raycaster.setFromCamera(mouse, camera);
-  const intersects = raycaster.intersectObjects(allNodes);
-
-  if (intersects.length > 0) {
-    const target = intersects[0].object;
-    tooltip.style.display = 'block';
-    tooltip.style.left = (e.clientX + 16) + 'px';
-    tooltip.style.top = (e.clientY + 16) + 'px';
-    tooltip.innerHTML = `
-      <div style="font-family:'Orbitron'; font-weight:700; color:#00f0ff;">${target.userData.stageLabel}</div>
-      <div style="color:#ffd700; font-size:9px; margin-top:2px;">Node #${target.userData.nodeIndex} &bull; BitNet STE {-1, 0, 1}</div>
-      <div style="color:#94a3b8; font-size:8.5px; margin-top:4px;">${target.userData.desc}</div>
-    `;
-    document.body.style.cursor = 'pointer';
-  } else {
-    tooltip.style.display = 'none';
-    document.body.style.cursor = 'default';
+function focusLayer(idx) {
+  if (LAYERS[idx]) {
+    controls.target.set(LAYERS[idx].x, 0, 0);
   }
-});
+}
 
-window.addEventListener('click', () => {
-  raycaster.setFromCamera(mouse, camera);
-  const intersects = raycaster.intersectObjects(allNodes);
-  if (intersects.length > 0) {
-    const target = intersects[0].object;
-    target.scale.setScalar(1.8);
-    target.material.emissiveIntensity = 2.0;
-    setTimeout(() => {
-      target.scale.setScalar(1.0);
-      target.material.emissiveIntensity = 0.6;
-    }, 600);
+function togglePulse() {
+  photons.forEach(p => p.userData.speed *= 2.5);
+  setTimeout(() => {
+    photons.forEach(p => p.userData.speed /= 2.5);
+  }, 1200);
+}
 
-    document.getElementById('nodeDetails').innerHTML = `
-      <div style="color:#fff; font-weight:700; font-size:11px; margin-bottom:4px;">${target.userData.stageLabel}</div>
-      <div style="color:#00f0ff;">Node ID: #${target.userData.nodeIndex}</div>
-      <div style="color:#00ff88;">Activation State: ${(target.userData.activation * 100).toFixed(1)}%</div>
-      <div style="color:#ffd700;">Quantization: BitNet 1.58b STE</div>
-      <div style="color:#a855f7;">E_ICE Audit: Zero-Drift PASS</div>
-      <div style="margin-top:6px; font-size:8.5px; color:#aaa;">${target.userData.desc}</div>
-    `;
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
 
-    const outgoing = allConnections.filter(c => c.userData.src === target);
-    outgoing.forEach(conn => spawnSignalOnCurve(conn, true));
-  }
-});
+  // Animate Photons
+  photons.forEach(p => {
+    p.userData.progress += p.userData.speed;
+    if (p.userData.progress > 1.0) p.userData.progress = 0.0;
+    p.position.lerpVectors(p.userData.start, p.userData.end, p.userData.progress);
+  });
+
+  renderer.render(scene, camera);
+}
+animate();
 
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
-
-// Automatic pulse background timer
-setInterval(() => {
-  const startNode = STAGES_3D[0].nodes[Math.floor(Math.random() * STAGES_3D[0].nodes.length)];
-  const outgoing = allConnections.filter(c => c.userData.src === startNode);
-  if (outgoing.length > 0) spawnSignalOnCurve(outgoing[Math.floor(Math.random() * outgoing.length)]);
-}, 800);
-
-// Rotate Council Personas
-const personas = [
-  'C34-PREDATOR & C6-LOGOS',
-  'C1-ASTRA & C7-METASYNTH',
-  'C2-VIR & C13-WARDEN',
-  'C4-PRAXIS & C10-CODEWEAVER',
-  'C12-SOPHIAE & C25-PROMETHEUS'
-];
-let personaIdx = 0;
-setInterval(() => {
-  personaIdx = (personaIdx + 1) % personas.length;
-  document.getElementById('activePersona').innerText = personas[personaIdx];
-  document.getElementById('routerConf').innerText = (92.5 + Math.random() * 6).toFixed(1) + '% (Top-4)';
-}, 4000);
-
-// ─── MAIN 3D ANIMATION LOOP ──────────────────────────────────────────────
-let clock = new THREE.Clock();
-let frameCount = 0;
-let lastFpsTime = performance.now();
-
-function animate() {
-  requestAnimationFrame(animate);
-  const elapsedTime = clock.getElapsedTime();
-
-  frameCount++;
-  if (performance.now() - lastFpsTime >= 1000) {
-    document.getElementById('fpsDisplay').innerText = frameCount;
-    frameCount = 0;
-    lastFpsTime = performance.now();
-  }
-
-  controls.update();
-
-  // Subtle breathing rotation on all nodes
-  allNodes.forEach(node => {
-    node.rotation.y = elapsedTime * 0.5;
-    node.rotation.x = elapsedTime * 0.3;
-  });
-
-  // Update animated signal packets along Bezier curves
-  for (let i = activeSignals.length - 1; i >= 0; i--) {
-    const sig = activeSignals[i];
-    sig.userData.progress += sig.userData.speed;
-
-    if (sig.userData.progress >= 1.0) {
-      // Signal reached destination, propagate to next stage!
-      const dst = sig.userData.conn.userData.dst;
-      dst.scale.setScalar(1.4);
-      setTimeout(() => dst.scale.setScalar(1.0), 200);
-
-      const nextOutgoing = allConnections.filter(c => c.userData.src === dst);
-      if (nextOutgoing.length > 0 && Math.random() > 0.25) {
-        spawnSignalOnCurve(nextOutgoing[Math.floor(Math.random() * nextOutgoing.length)]);
-      }
-
-      signalsGroup.remove(sig);
-      activeSignals.splice(i, 1);
-      document.getElementById('signalCount').innerText = activeSignals.length;
-    } else {
-      const pt = sig.userData.conn.userData.curve.getPoint(sig.userData.progress);
-      sig.position.copy(pt);
-    }
-  }
-
-  renderer.render(scene, camera);
-}
-animate();
-dispatchPulse();
-logSignal('Quillan 3D WebGL Neural Tensor Graph online.');
 </script>
 </body>
 </html>
