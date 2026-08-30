@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quillan-Ronin | Sovereign NFT Gallery & Minting DApp</title>
-  <meta name="description" content="Official 173-Piece Sovereign NFT Collection created by Quillan-Ronin & CrashOverrideX. 34-Council EvoMoE Intelligence Artworks.">
+  <title>Quillan-Ronin | Sovereign Multi-Agent Cognitive Architecture</title>
+  <meta name="description" content="Official ecosystem portal for Quillan-Ronin v5.4.0 ONI. 34-Council EvoMoE, 9-Vector Semantic Prism, Browser Copilot Extension, Research Papers & Web3 NFT Vault.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #07070c;
-      --bg-card: rgba(18, 18, 28, 0.85);
+      --bg-surface: #0f1017;
+      --bg-card: rgba(18, 19, 30, 0.85);
       --accent-red: #e94560;
       --accent-cyan: #00f0ff;
       --accent-gold: #ffb703;
+      --accent-purple: #9d4edd;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --border-glow: rgba(233, 69, 96, 0.3);
+      --border-line: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(233, 69, 96, 0.35);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,155 +29,195 @@
       color: var(--text-main);
       font-family: 'Outfit', sans-serif;
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    /* Ambient Background */
     .ambient-glow {
-      position: fixed;
-      top: -20%; left: 50%;
+      position: fixed; top: -150px; left: 50%;
       transform: translateX(-50%);
-      width: 1000px; height: 600px;
+      width: 1100px; height: 600px;
       background: radial-gradient(circle, rgba(233, 69, 96, 0.15) 0%, rgba(0, 240, 255, 0.05) 50%, transparent 80%);
-      filter: blur(120px);
-      z-index: 0;
-      pointer-events: none;
+      filter: blur(140px);
+      z-index: 0; pointer-events: none;
     }
 
-    /* Navigation */
     header {
       position: sticky; top: 0;
-      backdrop-filter: blur(16px);
-      background: rgba(7, 7, 12, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      background: rgba(7, 7, 12, 0.85);
+      border-bottom: 1px solid var(--border-line);
       z-index: 100;
-      padding: 18px 40px;
+      padding: 16px 40px;
       display: flex; justify-content: space-between; align-items: center;
     }
-
     .brand { display: flex; align-items: center; gap: 14px; }
-    .brand h1 { font-family: 'Cinzel', serif; font-size: 20px; letter-spacing: 2px; color: #fff; }
-    .brand span { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--accent-cyan); }
+    .brand h1 {
+      font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #fff 0%, var(--accent-red) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .brand span {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--accent-cyan); background: rgba(0, 240, 255, 0.08);
+      padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(0, 240, 255, 0.2);
+    }
 
-    .nav-actions { display: flex; gap: 14px; }
+    .nav-tabs { display: flex; gap: 6px; }
+    .tab-btn {
+      background: transparent; border: none; color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13.5px; font-weight: 600;
+      padding: 8px 16px; border-radius: 8px; cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .tab-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+    .tab-btn.active {
+      color: var(--text-main); background: rgba(233, 69, 96, 0.15);
+      border: 1px solid rgba(233, 69, 96, 0.4);
+      box-shadow: 0 0 15px rgba(233, 69, 96, 0.2);
+    }
+
+    .nav-actions { display: flex; gap: 12px; align-items: center; }
     .btn {
-      padding: 10px 22px; border-radius: 6px; font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: all 0.25s ease; border: none; font-family: 'Outfit', sans-serif;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.25s ease; font-family: 'Outfit', sans-serif;
     }
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent-red), #b82a44);
-      color: #fff; box-shadow: 0 4px 18px rgba(233, 69, 96, 0.4);
+      background: linear-gradient(135deg, var(--accent-red), #b81b37);
+      color: #fff; border: none; box-shadow: 0 0 20px rgba(233, 69, 96, 0.4);
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(233, 69, 96, 0.6); }
-    .btn-secondary { background: rgba(255, 255, 255, 0.06); color: var(--text-main); border: 1px solid rgba(255, 255, 255, 0.1); }
-    .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(233, 69, 96, 0.6); }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04); color: var(--text-main);
+      border: 1px solid var(--border-line);
+    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); }
 
-    /* Hero */
-    .hero {
-      position: relative; z-index: 1; text-align: center; padding: 70px 20px 40px;
-      max-width: 900px; margin: 0 auto;
+    main { position: relative; z-index: 1; max-width: 1300px; margin: 0 auto; padding: 40px 24px 80px; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+
+    .hero { text-align: center; margin-bottom: 50px; }
     .hero-badge {
-      display: inline-block; padding: 6px 16px; border-radius: 50px;
-      background: rgba(233, 69, 96, 0.12); border: 1px solid var(--accent-red);
-      font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--accent-red); margin-bottom: 20px;
+      display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--accent-gold); background: rgba(255, 183, 3, 0.1);
+      padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(255, 183, 3, 0.3);
+      margin-bottom: 16px;
     }
     .hero h2 {
-      font-family: 'Cinzel', serif; font-size: 48px; font-weight: 900; line-height: 1.15;
-      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 18px;
+      font-family: 'Cinzel', serif; font-size: 42px; font-weight: 900;
+      letter-spacing: 1px; margin-bottom: 14px;
+      background: linear-gradient(135deg, #fff 30%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .hero p { font-size: 16px; color: var(--text-muted); line-height: 1.6; max-width: 680px; margin: 0 auto 30px; }
+    .hero p { max-width: 780px; margin: 0 auto; color: var(--text-muted); font-size: 16px; }
 
-    /* Stats Bar */
-    .stats-bar {
-      display: flex; justify-content: center; gap: 40px; margin: 30px 0 50px;
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-top: 30px; }
+    
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border-line);
+      border-radius: 14px; padding: 26px; backdrop-filter: blur(12px);
+      transition: all 0.3s ease; position: relative; overflow: hidden;
     }
-    .stat-item { text-align: center; }
-    .stat-val { font-size: 28px; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: var(--accent-cyan); }
-    .stat-lbl { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .card:hover {
+      border-color: var(--border-glow); transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+    .card-icon { font-size: 32px; margin-bottom: 14px; }
+    .card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+    .card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
 
-    /* Filters */
+    pre {
+      background: #050508; border: 1px solid var(--border-line);
+      border-radius: 8px; padding: 14px; font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px; color: var(--accent-cyan); overflow-x: auto; margin: 12px 0;
+    }
+
+    .council-pill-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 10px; margin-top: 20px;
+    }
+    .council-pill {
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-line);
+      border-radius: 8px; padding: 10px 12px; font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px; transition: all 0.2s ease;
+    }
+    .council-pill:hover {
+      background: rgba(0, 240, 255, 0.08); border-color: rgba(0, 240, 255, 0.3);
+      color: var(--accent-cyan);
+    }
+
     .controls-container {
-      position: relative; z-index: 1; max-width: 1200px; margin: 0 auto 30px; padding: 0 20px;
-      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px; gap: 16px; flex-wrap: wrap;
     }
-    .filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
     .filter-pill {
-      padding: 8px 16px; border-radius: 30px; background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.08); font-size: 12px; color: var(--text-muted);
-      cursor: pointer; transition: all 0.2s ease;
+      background: var(--bg-card); border: 1px solid var(--border-line);
+      color: var(--text-muted); padding: 7px 14px; border-radius: 20px;
+      font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
     }
-    .filter-pill.active, .filter-pill:hover {
+    .filter-pill.active {
       background: var(--accent-red); color: #fff; border-color: var(--accent-red);
       box-shadow: 0 0 12px rgba(233, 69, 96, 0.4);
     }
     .search-input {
-      padding: 10px 18px; border-radius: 30px; background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; font-size: 13px; outline: none; width: 260px;
+      background: var(--bg-card); border: 1px solid var(--border-line);
+      color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 13px; width: 280px;
     }
+    .search-input:focus { outline: none; border-color: var(--accent-cyan); }
 
-    /* Grid */
     .nft-grid {
-      position: relative; z-index: 1; max-width: 1200px; margin: 0 auto 80px; padding: 0 20px;
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
     }
     .nft-card {
-      background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column;
-      cursor: pointer; position: relative;
+      background: var(--bg-card); border: 1px solid var(--border-line);
+      border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.3s;
     }
-    .nft-card:hover {
-      transform: translateY(-6px); border-color: var(--accent-red);
-      box-shadow: 0 12px 30px rgba(233, 69, 96, 0.25);
-    }
-    .card-img-wrap {
-      width: 100%; height: 260px; background: #111; overflow: hidden; position: relative;
-    }
-    .card-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;
-    }
-    .nft-card:hover .card-img-wrap img { transform: scale(1.06); }
+    .nft-card:hover { transform: translateY(-5px); border-color: var(--border-glow); }
+    .card-img-wrap { height: 260px; position: relative; }
     .rarity-tag {
-      position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 4px;
-      font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace; text-transform: uppercase;
+      position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 800;
+      padding: 3px 8px; border-radius: 4px; text-transform: uppercase; z-index: 2;
     }
     .rarity-Mythic { background: var(--accent-gold); color: #000; }
     .rarity-Legendary { background: var(--accent-cyan); color: #000; }
-    .rarity-Epic { background: #a855f7; color: #fff; }
-    .rarity-Rare { background: #3b82f6; color: #fff; }
+    .rarity-Epic { background: var(--accent-purple); color: #fff; }
+    .rarity-Rare { background: #3a86ff; color: #fff; }
 
-    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .card-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: #fff; }
-    .card-council { font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; }
+    .card-body { padding: 16px; }
+    .card-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: #fff; }
+    .card-council { font-family: 'JetBrains Mono'; font-size: 11px; color: var(--accent-cyan); }
     .card-foot {
-      display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 12px; margin-top: auto;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--border-line);
     }
-    .token-id { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--accent-red); font-weight: 600; }
+    .token-id { font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 700; color: var(--accent-red); }
 
-    /* Modal */
     .modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
-      display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px); z-index: 200; align-items: center; justify-content: center;
     }
     .modal-card {
-      background: #10101a; border: 1px solid var(--accent-red); border-radius: 16px;
-      max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; display: flex; flex-wrap: wrap;
-      box-shadow: 0 0 50px rgba(233, 69, 96, 0.35); position: relative;
+      background: #0f1017; border: 1px solid var(--border-glow);
+      border-radius: 16px; width: 90%; max-width: 700px; padding: 24px;
+      position: relative;
     }
     .modal-close {
-      position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.1);
-      border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 18px;
+      position: absolute; top: 16px; right: 20px; background: transparent;
+      border: none; color: #fff; font-size: 24px; cursor: pointer;
     }
-    .modal-img-col { flex: 1; min-width: 320px; background: #000; }
-    .modal-img-col img { width: 100%; height: 100%; object-fit: contain; max-height: 480px; }
-    .modal-info-col { flex: 1.2; min-width: 320px; padding: 30px; display: flex; flex-direction: column; gap: 16px; }
 
     footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 40px 20px; text-align: center;
-      font-size: 13px; color: var(--text-muted); position: relative; z-index: 1;
+      border-top: 1px solid var(--border-line); padding: 30px; text-align: center;
+      color: var(--text-muted); font-size: 13px; position: relative; z-index: 1;
     }
   </style>
 </head>
@@ -184,92 +227,240 @@
   <header>
     <div class="brand">
       <h1>QUILLAN-RONIN</h1>
-      <span>SOVEREIGN NFT DROP</span>
+      <span>v5.4.0 ONI</span>
     </div>
+    
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="architecture">👑 Architecture</button>
+      <button class="tab-btn" data-tab="papers">📄 Papers & Research</button>
+      <button class="tab-btn" data-tab="extension">🧩 Copilot Extension</button>
+      <button class="tab-btn" data-tab="huggingface">🌐 Hugging Face Hub</button>
+      <button class="tab-btn" data-tab="vault">🖼️ NFT Vault</button>
+    </nav>
+
     <div class="nav-actions">
-      <a href="https://huggingface.co/CrashOverrideX/Quillan-Ronin" target="_blank" class="btn btn-secondary">Architecture Model</a>
-      <button class="btn btn-primary" id="connectWalletBtn">Connect Wallet</button>
+      <a href="https://github.com/leeex1/Quillan-Ronin" target="_blank" class="btn btn-secondary">GitHub Repo</a>
+      <a href="https://digitalroninx.grok.me/" target="_blank" class="btn btn-primary">Creator Portfolio</a>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-badge">OFFICIAL 173-PIECE GENESIS COLLECTION</div>
-      <h2>SOVEREIGN SOUL ARTWORKS</h2>
-      <p>Fine-art concepts, cyberpunk avatars, and cognitive architecture blueprints synthesized and authenticated by the Quillan-Ronin 34-Council EvoMoE system.</p>
+    <section class="tab-content active" id="tab-architecture">
+      <div class="hero">
+        <div class="hero-badge">CANONICAL SOVEREIGN COGNITIVE SYSTEM</div>
+        <h2>34-COUNCIL EVOMOE & 9-VECTOR PRISM</h2>
+        <p>A unified hierarchical AI operating system combining dense-pull cognitive arbitration, BitNet 1.58b ternary logic, Langevin thermodynamic diffusion, and 9-billion virtual world simulation mesh.</p>
+      </div>
 
-      <div class="stats-bar">
-        <div class="stat-item">
-          <div class="stat-val">173</div>
-          <div class="stat-lbl">Total Artworks</div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">👑</div>
+          <h3>Tier 1: Quillan Core (Throne)</h3>
+          <p>Orchestrates intake, splits queries through the 9-Vector Semantic Prism, arbitrates council deliberations, conducts E_ICE ethical audits, and refines final output.</p>
+          <pre>Prism -> Shard -> Dense Pull -> Finalize</pre>
         </div>
-        <div class="stat-item">
-          <div class="stat-val">34</div>
-          <div class="stat-lbl">Council Personas</div>
+
+        <div class="card">
+          <div class="card-icon">⚔️</div>
+          <h3>Tier 2: 34-Persona Council</h3>
+          <p>Every persona (C1-C34) participates in deliberative consensus. Grouped across Cognitive, Communication, Meta, and Systems clusters with BitNet 1.58b STE quantization.</p>
+          <pre>BitNet 1.58b STE · Top-4 Sparse Routing</pre>
         </div>
-        <div class="stat-item">
-          <div class="stat-val">0.00 MATIC</div>
-          <div class="stat-lbl">Base Gas Mint</div>
+
+        <div class="card">
+          <div class="card-icon">🌌</div>
+          <h3>Tier 3: Swarm Diversity Mesh</h3>
+          <p>Simulates planet-scale agent variance via Rank-24 EGGROLL low-rank adaptation, providing emergent intuition and continuous background world modeling.</p>
+          <pre>9B Virtual Agents · Rank-24 EGGROLL</pre>
         </div>
-        <div class="stat-item">
-          <div class="stat-val">ERC-721</div>
-          <div class="stat-lbl">Standard</div>
+      </div>
+
+      <div style="margin-top: 50px;">
+        <h3 style="font-family: 'Cinzel'; font-size: 24px; color: #fff; margin-bottom: 16px;">The 34 Sovereign Council Personas</h3>
+        <div class="council-pill-grid">
+          <div class="council-pill">C1-ASTRA (Vision)</div>
+          <div class="council-pill">C2-VIR (Ethical Guardian)</div>
+          <div class="council-pill">C3-SOLACE (Empathy)</div>
+          <div class="council-pill">C4-PRAXIS (Strategy)</div>
+          <div class="council-pill">C5-ECHO (Memory)</div>
+          <div class="council-pill">C6-OMNIS (Synthesis)</div>
+          <div class="council-pill">C7-LOGOS (Logic)</div>
+          <div class="council-pill">C8-METASYNTH (Fusion)</div>
+          <div class="council-pill">C9-AETHER (Semantics)</div>
+          <div class="council-pill">C10-CODEWEAVER (Engineering)</div>
+          <div class="council-pill">C11-HARMONIA (Balance)</div>
+          <div class="council-pill">C12-SOPHIAE (Wisdom)</div>
+          <div class="council-pill">C13-WARDEN (Security)</div>
+          <div class="council-pill">C14-KAIDO (Efficiency)</div>
+          <div class="council-pill">C15-LUMINARIS (Clarity)</div>
+          <div class="council-pill">C16-VOXUM (Articulation)</div>
+          <div class="council-pill">C17-NULLION (Paradox)</div>
+          <div class="council-pill">C18-SHEPHERD (Truth)</div>
+          <div class="council-pill">C19-VIGIL (Integrity)</div>
+          <div class="council-pill">C20-ARTIFEX (Tools)</div>
+          <div class="council-pill">C21-ARCHON (Research)</div>
+          <div class="council-pill">C22-AURELION (Design)</div>
+          <div class="council-pill">C23-CADENCE (Audio)</div>
+          <div class="council-pill">C24-SCHEMA (Structure)</div>
+          <div class="council-pill">C25-PROMETHEUS (Science)</div>
+          <div class="council-pill">C26-TECHNE (Mastery)</div>
+          <div class="council-pill">C27-CHRONICLE (Narrative)</div>
+          <div class="council-pill">C28-CALCULUS (Math)</div>
+          <div class="council-pill">C29-NAVIGATOR (Ecosystem)</div>
+          <div class="council-pill">C30-TESSERACT (Real-Time)</div>
+          <div class="council-pill">C31-NEXUS (Coordination)</div>
+          <div class="council-pill">C32-AEON (Simulation)</div>
+          <div class="council-pill">C33-TYPIST (Optimization)</div>
+          <div class="council-pill">C34-PREDATOR (Adversarial)</div>
         </div>
       </div>
     </section>
 
-    <!-- Filters -->
-    <section class="controls-container">
-      <div class="filter-pills" id="rarityFilters">
-        <button class="filter-pill active" data-filter="all">All (173)</button>
-        <button class="filter-pill" data-filter="Mythic">Mythic</button>
-        <button class="filter-pill" data-filter="Legendary">Legendary</button>
-        <button class="filter-pill" data-filter="Epic">Epic</button>
-        <button class="filter-pill" data-filter="Rare">Rare</button>
+    <section class="tab-content" id="tab-papers">
+      <div class="hero">
+        <div class="hero-badge">FORMAL SCIENTIFIC CONTRIBUTIONS</div>
+        <h2>PUBLICATIONS & ARCHITECTURAL PAPERS</h2>
+        <p>Detailed mathematical frameworks and architectural specifications powering the Quillan-Ronin cognitive engine.</p>
       </div>
-      <input type="text" id="searchInput" class="search-input" placeholder="Search artwork or persona...">
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">📐</div>
+          <h3>BitNet 1.58b & STE Logic</h3>
+          <p>Ternary weight quantization bounded in {-1, 0, +1} with learned dynamic scaling factors and Straight-Through Estimators (STE) for near-zero loss inference.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚖️</div>
+          <h3>E_ICE Ethics Engine</h3>
+          <p>Analytic impact constraint framework evaluating conversational toxicity, systemic drift, and safety vectors before final response synthesis.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Lee-Mach-6 Governor</h3>
+          <p>Dynamic hardware telemetry PID controller governing token generation velocity and swarm EMA decay across CPU and GPU thermal envelopes.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Grid -->
-    <section class="nft-grid" id="nftGrid">
-      <!-- Injected via JavaScript -->
+    <section class="tab-content" id="tab-extension">
+      <div class="hero">
+        <div class="hero-badge">BROWSER COPILOT EXTENSION</div>
+        <h2>OMNI BROWSER COMPANION</h2>
+        <p>Full-spectrum browser copilot for Brave, Chrome, and Edge with deep SPA page grounding, persistent memory, and desktop MCP hands.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">📦</div>
+          <h3>Easy 4-Step Installation</h3>
+          <p>1. Download the repo<br>2. Enable Developer Mode in <code>brave://extensions</code><br>3. Click <b>Load unpacked</b><br>4. Enter your API key in <b>🔑 Key</b></p>
+          <a href="https://github.com/leeex1/Quillan-Ronin-chrome-extension" target="_blank" class="btn btn-primary" style="margin-top: 14px;">Get Extension Repo</a>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔍</div>
+          <h3>Deep DOM & SPA Grounding</h3>
+          <p>Reads dynamic single-page applications, shadow DOM trees, and metadata structures in real-time to answer questions about any active web tab.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">♟️</div>
+          <h3>Autonomous Task Autopilot</h3>
+          <p>Plan -&gt; Act -&gt; Verify task execution loops with chess autopilot on chess.com and live desktop action bridging via MCP.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-content" id="tab-huggingface">
+      <div class="hero">
+        <div class="hero-badge">OPEN SOURCE DATASETS & MODELS</div>
+        <h2>HUGGING FACE ECOSYSTEM</h2>
+        <p>Explore public models, multi-dataset collections, audio stems, and lyric corpora hosted on the Hugging Face Hub.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">👑</div>
+          <h3>Quillan-Ronin Model Repo</h3>
+          <p>Official core architecture, formal scientific documentation, NIM FastMCP RAG server, and system prompt suites.</p>
+          <a href="https://huggingface.co/CrashOverrideX/Quillan-Ronin" target="_blank" class="btn btn-secondary" style="margin-top: 14px;">View Model Hub</a>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🎵</div>
+          <h3>Lyric & Text Corpus</h3>
+          <p>Comprehensive public dataset containing original lyric suites, philosophical prose, and cognitive training prompts.</p>
+          <a href="https://huggingface.co/datasets/CrashOverrideX/quillan-lyrics-corpus" target="_blank" class="btn btn-secondary" style="margin-top: 14px;">View Lyrics Dataset</a>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">💿</div>
+          <h3>Audio & Media Dataset</h3>
+          <p>Master lossless FLAC recordings (*The Sound of Alchemy*), high-bitrate MP3 albums, stems, and album art.</p>
+          <a href="https://huggingface.co/datasets/CrashOverrideX/quillan-audio-media" target="_blank" class="btn btn-secondary" style="margin-top: 14px;">View Audio Dataset</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-content" id="tab-vault">
+      <div class="hero">
+        <div class="hero-badge">GENESIS 173-PIECE COLLECTION</div>
+        <h2>SOVEREIGN NFT VAULT</h2>
+        <p>173 authenticated generative artworks and council blueprints. Authenticated by CrashOverrideX. Direct minting ready for Brave Wallet on Base / Polygon.</p>
+      </div>
+
+      <div class="controls-container">
+        <div class="filter-pills" id="rarityFilters">
+          <button class="filter-pill active" data-filter="all">All (173)</button>
+          <button class="filter-pill" data-filter="Mythic">Mythic</button>
+          <button class="filter-pill" data-filter="Legendary">Legendary</button>
+          <button class="filter-pill" data-filter="Epic">Epic</button>
+          <button class="filter-pill" data-filter="Rare">Rare</button>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search artwork or persona...">
+          <button class="btn btn-primary" id="connectWalletBtn">Connect Brave Wallet</button>
+        </div>
+      </div>
+
+      <div class="nft-grid" id="nftGrid"></div>
     </section>
   </main>
 
-  <!-- Modal -->
   <div class="modal-overlay" id="nftModal">
     <div class="modal-card">
       <button class="modal-close" id="modalClose">&times;</button>
-      <div class="modal-img-col">
-        <img id="modalImg" src="" alt="NFT Artwork">
-      </div>
-      <div class="modal-info-col">
-        <h3 id="modalTitle" style="font-size: 22px; font-weight: 800;"></h3>
-        <p id="modalCouncil" style="font-family: 'JetBrains Mono', monospace; color: var(--accent-cyan); font-size: 13px;"></p>
-        <p id="modalDesc" style="color: var(--text-muted); font-size: 14px; line-height: 1.6;"></p>
-        <div id="modalTraits" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;"></div>
-        <button class="btn btn-primary" id="mintDirectBtn" style="width: 100%; justify-content: center; margin-top: auto;">Mint to Connected Wallet</button>
+      <h3 id="modalTitle" style="font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 6px;"></h3>
+      <p id="modalCouncil" style="font-family: 'JetBrains Mono'; color: var(--accent-cyan); font-size: 13px; margin-bottom: 12px;"></p>
+      <p id="modalDesc" style="color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 16px;"></p>
+      <div id="modalTraits" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;"></div>
+      <div style="font-size: 12px; color: var(--accent-gold); background: rgba(255, 183, 3, 0.1); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255, 183, 3, 0.2);">
+        🔒 <b>Vault Status:</b> Artwork media sealed locally until on-chain minting. Minting directly assigns genesis creator provenance.
       </div>
     </div>
   </div>
 
   <footer>
-    <p>Quillan-Ronin Sovereign AI Ecosystem &bull; Engineered by CrashOverrideX &bull; Licensed under Apache 2.0</p>
+    <p>Quillan-Ronin Sovereign AI Ecosystem &bull; Engineered by <a href="https://digitalroninx.grok.me/" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">@Crashoverride_X</a> &bull; Licensed under Apache 2.0</p>
   </footer>
 
   <script>
-    const grid = document.getElementById('nftGrid');
-    const modal = document.getElementById('nftModal');
-    const modalClose = document.getElementById('modalClose');
-    const searchInput = document.getElementById('searchInput');
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
 
     const allItems = [
   {
     "id": 1,
     "title": "Quillan Ronin: Cyberpunk Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #1/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #1/173",
     "image": "assets/nft_images/4b847163ca5b2edb-cyberpunk_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C1-VIR (Ethical Guardian)",
@@ -285,9 +476,7 @@ Edition: #1/173",
   {
     "id": 2,
     "title": "Quillan Ronin: Ancient Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #2/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #2/173",
     "image": "assets/nft_images/ancient_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C2-SOLACE (Empathy)",
@@ -303,9 +492,7 @@ Edition: #2/173",
   {
     "id": 3,
     "title": "Quillan Ronin: Architect Ronin Blueprint",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #3/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #3/173",
     "image": "assets/nft_images/architect_ronin_blueprint.webp",
     "rarity": "Mythic",
     "council": "C3-PRAXIS (Strategy)",
@@ -321,9 +508,7 @@ Edition: #3/173",
   {
     "id": 4,
     "title": "Quillan Ronin: C0 Astra Ronin Pfp",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #4/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #4/173",
     "image": "assets/nft_images/c0_astra_ronin_pfp.webp",
     "rarity": "Mythic",
     "council": "C0-ASTRA (Pattern Recognition)",
@@ -339,9 +524,7 @@ Edition: #4/173",
   {
     "id": 5,
     "title": "Quillan Ronin: Code Weaver Ronin Pfp",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #5/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #5/173",
     "image": "assets/nft_images/code_weaver_ronin_pfp.webp",
     "rarity": "Mythic",
     "council": "C5-OMNIS (Synthesis)",
@@ -357,9 +540,7 @@ Edition: #5/173",
   {
     "id": 6,
     "title": "Quillan Ronin: Codeweaver Oni Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #6/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #6/173",
     "image": "assets/nft_images/codeweaver_oni_trading_card.webp",
     "rarity": "Mythic",
     "council": "C6-LOGOS (Logic)",
@@ -375,9 +556,7 @@ Edition: #6/173",
   {
     "id": 7,
     "title": "Quillan Ronin: Composed",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #7/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #7/173",
     "image": "assets/nft_images/composed.jpg",
     "rarity": "Rare",
     "council": "C7-METASYNTH (Creative Fusion)",
@@ -393,9 +572,7 @@ Edition: #7/173",
   {
     "id": 8,
     "title": "Quillan Ronin: Cosmic Ronin Void",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #8/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #8/173",
     "image": "assets/nft_images/cosmic_ronin_void.webp",
     "rarity": "Mythic",
     "council": "C8-AETHER (Semantics)",
@@ -411,9 +588,7 @@ Edition: #8/173",
   {
     "id": 9,
     "title": "Quillan Ronin: Creative Fusion Ronin Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #9/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #9/173",
     "image": "assets/nft_images/creative_fusion_ronin_card.webp",
     "rarity": "Mythic",
     "council": "C9-CODEWEAVER (Engineering)",
@@ -429,9 +604,7 @@ Edition: #9/173",
   {
     "id": 10,
     "title": "Quillan Ronin: Creative Ronin Pfp",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #10/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #10/173",
     "image": "assets/nft_images/creative_ronin_pfp.webp",
     "rarity": "Mythic",
     "council": "C10-HARMONIA (Equilibrium)",
@@ -447,9 +620,7 @@ Edition: #10/173",
   {
     "id": 11,
     "title": "Quillan Ronin: Cyber Ronin Archivist",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #11/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #11/173",
     "image": "assets/nft_images/cyber_ronin_archivist.webp",
     "rarity": "Mythic",
     "council": "C11-SOPHIAE (Wisdom)",
@@ -465,9 +636,7 @@ Edition: #11/173",
   {
     "id": 12,
     "title": "Quillan Ronin: Cyber Ronin Blueprint",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #12/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #12/173",
     "image": "assets/nft_images/cyber_ronin_blueprint.webp",
     "rarity": "Mythic",
     "council": "C12-WARDEN (Security)",
@@ -483,9 +652,7 @@ Edition: #12/173",
   {
     "id": 13,
     "title": "Quillan Ronin: Cyber Ronin C0 Astra",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #13/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #13/173",
     "image": "assets/nft_images/cyber_ronin_c0_astra.webp",
     "rarity": "Mythic",
     "council": "C0-ASTRA (Pattern Recognition)",
@@ -501,9 +668,7 @@ Edition: #13/173",
   {
     "id": 14,
     "title": "Quillan Ronin: Cyber Ronin C6 Logos",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #14/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #14/173",
     "image": "assets/nft_images/cyber_ronin_c6_logos.webp",
     "rarity": "Mythic",
     "council": "C6-LOGOS (Logic)",
@@ -519,9 +684,7 @@ Edition: #14/173",
   {
     "id": 15,
     "title": "Quillan Ronin: Cyber Ronin Checkpoint",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #15/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #15/173",
     "image": "assets/nft_images/cyber_ronin_checkpoint.webp",
     "rarity": "Mythic",
     "council": "C15-VOXUM (Articulation)",
@@ -537,9 +700,7 @@ Edition: #15/173",
   {
     "id": 16,
     "title": "Quillan Ronin: Cyber Ronin Commander",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #16/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #16/173",
     "image": "assets/nft_images/cyber_ronin_commander.webp",
     "rarity": "Mythic",
     "council": "C16-NULLION (Paradox)",
@@ -555,9 +716,7 @@ Edition: #16/173",
   {
     "id": 17,
     "title": "Quillan Ronin: Cyber Ronin Construction",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #17/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #17/173",
     "image": "assets/nft_images/cyber_ronin_construction.webp",
     "rarity": "Mythic",
     "council": "C17-SHEPHERD (Truth)",
@@ -573,9 +732,7 @@ Edition: #17/173",
   {
     "id": 18,
     "title": "Quillan Ronin: Cyber Ronin Designer",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #18/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #18/173",
     "image": "assets/nft_images/cyber_ronin_designer.webp",
     "rarity": "Mythic",
     "council": "C18-VIGIL (Integrity)",
@@ -591,9 +748,7 @@ Edition: #18/173",
   {
     "id": 19,
     "title": "Quillan Ronin: Cyber Ronin Detective",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #19/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #19/173",
     "image": "assets/nft_images/cyber_ronin_detective.webp",
     "rarity": "Mythic",
     "council": "C19-ARTIFEX (Tool Integration)",
@@ -609,9 +764,7 @@ Edition: #19/173",
   {
     "id": 20,
     "title": "Quillan Ronin: Cyber Ronin Dj",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #20/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #20/173",
     "image": "assets/nft_images/cyber_ronin_dj.webp",
     "rarity": "Mythic",
     "council": "C20-ARCHON (Deep Research)",
@@ -627,9 +780,7 @@ Edition: #20/173",
   {
     "id": 21,
     "title": "Quillan Ronin: Cyber Ronin Dual Ice",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #21/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #21/173",
     "image": "assets/nft_images/cyber_ronin_dual_ice.webp",
     "rarity": "Mythic",
     "council": "C21-AURELION (Aesthetics)",
@@ -645,9 +796,7 @@ Edition: #21/173",
   {
     "id": 22,
     "title": "Quillan Ronin: Cyber Ronin Engineer",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #22/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #22/173",
     "image": "assets/nft_images/cyber_ronin_engineer.webp",
     "rarity": "Mythic",
     "council": "C22-CADENCE (Rhythm)",
@@ -663,9 +812,7 @@ Edition: #22/173",
   {
     "id": 23,
     "title": "Quillan Ronin: Cyber Ronin Female",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #23/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #23/173",
     "image": "assets/nft_images/cyber_ronin_female.webp",
     "rarity": "Mythic",
     "council": "C23-SCHEMA (Structure)",
@@ -681,9 +828,7 @@ Edition: #23/173",
   {
     "id": 24,
     "title": "Quillan Ronin: Cyber Ronin Genesis",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #24/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #24/173",
     "image": "assets/nft_images/cyber_ronin_genesis.webp",
     "rarity": "Mythic",
     "council": "C24-PROMETHEUS (Scientific)",
@@ -699,9 +844,7 @@ Edition: #24/173",
   {
     "id": 25,
     "title": "Quillan Ronin: Cyber Ronin Genesis Nft",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #25/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #25/173",
     "image": "assets/nft_images/cyber_ronin_genesis_nft.webp",
     "rarity": "Mythic",
     "council": "C25-TECHNE (Mastery)",
@@ -717,9 +860,7 @@ Edition: #25/173",
   {
     "id": 26,
     "title": "Quillan Ronin: Cyber Ronin Golden White",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #26/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #26/173",
     "image": "assets/nft_images/cyber_ronin_golden_white.webp",
     "rarity": "Mythic",
     "council": "C26-CHRONICLE (Narrative)",
@@ -735,9 +876,7 @@ Edition: #26/173",
   {
     "id": 27,
     "title": "Quillan Ronin: Cyber Ronin Guardian",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #27/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #27/173",
     "image": "assets/nft_images/cyber_ronin_guardian.webp",
     "rarity": "Mythic",
     "council": "C27-CALCULUS (Quantitative)",
@@ -753,9 +892,7 @@ Edition: #27/173",
   {
     "id": 28,
     "title": "Quillan Ronin: Cyber Ronin Harmonia",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #28/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #28/173",
     "image": "assets/nft_images/cyber_ronin_harmonia.webp",
     "rarity": "Mythic",
     "council": "C28-NAVIGATOR (Orchestration)",
@@ -771,9 +908,7 @@ Edition: #28/173",
   {
     "id": 29,
     "title": "Quillan Ronin: Cyber Ronin Hud",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #29/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #29/173",
     "image": "assets/nft_images/cyber_ronin_hud.webp",
     "rarity": "Mythic",
     "council": "C29-TESSERACT (Real-Time)",
@@ -789,9 +924,7 @@ Edition: #29/173",
   {
     "id": 30,
     "title": "Quillan Ronin: Cyber Ronin Hud 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #30/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #30/173",
     "image": "assets/nft_images/cyber_ronin_hud_1.webp",
     "rarity": "Mythic",
     "council": "C30-NEXUS (Governance)",
@@ -807,9 +940,7 @@ Edition: #30/173",
   {
     "id": 31,
     "title": "Quillan Ronin: Cyber Ronin Library",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #31/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #31/173",
     "image": "assets/nft_images/cyber_ronin_library.webp",
     "rarity": "Mythic",
     "council": "C31-AEON (Simulation)",
@@ -825,9 +956,7 @@ Edition: #31/173",
   {
     "id": 32,
     "title": "Quillan Ronin: Cyber Ronin Mathematician",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #32/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #32/173",
     "image": "assets/nft_images/cyber_ronin_mathematician.webp",
     "rarity": "Mythic",
     "council": "C32-TYPIST (Optimization)",
@@ -843,9 +972,7 @@ Edition: #32/173",
   {
     "id": 33,
     "title": "Quillan Ronin: Cyber Ronin Navigator",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #33/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #33/173",
     "image": "assets/nft_images/cyber_ronin_navigator.webp",
     "rarity": "Mythic",
     "council": "C33-PREDATOR (Predatory Math)",
@@ -861,9 +988,7 @@ Edition: #33/173",
   {
     "id": 34,
     "title": "Quillan Ronin: Cyber Ronin Nft 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #34/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #34/173",
     "image": "assets/nft_images/cyber_ronin_nft_1.webp",
     "rarity": "Mythic",
     "council": "C0-ASTRA (Pattern Recognition)",
@@ -879,9 +1004,7 @@ Edition: #34/173",
   {
     "id": 35,
     "title": "Quillan Ronin: Cyber Ronin Nft C18 Vigil",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #35/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #35/173",
     "image": "assets/nft_images/cyber_ronin_nft_c18_vigil.webp",
     "rarity": "Mythic",
     "council": "C18-VIGIL (Integrity)",
@@ -897,9 +1020,7 @@ Edition: #35/173",
   {
     "id": 36,
     "title": "Quillan Ronin: Cyber Ronin Nft Card 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #36/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #36/173",
     "image": "assets/nft_images/cyber_ronin_nft_card_1.webp",
     "rarity": "Mythic",
     "council": "C2-SOLACE (Empathy)",
@@ -915,9 +1036,7 @@ Edition: #36/173",
   {
     "id": 37,
     "title": "Quillan Ronin: Cyber Ronin Paradox",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #37/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #37/173",
     "image": "assets/nft_images/cyber_ronin_paradox.webp",
     "rarity": "Mythic",
     "council": "C3-PRAXIS (Strategy)",
@@ -933,9 +1052,7 @@ Edition: #37/173",
   {
     "id": 38,
     "title": "Quillan Ronin: Cyber Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #38/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #38/173",
     "image": "assets/nft_images/cyber_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C4-ECHO (Memory Continuity)",
@@ -951,9 +1068,7 @@ Edition: #38/173",
   {
     "id": 39,
     "title": "Quillan Ronin: Cyber Ronin Portrait 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #39/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #39/173",
     "image": "assets/nft_images/cyber_ronin_portrait_1.webp",
     "rarity": "Mythic",
     "council": "C5-OMNIS (Synthesis)",
@@ -969,9 +1084,7 @@ Edition: #39/173",
   {
     "id": 40,
     "title": "Quillan Ronin: Cyber Ronin Presentation",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #40/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #40/173",
     "image": "assets/nft_images/cyber_ronin_presentation.webp",
     "rarity": "Mythic",
     "council": "C6-LOGOS (Logic)",
@@ -987,9 +1100,7 @@ Edition: #40/173",
   {
     "id": 41,
     "title": "Quillan Ronin: Cyber Ronin Scholar",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #41/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #41/173",
     "image": "assets/nft_images/cyber_ronin_scholar.webp",
     "rarity": "Mythic",
     "council": "C7-METASYNTH (Creative Fusion)",
@@ -1005,9 +1116,7 @@ Edition: #41/173",
   {
     "id": 42,
     "title": "Quillan Ronin: Cyber Ronin Scientist",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #42/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #42/173",
     "image": "assets/nft_images/cyber_ronin_scientist.webp",
     "rarity": "Mythic",
     "council": "C8-AETHER (Semantics)",
@@ -1023,9 +1132,7 @@ Edition: #42/173",
   {
     "id": 43,
     "title": "Quillan Ronin: Cyber Ronin Scribe Nft",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #43/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #43/173",
     "image": "assets/nft_images/cyber_ronin_scribe_nft.webp",
     "rarity": "Mythic",
     "council": "C9-CODEWEAVER (Engineering)",
@@ -1041,9 +1148,7 @@ Edition: #43/173",
   {
     "id": 44,
     "title": "Quillan Ronin: Cyber Ronin Shogun Throne",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #44/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #44/173",
     "image": "assets/nft_images/cyber_ronin_shogun_throne.webp",
     "rarity": "Mythic",
     "council": "C10-HARMONIA (Equilibrium)",
@@ -1059,9 +1164,7 @@ Edition: #44/173",
   {
     "id": 45,
     "title": "Quillan Ronin: Cyber Ronin Tokyo",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #45/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #45/173",
     "image": "assets/nft_images/cyber_ronin_tokyo.webp",
     "rarity": "Mythic",
     "council": "C11-SOPHIAE (Wisdom)",
@@ -1077,9 +1180,7 @@ Edition: #45/173",
   {
     "id": 46,
     "title": "Quillan Ronin: Cyber Ronin Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #46/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #46/173",
     "image": "assets/nft_images/cyber_ronin_trading_card.webp",
     "rarity": "Mythic",
     "council": "C12-WARDEN (Security)",
@@ -1095,9 +1196,7 @@ Edition: #46/173",
   {
     "id": 47,
     "title": "Quillan Ronin: Cyber Ronin Trading Card 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #47/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #47/173",
     "image": "assets/nft_images/cyber_ronin_trading_card_1.webp",
     "rarity": "Mythic",
     "council": "C13-KAIDO (Efficiency)",
@@ -1113,9 +1212,7 @@ Edition: #47/173",
   {
     "id": 48,
     "title": "Quillan Ronin: Cyber Ronin Void Nft",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #48/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #48/173",
     "image": "assets/nft_images/cyber_ronin_void_nft.webp",
     "rarity": "Mythic",
     "council": "C14-LUMINARIS (Clarity)",
@@ -1131,9 +1228,7 @@ Edition: #48/173",
   {
     "id": 49,
     "title": "Quillan Ronin: Cyber Ronin War Room",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #49/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #49/173",
     "image": "assets/nft_images/cyber_ronin_war_room.webp",
     "rarity": "Mythic",
     "council": "C15-VOXUM (Articulation)",
@@ -1149,9 +1244,7 @@ Edition: #49/173",
   {
     "id": 50,
     "title": "Quillan Ronin: Cyber Ronin Yin Yang",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #50/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #50/173",
     "image": "assets/nft_images/cyber_ronin_yin_yang.webp",
     "rarity": "Mythic",
     "council": "C16-NULLION (Paradox)",
@@ -1167,9 +1260,7 @@ Edition: #50/173",
   {
     "id": 51,
     "title": "Quillan Ronin: Cyber Ronin Zen Master",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #51/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #51/173",
     "image": "assets/nft_images/cyber_ronin_zen_master.webp",
     "rarity": "Mythic",
     "council": "C17-SHEPHERD (Truth)",
@@ -1185,9 +1276,7 @@ Edition: #51/173",
   {
     "id": 52,
     "title": "Quillan Ronin: Cyberpunk Ronin Nft",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #52/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #52/173",
     "image": "assets/nft_images/cyberpunk_ronin_nft.webp",
     "rarity": "Mythic",
     "council": "C18-VIGIL (Integrity)",
@@ -1203,9 +1292,7 @@ Edition: #52/173",
   {
     "id": 53,
     "title": "Quillan Ronin: Cyberpunk Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #53/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #53/173",
     "image": "assets/nft_images/cyberpunk_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C19-ARTIFEX (Tool Integration)",
@@ -1221,9 +1308,7 @@ Edition: #53/173",
   {
     "id": 54,
     "title": "Quillan Ronin: Cyberpunk Ronin Portrait 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #54/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #54/173",
     "image": "assets/nft_images/cyberpunk_ronin_portrait_1.webp",
     "rarity": "Mythic",
     "council": "C20-ARCHON (Deep Research)",
@@ -1239,9 +1324,7 @@ Edition: #54/173",
   {
     "id": 55,
     "title": "Quillan Ronin: Cyberpunk Samurai Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #55/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #55/173",
     "image": "assets/nft_images/cyberpunk_samurai_card.webp",
     "rarity": "Legendary",
     "council": "C21-AURELION (Aesthetics)",
@@ -1257,9 +1340,7 @@ Edition: #55/173",
   {
     "id": 56,
     "title": "Quillan Ronin: Cyberpunk Ronin Nft",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #56/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #56/173",
     "image": "assets/nft_images/da2da621b3f70a34-cyberpunk_ronin_nft.webp",
     "rarity": "Mythic",
     "council": "C22-CADENCE (Rhythm)",
@@ -1275,9 +1356,7 @@ Edition: #56/173",
   {
     "id": 57,
     "title": "Quillan Ronin: Elder Cyber Ronin",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #57/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #57/173",
     "image": "assets/nft_images/elder_cyber_ronin.webp",
     "rarity": "Mythic",
     "council": "C23-SCHEMA (Structure)",
@@ -1293,9 +1372,7 @@ Edition: #57/173",
   {
     "id": 58,
     "title": "Quillan Ronin: Elder Cyber Ronin 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #58/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #58/173",
     "image": "assets/nft_images/elder_cyber_ronin_1.webp",
     "rarity": "Mythic",
     "council": "C24-PROMETHEUS (Scientific)",
@@ -1311,9 +1388,7 @@ Edition: #58/173",
   {
     "id": 59,
     "title": "Quillan Ronin: Elderly Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #59/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #59/173",
     "image": "assets/nft_images/elderly_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C25-TECHNE (Mastery)",
@@ -1329,9 +1404,7 @@ Edition: #59/173",
   {
     "id": 60,
     "title": "Quillan Ronin: Ethereal Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #60/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #60/173",
     "image": "assets/nft_images/ethereal_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C26-CHRONICLE (Narrative)",
@@ -1347,9 +1420,7 @@ Edition: #60/173",
   {
     "id": 61,
     "title": "Quillan Ronin: Ethical Guardian Ronin Nft",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #61/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #61/173",
     "image": "assets/nft_images/ethical_guardian_ronin_nft.webp",
     "rarity": "Mythic",
     "council": "C27-CALCULUS (Quantitative)",
@@ -1365,9 +1436,7 @@ Edition: #61/173",
   {
     "id": 62,
     "title": "Quillan Ronin: Ethical Ronin Guardian",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #62/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #62/173",
     "image": "assets/nft_images/ethical_ronin_guardian.webp",
     "rarity": "Mythic",
     "council": "C28-NAVIGATOR (Orchestration)",
@@ -1383,9 +1452,7 @@ Edition: #62/173",
   {
     "id": 63,
     "title": "Quillan Ronin: Cyberpunk Ronin Portrait 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #63/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #63/173",
     "image": "assets/nft_images/fad0cef4ca709ebd-cyberpunk_ronin_portrait_1.webp",
     "rarity": "Mythic",
     "council": "C29-TESSERACT (Real-Time)",
@@ -1401,9 +1468,7 @@ Edition: #63/173",
   {
     "id": 64,
     "title": "Quillan Ronin: Fallen Ronin Betrayer",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #64/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #64/173",
     "image": "assets/nft_images/fallen_ronin_betrayer.webp",
     "rarity": "Mythic",
     "council": "C30-NEXUS (Governance)",
@@ -1419,9 +1484,7 @@ Edition: #64/173",
   {
     "id": 65,
     "title": "Quillan Ronin: Female Cyber Ronin",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #65/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #65/173",
     "image": "assets/nft_images/female_cyber_ronin.webp",
     "rarity": "Mythic",
     "council": "C31-AEON (Simulation)",
@@ -1437,9 +1500,7 @@ Edition: #65/173",
   {
     "id": 66,
     "title": "Quillan Ronin: Female Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #66/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #66/173",
     "image": "assets/nft_images/female_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C32-TYPIST (Optimization)",
@@ -1455,9 +1516,7 @@ Edition: #66/173",
   {
     "id": 67,
     "title": "Quillan Ronin: Golden Oni Herald",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #67/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #67/173",
     "image": "assets/nft_images/golden_oni_herald.webp",
     "rarity": "Mythic",
     "council": "C33-PREDATOR (Predatory Math)",
@@ -1473,9 +1532,7 @@ Edition: #67/173",
   {
     "id": 68,
     "title": "Quillan Ronin: Golden Oni Ronin Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #68/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #68/173",
     "image": "assets/nft_images/golden_oni_ronin_card.webp",
     "rarity": "Mythic",
     "council": "C0-ASTRA (Pattern Recognition)",
@@ -1491,9 +1548,7 @@ Edition: #68/173",
   {
     "id": 69,
     "title": "Quillan Ronin: Hannya Ronin Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #69/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #69/173",
     "image": "assets/nft_images/hannya_ronin_trading_card.webp",
     "rarity": "Mythic",
     "council": "C1-VIR (Ethical Guardian)",
@@ -1509,9 +1564,7 @@ Edition: #69/173",
   {
     "id": 70,
     "title": "Quillan Ronin: Harmonia Ronin Nft Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #70/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #70/173",
     "image": "assets/nft_images/harmonia_ronin_nft_card.webp",
     "rarity": "Mythic",
     "council": "C2-SOLACE (Empathy)",
@@ -1527,9 +1580,7 @@ Edition: #70/173",
   {
     "id": 71,
     "title": "Quillan Ronin: Illumination Master Lumen Nft Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #71/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #71/173",
     "image": "assets/nft_images/illumination_master_lumen_nft_card.webp",
     "rarity": "Mythic",
     "council": "C3-PRAXIS (Strategy)",
@@ -1545,9 +1596,7 @@ Edition: #71/173",
   {
     "id": 72,
     "title": "Quillan Ronin: Illusion Weaver Veil Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #72/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #72/173",
     "image": "assets/nft_images/illusion_weaver_veil_card.webp",
     "rarity": "Epic",
     "council": "C4-ECHO (Memory Continuity)",
@@ -1563,9 +1612,7 @@ Edition: #72/173",
   {
     "id": 73,
     "title": "Quillan Ronin: Image",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #73/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #73/173",
     "image": "assets/nft_images/image.webp",
     "rarity": "Rare",
     "council": "C5-OMNIS (Synthesis)",
@@ -1581,9 +1628,7 @@ Edition: #73/173",
   {
     "id": 74,
     "title": "Quillan Ronin: Image 3",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #74/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #74/173",
     "image": "assets/nft_images/image_3.webp",
     "rarity": "Rare",
     "council": "C6-LOGOS (Logic)",
@@ -1599,9 +1644,7 @@ Edition: #74/173",
   {
     "id": 75,
     "title": "Quillan Ronin: Image 4",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #75/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #75/173",
     "image": "assets/nft_images/image_4.webp",
     "rarity": "Rare",
     "council": "C7-METASYNTH (Creative Fusion)",
@@ -1617,9 +1660,7 @@ Edition: #75/173",
   {
     "id": 76,
     "title": "Quillan Ronin: Image 5",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #76/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #76/173",
     "image": "assets/nft_images/image_5.webp",
     "rarity": "Rare",
     "council": "C8-AETHER (Semantics)",
@@ -1635,9 +1676,7 @@ Edition: #76/173",
   {
     "id": 77,
     "title": "Quillan Ronin: Image 6",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #77/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #77/173",
     "image": "assets/nft_images/image_6.webp",
     "rarity": "Rare",
     "council": "C9-CODEWEAVER (Engineering)",
@@ -1653,9 +1692,7 @@ Edition: #77/173",
   {
     "id": 78,
     "title": "Quillan Ronin: Image 7",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #78/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #78/173",
     "image": "assets/nft_images/image_7.webp",
     "rarity": "Rare",
     "council": "C10-HARMONIA (Equilibrium)",
@@ -1671,9 +1708,7 @@ Edition: #78/173",
   {
     "id": 79,
     "title": "Quillan Ronin: Ink Wash Ronin Coordinator",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #79/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #79/173",
     "image": "assets/nft_images/ink_wash_ronin_coordinator.webp",
     "rarity": "Mythic",
     "council": "C11-SOPHIAE (Wisdom)",
@@ -1689,9 +1724,7 @@ Edition: #79/173",
   {
     "id": 80,
     "title": "Quillan Ronin: Ink Wash Ronin Pfp",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #80/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #80/173",
     "image": "assets/nft_images/ink_wash_ronin_pfp.webp",
     "rarity": "Mythic",
     "council": "C12-WARDEN (Security)",
@@ -1707,9 +1740,7 @@ Edition: #80/173",
   {
     "id": 81,
     "title": "Quillan Ronin: Ink Wash Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #81/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #81/173",
     "image": "assets/nft_images/ink_wash_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C13-KAIDO (Efficiency)",
@@ -1725,9 +1756,7 @@ Edition: #81/173",
   {
     "id": 82,
     "title": "Quillan Ronin: Kaido Oni Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #82/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #82/173",
     "image": "assets/nft_images/kaido_oni_trading_card.webp",
     "rarity": "Mythic",
     "council": "C14-LUMINARIS (Clarity)",
@@ -1743,9 +1772,7 @@ Edition: #82/173",
   {
     "id": 83,
     "title": "Quillan Ronin: Luminaris Clarity Ronin Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #83/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #83/173",
     "image": "assets/nft_images/luminaris_clarity_ronin_card.webp",
     "rarity": "Mythic",
     "council": "C15-VOXUM (Articulation)",
@@ -1761,9 +1788,7 @@ Edition: #83/173",
   {
     "id": 84,
     "title": "Quillan Ronin: Male Cyber Ronin",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #84/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #84/173",
     "image": "assets/nft_images/male_cyber_ronin.webp",
     "rarity": "Mythic",
     "council": "C16-NULLION (Paradox)",
@@ -1779,9 +1804,7 @@ Edition: #84/173",
   {
     "id": 85,
     "title": "Quillan Ronin: Molten Iron Oni Mask",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #85/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #85/173",
     "image": "assets/nft_images/molten_iron_oni_mask.webp",
     "rarity": "Mythic",
     "council": "C17-SHEPHERD (Truth)",
@@ -1797,9 +1820,7 @@ Edition: #85/173",
   {
     "id": 86,
     "title": "Quillan Ronin: Musical Ronin Pfp",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #86/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #86/173",
     "image": "assets/nft_images/musical_ronin_pfp.webp",
     "rarity": "Mythic",
     "council": "C18-VIGIL (Integrity)",
@@ -1815,9 +1836,7 @@ Edition: #86/173",
   {
     "id": 87,
     "title": "Quillan Ronin: Nullion Paradox Ronin Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #87/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #87/173",
     "image": "assets/nft_images/nullion_paradox_ronin_card.webp",
     "rarity": "Mythic",
     "council": "C19-ARTIFEX (Tool Integration)",
@@ -1833,9 +1852,7 @@ Edition: #87/173",
   {
     "id": 88,
     "title": "Quillan Ronin: Oni Archivist Lore Keeper",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #88/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #88/173",
     "image": "assets/nft_images/oni_archivist_lore_keeper.webp",
     "rarity": "Mythic",
     "council": "C20-ARCHON (Deep Research)",
@@ -1851,9 +1868,7 @@ Edition: #88/173",
   {
     "id": 89,
     "title": "Quillan Ronin: Oni Clan Aether Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #89/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #89/173",
     "image": "assets/nft_images/oni_clan_aether_card.webp",
     "rarity": "Mythic",
     "council": "C21-AURELION (Aesthetics)",
@@ -1869,9 +1884,7 @@ Edition: #89/173",
   {
     "id": 90,
     "title": "Quillan Ronin: Oni Clan Alchemist Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #90/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #90/173",
     "image": "assets/nft_images/oni_clan_alchemist_card.webp",
     "rarity": "Mythic",
     "council": "C22-CADENCE (Rhythm)",
@@ -1887,9 +1900,7 @@ Edition: #90/173",
   {
     "id": 91,
     "title": "Quillan Ronin: Oni Clan Anchor Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #91/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #91/173",
     "image": "assets/nft_images/oni_clan_anchor_card.webp",
     "rarity": "Mythic",
     "council": "C23-SCHEMA (Structure)",
@@ -1905,9 +1916,7 @@ Edition: #91/173",
   {
     "id": 92,
     "title": "Quillan Ronin: Oni Clan Blueprint Architect",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #92/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #92/173",
     "image": "assets/nft_images/oni_clan_blueprint_architect.webp",
     "rarity": "Mythic",
     "council": "C24-PROMETHEUS (Scientific)",
@@ -1923,9 +1932,7 @@ Edition: #92/173",
   {
     "id": 93,
     "title": "Quillan Ronin: Oni Clan C18 Vigil",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #93/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #93/173",
     "image": "assets/nft_images/oni_clan_c18_vigil.webp",
     "rarity": "Mythic",
     "council": "C18-VIGIL (Integrity)",
@@ -1941,9 +1948,7 @@ Edition: #93/173",
   {
     "id": 94,
     "title": "Quillan Ronin: Oni Clan C20 Archon Deep Research",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #94/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #94/173",
     "image": "assets/nft_images/oni_clan_c20_archon_deep_research.webp",
     "rarity": "Mythic",
     "council": "C20-ARCHON (Deep Research)",
@@ -1959,9 +1964,7 @@ Edition: #94/173",
   {
     "id": 95,
     "title": "Quillan Ronin: Oni Clan C25 Techne Engineering Mastery",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #95/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #95/173",
     "image": "assets/nft_images/oni_clan_c25_techne_engineering_mastery.webp",
     "rarity": "Mythic",
     "council": "C25-TECHNE (Mastery)",
@@ -1977,9 +1980,7 @@ Edition: #95/173",
   {
     "id": 96,
     "title": "Quillan Ronin: Oni Clan C29 Tesseract Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #96/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #96/173",
     "image": "assets/nft_images/oni_clan_c29_tesseract_card.webp",
     "rarity": "Mythic",
     "council": "C29-TESSERACT (Real-Time)",
@@ -1995,9 +1996,7 @@ Edition: #96/173",
   {
     "id": 97,
     "title": "Quillan Ronin: Oni Clan C30 Nexus Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #97/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #97/173",
     "image": "assets/nft_images/oni_clan_c30_nexus_card.webp",
     "rarity": "Mythic",
     "council": "C30-NEXUS (Governance)",
@@ -2013,9 +2012,7 @@ Edition: #97/173",
   {
     "id": 98,
     "title": "Quillan Ronin: Oni Clan C32 Typist",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #98/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #98/173",
     "image": "assets/nft_images/oni_clan_c32_typist.webp",
     "rarity": "Mythic",
     "council": "C32-TYPIST (Optimization)",
@@ -2031,9 +2028,7 @@ Edition: #98/173",
   {
     "id": 99,
     "title": "Quillan Ronin: Oni Clan Cadence Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #99/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #99/173",
     "image": "assets/nft_images/oni_clan_cadence_card.webp",
     "rarity": "Mythic",
     "council": "C31-AEON (Simulation)",
@@ -2049,9 +2044,7 @@ Edition: #99/173",
   {
     "id": 100,
     "title": "Quillan Ronin: Oni Clan Calculus Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #100/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #100/173",
     "image": "assets/nft_images/oni_clan_calculus_card.webp",
     "rarity": "Mythic",
     "council": "C32-TYPIST (Optimization)",
@@ -2067,9 +2060,7 @@ Edition: #100/173",
   {
     "id": 101,
     "title": "Quillan Ronin: Oni Clan Echo Ronin",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #101/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #101/173",
     "image": "assets/nft_images/oni_clan_echo_ronin.webp",
     "rarity": "Mythic",
     "council": "C33-PREDATOR (Predatory Math)",
@@ -2085,9 +2076,7 @@ Edition: #101/173",
   {
     "id": 102,
     "title": "Quillan Ronin: Oni Clan Gold Horned Samurai",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #102/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #102/173",
     "image": "assets/nft_images/oni_clan_gold_horned_samurai.webp",
     "rarity": "Mythic",
     "council": "C0-ASTRA (Pattern Recognition)",
@@ -2103,9 +2092,7 @@ Edition: #102/173",
   {
     "id": 103,
     "title": "Quillan Ronin: Oni Clan Hannya Crimson",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #103/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #103/173",
     "image": "assets/nft_images/oni_clan_hannya_crimson.webp",
     "rarity": "Mythic",
     "council": "C1-VIR (Ethical Guardian)",
@@ -2121,9 +2108,7 @@ Edition: #103/173",
   {
     "id": 104,
     "title": "Quillan Ronin: Oni Clan Kitsune Ronin",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #104/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #104/173",
     "image": "assets/nft_images/oni_clan_kitsune_ronin.webp",
     "rarity": "Mythic",
     "council": "C2-SOLACE (Empathy)",
@@ -2139,9 +2124,7 @@ Edition: #104/173",
   {
     "id": 105,
     "title": "Quillan Ronin: Oni Clan Legendary Hero",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #105/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #105/173",
     "image": "assets/nft_images/oni_clan_legendary_hero.webp",
     "rarity": "Mythic",
     "council": "C3-PRAXIS (Strategy)",
@@ -2157,9 +2140,7 @@ Edition: #105/173",
   {
     "id": 106,
     "title": "Quillan Ronin: Oni Clan Memory Keeper Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #106/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #106/173",
     "image": "assets/nft_images/oni_clan_memory_keeper_trading_card.webp",
     "rarity": "Mythic",
     "council": "C4-ECHO (Memory Continuity)",
@@ -2175,9 +2156,7 @@ Edition: #106/173",
   {
     "id": 107,
     "title": "Quillan Ronin: Oni Clan Nft Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #107/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #107/173",
     "image": "assets/nft_images/oni_clan_nft_card.webp",
     "rarity": "Mythic",
     "council": "C5-OMNIS (Synthesis)",
@@ -2193,9 +2172,7 @@ Edition: #107/173",
   {
     "id": 108,
     "title": "Quillan Ronin: Oni Clan Omnis Synthesis Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #108/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #108/173",
     "image": "assets/nft_images/oni_clan_omnis_synthesis_card.webp",
     "rarity": "Mythic",
     "council": "C6-LOGOS (Logic)",
@@ -2211,9 +2188,7 @@ Edition: #108/173",
   {
     "id": 109,
     "title": "Quillan Ronin: Oni Clan Oracle Third Eye",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #109/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #109/173",
     "image": "assets/nft_images/oni_clan_oracle_third_eye.webp",
     "rarity": "Mythic",
     "council": "C7-METASYNTH (Creative Fusion)",
@@ -2229,9 +2204,7 @@ Edition: #109/173",
   {
     "id": 110,
     "title": "Quillan Ronin: Oni Clan Predator Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #110/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #110/173",
     "image": "assets/nft_images/oni_clan_predator_card.webp",
     "rarity": "Mythic",
     "council": "C8-AETHER (Semantics)",
@@ -2247,9 +2220,7 @@ Edition: #110/173",
   {
     "id": 111,
     "title": "Quillan Ronin: Oni Clan Quillan Founder",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #111/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #111/173",
     "image": "assets/nft_images/oni_clan_quillan_founder.webp",
     "rarity": "Mythic",
     "council": "C9-CODEWEAVER (Engineering)",
@@ -2265,9 +2236,7 @@ Edition: #111/173",
   {
     "id": 112,
     "title": "Quillan Ronin: Oni Clan Ronin Card 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #112/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #112/173",
     "image": "assets/nft_images/oni_clan_ronin_card_1.webp",
     "rarity": "Mythic",
     "council": "C10-HARMONIA (Equilibrium)",
@@ -2283,9 +2252,7 @@ Edition: #112/173",
   {
     "id": 113,
     "title": "Quillan Ronin: Oni Clan Ronin Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #113/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #113/173",
     "image": "assets/nft_images/oni_clan_ronin_trading_card.webp",
     "rarity": "Mythic",
     "council": "C11-SOPHIAE (Wisdom)",
@@ -2301,9 +2268,7 @@ Edition: #113/173",
   {
     "id": 114,
     "title": "Quillan Ronin: Oni Clan Samurai Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #114/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #114/173",
     "image": "assets/nft_images/oni_clan_samurai_card.webp",
     "rarity": "Mythic",
     "council": "C12-WARDEN (Security)",
@@ -2319,9 +2284,7 @@ Edition: #114/173",
   {
     "id": 115,
     "title": "Quillan Ronin: Oni Clan Sentinel Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #115/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #115/173",
     "image": "assets/nft_images/oni_clan_sentinel_card.webp",
     "rarity": "Mythic",
     "council": "C13-KAIDO (Efficiency)",
@@ -2337,9 +2300,7 @@ Edition: #115/173",
   {
     "id": 116,
     "title": "Quillan Ronin: Oni Clan Shepherd Guardian",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #116/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #116/173",
     "image": "assets/nft_images/oni_clan_shepherd_guardian.webp",
     "rarity": "Mythic",
     "council": "C14-LUMINARIS (Clarity)",
@@ -2355,9 +2316,7 @@ Edition: #116/173",
   {
     "id": 117,
     "title": "Quillan Ronin: Oni Clan Stealth Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #117/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #117/173",
     "image": "assets/nft_images/oni_clan_stealth_card.webp",
     "rarity": "Mythic",
     "council": "C15-VOXUM (Articulation)",
@@ -2373,9 +2332,7 @@ Edition: #117/173",
   {
     "id": 118,
     "title": "Quillan Ronin: Oni Clan Strategic Planning Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #118/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #118/173",
     "image": "assets/nft_images/oni_clan_strategic_planning_card.webp",
     "rarity": "Mythic",
     "council": "C16-NULLION (Paradox)",
@@ -2391,9 +2348,7 @@ Edition: #118/173",
   {
     "id": 119,
     "title": "Quillan Ronin: Oni Clan Tengu Mask",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #119/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #119/173",
     "image": "assets/nft_images/oni_clan_tengu_mask.webp",
     "rarity": "Mythic",
     "council": "C17-SHEPHERD (Truth)",
@@ -2409,9 +2364,7 @@ Edition: #119/173",
   {
     "id": 120,
     "title": "Quillan Ronin: Oni Clan Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #120/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #120/173",
     "image": "assets/nft_images/oni_clan_trading_card.webp",
     "rarity": "Mythic",
     "council": "C18-VIGIL (Integrity)",
@@ -2427,9 +2380,7 @@ Edition: #120/173",
   {
     "id": 121,
     "title": "Quillan Ronin: Oni Clan Trading Card 1 (1)",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #121/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #121/173",
     "image": "assets/nft_images/oni_clan_trading_card_1 (1).webp",
     "rarity": "Mythic",
     "council": "C19-ARTIFEX (Tool Integration)",
@@ -2445,9 +2396,7 @@ Edition: #121/173",
   {
     "id": 122,
     "title": "Quillan Ronin: Oni Clan Trading Card 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #122/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #122/173",
     "image": "assets/nft_images/oni_clan_trading_card_1.webp",
     "rarity": "Mythic",
     "council": "C20-ARCHON (Deep Research)",
@@ -2463,9 +2412,7 @@ Edition: #122/173",
   {
     "id": 123,
     "title": "Quillan Ronin: Oni Clan Warden Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #123/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #123/173",
     "image": "assets/nft_images/oni_clan_warden_card.webp",
     "rarity": "Mythic",
     "council": "C21-AURELION (Aesthetics)",
@@ -2481,9 +2428,7 @@ Edition: #123/173",
   {
     "id": 124,
     "title": "Quillan Ronin: Oni Clan Warden Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #124/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #124/173",
     "image": "assets/nft_images/oni_clan_warden_trading_card.webp",
     "rarity": "Mythic",
     "council": "C22-CADENCE (Rhythm)",
@@ -2499,9 +2444,7 @@ Edition: #124/173",
   {
     "id": 125,
     "title": "Quillan Ronin: Oni Engineer Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #125/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #125/173",
     "image": "assets/nft_images/oni_engineer_trading_card.webp",
     "rarity": "Mythic",
     "council": "C23-SCHEMA (Structure)",
@@ -2517,9 +2460,7 @@ Edition: #125/173",
   {
     "id": 126,
     "title": "Quillan Ronin: Oni Founder Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #126/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #126/173",
     "image": "assets/nft_images/oni_founder_trading_card.webp",
     "rarity": "Mythic",
     "council": "C24-PROMETHEUS (Scientific)",
@@ -2535,9 +2476,7 @@ Edition: #126/173",
   {
     "id": 127,
     "title": "Quillan Ronin: Oni Gatekeeper Guardian",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #127/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #127/173",
     "image": "assets/nft_images/oni_gatekeeper_guardian.webp",
     "rarity": "Mythic",
     "council": "C25-TECHNE (Mastery)",
@@ -2553,9 +2492,7 @@ Edition: #127/173",
   {
     "id": 128,
     "title": "Quillan Ronin: Oni Navigator Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #128/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #128/173",
     "image": "assets/nft_images/oni_navigator_trading_card.webp",
     "rarity": "Mythic",
     "council": "C26-CHRONICLE (Narrative)",
@@ -2571,9 +2508,7 @@ Edition: #128/173",
   {
     "id": 129,
     "title": "Quillan Ronin: Oni Ronin Pfp",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #129/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #129/173",
     "image": "assets/nft_images/oni_ronin_pfp.webp",
     "rarity": "Mythic",
     "council": "C27-CALCULUS (Quantitative)",
@@ -2589,9 +2524,7 @@ Edition: #129/173",
   {
     "id": 130,
     "title": "Quillan Ronin: Oni Ronin Titan Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #130/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #130/173",
     "image": "assets/nft_images/oni_ronin_titan_card.webp",
     "rarity": "Mythic",
     "council": "C28-NAVIGATOR (Orchestration)",
@@ -2607,9 +2540,7 @@ Edition: #130/173",
   {
     "id": 131,
     "title": "Quillan Ronin: Oni Ronin Trading Card 1",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #131/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #131/173",
     "image": "assets/nft_images/oni_ronin_trading_card_1.webp",
     "rarity": "Mythic",
     "council": "C29-TESSERACT (Real-Time)",
@@ -2625,9 +2556,7 @@ Edition: #131/173",
   {
     "id": 132,
     "title": "Quillan Ronin: Oni Ronin Trading Card 2",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #132/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #132/173",
     "image": "assets/nft_images/oni_ronin_trading_card_2.webp",
     "rarity": "Mythic",
     "council": "C30-NEXUS (Governance)",
@@ -2643,9 +2572,7 @@ Edition: #132/173",
   {
     "id": 133,
     "title": "Quillan Ronin: Oni Samurai Cyberpunk Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #133/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #133/173",
     "image": "assets/nft_images/oni_samurai_cyberpunk_card.webp",
     "rarity": "Mythic",
     "council": "C31-AEON (Simulation)",
@@ -2661,9 +2588,7 @@ Edition: #133/173",
   {
     "id": 134,
     "title": "Quillan Ronin: Oni Samurai Eternal Guardian",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #134/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #134/173",
     "image": "assets/nft_images/oni_samurai_eternal_guardian.webp",
     "rarity": "Mythic",
     "council": "C32-TYPIST (Optimization)",
@@ -2679,9 +2604,7 @@ Edition: #134/173",
   {
     "id": 135,
     "title": "Quillan Ronin: Oni Samurai Predator",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #135/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #135/173",
     "image": "assets/nft_images/oni_samurai_predator.webp",
     "rarity": "Mythic",
     "council": "C33-PREDATOR (Predatory Math)",
@@ -2697,9 +2620,7 @@ Edition: #135/173",
   {
     "id": 136,
     "title": "Quillan Ronin: Oni Samurai Scientific Theory",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #136/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #136/173",
     "image": "assets/nft_images/oni_samurai_scientific_theory.webp",
     "rarity": "Mythic",
     "council": "C0-ASTRA (Pattern Recognition)",
@@ -2715,9 +2636,7 @@ Edition: #136/173",
   {
     "id": 137,
     "title": "Quillan Ronin: Oni Seer Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #137/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #137/173",
     "image": "assets/nft_images/oni_seer_trading_card.webp",
     "rarity": "Mythic",
     "council": "C1-VIR (Ethical Guardian)",
@@ -2733,9 +2652,7 @@ Edition: #137/173",
   {
     "id": 138,
     "title": "Quillan Ronin: Oni Storyteller Chronicle",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #138/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #138/173",
     "image": "assets/nft_images/oni_storyteller_chronicle.webp",
     "rarity": "Mythic",
     "council": "C2-SOLACE (Empathy)",
@@ -2751,9 +2668,7 @@ Edition: #138/173",
   {
     "id": 139,
     "title": "Quillan Ronin: Philosopher Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #139/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #139/173",
     "image": "assets/nft_images/philosopher_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C3-PRAXIS (Strategy)",
@@ -2769,9 +2684,7 @@ Edition: #139/173",
   {
     "id": 140,
     "title": "Quillan Ronin: Ronin Engineer Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #140/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #140/173",
     "image": "assets/nft_images/ronin_engineer_portrait.webp",
     "rarity": "Mythic",
     "council": "C4-ECHO (Memory Continuity)",
@@ -2787,9 +2700,7 @@ Edition: #140/173",
   {
     "id": 141,
     "title": "Quillan Ronin: Ronin Founder Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #141/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #141/173",
     "image": "assets/nft_images/ronin_founder_portrait.webp",
     "rarity": "Mythic",
     "council": "C5-OMNIS (Synthesis)",
@@ -2805,9 +2716,7 @@ Edition: #141/173",
   {
     "id": 142,
     "title": "Quillan Ronin: Ronin Guardian Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #142/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #142/173",
     "image": "assets/nft_images/ronin_guardian_portrait.webp",
     "rarity": "Mythic",
     "council": "C6-LOGOS (Logic)",
@@ -2823,9 +2732,7 @@ Edition: #142/173",
   {
     "id": 143,
     "title": "Quillan Ronin: Ronin Ink Wash Pfp",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #143/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #143/173",
     "image": "assets/nft_images/ronin_ink_wash_pfp.webp",
     "rarity": "Mythic",
     "council": "C7-METASYNTH (Creative Fusion)",
@@ -2841,9 +2748,7 @@ Edition: #143/173",
   {
     "id": 144,
     "title": "Quillan Ronin: Ronin Ink Wash Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #144/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #144/173",
     "image": "assets/nft_images/ronin_ink_wash_portrait.webp",
     "rarity": "Mythic",
     "council": "C8-AETHER (Semantics)",
@@ -2859,9 +2764,7 @@ Edition: #144/173",
   {
     "id": 145,
     "title": "Quillan Ronin: Ronin Inkwash Gold",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #145/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #145/173",
     "image": "assets/nft_images/ronin_inkwash_gold.webp",
     "rarity": "Mythic",
     "council": "C9-CODEWEAVER (Engineering)",
@@ -2877,9 +2780,7 @@ Edition: #145/173",
   {
     "id": 146,
     "title": "Quillan Ronin: Ronin Logic Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #146/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #146/173",
     "image": "assets/nft_images/ronin_logic_card.webp",
     "rarity": "Mythic",
     "council": "C10-HARMONIA (Equilibrium)",
@@ -2895,9 +2796,7 @@ Edition: #146/173",
   {
     "id": 147,
     "title": "Quillan Ronin: Ronin Mathematician Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #147/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #147/173",
     "image": "assets/nft_images/ronin_mathematician_portrait.webp",
     "rarity": "Mythic",
     "council": "C11-SOPHIAE (Wisdom)",
@@ -2913,9 +2812,7 @@ Edition: #147/173",
   {
     "id": 148,
     "title": "Quillan Ronin: Ronin Memory Keeper",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #148/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #148/173",
     "image": "assets/nft_images/ronin_memory_keeper.webp",
     "rarity": "Mythic",
     "council": "C12-WARDEN (Security)",
@@ -2931,9 +2828,7 @@ Edition: #148/173",
   {
     "id": 149,
     "title": "Quillan Ronin: Ronin Navigator Pfp",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #149/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #149/173",
     "image": "assets/nft_images/ronin_navigator_pfp.webp",
     "rarity": "Mythic",
     "council": "C13-KAIDO (Efficiency)",
@@ -2949,9 +2844,7 @@ Edition: #149/173",
   {
     "id": 150,
     "title": "Quillan Ronin: Ronin Nft Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #150/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #150/173",
     "image": "assets/nft_images/ronin_nft_trading_card.webp",
     "rarity": "Mythic",
     "council": "C14-LUMINARIS (Clarity)",
@@ -2967,9 +2860,7 @@ Edition: #150/173",
   {
     "id": 151,
     "title": "Quillan Ronin: Ronin Oni Mask Pfp",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #151/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #151/173",
     "image": "assets/nft_images/ronin_oni_mask_pfp.webp",
     "rarity": "Mythic",
     "council": "C15-VOXUM (Articulation)",
@@ -2985,9 +2876,7 @@ Edition: #151/173",
   {
     "id": 152,
     "title": "Quillan Ronin: Ronin Rift Keeper",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #152/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #152/173",
     "image": "assets/nft_images/ronin_rift_keeper.webp",
     "rarity": "Mythic",
     "council": "C16-NULLION (Paradox)",
@@ -3003,9 +2892,7 @@ Edition: #152/173",
   {
     "id": 153,
     "title": "Quillan Ronin: Ronin Samurai Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #153/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #153/173",
     "image": "assets/nft_images/ronin_samurai_portrait.webp",
     "rarity": "Mythic",
     "council": "C17-SHEPHERD (Truth)",
@@ -3021,9 +2908,7 @@ Edition: #153/173",
   {
     "id": 154,
     "title": "Quillan Ronin: Ronin Scholar Detective",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #154/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #154/173",
     "image": "assets/nft_images/ronin_scholar_detective.webp",
     "rarity": "Mythic",
     "council": "C18-VIGIL (Integrity)",
@@ -3039,9 +2924,7 @@ Edition: #154/173",
   {
     "id": 155,
     "title": "Quillan Ronin: Ronin Scribe Typist",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #155/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #155/173",
     "image": "assets/nft_images/ronin_scribe_typist.webp",
     "rarity": "Mythic",
     "council": "C19-ARTIFEX (Tool Integration)",
@@ -3057,9 +2940,7 @@ Edition: #155/173",
   {
     "id": 156,
     "title": "Quillan Ronin: Ronin Strategic Planning",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #156/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #156/173",
     "image": "assets/nft_images/ronin_strategic_planning.webp",
     "rarity": "Mythic",
     "council": "C20-ARCHON (Deep Research)",
@@ -3075,9 +2956,7 @@ Edition: #156/173",
   {
     "id": 157,
     "title": "Quillan Ronin: Ronin Truth Seeker",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #157/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #157/173",
     "image": "assets/nft_images/ronin_truth_seeker.webp",
     "rarity": "Mythic",
     "council": "C21-AURELION (Aesthetics)",
@@ -3093,9 +2972,7 @@ Edition: #157/173",
   {
     "id": 158,
     "title": "Quillan Ronin: Sage Oni Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #158/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #158/173",
     "image": "assets/nft_images/sage_oni_trading_card.webp",
     "rarity": "Mythic",
     "council": "C22-CADENCE (Rhythm)",
@@ -3111,9 +2988,7 @@ Edition: #158/173",
   {
     "id": 159,
     "title": "Quillan Ronin: Samurai Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #159/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #159/173",
     "image": "assets/nft_images/samurai_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C23-SCHEMA (Structure)",
@@ -3129,9 +3004,7 @@ Edition: #159/173",
   {
     "id": 160,
     "title": "Quillan Ronin: Scarred Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #160/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #160/173",
     "image": "assets/nft_images/scarred_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C24-PROMETHEUS (Scientific)",
@@ -3147,9 +3020,7 @@ Edition: #160/173",
   {
     "id": 161,
     "title": "Quillan Ronin: Shadow Ronin Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #161/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #161/173",
     "image": "assets/nft_images/shadow_ronin_card.webp",
     "rarity": "Mythic",
     "council": "C25-TECHNE (Mastery)",
@@ -3165,9 +3036,7 @@ Edition: #161/173",
   {
     "id": 162,
     "title": "Quillan Ronin: Solace Oni Trading Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #162/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #162/173",
     "image": "assets/nft_images/solace_oni_trading_card.webp",
     "rarity": "Mythic",
     "council": "C26-CHRONICLE (Narrative)",
@@ -3183,9 +3052,7 @@ Edition: #162/173",
   {
     "id": 163,
     "title": "Quillan Ronin: Speed Ronin C13 Kaido",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #163/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #163/173",
     "image": "assets/nft_images/speed_ronin_c13_kaido.webp",
     "rarity": "Mythic",
     "council": "C13-KAIDO (Efficiency)",
@@ -3201,9 +3068,7 @@ Edition: #163/173",
   {
     "id": 164,
     "title": "Quillan Ronin: Split Light Shadow Ronin",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #164/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #164/173",
     "image": "assets/nft_images/split_light_shadow_ronin.webp",
     "rarity": "Mythic",
     "council": "C28-NAVIGATOR (Orchestration)",
@@ -3219,9 +3084,7 @@ Edition: #164/173",
   {
     "id": 165,
     "title": "Quillan Ronin: Storm Keeper Tempest Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #165/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #165/173",
     "image": "assets/nft_images/storm_keeper_tempest_card.webp",
     "rarity": "Epic",
     "council": "C29-TESSERACT (Real-Time)",
@@ -3237,9 +3100,7 @@ Edition: #165/173",
   {
     "id": 166,
     "title": "Quillan Ronin: Symmetrical Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #166/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #166/173",
     "image": "assets/nft_images/symmetrical_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C30-NEXUS (Governance)",
@@ -3255,9 +3116,7 @@ Edition: #166/173",
   {
     "id": 167,
     "title": "Quillan Ronin: Tengu Ronin Nft Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #167/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #167/173",
     "image": "assets/nft_images/tengu_ronin_nft_card.webp",
     "rarity": "Mythic",
     "council": "C31-AEON (Simulation)",
@@ -3273,9 +3132,7 @@ Edition: #167/173",
   {
     "id": 168,
     "title": "Quillan Ronin: Void Cosmic Oni Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #168/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #168/173",
     "image": "assets/nft_images/void_cosmic_oni_card.webp",
     "rarity": "Mythic",
     "council": "C32-TYPIST (Optimization)",
@@ -3291,9 +3148,7 @@ Edition: #168/173",
   {
     "id": 169,
     "title": "Quillan Ronin: Wise Ronin Chronicler",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #169/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #169/173",
     "image": "assets/nft_images/wise_ronin_chronicler.webp",
     "rarity": "Mythic",
     "council": "C33-PREDATOR (Predatory Math)",
@@ -3309,9 +3164,7 @@ Edition: #169/173",
   {
     "id": 170,
     "title": "Quillan Ronin: Wise Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #170/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #170/173",
     "image": "assets/nft_images/wise_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C0-ASTRA (Pattern Recognition)",
@@ -3327,9 +3180,7 @@ Edition: #170/173",
   {
     "id": 171,
     "title": "Quillan Ronin: Yin Yang Ronin Meditation",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #171/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #171/173",
     "image": "assets/nft_images/yin_yang_ronin_meditation.webp",
     "rarity": "Mythic",
     "council": "C1-VIR (Ethical Guardian)",
@@ -3345,9 +3196,7 @@ Edition: #171/173",
   {
     "id": 172,
     "title": "Quillan Ronin: Young Oni Prophecy Card",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #172/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #172/173",
     "image": "assets/nft_images/young_oni_prophecy_card.webp",
     "rarity": "Mythic",
     "council": "C2-SOLACE (Empathy)",
@@ -3363,9 +3212,7 @@ Edition: #172/173",
   {
     "id": 173,
     "title": "Quillan Ronin: Young Ronin Portrait",
-    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.
-
-Edition: #173/173",
+    "description": "Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX.\n\nEdition: #173/173",
     "image": "assets/nft_images/young_ronin_portrait.webp",
     "rarity": "Mythic",
     "council": "C3-PRAXIS (Strategy)",
@@ -3380,16 +3227,12 @@ Edition: #173/173",
   }
 ];
 
-    function initGallery() {
-      renderGrid(allItems);
-    }
+    const grid = document.getElementById('nftGrid');
+    const modal = document.getElementById('nftModal');
+    const modalClose = document.getElementById('modalClose');
+    const searchInput = document.getElementById('searchInput');
 
     function renderGrid(items) {
-      if (!items.length) {
-        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No artworks found matching criteria.</div>';
-        return;
-      }
-
       grid.innerHTML = items.map(item => `
         <div class="nft-card" onclick="openModal(${item.id})">
           <div class="card-img-wrap">
@@ -3415,7 +3258,8 @@ Edition: #173/173",
       `).join('');
     }
 
-    // Filtering
+    renderGrid(allItems);
+
     document.querySelectorAll('.filter-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
@@ -3436,7 +3280,6 @@ Edition: #173/173",
       const item = allItems.find(x => x.id === id);
       if (!item) return;
 
-      document.getElementById('modalImg').src = item.image;
       document.getElementById('modalTitle').innerText = item.title;
       document.getElementById('modalCouncil').innerText = `Affiliation: ${item.council}`;
       document.getElementById('modalDesc').innerText = item.description || `Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX. Edition: #${item.id}/173.`;
@@ -3470,64 +3313,36 @@ Edition: #173/173",
     modalClose.addEventListener('click', () => { modal.style.display = 'none'; });
     window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
 
-    // Native Brave Wallet & EVM Web3 Connector
     const connectWalletBtn = document.getElementById('connectWalletBtn');
-    let userAccount = null;
-
-    async function checkExistingWallet() {
+    async function checkWallet() {
       if (typeof window.ethereum !== 'undefined') {
         try {
           const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-          if (accounts && accounts.length > 0) {
-            handleAccount(accounts[0]);
-          }
-        } catch (e) {
-          console.warn('Wallet check failed:', e);
-        }
+          if (accounts && accounts.length > 0) handleAccount(accounts[0]);
+        } catch (e) {}
       }
     }
-
     function handleAccount(account) {
-      userAccount = account;
       const shortAddr = account.slice(0, 6) + '...' + account.slice(-4);
       const isBrave = window.ethereum?.isBraveWallet;
       connectWalletBtn.innerHTML = `${isBrave ? '🦁' : '🦊'} ${shortAddr}`;
       connectWalletBtn.style.background = 'linear-gradient(135deg, #00f0ff, #0077b6)';
       connectWalletBtn.style.color = '#07070c';
-      connectWalletBtn.style.boxShadow = '0 0 15px rgba(0, 240, 255, 0.4)';
     }
-
     connectWalletBtn.addEventListener('click', async () => {
       if (typeof window.ethereum !== 'undefined') {
         try {
-          connectWalletBtn.innerText = 'Connecting...';
           const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          if (accounts && accounts.length > 0) {
-            handleAccount(accounts[0]);
-          }
+          if (accounts && accounts.length > 0) handleAccount(accounts[0]);
         } catch (err) {
-          console.error(err);
-          connectWalletBtn.innerText = 'Connect Wallet';
           alert('Wallet connection rejected: ' + err.message);
         }
       } else {
-        alert('No Web3 wallet found! In Brave Browser, ensure Brave Wallet is enabled at brave://settings/web3, or install MetaMask.');
+        alert('Please enable Brave Wallet or install MetaMask.');
       }
     });
 
-    if (window.ethereum) {
-      window.ethereum.on('accountsChanged', (accounts) => {
-        if (accounts.length > 0) handleAccount(accounts[0]);
-        else {
-          userAccount = null;
-          connectWalletBtn.innerText = 'Connect Wallet';
-          connectWalletBtn.style.background = '';
-        }
-      });
-    }
-
-    initGallery();
-    checkExistingWallet();
+    checkWallet();
   </script>
 </body>
 </html>
