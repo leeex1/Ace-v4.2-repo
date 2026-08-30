@@ -258,35 +258,53 @@
   </footer>
 
   <script>
-    // Sample preview list generated from our 173 collection manifest
-    const RARITIES = ['Mythic', 'Legendary', 'Epic', 'Rare'];
-    const COUNCILS = ['C9-CODEWEAVER', 'C0-ASTRA', 'C1-VIR', 'C3-PRAXIS', 'C20-ARCHON', 'C33-PREDATOR', 'C7-METASYNTH'];
-    const TITLES = [
-      "Cyberpunk Ronin Sovereign Portrait", "Architect Ronin Blueprint", "Code Weaver Ronin PFP",
-      "Cosmic Ronin Void Synthesis", "Creative Fusion Ronin Card", "Predatory Mathematics Card",
-      "Truth Calibration Ronin", "Harmonia Sovereign Balance", "Luminaris Lightyear Beacon",
-      "Oni Flagship Samurai Core", "Autonomous Agent Bridge", "High Fidelity World Model"
-    ];
-
     const grid = document.getElementById('nftGrid');
     const modal = document.getElementById('nftModal');
     const modalClose = document.getElementById('modalClose');
     const searchInput = document.getElementById('searchInput');
 
     let allItems = [];
-    for (let i = 1; i <= 173; i++) {
-      const rarity = RARITIES[i % RARITIES.length];
-      const council = COUNCILS[i % COUNCILS.length];
-      const title = `Quillan Ronin #${i}: ${TITLES[i % TITLES.length]}`;
-      allItems.push({ id: i, title, rarity, council });
+
+    async function initGallery() {
+      try {
+        const res = await fetch('nft_data.json');
+        if (res.ok) {
+          allItems = await res.json();
+        } else {
+          throw new Error('Fallback to local structure');
+        }
+      } catch (e) {
+        console.warn('Loading fallback metadata:', e);
+        // Fallback placeholder generator
+        const RARITIES = ['Mythic', 'Legendary', 'Epic', 'Rare'];
+        const COUNCILS = ['C9-CODEWEAVER', 'C0-ASTRA', 'C1-VIR', 'C3-PRAXIS', 'C20-ARCHON', 'C33-PREDATOR', 'C7-METASYNTH'];
+        for (let i = 1; i <= 173; i++) {
+          allItems.push({
+            id: i,
+            title: `Quillan Ronin #${i}`,
+            image: `assets/nft_images/artwork_${i}.webp`,
+            rarity: RARITIES[i % RARITIES.length],
+            council: COUNCILS[i % COUNCILS.length],
+            description: 'Official sovereign artwork artifact from the Quillan-Ronin ecosystem.'
+          });
+        }
+      }
+
+      renderGrid(allItems);
     }
 
     function renderGrid(items) {
+      if (!items.length) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No artworks found matching criteria.</div>';
+        return;
+      }
+
       grid.innerHTML = items.map(item => `
         <div class="nft-card" onclick="openModal(${item.id})">
           <div class="card-img-wrap">
             <div class="rarity-tag rarity-${item.rarity}">${item.rarity}</div>
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #181828, #0a0a14); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono'; font-size: 14px; color: var(--accent-red);">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #181828, #0a0a14); align-items: center; justify-content: center; font-family: 'JetBrains Mono'; font-size: 13px; color: var(--accent-red);">
               [ARTWORK #${item.id}]
             </div>
           </div>
@@ -297,14 +315,12 @@
             </div>
             <div class="card-foot">
               <span class="token-id">#${item.id.toString().padStart(3, '0')}</span>
-              <span style="font-size: 11px; color: var(--accent-cyan);">ERC-721</span>
+              <span style="font-size: 11px; color: var(--accent-cyan); font-weight: 600;">ERC-721</span>
             </div>
           </div>
         </div>
       `).join('');
     }
-
-    renderGrid(allItems);
 
     // Filtering
     document.querySelectorAll('.filter-pill').forEach(btn => {
@@ -312,7 +328,7 @@
         document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filter = btn.dataset.filter;
-        const filtered = filter === 'all' ? allItems : allItems.filter(x => x.rarity === filter);
+        const filtered = filter === 'all' ? allItems : allItems.filter(x => x.rarity.toLowerCase() === filter.toLowerCase());
         renderGrid(filtered);
       });
     });
@@ -325,28 +341,100 @@
 
     function openModal(id) {
       const item = allItems.find(x => x.id === id);
+      if (!item) return;
+
+      document.getElementById('modalImg').src = item.image;
       document.getElementById('modalTitle').innerText = item.title;
       document.getElementById('modalCouncil').innerText = `Affiliation: ${item.council}`;
-      document.getElementById('modalDesc').innerText = `Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX. Edition: #${item.id}/173.`;
-      document.getElementById('modalTraits').innerHTML = `
-        <div style="background: rgba(255,255,255,0.04); padding: 10px; border-radius: 6px;">
-          <div style="font-size: 10px; color: var(--text-muted);">RARITY</div>
-          <div style="font-size: 13px; font-weight: 700; color: var(--accent-red);">${item.rarity}</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.04); padding: 10px; border-radius: 6px;">
-          <div style="font-size: 10px; color: var(--text-muted);">COUNCIL</div>
-          <div style="font-size: 13px; font-weight: 700; color: var(--accent-cyan);">${item.council.split(' ')[0]}</div>
-        </div>
-      `;
+      document.getElementById('modalDesc').innerText = item.description || `Official sovereign artwork artifact from the Quillan-Ronin ecosystem. Authenticated by CrashOverrideX. Edition: #${item.id}/173.`;
+      
+      const traits = item.attributes || {};
+      const traitKeys = Object.keys(traits);
+      
+      if (traitKeys.length) {
+        document.getElementById('modalTraits').innerHTML = traitKeys.map(k => `
+          <div style="background: rgba(255,255,255,0.04); padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">${k}</div>
+            <div style="font-size: 12px; font-weight: 700; color: var(--accent-cyan);">${traits[k]}</div>
+          </div>
+        `).join('');
+      } else {
+        document.getElementById('modalTraits').innerHTML = `
+          <div style="background: rgba(255,255,255,0.04); padding: 10px; border-radius: 6px;">
+            <div style="font-size: 10px; color: var(--text-muted);">RARITY</div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--accent-red);">${item.rarity}</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 10px; border-radius: 6px;">
+            <div style="font-size: 10px; color: var(--text-muted);">COUNCIL</div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--accent-cyan);">${item.council}</div>
+          </div>
+        `;
+      }
+
       modal.style.display = 'flex';
     }
 
     modalClose.addEventListener('click', () => { modal.style.display = 'none'; });
     window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
 
-    document.getElementById('connectWalletBtn').addEventListener('click', () => {
-      alert('🦊 Web3 Wallet Connector initialized! Connect MetaMask, Phantom, or Coinbase Wallet to mint.');
+    // Native Brave Wallet & EVM Web3 Connector
+    const connectWalletBtn = document.getElementById('connectWalletBtn');
+    let userAccount = null;
+
+    async function checkExistingWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+          if (accounts && accounts.length > 0) {
+            handleAccount(accounts[0]);
+          }
+        } catch (e) {
+          console.warn('Wallet check failed:', e);
+        }
+      }
+    }
+
+    function handleAccount(account) {
+      userAccount = account;
+      const shortAddr = account.slice(0, 6) + '...' + account.slice(-4);
+      const isBrave = window.ethereum?.isBraveWallet;
+      connectWalletBtn.innerHTML = `${isBrave ? '🦁' : '🦊'} ${shortAddr}`;
+      connectWalletBtn.style.background = 'linear-gradient(135deg, #00f0ff, #0077b6)';
+      connectWalletBtn.style.color = '#07070c';
+      connectWalletBtn.style.boxShadow = '0 0 15px rgba(0, 240, 255, 0.4)';
+    }
+
+    connectWalletBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectWalletBtn.innerText = 'Connecting...';
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          if (accounts && accounts.length > 0) {
+            handleAccount(accounts[0]);
+          }
+        } catch (err) {
+          console.error(err);
+          connectWalletBtn.innerText = 'Connect Wallet';
+          alert('Wallet connection rejected: ' + err.message);
+        }
+      } else {
+        alert('No Web3 wallet found! In Brave Browser, ensure Brave Wallet is enabled at brave://settings/web3, or install MetaMask.');
+      }
     });
+
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', (accounts) => {
+        if (accounts.length > 0) handleAccount(accounts[0]);
+        else {
+          userAccount = null;
+          connectWalletBtn.innerText = 'Connect Wallet';
+          connectWalletBtn.style.background = '';
+        }
+      });
+    }
+
+    initGallery();
+    checkExistingWallet();
   </script>
 </body>
 </html>
