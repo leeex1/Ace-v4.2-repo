@@ -14,7 +14,7 @@ import httpx, chromadb
 from chromadb.config import Settings
 from fastmcp import FastMCP
 
-NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "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")
+NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 NIM_BASE       = "https://integrate.api.nvidia.com/v1"
 EMBED_MODEL    = "nvidia/nemotron-3-embed-1b"
 GEN_MODEL      = "nvidia/nemotron-3-super-120b-a12b"

@@ -139,20 +139,29 @@ print("\n[3/3] Uploading Quillan-Ronin Main Model Repository...")
 model_repo = f"{username}/Quillan-Ronin"
 create_repo(repo_id=model_repo, repo_type="model", token=TOKEN, exist_ok=True)
 
-# Upload core code and docs
+# Prepare sanitized clean staging folder for model architecture
+stage_model = Path(r"C:\02_QUILLAN\scratch\hf_stage_model")
+if stage_model.exists(): shutil.rmtree(stage_model)
+stage_model.mkdir(parents=True, exist_ok=True)
+
+# Copy only core code, docs, and papers (strictly excluding all profiles, envs, keys)
+safe_dirs = ["oni", "docs", "templates", "Papers", "configs"]
+for sd in safe_dirs:
+    src_p = Path(r"C:\02_QUILLAN") / sd
+    if src_p.exists():
+        dst_p = stage_model / sd
+        shutil.copytree(src_p, dst_p, ignore=shutil.ignore_patterns("*.pyc", "__pycache__", "*profile*", "*.token", "*.key", "*.env*"))
+
+for root_file in ["README.md", "AGENTS.md", "LINEAGE.md", "index.html"]:
+    rf = Path(r"C:\02_QUILLAN") / root_file
+    if rf.exists():
+        shutil.copy2(rf, stage_model / root_file)
+
 api.upload_folder(
-    folder_path=r"C:\02_QUILLAN",
+    folder_path=str(stage_model),
     repo_id=model_repo,
     repo_type="model",
-    ignore_patterns=[
-        "**/.git/**", "**/.gemini/**", "**/.agents/**", "**/venv*/**", "**/__pycache__/**", "**/node_modules/**",
-        "**/*.msi", "**/*.exe", "**/*soulframe*", "**/*Soulframe*", "**/*NFT designs*",
-        "**/*.mp4", "**/*.mkv", "**/*resume*", "**/*Resume*", "**/scratch/**", "06_Media/**",
-        "checkpoints/**", "**/*.pt", "**/*.pth", "**/*.bin", "**/*.tmp", "**/*.log",
-        "**/*agent-profile*/**", "exports/**", "**/*.crl-set", "**/.system_generated/**",
-        "worker/agent-profile/**", "worker/node_modules/**", "**/build/**", "**/dist/**"
-    ],
-    commit_message="v5.4.0-oni: synchronize architecture, papers, NIM RAG server, and configs",
+    commit_message="v5.4.0-oni: synchronize clean architecture, papers, and configs",
     token=TOKEN
 )
 print(f"[SUCCESS] Main Model Repository live at: https://huggingface.co/{model_repo}")
