@@ -3,416 +3,609 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quillan-Ronin v5.4.0 ONI Sovereign Neural Model Viewer</title>
+<title>Quillan-Ronin v5.4.0 ONI — 3D Sovereign Neural Network Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap");
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#020408;overflow:hidden;font-family:"JetBrains Mono",monospace;color:#ccc;width:100vw;height:100vh}
-canvas{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:1}
-#hud-top{position:fixed;top:0;left:0;right:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:linear-gradient(180deg,rgba(2,4,8,0.98) 0%,rgba(2,4,8,0.6) 100%);border-bottom:1px solid rgba(0,240,255,0.18);backdrop-filter:blur(12px);z-index:30}
-#hud-top h1{font-family:Orbitron;font-size:12px;font-weight:900;color:#ffd700;letter-spacing:2px;text-shadow:0 0 18px rgba(255,215,0,0.5)}
-.hud-meta{font-size:9px;color:#00f0ff;letter-spacing:1px;display:flex;gap:18px;align-items:center}
-.pulse-dot{width:7px;height:7px;border-radius:50%;background:#00ff88;box-shadow:0 0 8px #00ff88;animation:pulse 1.4s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-#fps-counter{font-family:Orbitron;font-size:10px;font-weight:700;color:#00ff88}
-#left-panel{position:fixed;left:8px;top:54px;bottom:58px;width:198px;background:rgba(4,7,16,0.92);border:1px solid rgba(0,240,255,0.14);border-radius:10px;padding:10px;overflow-y:auto;z-index:20;backdrop-filter:blur(14px)}
-.panel-title{font-family:Orbitron;font-size:8px;letter-spacing:1.5px;color:#444;margin-bottom:8px;padding-bottom:4px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.05)}
-.legend-item{display:flex;align-items:center;gap:7px;margin-bottom:5px;cursor:pointer;padding:4px 6px;border-radius:5px;border:1px solid transparent;transition:all 0.2s}
-.legend-item:hover{border-color:rgba(0,240,255,0.3);background:rgba(0,240,255,0.07)}
-.legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.legend-name{font-size:8.5px;color:#ccc}
-.legend-sub{font-size:7px;color:#555}
-#node-info{background:rgba(0,0,0,0.65);border:1px solid rgba(255,215,0,0.35);border-radius:6px;padding:9px;margin-top:9px;display:none}
-#node-info.visible{display:block}
-.info-row{display:flex;justify-content:space-between;margin-bottom:4px;font-size:8.5px}
-.info-key{color:#555}.info-val{color:#00f0ff;font-weight:700}
-#right-panel{position:fixed;right:8px;top:54px;bottom:58px;width:218px;background:rgba(4,7,16,0.92);border:1px solid rgba(255,215,0,0.12);border-radius:10px;padding:10px;overflow-y:auto;z-index:20;backdrop-filter:blur(14px)}
-.stat-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
-.stat-label{font-size:7.5px;color:#666;letter-spacing:.5px;text-transform:uppercase}
-.stat-val{font-family:Orbitron;font-size:9.5px;font-weight:700}
-#sig-trace{font-size:8px;color:#555;line-height:1.7;max-height:180px;overflow-y:auto;margin-top:8px}
-#token-bar{position:fixed;bottom:50px;left:214px;right:234px;height:28px;display:flex;align-items:center;gap:8px;overflow:hidden;background:rgba(4,7,16,0.9);border:1px solid rgba(0,240,255,0.14);border-radius:6px;padding:0 12px;font-size:8.5px;color:#00ff88;pointer-events:none;z-index:20;backdrop-filter:blur(6px)}
-#controls{position:fixed;bottom:0;left:0;right:0;height:48px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;padding:0 16px;background:linear-gradient(0deg,rgba(2,4,8,0.98) 0%,rgba(2,4,8,0.6) 100%);border-top:1px solid rgba(0,240,255,0.15);z-index:30;backdrop-filter:blur(12px)}
-button{background:rgba(10,15,25,0.9);border:1px solid rgba(0,240,255,0.25);color:rgba(0,240,255,0.85);padding:5px 13px;font-family:"JetBrains Mono";font-size:9px;font-weight:700;cursor:pointer;letter-spacing:.5px;border-radius:4px;transition:all 0.2s}
-button:hover,button.active{background:rgba(0,240,255,0.16);color:#00ffff;border-color:#00ffff;box-shadow:0 0 14px rgba(0,240,255,0.45);transform:translateY(-1px)}
-button.gold{border-color:rgba(255,215,0,0.35);color:rgba(255,215,0,.85)}
-button.gold:hover,button.gold.active{background:rgba(255,215,0,0.18);color:#ffd700;border-color:#ffd700;box-shadow:0 0 14px rgba(255,215,0,0.45)}
-button.red{border-color:rgba(255,0,85,0.35);color:rgba(255,0,85,.85)}
-button.red:hover{background:rgba(255,0,85,0.18);color:#ff0055;border-color:#ff0055}
-#tooltip{position:fixed;pointer-events:none;z-index:200;background:rgba(4,7,16,0.97);border:1px solid rgba(0,240,255,0.55);border-radius:8px;padding:10px 14px;font-size:9px;color:#fff;box-shadow:0 0 28px rgba(0,240,255,0.3);display:none;max-width:260px;line-height:1.5}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-thumb{background:rgba(0,240,255,0.18);border-radius:2px}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #020409;
+    color: #f8fafc;
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+  #webgl-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  /* Cyber HUD Overlay */
+  .hud-header {
+    position: absolute;
+    top: 14px; left: 20px; right: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    pointer-events: none; z-index: 10;
+    background: rgba(4, 7, 16, 0.85);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 10px;
+    padding: 10px 18px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+  }
+  .hud-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px; font-weight: 900;
+    color: #ffd700; letter-spacing: 2px;
+    text-shadow: 0 0 14px rgba(255, 215, 0, 0.5);
+  }
+  .hud-sub {
+    font-size: 9px; color: #00f0ff; letter-spacing: 1px; margin-top: 2px;
+  }
+  .hud-telemetry {
+    display: flex; gap: 16px; font-size: 9.5px;
+  }
+  .tele-badge {
+    color: #00ff88; background: rgba(0, 255, 136, 0.08);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    padding: 4px 10px; border-radius: 6px;
+  }
+
+  /* Left Stage Inspector Panel */
+  .hud-panel-left {
+    position: absolute;
+    top: 75px; left: 20px; bottom: 75px;
+    width: 220px;
+    background: rgba(4, 7, 16, 0.88);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 14px;
+    z-index: 10;
+    backdrop-filter: blur(16px);
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  }
+  .panel-section-title {
+    font-family: 'Orbitron'; font-size: 9px; color: #888;
+    letter-spacing: 1.5px; margin-bottom: 10px; text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 4px;
+  }
+  .stage-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 8px; border-radius: 6px;
+    cursor: pointer; transition: all 0.2s;
+    font-size: 9.5px; margin-bottom: 4px;
+    border: 1px solid transparent;
+  }
+  .stage-item:hover, .stage-item.active {
+    background: rgba(0, 240, 255, 0.12);
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+  }
+  .stage-color-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  /* Right Live Telemetry Panel */
+  .hud-panel-right {
+    position: absolute;
+    top: 75px; right: 20px; bottom: 75px;
+    width: 240px;
+    background: rgba(4, 7, 16, 0.88);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 12px;
+    padding: 14px;
+    z-index: 10;
+    backdrop-filter: blur(16px);
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  }
+  .stat-card {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 8px 10px; margin-bottom: 8px;
+  }
+  .stat-label { font-size: 8px; color: #777; letter-spacing: 0.5px; text-transform: uppercase; }
+  .stat-val { font-family: 'Orbitron'; font-size: 11px; font-weight: 700; color: #00f0ff; margin-top: 2px; }
+
+  /* Bottom Controls Toolbar */
+  .hud-controls {
+    position: absolute;
+    bottom: 14px; left: 20px; right: 20px;
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+    z-index: 10;
+    background: rgba(4, 7, 16, 0.88);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 10px;
+    padding: 8px 16px;
+    backdrop-filter: blur(14px);
+  }
+  .hud-btn {
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    color: #00f0ff;
+    padding: 6px 14px;
+    font-family: 'JetBrains Mono';
+    font-size: 10px; font-weight: 700;
+    border-radius: 6px; cursor: pointer;
+    transition: all 0.25s;
+  }
+  .hud-btn:hover, .hud-btn.active {
+    background: #00f0ff; color: #020409;
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
+    transform: translateY(-1px);
+  }
+  .hud-btn.gold {
+    border-color: rgba(255, 215, 0, 0.4); color: #ffd700;
+    background: rgba(255, 215, 0, 0.08);
+  }
+  .hud-btn.gold:hover {
+    background: #ffd700; color: #020409;
+    box-shadow: 0 0 16px rgba(255, 215, 0, 0.6);
+  }
+
+  /* Tooltip */
+  #tooltip {
+    position: absolute; display: none; z-index: 100;
+    background: rgba(4, 7, 16, 0.95);
+    border: 1px solid #00f0ff; border-radius: 8px;
+    padding: 10px 14px; font-size: 10px; color: #fff;
+    pointer-events: none; backdrop-filter: blur(12px);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+    max-width: 260px; line-height: 1.5;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.3); border-radius: 2px; }
 </style>
 </head>
 <body>
-<canvas id="canvas"></canvas>
 
-<div id="hud-top">
+<div class="hud-header">
   <div>
-    <h1>&#9889; QUILLAN-RONIN v5.4.0 ONI &mdash; SOVEREIGN MODEL VIEWER</h1>
-    <div style="font-size:8px;color:#333;letter-spacing:1.5px;margin-top:2px">34-COUNCIL EvoMoE &nbsp;|&nbsp; 9-VECTOR PRISM &nbsp;|&nbsp; BitNet 1.58b STE &nbsp;|&nbsp; RANK-24 EGGROLL</div>
+    <div class="hud-title">⚡ QUILLAN-RONIN v5.4.0 ONI — 3D NEURAL TENSOR GRAPH</div>
+    <div class="hud-sub">INTERACTIVE 3D WEBGL MODEL VIEWER &bull; 8-STAGE TENSOR PIPELINE</div>
   </div>
-  <div class="hud-meta">
-    <div class="pulse-dot"></div>
-    <span id="live-mode-label">COUNCIL DELIBERATION</span>
-    <span id="fps-counter">60 FPS</span>
-  </div>
-</div>
-
-<div id="left-panel">
-  <div class="panel-title">Architecture Pipeline</div>
-  <div id="layer-legend"></div>
-  <div class="panel-title" style="margin-top:10px">Selected Node</div>
-  <div id="node-info">
-    <div class="info-row"><span class="info-key">STAGE</span><span class="info-val" id="ni-stage">&mdash;</span></div>
-    <div class="info-row"><span class="info-key">NODE ID</span><span class="info-val" id="ni-node">&mdash;</span></div>
-    <div class="info-row"><span class="info-key">QUANTIZATION</span><span class="info-val" id="ni-quant">BitNet STE</span></div>
-    <div class="info-row"><span class="info-key">ACTIVATION</span><span class="info-val" id="ni-act">&mdash;</span></div>
-    <div class="info-row"><span class="info-key">GATE WEIGHT</span><span class="info-val" id="ni-gate">&mdash;</span></div>
-    <div class="info-row"><span class="info-key">E_ICE AUDIT</span><span class="info-val" id="ni-ice" style="color:#00ff88">PASS</span></div>
+  <div class="hud-telemetry">
+    <div class="tele-badge">FPS: <span id="fpsDisplay">60</span></div>
+    <div class="tele-badge" style="color:#ffd700; border-color:rgba(255,215,0,0.4); background:rgba(255,215,0,0.08);">
+      WIN_KERNEL: 0.5ms
+    </div>
+    <div class="tele-badge" style="color:#00f0ff; border-color:rgba(0,240,255,0.4); background:rgba(0,240,255,0.08);">
+      ACTIVE SIGNALS: <span id="signalCount">0</span>
+    </div>
   </div>
 </div>
 
-<div id="right-panel">
-  <div class="panel-title">Runtime Telemetry</div>
-  <div id="stats-container"></div>
-  <div class="panel-title" style="margin-top:10px">Signal Trace</div>
-  <div id="sig-trace"></div>
+<div class="hud-panel-left">
+  <div class="panel-section-title">8 Architecture Stages</div>
+  <div id="stageList"></div>
+
+  <div class="panel-section-title" style="margin-top: 16px;">Selected Tensor Node</div>
+  <div id="nodeDetails" style="font-size: 9px; color: #888; line-height: 1.6;">
+    Click any 3D node in the neural network to inspect its activations, BitNet ternary quantization weight, and gate vectors.
+  </div>
 </div>
 
-<div id="token-bar">
-  <span style="color:#ffd700;font-weight:700">[PIPELINE]:</span>
-  <span id="live-token">TOKEN-EMB &rarr; DUAL-INGEST &rarr; 9-VEC-PRISM &rarr; ROUTER &rarr; 34-COUNCIL &rarr; 9B-SWARM &rarr; DIFFUSION &rarr; LOGITS</span>
+<div class="hud-panel-right">
+  <div class="panel-section-title">Live Model Telemetry</div>
+  
+  <div class="stat-card">
+    <div class="stat-label">Active Deliberation</div>
+    <div class="stat-val" id="activePersona" style="color:#ffd700; font-size: 9.5px;">C34-PREDATOR & C6-LOGOS</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">BitNet STE Quantization</div>
+    <div class="stat-val">{-1, 0, +1} Ternary</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">Router Confidence</div>
+    <div class="stat-val" id="routerConf" style="color:#00ff88;">94.8% (Top-4)</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">E_ICE Ethical Bound</div>
+    <div class="stat-val" style="color:#ff0055;">100% Zero-Drift PASS</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">Swarm Agent Diversity</div>
+    <div class="stat-val" style="color:#a855f7;">9.0B Clones (Rank-24)</div>
+  </div>
+
+  <div class="panel-section-title" style="margin-top: 14px;">Forward Pass Signal Log</div>
+  <div id="signalLog" style="font-size: 8px; color: #666; line-height: 1.7; max-height: 140px; overflow-y: auto;"></div>
 </div>
 
-<div id="controls">
-  <button onclick="doFullPass()" class="gold">&#9654; DISPATCH TOKEN</button>
-  <button onclick="doTurboPass()" class="gold">&#9889; TURBO GEMM</button>
-  <button onclick="setMode('council')" id="btn-council" class="active">34-COUNCIL</button>
-  <button onclick="setMode('prism')" id="btn-prism">9-VEC PRISM</button>
-  <button onclick="setMode('weights')" id="btn-weights">BitNet WEIGHTS</button>
-  <button onclick="setMode('swarm')" id="btn-swarm">9B SWARM</button>
-  <button onclick="setMode('eice')" id="btn-eice" class="red">E_ICE AUDIT</button>
-  <button onclick="reCenter()">&#127919; CENTER</button>
-  <button onclick="togglePause()" id="btn-pause">&#9208; PAUSE</button>
+<div class="hud-controls">
+  <button class="hud-btn gold" onclick="dispatchPulse(true)">⚡ TURBO 9-VECTOR GEMM</button>
+  <button class="hud-btn gold" onclick="dispatchPulse(false)">▶ DISPATCH TOKEN PULSE</button>
+  <button class="hud-btn active" onclick="setGraphMode('all')">FULL ARCHITECTURE</button>
+  <button class="hud-btn" onclick="setGraphMode('council')">34-COUNCIL</button>
+  <button class="hud-btn" onclick="setGraphMode('prism')">9-VECTOR PRISM</button>
+  <button class="hud-btn" onclick="setGraphMode('swarm')">9B SWARM</button>
+  <button class="hud-btn" onclick="reset3DCamera()">🎯 RE-CENTER CAMERA</button>
 </div>
 
 <div id="tooltip"></div>
+<canvas id="webgl-canvas"></canvas>
 
 <script>
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-let W = canvas.width = window.innerWidth;
-let H = canvas.height = window.innerHeight;
+// ─── 3D WEBGL NEURAL NETWORK GRAPH INITIALIZATION ───────────────────────
+const canvas = document.getElementById('webgl-canvas');
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x020409, 0.015);
 
-// ── CANONICAL QUILLAN-RONIN v5.4.0 ONI ARCHITECTURE ──────────────────────
-const STAGES = [
-  {id:'embed', col:0, label:'TOKEN\nEMBEDDING', n:7, color:'#00ff88', glow:'#00ff8830', shape:'rect', tag:'1',
-   quant:'Tied Embeddings + RoPE', desc:'50,257 vocab x 1024d\nRoPE positional encoding\nTied input/output weights'},
-  {id:'ingest', col:1, label:'DUAL Q1/Q2\nINGEST', n:7, color:'#00e5ff', glow:'#00e5ff30', shape:'diamond', tag:'2',
-   quant:'Gated Sigmoid Fusion', desc:'Q1 Analytical + Q2 Intuitive\nEntropy-regularized gate\ng*Q1 + (1-g)*Q2'},
-  {id:'prism', col:2, label:'9-VECTOR\nSEMANTIC PRISM', n:9, color:'#ff007f', glow:'#ff007f30', shape:'hex', tag:'3',
-   quant:'Parallel GEMM x9', desc:'Language - Sentiment - Context\nIntent - Meta - Creativity\nEthics - Strategy - Constraint'},
-  {id:'router', col:3, label:'COMPLEXITY\nROUTER', n:8, color:'#ffb703', glow:'#ffb70330', shape:'rect', tag:'4',
-   quant:'Top-4 Softmax Dispatch', desc:'Complexity classifier 3-way\nFast / Balanced / Diffusion\nTop-4 expert gating probs'},
-  {id:'cog', col:4, label:'COGNITIVE\nCLUSTER 5A', n:6, color:'#a7c957', glow:'#a7c95730', shape:'hex', tag:'5A',
-   quant:'BitNet 1.58b STE', desc:'C0-ASTRA - C6-LOGOS - C5-OMNIS\nC27-CALCULUS - C24-PROMETHEUS\nC11-SOPHIAE'},
-  {id:'sec', col:4, label:'SECURITY\nADVERSARIAL 5B', n:5, color:'#ff595e', glow:'#ff595e30', shape:'hex', tag:'5B',
-   quant:'BitNet 1.58b STE', desc:'C1-VIR - C12-WARDEN\nC17-SHEPHERD - C18-VIGIL\nC33-PREDATOR'},
-  {id:'exec', col:4, label:'EXECUTION\nCLUSTER 5C', n:5, color:'#2ec4b6', glow:'#2ec4b630', shape:'hex', tag:'5C',
-   quant:'BitNet 1.58b STE', desc:'C3-PRAXIS - C9-CODEWEAVER\nC13-KAIDO - C19-ARTIFEX\nC25-TECHNE'},
-  {id:'creative', col:4, label:'CREATIVE\nSYSTEM 5D', n:5, color:'#f48fb1', glow:'#f48fb130', shape:'hex', tag:'5D',
-   quant:'BitNet 1.58b STE', desc:'C2-SOLACE - C7-METASYNTH\nC8-AETHER - C14-LUMINARIS\nC29-TESSERACT'},
-  {id:'swarm', col:5, label:'9B SWARM\nMESH', n:8, color:'#9d4edd', glow:'#9d4edd30', shape:'circle', tag:'6',
-   quant:'Rank-24 EGGROLL INT4', desc:'272M virtual clones / expert\nLee-Mach-6 PID governor\nWorld emulation 5-step Markov'},
-  {id:'diffusion', col:6, label:'FLASH DIFFUSION\nE_ICE', n:7, color:'#3a86ff', glow:'#3a86ff30', shape:'diamond', tag:'7',
-   quant:'Langevin 14-Step + E_ICE', desc:'Thermodynamic Flash Diffusion\n14 Langevin denoising steps\nE_ICE zero-drift toxicity audit'},
-  {id:'output', col:7, label:'SOVEREIGN\nFINALIZER', n:7, color:'#00ff88', glow:'#00ff8830', shape:'rect', tag:'8',
-   quant:'Tied Softmax Logits', desc:'50,257 output vocabulary logits\nAutoregressive decoding\nEMA continuity smoothing'}
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 15, 60);
+
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.6;
+
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.maxDistance = 140;
+controls.minDistance = 15;
+
+// Ambient and Point Lights
+scene.add(new THREE.AmbientLight(0x0a1020, 2.5));
+const light1 = new THREE.PointLight(0x00f0ff, 12, 80);
+light1.position.set(0, 20, 30);
+scene.add(light1);
+
+const light2 = new THREE.PointLight(0xff0055, 10, 80);
+light2.position.set(20, -10, 20);
+scene.add(light2);
+
+const light3 = new THREE.PointLight(0xffd700, 8, 80);
+light3.position.set(-25, 15, -10);
+scene.add(light3);
+
+// ─── 3D STAGE & NODE ARCHITECTURE CONFIGURATION ──────────────────────────
+const STAGES_3D = [
+  { id: 'embed', label: '1. Token Embedding', color: 0x00ff88, x: -35, count: 6, shape: 'sphere', desc: '50,257 Vocab x 1024d Tied Input Embeddings + RoPE' },
+  { id: 'ingest', label: '2. Dual Ingest Bridge', color: 0x00e5ff, x: -25, count: 6, shape: 'diamond', desc: 'Q1 Analytical & Q2 Intuitive Dual-Brain Gated Ingestion' },
+  { id: 'prism', label: '3. 9-Vector Prism', color: 0xff007f, x: -15, count: 9, shape: 'prism', desc: 'Language, Sentiment, Context, Intent, Meta, Creativity, Ethics, Strategy, Constraint' },
+  { id: 'router', label: '4. Complexity Router', color: 0xffb703, x: -5, count: 6, shape: 'box', desc: 'Dynamic Gating over 34 Sovereign Council Personas' },
+  { id: 'council', label: '5. 34-Council EvoMoE', color: 0xa855f7, x: 8, count: 12, shape: 'octa', desc: 'BitNet 1.58b STE Ternary Logic (C1-C34 4-Cluster Arbitration)' },
+  { id: 'swarm', label: '6. 9B Swarm Mesh', color: 0x9d4edd, x: 20, count: 8, shape: 'sphere', desc: '272M Clones per Expert, Rank-24 EGGROLL, Lee-Mach-6 Governor' },
+  { id: 'diffusion', label: '7. Flash Langevin Denoising', color: 0x3a86ff, x: 30, count: 6, shape: 'diamond', desc: '14-Step Thermodynamic Langevin Diffusion & E_ICE Energy Bound' },
+  { id: 'finalizer', label: '8. Sovereign Finalizer', color: 0x00ff88, x: 40, count: 6, shape: 'sphere', desc: '50,257 Output Logits & Autoregressive Decoding' }
 ];
 
-const NUM_COLS = 8, NODE_R = 9, COL_SPACING = 168;
-let cam = {x:0, y:0, scale:1};
-let dragging = false, dragStart = {x:0,y:0}, camStart = {x:0,y:0};
-let nodes = [], conns = [], signals = [];
-let hovNode = null, paused = false, mode = 'council';
-let time = 0, lastT = performance.now(), frames = 0, fpsAcc = 0;
-let tele = {sigs:0, routerConf:.9421, eice:99.8, leeMach:'0.5ms Locked',
-  expertActive:'C34-PREDATOR + C6-LOGOS', swarmAgents:'9.0B Virtual', bitnet:'{-1, 0, +1}'};
+const nodesGroup = new THREE.Group();
+const connectionsGroup = new THREE.Group();
+const signalsGroup = new THREE.Group();
+scene.add(nodesGroup);
+scene.add(connectionsGroup);
+scene.add(signalsGroup);
 
-function buildLayout(){
-  nodes = []; conns = [];
-  const cg = {};
-  STAGES.forEach(s => { if(!cg[s.col]) cg[s.col]=[]; cg[s.col].push(s); });
-  const TOTAL_H = H - 140, TOP = 60, nm = {};
-  STAGES.forEach(stage => {
-    const colX = stage.col * COL_SPACING;
-    const sc = cg[stage.col], si = sc.indexOf(stage);
-    const slotH = TOTAL_H / sc.length;
-    const slotTop = TOP + si * slotH;
-    nm[stage.id] = [];
-    for(let i = 0; i < stage.n; i++){
-      const y = slotTop + (i+1)*(slotH/(stage.n+1));
-      const nid = nodes.length;
-      nodes.push({
-        id:nid, stageId:stage.id, stageLabel:stage.label, col:stage.col, nodeIdx:i,
-        x: colX + (Math.sin(i*2.1+stage.col)*6), y,
-        color:stage.color, glow:stage.glow, shape:stage.shape,
-        desc:stage.desc, act:stage.quant, tag:stage.tag,
-        activation:.25+Math.random()*.5, bias:(Math.random()-.5)*.4, phase:Math.random()*Math.PI*2
-      });
-      nm[stage.id].push(nid);
+// Background Grid Floor
+const gridHelper = new THREE.GridHelper(120, 40, 0x00f0ff, 0x002233);
+gridHelper.position.y = -18;
+scene.add(gridHelper);
+
+const allNodes = [];
+const allConnections = [];
+const activeSignals = [];
+
+// Geometries
+const sphereGeo = new THREE.SphereGeometry(1.1, 24, 24);
+const boxGeo = new THREE.BoxGeometry(1.6, 1.6, 1.6);
+const octaGeo = new THREE.OctahedronGeometry(1.4, 0);
+
+STAGES_3D.forEach((stage, sIdx) => {
+  stage.nodes = [];
+  const ySpacing = 24 / (stage.count + 1);
+  
+  for (let i = 0; i < stage.count; i++) {
+    const yPos = -12 + (i + 1) * ySpacing;
+    const zPos = (Math.sin(i * 1.5 + sIdx) * 6);
+
+    let geo = sphereGeo;
+    if (stage.shape === 'box') geo = boxGeo;
+    else if (stage.shape === 'octa' || stage.shape === 'diamond') geo = octaGeo;
+
+    const mat = new THREE.MeshStandardMaterial({
+      color: stage.color,
+      emissive: stage.color,
+      emissiveIntensity: 0.6,
+      metalness: 0.85,
+      roughness: 0.15,
+      transparent: true,
+      opacity: 0.95
+    });
+
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(stage.x, yPos, zPos);
+    mesh.userData = {
+      stageId: stage.id,
+      stageLabel: stage.label,
+      desc: stage.desc,
+      color: stage.color,
+      nodeIndex: i,
+      baseScale: 1.0,
+      activation: 0.3 + Math.random() * 0.7
+    };
+
+    nodesGroup.add(mesh);
+    allNodes.push(mesh);
+    stage.nodes.push(mesh);
+  }
+});
+
+// Build 3D Synaptic Curves between consecutive stages
+for (let s = 0; s < STAGES_3D.length - 1; s++) {
+  const currentStage = STAGES_3D[s];
+  const nextStage = STAGES_3D[s + 1];
+
+  currentStage.nodes.forEach(src => {
+    nextStage.nodes.forEach(dst => {
+      // Connect denser between MoE stages, sparser elsewhere
+      if (s === 3 || s === 4 || Math.random() > 0.5) {
+        const curve = new THREE.QuadraticBezierCurve3(
+          src.position,
+          new THREE.Vector3(
+            (src.position.x + dst.position.x) / 2,
+            (src.position.y + dst.position.y) / 2 + (Math.random() - 0.5) * 4,
+            (src.position.z + dst.position.z) / 2 + (Math.random() - 0.5) * 4
+          ),
+          dst.position
+        );
+
+        const points = curve.getPoints(16);
+        const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+        const lineMat = new THREE.LineBasicMaterial({
+          color: src.userData.color,
+          transparent: true,
+          opacity: 0.12
+        });
+
+        const line = new THREE.Line(lineGeo, lineMat);
+        line.userData = { curve, src, dst, color: src.userData.color };
+        connectionsGroup.add(line);
+        allConnections.push(line);
+      }
+    });
+  });
+}
+
+// ─── STAGE LIST UI CREATION ──────────────────────────────────────────────
+const stageListEl = document.getElementById('stageList');
+STAGES_3D.forEach(stage => {
+  const item = document.createElement('div');
+  item.className = 'stage-item';
+  item.innerHTML = `
+    <span class="stage-color-dot" style="background:#${stage.color.toString(16).padStart(6, '0')};"></span>
+    <span>${stage.label}</span>
+  `;
+  item.onclick = () => focusStage(stage);
+  stageListEl.appendChild(item);
+});
+
+function focusStage(stage) {
+  stage.nodes.forEach(node => {
+    node.scale.setScalar(1.6);
+    node.material.emissiveIntensity = 1.8;
+    setTimeout(() => {
+      node.scale.setScalar(1.0);
+      node.material.emissiveIntensity = 0.6;
+    }, 800);
+  });
+  dispatchPulseFromNodes(stage.nodes);
+}
+
+// ─── SIGNAL PULSE ENGINE ─────────────────────────────────────────────────
+const signalMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+const signalGeo = new THREE.SphereGeometry(0.35, 12, 12);
+
+function dispatchPulse(turbo = false) {
+  const startNodes = STAGES_3D[0].nodes;
+  dispatchPulseFromNodes(startNodes, turbo);
+  logSignal(`[DISPATCH] ${turbo ? 'Turbo GEMM 9-Vector' : 'EvoMoE Top-4'} Tensor Forward Pass`);
+}
+
+function dispatchPulseFromNodes(nodes, turbo = false) {
+  nodes.forEach(src => {
+    const outgoing = allConnections.filter(c => c.userData.src === src);
+    if (outgoing.length > 0) {
+      const luckyConn = outgoing[Math.floor(Math.random() * outgoing.length)];
+      spawnSignalOnCurve(luckyConn, turbo);
     }
   });
-  for(let c = 0; c < NUM_COLS-1; c++){
-    const fSts = STAGES.filter(s=>s.col===c);
-    const tSts = STAGES.filter(s=>s.col===c+1);
-    const fn=[]; fSts.forEach(s=>fn.push(...(nm[s.id]||[])));
-    const tn=[]; tSts.forEach(s=>tn.push(...(nm[s.id]||[])));
-    fn.forEach(a => tn.forEach(b => {
-      if(c===3 || c===4 || Math.random()>.42)
-        conns.push({from:a, to:b, weight:(Math.random()>.5?1:-1)*(.3+Math.random()*.7), brightness:0});
-    }));
-  }
-  buildLegend(); buildStats(); reCenter();
 }
 
-function reCenter(){
-  if(!nodes.length) return;
-  let mx=Infinity,xm=-Infinity,my=Infinity,ym=-Infinity;
-  nodes.forEach(n=>{if(n.x<mx)mx=n.x;if(n.x>xm)xm=n.x;if(n.y<my)my=n.y;if(n.y>ym)ym=n.y;});
-  const nw=xm-mx, nh=ym-my, cx=(mx+xm)/2, cy=(my+ym)/2;
-  cam.scale = Math.min((W-260)/Math.max(nw,1), (H-140)/Math.max(nh,1), 1.25);
-  cam.scale = Math.max(.42, cam.scale);
-  cam.x = W/2 - cx*cam.scale;
-  cam.y = H/2 - cy*cam.scale;
+function spawnSignalOnCurve(conn, turbo = false) {
+  const sigMesh = new THREE.Mesh(
+    signalGeo,
+    new THREE.MeshBasicMaterial({ color: conn.userData.color })
+  );
+  sigMesh.userData = {
+    conn,
+    progress: 0,
+    speed: turbo ? 0.045 : 0.022
+  };
+  signalsGroup.add(sigMesh);
+  activeSignals.push(sigMesh);
+  document.getElementById('signalCount').innerText = activeSignals.length;
 }
 
-function buildLegend(){
-  const leg = document.getElementById('layer-legend'); if(!leg) return;
-  const seen = new Set();
-  leg.innerHTML = STAGES.filter(s=>{const k=s.col+'_'+s.tag; if(seen.has(k)) return false; seen.add(k); return true;})
-    .map(s=>`<div class="legend-item" onclick="focusStage('${s.id}')">
-      <div class="legend-dot" style="background:${s.color};box-shadow:0 0 6px ${s.color}"></div>
-      <div><div class="legend-name">${s.tag}. ${s.label.split('\\n').join(' ')}</div>
-      <div class="legend-sub">${s.quant}</div></div></div>`).join('');
-}
-
-function buildStats(){
-  const sc = document.getElementById('stats-container'); if(!sc) return;
-  sc.innerHTML = `
-    <div class="stat-row"><span class="stat-label">QUANTIZATION</span><span class="stat-val" style="color:#00f0ff;font-size:8.5px">${tele.bitnet}</span></div>
-    <div class="stat-row"><span class="stat-label">WIN_KERNEL TIMER</span><span class="stat-val" style="color:#ffd700">${tele.leeMach}</span></div>
-    <div class="stat-row"><span class="stat-label">ROUTER CONFIDENCE</span><span class="stat-val" style="color:#00ff88">${(tele.routerConf*100).toFixed(2)}%</span></div>
-    <div class="stat-row"><span class="stat-label">E_ICE INTEGRITY</span><span class="stat-val" style="color:#ff0055">${tele.eice}%</span></div>
-    <div class="stat-row"><span class="stat-label">SWARM AGENTS</span><span class="stat-val" style="color:#a855f7;font-size:8.5px">${tele.swarmAgents}</span></div>
-    <div class="stat-row"><span class="stat-label">ACTIVE PERSONAS</span><span class="stat-val" style="color:#ffd700;font-size:8px">${tele.expertActive}</span></div>`;
-}
-
-function spawnSignal(nid, color, speed){
-  signals.push({nodeId:nid, progress:0, speed:speed||.028, color});
-  tele.sigs++;
-}
-
-function doFullPass(turbo){
-  const ins = nodes.filter(n=>n.col===0);
-  ins.forEach(n=>{n.activation=1; spawnSignal(n.id, n.color, turbo?.06:.028);});
-  const ws = ['TOKEN:0042','QUERY:SOLVE','INPUT:REASON','PROMPT:GENERATE'];
-  document.getElementById('live-token').textContent = ws[Math.floor(Math.random()*ws.length)]
-    +' -> EMB -> DUAL-INGEST -> 9-PRISM -> ROUTER -> 34-COUNCIL -> 9B-SWARM -> DIFFUSION -> LOGITS';
-  logTrace('[DISPATCH] '+(turbo?'Turbo GEMM':'EvoMoE Top-4')+' forward pass initiated');
-}
-function doTurboPass(){ doFullPass(true); }
-
-function focusStage(id){
-  nodes.filter(n=>n.stageId===id).forEach(n=>{n.activation=1; spawnSignal(n.id, n.color, .04);});
-}
-
-function logTrace(msg){
-  const st = document.getElementById('sig-trace'); if(!st) return;
+function logSignal(msg) {
+  const logEl = document.getElementById('signalLog');
   const d = document.createElement('div');
-  d.innerHTML = '<span style="color:#333">'+new Date().toLocaleTimeString()+'</span> <span style="color:#555">'+msg+'</span>';
-  st.prepend(d);
-  while(st.children.length>30) st.removeChild(st.lastChild);
+  d.innerHTML = `<span style="color:#00f0ff;">${new Date().toLocaleTimeString()}</span> &bull; ${msg}`;
+  logEl.prepend(d);
+  if (logEl.children.length > 25) logEl.removeChild(logEl.lastChild);
 }
 
-function hexPath(cx,cy,r){
-  ctx.beginPath();
-  for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3; i===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));}
-  ctx.closePath();
-}
-function diamondPath(cx,cy,r){
-  ctx.beginPath();ctx.moveTo(cx,cy-r*1.35);ctx.lineTo(cx+r,cy);ctx.lineTo(cx,cy+r*1.35);ctx.lineTo(cx-r,cy);ctx.closePath();
-}
-
-function drawNode(n, t){
-  const act = n.activation;
-  const pulse = 1+.12*Math.sin(t*2+n.phase);
-  const r = (NODE_R + act*5) * pulse;
-  // Outer glow
-  const gr = r + 10 + act*14;
-  const grd = ctx.createRadialGradient(n.x,n.y,r*.4,n.x,n.y,gr);
-  const a16 = Math.floor(act*140+50).toString(16).padStart(2,'0');
-  grd.addColorStop(0, n.color+a16); grd.addColorStop(1, n.color+'00');
-  ctx.fillStyle=grd; ctx.beginPath(); ctx.arc(n.x,n.y,gr,0,Math.PI*2); ctx.fill();
-  // Core
-  ctx.shadowColor=n.color; ctx.shadowBlur=act*24+8; ctx.fillStyle=n.color;
-  if(n.shape==='hex') hexPath(n.x,n.y,r);
-  else if(n.shape==='diamond') diamondPath(n.x,n.y,r);
-  else if(n.shape==='circle'){ctx.beginPath();ctx.arc(n.x,n.y,r,0,Math.PI*2);}
-  else {ctx.beginPath();ctx.roundRect(n.x-r*1.6/2,n.y-r*.9/2,r*1.6,r*.9,3);}
-  ctx.fill(); ctx.shadowBlur=0;
-  // Highlight
-  const ig = ctx.createRadialGradient(n.x-r*.3,n.y-r*.35,0,n.x,n.y,r*.9);
-  ig.addColorStop(0,'rgba(255,255,255,0.38)'); ig.addColorStop(1,'rgba(255,255,255,0)');
-  ctx.fillStyle=ig;
-  if(n.shape==='hex') hexPath(n.x,n.y,r);
-  else if(n.shape==='diamond') diamondPath(n.x,n.y,r);
-  else if(n.shape==='circle'){ctx.beginPath();ctx.arc(n.x,n.y,r,0,Math.PI*2);}
-  else {ctx.beginPath();ctx.roundRect(n.x-r*1.6/2,n.y-r*.9/2,r*1.6,r*.9,3);}
-  ctx.fill();
-  // Hover ring
-  if(hovNode && hovNode.id===n.id){
-    ctx.strokeStyle='#fff'; ctx.lineWidth=1.5; ctx.shadowColor='#fff'; ctx.shadowBlur=12;
-    ctx.beginPath(); ctx.arc(n.x,n.y,r+7,0,Math.PI*2); ctx.stroke(); ctx.shadowBlur=0;
-  }
-}
-
-function drawConn(c){
-  const na=nodes[c.from], nb=nodes[c.to]; if(!na||!nb) return;
-  let alpha=.06, lw=.8;
-  const br=c.brightness||0;
-  if(mode==='weights'){alpha=Math.abs(c.weight)*.3+.05;lw=Math.abs(c.weight)*2+.5;}
-  else if(mode==='prism'&&na.col===2){alpha=.22;lw=1.2;}
-  else if(mode==='council'&&(na.col===3||na.col===4)){alpha=.16;lw=1;}
-  else if(mode==='swarm'&&na.col===5){alpha=.2;lw=1.2;}
-  else if(mode==='eice'&&na.col===6){alpha=.28;lw=1.5;}
-  if(br>.01){alpha=Math.min(.9,alpha+br*.75);lw*=(1+br*3);c.brightness*=.87;}
-  ctx.strokeStyle = c.weight>0?('rgba(0,240,255,'+alpha+')'):'rgba(255,0,85,'+alpha+')';
-  ctx.lineWidth=lw; ctx.shadowBlur=0;
-  ctx.beginPath(); ctx.moveTo(na.x,na.y); ctx.lineTo(nb.x,nb.y); ctx.stroke();
-}
-
-function drawSignals(){
-  for(let i=signals.length-1;i>=0;i--){
-    const s=signals[i];
-    s.progress+=s.speed;
-    const cn=nodes[s.nodeId]; if(!cn){signals.splice(i,1);continue;}
-    const out=conns.filter(c=>c.from===s.nodeId);
-    if(!out.length||s.progress>=1){
-      if(out.length&&Math.random()>.15){
-        const nxt=out[Math.floor(Math.random()*out.length)];
-        nxt.brightness=(nxt.brightness||0)+.92;
-        s.nodeId=nxt.to; s.progress=0;
-        const tn=nodes[nxt.to]; if(tn) tn.activation=Math.min(1,tn.activation+.42);
-      }else{signals.splice(i,1);continue;}
-    }
-    if(out.length){
-      const tg=nodes[out[0].to]; if(!tg) continue;
-      const px=cn.x+(tg.x-cn.x)*s.progress, py=cn.y+(tg.y-cn.y)*s.progress;
-      const og=ctx.createRadialGradient(px,py,0,px,py,8);
-      og.addColorStop(0,'#fff'); og.addColorStop(.35,s.color); og.addColorStop(1,s.color+'00');
-      ctx.fillStyle=og; ctx.shadowColor=s.color; ctx.shadowBlur=18;
-      ctx.beginPath(); ctx.arc(px,py,8,0,Math.PI*2); ctx.fill(); ctx.shadowBlur=0;
-    }
-  }
-}
-
-function drawColLabels(){
-  const seen=new Set();
-  STAGES.forEach(stage=>{
-    const k=stage.col+'_'+stage.id; if(seen.has(k)) return; seen.add(k);
-    const sn=nodes.filter(n=>n.stageId===stage.id); if(!sn.length) return;
-    const topY=Math.min(...sn.map(n=>n.y)), botY=Math.max(...sn.map(n=>n.y));
-    const cx=sn[0].x, pH=botY-topY+60, pY=topY-32, pW=78;
-    const bg=ctx.createLinearGradient(cx-pW/2,pY,cx-pW/2,pY+pH);
-    bg.addColorStop(0,stage.glow); bg.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=bg; ctx.beginPath(); ctx.roundRect(cx-pW/2,pY,pW,pH,8); ctx.fill();
-    ctx.fillStyle=stage.color; ctx.globalAlpha=.88;
-    ctx.font='bold 7.5px JetBrains Mono'; ctx.textAlign='center';
-    stage.label.split('\n').forEach((line,li)=>ctx.fillText(line,cx,pY+10+li*11));
-    ctx.globalAlpha=1;
+function setGraphMode(mode) {
+  document.querySelectorAll('.hud-controls button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  allConnections.forEach(c => {
+    if (mode === 'all') c.material.opacity = 0.12;
+    else if (mode === 'council') c.material.opacity = c.userData.src.userData.stageId === 'council' ? 0.45 : 0.03;
+    else if (mode === 'prism') c.material.opacity = c.userData.src.userData.stageId === 'prism' ? 0.5 : 0.03;
+    else if (mode === 'swarm') c.material.opacity = c.userData.src.userData.stageId === 'swarm' ? 0.5 : 0.03;
   });
 }
 
-function drawGrid(){
-  ctx.strokeStyle='rgba(0,240,255,0.022)'; ctx.lineWidth=.8;
-  const gs=44;
-  for(let gx=0;gx<W;gx+=gs){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}
-  for(let gy=0;gy<H;gy+=gs){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+function reset3DCamera() {
+  controls.reset();
+  camera.position.set(0, 15, 60);
+  camera.lookAt(0, 0, 0);
 }
 
-function animate(now){
+// ─── RAYCASTING & INTERACTION ────────────────────────────────────────────
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const tooltip = document.getElementById('tooltip');
+
+window.addEventListener('mousemove', (e) => {
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(allNodes);
+
+  if (intersects.length > 0) {
+    const target = intersects[0].object;
+    tooltip.style.display = 'block';
+    tooltip.style.left = (e.clientX + 16) + 'px';
+    tooltip.style.top = (e.clientY + 16) + 'px';
+    tooltip.innerHTML = `
+      <div style="font-family:'Orbitron'; font-weight:700; color:#00f0ff;">${target.userData.stageLabel}</div>
+      <div style="color:#ffd700; font-size:9px; margin-top:2px;">Node #${target.userData.nodeIndex} &bull; BitNet STE {-1, 0, 1}</div>
+      <div style="color:#94a3b8; font-size:8.5px; margin-top:4px;">${target.userData.desc}</div>
+    `;
+    document.body.style.cursor = 'pointer';
+  } else {
+    tooltip.style.display = 'none';
+    document.body.style.cursor = 'default';
+  }
+});
+
+window.addEventListener('click', () => {
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(allNodes);
+  if (intersects.length > 0) {
+    const target = intersects[0].object;
+    target.scale.setScalar(1.8);
+    target.material.emissiveIntensity = 2.0;
+    setTimeout(() => {
+      target.scale.setScalar(1.0);
+      target.material.emissiveIntensity = 0.6;
+    }, 600);
+
+    document.getElementById('nodeDetails').innerHTML = `
+      <div style="color:#fff; font-weight:700; font-size:11px; margin-bottom:4px;">${target.userData.stageLabel}</div>
+      <div style="color:#00f0ff;">Node ID: #${target.userData.nodeIndex}</div>
+      <div style="color:#00ff88;">Activation State: ${(target.userData.activation * 100).toFixed(1)}%</div>
+      <div style="color:#ffd700;">Quantization: BitNet 1.58b STE</div>
+      <div style="color:#a855f7;">E_ICE Audit: Zero-Drift PASS</div>
+      <div style="margin-top:6px; font-size:8.5px; color:#aaa;">${target.userData.desc}</div>
+    `;
+
+    const outgoing = allConnections.filter(c => c.userData.src === target);
+    outgoing.forEach(conn => spawnSignalOnCurve(conn, true));
+  }
+});
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Automatic pulse background timer
+setInterval(() => {
+  const startNode = STAGES_3D[0].nodes[Math.floor(Math.random() * STAGES_3D[0].nodes.length)];
+  const outgoing = allConnections.filter(c => c.userData.src === startNode);
+  if (outgoing.length > 0) spawnSignalOnCurve(outgoing[Math.floor(Math.random() * outgoing.length)]);
+}, 800);
+
+// Rotate Council Personas
+const personas = [
+  'C34-PREDATOR & C6-LOGOS',
+  'C1-ASTRA & C7-METASYNTH',
+  'C2-VIR & C13-WARDEN',
+  'C4-PRAXIS & C10-CODEWEAVER',
+  'C12-SOPHIAE & C25-PROMETHEUS'
+];
+let personaIdx = 0;
+setInterval(() => {
+  personaIdx = (personaIdx + 1) % personas.length;
+  document.getElementById('activePersona').innerText = personas[personaIdx];
+  document.getElementById('routerConf').innerText = (92.5 + Math.random() * 6).toFixed(1) + '% (Top-4)';
+}, 4000);
+
+// ─── MAIN 3D ANIMATION LOOP ──────────────────────────────────────────────
+let clock = new THREE.Clock();
+let frameCount = 0;
+let lastFpsTime = performance.now();
+
+function animate() {
   requestAnimationFrame(animate);
-  const dt=(now-lastT)/1000; lastT=now;
-  frames++; fpsAcc+=dt;
-  if(fpsAcc>=1){document.getElementById('fps-counter').textContent=frames+' FPS';frames=0;fpsAcc=0;}
-  time+=dt;
-  if(paused) return;
-  ctx.fillStyle='#020408'; ctx.fillRect(0,0,W,H);
-  drawGrid();
-  ctx.save(); ctx.translate(cam.x,cam.y); ctx.scale(cam.scale,cam.scale);
-  drawColLabels();
-  conns.forEach(c=>drawConn(c));
-  drawSignals();
-  nodes.forEach(n=>{n.activation=Math.max(.15,n.activation*.992);drawNode(n,time);});
-  ctx.restore();
-  // Scanlines
-  ctx.fillStyle='rgba(0,0,0,0.04)';
-  for(let y=0;y<H;y+=4) ctx.fillRect(0,y,W,1);
+  const elapsedTime = clock.getElapsedTime();
+
+  frameCount++;
+  if (performance.now() - lastFpsTime >= 1000) {
+    document.getElementById('fpsDisplay').innerText = frameCount;
+    frameCount = 0;
+    lastFpsTime = performance.now();
+  }
+
+  controls.update();
+
+  // Subtle breathing rotation on all nodes
+  allNodes.forEach(node => {
+    node.rotation.y = elapsedTime * 0.5;
+    node.rotation.x = elapsedTime * 0.3;
+  });
+
+  // Update animated signal packets along Bezier curves
+  for (let i = activeSignals.length - 1; i >= 0; i--) {
+    const sig = activeSignals[i];
+    sig.userData.progress += sig.userData.speed;
+
+    if (sig.userData.progress >= 1.0) {
+      // Signal reached destination, propagate to next stage!
+      const dst = sig.userData.conn.userData.dst;
+      dst.scale.setScalar(1.4);
+      setTimeout(() => dst.scale.setScalar(1.0), 200);
+
+      const nextOutgoing = allConnections.filter(c => c.userData.src === dst);
+      if (nextOutgoing.length > 0 && Math.random() > 0.25) {
+        spawnSignalOnCurve(nextOutgoing[Math.floor(Math.random() * nextOutgoing.length)]);
+      }
+
+      signalsGroup.remove(sig);
+      activeSignals.splice(i, 1);
+      document.getElementById('signalCount').innerText = activeSignals.length;
+    } else {
+      const pt = sig.userData.conn.userData.curve.getPoint(sig.userData.progress);
+      sig.position.copy(pt);
+    }
+  }
+
+  renderer.render(scene, camera);
 }
-
-canvas.addEventListener('mousedown',e=>{dragging=true;dragStart={x:e.clientX,y:e.clientY};camStart={x:cam.x,y:cam.y};});
-window.addEventListener('mouseup',()=>dragging=false);
-window.addEventListener('mousemove',e=>{
-  if(dragging){cam.x=camStart.x+(e.clientX-dragStart.x);cam.y=camStart.y+(e.clientY-dragStart.y);return;}
-  const wx=(e.clientX-cam.x)/cam.scale, wy=(e.clientY-cam.y)/cam.scale;
-  hovNode=null;
-  for(const n of nodes){if(Math.hypot(n.x-wx,n.y-wy)<16){hovNode=n;break;}}
-  const tip=document.getElementById('tooltip');
-  if(hovNode&&tip){
-    tip.style.display='block';tip.style.left=(e.clientX+16)+'px';tip.style.top=(e.clientY+12)+'px';
-    tip.innerHTML='<b style="color:'+hovNode.color+'">'+hovNode.stageLabel.split('\n').join(' ')+'</b><br><span style="color:#888">Node #'+hovNode.nodeIdx+' &bull; '+hovNode.act+'</span><br><span style="font-size:8.5px;color:#666;white-space:pre-line">'+hovNode.desc+'</span>';
-  }else if(tip) tip.style.display='none';
-});
-canvas.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.09:.91;cam.scale=Math.min(3,Math.max(.35,cam.scale*f));},{passive:false});
-canvas.addEventListener('click',()=>{
-  if(!hovNode) return;
-  document.getElementById('node-info').classList.add('visible');
-  document.getElementById('ni-stage').textContent=hovNode.stageLabel.split('\n').join(' ');
-  document.getElementById('ni-node').textContent='Node #'+hovNode.nodeIdx;
-  document.getElementById('ni-act').textContent=(hovNode.activation*100).toFixed(1)+'%';
-  document.getElementById('ni-gate').textContent=(hovNode.bias>0?'+':'')+hovNode.bias.toFixed(4);
-  spawnSignal(hovNode.id,hovNode.color,.04);
-});
-window.addEventListener('resize',()=>{W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;buildLayout();});
-window.addEventListener('message',e=>{if(e.data==='activate'||e.data?.action==='activate'){reCenter();doFullPass();}});
-
-function setMode(m){
-  mode=m;
-  document.querySelectorAll('#controls button').forEach(b=>b.classList.remove('active'));
-  const b=document.getElementById('btn-'+m); if(b) b.classList.add('active');
-  document.getElementById('live-mode-label').textContent=m.toUpperCase()+' MODE';
-  logTrace('[MODE] Switched to '+m.toUpperCase());
-}
-function togglePause(){paused=!paused;document.getElementById('btn-pause').textContent=paused?'Resume':'Pause';}
-
-setInterval(()=>{
-  if(paused||!nodes.length) return;
-  const ins=nodes.filter(n=>n.col===0);
-  if(ins.length){const r=ins[Math.floor(Math.random()*ins.length)];r.activation=.9;spawnSignal(r.id,r.color,.032);}
-},1100);
-
-const personas=['C34-PREDATOR + C6-LOGOS','C0-ASTRA + C7-METASYNTH','C1-VIR + C12-WARDEN','C4-PRAXIS + C25-TECHNE','C9-CODEWEAVER + C28-CALCULUS'];
-let pIdx=0;
-setInterval(()=>{tele.expertActive=personas[pIdx=(pIdx+1)%personas.length];buildStats();},4200);
-setInterval(()=>{tele.routerConf=.88+Math.random()*.12;buildStats();},6000);
-
-buildLayout();
-requestAnimationFrame(animate);
-doFullPass();
-logTrace('Quillan-Ronin v5.4.0 ONI model viewer initialized.');
-logTrace('34-Council EvoMoE | 9-Vector Prism | BitNet 1.58b STE | Rank-24 EGGROLL');
+animate();
+dispatchPulse();
+logSignal('Quillan 3D WebGL Neural Tensor Graph online.');
 </script>
 </body>
 </html>
