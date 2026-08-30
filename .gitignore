@@ -264,5 +264,8 @@ checkpoints/
 *.webp
 *.png
 *.jpg
-node_modules/
-__pycache__/
+# Isolated External Repositories & Testing Sandbox
+testing/
+testing/**
+dist/
+build/
