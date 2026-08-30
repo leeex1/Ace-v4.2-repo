@@ -20,6 +20,26 @@ function jfetch(url, opts) {
   return fetch(url, opts);
 }
 
+export function getEnvVar(name) {
+  let val = process.env[name];
+  if (val) return val;
+  try {
+    const envPath = 'C:\\02_QUILLAN\\.env';
+    if (existsSync(envPath)) {
+      const content = readFileSync(envPath, 'utf8');
+      for (const line of content.split('\n')) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith(`${name}=`)) {
+          val = trimmed.slice(name.length + 1).trim().replace(/^["']|["']$/g, '');
+          process.env[name] = val;
+          return val;
+        }
+      }
+    }
+  } catch {}
+  return '';
+}
+
 let KERNEL_CACHE = null;
 let KERNEL_DISTILLED_CACHE = null;
 
@@ -151,48 +171,79 @@ export async function callNVIDIA(messages, settings, maxTokens = 1400, opts = {}
     // Local engine not running or timed out; fall through to remote API pool
   }
 
-  const key = process.env.NVIDIA_API_KEY;
-  if (!key) throw new Error('NVIDIA_API_KEY env var not set and local sovereign engine unreachable');
-  
+  const key = getEnvVar('NVIDIA_API_KEY');
   const preferred = opts.model || settings.nvidiaModel;
   const pool = settings.fallbackModels || [];
   const chain = getSortedModelChain(preferred, pool);
   const timeoutMs = opts.timeoutMs || 45000;
   
   let lastErr;
-  for (const model of chain) {
+  if (key) {
+    for (const model of chain) {
+      try {
+        const res = await jfetch(`${settings.nvidiaBaseUrl}/chat/completions`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${key}`
+          },
+          body: JSON.stringify({
+            model,
+            messages,
+            temperature: 0.4,
+            max_tokens: maxTokens
+          }),
+          signal: AbortSignal.timeout(timeoutMs)
+        });
+        
+        if (res.status === 429 || res.status >= 500) {
+          markModelRateLimited(model, res.status === 429 ? 60000 : 30000);
+          continue;
+        }
+        
+        if (!res.ok) throw new Error(`upstream HTTP ${res.status} on ${model}`);
+        const data = await res.json();
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+          markModelSuccess(model);
+          return data.choices[0].message.content;
+        }
+      } catch (e) {
+        lastErr = e;
+        markModelRateLimited(model, 30000);
+        await sleep(300);
+      }
+    }
+  }
+
+  // Fallback to Gemini 3.6 Flash
+  const geminiKey = getEnvVar('GEMINI_API_KEY');
+  if (geminiKey) {
     try {
-      const res = await jfetch(`${settings.nvidiaBaseUrl}/chat/completions`, {
+      const geminiContents = messages.map(m => ({
+        role: m.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: `${m.role === 'system' ? '[SYSTEM INSTRUCTION]\n' : ''}${m.content}` }]
+      }));
+      const gUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${geminiKey}`;
+      const gRes = await fetch(gUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${key}`
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model,
-          messages,
-          temperature: 0.4,
-          max_tokens: maxTokens
+          contents: geminiContents,
+          generationConfig: { maxOutputTokens: maxTokens, temperature: 0.4 }
         }),
         signal: AbortSignal.timeout(timeoutMs)
       });
-      
-      if (res.status === 429 || res.status >= 500) {
-        markModelRateLimited(model, res.status === 429 ? 60000 : 30000);
-        continue;
+      if (gRes.ok) {
+        const gData = await gRes.json();
+        const text = gData.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (text) return text;
       }
-      
-      if (!res.ok) throw new Error(`upstream HTTP ${res.status} on ${model}`);
-      const data = await res.json();
-      markModelSuccess(model);
-      return data.choices[0].message.content;
-    } catch (e) {
-      lastErr = e;
-      markModelRateLimited(model, 30000);
-      await sleep(400);
+    } catch (gErr) {
+      console.log('[AutoRouter] Gemini non-stream fallback error:', gErr.message);
     }
   }
-  throw lastErr || new Error('All NVIDIA NIM endpoints in auto-router pool are unavailable');
+
+  throw lastErr || new Error('All AI providers (NVIDIA NIM & Gemini) in auto-router pool are unavailable');
 }
 
 export async function* streamNVIDIA(messages, settings, maxTokens = 2048, opts = {}) {
@@ -446,27 +497,72 @@ export async function dailyBrief(settings, ledgerSummary) {
 }
 
 export async function visionDescribe(base64Image, question, settings) {
-  const key = process.env.NVIDIA_API_KEY;
-  if (!key) throw new Error('NVIDIA_API_KEY not set');
+  const geminiKey = getEnvVar('GEMINI_API_KEY');
+  const nvidiaKey = getEnvVar('NVIDIA_API_KEY');
   const s = settings || loadJSON('settings');
-  const res = await fetch(`${s.nvidiaBaseUrl}/chat/completions`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
-    body: JSON.stringify({
-      model: 'meta/llama-3.2-11b-vision-instruct',
-      messages: [
-        { role: 'user', content: [
-          { type: 'text', text: question || 'Describe what is visible on this screen in detail. What applications, windows, pages, buttons are visible? What is the current state?' },
-          { type: 'image_url', image_url: { url: `data:image/png;base64,${base64Image}` } }
-        ]}
-      ],
-      max_tokens: 800,
-      temperature: 0.3
-    }),
-    signal: AbortSignal.timeout(25000)
-  });
-  const data = await res.json();
-  return data.choices[0].message.content;
+  const rawB64 = String(base64Image || '').trim();
+  const cleanB64 = rawB64.replace(/^data:image\/[a-zA-Z]+;base64,/, '');
+  const dataUri = rawB64.startsWith('data:') ? rawB64 : `data:image/png;base64,${cleanB64}`;
+
+  // 1. Try Gemini 3.6 Flash Vision (Instant native multimodal)
+  if (geminiKey && cleanB64.length > 20) {
+    try {
+      const gUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${geminiKey}`;
+      const gRes = await fetch(gUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [
+              { text: question || 'Describe what is visible on this screen in detail. What applications, windows, pages, buttons are visible? What is the current state?' },
+              { inlineData: { mimeType: 'image/png', data: cleanB64 } }
+            ]
+          }],
+          generationConfig: { maxOutputTokens: 800, temperature: 0.2 }
+        }),
+        signal: AbortSignal.timeout(25000)
+      });
+      if (gRes.ok) {
+        const gData = await gRes.json();
+        const text = gData.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (text && text.trim()) return text.trim();
+      }
+    } catch (gErr) {
+      console.log('[Vision] Gemini Vision attempt error:', gErr.message);
+    }
+  }
+
+  // 2. Try NVIDIA NIM Vision
+  if (nvidiaKey && cleanB64.length > 20) {
+    try {
+      const res = await fetch(`${s.nvidiaBaseUrl}/chat/completions`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${nvidiaKey}` },
+        body: JSON.stringify({
+          model: 'meta/llama-3.2-11b-vision-instruct',
+          messages: [
+            { role: 'user', content: [
+              { type: 'text', text: question || 'Describe what is visible on this screen in detail. What applications, windows, pages, buttons are visible? What is the current state?' },
+              { type: 'image_url', image_url: { url: dataUri } }
+            ]}
+          ],
+          max_tokens: 800,
+          temperature: 0.3
+        }),
+        signal: AbortSignal.timeout(25000)
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
+          return data.choices[0].message.content;
+        }
+      }
+    } catch (nErr) {
+      console.log('[Vision] NVIDIA Vision attempt error:', nErr.message);
+    }
+  }
+
+  throw new Error('Vision processing failed: all vision providers (Gemini & NVIDIA) returned empty or unavailable');
 }
 
 export async function testConnection(settings) {
