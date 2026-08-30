@@ -21,9 +21,9 @@ html_content = f"""<!DOCTYPE html>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     :root {{
-      --bg-dark: #04050a;
-      --bg-surface: #0a0c16;
-      --bg-card: rgba(13, 16, 28, 0.85);
+      --bg-dark: #020409;
+      --bg-surface: #060913;
+      --bg-card: rgba(8, 12, 24, 0.88);
       --accent-red: #ff0055;
       --accent-cyan: #00f0ff;
       --accent-gold: #ffd700;
@@ -31,8 +31,8 @@ html_content = f"""<!DOCTYPE html>
       --accent-neon-green: #00ff88;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --border-line: rgba(0, 240, 255, 0.15);
-      --border-glow: rgba(0, 240, 255, 0.4);
+      --border-line: rgba(0, 240, 255, 0.16);
+      --border-glow: rgba(0, 240, 255, 0.45);
     }}
 
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -52,40 +52,46 @@ html_content = f"""<!DOCTYPE html>
       height: 100vh;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.85;
+      opacity: 0.95;
     }}
 
     .cyber-scanlines {{
       position: fixed; inset: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.03));
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(255, 0, 85, 0.02), rgba(0, 240, 255, 0.01), rgba(0, 255, 136, 0.02));
       background-size: 100% 3px, 6px 100%;
-      z-index: 1; pointer-events: none; opacity: 0.6;
+      z-index: 1; pointer-events: none; opacity: 0.55;
+    }}
+
+    .ambient-vignette {{
+      position: fixed; inset: 0;
+      background: radial-gradient(circle at center, transparent 40%, rgba(2, 4, 9, 0.85) 90%, #020409 100%);
+      z-index: 1; pointer-events: none;
     }}
 
     header {{
       position: sticky; top: 0;
-      backdrop-filter: blur(24px);
-      background: rgba(4, 5, 10, 0.85);
+      backdrop-filter: blur(28px);
+      background: rgba(2, 4, 9, 0.88);
       border-bottom: 1px solid var(--border-line);
       z-index: 100;
       padding: 14px 36px;
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 14px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 4px 35px rgba(0, 0, 0, 0.85), 0 1px 0 rgba(0, 240, 255, 0.2);
     }}
     .brand {{ display: flex; align-items: center; gap: 14px; cursor: pointer; }}
     .brand h1 {{
       font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900;
       letter-spacing: 3px;
-      background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 60%, var(--accent-red) 100%);
+      background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 50%, var(--accent-red) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+      text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
     }}
     .brand span {{
       font-family: 'Orbitron', monospace; font-size: 10.5px; font-weight: 700;
-      color: var(--accent-gold); background: rgba(255, 215, 0, 0.1);
-      padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(255, 215, 0, 0.3);
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+      color: var(--accent-gold); background: rgba(255, 215, 0, 0.12);
+      padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(255, 215, 0, 0.35);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
     }}
 
     .nav-tabs {{ display: flex; gap: 6px; flex-wrap: wrap; }}
@@ -98,9 +104,9 @@ html_content = f"""<!DOCTYPE html>
     }}
     .tab-btn:hover {{ color: #fff; background: rgba(0, 240, 255, 0.08); text-shadow: 0 0 8px var(--accent-cyan); }}
     .tab-btn.active {{
-      color: #fff; background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 85, 0.2));
+      color: #fff; background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(255, 0, 85, 0.25));
       border: 1px solid var(--accent-cyan);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+      box-shadow: 0 0 22px rgba(0, 240, 255, 0.4);
     }}
 
     .nav-actions {{ display: flex; gap: 10px; align-items: center; }}
@@ -113,12 +119,12 @@ html_content = f"""<!DOCTYPE html>
       background: linear-gradient(135deg, var(--accent-red), #b8003c);
       color: #fff; border: none; box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
     }}
-    .btn-primary:hover {{ transform: translateY(-2px); box-shadow: 0 0 25px rgba(255, 0, 85, 0.7); }}
+    .btn-primary:hover {{ transform: translateY(-2px); box-shadow: 0 0 28px rgba(255, 0, 85, 0.7); }}
     .btn-secondary {{
       background: rgba(0, 240, 255, 0.05); color: var(--text-main);
       border: 1px solid var(--border-line);
     }}
-    .btn-secondary:hover {{ background: rgba(0, 240, 255, 0.12); border-color: var(--accent-cyan); }}
+    .btn-secondary:hover {{ background: rgba(0, 240, 255, 0.14); border-color: var(--accent-cyan); }}
 
     main {{ position: relative; z-index: 10; max-width: 1320px; margin: 0 auto; padding: 36px 24px 100px; }}
     .tab-content {{ display: none; }}
@@ -135,14 +141,14 @@ html_content = f"""<!DOCTYPE html>
       color: var(--accent-cyan); background: rgba(0, 240, 255, 0.1);
       padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(0, 240, 255, 0.4);
       margin-bottom: 16px; letter-spacing: 2px;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.3);
     }}
     .hero h2 {{
-      font-family: 'Cinzel', serif; font-size: clamp(28px, 4vw, 46px); font-weight: 900;
+      font-family: 'Cinzel', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 900;
       letter-spacing: 2px; margin-bottom: 14px;
-      background: linear-gradient(135deg, #ffffff 20%, var(--accent-cyan) 70%, var(--accent-red) 100%);
+      background: linear-gradient(135deg, #ffffff 20%, var(--accent-cyan) 65%, var(--accent-red) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
+      text-shadow: 0 0 40px rgba(0, 240, 255, 0.35);
     }}
     .hero p {{ max-width: 820px; margin: 0 auto; color: var(--text-muted); font-size: 15.5px; }}
 
@@ -150,35 +156,42 @@ html_content = f"""<!DOCTYPE html>
     
     .card {{
       background: var(--bg-card); border: 1px solid var(--border-line);
-      border-radius: 16px; padding: 26px; backdrop-filter: blur(16px);
+      border-radius: 16px; padding: 26px; backdrop-filter: blur(18px);
       transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); position: relative; overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }}
+    .card::before {{
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+      transition: all 0.5s ease;
+    }}
+    .card:hover::before {{ left: 100%; }}
     .card:hover {{
       border-color: var(--accent-cyan); transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 240, 255, 0.25);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(0, 240, 255, 0.3);
     }}
-    .card-icon {{ font-size: 32px; margin-bottom: 14px; filter: drop-shadow(0 0 10px var(--accent-cyan)); }}
+    .card-icon {{ font-size: 34px; margin-bottom: 14px; filter: drop-shadow(0 0 12px var(--accent-cyan)); }}
     .card h3 {{ font-size: 19px; font-weight: 800; margin-bottom: 8px; color: #fff; letter-spacing: 0.5px; }}
     .card p {{ color: var(--text-muted); font-size: 14px; line-height: 1.65; }}
 
     pre {{
-      background: rgba(2, 4, 8, 0.9); border: 1px solid rgba(0, 240, 255, 0.2);
+      background: rgba(2, 4, 8, 0.95); border: 1px solid rgba(0, 240, 255, 0.22);
       border-radius: 8px; padding: 12px 16px; font-family: 'JetBrains Mono', monospace;
       font-size: 12px; color: var(--accent-cyan); overflow-x: auto; margin: 12px 0;
-      box-shadow: inset 0 0 12px rgba(0, 240, 255, 0.05);
+      box-shadow: inset 0 0 14px rgba(0, 240, 255, 0.06);
     }}
 
     .terminal-hud {{
-      background: rgba(4, 6, 12, 0.9); border: 1px solid rgba(0, 240, 255, 0.3);
+      background: rgba(4, 7, 14, 0.92); border: 1px solid rgba(0, 240, 255, 0.3);
       border-radius: 12px; padding: 16px 20px; font-family: 'JetBrains Mono', monospace;
       font-size: 12px; color: var(--accent-neon-green); margin: 30px 0;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.12);
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
     }}
     .terminal-log {{ display: flex; align-items: center; gap: 10px; }}
     .status-pulse {{
       width: 10px; height: 10px; border-radius: 50%; background: var(--accent-neon-green);
-      box-shadow: 0 0 10px var(--accent-neon-green); animation: pulse 1.5s infinite;
+      box-shadow: 0 0 12px var(--accent-neon-green); animation: pulse 1.5s infinite;
     }}
     @keyframes pulse {{ 0%, 100% {{ opacity: 1; }} 50% {{ opacity: 0.3; }} }}
 
@@ -187,13 +200,13 @@ html_content = f"""<!DOCTYPE html>
       gap: 10px; margin-top: 20px;
     }}
     .council-pill {{
-      background: rgba(0, 240, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.15);
+      background: rgba(0, 240, 255, 0.04); border: 1px solid rgba(0, 240, 255, 0.15);
       border-radius: 8px; padding: 10px 12px; font-family: 'JetBrains Mono', monospace;
       font-size: 11px; transition: all 0.2s ease; cursor: default;
     }}
     .council-pill:hover {{
-      background: rgba(0, 240, 255, 0.12); border-color: var(--accent-cyan);
-      color: #fff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+      background: rgba(0, 240, 255, 0.14); border-color: var(--accent-cyan);
+      color: #fff; box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
       transform: translateY(-2px);
     }}
 
@@ -214,10 +227,10 @@ html_content = f"""<!DOCTYPE html>
 
     .audio-dock {{
       position: fixed; bottom: 24px; right: 24px; z-index: 150;
-      background: rgba(10, 14, 24, 0.92); border: 1px solid var(--accent-cyan);
-      backdrop-filter: blur(20px); border-radius: 16px; padding: 12px 18px;
+      background: rgba(8, 12, 22, 0.94); border: 1px solid var(--accent-cyan);
+      backdrop-filter: blur(22px); border-radius: 16px; padding: 12px 18px;
       display: flex; align-items: center; gap: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(0, 240, 255, 0.3);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.85), 0 0 25px rgba(0, 240, 255, 0.35);
     }}
     .eq-bars {{ display: flex; align-items: flex-end; gap: 3px; height: 20px; }}
     .eq-bar {{ width: 3px; background: var(--accent-cyan); border-radius: 1px; animation: eqWave 0.8s ease-in-out infinite alternate; }}
@@ -231,7 +244,7 @@ html_content = f"""<!DOCTYPE html>
       background: var(--accent-cyan); color: #020408; border: none;
       width: 32px; height: 32px; border-radius: 50%; font-weight: 900;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 12px var(--accent-cyan); transition: transform 0.2s;
+      box-shadow: 0 0 14px var(--accent-cyan); transition: transform 0.2s;
     }}
     .play-btn:hover {{ transform: scale(1.1); }}
 
@@ -239,12 +252,12 @@ html_content = f"""<!DOCTYPE html>
     .track-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 24px; }}
     .track-card {{
       background: var(--bg-card); border: 1px solid var(--border-line);
-      border-radius: 14px; padding: 18px; backdrop-filter: blur(12px);
+      border-radius: 14px; padding: 18px; backdrop-filter: blur(14px);
       transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;
     }}
     .track-card:hover {{
       border-color: var(--accent-cyan); transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.2);
+      box-shadow: 0 12px 28px rgba(0, 240, 255, 0.25);
     }}
     .track-header {{ display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }}
     .track-avatar {{
@@ -271,13 +284,13 @@ html_content = f"""<!DOCTYPE html>
     }}
     .filter-pill.active {{
       background: var(--accent-red); color: #fff; border-color: var(--accent-red);
-      box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
+      box-shadow: 0 0 14px rgba(255, 0, 85, 0.5);
     }}
     .search-input {{
       background: var(--bg-card); border: 1px solid var(--border-line);
       color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 13px; width: 280px;
     }}
-    .search-input:focus {{ outline: none; border-color: var(--accent-cyan); box-shadow: 0 0 12px rgba(0, 240, 255, 0.3); }}
+    .search-input:focus {{ outline: none; border-color: var(--accent-cyan); box-shadow: 0 0 14px rgba(0, 240, 255, 0.35); }}
 
     .nft-grid {{
       display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -287,7 +300,7 @@ html_content = f"""<!DOCTYPE html>
       background: var(--bg-card); border: 1px solid var(--border-line);
       border-radius: 14px; overflow: hidden; cursor: pointer; transition: all 0.3s;
     }}
-    .nft-card:hover {{ transform: translateY(-6px); border-color: var(--accent-cyan); box-shadow: 0 10px 25px rgba(0, 240, 255, 0.25); }}
+    .nft-card:hover {{ transform: translateY(-6px); border-color: var(--accent-cyan); box-shadow: 0 12px 28px rgba(0, 240, 255, 0.3); }}
     .card-img-wrap {{ height: 260px; position: relative; }}
     .rarity-tag {{
       position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 800;
@@ -308,13 +321,13 @@ html_content = f"""<!DOCTYPE html>
     .token-id {{ font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 700; color: var(--accent-red); }}
 
     .modal-overlay {{
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88);
-      backdrop-filter: blur(16px); z-index: 200; align-items: center; justify-content: center;
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(18px); z-index: 200; align-items: center; justify-content: center;
     }}
     .modal-card {{
-      background: #0d101c; border: 1px solid var(--accent-cyan);
+      background: #090d18; border: 1px solid var(--accent-cyan);
       border-radius: 16px; width: 90%; max-width: 700px; padding: 26px;
-      position: relative; box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+      position: relative; box-shadow: 0 0 45px rgba(0, 240, 255, 0.35);
     }}
     .modal-close {{
       position: absolute; top: 16px; right: 20px; background: transparent;
@@ -324,13 +337,14 @@ html_content = f"""<!DOCTYPE html>
     footer {{
       border-top: 1px solid var(--border-line); padding: 35px; text-align: center;
       color: var(--text-muted); font-size: 13.5px; position: relative; z-index: 10;
-      background: rgba(4, 5, 10, 0.9);
+      background: rgba(2, 4, 9, 0.95);
     }}
   </style>
 </head>
 <body>
   <canvas id="webgl-bg"></canvas>
   <div class="cyber-scanlines"></div>
+  <div class="ambient-vignette"></div>
 
   <header>
     <div class="brand" onclick="location.reload()">
@@ -459,7 +473,7 @@ html_content = f"""<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- TAB 3: CYBER SOUND & MEDIA (EXPANDED PLAYLIST) -->
+    <!-- TAB 3: CYBER SOUND & MEDIA -->
     <section class="tab-content" id="tab-media">
       <div class="hero">
         <div class="hero-badge">OFFICIAL SOUNDTRACK & MULTIMEDIA VAULT</div>
@@ -468,7 +482,6 @@ html_content = f"""<!DOCTYPE html>
       </div>
 
       <div class="track-grid">
-        <!-- 1. Gravity Lock -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -486,7 +499,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 2. Dreaming in the Sky -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -504,7 +516,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 3. Prodigal Son -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -522,7 +533,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 4. High Voltage Ronin -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -540,7 +550,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 5. Chimera Flow -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -558,7 +567,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 6. Hellfire Furnace -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -576,7 +584,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 7. Chrome Heart Syndrome -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -594,7 +601,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 8. Quantize These Lightyears -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -612,7 +618,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 9. Quillan's Back -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -630,7 +635,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 10. Ronin Bushido -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -648,7 +652,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 11. Coder Music -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -666,7 +669,6 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 12. Agent Ronin -->
         <div class="track-card">
           <div>
             <div class="track-header">
@@ -838,49 +840,123 @@ html_content = f"""<!DOCTYPE html>
   </footer>
 
   <script>
-    // ─── THREE.JS 3D HOLOGRAPHIC BACKGROUND & PARTICLE FIELD ─────────────────
+    // ─── HIGH-FIDELITY 3D QUANTUM HOLOGRAPHIC SCENE (CINEMATIC SHADER & GEOMETRY) ───
     const bgCanvas = document.getElementById('webgl-bg');
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 30;
+    scene.fog = new THREE.FogExp2(0x020409, 0.02);
 
-    const renderer = new THREE.WebGLRenderer({{ canvas: bgCanvas, alpha: true, antialias: true }});
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 28;
+
+    const renderer = new THREE.WebGLRenderer({{ canvas: bgCanvas, alpha: true, antialias: true, powerPreference: 'high-performance' }});
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.3;
 
-    const coreGeo = new THREE.IcosahedronGeometry(7, 1);
-    const coreMat = new THREE.MeshBasicMaterial({{
+    const rootGroup = new THREE.Group();
+    scene.add(rootGroup);
+
+    // 1. Central Plasma Core (Nested Polyhedral Geometry)
+    const coreMat1 = new THREE.MeshBasicMaterial({{
       color: 0x00f0ff,
       wireframe: true,
       transparent: true,
-      opacity: 0.25
+      opacity: 0.45
     }});
-    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-    scene.add(coreMesh);
+    const coreMesh1 = new THREE.Mesh(new THREE.IcosahedronGeometry(5.2, 2), coreMat1);
+    rootGroup.add(coreMesh1);
 
-    const ringGeo = new THREE.TorusGeometry(12, 0.1, 16, 100);
-    const ringMat = new THREE.MeshBasicMaterial({{ color: 0xff0055, wireframe: true, transparent: true, opacity: 0.35 }});
-    const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-    ringMesh.rotation.x = Math.PI / 3;
-    scene.add(ringMesh);
+    const coreMat2 = new THREE.MeshBasicMaterial({{
+      color: 0xff0055,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.3
+    }});
+    const coreMesh2 = new THREE.Mesh(new THREE.DodecahedronGeometry(6.4, 1), coreMat2);
+    rootGroup.add(coreMesh2);
 
-    const partCount = 1500;
+    // 2. 9-Vector Torus Knot Accelerator Field
+    const knotGeo = new THREE.TorusKnotGeometry(9.5, 0.25, 120, 16, 2, 3);
+    const knotMat = new THREE.MeshBasicMaterial({{
+      color: 0xffd700,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.35
+    }});
+    const knotMesh = new THREE.Mesh(knotGeo, knotMat);
+    rootGroup.add(knotMesh);
+
+    // 3. Multi-Tiered Gimbal Quantum Rings
+    const ringGroup = new THREE.Group();
+    rootGroup.add(ringGroup);
+
+    const ring1 = new THREE.Mesh(
+      new THREE.TorusGeometry(13.5, 0.08, 16, 120),
+      new THREE.MeshBasicMaterial({{ color: 0x00f0ff, transparent: true, opacity: 0.5 }})
+    );
+    ring1.rotation.x = Math.PI / 3;
+    ringGroup.add(ring1);
+
+    const ring2 = new THREE.Mesh(
+      new THREE.TorusGeometry(16.5, 0.06, 16, 120),
+      new THREE.MeshBasicMaterial({{ color: 0xa855f7, transparent: true, opacity: 0.4 }})
+    );
+    ring2.rotation.y = Math.PI / 4;
+    ringGroup.add(ring2);
+
+    const ring3 = new THREE.Mesh(
+      new THREE.TorusGeometry(19.5, 0.05, 16, 120),
+      new THREE.MeshBasicMaterial({{ color: 0x00ff88, transparent: true, opacity: 0.35 }})
+    );
+    ring3.rotation.z = Math.PI / 6;
+    ringGroup.add(ring3);
+
+    // 4. Volumetric Quantum Particle Nebula (3,500 Starfield Nodes)
+    const partCount = 3500;
     const partGeo = new THREE.BufferGeometry();
     const posArr = new Float32Array(partCount * 3);
-    for (let i = 0; i < partCount * 3; i++) {{
-      posArr[i] = (Math.random() - 0.5) * 120;
+    const colorArr = new Float32Array(partCount * 3);
+    
+    const colorPalette = [
+      new THREE.Color(0x00f0ff), // Cyan
+      new THREE.Color(0xff0055), // Crimson
+      new THREE.Color(0xffd700), // Gold
+      new THREE.Color(0x9d4edd), // Purple
+      new THREE.Color(0x00ff88)  // Emerald
+    ];
+
+    for (let i = 0; i < partCount; i++) {{
+      const i3 = i * 3;
+      const radius = 12 + Math.random() * 45;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos((Math.random() * 2) - 1);
+
+      posArr[i3] = radius * Math.sin(phi) * Math.cos(theta);
+      posArr[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+      posArr[i3 + 2] = radius * Math.cos(phi);
+
+      const col = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+      colorArr[i3] = col.r;
+      colorArr[i3 + 1] = col.g;
+      colorArr[i3 + 2] = col.b;
     }}
+
     partGeo.setAttribute('position', new THREE.BufferAttribute(posArr, 3));
+    partGeo.setAttribute('color', new THREE.BufferAttribute(colorArr, 3));
+
     const partMat = new THREE.PointsMaterial({{
-      size: 0.6,
-      color: 0x00f0ff,
+      size: 0.45,
+      vertexColors: true,
       transparent: true,
-      opacity: 0.6
+      opacity: 0.75,
+      blending: THREE.AdditiveBlending
     }});
     const particleField = new THREE.Points(partGeo, partMat);
     scene.add(particleField);
 
-    let mouseX = 0, mouseY = 0;
+    // Mouse Parallax & Smooth Camera Motion
+    let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
     window.addEventListener('mousemove', (e) => {{
       mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
       mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -892,21 +968,44 @@ html_content = f"""<!DOCTYPE html>
       renderer.setSize(window.innerWidth, window.innerHeight);
     }});
 
-    function animate3D() {{
-      requestAnimationFrame(animate3D);
-      coreMesh.rotation.x += 0.003;
-      coreMesh.rotation.y += 0.005;
-      ringMesh.rotation.z += 0.004;
+    let clock = new THREE.Clock();
 
-      particleField.rotation.y += 0.0008;
+    function render3DScene() {{
+      requestAnimationFrame(render3DScene);
+      const elapsedTime = clock.getElapsedTime();
 
-      camera.position.x += (mouseX * 4 - camera.position.x) * 0.05;
-      camera.position.y += (-mouseY * 4 - camera.position.y) * 0.05;
-      camera.lookAt(scene.position);
+      // Differential Rotations for High-End Motion Aesthetics
+      coreMesh1.rotation.x = elapsedTime * 0.15;
+      coreMesh1.rotation.y = elapsedTime * 0.22;
+
+      coreMesh2.rotation.y = -elapsedTime * 0.18;
+      coreMesh2.rotation.z = elapsedTime * 0.12;
+
+      knotMesh.rotation.x = elapsedTime * 0.1;
+      knotMesh.rotation.y = elapsedTime * 0.15;
+      knotMesh.rotation.z = -elapsedTime * 0.08;
+
+      ring1.rotation.x += 0.003;
+      ring1.rotation.y += 0.002;
+      ring2.rotation.y += 0.004;
+      ring2.rotation.z += 0.003;
+      ring3.rotation.z += 0.002;
+      ring3.rotation.x += 0.004;
+
+      particleField.rotation.y = elapsedTime * 0.02;
+      particleField.rotation.x = elapsedTime * 0.01;
+
+      // Smooth Camera Parallax Damping
+      targetX += (mouseX * 5 - targetX) * 0.04;
+      targetY += (-mouseY * 4 - targetY) * 0.04;
+
+      camera.position.x = targetX;
+      camera.position.y = targetY;
+      camera.lookAt(0, 0, 0);
 
       renderer.render(scene, camera);
     }}
-    animate3D();
+    render3DScene();
 
     // ─── AUDIO PLAYER LOGIC ──────────────────────────────────────────────────
     const audioPlayer = document.getElementById('globalAudioPlayer');
@@ -975,7 +1074,7 @@ html_content = f"""<!DOCTYPE html>
         <div class="nft-card" onclick="openModal(${{item.id}})">
           <div class="card-img-wrap">
             <div class="rarity-tag rarity-${{item.rarity}}">${{item.rarity}}</div>
-            <div style="width: 100%; height: 100%; background: radial-gradient(circle at center, #1a1e36 0%, #050711 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(0, 240, 255, 0.2); position: relative; overflow: hidden;">
+            <div style="width: 100%; height: 100%; background: radial-gradient(circle at center, #131a30 0%, #04060e 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(0, 240, 255, 0.2); position: relative; overflow: hidden;">
               <div style="font-size: 38px; margin-bottom: 8px; filter: drop-shadow(0 0 14px var(--accent-cyan));">⚔️</div>
               <div style="font-family: 'JetBrains Mono'; font-size: 13px; font-weight: 700; color: var(--accent-cyan); letter-spacing: 1px;">SOVEREIGN #${{item.id.toString().padStart(3, '0')}}</div>
               <div style="font-size: 10px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;">${{item.council.split(' ')[0]}}</div>
@@ -1091,4 +1190,4 @@ with open(docs_dir / "index.html", "w", encoding="utf-8") as f:
 with open(Path(r"C:\02_QUILLAN\index.html"), "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("[SUCCESS] Grand Sovereign Portal with 13 Tracks and Responsive 3D NN Visualizer generated!")
+print("[SUCCESS] Grand Sovereign Portal with Cinematic 3D Scene rendered!")
