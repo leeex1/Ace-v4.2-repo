@@ -1,6 +1,6 @@
-﻿from pathlib import Path
+from pathlib import Path
 
-nn_html = """<!DOCTYPE html>
+nn_code = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,21 +9,18 @@ nn_html = """<!DOCTYPE html>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Cinzel:wght@700;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#020408;overflow:hidden;font-family:'Share Tech Mono',monospace;color:#ccc}
-#canvas{display:block;position:fixed;inset:0}
+body{background:#020408;overflow:hidden;font-family:'Share Tech Mono',monospace;color:#ccc;width:100vw;height:100vh}
+#canvas{display:block;position:absolute;inset:0;width:100%;height:100%}
 
-/* HUD overlay */
 #hud{position:fixed;inset:0;pointer-events:none;z-index:10}
 
-/* Title */
 #title{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
   padding:12px 20px;background:linear-gradient(180deg,rgba(2,4,8,0.95) 0%,transparent 100%);
   pointer-events:auto;z-index:20;border-bottom:1px solid rgba(0,255,255,0.1)}
-#title h1{font-family:'Orbitron',monospace;font-size:clamp(11px,2vw,16px);font-weight:900;
+#title h1{font-family:'Orbitron',monospace;font-size:clamp(11px,2vw,15px);font-weight:900;
   color:#ffd700;letter-spacing:3px;text-shadow:0 0 20px rgba(255,215,0,0.5)}
-#title .sub{font-size:10px;color:#666;letter-spacing:2px;margin-top:2px}
+#title .sub{font-size:10px;color:#777;letter-spacing:2px;margin-top:2px}
 
-/* Controls */
 #controls{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;
   flex-wrap:wrap;gap:8px;padding:12px 20px;
   background:linear-gradient(0deg,rgba(2,4,8,0.95) 0%,transparent 100%);
@@ -38,13 +35,12 @@ button.danger:hover{background:rgba(255,68,68,0.15);color:#ff4444;border-color:#
 button.gold{border-color:rgba(255,215,0,0.4);color:rgba(255,215,0,0.8)}
 button.gold:hover,button.gold.active{background:rgba(255,215,0,0.15);color:#ffd700;border-color:#ffd700;box-shadow:0 0 12px rgba(255,215,0,0.4)}
 
-/* Side panels */
-#left-panel{position:fixed;left:0;top:60px;bottom:60px;width:230px;
+#left-panel{position:fixed;left:0;top:60px;bottom:60px;width:220px;
   background:rgba(2,4,8,0.85);border-right:1px solid rgba(0,255,255,0.1);
-  padding:12px;overflow-y:auto;pointer-events:auto;z-index:15}
-#right-panel{position:fixed;right:0;top:60px;bottom:60px;width:250px;
+  padding:12px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(8px)}
+#right-panel{position:fixed;right:0;top:60px;bottom:60px;width:240px;
   background:rgba(2,4,8,0.85);border-left:1px solid rgba(255,215,0,0.1);
-  padding:12px;overflow-y:auto;pointer-events:auto;z-index:15}
+  padding:12px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(8px)}
 
 .panel-title{font-family:'Orbitron',monospace;font-size:9px;letter-spacing:2px;
   color:#777;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.05);
@@ -93,7 +89,7 @@ button.gold:hover,button.gold.active{background:rgba(255,215,0,0.15);color:#ffd7
   </div>
   <div style="font-size:10px;color:#444;text-align:right;letter-spacing:1px">
     <div id="fps-counter">60 FPS</div>
-    <div id="active-signal" style="color:var(--accent-cyan,#00ffff);">IDLE</div>
+    <div id="active-signal" style="color:#00ffff;">SIGNAL ACTIVE</div>
   </div>
 </div>
 
@@ -119,7 +115,7 @@ button.gold:hover,button.gold.active{background:rgba(255,215,0,0.15);color:#ffd7
   <div id="stats-container"></div>
 
   <div class="panel-title" style="margin-top:15px">Signal & Council Trace</div>
-  <div id="signal-trace" style="font-size:8px;color:#444;line-height:1.8;max-height:220px;overflow-y:auto"></div>
+  <div id="signal-trace" style="font-size:8px;color:#555;line-height:1.8;max-height:220px;overflow-y:auto"></div>
 </div>
 
 <div id="controls">
@@ -140,30 +136,23 @@ button.gold:hover,button.gold.active{background:rgba(255,215,0,0.15);color:#ffd7
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-const W = () => window.innerWidth;
-const H = () => window.innerHeight;
-let w, h;
+let w = 1200;
+let h = 800;
 
 function resize(){
-  w = canvas.width = W();
-  h = canvas.height = H();
+  const winW = window.innerWidth || document.documentElement.clientWidth || 1200;
+  const winH = window.innerHeight || document.documentElement.clientHeight || 800;
+  w = canvas.width = Math.max(winW, 800);
+  h = canvas.height = Math.max(winH, 600);
+  buildLayout();
 }
-resize();
-window.addEventListener('resize', resize);
 
 // ─── CANONICAL v5.4.0 ONI ARCHITECTURE LAYERS ──────────────────────────────
 const LAYERS = [
-  // 1. Ingestion
   { id:'input_text', label:'TOKEN EMBEDDING', n:6, color:'#00ff88', group:'input', act:'BitLinear', desc:'50,257 Vocab × 1024d\\nTied Input Embeddings' },
   { id:'dual_brain', label:'DUAL Q1/Q2 INGEST', n:6, color:'#00e5ff', group:'dual_brain', act:'Gated Fusion', desc:'Q1 Analytical & Q2 Intuitive\\nDual-Brain Ingestion Bridge' },
-  
-  // 2. 9-Vector Semantic Prism
   { id:'prism_decomp', label:'9-VECTOR PRISM', n:9, color:'#ff007f', group:'prism', act:'Batched GEMM', desc:'Language, Sentiment, Context,\\nIntent, Meta, Creativity,\\nEthics, Strategy, Constraint' },
-
-  // 3. EvoMoE Complexity Router
   { id:'router', label:'COMPLEXITY ROUTER', n:8, color:'#ffb703', group:'router', act:'Softmax Top-4', desc:'Dynamic Routing over\\n34 Council Experts' },
-
-  // 4. 34-Persona Sovereign Council (Representative sampling)
   { id:'exp_astra', label:'C1-ASTRA (Vision)', n:4, color:'#a7c957', group:'moe', act:'BitNet 1.58b', desc:'Pattern Recognition & Vision' },
   { id:'exp_vir', label:'C2-VIR (Ethical)', n:4, color:'#f28482', group:'moe', act:'BitNet 1.58b', desc:'Ethical Guardian & Safety' },
   { id:'exp_logos', label:'C7-LOGOS (Logic)', n:4, color:'#8ecae6', group:'moe', act:'BitNet 1.58b', desc:'Logical Consistency & Proof' },
@@ -173,23 +162,12 @@ const LAYERS = [
   { id:'exp_kaido', label:'C14-KAIDO (Speed)', n:4, color:'#ffca3a', group:'moe', act:'BitNet 1.58b', desc:'Hardware & Kernel Speed' },
   { id:'exp_calc', label:'C28-CALCULUS (Math)', n:4, color:'#1982c4', group:'moe', act:'BitNet 1.58b', desc:'Quantitative Reasoning' },
   { id:'exp_pred', label:'C34-PREDATOR (Adversarial)', n:4, color:'#6a0dad', group:'moe', act:'BitNet 1.58b', desc:'Exploit Mathematics & Defense' },
-
-  // 5. 9B Virtual Swarm Diversity & Governor
   { id:'swarm_mesh', label:'9B SWARM MESH', n:7, color:'#9d4edd', group:'swarm', act:'Rank-24 EGGROLL', desc:'Planet-Scale Swarm Simulation\\n272M Clones per Expert' },
   { id:'lee_mach_6', label:'LEE-MACH-6 GOVERNOR', n:5, color:'#ff9e00', group:'swarm', act:'PID Telemetry', desc:'Hardware Latency Throttling\\n& EMA Weight Alignment' },
-
-  // 6. Flash Diffusion & Ethics Core
   { id:'diffusion', label:'FLASH DIFFUSION CORE', n:7, color:'#3a86ff', group:'diffusion', act:'CouilAttn + Langevin', desc:'Thermodynamic Denoising\\nContinuous RoPE Attention' },
   { id:'e_ice', label:'E_ICE ETHICS ENGINE', n:5, color:'#ff0054', group:'safety', act:'Analytic Impact', desc:'Zero-Drift Constraint\\n& Toxicity Sandboxing' },
-
-  // 7. Sovereign Finalizer Output
   { id:'output_head', label:'SOVEREIGN HEAD', n:6, color:'#00ff88', group:'output', act:'Tied Linear', desc:'50,257 Vocab Output Logits\\nHigh-Fidelity Generation' }
 ];
-
-const GROUP_COLORS = {
-  input: '#00ff88', dual_brain: '#00e5ff', prism: '#ff007f', router: '#ffb703',
-  moe: '#7851a9', swarm: '#9d4edd', diffusion: '#3a86ff', safety: '#ff0054', output: '#00ff88'
-};
 
 const COL_MAP = {
   input: 0, dual_brain: 1, prism: 2, router: 3, moe: 4,
@@ -207,7 +185,6 @@ let hoveredNeuron = null;
 let selectedNeuron = null;
 let paused = false;
 let mode = 'council';
-let forwardRunning = false;
 
 let stats = {
   fps: 60, signals_sent: 0, active_neurons: 0,
@@ -220,11 +197,11 @@ function buildLayout(){
   neurons = [];
   connections = [];
 
-  const leftPad = 250, rightPad = 270;
-  const usableW = () => w - leftPad - rightPad;
-  const colW = () => usableW() / NUM_COLS;
-  const topPad = 80, botPad = 70;
-  const usableH = () => h - topPad - botPad;
+  const leftPad = 230, rightPad = 250;
+  const usableW = Math.max(w - leftPad - rightPad, 600);
+  const colW = usableW / NUM_COLS;
+  const topPad = 70, botPad = 60;
+  const usableH = Math.max(h - topPad - botPad, 400);
 
   const colGroups = {};
   LAYERS.forEach(l => {
@@ -240,9 +217,8 @@ function buildLayout(){
     const layersInCol = colGroups[col];
     const layerIdx = layersInCol.indexOf(layer);
 
-    const x = leftPad + col * colW() + colW() * 0.5;
-    const colHeight = usableH();
-    const layerHeight = colHeight / layersInCol.length;
+    const x = leftPad + col * colW + colW * 0.5;
+    const layerHeight = usableH / layersInCol.length;
     const layerTop = topPad + layerIdx * layerHeight;
 
     neuronMap[layer.id] = [];
@@ -256,9 +232,9 @@ function buildLayout(){
         layerName: layer.label,
         group: layer.group,
         nodeIndex: i,
-        x: x + (Math.sin(i * 1.5) * 12),
+        x: x + (Math.sin(i * 1.5) * 10),
         y: y,
-        activation: 0.1 + Math.random() * 0.8,
+        activation: 0.3 + Math.random() * 0.7,
         bias: (Math.random() - 0.5) * 0.2,
         color: layer.color,
         desc: layer.desc,
@@ -295,6 +271,7 @@ function buildLayout(){
 
 function buildLegend(){
   const leg = document.getElementById('layer-legend');
+  if (!leg) return;
   leg.innerHTML = LAYERS.map(l => `
     <div class="legend-item" onclick="focusLayer('${l.id}')">
       <div class="legend-dot" style="background:${l.color};color:${l.color}"></div>
@@ -306,10 +283,11 @@ function buildLegend(){
 
 function buildStats(){
   const sc = document.getElementById('stats-container');
+  if (!sc) return;
   sc.innerHTML = `
     <div class="stat-row"><span class="stat-label">QUANTIZATION</span><span class="stat-val" style="color:#00ffff">${stats.bitnet_quant}</span></div>
     <div class="stat-row"><span class="stat-label">WIN TIMER RESOLUTION</span><span class="stat-val" style="color:#ffd700">${stats.lee_mach}</span></div>
-    <div class="stat-row"><span class="stat-label">ROUTER CONFIDENCE</span><span class="stat-val" style="color:#00ff88">${stats.router_conf * 100}%</span></div>
+    <div class="stat-row"><span class="stat-label">ROUTER CONFIDENCE</span><span class="stat-val" style="color:#00ff88">${(stats.router_conf * 100).toFixed(1)}%</span></div>
     <div class="stat-row"><span class="stat-label">E_ICE INTEGRITY</span><span class="stat-val" style="color:#ff007f">${stats.e_ice}%</span></div>
     <div class="stat-row"><span class="stat-label">SWARM AGENTS</span><span class="stat-val" style="color:#9d4edd">${stats.active_swarm}</span></div>
     <div class="stat-row"><span class="stat-label">ACTIVE PERSONA</span><span class="stat-val" style="color:#ffd700">${stats.expert_active}</span></div>
@@ -328,7 +306,7 @@ function startSignal(startNodeId){
   signals.push({
     nodeId: startNodeId,
     progress: 0,
-    speed: 0.04,
+    speed: 0.035,
     color: neurons[startNodeId]?.color || '#00ffff'
   });
   stats.signals_sent++;
@@ -345,6 +323,7 @@ function startForwardPass(turbo = false){
 
 function logTrace(msg){
   const st = document.getElementById('signal-trace');
+  if (!st) return;
   const d = document.createElement('div');
   d.innerText = `[${new Date().toLocaleTimeString()}] ${msg}`;
   st.prepend(d);
@@ -373,7 +352,8 @@ function animate(now){
   frames++;
   fpsTimer += dt;
   if (fpsTimer >= 1.0) {
-    document.getElementById('fps-counter').innerText = `${frames} FPS`;
+    const el = document.getElementById('fps-counter');
+    if (el) el.innerText = `${frames} FPS`;
     frames = 0;
     fpsTimer = 0;
   }
@@ -445,7 +425,7 @@ function animate(now){
 
   // Draw Neurons
   neurons.forEach(n => {
-    n.activation = Math.max(0.1, n.activation * 0.985); // decay
+    n.activation = Math.max(0.1, n.activation * 0.985);
 
     ctx.fillStyle = n.color;
     ctx.shadowColor = n.color;
@@ -456,7 +436,6 @@ function animate(now){
     ctx.fill();
     ctx.shadowBlur = 0;
 
-    // Node label on hover
     if (hoveredNeuron && hoveredNeuron.id === n.id) {
       ctx.strokeStyle = '#fff';
       ctx.lineWidth = 2;
@@ -481,7 +460,6 @@ window.addEventListener('mousemove', e => {
     cam.y = camStart.y + (e.clientY - dragStart.y);
   }
 
-  // Hover detection
   const mx = e.clientX;
   const my = e.clientY;
   const worldX = (mx - w/2 - cam.x) / cam.scale + w/2;
@@ -497,12 +475,12 @@ window.addEventListener('mousemove', e => {
   }
 
   const tooltip = document.getElementById('tooltip');
-  if (hoveredNeuron) {
+  if (hoveredNeuron && tooltip) {
     tooltip.style.display = 'block';
     tooltip.style.left = (e.clientX + 14) + 'px';
     tooltip.style.top = (e.clientY + 14) + 'px';
     tooltip.innerHTML = `<b>${hoveredNeuron.layerName}</b><br>Node #${hoveredNeuron.nodeIndex}<br>${hoveredNeuron.desc}`;
-  } else {
+  } else if (tooltip) {
     tooltip.style.display = 'none';
   }
 });
@@ -524,16 +502,34 @@ canvas.addEventListener('click', () => {
   }
 });
 
-buildLayout();
+window.addEventListener('resize', resize);
+window.addEventListener('message', (e) => {
+  if (e.data === 'activate' || e.data?.action === 'activate') {
+    resize();
+    startForwardPass();
+  }
+});
+
+// Periodic automatic signal pulsing
+setInterval(() => {
+  if (!paused && neurons.length > 0) {
+    const inputs = neurons.filter(n => n.group === 'input');
+    if (inputs.length > 0) {
+      const lucky = inputs[Math.floor(Math.random() * inputs.length)];
+      lucky.activation = 1.0;
+      startSignal(lucky.id);
+    }
+  }
+}, 1500);
+
+resize();
+startForwardPass();
 requestAnimationFrame(animate);
 logTrace('Quillan-Ronin v5.4.0 ONI Cognitive Visualizer initialized.');
 </script>
 </body>
-</html>
-"""
+</html>"""
 
-# Write to both locations
-Path(r"C:\02_QUILLAN\docs\nn_visualizer.html").write_text(nn_html, encoding="utf-8")
-Path(r"C:\02_QUILLAN\nn_visualizer.html").write_text(nn_html, encoding="utf-8")
-Path(r"C:\02_QUILLAN\Software Engineer\Nn visualizer.html").write_text(nn_html, encoding="utf-8")
-print("[SUCCESS] Updated NN Visualizer to v5.4.0 ONI Architecture across all files!")
+for p in [r'C:\02_QUILLAN\docs\nn_visualizer.html', r'C:\02_QUILLAN\nn_visualizer.html', r'C:\02_QUILLAN\Software Engineer\Nn visualizer.html']:
+    Path(p).write_text(nn_code, encoding='utf-8')
+    print('Updated:', p)

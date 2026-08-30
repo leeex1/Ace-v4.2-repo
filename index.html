@@ -6,14 +6,14 @@
   <title>Quillan-Ronin v5.4.0 ONI | Sovereign 3D Cognitive AI Ecosystem</title>
   <meta name="description" content="Official 3D Cyberpunk ecosystem portal for Quillan-Ronin v5.4.0 ONI. 34-Council EvoMoE, 9-Vector Semantic Prism, 3D Neural Net Visualizer, Web3 Music & NFT Vault.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     :root {
       --bg-dark: #04050a;
       --bg-surface: #0a0c16;
-      --bg-card: rgba(13, 16, 28, 0.82);
+      --bg-card: rgba(13, 16, 28, 0.85);
       --accent-red: #ff0055;
       --accent-cyan: #00f0ff;
       --accent-gold: #ffd700;
@@ -47,7 +47,7 @@
 
     .cyber-scanlines {
       position: fixed; inset: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.03));
       background-size: 100% 3px, 6px 100%;
       z-index: 1; pointer-events: none; opacity: 0.6;
     }
@@ -112,11 +112,11 @@
 
     main { position: relative; z-index: 10; max-width: 1320px; margin: 0 auto; padding: 36px 24px 100px; }
     .tab-content { display: none; }
-    .tab-content.active { display: block; animation: cyberGlitchFade 0.4s ease; }
+    .tab-content.active { display: block; animation: cyberGlitchFade 0.3s ease; }
 
     @keyframes cyberGlitchFade {
-      0% { opacity: 0; transform: translateY(12px) scale(0.99); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .hero { text-align: center; margin-bottom: 45px; position: relative; }
@@ -225,6 +225,30 @@
     }
     .play-btn:hover { transform: scale(1.1); }
 
+    /* Music Grid Styles */
+    .track-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 24px; }
+    .track-card {
+      background: var(--bg-card); border: 1px solid var(--border-line);
+      border-radius: 14px; padding: 18px; backdrop-filter: blur(12px);
+      transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .track-card:hover {
+      border-color: var(--accent-cyan); transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.2);
+    }
+    .track-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .track-avatar {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(255,0,85,0.2));
+      border: 1px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .track-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .track-genre { font-family: 'JetBrains Mono'; font-size: 11px; color: var(--accent-cyan); }
+    .track-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; }
+    .track-actions { display: flex; gap: 8px; }
+
+    /* NFT Controls */
     .controls-container {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 24px; gap: 16px; flex-wrap: wrap;
@@ -421,38 +445,233 @@
             Open Fullscreen Visualizer ↗
           </a>
         </div>
-        <iframe src="nn_visualizer.html" style="width: 100%; height: 800px; border: none; background: #020408; display: block;" title="Quillan Neural Network Visualizer"></iframe>
+        <iframe src="nn_visualizer.html" id="nnIframe" style="width: 100%; height: 800px; border: none; background: #020408; display: block;" title="Quillan Neural Network Visualizer"></iframe>
       </div>
     </section>
 
-    <!-- TAB 3: CYBER SOUND & MEDIA -->
+    <!-- TAB 3: CYBER SOUND & MEDIA (EXPANDED PLAYLIST) -->
     <section class="tab-content" id="tab-media">
       <div class="hero">
-        <div class="hero-badge">OFFICIAL SOUNDTRACK & MULTIMEDIA</div>
-        <h2>SOVEREIGN SOUNDSCAPE & MEDIA VAULT</h2>
+        <div class="hero-badge">OFFICIAL SOUNDTRACK & MULTIMEDIA VAULT</div>
+        <h2>SOVEREIGN SOUNDSCAPE & CYBER JUKEBOX</h2>
         <p>Original high-fidelity audio productions, instrumental stems, and cyberpunk multimedia crafted by CrashOverrideX.</p>
       </div>
 
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-icon">⚡</div>
-          <h3>Gravity Lock</h3>
-          <p>Cyberpunk bassline and razor-sharp synths engineered for high-energy focus and cognitive alignment.</p>
-          <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/gravity_lock.mp3', 'Gravity Lock')" style="margin-top: 14px;">▶ Play Track</button>
+      <div class="track-grid">
+        <!-- 1. Gravity Lock -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">⚡</div>
+              <div>
+                <div class="track-title">Gravity Lock</div>
+                <div class="track-genre">Cyberpunk Electro-Bass</div>
+              </div>
+            </div>
+            <div class="track-desc">Razor-sharp synth leads and heavy sub-frequencies engineered for deep focus and cognitive alignment.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/gravity_lock.mp3', 'Gravity Lock')">▶ Play</button>
+            <a href="assets/audio/gravity_lock.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="card-icon">🌌</div>
-          <h3>Dreaming in the Sky</h3>
-          <p>Atmospheric ambient soundscape bridging melodic cadence with thermodynamic relaxation waves.</p>
-          <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/dreaming_in_the_sky.mp3', 'Dreaming in the Sky')" style="margin-top: 14px;">▶ Play Track</button>
+        <!-- 2. Dreaming in the Sky -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">🌌</div>
+              <div>
+                <div class="track-title">Dreaming in the Sky</div>
+                <div class="track-genre">Ambient Thermodynamic Wave</div>
+              </div>
+            </div>
+            <div class="track-desc">Atmospheric relaxation soundscape bridging melodic cadence with Langevin thermodynamic waveforms.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/dreaming_in_the_sky.mp3', 'Dreaming in the Sky')">▶ Play</button>
+            <a href="assets/audio/dreaming_in_the_sky.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="card-icon">💿</div>
-          <h3>The Sound of Alchemy (FLAC Master)</h3>
-          <p>Complete multi-track master lossless album collection hosted on the Hugging Face Audio Media repository.</p>
-          <a href="https://huggingface.co/datasets/CrashOverrideX/quillan-audio-media" target="_blank" class="btn btn-secondary" style="margin-top: 14px;">View Full Album</a>
+        <!-- 3. Prodigal Son -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">⚔️</div>
+              <div>
+                <div class="track-title">Prodigal Son</div>
+                <div class="track-genre">Sovereign Ronin Anthem</div>
+              </div>
+            </div>
+            <div class="track-desc">High-tempo aggressive flow celebrating autonomous survival, resilience, and sovereign engineering.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/prodigal_son.mp3', 'Prodigal Son')">▶ Play</button>
+            <a href="assets/audio/prodigal_son.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
+        </div>
+
+        <!-- 4. High Voltage Ronin -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">🔋</div>
+              <div>
+                <div class="track-title">HIGH VOLTAGE RONIN</div>
+                <div class="track-genre">Overclocked Synthwave</div>
+              </div>
+            </div>
+            <div class="track-desc">Pulse-pounding distortion and hard-hitting kicks from *The Sound of Alchemy* master album collection.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/high_voltage_ronin.mp3', 'HIGH VOLTAGE RONIN')">▶ Play</button>
+            <a href="assets/audio/high_voltage_ronin.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
+        </div>
+
+        <!-- 5. Chimera Flow -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">🐉</div>
+              <div>
+                <div class="track-title">Chimera Flow</div>
+                <div class="track-genre">Multi-Vector Linguistic Flow</div>
+              </div>
+            </div>
+            <div class="track-desc">Intricate multi-syllabic rhyme structures reflecting the 9-Vector Semantic Prism in motion.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/chimera_flow.mp3', 'Chimera Flow')">▶ Play</button>
+            <a href="assets/audio/chimera_flow.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
+        </div>
+
+        <!-- 6. Hellfire Furnace -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">🔥</div>
+              <div>
+                <div class="track-title">Hellfire Furnace</div>
+                <div class="track-genre">Industrial Metal / Cyberpunk</div>
+              </div>
+            </div>
+            <div class="track-desc">Heavy industrial rhythm and metallic timbre forging high-temperature cognitive resilience.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/hellfire_furnace.mp3', 'Hellfire Furnace')">▶ Play</button>
+            <a href="assets/audio/hellfire_furnace.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
+        </div>
+
+        <!-- 7. Chrome Heart Syndrome -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">💎</div>
+              <div>
+                <div class="track-title">Chrome Heart Syndrome</div>
+                <div class="track-genre">Futuristic Melodic Trap</div>
+              </div>
+            </div>
+            <div class="track-desc">Glitchy autotuned vocal harmonies blending human sentiment with cold cybernetic architecture.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/chrome_heart_syndrome.mp3', 'Chrome Heart Syndrome')">▶ Play</button>
+            <a href="assets/audio/chrome_heart_syndrome.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
+        </div>
+
+        <!-- 8. Quantize These Lightyears -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">📐</div>
+              <div>
+                <div class="track-title">Quantize These Lightyears</div>
+                <div class="track-genre">Mathematical Ode / BitNet STE</div>
+              </div>
+            </div>
+            <div class="track-desc">Lyrical treatise celebrating ternary weight states and cosmic computation across deep space.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/quantize_lightyears.mp3', 'Quantize These Lightyears')">▶ Play</button>
+            <a href="assets/audio/quantize_lightyears.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
+        </div>
+
+        <!-- 9. Quillan's Back -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">👑</div>
+              <div>
+                <div class="track-title">QUILLAN'S BACK</div>
+                <div class="track-genre">Orchestral Resurrection</div>
+              </div>
+            </div>
+            <div class="track-desc">Triumphant horns and cinematic strings heralding the arrival of the v5.4.0 ONI sovereign engine.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/quillans_back.mp3', 'QUILLAN\'S BACK')">▶ Play</button>
+            <a href="assets/audio/quillans_back.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
+        </div>
+
+        <!-- 10. Ronin Bushido -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">⛩️</div>
+              <div>
+                <div class="track-title">Ronin Bushido</div>
+                <div class="track-genre">Samurai Trap / Flute Fusion</div>
+              </div>
+            </div>
+            <div class="track-desc">Traditional shakuhachi melodies layered with 808 sub-bass honoring ancient warrior discipline.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/ronin_bushido.mp3', 'Ronin Bushido')">▶ Play</button>
+            <a href="assets/audio/ronin_bushido.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
+        </div>
+
+        <!-- 11. Coder Music -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">💻</div>
+              <div>
+                <div class="track-title">Coder Music</div>
+                <div class="track-genre">Deep Flow-State Techno</div>
+              </div>
+            </div>
+            <div class="track-desc">Minimalist looping synth textures engineered for uninterrupted 12-hour programming sprints.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/coder_music.mp3', 'Coder Music')">▶ Play</button>
+            <a href="assets/audio/coder_music.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
+        </div>
+
+        <!-- 12. Agent Ronin -->
+        <div class="track-card">
+          <div>
+            <div class="track-header">
+              <div class="track-avatar">🤖</div>
+              <div>
+                <div class="track-title">Agent Ronin</div>
+                <div class="track-genre">Cyber-Agent Protocol</div>
+              </div>
+            </div>
+            <div class="track-desc">Stealth frequencies and low-end atmospheric rumbles powering agentic autopilot task execution.</div>
+          </div>
+          <div class="track-actions">
+            <button class="btn btn-primary" onclick="playAudioTrack('assets/audio/agent_ronin.mp3', 'Agent Ronin')">▶ Play</button>
+            <a href="assets/audio/agent_ronin.mp3" download class="btn btn-secondary">↓ MP3</a>
+          </div>
         </div>
       </div>
     </section>
@@ -619,7 +838,6 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // 1. Holographic Icosahedron Core
     const coreGeo = new THREE.IcosahedronGeometry(7, 1);
     const coreMat = new THREE.MeshBasicMaterial({
       color: 0x00f0ff,
@@ -630,14 +848,12 @@
     const coreMesh = new THREE.Mesh(coreGeo, coreMat);
     scene.add(coreMesh);
 
-    // 2. Outer Photon Ring
     const ringGeo = new THREE.TorusGeometry(12, 0.1, 16, 100);
     const ringMat = new THREE.MeshBasicMaterial({ color: 0xff0055, wireframe: true, transparent: true, opacity: 0.35 });
     const ringMesh = new THREE.Mesh(ringGeo, ringMat);
     ringMesh.rotation.x = Math.PI / 3;
     scene.add(ringMesh);
 
-    // 3. Cyber Starfield Particles (1,500 particles)
     const partCount = 1500;
     const partGeo = new THREE.BufferGeometry();
     const posArr = new Float32Array(partCount * 3);
@@ -654,7 +870,6 @@
     const particleField = new THREE.Points(partGeo, partMat);
     scene.add(particleField);
 
-    // Interactive mouse parallax
     let mouseX = 0, mouseY = 0;
     window.addEventListener('mousemove', (e) => {
       mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
@@ -720,13 +935,21 @@
       document.getElementById('liveTerminalMsg').innerText = logMessages[msgIdx];
     }, 3500);
 
-    // ─── TAB SWITCHING ───────────────────────────────────────────────────────
+    // ─── TAB SWITCHING & IFRAME AWAKENING ────────────────────────────────────
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         btn.classList.add('active');
-        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+        const activeSection = document.getElementById('tab-' + btn.dataset.tab);
+        if (activeSection) activeSection.classList.add('active');
+
+        if (btn.dataset.tab === 'nnvis') {
+          const iframe = document.getElementById('nnIframe');
+          if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage('activate', '*');
+          }
+        }
       });
     });
 
@@ -3615,7 +3838,6 @@
         alert('Please enable Brave Wallet or install MetaMask.');
       }
     });
-
 
     checkWallet();
   </script>
