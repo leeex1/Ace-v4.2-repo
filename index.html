@@ -3394,9 +3394,11 @@ Edition: #173/173",
         <div class="nft-card" onclick="openModal(${item.id})">
           <div class="card-img-wrap">
             <div class="rarity-tag rarity-${item.rarity}">${item.rarity}</div>
-            <img src="${item.image}" alt="${item.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #181828, #0a0a14); align-items: center; justify-content: center; font-family: 'JetBrains Mono'; font-size: 13px; color: var(--accent-red);">
-              [ARTWORK #${item.id}]
+            <div style="width: 100%; height: 100%; background: radial-gradient(circle at center, #1a1a2e 0%, #07070f 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(233, 69, 96, 0.2); position: relative; overflow: hidden;">
+              <div style="font-size: 38px; margin-bottom: 8px; filter: drop-shadow(0 0 12px var(--accent-red));">⚔️</div>
+              <div style="font-family: 'JetBrains Mono'; font-size: 13px; font-weight: 700; color: var(--accent-cyan); letter-spacing: 1px;">SOVEREIGN #${item.id.toString().padStart(3, '0')}</div>
+              <div style="font-size: 10px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;">${item.council.split(' ')[0]}</div>
+              <div style="position: absolute; bottom: 8px; font-size: 9px; color: var(--accent-gold); background: rgba(0,0,0,0.6); padding: 2px 8px; border-radius: 10px; border: 1px solid rgba(255,183,3,0.3);">🔒 VAULT SEALED</div>
             </div>
           </div>
           <div class="card-body">

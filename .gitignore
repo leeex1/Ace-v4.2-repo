@@ -118,3 +118,19 @@ soulframe*
 *nft_design*
 *NFT*
 
+# NFT Private Media & Unminted Assets
+docs/assets/nft_images/
+exports/opensea_drop_bundle/
+06_Media/images/NFT designs/
+06_Media/
+exports/
+*.arrow
+checkpoints/
+*.pt
+*.pth
+*.bin
+*.webp
+*.png
+*.jpg
+node_modules/
+__pycache__/
