@@ -1065,92 +1065,157 @@
 
 
     
-    <!-- TAB: INTERACTIVE SHADERS & 3D CODE DEMOS -->
+    
+    <!-- TAB: INTERACTIVE SHADERS & 3D CODE DEMOS (13 STITCH SIMULATIONS) -->
     <section class="tab-content" id="tab-demos">
       <div class="hero">
-        <div class="hero-badge" style="color: var(--accent-neon-green); border-color: var(--accent-neon-green);">LIVE WEBGL SHADERS & 3D SIMULATIONS</div>
-        <h2 style="background: linear-gradient(135deg, #fff, var(--accent-neon-green), var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">⚡ INTERACTIVE CODE & PHYSICS LAB</h2>
+        <div class="hero-badge" style="color: var(--accent-neon-green); border-color: var(--accent-neon-green);">ALL 13 STITCH GLSL SHADERS & THREE.JS 3D SCENES</div>
+        <h2 style="background: linear-gradient(135deg, #fff, var(--accent-neon-green), var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">⚡ INTERACTIVE SHADER & 3D CODE LAB</h2>
         <p style="max-width: 820px; margin: 0 auto 20px; font-size: 14.5px; color: var(--text-main);">
-          Real-time procedural GLSL raymarching shaders, 34-node gravitational particle dynamics, and Three.js cognitive field simulations extracted from the Quillan-Ronin sovereign architecture.
+          13 real-time procedural GLSL raymarching shaders, 3D Three.js particle dynamics, and neural field simulations extracted from the Quillan-Ronin sovereign architecture. Click any simulation below to load it instantly in the live viewport:
         </p>
       </div>
 
-      <!-- Demo Selector Grid -->
-      <div class="grid-3" style="gap: 16px; margin-bottom: 28px;">
-        
-        <div class="card demo-card" onclick="loadDemo('dual_brain_swarm')" style="cursor:pointer; border:1px solid var(--accent-cyan); background:rgba(0,240,255,0.04);">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span style="font-size:11px; font-weight:800; color:var(--accent-cyan);">THREE.JS 3D</span>
-            <span style="font-size:10px; color:var(--accent-gold); background:rgba(255,215,0,0.1); padding:2px 6px; border-radius:4px;">ACTIVE</span>
-          </div>
-          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Dual-Brain & 34-Node Mesh</h4>
-          <p style="font-size:12px; color:var(--text-muted);">Alpha & Beta router icosahedrons with 34 orbital expert node filaments and 9B particle cloud.</p>
-        </div>
-
-        <div class="card demo-card" onclick="loadDemo('neural_fractal_wave')" style="cursor:pointer; border:1px solid var(--border-line);">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span style="font-size:11px; font-weight:800; color:var(--accent-neon-green);">GLSL RAYMARCHER</span>
-            <span style="font-size:10px; color:var(--text-muted);">PROCEDURAL</span>
-          </div>
-          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Neural Fractal Field</h4>
-          <p style="font-size:12px; color:var(--text-muted);">Real-time volumetric raymarching shader generating pulsing fractal cognition waves.</p>
-        </div>
-
-        <div class="card demo-card" onclick="loadDemo('gravitational_lattice')" style="cursor:pointer; border:1px solid var(--border-line);">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span style="font-size:11px; font-weight:800; color:var(--accent-purple);">PHYSICS SIMULATION</span>
-            <span style="font-size:10px; color:var(--text-muted);">GRAVITATIONAL</span>
-          </div>
-          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Gravitational Token Lattice</h4>
-          <p style="font-size:12px; color:var(--text-muted);">34-body N-body gravitational solver simulating token attraction in sparse MoE routing.</p>
-        </div>
-
-        <div class="card demo-card" onclick="loadDemo('holographic_matrix')" style="cursor:pointer; border:1px solid var(--border-line);">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span style="font-size:11px; font-weight:800; color:var(--accent-red);">GLSL SHADER</span>
-            <span style="font-size:10px; color:var(--text-muted);">CYBERPUNK</span>
-          </div>
-          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Holographic Cyber Grid</h4>
-          <p style="font-size:12px; color:var(--text-muted);">Neon scanline lattice with dynamic audio-reactive ripple distortion and chromatic dispersion.</p>
-        </div>
-
-        <div class="card demo-card" onclick="loadDemo('particle_superposition')" style="cursor:pointer; border:1px solid var(--border-line);">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span style="font-size:11px; font-weight:800; color:var(--accent-gold);">THREE.JS PARTICLES</span>
-            <span style="font-size:10px; color:var(--text-muted);">QUANTUM</span>
-          </div>
-          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">Quantum Superposition Ring</h4>
-          <p style="font-size:12px; color:var(--text-muted);">10,000 GPU instanced particles collapsing into deterministic eigenvalues on user mouse hover.</p>
-        </div>
-
-        <div class="card demo-card" onclick="loadDemo('bitnet_tensor_field')" style="cursor:pointer; border:1px solid var(--border-line);">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span style="font-size:11px; font-weight:800; color:var(--accent-cyan);">TENSOR DYNAMICS</span>
-            <span style="font-size:10px; color:var(--text-muted);">BITNET 1.58B</span>
-          </div>
-          <h4 style="font-size:15px; color:#fff; margin-bottom:6px;">BitNet Ternary Tensor Mesh</h4>
-          <p style="font-size:12px; color:var(--text-muted);">3D visualization of ternary weight bounds {-1, 0, +1} forming sovereign crystalline clusters.</p>
-        </div>
-
-      </div>
-
       <!-- Live Interactive Canvas Screen -->
-      <div style="background: #030611; border: 1px solid var(--border-glow); border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 0 40px rgba(0,240,255,0.15);">
-        <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:rgba(8,12,24,0.9); border-bottom:1px solid var(--border-line);">
+      <div style="background: #030611; border: 1px solid var(--border-glow); border-radius: 12px; overflow: hidden; position: relative; margin-bottom: 30px; box-shadow: 0 0 45px rgba(0,240,255,0.2);">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 20px; background:rgba(8,12,24,0.95); border-bottom:1px solid var(--border-line);">
           <div style="display:flex; align-items:center; gap:10px;">
-            <span style="display:inline-block; width:10px; height:10px; background:var(--accent-neon-green); border-radius:50%; box-shadow:0 0 8px var(--accent-neon-green);"></span>
-            <span id="demoTitle" style="font-family:'JetBrains Mono'; font-size:13px; color:#fff; font-weight:700;">Dual-Brain & 34-Node Mesh Simulation</span>
+            <span style="display:inline-block; width:10px; height:10px; background:var(--accent-neon-green); border-radius:50%; box-shadow:0 0 10px var(--accent-neon-green);"></span>
+            <span id="activeDemoName" style="font-family:'Cinzel'; font-size:16px; color:#fff; font-weight:700;">GLSL Raymarching Fractal Field</span>
           </div>
           <div style="display:flex; gap:10px;">
-            <button onclick="toggleWireframe()" class="btn btn-secondary" style="font-size:11px; padding:4px 10px;">Wireframe: ON</button>
-            <button onclick="resetDemoCamera()" class="btn btn-secondary" style="font-size:11px; padding:4px 10px;">Reset View</button>
+            <a id="fullscreenDemoLink" href="demos/shader_1.html" target="_blank" class="btn btn-primary" style="font-size:11.5px; padding:6px 14px;">
+              Open Fullscreen ↗
+            </a>
           </div>
         </div>
-        <div id="demoCanvasContainer" style="width:100%; height:550px; position:relative; background:#010206;">
-          <canvas id="interactiveDemoCanvas" style="width:100%; height:100%; display:block;"></canvas>
+        <iframe id="liveDemoIframe" src="demos/shader_1.html" style="width:100%; height:580px; border:none; background:#000; display:block;" title="Quillan Live Shader Demo"></iframe>
+      </div>
+
+      <!-- 13 Demo Selector Grid -->
+      <h3 style="font-family:'Cinzel'; font-size:22px; color:#fff; margin-bottom:16px;">🔬 Select a Simulation (7 GLSL Shaders + 6 Three.js Scenes)</h3>
+      <div class="grid-3" id="demoGrid" style="gap: 16px;">
+        
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/shader_1.html', 'GLSL Raymarching Fractal Field', this)" style="cursor:pointer; border:1px solid var(--accent-cyan); background:rgba(0,240,255,0.06); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-neon-green); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">GLSL SHADER</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#01</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">GLSL Raymarching Fractal Field</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Procedural volumetric raymarching shader generating pulsating fractal cognition waves.</p>
         </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/shader_2.html', 'Neural Synapse Lattice', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-neon-green); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">GLSL SHADER</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#02</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Neural Synapse Lattice</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">High-energy synaptic pulse generator with glowing chromatic dispersion.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/shader_3.html', 'Cyberpunk Holographic Grid', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-neon-green); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">GLSL SHADER</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#03</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Cyberpunk Holographic Grid</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Neon scanlines and audio-reactive ripple distortion across a cylindrical lattice.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/shader_4.html', 'Quantum Eigenvalue Wave', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-neon-green); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">GLSL SHADER</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#04</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Quantum Eigenvalue Wave</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Simulating complex quantum probability amplitudes collapsing into discrete states.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/shader_5.html', 'Ternary BitNet Heatmap', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-neon-green); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">GLSL SHADER</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#05</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Ternary BitNet Heatmap</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Real-time thermal density shader visualizing weight quantization bounds {-1, 0, +1}.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/shader_6.html', 'Gravitational Singularity Vortex', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-neon-green); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">GLSL SHADER</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#06</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Gravitational Singularity Vortex</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Accretion disk plasma shader with relativistic Doppler beaming and gravitational lensing.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/shader_7.html', 'Sovereign MoE Flux Core', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-neon-green); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">GLSL SHADER</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#07</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Sovereign MoE Flux Core</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Dynamic multi-vector routing field with energetic plasma discharge channels.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/three_1.html', 'Dual-Brain & 34-Expert Mesh', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">THREE.JS 3D</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#08</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Dual-Brain & 34-Expert Mesh</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Alpha/Beta icosahedron cores linked by neural filaments to 34 orbital expert nodes.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/three_2.html', '9B Virtual Swarm Particle Cloud', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">THREE.JS 3D</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#09</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">9B Virtual Swarm Particle Cloud</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">10,000 GPU instanced swarm particles exhibiting flocking and emergent clustering.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/three_3.html', 'Interactive Hologram Prism', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">THREE.JS 3D</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#10</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Interactive Hologram Prism</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">9-vector semantic decomposition prism splitting queries into orthogonal beams.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/three_4.html', 'Council Orbital Gyroscope', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">THREE.JS 3D</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#11</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Council Orbital Gyroscope</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Nested gyroscopic rings representing the 5 core council voting tiers in real-time rotation.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/three_5.html', 'Top-4 Sparse Gating Tunnel', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">THREE.JS 3D</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#12</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">Top-4 Sparse Gating Tunnel</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Infinite procedural wireframe warp tunnel visualizing token throughput at Mach 6.</p>
+        </div>
+    
+        <div class="card demo-item-card" onclick="switchLiveDemo('demos/three_6.html', 'C33 Predator Hardware Core', this)" style="cursor:pointer; border:1px solid var(--border-line); transition:all 0.2s ease;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-family:'Orbitron'; font-size:10.5px; font-weight:800; color:var(--accent-cyan); background:rgba(0,240,255,0.08); padding:2px 8px; border-radius:4px;">THREE.JS 3D</span>
+            <span style="font-family:'JetBrains Mono'; font-size:10px; color:var(--accent-gold);">#13</span>
+          </div>
+          <h4 style="font-size:15px; font-weight:700; color:#fff; margin-bottom:6px;">C33 Predator Hardware Core</h4>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.4;">Aggressive low-latency hardware exploitation engine with glowing silicon traces.</p>
+        </div>
+    
       </div>
     </section>
+
 
 
     
