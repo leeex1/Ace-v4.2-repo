@@ -14,6 +14,17 @@ import httpx
 NIM_BASE_URL = os.environ.get("NIM_BASE_URL", "https://integrate.api.nvidia.com/v1")
 DEFAULT_MODEL = os.environ.get("NIM_MODEL", "meta/muse-glimmer-30b")
 
+# Canonical NIM Model Rotation Roster
+NIM_ROSTER = [
+    "meta/muse-glimmer-30b",
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+    "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "mistralai/mistral-large-2-instruct",
+    "meta/llama-3.2-11b-vision-instruct",
+    "meta/llama-3.2-90b-vision-instruct",
+    "deepseek-ai/deepseek-coder-6.7b-instruct",
+]
+
 def get_nvidia_key() -> str:
     """Retrieve key from environment, Windows registry, or local git-ignored .env."""
     key = os.environ.get("NVIDIA_API_KEY", "")
@@ -109,3 +120,31 @@ class QuillanNIMClient:
             if r.status_code != 200:
                 raise RuntimeError(f"NIM Error {r.status_code}: {r.text}")
             return r.json()["choices"][0]["message"]["content"]
+
+    def chat_stream_cascade(
+        self,
+        messages: List[Dict[str, str]],
+        roster: Optional[List[str]] = None,
+        temperature: float = 0.7,
+        max_tokens: int = 4096,
+        tools: Optional[List[Dict[str, Any]]] = None
+    ) -> Generator[str, None, None]:
+        """Automatically cascade through candidate models in roster if a model is busy or cold-starting."""
+        models_to_try = roster or NIM_ROSTER
+        last_error = None
+        for candidate in models_to_try:
+            try:
+                for token in self.chat_stream(
+                    messages=messages,
+                    model=candidate,
+                    temperature=temperature,
+                    max_tokens=max_tokens,
+                    tools=tools
+                ):
+                    yield token
+                return
+            except Exception as e:
+                last_error = e
+                continue
+        if last_error:
+            raise RuntimeError(f"All candidate NIM models failed. Last error: {last_error}")
