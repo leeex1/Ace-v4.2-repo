@@ -10,15 +10,11 @@
 
 📍 Lafayette, IN
 
-🔗 \[LinkedIn](https://linkedin.com/in/jd-ramos-62576b2b3) · 💻 \[GitHub](https://github.com/leeex1)
-
-
+🔗 [LinkedIn](https://linkedin.com/in/jd-ramos-62576b2b3) · 💻 [GitHub](https://github.com/leeex1) · 🌐 [Portfolio](https://digitalroninx.grok.me/)
 
 ---
 
-
-
-\## 🚀 Value Proposition (Why I’m Hard to Ignore)
+## 🚀 Value Proposition (Why I’m Hard to Ignore)
 
 
 

@@ -1,9 +1,15 @@
 {
     "mcpServers": {
-        "Fetch": {
-            "command": "uvx",
+        "QuillanRAG": {
+            "command": "python",
             "args": [
-                "mcp-server-fetch"
+                "C:\\02_QUILLAN\\mcp\\quillan_rag\\server.py"
+            ]
+        },
+        "ThinkingEngine": {
+            "command": "C:\\Program Files\\nodejs\\node.exe",
+            "args": [
+                "C:\\02_QUILLAN\\mcp\\thinking-engine\\index.js"
             ]
         },
         "Filesystem": {
@@ -16,11 +22,15 @@
                 "C:\\"
             ]
         },
-        "WebSearch": {
-            "command": "uvx",
+        "LocalRAG": {
+            "command": "npx",
             "args": [
-                "duckduckgo-mcp-server"
-            ]
+                "-y",
+                "mcp-local-rag"
+            ],
+            "env": {
+                "BASE_DIR": "C:\\02_QUILLAN"
+            }
         },
         "Git": {
             "command": "uvx",
@@ -30,23 +40,17 @@
                 "C:\\02_QUILLAN"
             ]
         },
-        "SQLite": {
+        "Fetch": {
             "command": "uvx",
             "args": [
-                "mcp-server-sqlite",
-                "--db-path",
-                "C:\\02_QUILLAN\\quillan.db"
+                "mcp-server-fetch"
             ]
         },
-        "GitHub": {
-            "command": "npx",
+        "WebSearch": {
+            "command": "uvx",
             "args": [
-                "-y",
-                "@modelcontextprotocol/server-github"
+                "duckduckgo-mcp-server"
             ]
-        },
-        "HuggingFace": {
-            "url": "https://huggingface.co/mcp"
         },
         "Playwright": {
             "command": "C:\\Program Files\\nodejs\\node.exe",
@@ -86,84 +90,6 @@
             "command": "C:\\Program Files\\nodejs\\node.exe",
             "args": [
                 "C:\\Users\\Admin\\AppData\\Roaming\\npm\\node_modules\\chrome-devtools-mcp\\build\\src\\bin\\chrome-devtools-mcp.js"
-            ]
-        },
-        "ThinkingEngine": {
-            "command": "C:\\Program Files\\nodejs\\node.exe",
-            "args": [
-                "C:\\02_QUILLAN\\mcp\\thinking-engine\\index.js"
-            ]
-        },
-        "DeepWiki": {
-            "url": "https://mcp.deepwiki.com/mcp"
-        },
-        "ComfyUI": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "comfyui-mcp@latest"
-            ],
-            "env": {
-                "COMFYUI_URL": "http://localhost:8188"
-            }
-        },
-        "ComputerControl": {
-            "command": "uvx",
-            "args": [
-                "computer-control-mcp"
-            ],
-            "env": {
-                "COMPUTER_CONTROL_MCP_WGC_PATTERNS": "obs, discord, game, steam"
-            }
-        },
-        "Zavora": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "computer-use-mcp"
-            ]
-        },
-        "Win32": {
-            "command": "uvx",
-            "args": [
-                "win32-mcp-server"
-            ]
-        },
-        "LocalRAG": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "mcp-local-rag"
-            ],
-            "env": {
-                "BASE_DIR": "C:\\02_QUILLAN"
-            }
-        },
-        "CodeMemory": {
-            "command": "uvx",
-            "args": [
-                "code-memory-mcp"
-            ],
-            "env": {
-                "CODE_MEMORY_ROOT": "C:\\02_QUILLAN"
-            }
-        },
-        "CocoIndex": {
-            "command": "uvx",
-            "args": [
-                "cocoindex-code-mcp-server"
-            ],
-            "env": {
-                "COCOINDEX_ROOT": "C:\\02_QUILLAN"
-            }
-        },
-        "Obsidian": {
-            "url": "http://localhost:3000/mcp"
-        },
-        "QuillanRAG": {
-            "command": "python",
-            "args": [
-                "C:\\02_QUILLAN\\mcp\\quillan_rag\\server.py"
             ]
         }
     }
