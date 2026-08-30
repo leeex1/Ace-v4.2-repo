@@ -269,3 +269,7 @@ testing/
 testing/**
 dist/
 build/
+
+# Exclude heavy binary media from git push
+docs/gallery/*
+gallery/*
