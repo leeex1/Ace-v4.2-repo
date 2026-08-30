@@ -173,11 +173,16 @@ def get_expert_name(idx: int) -> str:
 # QUANTIZATION PRIMITIVES - BitNet 1.58b + STE (AGI paper Algorithm 1)
 # ------------------------------------------------------------------
 
-def _weight_quant(w: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
+@torch.jit.script
+def _weight_quant_jit(w: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
     scale = 1.0 / w.abs().mean(dim=-1, keepdim=True).clamp(min=eps)
     w_scaled = w * scale
     w_q = torch.round(torch.clamp(w_scaled, -1.0, 1.0))
     return (w_scaled + (w_q - w_scaled).detach()) / scale
+
+
+def _weight_quant(w: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
+    return _weight_quant_jit(w, eps)
 
 
 class BitLinear(nn.Linear):
@@ -203,7 +208,7 @@ class BitLinear(nn.Linear):
 
 
 # ------------------------------------------------------------------
-# 9-VECTOR SEMANTIC PRISM (Samurai spec, exact)
+# 9-VECTOR SEMANTIC PRISM (Samurai spec, exact - Parallel Batched GEMM)
 # ------------------------------------------------------------------
 
 PRISM_VECTORS = [
@@ -219,7 +224,11 @@ class NineVectorPrismDecomposition(nn.Module):
         self.w_gate = nn.Linear(dim, dim, bias=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        prism = sum(v(x) for v in self.vectors.values()) / 9.0
+        # High-performance parallel batched GEMM across all 9 semantic vectors
+        w_stacked = torch.stack([_weight_quant(v.weight) for v in self.vectors.values()])  # [9, dim, dim]
+        # x is [B, L, D], expand to [9, B, L, D] via broadcasting
+        x_shards = torch.matmul(x.unsqueeze(0), w_stacked.transpose(-1, -2))  # [9, B, L, D]
+        prism = x_shards.mean(dim=0)  # [B, L, D]
         return self.w_gate(prism)
 
 

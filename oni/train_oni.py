@@ -151,7 +151,20 @@ def main():
     args = parse_args()
     CKPT_DIR.mkdir(parents=True, exist_ok=True)
     LOG_DIR.mkdir(parents=True, exist_ok=True)
-    torch.set_num_threads(4)
+
+    # Windows OS Process Priority Elevation & Thread Tuning
+    import os
+    try:
+        import psutil
+        p = psutil.Process(os.getpid())
+        if sys.platform == "win32":
+            p.nice(psutil.HIGH_PRIORITY_CLASS)
+    except Exception:
+        pass
+
+    num_cpus = os.cpu_count() or 4
+    torch.set_num_threads(num_cpus)
+    torch.set_num_interop_threads(min(4, num_cpus))
 
     rng = np.random.default_rng(42)
     tok = UnifiedQuillanTokenizer()
