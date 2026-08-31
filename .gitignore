@@ -250,24 +250,15 @@ vscode-copilot-extension/
 extension/
 worker/node_modules/
 
-# NFT Private Media & Unminted Assets
-docs/assets/nft_images/
-exports/opensea_drop_bundle/
-06_Media/images/NFT designs/
-06_Media/
-exports/
-*.arrow
-checkpoints/
-*.pt
-*.pth
-*.bin
-*.webp
-*.png
-*.jpg
-dist/
-build/
-testing/Validation-test-kit/
-testing/Quillan-Ronin-chrome-extension/
+# Web Portal Assets (Always Tracked for GitHub Pages)
+!assets/logo.png
+!assets/logo.webp
+!docs/assets/logo.png
+!docs/assets/logo.webp
+!assets/nft_images/*.webp
+!docs/assets/nft_images/*.webp
+!docs/demos/
+!demos/
 
 # Exclude heavy binary media from git push
 docs/gallery/*
