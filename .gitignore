@@ -122,10 +122,6 @@ __pycache__/
 .env*
 *.env
 _config/private.env
-testing/
-testing/**
-Dev test/
-dev test/
 
 # Node modules and build packages
 node_modules/
@@ -268,11 +264,10 @@ checkpoints/
 *.webp
 *.png
 *.jpg
-# Isolated External Repositories & Testing Sandbox
-testing/
-testing/**
 dist/
 build/
+testing/Validation-test-kit/
+testing/Quillan-Ronin-chrome-extension/
 
 # Exclude heavy binary media from git push
 docs/gallery/*
