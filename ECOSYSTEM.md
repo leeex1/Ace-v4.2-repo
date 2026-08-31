@@ -64,3 +64,4 @@ The `_config/` directory contains agent-specific configs that each reference Qui
 | Devin | `_config/.devin/rules/` | SWE rules, agent dispatch |
 | OpenCode | `_config/.opencode/AGENTS.md` | References DeepWiki |
 
+
