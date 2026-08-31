@@ -53,7 +53,7 @@ scratch/
 # *.m4a - TRACKED
 
 # Media folders - videos subfolder ignored, everything else tracked
-06_Media/videos/
+# 06_Media trackedvideos/
 # Audio Engineer and outputs/music are fully tracked
 
 # Runtime logs & temp dumps
@@ -110,7 +110,7 @@ Soulframe*
 soulframe*
 *beta*client*
 *game*installer*
-06_Media/audio/audio breakdowns lm notebook/The_Quillan-Ronin_Samurai_AI_Swarm.m4a
+# 06_Media trackedaudio/audio breakdowns lm notebook/The_Quillan-Ronin_Samurai_AI_Swarm.m4a
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -167,7 +167,7 @@ scratch/
 # *.m4a - TRACKED
 
 # Media folders - videos subfolder ignored, everything else tracked
-06_Media/videos/
+# 06_Media trackedvideos/
 # Audio Engineer and outputs/music are fully tracked
 
 # Runtime logs & temp dumps
@@ -224,10 +224,10 @@ Soulframe*
 soulframe*
 *beta*client*
 *game*installer*
-06_Media/audio/audio breakdowns lm notebook/The_Quillan-Ronin_Samurai_AI_Swarm.m4a
+# 06_Media trackedaudio/audio breakdowns lm notebook/The_Quillan-Ronin_Samurai_AI_Swarm.m4a
 
 # NFT design images - excluded from public dataset/repo
-06_Media/images/NFT designs/
+
 *NFT designs*
 *nft_design*
 *NFT*
@@ -255,11 +255,11 @@ worker/node_modules/
 !assets/logo.webp
 !docs/assets/logo.png
 !docs/assets/logo.webp
-!assets/nft_images/*.webp
-!docs/assets/nft_images/*.webp
+!assets/nft_images/# *.webp tracked
+!docs/assets/nft_images/# *.webp tracked
 !docs/demos/
 !demos/
 
 # Exclude heavy binary media from git push
-docs/gallery/*
-gallery/*
+
+
