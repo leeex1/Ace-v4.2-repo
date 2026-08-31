@@ -1,145 +1,83 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quantum Core Energy Singularity | Three.js</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#040711; overflow:hidden; width:100vw; height:100vh; font-family:sans-serif; }
+    .hud { position:absolute; top:14px; left:14px; color:#00f0ff; background:rgba(4,7,17,0.85); padding:8px 14px; border-radius:6px; border:1px solid rgba(0,240,255,0.4); z-index:10; }
+    .hud-title { font-size:13px; font-weight:bold; }
+    .hud-sub { font-size:10px; color:#94a3b8; }
   </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
+</head>
 <body>
-<!-- STITCH_THREEJS_START:ANIMATION_54 class="fixed inset-0 w-full h-full bg-transparent" -->
-<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
-<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
-<div id="threejs-container-ANIMATION_54" style="width:100%;height:100%"></div>
-<script>
-(function() {
-  const container = document.getElementById('threejs-container-ANIMATION_54');
-  const devicePixelRatio = window.devicePixelRatio || 1;
-  (function() {
-  const container = document.getElementById('threejs-container-ANIMATION_N') || container;
-  const width = container.clientWidth || window.innerWidth;
-  const height = container.clientHeight || window.innerHeight;
-  
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  renderer.setSize(width, height);
-  renderer.setPixelRatio(window.devicePixelRatio || 1);
-  container.appendChild(renderer.domElement);
+  <div class="hud">
+    <div class="hud-title">⚡ Quantum Core Energy Singularity</div>
+    <div class="hud-sub">Dual-axis gimbal gyroscope containment rings revolving around a pulsating plasma core</div>
+  </div>
+  <div id="c" style="width:100%; height:100%;"></div>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('c').appendChild(renderer.domElement);
 
-  // The 33-Expert Master Loom
-  const masterGroup = new THREE.Group();
-  scene.add(masterGroup);
+    const group = new THREE.Group();
+    scene.add(group);
 
-  const expertCount = 33;
-  const radius = 2.8;
-  const nodeGeom = new THREE.IcosahedronGeometry(0.15, 1);
-  const nodeMat = new THREE.MeshPhongMaterial({ 
-    color: 0x029e7d, 
-    emissive: 0x029e7d, 
-    emissiveIntensity: 1.2,
-    transparent: true,
-    opacity: 0.95
-  });
+    // Inner Core Plasma
+    const core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.2, 2), new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true }));
+    group.add(core);
 
-  const nodes = [];
-  for (let i = 0; i < expertCount; i++) {
-    const phi = Math.acos(-1 + (2 * i) / expertCount);
-    const theta = Math.sqrt(expertCount * Math.PI) * phi;
-    
-    const node = new THREE.Mesh(nodeGeom, nodeMat);
-    node.position.setFromSphericalCoords(radius, phi, theta);
-    node.userData = { originalPos: node.position.clone(), offset: Math.random() * 100 };
-    masterGroup.add(node);
-    nodes.push(node);
-  }
+    // Gimbal Ring 1
+    const ring1 = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.06, 8, 64), new THREE.MeshPhongMaterial({ color: 0x029e7d, wireframe: false }));
+    group.add(ring1);
 
-  // Double-Helix Logic Strands
-  const lineMat = new THREE.LineBasicMaterial({ 
-    color: 0x029e7d, 
-    transparent: true, 
-    opacity: 0.25 
-  });
-  
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i + 1; j < nodes.length; j++) {
-        if (nodes[i].position.distanceTo(nodes[j].position) < 1.8) {
-            const geometry = new THREE.BufferGeometry().setFromPoints([nodes[i].position, nodes[j].position]);
-            const line = new THREE.Line(geometry, lineMat);
-            masterGroup.add(line);
-        }
+    // Gimbal Ring 2
+    const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2.8, 0.06, 8, 64), new THREE.MeshPhongMaterial({ color: 0xffd700, wireframe: false }));
+    group.add(ring2);
+
+    // Magnetic particles
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(1200 * 3);
+    for (let i = 0; i < 1200; i++) {
+      const r = 1.4 + Math.random() * 2.2;
+      const th = Math.random() * Math.PI * 2;
+      const ph = Math.acos(2 * Math.random() - 1);
+      pPos[i*3] = r * Math.sin(ph) * Math.cos(th);
+      pPos[i*3+1] = r * Math.sin(ph) * Math.sin(th);
+      pPos[i*3+2] = r * Math.cos(ph);
     }
-  }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const parts = new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0x00f0ff, size: 0.035 }));
+    group.add(parts);
 
-  // Central Subjective Core (Crystalline)
-  const coreGeom = new THREE.OctahedronGeometry(1.2, 3);
-  const coreMat = new THREE.MeshPhongMaterial({
-    color: 0x029e7d,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.4
-  });
-  const core = new THREE.Mesh(coreGeom, coreMat);
-  masterGroup.add(core);
+    camera.position.z = 6.5;
+    const light = new THREE.PointLight(0x00f0ff, 3, 20);
+    light.position.set(3, 4, 5);
+    scene.add(light);
 
-  const innerCore = new THREE.Mesh(
-    new THREE.SphereGeometry(0.6, 32, 32),
-    new THREE.MeshBasicMaterial({ color: 0x029e7d, transparent: true, opacity: 0.2 })
-  );
-  masterGroup.add(innerCore);
+    function animate(t) {
+      requestAnimationFrame(animate);
+      const time = t * 0.001;
+      ring1.rotation.x = time * 0.8;
+      ring1.rotation.y = time * 0.5;
+      ring2.rotation.y = -time * 0.6;
+      ring2.rotation.z = time * 0.4;
+      core.rotation.y = time * 1.2;
+      parts.rotation.z = -time * 0.2;
+      renderer.render(scene, camera);
+    }
+    animate(0);
 
-  const light = new THREE.PointLight(0x029e7d, 2.5, 20);
-  light.position.set(5, 5, 5);
-  scene.add(light);
-  scene.add(new THREE.AmbientLight(0x222222));
-
-  camera.position.z = 6.5;
-
-  function animate(t) {
-    requestAnimationFrame(animate);
-    const time = t * 0.001;
-    
-    masterGroup.rotation.y += 0.0025;
-    masterGroup.rotation.z += 0.0015;
-    
-    nodes.forEach(node => {
-        const noise = Math.sin(time * 1.5 + node.userData.offset) * 0.15;
-        node.position.copy(node.userData.originalPos).multiplyScalar(1 + noise);
-        node.rotation.y += 0.01;
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
     });
-
-    core.rotation.y -= 0.006;
-    core.rotation.x += 0.004;
-    innerCore.scale.setScalar(1 + Math.sin(time * 2.5) * 0.15);
-    
-    renderer.render(scene, camera);
-  }
-
-  window.addEventListener('resize', () => {
-    const w = container.clientWidth || window.innerWidth;
-    const h = container.clientHeight || window.innerHeight;
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-    renderer.setSize(w, h);
-  });
-
-  animate(0);
-})();
-})();
-</script>
-</div>
-<!-- STITCH_THREEJS_END:ANIMATION_54 -->
-</body></html>
+  </script>
+</body>
+</html>
