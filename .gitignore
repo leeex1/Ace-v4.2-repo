@@ -118,10 +118,14 @@ __pycache__/
 *$py.class
 *.pyc
 
-# Virtual environments
-venv*/
-env*/
-.venv*/
+# Secrets and environment configs
+.env*
+*.env
+_config/private.env
+testing/
+testing/**
+Dev test/
+dev test/
 
 # Node modules and build packages
 node_modules/
