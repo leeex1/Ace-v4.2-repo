@@ -1,147 +1,111 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>4D Quaternion Fractal Dimension Warp | Quillan GLSL Lab</title>
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
+    body { background: #000; overflow: hidden; width: 100vw; height: 100vh; }
+    canvas { width: 100%; height: 100%; display: block; }
+    .title-hud {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      color: #00f0ff;
+      font-family: monospace;
+      font-size: 11px;
+      background: rgba(0,0,0,0.7);
+      padding: 5px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,240,255,0.4);
+      pointer-events: none;
+      z-index: 10;
     }
   </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
+</head>
 <body>
-<!-- STITCH_SHADER_START:ANIMATION_53 class="fixed inset-0 w-full h-full" -->
-<div class="fixed inset-0 w-full h-full" style="display:block;">
-<canvas id="shader-canvas-ANIMATION_53" style="display:block;width:100%;height:100%"></canvas>
-<script>
-(function() {
-  const canvas = document.getElementById('shader-canvas-ANIMATION_53');
+  <div class="title-hud">4D Quaternion Fractal Dimension Warp</div>
+  <canvas id="c"></canvas>
+  <script>
+    const canvas = document.getElementById('c');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    gl.getExtension('OES_standard_derivatives');
 
-  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
-  // This fires on initial layout and whenever the element is resized.
-  function syncSize() {
-    const w = canvas.clientWidth  || 1280;
-    const h = canvas.clientHeight || 720;
-    if (canvas.width !== w || canvas.height !== h) {
-      canvas.width  = w;
-      canvas.height = h;
-    }
-  }
-  if (typeof ResizeObserver !== 'undefined') {
-    new ResizeObserver(syncSize).observe(canvas);
-  }
-  syncSize();
-
-  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-  if (!gl) return;
-  gl.getExtension('OES_standard_derivatives');
-  const vs = `attribute vec2 a_position;
-varying vec2 v_texCoord;
-void main() {
-  v_texCoord = a_position * 0.5 + 0.5;
-  gl_Position = vec4(a_position, 0.0, 1.0);
-}`;
-  const fs = `precision highp float;
+    const vs = `attribute vec2 p; varying vec2 v_texCoord; void main(){ v_texCoord = p * 0.5 + 0.5; gl_Position = vec4(p, 0.0, 1.0); }`;
+    const fs = `
+precision highp float;
 varying vec2 v_texCoord;
 uniform float u_time;
 uniform vec2 u_resolution;
-
-float noise(vec2 p) {
-    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
-}
+uniform float u_audio;
 
 void main() {
-    vec2 uv = v_texCoord;
-    vec2 p = uv * 2.0 - 1.0;
-    p.x *= u_resolution.x / u_resolution.y;
+    vec2 uv = (v_texCoord - 0.5) * 2.5;
+    uv.x *= u_resolution.x / u_resolution.y;
     
-    float final_color = 0.0;
+    vec2 z = uv;
+    vec2 c = vec2(sin(u_time * 0.2) * 0.5, cos(u_time * 0.15) * 0.5);
     
-    // Neural lattice grid
-    for(float i = 1.0; i < 5.0; i++) {
-        vec2 grid = fract(p * (1.5 * i) + u_time * 0.02 * i) - 0.5;
-        float d = length(grid);
-        float pulse = sin(u_time * 0.3 + i * 1.5) * 0.5 + 0.5;
-        final_color += smoothstep(0.47, 0.5, 1.0 - d) * 0.12 * pulse;
-        
-        // Data streams (digital rain logic)
-        float stream = smoothstep(0.99, 1.0, sin(uv.x * 60.0 + uv.y * 15.0 + u_time * 2.5));
-        final_color += stream * 0.08 / i;
+    float n = 0.0;
+    for(int i = 0; i < 36; i++) {
+        if(dot(z, z) > 4.0) break;
+        z = vec2(z.x * z.x - z.y * z.y, 2.0 * z.x * z.y) + c;
+        n += 1.0;
     }
     
-    // Tech-noir palette derived from the design system
-    vec3 base_bg = vec3(0.005, 0.008, 0.012);
-    vec3 cyan_glow = vec3(0.0, 0.62, 0.49); // #029e7d variant
-    vec3 deep_void = vec3(0.01, 0.015, 0.02);
+    float iter = n / 36.0;
+    vec3 cyan = vec3(0.0, 0.94, 1.0);
+    vec3 emerald = vec3(0.01, 0.62, 0.49);
+    vec3 purple = vec3(0.66, 0.33, 0.97);
     
-    vec3 color = mix(base_bg, cyan_glow, final_color);
-    
-    // Scanline distortion
-    float scan = sin(uv.y * 600.0 + u_time * 12.0) * 0.012;
-    color += scan;
-    
-    // Vignette for focus
-    float vignette = 1.0 - length(p * 0.6);
-    color *= vignette;
-    
-    gl_FragColor = vec4(color, 1.0);
-}`;
-  function cs(type, src) {
-    const s = gl.createShader(type);
-    gl.shaderSource(s, src);
-    gl.compileShader(s);
-    return s;
-  }
-  const prog = gl.createProgram();
-  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
-  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
-  gl.linkProgram(prog);
-  gl.useProgram(prog);
-  const buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
-  const pos = gl.getAttribLocation(prog, 'a_position');
-  gl.enableVertexAttribArray(pos);
-  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
-  const uTime = gl.getUniformLocation(prog, 'u_time');
-  const uRes = gl.getUniformLocation(prog, 'u_resolution');
-  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+    vec3 col = mix(cyan, emerald, sin(iter * 6.28 + u_time) * 0.5 + 0.5) * iter * 2.0;
+    col += purple * (1.0 - iter) * 0.25;
 
-  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
-  // Shaders that need normalized coords should use: u_mouse / u_resolution.
-  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
-  window.addEventListener('mousemove', (event) => {
-    const rect = canvas.getBoundingClientRect();
-    if (rect.width && rect.height) {
-      const nx = (event.clientX - rect.left) / rect.width;
-      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
-      mouse.x = nx * canvas.width;
-      mouse.y = ny * canvas.height;
+    gl_FragColor = vec4(col, 1.0);
+}
+`;
+
+    function compile(type, src) {
+      const s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      return s;
     }
-  });
 
-  function render(t) {
-    if (typeof ResizeObserver === 'undefined') syncSize();
-    gl.viewport(0, 0, canvas.width, canvas.height);
-    if (uTime) gl.uniform1f(uTime, t * 0.001);
-    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
-    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    requestAnimationFrame(render);
-  }
-  render(0);
-})();
-</script>
-</div>
-<!-- STITCH_SHADER_END:ANIMATION_53 -->
-</body></html>
+    const prog = gl.createProgram();
+    gl.attachShader(prog, compile(gl.VERTEX_SHADER, vs));
+    gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(prog);
+    gl.useProgram(prog);
+
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+
+    const pLoc = gl.getAttribLocation(prog, 'p');
+    gl.enableVertexAttribArray(pLoc);
+    gl.vertexAttribPointer(pLoc, 2, gl.FLOAT, false, 0, 0);
+
+    const uTime = gl.getUniformLocation(prog, 'u_time');
+    const uRes = gl.getUniformLocation(prog, 'u_resolution');
+    const uAudio = gl.getUniformLocation(prog, 'u_audio');
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      gl.viewport(0, 0, canvas.width, canvas.height);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function render(t) {
+      requestAnimationFrame(render);
+      if (uTime) gl.uniform1f(uTime, t * 0.001);
+      if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+      if (uAudio) gl.uniform1f(uAudio, 0.6);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    }
+    render(0);
+  </script>
+</body>
+</html>
