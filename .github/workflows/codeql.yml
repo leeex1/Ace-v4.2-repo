@@ -41,89 +41,40 @@ jobs:
       matrix:
         include:
           - language: python
-            build-mode: manual
-            # Specific to Quillan-Ronin: Focus on AI safety and model logic
-            custom-queries: "security-and-quality"
+            build-mode: none
           - language: javascript-typescript
             build-mode: none
-            # For any frontend or API layers (e.g., Muse Spark integration)
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
         with:
-          # Fetch full history for better code analysis
           fetch-depth: 0
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-          # Cache dependencies to speed up subsequent runs
           cache: "pip"
 
-      # --- Custom Build Logic for Quillan-Ronin ---
-      # This step ensures CodeQL can actually analyze the compiled Python modules
-      # and understand dependencies like PyTorch and custom tokenizers.
       - name: Install Python Dependencies
         if: matrix.language == 'python'
         run: |
           python -m pip install --upgrade pip
-          # Install core requirements for static analysis
           pip install -r requirements.txt
-          # If you have a setup.py or pyproject.toml for your custom modules
-          if [ -f "pyproject.toml" ]; then
-            pip install .
-          fi
-          # Ensure custom tokenizer and optimizer modules are importable
-          # This helps CodeQL trace data flow through quillan_bpe_tokenizer.py
-          python -c "import quillan_bpe_tokenizer; import quillan_fused_optimizer"
+          python -c "import quillan_bpe_tokenizer; import quillan_fused_optimizer; print('Quillan modules verified successfully.')"
 
       # --- Initialize CodeQL Databases ---
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
-          # Enable advanced query suites for AI safety
-          queries: ./security-queries
-          # Custom query suites for AI-specific vulnerabilities
-          # (You can create a `security-queries` folder in .github if needed)
-
-      # --- Build/Compile the Database ---
-      - name: Perform CodeQL Autobuild
-        if: matrix.build-mode == 'manual'
-        uses: github/codeql-action/autobuild@v3
-        # The `autobuild` step attempts to build the project using standard tools.
-        # For AI projects, this often fails, so we rely on the `setup` step above.
-
-      # --- Manual Build for Python (Critical for Custom Modules) ---
-      - name: Perform CodeQL Manual Build
-        if: matrix.build-mode == 'manual'
-        run: |
-          # This step ensures all custom Python modules are compiled/imported
-          # so CodeQL can trace data flow through your safety gates (C2-VIR, C13-WARDEN)
-          python -m pip install --upgrade pip setuptools wheel
-          python setup.py build_ext --inplace 2>/dev/null || true
-          # Force import of critical safety modules
-          python -c "
-            import sys
-            sys.path.append('.')
-            try:
-                import modeling_quillan
-                import configuration_quillan
-                import quillan_v8_saturated
-                print('Quillan-Ronin safety modules loaded successfully for analysis.')
-            except ImportError as e:
-                print(f'Warning: Could not import {e}. Analysis may be limited.')
-                sys.exit(1)
-          "
+          queries: +security-and-quality
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
           category: "/language:${{matrix.language}}"
-          # Upload results to GitHub Security tab
-          # This feeds into the `SECURITY.md` policy
           upload-tag-prefix: codeql-v${{ github.sha }}
 
       # --- Upload Artifacts for Review ---

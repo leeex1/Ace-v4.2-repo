@@ -18,5 +18,6 @@ Folder note for `Book Series/` — 14 entries.
   - **Expanded Chapters/**
   - [[Book Series/Twisted Destiny.md]]
   - [[Book Series/Word_Count_Log.md]]
+  - [[Book Series/Book Feedback Log.md]]
   - [[Book Series/reconstruct_books.py]]
 - [[00 - Meta/05 - Creative Works.md]]

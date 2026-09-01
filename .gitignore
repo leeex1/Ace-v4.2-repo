@@ -89,7 +89,6 @@ agent/
 .codeium/
 .devin/
 quillan_memory/
-quillan_bpe_tokenizer_hf/
 
 # Personal & Private Files - NEVER commit
 *resume*
@@ -203,7 +202,6 @@ agent/
 .codeium/
 .devin/
 quillan_memory/
-quillan_bpe_tokenizer_hf/
 
 # Personal & Private Files - NEVER commit
 *resume*

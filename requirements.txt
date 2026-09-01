@@ -2,6 +2,7 @@ numpy
 pandas
 torch
 transformers
+tokenizers
 matplotlib
 scikit-learn
 flask
