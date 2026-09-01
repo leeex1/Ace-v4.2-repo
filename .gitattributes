@@ -5,3 +5,4 @@
 *.css text
 *.json text
 *.md text
+Book[[:space:]]Series/*.mp3 filter=lfs diff=lfs merge=lfs -text
