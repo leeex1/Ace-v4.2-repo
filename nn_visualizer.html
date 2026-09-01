@@ -5,107 +5,181 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quillan-Ronin v5.4.0 ONI — AAA 3D EvoMoE Neural Architecture Canvas</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Cinzel:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;700;900&family=Cinzel:wght@700;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#020408;overflow:hidden;font-family:'JetBrains Mono',monospace;color:#ccc;width:100vw;height:100vh}
+body{background:#020408;overflow:hidden;font-family:'JetBrains Mono',monospace;color:#ccc;width:100vw;height:100vh;user-select:none;}
 #webgl-container{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 
 /* Sci-Fi HUD Header */
-#hud-header{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
-  padding:12px 24px;background:linear-gradient(180deg,rgba(4,8,18,0.95) 0%,rgba(4,8,18,0.8) 80%,transparent 100%);
-  pointer-events:auto;z-index:20;border-bottom:1px solid rgba(0,240,255,0.2);backdrop-filter:blur(12px)}
-#hud-header h1{font-family:'Orbitron',monospace;font-size:14px;font-weight:900;
-  color:#ffd700;letter-spacing:2px;text-shadow:0 0 15px rgba(255,215,0,0.5)}
-#hud-header .sub{font-size:10px;color:#00f0ff;letter-spacing:1.5px;margin-top:2px}
+#hud-header{
+  position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+  padding:10px 20px;background:linear-gradient(180deg,rgba(4,8,18,0.95) 0%,rgba(4,8,18,0.7) 80%,transparent 100%);
+  pointer-events:auto;z-index:20;border-bottom:1px solid rgba(0,240,255,0.2);backdrop-filter:blur(12px);
+  transition:transform 0.35s ease, opacity 0.35s ease;
+}
+#hud-header h1{
+  font-family:'Orbitron',monospace;font-size:13px;font-weight:900;
+  color:#ffd700;letter-spacing:1.5px;text-shadow:0 0 15px rgba(255,215,0,0.5);display:flex;align-items:center;gap:8px;
+}
+#hud-header .sub{font-size:9.5px;color:#00f0ff;letter-spacing:1.2px;margin-top:2px}
 
 /* Left & Right Sci-Fi Telemetry Sidebars */
-#left-panel{position:fixed;left:14px;top:65px;bottom:65px;width:220px;
-  background:rgba(4,8,18,0.88);border:1px solid rgba(0,240,255,0.2);border-radius:8px;
-  padding:14px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(12px);
-  box-shadow:0 0 25px rgba(0,240,255,0.15)}
-#right-panel{position:fixed;right:14px;top:65px;bottom:65px;width:240px;
-  background:rgba(4,8,18,0.88);border:1px solid rgba(255,215,0,0.2);border-radius:8px;
-  padding:14px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(12px);
-  box-shadow:0 0 25px rgba(255,215,0,0.15)}
+#left-panel{
+  position:fixed;left:14px;top:60px;bottom:58px;width:220px;
+  background:rgba(4,8,18,0.85);border:1px solid rgba(0,240,255,0.25);border-radius:10px;
+  padding:14px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(14px);
+  box-shadow:0 0 30px rgba(0,240,255,0.12);transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+#right-panel{
+  position:fixed;right:14px;top:60px;bottom:58px;width:235px;
+  background:rgba(4,8,18,0.85);border:1px solid rgba(255,215,0,0.25);border-radius:10px;
+  padding:14px;overflow-y:auto;pointer-events:auto;z-index:15;backdrop-filter:blur(14px);
+  box-shadow:0 0 30px rgba(255,215,0,0.12);transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
 
-.panel-title{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:1.5px;
-  color:var(--accent-gold,#ffd700);margin-bottom:10px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,0.08);
-  text-transform:uppercase}
+/* Hidden States for Panels */
+.hud-hidden #left-panel{transform:translateX(-250px);opacity:0;pointer-events:none;}
+.hud-hidden #right-panel{transform:translateX(260px);opacity:0;pointer-events:none;}
+.hud-hidden #hud-header{transform:translateY(-80px);opacity:0;pointer-events:none;}
 
-.stage-btn{display:flex;align-items:center;gap:8px;margin-bottom:6px;cursor:pointer;
-  padding:6px 8px;border-radius:4px;border:1px solid transparent;background:rgba(255,255,255,0.02);transition:all 0.2s}
-.stage-btn:hover{border-color:#00f0ff;background:rgba(0,240,255,0.1)}
-.stage-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.stage-name{font-size:10px;color:#fff;font-weight:600}
+.panel-header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.panel-title{
+  font-family:'Orbitron',monospace;font-size:10px;letter-spacing:1.5px;
+  color:#ffd700;text-transform:uppercase;font-weight:700;
+}
+.panel-close-btn{
+  background:transparent;border:none;color:#64748b;cursor:pointer;font-size:12px;transition:color 0.2s;
+}
+.panel-close-btn:hover{color:#00f0ff;}
 
-.stat-row{display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:8px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
-.stat-label{font-size:9.5px;color:#888}
+.stage-btn{
+  display:flex;align-items:center;gap:8px;margin-bottom:6px;cursor:pointer;
+  padding:7px 10px;border-radius:6px;border:1px solid transparent;background:rgba(255,255,255,0.02);
+  transition:all 0.25s ease;
+}
+.stage-btn:hover{border-color:#00f0ff;background:rgba(0,240,255,0.12);transform:translateX(3px);}
+.stage-btn.active{border-color:#ffd700;background:rgba(255,215,0,0.12);box-shadow:0 0 10px rgba(255,215,0,0.2);}
+.stage-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor;}
+.stage-name{font-size:10px;color:#fff;font-weight:600;}
+
+.stat-row{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:7px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);
+}
+.stat-label{font-size:9.5px;color:#94a3b8}
 .stat-val{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;color:#00f0ff}
 
 /* Bottom Control Bar */
-#hud-footer{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;
-  gap:12px;padding:10px 20px;background:linear-gradient(0deg,rgba(4,8,18,0.95) 0%,rgba(4,8,18,0.8) 80%,transparent 100%);
-  pointer-events:auto;z-index:20;border-top:1px solid rgba(0,240,255,0.2);backdrop-filter:blur(12px)}
-.btn-control{background:rgba(10,20,35,0.9);border:1px solid rgba(0,240,255,0.4);color:#00f0ff;
-  padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;cursor:pointer;
-  border-radius:4px;transition:all 0.2s}
-.btn-control:hover{background:#00f0ff;color:#000;box-shadow:0 0 15px #00f0ff}
+#hud-footer{
+  position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;
+  gap:10px;padding:8px 16px;background:linear-gradient(0deg,rgba(4,8,18,0.95) 0%,rgba(4,8,18,0.7) 80%,transparent 100%);
+  pointer-events:auto;z-index:20;border-top:1px solid rgba(0,240,255,0.2);backdrop-filter:blur(12px);
+  flex-wrap:wrap;
+}
+.btn-control{
+  background:rgba(10,20,38,0.9);border:1px solid rgba(0,240,255,0.35);color:#00f0ff;
+  padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;cursor:pointer;
+  border-radius:5px;transition:all 0.25s ease;display:flex;align-items:center;gap:5px;
+}
+.btn-control:hover{background:#00f0ff;color:#040712;box-shadow:0 0 16px rgba(0,240,255,0.6);transform:translateY(-1px);}
+.btn-control.active{background:rgba(255,215,0,0.2);border-color:#ffd700;color:#ffd700;}
+
+/* Floating Toggle HUD Icon */
+#hud-toggle-floating{
+  position:fixed;top:12px;right:14px;z-index:30;background:rgba(4,8,18,0.85);
+  border:1px solid var(--accent-cyan,#00f0ff);color:#00f0ff;padding:6px 12px;border-radius:6px;
+  cursor:pointer;font-family:'JetBrains Mono';font-size:11px;font-weight:700;display:flex;align-items:center;gap:6px;
+  backdrop-filter:blur(8px);transition:all 0.2s;box-shadow:0 0 15px rgba(0,240,255,0.2);
+}
+#hud-toggle-floating:hover{background:#00f0ff;color:#000;box-shadow:0 0 20px #00f0ff;}
+
+/* Node Tooltip */
+#node-tooltip{
+  position:fixed;display:none;background:rgba(4,8,18,0.95);border:1px solid #00f0ff;
+  padding:10px 14px;border-radius:8px;font-family:'JetBrains Mono';font-size:11px;color:#fff;
+  pointer-events:none;z-index:50;box-shadow:0 0 25px rgba(0,240,255,0.4);backdrop-filter:blur(10px);
+  max-width:240px;line-height:1.4;
+}
+#node-tooltip h4{font-family:'Orbitron';color:#ffd700;font-size:12px;margin-bottom:4px;}
+
+@media (max-width:850px){
+  #left-panel{display:none;}
+  #right-panel{display:none;}
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
 
+<button id="hud-toggle-floating" onclick="toggleHUD()" title="Toggle Telemetry HUD">
+  <span id="hud-toggle-icon">👁️</span> <span id="hud-toggle-text">HUD</span>
+</button>
+
 <div id="hud-header">
   <div>
     <h1>👑 QUILLAN-RONIN v5.4.0 ONI · 3D SYNAPSE CANVAS</h1>
     <div class="sub">34-COUNCIL EvoMoE · BITNET 1.58b STE · VECTORIZED INDEX_ADD_ GRAPH</div>
   </div>
-  <div style="font-size:11px; color:#ffd700; font-family:'Orbitron';">
-    [INTERACTIVE 3D ORBIT ENABLED]
+  <div style="font-size:10.5px; color:#ffd700; font-family:'Orbitron'; padding-right:80px;">
+    [3D ORBIT & RAYCAST ACTIVE]
   </div>
 </div>
 
 <div id="left-panel">
-  <div class="panel-title">Architectural Layers</div>
-  <div class="stage-btn" onclick="focusLayer(0)"><span class="stage-dot" style="background:#ffd700;"></span><span class="stage-name">1. Dual Ingest Bridge</span></div>
-  <div class="stage-btn" onclick="focusLayer(1)"><span class="stage-dot" style="background:#ff0055;"></span><span class="stage-name">2. 9-Vector Prism</span></div>
-  <div class="stage-btn" onclick="focusLayer(2)"><span class="stage-dot" style="background:#00f0ff;"></span><span class="stage-name">3. Complexity Router</span></div>
-  <div class="stage-btn" onclick="focusLayer(3)"><span class="stage-dot" style="background:#00ff88;"></span><span class="stage-name">4. Top-4 Sparse Gating</span></div>
-  <div class="stage-btn" onclick="focusLayer(4)"><span class="stage-dot" style="background:#a855f7;"></span><span class="stage-name">5. 34-Council Swarms</span></div>
-  <div class="stage-btn" onclick="focusLayer(5)"><span class="stage-dot" style="background:#3a86ff;"></span><span class="stage-name">6. Flash Diffusion Core</span></div>
-  <div class="stage-btn" onclick="focusLayer(6)"><span class="stage-dot" style="background:#ffd700;"></span><span class="stage-name">7. Sovereign Head</span></div>
+  <div class="panel-header-row">
+    <div class="panel-title">Architectural Layers</div>
+  </div>
+  <div class="stage-btn" onclick="focusLayer(0)"><span class="stage-dot" style="background:#ffd700; color:#ffd700;"></span><span class="stage-name">1. Dual Ingest Bridge</span></div>
+  <div class="stage-btn" onclick="focusLayer(1)"><span class="stage-dot" style="background:#ff0055; color:#ff0055;"></span><span class="stage-name">2. 9-Vector Prism</span></div>
+  <div class="stage-btn" onclick="focusLayer(2)"><span class="stage-dot" style="background:#00f0ff; color:#00f0ff;"></span><span class="stage-name">3. Complexity Router</span></div>
+  <div class="stage-btn" onclick="focusLayer(3)"><span class="stage-dot" style="background:#00ff88; color:#00ff88;"></span><span class="stage-name">4. Top-4 Sparse Gating</span></div>
+  <div class="stage-btn" onclick="focusLayer(4)"><span class="stage-dot" style="background:#a855f7; color:#a855f7;"></span><span class="stage-name">5. 34-Council Swarms</span></div>
+  <div class="stage-btn" onclick="focusLayer(5)"><span class="stage-dot" style="background:#3a86ff; color:#3a86ff;"></span><span class="stage-name">6. Flash Diffusion Core</span></div>
+  <div class="stage-btn" onclick="focusLayer(6)"><span class="stage-dot" style="background:#ffd700; color:#ffd700;"></span><span class="stage-name">7. Sovereign Head</span></div>
 </div>
 
 <div id="right-panel">
-  <div class="panel-title">Live Model Telemetry</div>
-  <div class="stat-row"><span class="stat-label">Throughput:</span><span class="stat-val">225.33 GFLOPS</span></div>
-  <div class="stat-row"><span class="stat-label">Latency Floor:</span><span class="stat-val">0.50 ms</span></div>
+  <div class="panel-header-row">
+    <div class="panel-title">Live Model Telemetry</div>
+  </div>
+  <div class="stat-row"><span class="stat-label">Throughput:</span><span class="stat-val" id="tele-flops">248.80 GFLOPS</span></div>
+  <div class="stat-row"><span class="stat-label">Latency Floor:</span><span class="stat-val" id="tele-lat">0.42 ms</span></div>
   <div class="stat-row"><span class="stat-label">Active Gating:</span><span class="stat-val">Top-4 / 34</span></div>
   <div class="stat-row"><span class="stat-label">Ternary Quant:</span><span class="stat-val">BitNet {-1,0,+1}</span></div>
   <div class="stat-row"><span class="stat-label">Virtual Swarm:</span><span class="stat-val">9.0B Agents</span></div>
   <div class="stat-row"><span class="stat-label">E_ICE Safety:</span><span class="stat-val" style="color:#00ff88;">100.0% Clean</span></div>
-  <div style="margin-top:14px; padding:10px; background:rgba(0,240,255,0.05); border:1px solid rgba(0,240,255,0.2); border-radius:6px; font-size:10px; color:#aaa; line-height:1.5;">
-    <strong style="color:#fff;">Node Inspection:</strong><br>
-    Click and drag to rotate the 3D model graph in real-time. Scroll to zoom through transformer layers.
+  <div style="margin-top:12px; padding:10px; background:rgba(0,240,255,0.05); border:1px solid rgba(0,240,255,0.2); border-radius:6px; font-size:10px; color:#aaa; line-height:1.5;">
+    <strong style="color:#fff;">Interactive Controls:</strong><br>
+    • Left click & drag: Rotate 3D graph<br>
+    • Scroll: Zoom in/out<br>
+    • Right click: Pan view<br>
+    • Hover node: Inspect synapse & expert
   </div>
 </div>
 
 <div id="webgl-container"></div>
 
+<div id="node-tooltip">
+  <h4 id="tooltip-title">Node Info</h4>
+  <div id="tooltip-desc" style="color:#94a3b8; font-size:10px;">Details</div>
+</div>
+
 <div id="hud-footer">
   <button class="btn-control" onclick="resetCamera()">🎯 Reset View</button>
-  <button class="btn-control" onclick="togglePulse()">⚡ Pulse Synaptic Pulse</button>
-  <button class="btn-control" onclick="toggleAutoRotate()">🔄 Toggle Orbit</button>
+  <button class="btn-control" onclick="setCameraAngle('top')">📐 Top Flow</button>
+  <button class="btn-control" onclick="setCameraAngle('side')">📊 Layer Depth</button>
+  <button class="btn-control" id="btn-pulse" onclick="togglePulse()">⚡ Overdrive Pulse</button>
+  <button class="btn-control" id="btn-rotate" onclick="toggleAutoRotate()">🔄 Orbit: ON</button>
+  <button class="btn-control" onclick="toggleFullscreen()">⛶ Fullscreen</button>
 </div>
 
 <script>
 // --- THREE.JS 3D EvoMoE NEURAL NETWORK PIPELINE GRAPH ---
 const container = document.getElementById('webgl-container');
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 4, 18);
+const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 3, 24);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -116,42 +190,54 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.autoRotate = true;
-controls.autoRotateSpeed = 0.6;
+controls.autoRotateSpeed = 0.5;
 
 // 7 Architectural Layers positioned in 3D space
 const LAYERS = [
-  { name: "Dual Ingestion", count: 4, x: -15, color: 0xffd700 },
-  { name: "9-Vector Prism", count: 9, x: -10, color: 0xff0055 },
-  { name: "Complexity Router", count: 3, x: -5, color: 0x00f0ff },
-  { name: "Top-4 Sparse Gating", count: 4, x: 0, color: 0x00ff88 },
-  { name: "34 Council Experts", count: 18, x: 5, color: 0xa855f7 },
-  { name: "Flash Diffusion Core", count: 6, x: 10, color: 0x3a86ff },
-  { name: "Sovereign Output Head", count: 4, x: 15, color: 0xffd700 }
+  { name: "Dual Ingest Bridge", count: 4, x: -16, color: 0xffd700, desc: "Dual analytical & intuitive Q1/Q2 input ingestion" },
+  { name: "9-Vector Prism", count: 9, x: -11, color: 0xff0055, desc: "Language, Sentiment, Context, Intent, Meta, Creative, Ethics, Strategy, Constraint" },
+  { name: "Complexity Router", count: 3, x: -5.5, color: 0x00f0ff, desc: "BitLinear neural dispatch router with load balancing" },
+  { name: "Top-4 Sparse Gating", count: 4, x: 0, color: 0x00ff88, desc: "Dynamic softmax top-k expert selection (4 of 34)" },
+  { name: "34-Council Swarms", count: 18, x: 6, color: 0xa855f7, desc: "Rank-24 EGGROLL low-rank adaptation Council Experts C0-C33" },
+  { name: "Flash Diffusion Core", count: 6, x: 11.5, color: 0x3a86ff, desc: "14-step high throughput CouilAttention flash diffusion bridge" },
+  { name: "Sovereign Head", count: 4, x: 16.5, color: 0xffd700, desc: "Tied embedding final output projection with safety clamping" }
 ];
 
 const nodes = [];
+const allNodeMeshes = [];
 const layerGroups = [];
-const nodeGeo = new THREE.SphereGeometry(0.28, 16, 16);
+const nodeGeo = new THREE.SphereGeometry(0.35, 16, 16);
 
 LAYERS.forEach((layer, lIdx) => {
   const grp = new THREE.Group();
   const layerNodes = [];
-  const spacing = 1.2;
+  const spacing = 1.35;
   const startY = -((layer.count - 1) * spacing) / 2;
 
   for (let i = 0; i < layer.count; i++) {
     const mat = new THREE.MeshBasicMaterial({ color: layer.color, wireframe: false });
     const mesh = new THREE.Mesh(nodeGeo, mat);
-    mesh.position.set(layer.x, startY + i * spacing, (Math.sin(i + lIdx) * 1.5));
+    const zOffset = Math.sin(i * 1.5 + lIdx) * 2.2;
+    mesh.position.set(layer.x, startY + i * spacing, zOffset);
     
     // Outer wireframe halo
-    const haloGeo = new THREE.SphereGeometry(0.42, 8, 8);
-    const haloMat = new THREE.MeshBasicMaterial({ color: layer.color, wireframe: true, transparent: true, opacity: 0.4 });
+    const haloGeo = new THREE.SphereGeometry(0.55, 10, 10);
+    const haloMat = new THREE.MeshBasicMaterial({ color: layer.color, wireframe: true, transparent: true, opacity: 0.35 });
     const halo = new THREE.Mesh(haloGeo, haloMat);
     mesh.add(halo);
 
+    mesh.userData = {
+      layerIdx: lIdx,
+      layerName: layer.name,
+      nodeIndex: i + 1,
+      desc: layer.desc,
+      color: layer.color,
+      initialZ: zOffset
+    };
+
     grp.add(mesh);
     layerNodes.push(mesh);
+    allNodeMeshes.push(mesh);
   }
   scene.add(grp);
   layerGroups.push(grp);
@@ -161,8 +247,7 @@ LAYERS.forEach((layer, lIdx) => {
 // Synaptic Laser Conduits & Travelling Photons
 const connections = [];
 const photons = [];
-const photonGeo = new THREE.SphereGeometry(0.08, 8, 8);
-const photonMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+const photonGeo = new THREE.SphereGeometry(0.1, 8, 8);
 
 for (let l = 0; l < nodes.length - 1; l++) {
   const fromNodes = nodes[l];
@@ -170,17 +255,27 @@ for (let l = 0; l < nodes.length - 1; l++) {
 
   fromNodes.forEach(fn => {
     toNodes.forEach(tn => {
-      if (Math.random() > 0.45) {
+      if (Math.random() > 0.48) {
         const points = [fn.position, tn.position];
         const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-        const lineMat = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.12 });
+        const lineMat = new THREE.LineBasicMaterial({
+          color: (Math.random() > 0.5 ? 0x00f0ff : 0xa855f7),
+          transparent: true,
+          opacity: 0.16
+        });
         const line = new THREE.Line(lineGeo, lineMat);
         scene.add(line);
-        connections.push({ fn, tn });
+        connections.push({ fn, tn, line });
 
         // Add traveling photon data packet
-        const p = new THREE.Mesh(photonGeo, photonMat);
-        p.userData = { start: fn.position, end: tn.position, progress: Math.random(), speed: 0.008 + Math.random() * 0.012 };
+        const pMat = new THREE.MeshBasicMaterial({ color: Math.random() > 0.5 ? 0xffffff : 0x00f0ff });
+        const p = new THREE.Mesh(photonGeo, pMat);
+        p.userData = {
+          start: fn.position,
+          end: tn.position,
+          progress: Math.random(),
+          speed: 0.006 + Math.random() * 0.014
+        };
         scene.add(p);
         photons.push(p);
       }
@@ -189,42 +284,150 @@ for (let l = 0; l < nodes.length - 1; l++) {
 }
 
 // Background Cyber Grid
-const grid = new THREE.GridHelper(50, 50, 0x00f0ff, 0x0a1525);
-grid.position.y = -8;
+const grid = new THREE.GridHelper(60, 60, 0x00f0ff, 0x07152b);
+grid.position.y = -9;
 scene.add(grid);
 
+// Ambient Particle Stars / Dust
+const starGeo = new THREE.BufferGeometry();
+const starCount = 350;
+const starPositions = new Float32Array(starCount * 3);
+for (let i = 0; i < starCount * 3; i += 3) {
+  starPositions[i] = (Math.random() - 0.5) * 70;
+  starPositions[i + 1] = (Math.random() - 0.5) * 35;
+  starPositions[i + 2] = (Math.random() - 0.5) * 50;
+}
+starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+const starMat = new THREE.PointsMaterial({ color: 0x00f0ff, size: 0.25, transparent: true, opacity: 0.5 });
+const starField = new THREE.Points(starGeo, starMat);
+scene.add(starField);
+
+// --- RAYCASTING FOR INTERACTION ---
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const tooltip = document.getElementById('node-tooltip');
+const tooltipTitle = document.getElementById('tooltip-title');
+const tooltipDesc = document.getElementById('tooltip-desc');
+let hoveredNode = null;
+
+window.addEventListener('mousemove', (e) => {
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(allNodeMeshes);
+
+  if (intersects.length > 0) {
+    const target = intersects[0].object;
+    if (hoveredNode !== target) {
+      hoveredNode = target;
+      document.body.style.cursor = 'pointer';
+      tooltipTitle.innerText = `${target.userData.layerName} #${target.userData.nodeIndex}`;
+      tooltipDesc.innerText = target.userData.desc;
+      tooltip.style.display = 'block';
+    }
+    tooltip.style.left = `${Math.min(window.innerWidth - 260, e.clientX + 16)}px`;
+    tooltip.style.top = `${Math.min(window.innerHeight - 100, e.clientY + 16)}px`;
+  } else {
+    if (hoveredNode) {
+      hoveredNode = null;
+      document.body.style.cursor = 'default';
+      tooltip.style.display = 'none';
+    }
+  }
+});
+
+// Controls & Camera View Angle presets
 function resetCamera() {
-  camera.position.set(0, 4, 18);
   controls.target.set(0, 0, 0);
+  camera.position.set(0, 3, 24);
+  controls.autoRotate = true;
+  document.getElementById('btn-rotate').innerText = '🔄 Orbit: ON';
+}
+
+function setCameraAngle(angle) {
+  if (angle === 'top') {
+    controls.target.set(0, 0, 0);
+    camera.position.set(0, 26, 0.1);
+  } else if (angle === 'side') {
+    controls.target.set(0, 0, 0);
+    camera.position.set(28, 0, 0);
+  }
 }
 
 function toggleAutoRotate() {
   controls.autoRotate = !controls.autoRotate;
+  document.getElementById('btn-rotate').innerText = controls.autoRotate ? '🔄 Orbit: ON' : '⏸️ Orbit: OFF';
+}
+
+let isOverdrive = false;
+function togglePulse() {
+  isOverdrive = !isOverdrive;
+  const mult = isOverdrive ? 3.5 : 1.0;
+  photons.forEach(p => p.userData.speed = (0.008 + Math.random() * 0.012) * mult);
+  const btn = document.getElementById('btn-pulse');
+  btn.classList.toggle('active', isOverdrive);
+  btn.innerText = isOverdrive ? '⚡ Overdrive: ACTIVE' : '⚡ Overdrive Pulse';
 }
 
 function focusLayer(idx) {
   if (LAYERS[idx]) {
     controls.target.set(LAYERS[idx].x, 0, 0);
+    camera.position.set(LAYERS[idx].x, 2, 9);
+    controls.autoRotate = false;
+    document.getElementById('btn-rotate').innerText = '⏸️ Orbit: OFF';
+    
+    // Highlight active layer button
+    document.querySelectorAll('.stage-btn').forEach((b, i) => {
+      b.classList.toggle('active', i === idx);
+    });
   }
 }
 
-function togglePulse() {
-  photons.forEach(p => p.userData.speed *= 2.5);
-  setTimeout(() => {
-    photons.forEach(p => p.userData.speed /= 2.5);
-  }, 1200);
+let hudVisible = true;
+function toggleHUD() {
+  hudVisible = !hudVisible;
+  document.body.classList.toggle('hud-hidden', !hudVisible);
+  document.getElementById('hud-toggle-text').innerText = hudVisible ? 'HUD' : 'SHOW HUD';
+  document.getElementById('hud-toggle-icon').innerText = hudVisible ? '👁️' : '👁️‍🗨️';
 }
 
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen().catch(() => {});
+  }
+}
+
+// Subtle live telemetry fluctuation
+setInterval(() => {
+  const flops = (245 + Math.random() * 8).toFixed(2);
+  const lat = (0.40 + Math.random() * 0.08).toFixed(2);
+  document.getElementById('tele-flops').innerText = `${flops} GFLOPS`;
+  document.getElementById('tele-lat').innerText = `${lat} ms`;
+}, 1800);
+
+let clock = 0;
 function animate() {
   requestAnimationFrame(animate);
+  clock += 0.02;
   controls.update();
 
-  // Animate Photons
+  // Floating gentle oscillation of nodes
+  allNodeMeshes.forEach((mesh, idx) => {
+    mesh.position.y += Math.sin(clock + idx) * 0.002;
+  });
+
+  // Animate Photons along conduits
   photons.forEach(p => {
     p.userData.progress += p.userData.speed;
     if (p.userData.progress > 1.0) p.userData.progress = 0.0;
     p.position.lerpVectors(p.userData.start, p.userData.end, p.userData.progress);
   });
+
+  // Rotate starfield slowly
+  starField.rotation.y = clock * 0.02;
 
   renderer.render(scene, camera);
 }
