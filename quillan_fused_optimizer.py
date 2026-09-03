@@ -202,8 +202,8 @@ class QuillanFusedOptimizer:
             if not p.requires_grad:
                 continue
             
-            # Keep MoE weights in AdamW group to bypass expensive 3D orthogonalization
-            is_moe_weight = any(x in name for x in ['moe.w1', 'moe.wgate', 'moe.w2'])
+            # Keep MoE, router, and pull-gate weights in AdamW group to bypass expensive orthogonalization
+            is_moe_weight = any(x in name for x in ['moe.', 'experts', 'router', 'pull_gate'])
             if p.dim() >= 2 and not is_moe_weight:
                 self.muon_params.append(p)
                 self.muon_buf.append(

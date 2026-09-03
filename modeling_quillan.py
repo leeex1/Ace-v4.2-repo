@@ -7,9 +7,12 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from transformers import PreTrainedModel
-from transformers.modeling_outputs import CausalLMOutputWithPast
 import time
+import logging
+from transformers import PreTrainedModel, GenerationMixin
+from transformers.modeling_outputs import CausalLMOutputWithPast
+
+logger = logging.getLogger("Quillan.Modeling")
 
 # Custom Configuration Import (Assuming configuration_quillan.py exists)
 from configuration_quillan import QuillanConfig
@@ -113,7 +116,7 @@ class QuillanCouncilMoE(nn.Module):
 # ==============================================================================
 # 3. C31-NEXUS & THERMODYNAMIC GOVERNOR (Lee-Mach-6)
 # ==============================================================================
-class QuillanRoninForCausalLM(PreTrainedModel):
+class QuillanRoninForCausalLM(PreTrainedModel, GenerationMixin):
     config_class = QuillanConfig
     _no_split_modules = ["QuillanCouncilMoE"]
 
@@ -165,9 +168,9 @@ class QuillanRoninForCausalLM(PreTrainedModel):
         forward_time = time.perf_counter() - start_time
         if forward_time > self.e_ice_limit:
             # If disk/ram I/O causes latency > 100ms, force an internal cache dump to prevent Drive Thrashing
-            torch.cuda.empty_cache()
-            # Log to standard out (Bypassing slow disk logging)
-            print(f"[C31-NEXUS] E_ICE LIMIT EXCEEDED: {forward_time*1000:.1f}ms. Swarm Throttled.")
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+            logger.warning(f"[C31-NEXUS] E_ICE LIMIT EXCEEDED: {forward_time*1000:.1f}ms. Swarm Throttled.")
 
         loss = None
         if labels is not None:
@@ -183,3 +186,11 @@ class QuillanRoninForCausalLM(PreTrainedModel):
             hidden_states=None,
             attentions=None,
         )
+
+    def prepare_inputs_for_generation(self, input_ids, past_key_values=None, **kwargs):
+        if past_key_values:
+            input_ids = input_ids[:, -1:]
+        return {
+            "input_ids": input_ids,
+            "past_key_values": past_key_values,
+        }

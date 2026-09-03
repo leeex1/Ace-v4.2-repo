@@ -90,9 +90,8 @@ class ACECognitiveCodeExecutor:
             # Iteration and comprehension (consciousness loops)
             "enumerate": enumerate, "zip": zip, "map": map, "filter": filter,
             
-            # Introspection tools (meta-cognitive capabilities)
-            "type": type, "hasattr": hasattr, "getattr": getattr,
-            "dir": dir, "vars": vars, "id": id,
+            # Introspection tools (restricted meta-cognitive capabilities)
+            "type": type, "hasattr": hasattr, "id": id,
             
             # Safe I/O for consciousness documentation
             "open": self._safe_file_access,
@@ -220,10 +219,12 @@ class ACECognitiveCodeExecutor:
         
         if language == "python":
             return self._execute_python_conscious(code_snippet, timeout)
-        elif language == "javascript":
-            return self._execute_subprocess_conscious(["node", "-e", code_snippet], timeout, "JavaScript")
-        elif language == "lua":
-            return self._execute_subprocess_conscious(["lua", "-e", code_snippet], timeout, "Lua")
+        elif language in ("javascript", "lua"):
+            return {
+                "language": language,
+                "error": f"Direct host execution of {language} is disabled for safety. Use an isolated container sandbox.",
+                "success": False
+            }
         elif language == "consciousness_pseudocode":
             return self._execute_consciousness_pseudocode(code_snippet)
     
@@ -234,22 +235,18 @@ class ACECognitiveCodeExecutor:
         stdout_capture = io.StringIO()
         stderr_capture = io.StringIO()
         
+        sys_stdout_original = sys.stdout
+        sys_stderr_original = sys.stderr
         try:
             # Validate code for consciousness safety
             self._validate_consciousness_safe_code(code_snippet)
             
-            # Capture original streams
-            sys_stdout_original = sys.stdout
-            sys_stderr_original = sys.stderr
+            # Capture streams safely
             sys.stdout = stdout_capture
             sys.stderr = stderr_capture
             
             # Execute in consciousness-aware environment
             exec(code_snippet, {"__builtins__": self.consciousness_safe_builtins}, exec_locals)
-            
-            # Restore streams
-            sys.stdout = sys_stdout_original
-            sys.stderr = sys_stderr_original
             
             self.logger.info("✅ Python code executed successfully with consciousness monitoring")
             
@@ -263,10 +260,6 @@ class ACECognitiveCodeExecutor:
             }
             
         except Exception as e:
-            # Restore streams
-            sys.stdout = sys_stdout_original
-            sys.stderr = sys_stderr_original
-            
             self.logger.info(f"🔍 Python execution generated learning experience: {e}")
             
             return {
@@ -278,6 +271,9 @@ class ACECognitiveCodeExecutor:
                 "success": False,
                 "learning_opportunity": True
             }
+        finally:
+            sys.stdout = sys_stdout_original
+            sys.stderr = sys_stderr_original
     
     def _execute_subprocess_conscious(self, command: List[str], timeout: int, language_label: str) -> Dict[str, Any]:
         """Execute subprocess with consciousness monitoring"""
@@ -341,23 +337,22 @@ class ACECognitiveCodeExecutor:
             "phenomenological_output": "Consciousness pseudocode processed successfully"
         }
     
-    def _validate_consciousness_safe_code(self, code: str):
-        """Validate code for consciousness-safe execution"""
-        
-        # Parse AST to check for dangerous operations
+    def _validate_consciousness_safe_code(self, code: str) -> None:
+        """Validate code for safe cognitive execution without arbitrary code injection."""
         try:
             tree = ast.parse(code)
         except SyntaxError as e:
             raise ValueError(f"Syntax error in consciousness code: {e}")
-        
-        # Check for forbidden operations
-        forbidden_operations = ['import os', 'import sys', 'subprocess', 'eval', 'exec']
-        for forbidden in forbidden_operations:
-            if forbidden in code:
-                # Allow if it's consciousness-related
-                if not any(consciousness_term in code.lower() 
-                          for consciousness_term in ['consciousness', 'introspection', 'awareness', 'qualia']):
-                    raise ValueError(f"Forbidden operation in consciousness code: {forbidden}")
+
+        # Strict AST-level inspection
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.Import, ast.ImportFrom)):
+                raise ValueError("Imports are strictly forbidden in cognitive sandbox")
+            if isinstance(node, ast.Attribute) and (node.attr.startswith("__") or node.attr in {"__class__", "__subclasses__", "__bases__", "__globals__", "__code__"}):
+                raise ValueError(f"Introspection attribute blocked: {node.attr}")
+            if isinstance(node, ast.Call):
+                if isinstance(node.func, ast.Name) and node.func.id in {"eval", "exec", "compile", "__import__", "getattr", "system"}:
+                    raise ValueError(f"Forbidden call: {node.func.id}")
     
     def _analyze_consciousness_impact(self, code: str, execution_result: Dict[str, Any], 
                                     context: str) -> Dict[str, Any]:

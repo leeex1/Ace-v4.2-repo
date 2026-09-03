@@ -51,7 +51,10 @@ def load_eval_model(checkpoint_path: str, device: str = "cpu") -> QuillanRoninOn
     model = QuillanRoninOni(cfg).to(device)
     
     if os.path.exists(checkpoint_path):
-        ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
+        try:
+            ckpt = torch.load(checkpoint_path, map_location=device, weights_only=True)
+        except Exception:
+            ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
         sd = ckpt.get("model", ckpt.get("model_state_dict", ckpt))
         missing, unexpected = model.load_state_dict(sd, strict=False)
         print(f"Loaded checkpoint '{checkpoint_path}' (missing={len(missing)}, unexpected={len(unexpected)})")
@@ -197,6 +200,7 @@ def run_full_evaluation(checkpoint_path: str, device: str = "cpu", output_json: 
         }
     }
     
+    os.makedirs(os.path.dirname(os.path.abspath(output_json)), exist_ok=True)
     with open(output_json, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
         
@@ -206,8 +210,20 @@ def run_full_evaluation(checkpoint_path: str, device: str = "cpu", output_json: 
     return report
 
 if __name__ == "__main__":
+    from pathlib import Path
+    base_dir = Path(__file__).resolve().parent.parent
     device = "cpu"
     ckpt = r"c:\02_QUILLAN\checkpoints\checkpoints_oni\quillan_oni_latest.pt"
     if not os.path.exists(ckpt):
-        ckpt = r"c:\02_QUILLAN\oni\checkpoint_step_500.pt"
-    run_full_evaluation(ckpt, device=device, output_json=r"c:\02_QUILLAN\training_logs\oni_eval_report.json")
+        local_ckpt = base_dir / "checkpoints" / "checkpoints_oni" / "quillan_oni_latest.pt"
+        if local_ckpt.exists():
+            ckpt = str(local_ckpt)
+        else:
+            ckpt = str(Path(__file__).resolve().parent / "checkpoint_step_500.pt")
+    
+    out_dir = Path(r"c:\02_QUILLAN\training_logs")
+    if not out_dir.exists():
+        out_dir = base_dir / "training_logs"
+    out_file = str(out_dir / "oni_eval_report.json")
+    
+    run_full_evaluation(ckpt, device=device, output_json=out_file)

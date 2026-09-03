@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # EvoMoE (2505.23830) — Expert Evolution for 33 Council (HNMoE)
 # Evolves diverse experts from single base via evolutionary perturbations + token-aware routing
 import torch, torch.nn as nn, torch.nn.functional as F
@@ -25,15 +25,24 @@ class EvoMoE(nn.Module):
 
     def forward(self, x):
         # Token-aware routing (EvoMoE): each token gets its own expert mix
+        B, S, D = x.shape
         logits = self.router(x)  # [B,S,33]
         gates = F.softmax(logits, dim=-1)
         # Top-4 heterogeneous routing (like Mixtral but grouped)
         top_gates, top_idx = gates.topk(4, dim=-1)
-        out = torch.zeros_like(x)
-        for b in range(x.shape[0]):
-            for s in range(x.shape[1]):
-                for k in range(4):
-                    eid = top_idx[b,s,k].item()
-                    out[b,s] += top_gates[b,s,k] * self.experts[eid](x[b,s])
-        return out
+        
+        # Vectorized dispatch across token slots to replace O(B*S*4) nested Python loop
+        flat_x = x.reshape(-1, D)
+        flat_top_idx = top_idx.reshape(-1, 4)
+        flat_top_gates = top_gates.reshape(-1, 4)
+        out_vec = torch.zeros_like(flat_x)
+        
+        for eid in range(self.n_experts):
+            tok_pos, k_slot = (flat_top_idx == eid).nonzero(as_tuple=True)
+            if tok_pos.numel() > 0:
+                w = flat_top_gates[tok_pos, k_slot].unsqueeze(-1)
+                e_out = self.experts[eid](flat_x[tok_pos])
+                out_vec.index_add_(0, tok_pos, (w * e_out).to(out_vec.dtype))
+                
+        return out_vec.reshape(B, S, D)
 
