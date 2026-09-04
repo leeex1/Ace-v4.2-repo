@@ -439,8 +439,8 @@ export function MenuScreen({ onStart, onAdventure, onContinue, onSettings, onSpr
               >
                 🧪 MINIMAL TEST
               </button>
-            )}
-            
+            )
+          }
             {onSpriteUsageValidator && (
               <button
                 onClick={() => {
