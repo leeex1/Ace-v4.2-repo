@@ -121,6 +121,7 @@ class QuillanOniConfig:
     aux_load_weight: float = 0.05
     aux_z_weight: float = 0.001
     aux_ethics_weight: float = 0.05
+    aux_aszr_weight: float = 0.01            # Formula #11: Adèlic Spectral Zeta Regularizer (Ihara-Bass Silver Ratio)
     entropy_bonus_weight: float = 0.01
     dropout: float = 0.0
     grad_checkpoint: bool = False
@@ -134,6 +135,7 @@ class QuillanOniConfig:
     use_speculative: bool = True
     use_nitro: bool = False
     use_es: bool = True
+    use_packed_ternary: bool = False         # 2-bit ternary weight packing for Pascal L2 residency
 
     def __post_init__(self):
         assert self.hidden_dim % self.n_head == 0
@@ -207,6 +209,51 @@ def _weight_quant_jit(w: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
 
 def _weight_quant(w: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
     return _weight_quant_jit(w, eps)
+
+
+# ------------------------------------------------------------------
+# PASCAL L2 CACHE TERNARY PACKING (16 weights / int32, 2 bits per weight)
+# Compresses rank-8 LoRA matrices 16x (64KB -> 4KB) for 100% L2 residency.
+# ------------------------------------------------------------------
+
+def pack_ternary(x_ternary: torch.Tensor) -> torch.Tensor:
+    """Packs float ternary tensor {-1.0, 0.0, 1.0} into int32.
+    
+    Each int32 holds 16 ternary values (2 bits per value):
+        0.0  -> 0 (00_2)
+       +1.0  -> 1 (01_2)
+       -1.0  -> 2 (10_2)
+       reserved -> 3 (11_2)
+    Enables fitting entire LoRA adapter pools into Pascal L2 cache (2.75MB).
+    """
+    assert x_ternary.shape[-1] % 16 == 0, "Last dimension must be a multiple of 16 for packing"
+    mapped = torch.zeros_like(x_ternary, dtype=torch.int32)
+    mapped[x_ternary == -1.0] = 2
+    mapped[x_ternary == 1.0] = 1
+    
+    shape = list(mapped.shape)
+    shape[-1] = shape[-1] // 16
+    shape.append(16)
+    
+    mapped = mapped.view(shape)
+    packed = torch.zeros(shape[:-1], dtype=torch.int32, device=x_ternary.device)
+    for i in range(16):
+        packed = packed | (mapped[..., i] << (2 * i))
+    return packed
+
+
+def unpack_ternary(packed: torch.Tensor, original_shape: tuple) -> torch.Tensor:
+    """Unpacks int32 tensor into float ternary tensor {-1.0, 0.0, 1.0}."""
+    shape = list(packed.shape)
+    shape.append(16)
+    unpacked = torch.zeros(shape, dtype=torch.int32, device=packed.device)
+    for i in range(16):
+        unpacked[..., i] = (packed >> (2 * i)) & 3
+    unpacked = unpacked.view(original_shape).float()
+    res = torch.zeros_like(unpacked)
+    res[unpacked == 2.0] = -1.0
+    res[unpacked == 1.0] = 1.0
+    return res
 
 
 class BitLinear(nn.Linear):
@@ -414,8 +461,9 @@ class QuantumFormulasEngine(nn.Module):
       8  QICS  — Quantum Information Communication (von Neumann entropy)
       9  QSSR  — Quantum System Stability Resilience (Lyapunov)
      10  JQLD  — Joshua's Quantum Leap Dynamo (Lindblad-driven dynamics)
+     11  ASZR  — Adèlic Spectral Zeta Regularizer (Ihara-Bass Silver Ratio gap)
 
-    All methods are pure functions on hidden states (no new learnable
+    All methods are pure functions on hidden states or weight tensors (no new learnable
     parameters) so existing checkpoints resume with strict=False and no
     shape mismatch.
     """
@@ -513,6 +561,29 @@ class QuantumFormulasEngine(nn.Module):
     def jqld_evolution_step(self, hidden: torch.Tensor, tau_gumbel: float = 0.5) -> torch.Tensor:
         noise = torch.randn_like(hidden.float()) * tau_gumbel * 0.01
         return hidden.float() + noise.to(hidden.dtype)
+
+    # 11. ASZR — Adèlic Spectral Zeta Regularizer (Ihara-Bass Silver Ratio)
+    # Proved in IharaBass.lean & ContinuousTransfer.lean:
+    # Gap exponent alpha = 3/2 - log2(1 + sqrt(2)) ~= 0.2284467 (Silver Ratio delta_S = 1 + sqrt(2)).
+    # Penalizes singular value ratio collapse to stabilize BitNet 1.58b ternary representation.
+    def aszr_spectral_zeta_loss(self, weight: torch.Tensor, target_gap: float = 0.2284467) -> torch.Tensor:
+        """Adèlic Spectral Zeta Regularizer (Formula 11).
+        
+        Monitors the normalized top singular value gap of weight matrices:
+            gap = (s_0 - s_1) / (s_0 + 1e-6)
+        Penalizes deviation from the theoretical Ihara-Bass Silver Ratio gap (alpha ~= 0.2284467),
+        preventing BitNet 1.58b ternary representation collapse under STE gradient flow.
+        """
+        w = weight.float()
+        if w.dim() > 2:
+            w = w.view(w.size(0), -1)
+        sub_w = w[:min(128, w.size(0)), :min(128, w.size(1))]
+        if sub_w.size(0) >= 2 and sub_w.size(1) >= 2:
+            s = torch.linalg.svdvals(sub_w)
+            if s.size(0) >= 2:
+                gap = (s[0] - s[1]) / (s[0] + 1e-6)
+                return F.mse_loss(gap, torch.tensor(target_gap, device=weight.device, dtype=torch.float32))
+        return torch.zeros((), device=weight.device, dtype=torch.float32)
 
 
 
@@ -894,9 +965,11 @@ class CausalSelfAttention(nn.Module):
                 causal = torch.tril(torch.ones(T, kv_len, dtype=torch.bool, device=x.device))
                 scores = scores.masked_fill(~causal, float("-inf"))
             keep = min(kv_len, self.keep_abs)
+            is_sink = torch.zeros(kv_len, dtype=torch.bool, device=x.device)
+            is_sink[0] = True  # Attention Sink: Token 0 permanently anchored to prevent softmax entropy collapse
             for h in range(1, self.n_head, 2):  # odd heads
                 thresh = scores[:, h].topk(keep, dim=-1).values[..., -1:]  # [B,T,1]
-                scores[:, h] = torch.where(scores[:, h] < thresh,
+                scores[:, h] = torch.where((scores[:, h] < thresh) & (~is_sink),
                                            torch.full_like(scores[:, h], float("-inf")),
                                            scores[:, h])
             a = F.softmax(scores, dim=-1) @ v
@@ -1430,6 +1503,12 @@ class QuillanRoninOni(nn.Module):
                 aux["qics"] = self.quantum.qics_entropy(x.mean(dim=1))
             except Exception:
                 pass
+        if getattr(cfg, "aux_aszr_weight", 0.0) > 0.0 and len(self.h) > 0:
+            try:
+                w_sample = self.h[0].attn.prism.vectors["Language"].weight
+                aux["aszr"] = self.quantum.aszr_spectral_zeta_loss(w_sample)
+            except Exception:
+                pass
         if e_ice_out is not None:
             aux["ethics"] = e_ice_out["constrained"].mean()
         return aux
@@ -1447,6 +1526,8 @@ class QuillanRoninOni(nn.Module):
             loss = loss + 0.005 * aux["qhis"]
         if "qics" in aux:
             loss = loss + 0.002 * aux["qics"]
+        if "aszr" in aux:
+            loss = loss + getattr(cfg, "aux_aszr_weight", 0.01) * aux["aszr"]
         if "ethics" in aux:
             loss = loss + cfg.aux_ethics_weight * aux["ethics"]
         return loss

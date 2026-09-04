@@ -115,7 +115,9 @@ try:
     dqro = q_engine.dqro_energy(x[:, 0, :32], j_coupling=torch.eye(32))
     qcrdm = q_engine.qcrdm_reasoning(x[:, 0, :])
     jqld = q_engine.jqld_evolution_step(x[:, 0, :])
-    write_log("[TEST 7/10] Quantum Formulas V5.0 Suite (AQCS, EEMF, QHIS, DQRO, QCRDM, JQLD): PASS")
+    test_w = torch.randn(64, 64)
+    aszr = q_engine.aszr_spectral_zeta_loss(test_w)
+    write_log("[TEST 7/10] Quantum Formulas V5.0 Suite (AQCS, EEMF, QHIS, DQRO, QCRDM, JQLD, ASZR): PASS")
 
     # 8. Lee-Mach-6 Hardware PID Velocity Governor
     gov = LeeMach6Governor(target_latency_ms=100)
