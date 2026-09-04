@@ -83,6 +83,14 @@ except (ImportError, ModuleNotFoundError, ValueError):
     DeepOptimizerSharding = None
     _FORMAL_PAPERS_WIRED = False
 
+try:
+    try:
+        from moe_dispatcher import MoEDispatcher
+    except (ImportError, ModuleNotFoundError):
+        from .moe_dispatcher import MoEDispatcher
+except (ImportError, ModuleNotFoundError):
+    MoEDispatcher = None
+
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.set_float32_matmul_precision("high")
 
@@ -1231,6 +1239,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
                 CouncilExpert(i, get_expert_name(i), cfg) for i in range(cfg.num_experts)
             ])
             self.evo_moe = None
+        self.dispatcher = MoEDispatcher(num_experts=cfg.num_experts) if MoEDispatcher is not None else None
         self.c_fc = nn.Linear(cfg.hidden_dim, cfg.ffn_dim * 2)
         self.c_proj = nn.Linear(cfg.ffn_dim, cfg.hidden_dim)
         self.moe_gate = nn.Linear(cfg.hidden_dim, 1)
@@ -1275,23 +1284,26 @@ class UnrolledCouncilMoEBlock(nn.Module):
         elif self.cfg.router_mode == "ultrametric":
             # ULTRAMETRIC P-ADIC BRUHAT-TITS HIERARCHICAL TREE ROUTING
             topk_p, topk_i, probs, lb_loss, z_loss, entropy = self.ultrametric_router(flat_x, tau=self.tau)
-            moe_out = torch.zeros_like(flat_x)
-            K = self.cfg.top_k
-            BT = flat_x.size(0)
-            flat_idx = topk_i.reshape(-1)                                  # [BT*K]
-            flat_w = topk_p.reshape(-1, 1).to(flat_x.dtype)                # [BT*K,1]
-            token_pos = torch.arange(BT, device=x.device).unsqueeze(1).expand(-1, K).reshape(-1)
-            for e in range(self.cfg.num_experts):
-                sel = (flat_idx == e).nonzero(as_tuple=True)[0]
-                if sel.numel() == 0:
-                    continue
-                pos = token_pos[sel]
-                w = flat_w[sel].to(flat_x.dtype)
-                if isinstance(self.experts[e], CouncilExpert):
-                    e_out = self.experts[e](flat_x[pos], gov_scale)
-                else:
-                    e_out = self.experts[e](flat_x[pos])
-                moe_out.index_add_(0, pos, (w * e_out).to(flat_x.dtype))
+            if self.dispatcher is not None:
+                moe_out = self.dispatcher(flat_x, topk_i, topk_p, self.experts, gov_scale=gov_scale)
+            else:
+                moe_out = torch.zeros_like(flat_x)
+                K = self.cfg.top_k
+                BT = flat_x.size(0)
+                flat_idx = topk_i.reshape(-1)                                  # [BT*K]
+                flat_w = topk_p.reshape(-1, 1).to(flat_x.dtype)                # [BT*K,1]
+                token_pos = torch.arange(BT, device=x.device).unsqueeze(1).expand(-1, K).reshape(-1)
+                for e in range(self.cfg.num_experts):
+                    sel = (flat_idx == e).nonzero(as_tuple=True)[0]
+                    if sel.numel() == 0:
+                        continue
+                    pos = token_pos[sel]
+                    w = flat_w[sel].to(flat_x.dtype)
+                    if isinstance(self.experts[e], CouncilExpert):
+                        e_out = self.experts[e](flat_x[pos], gov_scale)
+                    else:
+                        e_out = self.experts[e](flat_x[pos])
+                    moe_out.index_add_(0, pos, (w * e_out).to(flat_x.dtype))
         else:
             logits = self.router(flat_x).float()  # fp32 router (ST-MoE)
             if self.training and self.cfg.router_mode == "gumbel_topk":
@@ -1301,24 +1313,27 @@ class UnrolledCouncilMoEBlock(nn.Module):
             topk_p, topk_i = torch.topk(probs, self.cfg.top_k, dim=-1)
             topk_p = topk_p / topk_p.sum(dim=-1, keepdim=True)
 
-            moe_out = torch.zeros_like(flat_x)
-            # Vectorized dispatch: group all (token, slot) pairs by expert once.
-            K = self.cfg.top_k
-            BT = flat_x.size(0)
-            flat_idx = topk_i.reshape(-1)                                  # [BT*K]
-            flat_w = topk_p.reshape(-1, 1).to(flat_x.dtype)                # [BT*K,1]
-            token_pos = torch.arange(BT, device=x.device).unsqueeze(1).expand(-1, K).reshape(-1)
-            for e in range(self.cfg.num_experts):
-                sel = (flat_idx == e).nonzero(as_tuple=True)[0]
-                if sel.numel() == 0:
-                    continue
-                pos = token_pos[sel]
-                w = flat_w[sel].to(flat_x.dtype)
-                if isinstance(self.experts[e], CouncilExpert):
-                    e_out = self.experts[e](flat_x[pos], gov_scale)
-                else:
-                    e_out = self.experts[e](flat_x[pos])
-                moe_out.index_add_(0, pos, (w * e_out).to(flat_x.dtype))
+            if self.dispatcher is not None:
+                moe_out = self.dispatcher(flat_x, topk_i, topk_p, self.experts, gov_scale=gov_scale)
+            else:
+                moe_out = torch.zeros_like(flat_x)
+                # Vectorized dispatch: group all (token, slot) pairs by expert once.
+                K = self.cfg.top_k
+                BT = flat_x.size(0)
+                flat_idx = topk_i.reshape(-1)                                  # [BT*K]
+                flat_w = topk_p.reshape(-1, 1).to(flat_x.dtype)                # [BT*K,1]
+                token_pos = torch.arange(BT, device=x.device).unsqueeze(1).expand(-1, K).reshape(-1)
+                for e in range(self.cfg.num_experts):
+                    sel = (flat_idx == e).nonzero(as_tuple=True)[0]
+                    if sel.numel() == 0:
+                        continue
+                    pos = token_pos[sel]
+                    w = flat_w[sel].to(flat_x.dtype)
+                    if isinstance(self.experts[e], CouncilExpert):
+                        e_out = self.experts[e](flat_x[pos], gov_scale)
+                    else:
+                        e_out = self.experts[e](flat_x[pos])
+                    moe_out.index_add_(0, pos, (w * e_out).to(flat_x.dtype))
 
             # Aux losses: KL-to-uniform load balance (AGI paper eq.13) + z-loss (ST-MoE)
             mean_p = probs.mean(dim=0)
@@ -1330,6 +1345,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
         g = torch.tanh(self.moe_gate(flat_x))
         out = h_dense + (moe_out * g).view(B, T, C)
         return out, probs, lb_loss, z_loss, entropy
+
 
 
 class UnrolledTransformerBlock(nn.Module):
