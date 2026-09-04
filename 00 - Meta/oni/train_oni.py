@@ -26,44 +26,13 @@ from quillan_tokenizer_unified import UnifiedQuillanTokenizer  # noqa: E402
 from quillan_v5_4_oni import QuillanOniConfig, QuillanRoninOni  # noqa: E402
 from paper_01_profiler import StepProfiler  # 2309.02521 — real CPU/GPU profiling
 
-def resolve_data_dir(custom_path: str | None = None) -> Path:
-    """Auto-detects data directory across local, repo, and cloud/Colab paths."""
-    if custom_path and Path(custom_path).is_dir():
-        return Path(custom_path).resolve()
-
-    candidates = [
-        Path(__file__).resolve().parent / "data",
-        Path(__file__).resolve().parent.parent / "05_Training" / "training_data" / "v9",
-        Path("/content/Quillan-Ronin/oni/data"),
-        Path("oni/data"),
-        Path("05_Training/training_data/v9"),
-    ]
-    for c in candidates:
-        if c.is_dir() and (c / "train_ids.bin").exists():
-            return c.resolve()
-
-    # Fallback to local oni/data
-    d = (Path(__file__).resolve().parent / "data").resolve()
-    d.mkdir(parents=True, exist_ok=True)
-    return d
-
-
-def resolve_dir(custom_path: str | None, default_sub: str) -> Path:
-    """Auto-detects or creates writable checkpoint and log directories."""
-    if custom_path:
-        p = Path(custom_path).resolve()
-    else:
-        cand = Path(__file__).resolve().parent.parent / "05_Training" / default_sub
-        if cand.parent.is_dir():
-            p = cand
-        else:
-            p = Path(__file__).resolve().parent / default_sub
-    p.mkdir(parents=True, exist_ok=True)
-    return p.resolve()
+DATA = Path(r"C:\02_QUILLAN\05_Training\training_data\v9")
+CKPT_DIR = Path(r"C:\02_QUILLAN\05_Training\checkpoints\checkpoints_oni")
+LOG_DIR = Path(r"C:\02_QUILLAN\05_Training\training_logs")
 
 
 def parse_args():
-    ap = argparse.ArgumentParser(description="Quillan-Ronin v5.4-ONI Sovereign Model Trainer")
+    ap = argparse.ArgumentParser()
     ap.add_argument("--steps", type=int, default=20000)
     ap.add_argument("--batch-size", type=int, default=2)
     ap.add_argument("--grad-accum", type=int, default=4)
@@ -86,28 +55,6 @@ def parse_args():
                     help="Disable RQGM epoch gating (static evaluator)")
     ap.add_argument("--device", type=str, default="cpu",
                     help="Training device: cpu | cuda | cuda:0")
-    ap.add_argument("--data-dir", type=str, default=None,
-                    help="Directory containing train_ids.bin / val_ids.bin (default: auto-detect oni/data)")
-    ap.add_argument("--ckpt-dir", type=str, default=None,
-                    help="Directory for saving model checkpoints (default: auto-detect)")
-    ap.add_argument("--log-dir", type=str, default=None,
-                    help="Directory for saving training logs (default: auto-detect)")
-    ap.add_argument("--grad-checkpoint", action="store_true",
-                    help="Enable activation gradient checkpointing (saves ~60%% activation VRAM on 1050 Ti / consumer GPUs)")
-    ap.add_argument("--compile", action="store_true",
-                    help="Enable torch.compile for graph fusion and lower kernel launch overhead")
-    ap.add_argument("--compile-mode", type=str, default="default",
-                    choices=["default", "reduce-overhead", "max-autotune"],
-                    help="torch.compile optimization mode")
-    ap.add_argument("--fullgraph", action="store_true",
-                    help="Pass fullgraph=True to torch.compile to verify zero Inductor graph breaks")
-    ap.add_argument("--curriculum-seq", action="store_true",
-                    help="Ramp sequence length from seq_len // 2 to seq_len during warmup for fast initial convergence")
-    ap.add_argument("--profile-torch", action="store_true",
-                    help="Profile execution with native torch.profiler (CPU + CUDA trace export)")
-    ap.add_argument("--train-phase", type=str, default="1_formal",
-                    choices=["1_formal", "2_hf"],
-                    help="Two-phase curriculum (Grok recipe): 1_formal (formal papers warmup/plateau) | 2_hf (HuggingFace transfer drop to 0.4x with gentle decay)")
     return ap.parse_args()
 
 
@@ -159,16 +106,9 @@ class RQGMController:
 
 
 class Corpus:
-    def __init__(self, data_dir: Path, split: str, seq_len: int):
-        ids_path = data_dir / f"{split}_ids.bin"
-        labels_path = data_dir / f"{split}_labels.bin"
-        if not ids_path.exists() or not labels_path.exists():
-            raise FileNotFoundError(
-                f"Missing binary dataset split '{split}' in {data_dir}. "
-                f"Run 'python oni/pack_dataset.py' to generate binary datasets."
-            )
-        ids = np.memmap(ids_path, dtype=np.uint16, mode="r")
-        labels = np.memmap(labels_path, dtype=np.int32, mode="r")
+    def __init__(self, split: str, seq_len: int):
+        ids = np.memmap(DATA / f"{split}_ids.bin", dtype=np.uint16, mode="r")
+        labels = np.memmap(DATA / f"{split}_labels.bin", dtype=np.int32, mode="r")
         n = min(len(ids), len(labels)) // seq_len * seq_len
         self.ids = ids[:n].reshape(-1, seq_len)
         self.labels = labels[:n].reshape(-1, seq_len)
@@ -183,27 +123,10 @@ class Corpus:
 
 
 def cosine_lr(step, args):
-    """
-    Two-Phase Learning Rate Schedule (Grok Recommendation):
-      Phase 1 (Formal Papers): 5% warmup -> peak LR -> stable plateau.
-      Phase 2 (HuggingFace Transfer): Drop to 0.4x peak, short rewarmup, smooth cosine decay to 0.2x peak.
-    """
-    phase = getattr(args, "train_phase", "1_formal")
-    if phase == "1_formal":
-        warmup_steps = max(1, int(args.steps * 0.05)) if args.warmup == 200 else args.warmup
-        if step < warmup_steps:
-            return args.lr * (step + 1) / warmup_steps
-        prog = (step - warmup_steps) / max(1, args.steps - warmup_steps)
-        # Stable plateau with gentle cosine decay (floor 0.8x peak)
-        return args.lr * (0.8 + 0.2 * (1.0 + math.cos(math.pi * prog)) / 2.0)
-    else:
-        phase2_peak = 0.4 * args.lr
-        phase2_min = 0.2 * args.lr
-        rewarmup_steps = max(1, int(args.steps * 0.02))
-        if step < rewarmup_steps:
-            return phase2_min + (phase2_peak - phase2_min) * (step + 1) / rewarmup_steps
-        prog = (step - rewarmup_steps) / max(1, args.steps - rewarmup_steps)
-        return phase2_min + 0.5 * (phase2_peak - phase2_min) * (1.0 + math.cos(math.pi * prog))
+    if step < args.warmup:
+        return args.lr * (step + 1) / args.warmup
+    prog = (step - args.warmup) / max(1, args.steps - args.warmup)
+    return args.min_lr + 0.5 * (args.lr - args.min_lr) * (1.0 + math.cos(math.pi * prog))
 
 
 def evaluate(model, val, rng, bs, device="cpu"):
@@ -230,12 +153,8 @@ def sample(model, tok, device="cpu", prompt="User: Hello, who are you?\n\nAssist
 
 def main():
     args = parse_args()
-    DATA = resolve_data_dir(args.data_dir)
-    CKPT_DIR = resolve_dir(args.ckpt_dir, "checkpoints_oni" if "checkpoints" in str(args.ckpt_dir or "") else "checkpoints/checkpoints_oni")
-    LOG_DIR = resolve_dir(args.log_dir, "training_logs")
     CKPT_DIR.mkdir(parents=True, exist_ok=True)
     LOG_DIR.mkdir(parents=True, exist_ok=True)
-    print(f"[PATHS] data_dir={DATA}  ckpt_dir={CKPT_DIR}  log_dir={LOG_DIR}")
 
     # Windows OS Process Priority Elevation & Thread Tuning
     import os
@@ -253,44 +172,20 @@ def main():
 
     rng = np.random.default_rng(42)
     tok = UnifiedQuillanTokenizer()
-    train = Corpus(DATA, "train", args.seq_len)
-    val = Corpus(DATA, "val", args.seq_len)
+    train = Corpus("train", args.seq_len)
+    val = Corpus("val", args.seq_len)
     print(f"[DATA] train={len(train)} seqs  val={len(val)} seqs")
 
     cfg = QuillanOniConfig(n_layer=args.n_layer, max_seq_len=args.seq_len,
-                           router_mode=args.router_mode, grad_checkpoint=args.grad_checkpoint)
+                           router_mode=args.router_mode, grad_checkpoint=False)
     model = QuillanRoninOni(cfg)
     if args.device != "cpu":
         model = model.to(args.device)
     n_params = sum(p.numel() for p in model.parameters())
     print(f"[MODEL] Quillan-Ronin v5.4.0-oni  n_layer={args.n_layer}  "
-          f"router={args.router_mode}  params={n_params/1e6:.1f}M  device={args.device}  "
-          f"checkpointing={args.grad_checkpoint}")
+          f"router={args.router_mode}  params={n_params/1e6:.1f}M  device={args.device}")
 
-    # torch.compile support (Grok recommendation: mode="max-autotune", fullgraph=True for smoke test)
-    if args.compile:
-        try:
-            print(f"[COMPILE] Compiling model with torch.compile(mode='{args.compile_mode}', fullgraph={args.fullgraph})...")
-            model = torch.compile(model, mode=args.compile_mode, fullgraph=args.fullgraph)
-            print("[COMPILE] torch.compile enabled.")
-        except Exception as e:
-            print(f"[COMPILE] torch.compile skipped/failed ({e}). Continuing uncompiled.")
-            if args.fullgraph:
-                raise
-
-    # Fused AdamW optimizer (Grok recommendation for CUDA kernel fusion on consumer/modern GPUs)
-    fused_opt = False
-    if args.device != "cpu" and torch.cuda.is_available():
-        try:
-            opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.01, fused=True)
-            fused_opt = True
-            print("[OPTIMIZER] AdamW with fused=True enabled.")
-        except Exception:
-            opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.01)
-            print("[OPTIMIZER] Standard AdamW initialized.")
-    else:
-        opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.01)
-
+    opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.01)
     step, best_val = 0, float("inf")
     ema_sd = None
     latest = CKPT_DIR / "quillan_oni_latest.pt"
@@ -326,25 +221,6 @@ def main():
     )
     profiler.install_hooks(model)
 
-    # Native torch.profiler integration (Grok recommendation)
-    torch_prof = None
-    if args.profile_torch:
-        activities = [torch.profiler.ProfilerActivity.CPU]
-        if torch.cuda.is_available() and args.device != "cpu":
-            activities.append(torch.profiler.ProfilerActivity.CUDA)
-        trace_path = LOG_DIR / "torch_trace"
-        trace_path.mkdir(parents=True, exist_ok=True)
-        torch_prof = torch.profiler.profile(
-            activities=activities,
-            schedule=torch.profiler.schedule(wait=2, warmup=2, active=5, repeat=1),
-            on_trace_ready=torch.profiler.tensorboard_trace_handler(str(trace_path)),
-            record_shapes=True,
-            profile_memory=True,
-            with_stack=True,
-        )
-        torch_prof.start()
-        print(f"[PROFILER] Native torch.profiler active. Traces will export to {trace_path}")
-
     log_f = open(LOG_DIR / "oni_train_log.jsonl", "a", encoding="utf-8")
     rqgm = None if args.rqgm_disable else RQGMController(args.rqgm_epoch_length, log_f)
     if rqgm:
@@ -354,8 +230,6 @@ def main():
     running = []
 
     while step < args.steps:
-        if torch_prof is not None:
-            torch_prof.step()
         if rqgm:
             rqgm.on_step(step, model, val, rng, args.batch_size, args.device)
         lr = cosine_lr(step, args)
@@ -364,21 +238,12 @@ def main():
         model.set_router_tau(model.tau_for_step(step, args.steps))
 
         opt.zero_grad()
-        accum_ce = torch.zeros(1, device=args.device if args.device != "cpu" else "cpu")
-        accum_lb = torch.zeros(1, device=args.device if args.device != "cpu" else "cpu")
+        step_loss = 0.0
         t0 = time.time()
         profiler.begin_step(step)
 
-        # Curriculum sequence length (Grok recommendation: short seqs first, then ramp)
-        cur_seq = args.seq_len
-        if args.curriculum_seq and step < args.warmup:
-            cur_seq = max(128, args.seq_len // 2)
-
         for _ in range(args.grad_accum):
             x, y = train.batch(args.batch_size, rng)
-            if cur_seq < args.seq_len:
-                x = x[:, :cur_seq]
-                y = y[:, :cur_seq]
             if args.device != "cpu":
                 # Session 1 (Papers 5-7 Heterogeneous, default ON): overlap
                 # transfer with compute via non-blocking (consumed by .to call)
@@ -386,15 +251,10 @@ def main():
             _, ce, aux = model(x, labels=y)
             loss = (ce + model.total_aux_loss(aux)) / args.grad_accum
             loss.backward()
-            # KILL HOST SYNCS: accumulate ce & load_balance tensors directly on device without stalling host via .item()
-            accum_ce += ce.detach() / args.grad_accum
-            if "load_balance" in aux:
-                accum_lb += aux["load_balance"].detach() / args.grad_accum
+            step_loss += ce.item() / args.grad_accum
 
         gn = torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
         opt.step()
-        step_loss = accum_ce.item()
-        step_lb = accum_lb.item()
         # Session 1 trace: heterogeneous transfer decision (consumed by .to above)
         try:
             model._fired.append(("hetero_transfer", {
@@ -447,19 +307,14 @@ def main():
                           n_params=_n_params, hidden_dim=model.cfg.hidden_dim,
                           n_layer=model.cfg.n_layer)
 
-        step_tokens = args.batch_size * args.grad_accum * cur_seq
-        step_dt = max(1e-5, time.time() - t0)
-        tok_s = step_tokens / step_dt
-
         if step % 10 == 0:
             avg = sum(running[-10:]) / len(running[-10:])
             sps = (time.time() - t_start) / step
             eta_h = (args.steps - step) * sps / 3600
             print(f"step {step}/{args.steps} loss={avg:.4f} lr={lr:.2e} gn={gn:.2f} "
-                  f"tok/s={tok_s:.1f} ({sps:.2f}s/st) lb={step_lb:.4f} ETA={eta_h:.1f}h", flush=True)
+                  f"{sps:.2f}s/st ETA={eta_h:.1f}h", flush=True)
             log_f.write(json.dumps({"step": step, "loss": avg, "lr": lr,
-                                    "grad_norm": float(gn), "tok_per_sec": tok_s,
-                                    "load_balance": step_lb, "latency_ms": latency_ms}) + "\n")
+                                    "grad_norm": float(gn), "latency_ms": latency_ms}) + "\n")
             log_f.flush()
 
         if step % args.eval_every == 0 or step == args.steps:
@@ -481,8 +336,6 @@ def main():
             torch.save(ckpt, latest)
             print(f"[SAVE] {latest} @ step {step}", flush=True)
 
-    if torch_prof is not None:
-        torch_prof.stop()
     print(f"[COMPLETE] {args.steps} steps. best_val={best_val:.4f}")
     profiler.print_final_report()
     log_f.close()

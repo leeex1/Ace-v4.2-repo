@@ -25,13 +25,13 @@ class EvoMoE(nn.Module):
 
     def forward(self, x):
         # Token-aware routing (EvoMoE): each token gets its own expert mix
-        B, S, D = x.shape
         logits = self.router(x)  # [B,S,33]
         gates = F.softmax(logits, dim=-1)
         # Top-4 heterogeneous routing (like Mixtral but grouped)
         top_gates, top_idx = gates.topk(4, dim=-1)
         
         # Vectorized dispatch across token slots to replace O(B*S*4) nested Python loop
+        B, S, D = x.shape
         flat_x = x.reshape(-1, D)
         flat_top_idx = top_idx.reshape(-1, 4)
         flat_top_gates = top_gates.reshape(-1, 4)
