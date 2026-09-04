@@ -19,15 +19,34 @@ from quillan_tokenizer_unified import UnifiedQuillanTokenizer
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Pack raw text/JSONL into memory-mapped binary datasets for Quillan-Ronin training.")
-    parser.add_argument("--input", type=str, required=True,
+    parser.add_argument("--input", "-i", type=str, default=None,
                         help="Path to raw .txt file, .jsonl file, or folder containing dataset files.")
+    parser.add_argument("--input-txt", type=str, default=None,
+                        help="Alias for --input specifying a text file.")
+    parser.add_argument("--input-jsonl", type=str, default=None,
+                        help="Alias for --input specifying a JSONL file.")
     parser.add_argument("--output-dir", type=str, default=None,
                         help="Output directory to write train_ids.bin, train_labels.bin, val_ids.bin, val_labels.bin")
-    parser.add_argument("--val-ratio", type=float, default=0.05,
+    parser.add_argument("--val-ratio", type=float, default=None,
                         help="Validation split ratio (default: 0.05 = 5 percent)")
+    parser.add_argument("--train-ratio", type=float, default=None,
+                        help="Train split ratio (e.g. 0.95, sets val-ratio = 1 - train-ratio)")
     parser.add_argument("--max-samples", type=int, default=None,
                         help="Max number of samples to process (default: all)")
-    return parser.parse_args()
+    args = parser.parse_args()
+
+    input_path = args.input or args.input_txt or args.input_jsonl
+    if not input_path:
+        parser.error("At least one input argument must be provided: --input, --input-txt, or --input-jsonl")
+    args.input = input_path
+
+    if args.val_ratio is None:
+        if args.train_ratio is not None:
+            args.val_ratio = max(0.001, min(0.999, 1.0 - args.train_ratio))
+        else:
+            args.val_ratio = 0.05
+
+    return args
 
 
 def extract_texts(input_path: Path, max_samples: int = None):
