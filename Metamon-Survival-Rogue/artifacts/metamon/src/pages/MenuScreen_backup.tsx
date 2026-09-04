@@ -413,34 +413,7 @@ export function MenuScreen({ onStart, onAdventure, onContinue, onSettings, onSpr
                 🧪 MINIMAL TEST
               </button>
             )}
-              <button
-                onClick={() => {
-                  playSound('menu', 0.3);
-                  onOpenMinimalTest();
-                }}
-                style={{
-                  padding: "15px 30px",
-                  fontSize: "16px",
-                  background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-                  transform: "translateY(0)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                }}
-              >
-                🧪 MINIMAL TEST
-              </button>
-            )
-          }
+
             {onSpriteUsageValidator && (
               <button
                 onClick={() => {
