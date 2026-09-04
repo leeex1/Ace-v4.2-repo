@@ -70,6 +70,8 @@ def parse_args():
                     help="Enable gradient checkpointing to reduce peak VRAM")
     ap.add_argument("--synthetic-data", action="store_true",
                     help="Use synthetic token stream for benchmarking or when dataset is not yet prepared")
+    ap.add_argument("--detect-anomaly", action="store_true",
+                    help="Enable torch.autograd.set_detect_anomaly(True) for diagnosing backward graph issues")
     return ap.parse_args()
 
 
@@ -263,6 +265,9 @@ def main():
         precision = "fp16"
 
     print(f"[PRECISION] Hardware acceleration precision: {precision.upper()}")
+    if args.detect_anomaly:
+        torch.autograd.set_detect_anomaly(True)
+        print("[DEBUG] Autograd anomaly detection ENABLED")
 
     use_bf16 = precision == "bf16"
     use_fp16 = precision == "fp16"

@@ -975,7 +975,7 @@ class CausalSelfAttention(nn.Module):
             is_sink[0] = True  # Attention Sink: Token 0 permanently anchored to prevent softmax entropy collapse
             sparse_mask = torch.zeros_like(scores, dtype=torch.bool)
             for h in range(1, self.n_head, 2):  # odd heads
-                thresh = scores[:, h].topk(keep, dim=-1).values[..., -1:]  # [B,T,1]
+                thresh = scores[:, h].detach().topk(keep, dim=-1).values[..., -1:]  # [B,T,1]
                 sparse_mask[:, h] = (scores[:, h] < thresh) & (~is_sink)
             scores = scores.masked_fill(sparse_mask, float("-inf"))
             a = F.softmax(scores, dim=-1) @ v
@@ -1142,26 +1142,28 @@ class UltrametricCouncilRouter(nn.Module):
         """Switch Transformer tree branch load balance + expert-level anti-starvation loss."""
         # Branch-level balance at each level of the tree
         f_tree = (assignments.detach() > 0.5).float().mean(dim=0)  # [levels, p]
-        P_tree = soft_branch_probs.mean(dim=0)                     # [levels, p]
-        tree_lb = self.p * (f_tree * P_tree).sum(dim=-1).mean()
+        P_tree = soft_branch_probs.float().mean(dim=0)             # [levels, p]
+        tree_lb = float(self.p) * (f_tree * P_tree).sum(dim=-1).mean()
 
         # Expert-level balance across all 34 experts
-        f_exp = torch.zeros(self.num_experts, device=assignments.device)
+        f_exp = torch.zeros(self.num_experts, device=assignments.device, dtype=torch.float32)
         flat_topk_i = topk_indices.reshape(-1)
         f_exp.scatter_add_(0, flat_topk_i, torch.ones_like(flat_topk_i, dtype=torch.float32))
         f_exp = (f_exp / (flat_topk_i.numel() / self.top_k)).detach()
-        P_exp = expert_probs.mean(dim=0)
-        expert_lb = self.num_experts * torch.sum(f_exp * P_exp)
+        P_exp = expert_probs.float().mean(dim=0)
+        expert_lb = float(self.num_experts) * torch.sum(f_exp * P_exp)
 
         return 0.5 * tree_lb + 0.5 * expert_lb
 
     def forward(
         self, x: torch.Tensor, tau: Optional[float] = None
     ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+        orig_dtype = x.dtype
+        x_float = x.float()
         N, D = x.shape
         curr_tau = tau if tau is not None else self.tau
 
-        h = F.gelu(self.backbone(x))
+        h = F.gelu(self.backbone(x_float))
         route_logits = self.route_heads(h).view(N, self.levels, self.p)
 
         if self.training:
@@ -1170,16 +1172,16 @@ class UltrametricCouncilRouter(nn.Module):
             assignments = sampled.view_as(route_logits)
         else:
             indices = route_logits.argmax(dim=-1)
-            assignments = F.one_hot(indices, num_classes=self.p).to(dtype=x.dtype)
+            assignments = F.one_hot(indices, num_classes=self.p).float()
 
         soft_branch_probs = F.softmax(route_logits / max(0.05, curr_tau), dim=-1)
 
         padic_dist, prefix_match = self.compute_padic_distance(assignments)
-        tree_affinity = torch.sum(prefix_match * self.level_weights.to(device=x.device, dtype=x.dtype), dim=-1)
+        tree_affinity = torch.sum(prefix_match * self.level_weights.to(device=x.device, dtype=torch.float32), dim=-1)
 
-        prior = self.prior.to(device=x.device, dtype=x.dtype)
+        prior = self.prior.to(device=x.device, dtype=torch.float32)
         intra_logits = self.expert_head(h) + torch.log(prior.clamp_min(1e-6))
-        expert_logits = tree_affinity * self.tree_scale.to(x.dtype) + intra_logits
+        expert_logits = tree_affinity * self.tree_scale.float() + intra_logits
 
         expert_probs = F.softmax(expert_logits / max(0.05, curr_tau), dim=-1)
         topk_p, topk_i = torch.topk(expert_probs, self.top_k, dim=-1)
@@ -1189,7 +1191,7 @@ class UltrametricCouncilRouter(nn.Module):
         z_loss = torch.logsumexp(expert_logits, dim=-1).pow(2).mean()
         entropy = -(expert_probs * torch.log(expert_probs + 1e-10)).sum(dim=-1).mean()
 
-        return topk_p, topk_i, expert_probs, lb_loss, z_loss, entropy
+        return topk_p.to(orig_dtype), topk_i, expert_probs.to(orig_dtype), lb_loss, z_loss, entropy
 
 
 class UnrolledCouncilMoEBlock(nn.Module):
@@ -1272,7 +1274,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
                 if sel.numel() == 0:
                     continue
                 pos = token_pos[sel]
-                w = flat_w[sel]
+                w = flat_w[sel].to(flat_x.dtype)
                 if isinstance(self.experts[e], CouncilExpert):
                     e_out = self.experts[e](flat_x[pos], gov_scale)
                 else:
@@ -1299,7 +1301,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
                 if sel.numel() == 0:
                     continue
                 pos = token_pos[sel]
-                w = flat_w[sel]
+                w = flat_w[sel].to(flat_x.dtype)
                 if isinstance(self.experts[e], CouncilExpert):
                     e_out = self.experts[e](flat_x[pos], gov_scale)
                 else:
