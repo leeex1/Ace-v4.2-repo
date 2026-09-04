@@ -1512,7 +1512,8 @@ class QuillanRoninOni(nn.Module):
             try:
                 w_sample = self.h[0].attn.prism.vectors["Language"].weight
                 aux["spectral_gap"] = self.quantum.spectral_gap_loss(w_sample)
-            except Exception:
+            except (AttributeError, KeyError, RuntimeError):
+                # Omit spectral gap regularization if prism projection weights are unavailable or non-matrix
                 pass
         if e_ice_out is not None:
             aux["ethics"] = e_ice_out["constrained"].mean()

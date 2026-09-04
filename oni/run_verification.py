@@ -117,7 +117,8 @@ try:
     jqld = q_engine.jqld_evolution_step(x[:, 0, :])
     test_w = torch.randn(64, 64)
     spec_loss = q_engine.spectral_gap_loss(test_w)
-    write_log("[TEST 7/10] Cognitive Formulas Suite (AQCS, EEMF, QHIS, DQRO, QCRDM, JQLD, Spectral Gap): PASS")
+    assert spec_loss.item() >= 0.0, "Spectral gap loss computation failed"
+    write_log(f"[TEST 7/10] Cognitive Formulas Suite (AQCS, EEMF, QHIS, DQRO, QCRDM, JQLD, Spectral Gap: {spec_loss.item():.4f}): PASS")
 
     # 8. Lee-Mach-6 Hardware PID Velocity Governor
     gov = LeeMach6Governor(target_latency_ms=100)
