@@ -51,7 +51,10 @@ def parse_args():
 
 def extract_texts(input_path: Path, max_samples: int = None):
     texts = []
-    files = [input_path] if input_path.is_file() else sorted(list(input_path.glob("*.jsonl")) + list(input_path.glob("*.txt")))
+    if input_path.is_file():
+        files = [input_path]
+    else:
+        files = sorted(list(input_path.rglob("*.jsonl")) + list(input_path.rglob("*.txt")) + list(input_path.rglob("*.md")))
 
     for f in files:
         print(f"[INGEST] Reading {f.name}...")
