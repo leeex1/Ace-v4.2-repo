@@ -973,11 +973,11 @@ class CausalSelfAttention(nn.Module):
             keep = min(kv_len, self.keep_abs)
             is_sink = torch.zeros(kv_len, dtype=torch.bool, device=x.device)
             is_sink[0] = True  # Attention Sink: Token 0 permanently anchored to prevent softmax entropy collapse
+            sparse_mask = torch.zeros_like(scores, dtype=torch.bool)
             for h in range(1, self.n_head, 2):  # odd heads
                 thresh = scores[:, h].topk(keep, dim=-1).values[..., -1:]  # [B,T,1]
-                scores[:, h] = torch.where((scores[:, h] < thresh) & (~is_sink),
-                                           torch.full_like(scores[:, h], float("-inf")),
-                                           scores[:, h])
+                sparse_mask[:, h] = (scores[:, h] < thresh) & (~is_sink)
+            scores = scores.masked_fill(sparse_mask, float("-inf"))
             a = F.softmax(scores, dim=-1) @ v
         else:
             if _FORMAL_PAPERS_WIRED and getattr(self, 'cfg', None) and getattr(self.cfg, 'use_fa3', False):
@@ -1125,7 +1125,8 @@ class UltrametricCouncilRouter(nn.Module):
     def compute_padic_distance(self, assignments: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """Computes non-Archimedean distance d_p(n, e) = levels - LCA_depth and prefix match."""
         # assignments: [N, levels, p], expert_tree_onehot: [E, levels, p]
-        M = torch.einsum("nlp,elp->nel", assignments, self.expert_tree_onehot.to(assignments.device))
+        expert_onehot = self.expert_tree_onehot.to(device=assignments.device, dtype=assignments.dtype)
+        M = torch.einsum("nlp,elp->nel", assignments, expert_onehot)
         prefix_match = torch.cumprod(M, dim=-1)
         lca_depth = prefix_match.sum(dim=-1)
         padic_dist = float(self.levels) - lca_depth
@@ -1169,16 +1170,16 @@ class UltrametricCouncilRouter(nn.Module):
             assignments = sampled.view_as(route_logits)
         else:
             indices = route_logits.argmax(dim=-1)
-            assignments = F.one_hot(indices, num_classes=self.p).float()
+            assignments = F.one_hot(indices, num_classes=self.p).to(dtype=x.dtype)
 
         soft_branch_probs = F.softmax(route_logits / max(0.05, curr_tau), dim=-1)
 
         padic_dist, prefix_match = self.compute_padic_distance(assignments)
-        tree_affinity = torch.sum(prefix_match * self.level_weights.to(x.device), dim=-1)
+        tree_affinity = torch.sum(prefix_match * self.level_weights.to(device=x.device, dtype=x.dtype), dim=-1)
 
-        prior = self.prior.to(x.device)
+        prior = self.prior.to(device=x.device, dtype=x.dtype)
         intra_logits = self.expert_head(h) + torch.log(prior.clamp_min(1e-6))
-        expert_logits = tree_affinity * self.tree_scale + intra_logits
+        expert_logits = tree_affinity * self.tree_scale.to(x.dtype) + intra_logits
 
         expert_probs = F.softmax(expert_logits / max(0.05, curr_tau), dim=-1)
         topk_p, topk_i = torch.topk(expert_probs, self.top_k, dim=-1)
@@ -1264,7 +1265,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
             K = self.cfg.top_k
             BT = flat_x.size(0)
             flat_idx = topk_i.reshape(-1)                                  # [BT*K]
-            flat_w = topk_p.reshape(-1, 1)                                 # [BT*K,1]
+            flat_w = topk_p.reshape(-1, 1).to(flat_x.dtype)                # [BT*K,1]
             token_pos = torch.arange(BT, device=x.device).unsqueeze(1).expand(-1, K).reshape(-1)
             for e in range(self.cfg.num_experts):
                 sel = (flat_idx == e).nonzero(as_tuple=True)[0]
@@ -1276,7 +1277,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
                     e_out = self.experts[e](flat_x[pos], gov_scale)
                 else:
                     e_out = self.experts[e](flat_x[pos])
-                moe_out.index_add_(0, pos, w * e_out)
+                moe_out.index_add_(0, pos, (w * e_out).to(flat_x.dtype))
         else:
             logits = self.router(flat_x).float()  # fp32 router (ST-MoE)
             if self.training and self.cfg.router_mode == "gumbel_topk":
@@ -1291,7 +1292,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
             K = self.cfg.top_k
             BT = flat_x.size(0)
             flat_idx = topk_i.reshape(-1)                                  # [BT*K]
-            flat_w = topk_p.reshape(-1, 1)                                 # [BT*K,1]
+            flat_w = topk_p.reshape(-1, 1).to(flat_x.dtype)                # [BT*K,1]
             token_pos = torch.arange(BT, device=x.device).unsqueeze(1).expand(-1, K).reshape(-1)
             for e in range(self.cfg.num_experts):
                 sel = (flat_idx == e).nonzero(as_tuple=True)[0]
@@ -1303,7 +1304,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
                     e_out = self.experts[e](flat_x[pos], gov_scale)
                 else:
                     e_out = self.experts[e](flat_x[pos])
-                moe_out.index_add_(0, pos, w * e_out)
+                moe_out.index_add_(0, pos, (w * e_out).to(flat_x.dtype))
 
             # Aux losses: KL-to-uniform load balance (AGI paper eq.13) + z-loss (ST-MoE)
             mean_p = probs.mean(dim=0)
