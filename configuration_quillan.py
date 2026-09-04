@@ -3,7 +3,55 @@
 # Architect: CrashOverrideX | Identity: C19-VIGIL
 # ==============================================================================
 
+from dataclasses import dataclass
+from typing import Dict, Any, List, Optional
+import torch
 from transformers import PretrainedConfig
+
+class QuillanConfig(PretrainedConfig):
+    model_type = "quillan"
+    
+    def __init__(
+        self,
+        vocab_size: int = 50257,
+        hidden_size: int = 1024,
+        intermediate_size: int = 2048,
+        num_hidden_layers: int = 12,
+        num_attention_heads: int = 16,
+        head_dim: int = 64,
+        num_experts: int = 34,
+        max_position_embeddings: int = 512,
+        eos_token_id: int = 0,
+        pad_token_id: int = 1,
+        bos_token_id: int = 2,
+        router_mode: str = "dense_pull",
+        top_k: int = 4,
+        eggroll_rank: int = 24,
+        thermodynamics: Optional[Dict[str, Any]] = None,
+        moe_layers: Optional[List[int]] = None,
+        **kwargs
+    ):
+        super().__init__(
+            eos_token_id=eos_token_id,
+            pad_token_id=pad_token_id,
+            bos_token_id=bos_token_id,
+            **kwargs
+        )
+        self.vocab_size = vocab_size
+        self.hidden_size = hidden_size
+        self.intermediate_size = intermediate_size
+        self.num_hidden_layers = num_hidden_layers
+        self.num_attention_heads = num_attention_heads
+        self.head_dim = head_dim
+        self.num_experts = num_experts
+        self.max_position_embeddings = max_position_embeddings
+        self.router_mode = router_mode
+        self.top_k = top_k
+        self.num_experts_per_tok = kwargs.get("num_experts_per_tok", top_k)
+        self.eggroll_rank = eggroll_rank
+        self.swarm_config = kwargs.get("swarm_config", {"agent_pooling": False, "num_micro_subagents": 100, "swarm_embedding_dim": 32})
+        self.thermodynamics = thermodynamics or {"e_ice_limit_ms": 100}
+        self.moe_layers = moe_layers or list(range(num_hidden_layers))
 
 # ─── CONFIGURATION ───────────────────────────────────────────────────────────
 

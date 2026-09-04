@@ -8,12 +8,15 @@ import sys
 import time
 from pathlib import Path
 
-REPORT_FILE = Path(r"C:\02_QUILLAN\oni\verification_report.txt")
+ONI_DIR = Path(__file__).resolve().parent
+REPO_DIR = ONI_DIR.parent
+REPORT_FILE = ONI_DIR / "verification_report.txt"
 log_lines = []
 
 def write_log(msg):
     print(msg, flush=True)
     log_lines.append(msg)
+    REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(REPORT_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(log_lines) + "\n")
 
@@ -26,7 +29,8 @@ try:
     import torch.nn.functional as F
     write_log(f"[INFO] PyTorch Version: {torch.__version__} | CUDA: {torch.cuda.is_available()}")
 
-    sys.path.insert(0, str(Path(r"C:\02_QUILLAN\oni").resolve()))
+    sys.path.insert(0, str(ONI_DIR))
+    sys.path.insert(0, str(REPO_DIR))
     from quillan_tokenizer_unified import UnifiedQuillanTokenizer
     from quillan_v5_4_oni import (
         QuillanOniConfig,

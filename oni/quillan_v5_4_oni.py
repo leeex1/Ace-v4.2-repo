@@ -47,17 +47,40 @@ from torch.utils.checkpoint import checkpoint
 
 # 100% Formal Papers wiring — EvoMoE, Mamba, FA3, RealSwarm, WorldModel, Speculative, NITRO/PocketNN, ES-at-Scale
 try:
-    from evo_moe import EvoMoE
-    from mamba_block import MambaBlock
-    from flash_attn_wrapper import quillan_flash_attn
-    from swarm_real import RealSwarmMesh
-    from world_model_oni import HighFidelityWorldModel
-    from speculative_decode import SpeculativeDecoder
-    from nitro_pocket import integer_only_forward
-    from es_at_scale import ESAtScale, ForgettingMitigation
-    from protrian_memo import ProTrainScheduler, MemoSwap, DeepOptimizerSharding
+    try:
+        from evo_moe import EvoMoE
+        from mamba_block import MambaBlock
+        from flash_attn_wrapper import quillan_flash_attn
+        from swarm_real import RealSwarmMesh
+        from world_model_oni import HighFidelityWorldModel
+        from speculative_decode import SpeculativeDecoder
+        from nitro_pocket import integer_only_forward
+        from es_at_scale import ESAtScale, ForgettingMitigation
+        from protrian_memo import ProTrainScheduler, MemoSwap, DeepOptimizerSharding
+    except (ImportError, ModuleNotFoundError):
+        from .evo_moe import EvoMoE
+        from .mamba_block import MambaBlock
+        from .flash_attn_wrapper import quillan_flash_attn
+        from .swarm_real import RealSwarmMesh
+        from .world_model_oni import HighFidelityWorldModel
+        from .speculative_decode import SpeculativeDecoder
+        from .nitro_pocket import integer_only_forward
+        from .es_at_scale import ESAtScale, ForgettingMitigation
+        from .protrian_memo import ProTrainScheduler, MemoSwap, DeepOptimizerSharding
     _FORMAL_PAPERS_WIRED = True
-except ImportError:
+except (ImportError, ModuleNotFoundError, ValueError):
+    EvoMoE = None
+    MambaBlock = None
+    quillan_flash_attn = None
+    RealSwarmMesh = None
+    HighFidelityWorldModel = None
+    SpeculativeDecoder = None
+    integer_only_forward = None
+    ESAtScale = None
+    ForgettingMitigation = None
+    ProTrainScheduler = None
+    MemoSwap = None
+    DeepOptimizerSharding = None
     _FORMAL_PAPERS_WIRED = False
 
 torch.backends.cuda.matmul.allow_tf32 = True
@@ -76,6 +99,7 @@ USE_INTEGER_ONLY = False  # NITRO-D/PocketNN (2407.11698) — set True via cfg.u
 @dataclass
 class QuillanOniConfig:
     vocab_size: int = VOCAB_SIZE
+    eos_token_id: int = EOS_TOKEN_ID
     max_seq_len: int = 512
     hidden_dim: int = 1024
     n_layer: int = 12
@@ -989,7 +1013,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
             mean_p = probs.mean(dim=0)
             uniform = torch.full_like(mean_p, 1.0 / self.cfg.num_experts)
             lb_loss = F.kl_div(mean_p.log(), uniform, reduction="sum")
-            z_loss = torch.log(torch.exp(logits).sum(dim=-1) + 1e-6).pow(2).mean()
+            z_loss = torch.logsumexp(logits, dim=-1).pow(2).mean()
             entropy = -(probs * torch.log(probs + 1e-10)).sum(dim=-1).mean()
 
         g = torch.tanh(self.moe_gate(flat_x))
@@ -1001,7 +1025,7 @@ class UnrolledTransformerBlock(nn.Module):
     def __init__(self, cfg: QuillanOniConfig):
         super().__init__()
         self.ln_1 = nn.LayerNorm(cfg.hidden_dim, eps=1e-5)
-        if cfg.use_mamba and _FORMAL_PAPERS_WIRED:
+        if cfg.use_mamba and _FORMAL_PAPERS_WIRED and MambaBlock is not None:
             self.attn = MambaBlock(cfg.hidden_dim)
         else:
             self.attn = CausalSelfAttention(cfg)
@@ -1009,7 +1033,7 @@ class UnrolledTransformerBlock(nn.Module):
         self.moe = UnrolledCouncilMoEBlock(cfg)
 
     def forward(self, x, layer_past=None, use_cache=False, gov_scale: float = 1.0):
-        if isinstance(self.attn, MambaBlock):
+        if _FORMAL_PAPERS_WIRED and MambaBlock is not None and isinstance(self.attn, MambaBlock):
             a = self.attn(self.ln_1(x))
             present = None
         else:
@@ -1308,17 +1332,27 @@ class QuillanRoninOni(nn.Module):
             last_probs = probs
             total_lb, total_z, total_ent = total_lb + lb, total_z + z, total_ent + ent
 
-        # Cognitive Governing Filters (spec: no_grad modulation)
-        with torch.no_grad():
-            if last_probs is not None:
-                e_ice_out = self.e_ice(x.detach(), last_probs.detach().reshape(B, T, -1))
-                flow = self.marta(x.detach(), e_ice_out["constrained"].detach())
-                x = x * (0.9 + 0.1 * flow.unsqueeze(-1))
-                x = x + 0.05 * self.dqso(x.detach())
+        # Cognitive Governing Filters (spec: runtime modulation + differentiable ethics in training)
+        e_ice_out = None
+        if last_probs is not None:
+            if self.training:
+                # Differentiable forward pass so aux["ethics"] trains model and E_ICE parameters
+                e_ice_out = self.e_ice(x, last_probs.reshape(B, T, -1))
+            else:
+                with torch.no_grad():
+                    e_ice_out = self.e_ice(x.detach(), last_probs.detach().reshape(B, T, -1))
 
-                # Throne deliberation control (inference only, pass-level):
-                # pull confidence -> PID velocity governor -> hard tokens -> Langevin refinement
-                if deliberation and not self.training and not use_cache and T > 1:
+            with torch.no_grad():
+                flow = self.marta(x.detach(), e_ice_out["constrained"].detach())
+                dqso_delta = self.dqso(x.detach())
+
+            # Apply modulation outside torch.no_grad() to preserve gradient backprop graph for transformer backbone
+            x = x * (0.9 + 0.1 * flow.unsqueeze(-1)) + 0.05 * dqso_delta
+
+            # Throne deliberation control (inference only, pass-level):
+            # pull confidence -> PID velocity governor -> hard tokens -> Langevin refinement
+            if deliberation and not self.training and not use_cache and T > 1:
+                with torch.no_grad():
                     conf = last_probs.detach().reshape(B, T, -1).max(dim=-1).values.mean()
                     integrity = float(self.covenant(x.detach().mean(dim=1)).mean().item())
                     e_load = float(e_ice_out["constrained"].mean().item())
@@ -1326,7 +1360,7 @@ class QuillanRoninOni(nn.Module):
                     thresh = pid["hard_threshold"]
                     refined, n_hard, ent_aux = self.diffusion(
                         x.detach(), last_probs.detach().reshape(B, T, -1).max(dim=-1).values,
-                        )
+                    )
                     x = x + (refined - x.detach()) * 0.5
                     self._last_deliberation = {
                         "pull_confidence": float(conf.item()),
@@ -1501,7 +1535,7 @@ class QuillanRoninOni(nn.Module):
                 next_tok = int(torch.multinomial(probs, num_samples=1).item())
 
             gen.append(next_tok)
-            if next_tok in (0, 50256):  # unified EOS 0 + legacy tiktoken 50256 compat
+            if next_tok == self.cfg.eos_token_id:
                 break
             if len(gen) >= self.cfg.max_seq_len:
                 break
@@ -1584,15 +1618,21 @@ class QuillanRoninOni(nn.Module):
         val_k, _ = torch.topk(probs, min(40, probs.size(-1)))
         probs[probs < val_k[:, -1:]] = 0.0
         probs = probs / probs.sum(dim=-1, keepdim=True)
+        dev = next(self.parameters()).device
         for _ in range(max_tokens):
             nxt = int(torch.multinomial(probs, 1).item())
             gen.append(nxt)
-            if nxt in (0, 50256):
+            if nxt == self.cfg.eos_token_id:
                 break
-            logits = self.forward(torch.tensor([[nxt]], device=gen and next(self.parameters()).device),
-                                  past_key_values=None, use_cache=False)
+            # Rolling context window so causal attention and RoPE retain full past context
+            logits = self.forward(
+                torch.tensor([gen[-self.cfg.max_seq_len:]], dtype=torch.long, device=dev),
+                past_key_values=None, use_cache=False)
             curr = logits[:, -1, :] / max(0.05, temp)
             probs = F.softmax(curr, dim=-1)
+            val_k, _ = torch.topk(probs, min(40, probs.size(-1)))
+            probs[probs < val_k[:, -1:]] = 0.0
+            probs = probs / probs.sum(dim=-1, keepdim=True)
 
         # Quality exit gates (Nullion/Warden/Shepherd + Quillan audit)
         with torch.no_grad():

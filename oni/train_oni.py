@@ -25,9 +25,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))  # portable: oni/ self-
 from quillan_tokenizer_unified import UnifiedQuillanTokenizer  # noqa: E402
 from quillan_v5_4_oni import QuillanOniConfig, QuillanRoninOni  # noqa: E402
 
-DATA = Path(r"C:\02_QUILLAN\training_data\v9")
-CKPT_DIR = Path(r"C:\02_QUILLAN\checkpoints\checkpoints_oni")
-LOG_DIR = Path(r"C:\02_QUILLAN\training_logs")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA = Path(r"C:\02_QUILLAN\training_data\v9") if Path(r"C:\02_QUILLAN\training_data\v9").exists() else BASE_DIR / "training_data" / "v9"
+CKPT_DIR = Path(r"C:\02_QUILLAN\checkpoints\checkpoints_oni") if Path(r"C:\02_QUILLAN\checkpoints\checkpoints_oni").exists() else BASE_DIR / "checkpoints" / "checkpoints_oni"
+LOG_DIR = Path(r"C:\02_QUILLAN\training_logs") if Path(r"C:\02_QUILLAN\training_logs").exists() else BASE_DIR / "training_logs"
 
 
 def parse_args():
@@ -260,15 +261,15 @@ def main():
         if args.ema:
             with torch.no_grad():
                 if ema_sd is None:
-                    ema_sd = {k: v.detach().clone() for k, v in model.state_dict().items()
-                              if v.dtype.is_floating_point}
+                    ema_sd = {name: p.detach().clone() for name, p in model.named_parameters()
+                              if p.dtype.is_floating_point}
                 else:
                     d = ema_decay
-                    for k, v in model.state_dict().items():
-                        if k in ema_sd and v.dtype.is_floating_point:
-                            if ema_sd[k].device != v.device:
-                                ema_sd[k] = ema_sd[k].to(v.device)
-                            ema_sd[k].mul_(d).add_(v.detach(), alpha=1 - d)
+                    for name, p in model.named_parameters():
+                        if name in ema_sd and p.dtype.is_floating_point:
+                            if ema_sd[name].device != p.device:
+                                ema_sd[name] = ema_sd[name].to(p.device)
+                            ema_sd[name].mul_(d).add_(p.detach(), alpha=1 - d)
 
         if step % 10 == 0:
             avg = sum(running[-10:]) / len(running[-10:])
