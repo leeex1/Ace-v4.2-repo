@@ -122,6 +122,8 @@ try:
     _PAPER_05_07_WIRED = True
 except ImportError:
     HeterogeneousComputeManager = None
+    CUDAOptimizationPack = None
+    AxoNNHybridPlanner = None
     _PAPER_05_07_WIRED = False
 
 # Papers 8-10/135 (2503.08311v2 + 2503.15252v1 + 2506.03296v2): Inference Efficiency Pack
@@ -133,6 +135,8 @@ try:
     _PAPER_08_10_WIRED = True
 except ImportError:
     InferencePack = None
+    TieredKVCache = None
+    AdaptiveBatchSizer = None
     _PAPER_08_10_WIRED = False
 
 # Papers 116-120 (Codex + Virality + unit-distance + final audit): Constitution/Sonification/Proof Pack (Quantum Bond)
@@ -212,7 +216,7 @@ except ImportError:
 # U23: Dream7B ? mask-predict discrete diffusion, bond DiffusionOPSD+BIT
 try:
     from paper_96_100_edge_dali_dgpo_dream_pack import (
-        EdgeDALIDGPODreamPack, EdgeKernelPicker, SteppingUpBound, DGPOCritic, DreamDiffusionLM
+        EdgeDALIDGPODreamPack, EdgeKernelPicker, SteppingUpBound, DGPOCritic, DreamDiffusionLM, DALIOffloader
     )
     _PAPER_96_100_WIRED = True
 except ImportError:
@@ -221,6 +225,7 @@ except ImportError:
     SteppingUpBound = None
     DGPOCritic = None
     DreamDiffusionLM = None
+    DALIOffloader = None
     _PAPER_96_100_WIRED = False
 
 # Papers 91-95 (U10-U15: Anatomy Swarm + Ax-Prover + Beyond Fallacy + bitnet.cpp + 2B4T): Swarm/Proof/CPU Pack (Quantum Bond)
@@ -276,6 +281,7 @@ try:
     _PAPER_76_80_WIRED = True
 except ImportError:
     MoRPack = None
+    MixtureOfRecursions = None
     _PAPER_76_80_WIRED = False
 
 # Papers 71-75/135 (ES_Forgetting + EvoMoE dup + MoE_CPU_GPU + OD_MoE + MoHGE): MoE Edge & Catastrophic Forgetting Pack
@@ -351,6 +357,7 @@ try:
     _PAPER_51_WIRED = True
 except ImportError:
     Flash3Pack = None
+    FlashAttention3SM61 = None
     _PAPER_51_WIRED = False
 
 # Papers 46-50/135 (Mamba + Mixtral + Switch + Gumbel-Softmax + FlashAttention-2): State Space, MoE & Attention Pack
@@ -506,6 +513,8 @@ try:
 except ImportError:
     MemoManager = None
     MemoConfig = None
+    RoundingBuffer = None
+    solve_optimal_alpha = None
     _PAPER_04_WIRED = False
 
 torch.backends.cuda.matmul.allow_tf32 = True
@@ -2147,29 +2156,17 @@ class QuillanRoninOni(nn.Module):
             self.mod_routers = None
 
         # Session 2: DALI observer + ALA observer (stateless, no params) + prefix slider
-        if cfg.use_dali_observer:
-            try:
-                from paper_96_100_edge_dali_dgpo_dream_pack import DALIOffloader
-                self.dali = DALIOffloader(num_experts=cfg.num_experts)
-            except Exception:
-                self.dali = None
+        if cfg.use_dali_observer and DALIOffloader is not None:
+            self.dali = DALIOffloader(num_experts=cfg.num_experts)
         else:
             self.dali = None
-        if cfg.use_ala_observer:
-            try:
-                from paper_106_110_predatory_sovereign_pack import AdaptiveLinkAlignment
-                self.ala = AdaptiveLinkAlignment(n_agents=cfg.num_experts)
-            except Exception:
-                self.ala = None
+        if cfg.use_ala_observer and AdaptiveLinkAlignment is not None:
+            self.ala = AdaptiveLinkAlignment(n_agents=cfg.num_experts)
         else:
             self.ala = None
-        if cfg.use_prefix_sliding:
-            try:
-                from paper_31_35_testtime_world_pack import PrefixSlidingKVCache
-                self.prefix_slider = PrefixSlidingKVCache(
-                    max_seq_len=cfg.max_seq_len, prefix_size=min(512, cfg.max_seq_len))
-            except Exception:
-                self.prefix_slider = None
+        if cfg.use_prefix_sliding and PrefixSlidingKVCache is not None:
+            self.prefix_slider = PrefixSlidingKVCache(
+                max_seq_len=cfg.max_seq_len, prefix_size=min(512, cfg.max_seq_len))
         else:
             self.prefix_slider = None
         self._last_slide = None
