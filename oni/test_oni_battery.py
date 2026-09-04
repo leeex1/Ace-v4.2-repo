@@ -38,6 +38,9 @@ from quillan_v5_4_oni import (
     ComplexityRouter,
     PersonaPullGate,
     UnrolledCouncilMoEBlock,
+    UltrametricCouncilRouter,
+    CouncilMoELayer,
+    CouncilPullRouter,
     EthicalImpactConstraintEngine,
     QuantumFormulasEngine,
     LeeMach6Governor,
@@ -130,6 +133,70 @@ log_test("Council Expert Forward (LoRA + Swarm Core)", exp_out.shape == (2, 8, 1
 moe_block = UnrolledCouncilMoEBlock(cfg)
 moe_out, probs, lb_loss, z_loss, entropy = moe_block(x_in)
 log_test("Council MoE Block Forward Pass", moe_out.shape == (2, 8, 128), f"Entropy: {entropy.item():.4f}, Z-Loss: {z_loss.item():.4f}")
+
+# 5b. Non-Archimedean Ultrametric Council Router & MoE Layer
+print("\n--- [TEST 5b] Non-Archimedean p-adic Ultrametric Council Router & MoE ---")
+u_router = UltrametricCouncilRouter(128, num_experts=34, p=2, levels=3, top_k=4)
+u_flat_x = x_in.reshape(-1, 128)
+u_topk_p, u_topk_i, u_probs, u_lb, u_z, u_ent = u_router(u_flat_x)
+log_test("Ultrametric Router Forward & Top-K Dispatch",
+         u_topk_p.shape == (16, 4) and u_topk_i.shape == (16, 4) and u_probs.shape == (16, 34),
+         f"Top-K: {u_topk_p.shape}, Probs: {u_probs.shape}")
+
+mock_assignments = F.one_hot(u_router.expert_tree_coords, num_classes=2).float()
+padic_d, prefix_m = u_router.compute_padic_distance(mock_assignments)
+diag_zero = torch.all(torch.diagonal(padic_d) == 0.0).item()
+log_test("Non-Archimedean Metric (d_p Self-Distance is 0 & Strong Bounds)",
+         diag_zero and padic_d.min().item() >= 0.0 and padic_d.max().item() <= 3.0,
+         f"d_p min: {padic_d.min().item():.1f}, max: {padic_d.max().item():.1f}")
+
+u_loss = u_topk_p.sum() + u_lb + 0.01 * u_z
+u_loss.backward()
+log_test("Ultrametric Router STE Gradient Flow",
+         u_router.backbone.weight.grad is not None and u_router.route_heads.weight.grad is not None and u_router.route_heads.weight.grad.norm().item() > 0,
+         f"Route Head Grad Norm: {u_router.route_heads.weight.grad.norm().item():.4f}")
+
+log_test("Ultrametric Tree Load Balancing Loss > 0", u_lb.item() > 0.0, f"LB Loss: {u_lb.item():.4f}")
+
+u_router_p3 = UltrametricCouncilRouter(128, num_experts=34, p=3, levels=3, top_k=4)
+p3_topk_p, _, _, p3_lb, _, _ = u_router_p3(u_flat_x)
+log_test("Ternary Bruhat-Tits Tree Router (p=3, levels=3)",
+         p3_topk_p.shape == (16, 4) and p3_lb.item() > 0.0,
+         f"p=3 LB: {p3_lb.item():.4f}")
+
+cfg_ultra = QuillanOniConfig(
+    vocab_size=50257,
+    max_seq_len=64,
+    hidden_dim=128,
+    n_layer=2,
+    n_head=4,
+    head_dim=32,
+    ffn_dim=256,
+    num_experts=34,
+    top_k=4,
+    router_mode="ultrametric",
+    device="cpu"
+)
+c_moe = CouncilMoELayer(cfg_ultra)
+c_out, c_probs, c_lb, c_z, c_ent = c_moe(x_in)
+log_test("CouncilMoELayer Forward Pass (router_mode='ultrametric')",
+         c_out.shape == (2, 8, 128) and c_lb.item() > 0.0,
+         f"MoE Out: {c_out.shape}, LB Loss: {c_lb.item():.4f}")
+
+model_ultra = QuillanRoninOni(cfg_ultra)
+inp_u = torch.randint(0, 50257, (1, 8))
+target_u = torch.randint(0, 50257, (1, 8))
+logits_u, ce_u, aux_u = model_ultra(inp_u, labels=target_u)
+log_test("Full Model Forward Pass with Ultrametric Council Router",
+         "load_balance" in aux_u and aux_u["load_balance"].item() > 0.0,
+         f"CE: {ce_u.item():.4f}, Load Balance: {aux_u['load_balance'].item():.4f}")
+
+tot_loss_u = ce_u + model_ultra.total_aux_loss(aux_u)
+tot_loss_u.backward()
+grad_norm_u = nn.utils.clip_grad_norm_(model_ultra.parameters(), 1.0)
+log_test("Full Model Ultrametric Backward & Gradient Flow",
+         grad_norm_u.item() > 0,
+         f"Total Loss: {tot_loss_u.item():.4f}, Grad Norm: {grad_norm_u.item():.4f}")
 
 # 6. E_ICE Ethical Energy Bound
 print("\n--- [TEST 6/10] E_ICE Ethical Energy & Landauer Bound ---")

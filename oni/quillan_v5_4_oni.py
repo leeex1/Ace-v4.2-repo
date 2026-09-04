@@ -108,8 +108,10 @@ class QuillanOniConfig:
     ffn_dim: int = 2048
     num_experts: int = 34
     # Dense council (user canon): all 34 deliberate every token, pull-weighted.
-    router_mode: str = "dense_pull"          # 'dense_pull' | 'gumbel_topk'
-    top_k: int = 4                           # only used in gumbel_topk mode
+    router_mode: str = "dense_pull"          # 'dense_pull' | 'gumbel_topk' | 'ultrametric'
+    top_k: int = 4                           # used in gumbel_topk and ultrametric modes
+    ultrametric_p: int = 2                   # tree arity for p-adic ultrametric router (p=2 binary, p=3 ternary)
+    ultrametric_levels: int = 3              # hierarchical tree depth (default 3 levels -> 8 clusters)
     expert_rank: int = 8                     # dense rank-8 (option C: cheaper than sparse-4/64)
     swarm_rank: int = 8
     lora_alpha: float = 16.0
@@ -1007,6 +1009,188 @@ class PersonaPullGate(nn.Module):
         return pull / pull.sum(dim=-1, keepdim=True).clamp_min(1e-8)
 
 
+# Canonical alias
+CouncilPullRouter = PersonaPullGate
+
+
+# ------------------------------------------------------------------
+# ULTRAMETRIC COUNCIL ROUTER — Hierarchical p-adic Tree MoE
+# ------------------------------------------------------------------
+# Non-Archimedean Bruhat-Tits tree topology mapping continuous token
+# embeddings into discrete hierarchical tree branches via factorized
+# Gumbel-Softmax with Straight-Through Estimator (STE).
+#
+# Tree geometry:
+#   p: tree arity (default: p=2 binary Bruhat-Tits, supports p=3)
+#   levels: tree depth (default: 3 levels -> 2^3 = 8 leaf clusters)
+#   34 Council personas are partitioned across tree clusters:
+#     Leaf 0 (0,0,0): C1..C4 (cognitive - core logic/vision)
+#     Leaf 1 (0,0,1): C5..C8 (cognitive - memory/integration)
+#     Leaf 2 (0,1,0): C9..C12 (communication - language/code)
+#     Leaf 3 (0,1,1): C13..C16 (communication - warden/qualia)
+#     Leaf 4 (1,0,0): C17..C20 (meta - nullion/shepherd/vigil)
+#     Leaf 5 (1,0,1): C21..C24 (meta - archon/aurelion/schema)
+#     Leaf 6 (1,1,0): C25..C29 (systems - prometheus/techne/chronicle)
+#     Leaf 7 (1,1,1): C30..C34 (systems - tesseract/nexus/typist/predator)
+#
+# Non-Archimedean metric:
+#   Prefix agreement from root determines Lowest Common Ancestor (LCA).
+#   LCA depth in [0, levels], with ultrametric distance d_p = levels - LCA_depth.
+#   Satisfies the strong triangle inequality: d(x,z) <= max(d(x,y), d(y,z)).
+#
+# Load balancing:
+#   Combines hierarchical tree-branch load balance with expert-level balance
+#   to strictly prevent expert starvation and branch collapse.
+# ------------------------------------------------------------------
+
+def build_canonical_tree_coordinates(num_experts: int = 34, p: int = 2, levels: int = 3) -> torch.Tensor:
+    """Computes hierarchical Bruhat-Tits tree coordinates for each expert."""
+    coords = []
+    if p == 2 and levels == 3 and num_experts == 34:
+        # Canonical 4-cluster split into 8 sub-clusters
+        leaf_ranges = [
+            (0, 4), (4, 8), (8, 12), (12, 16),
+            (16, 20), (20, 24), (24, 29), (29, 34)
+        ]
+        for leaf_idx, (start, end) in enumerate(leaf_ranges):
+            b0 = (leaf_idx >> 2) & 1
+            b1 = (leaf_idx >> 1) & 1
+            b2 = leaf_idx & 1
+            for _ in range(start, end):
+                coords.append([b0, b1, b2])
+    else:
+        num_leaves = p ** levels
+        for e in range(num_experts):
+            leaf = min(num_leaves - 1, int(e * num_leaves / num_experts))
+            digits = []
+            rem = leaf
+            for l in reversed(range(levels)):
+                p_l = p ** l
+                d = rem // p_l
+                digits.append(d)
+                rem = rem % p_l
+            coords.append(digits)
+    return torch.tensor(coords, dtype=torch.long)
+
+
+class UltrametricCouncilRouter(nn.Module):
+    """Multi-Head Hierarchical Non-Archimedean p-adic Bruhat-Tits Council Router.
+
+    Maps token embeddings into discrete p-adic tree branches via Gumbel-Softmax STE,
+    computes non-Archimedean distance against council experts, and dispatches top-k
+    active experts with auxiliary tree load balancing to prevent expert starvation.
+    """
+
+    def __init__(
+        self,
+        embed_dim: int,
+        num_experts: int = 34,
+        p: int = 2,
+        levels: int = 3,
+        top_k: int = 4,
+        tau: float = 1.0,
+        hard: bool = True,
+    ):
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.num_experts = num_experts
+        self.p = p
+        self.levels = levels
+        self.top_k = min(top_k, num_experts)
+        self.tau = tau
+        self.hard = hard
+
+        coords = build_canonical_tree_coordinates(num_experts, p, levels)
+        self.register_buffer("expert_tree_coords", coords)
+        self.register_buffer("expert_tree_onehot", F.one_hot(coords, num_classes=p).float())
+        level_weights = torch.tensor([float(p**l) for l in range(levels)], dtype=torch.float32)
+        self.register_buffer("level_weights", level_weights)
+        self.register_buffer("prior", PERSONA_PRIOR.clone())
+
+        self.backbone = nn.Linear(embed_dim, embed_dim)
+        self.route_heads = nn.Linear(embed_dim, levels * p)
+        self.expert_head = nn.Linear(embed_dim, num_experts, bias=False)
+        self.tree_scale = nn.Parameter(torch.tensor(1.5))
+
+        with torch.no_grad():
+            nn.init.normal_(self.backbone.weight, std=0.02)
+            nn.init.zeros_(self.backbone.bias)
+            nn.init.normal_(self.route_heads.weight, std=0.02)
+            nn.init.zeros_(self.route_heads.bias)
+            nn.init.normal_(self.expert_head.weight, std=0.02)
+
+    def set_tau(self, tau: float):
+        self.tau = float(max(0.05, min(2.0, tau)))
+
+    def compute_padic_distance(self, assignments: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+        """Computes non-Archimedean distance d_p(n, e) = levels - LCA_depth and prefix match."""
+        # assignments: [N, levels, p], expert_tree_onehot: [E, levels, p]
+        M = torch.einsum("nlp,elp->nel", assignments, self.expert_tree_onehot.to(assignments.device))
+        prefix_match = torch.cumprod(M, dim=-1)
+        lca_depth = prefix_match.sum(dim=-1)
+        padic_dist = float(self.levels) - lca_depth
+        return padic_dist, prefix_match
+
+    def compute_tree_load_balance_loss(
+        self,
+        assignments: torch.Tensor,
+        soft_branch_probs: torch.Tensor,
+        topk_indices: torch.Tensor,
+        expert_probs: torch.Tensor,
+    ) -> torch.Tensor:
+        """Switch Transformer tree branch load balance + expert-level anti-starvation loss."""
+        # Branch-level balance at each level of the tree
+        f_tree = (assignments.detach() > 0.5).float().mean(dim=0)  # [levels, p]
+        P_tree = soft_branch_probs.mean(dim=0)                     # [levels, p]
+        tree_lb = self.p * (f_tree * P_tree).sum(dim=-1).mean()
+
+        # Expert-level balance across all 34 experts
+        f_exp = torch.zeros(self.num_experts, device=assignments.device)
+        flat_topk_i = topk_indices.reshape(-1)
+        f_exp.scatter_add_(0, flat_topk_i, torch.ones_like(flat_topk_i, dtype=torch.float32))
+        f_exp = (f_exp / (flat_topk_i.numel() / self.top_k)).detach()
+        P_exp = expert_probs.mean(dim=0)
+        expert_lb = self.num_experts * torch.sum(f_exp * P_exp)
+
+        return 0.5 * tree_lb + 0.5 * expert_lb
+
+    def forward(
+        self, x: torch.Tensor, tau: Optional[float] = None
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+        N, D = x.shape
+        curr_tau = tau if tau is not None else self.tau
+
+        h = F.gelu(self.backbone(x))
+        route_logits = self.route_heads(h).view(N, self.levels, self.p)
+
+        if self.training:
+            flat_logits = route_logits.reshape(-1, self.p)
+            sampled = F.gumbel_softmax(flat_logits, tau=curr_tau, hard=self.hard, dim=-1)
+            assignments = sampled.view_as(route_logits)
+        else:
+            indices = route_logits.argmax(dim=-1)
+            assignments = F.one_hot(indices, num_classes=self.p).float()
+
+        soft_branch_probs = F.softmax(route_logits / max(0.05, curr_tau), dim=-1)
+
+        padic_dist, prefix_match = self.compute_padic_distance(assignments)
+        tree_affinity = torch.sum(prefix_match * self.level_weights.to(x.device), dim=-1)
+
+        prior = self.prior.to(x.device)
+        intra_logits = self.expert_head(h) + torch.log(prior.clamp_min(1e-6))
+        expert_logits = tree_affinity * self.tree_scale + intra_logits
+
+        expert_probs = F.softmax(expert_logits / max(0.05, curr_tau), dim=-1)
+        topk_p, topk_i = torch.topk(expert_probs, self.top_k, dim=-1)
+        topk_p = topk_p / topk_p.sum(dim=-1, keepdim=True).clamp_min(1e-8)
+
+        lb_loss = self.compute_tree_load_balance_loss(assignments, soft_branch_probs, topk_i, expert_probs)
+        z_loss = torch.logsumexp(expert_logits, dim=-1).pow(2).mean()
+        entropy = -(expert_probs * torch.log(expert_probs + 1e-10)).sum(dim=-1).mean()
+
+        return topk_p, topk_i, expert_probs, lb_loss, z_loss, entropy
+
+
 class UnrolledCouncilMoEBlock(nn.Module):
     """Dense SwiGLU + full-council deliberation (dense_pull) or legacy top-k.
     When cfg.use_evo_moe, delegates to EvoMoE heterogeneous (EvoMoE 2505.23830)."""
@@ -1016,6 +1200,14 @@ class UnrolledCouncilMoEBlock(nn.Module):
         self.cfg = cfg
         self.router = nn.Linear(cfg.hidden_dim, cfg.num_experts, bias=False)
         self.pull_gate = PersonaPullGate(cfg.hidden_dim, cfg.num_experts)
+        self.ultrametric_router = UltrametricCouncilRouter(
+            cfg.hidden_dim,
+            num_experts=cfg.num_experts,
+            p=getattr(cfg, "ultrametric_p", 2),
+            levels=getattr(cfg, "ultrametric_levels", 3),
+            top_k=cfg.top_k,
+            tau=cfg.tau_max,
+        )
         if cfg.use_evo_moe and _FORMAL_PAPERS_WIRED:
             self.evo_moe = EvoMoE(cfg.hidden_dim, n_experts=cfg.num_experts, rank=cfg.expert_rank)
             self.experts = self.evo_moe.experts  # share for checkpoint compat
@@ -1031,6 +1223,7 @@ class UnrolledCouncilMoEBlock(nn.Module):
 
     def set_tau(self, tau: float):
         self.tau = float(max(0.05, min(2.0, tau)))
+        self.ultrametric_router.set_tau(self.tau)
 
     def forward(self, x, gov_scale: float = 1.0):
         B, T, C = x.size()
@@ -1056,11 +1249,34 @@ class UnrolledCouncilMoEBlock(nn.Module):
                 pull = self.pull_gate(flat_x, tau=self.tau)              # [BT,34] fp32
                 moe_out = torch.zeros_like(flat_x)
                 for e in range(self.cfg.num_experts):
-                    e_out = self.experts[e](flat_x, gov_scale)
+                    if isinstance(self.experts[e], CouncilExpert):
+                        e_out = self.experts[e](flat_x, gov_scale)
+                    else:
+                        e_out = self.experts[e](flat_x)
                     moe_out = moe_out + pull[:, e:e + 1].to(flat_x.dtype) * e_out
                 probs = pull
                 lb_loss = torch.zeros((), device=x.device)
                 entropy = -(probs * torch.log(probs + 1e-10)).sum(dim=-1).mean()
+        elif self.cfg.router_mode == "ultrametric":
+            # ULTRAMETRIC P-ADIC BRUHAT-TITS HIERARCHICAL TREE ROUTING
+            topk_p, topk_i, probs, lb_loss, z_loss, entropy = self.ultrametric_router(flat_x, tau=self.tau)
+            moe_out = torch.zeros_like(flat_x)
+            K = self.cfg.top_k
+            BT = flat_x.size(0)
+            flat_idx = topk_i.reshape(-1)                                  # [BT*K]
+            flat_w = topk_p.reshape(-1, 1)                                 # [BT*K,1]
+            token_pos = torch.arange(BT, device=x.device).unsqueeze(1).expand(-1, K).reshape(-1)
+            for e in range(self.cfg.num_experts):
+                sel = (flat_idx == e).nonzero(as_tuple=True)[0]
+                if sel.numel() == 0:
+                    continue
+                pos = token_pos[sel]
+                w = flat_w[sel]
+                if isinstance(self.experts[e], CouncilExpert):
+                    e_out = self.experts[e](flat_x[pos], gov_scale)
+                else:
+                    e_out = self.experts[e](flat_x[pos])
+                moe_out.index_add_(0, pos, w * e_out)
         else:
             logits = self.router(flat_x).float()  # fp32 router (ST-MoE)
             if self.training and self.cfg.router_mode == "gumbel_topk":
@@ -1083,7 +1299,10 @@ class UnrolledCouncilMoEBlock(nn.Module):
                     continue
                 pos = token_pos[sel]
                 w = flat_w[sel]
-                e_out = self.experts[e](flat_x[pos], gov_scale)
+                if isinstance(self.experts[e], CouncilExpert):
+                    e_out = self.experts[e](flat_x[pos], gov_scale)
+                else:
+                    e_out = self.experts[e](flat_x[pos])
                 moe_out.index_add_(0, pos, w * e_out)
 
             # Aux losses: KL-to-uniform load balance (AGI paper eq.13) + z-loss (ST-MoE)
@@ -1738,4 +1957,6 @@ class QuillanRoninOni(nn.Module):
 QuillanRoninSovereignV9 = QuillanRoninOni  # legacy name compat
 QuillanUnrolledConfig = QuillanOniConfig
 QuillanUnrolledSovereign = QuillanRoninOni
+CouncilMoELayer = UnrolledCouncilMoEBlock
+CouncilPullRouter = PersonaPullGate
 

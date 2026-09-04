@@ -46,7 +46,7 @@ def parse_args():
     ap.add_argument("--save-every", type=int, default=500)
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--router-mode", type=str, default="dense_pull",
-                    choices=["dense_pull", "gumbel_topk"])
+                    choices=["dense_pull", "gumbel_topk", "ultrametric"])
     ap.add_argument("--clip", type=float, default=1.0)
     ap.add_argument("--ema", type=int, default=1)
     ap.add_argument("--rqgm-epoch-length", type=int, default=500,
