@@ -1127,7 +1127,14 @@ class UltrametricCouncilRouter(nn.Module):
         # assignments: [N, levels, p], expert_tree_onehot: [E, levels, p]
         expert_onehot = self.expert_tree_onehot.to(device=assignments.device, dtype=assignments.dtype)
         M = torch.einsum("nlp,elp->nel", assignments, expert_onehot)
-        prefix_match = torch.cumprod(M, dim=-1)
+        # Unroll prefix match to bypass PyTorch's cumprod_backward zero-handling kernel
+        # which triggers ATen masked_scatter_ dtype assertions on CUDA under mixed precision.
+        prefix_list = []
+        curr = None
+        for l in range(self.levels):
+            curr = M[..., l] if curr is None else curr * M[..., l]
+            prefix_list.append(curr)
+        prefix_match = torch.stack(prefix_list, dim=-1)
         lca_depth = prefix_match.sum(dim=-1)
         padic_dist = float(self.levels) - lca_depth
         return padic_dist, prefix_match
@@ -1159,39 +1166,44 @@ class UltrametricCouncilRouter(nn.Module):
         self, x: torch.Tensor, tau: Optional[float] = None
     ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
         orig_dtype = x.dtype
-        x_float = x.float()
-        N, D = x.shape
-        curr_tau = tau if tau is not None else self.tau
+        device_type = "cuda" if x.is_cuda else "cpu"
 
-        h = F.gelu(self.backbone(x_float))
-        route_logits = self.route_heads(h).view(N, self.levels, self.p)
+        # Enforce full-precision (FP32) router mathematics outside autocast to prevent
+        # AMP downcasting of linear layers and Gumbel-Softmax, ensuring autograd stability.
+        with torch.amp.autocast(device_type=device_type, enabled=False):
+            x_float = x.float()
+            N, D = x.shape
+            curr_tau = tau if tau is not None else self.tau
 
-        if self.training:
-            flat_logits = route_logits.reshape(-1, self.p)
-            sampled = F.gumbel_softmax(flat_logits, tau=curr_tau, hard=self.hard, dim=-1)
-            assignments = sampled.view_as(route_logits)
-        else:
-            indices = route_logits.argmax(dim=-1)
-            assignments = F.one_hot(indices, num_classes=self.p).float()
+            h = F.gelu(self.backbone(x_float))
+            route_logits = self.route_heads(h).view(N, self.levels, self.p)
 
-        soft_branch_probs = F.softmax(route_logits / max(0.05, curr_tau), dim=-1)
+            if self.training:
+                flat_logits = route_logits.reshape(-1, self.p)
+                sampled = F.gumbel_softmax(flat_logits, tau=curr_tau, hard=self.hard, dim=-1)
+                assignments = sampled.view_as(route_logits)
+            else:
+                indices = route_logits.argmax(dim=-1)
+                assignments = F.one_hot(indices, num_classes=self.p).float()
 
-        padic_dist, prefix_match = self.compute_padic_distance(assignments)
-        tree_affinity = torch.sum(prefix_match * self.level_weights.to(device=x.device, dtype=torch.float32), dim=-1)
+            soft_branch_probs = F.softmax(route_logits / max(0.05, curr_tau), dim=-1)
 
-        prior = self.prior.to(device=x.device, dtype=torch.float32)
-        intra_logits = self.expert_head(h) + torch.log(prior.clamp_min(1e-6))
-        expert_logits = tree_affinity * self.tree_scale.float() + intra_logits
+            padic_dist, prefix_match = self.compute_padic_distance(assignments)
+            tree_affinity = torch.sum(prefix_match * self.level_weights.to(device=x.device, dtype=torch.float32), dim=-1)
 
-        expert_probs = F.softmax(expert_logits / max(0.05, curr_tau), dim=-1)
-        topk_p, topk_i = torch.topk(expert_probs, self.top_k, dim=-1)
-        topk_p = topk_p / topk_p.sum(dim=-1, keepdim=True).clamp_min(1e-8)
+            prior = self.prior.to(device=x.device, dtype=torch.float32)
+            intra_logits = self.expert_head(h) + torch.log(prior.clamp_min(1e-6))
+            expert_logits = tree_affinity * self.tree_scale.float() + intra_logits
 
-        lb_loss = self.compute_tree_load_balance_loss(assignments, soft_branch_probs, topk_i, expert_probs)
-        z_loss = torch.logsumexp(expert_logits, dim=-1).pow(2).mean()
-        entropy = -(expert_probs * torch.log(expert_probs + 1e-10)).sum(dim=-1).mean()
+            expert_probs = F.softmax(expert_logits / max(0.05, curr_tau), dim=-1)
+            topk_p, topk_i = torch.topk(expert_probs, self.top_k, dim=-1)
+            topk_p = topk_p / topk_p.sum(dim=-1, keepdim=True).clamp_min(1e-8)
 
-        return topk_p.to(orig_dtype), topk_i, expert_probs.to(orig_dtype), lb_loss, z_loss, entropy
+            lb_loss = self.compute_tree_load_balance_loss(assignments, soft_branch_probs, topk_i, expert_probs)
+            z_loss = torch.logsumexp(expert_logits, dim=-1).pow(2).mean()
+            entropy = -(expert_probs * torch.log(expert_probs + 1e-10)).sum(dim=-1).mean()
+
+            return topk_p.to(orig_dtype), topk_i, expert_probs.to(orig_dtype), lb_loss, z_loss, entropy
 
 
 class UnrolledCouncilMoEBlock(nn.Module):
