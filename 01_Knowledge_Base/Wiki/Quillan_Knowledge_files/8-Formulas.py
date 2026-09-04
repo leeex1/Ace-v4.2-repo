@@ -9,8 +9,16 @@ Created by: CrashOverrideX
 
 import cmath
 import logging
+import sys
+import warnings
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
+
+# Suppress Pydantic v1-style deprecation warnings on modern Pydantic v2 runtimes
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 import numpy as np
 from pydantic import BaseModel, Field, validator
@@ -279,7 +287,7 @@ class QuillanTokenLatency(Formula):
             }
         )
 
-#  Spectral Gap Regularizer (Ihara-Bass Silver Ratio)
+# ─── Formula 5: Spectral Gap Regularizer (Ihara-Bass Silver Ratio) ─────────
 # Mathematical Foundation: Ihara-Bass determinant & transfer operator gap
 # Closed-form Silver Ratio gap: α = 3/2 - log2(1 + √2) ≈ 0.2284467
 # Formalized in Lean 4 (IharaBass.lean & ContinuousTransfer.lean)
@@ -298,11 +306,12 @@ class SpectralGapRegularizer(Formula):
         else:
             computed_gap = 0.0
             penalty = 0.0
+        params = config.model_dump() if hasattr(config, "model_dump") else config.dict()
         return FormulaResult(
             name="SpectralGap",
             value=penalty,
             description="Spectral gap regularizer penalty against Silver Ratio gap collapse.",
-            parameters=config.dict(),
+            parameters=params,
             metrics={
                 "singular_value_0": float(s[0]) if len(s) > 0 else 0.0,
                 "singular_value_1": float(s[1]) if len(s) > 1 else 0.0,
@@ -316,7 +325,7 @@ class SpectralGapRegularizer(Formula):
 ASZRConfig = SpectralGapConfig
 AdelicSpectralZetaRegularizer = SpectralGapRegularizer
 
-#  3. Formula Engine 
+# ─── 3. Formula Engine ─────────────────────────────────────────────────────
 
 class FormulaEngine:
     """Robust strategy engine for executing verified cognitive formulas."""

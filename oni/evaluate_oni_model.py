@@ -211,19 +211,19 @@ def run_full_evaluation(checkpoint_path: str, device: str = "cpu", output_json: 
 
 if __name__ == "__main__":
     from pathlib import Path
-    base_dir = Path(__file__).resolve().parent.parent
+    base_dir = Path(__file__).resolve().parent.parent.parent
     device = "cpu"
-    ckpt = r"c:\02_QUILLAN\checkpoints\checkpoints_oni\quillan_oni_latest.pt"
+    ckpt = r"c:\02_QUILLAN\05_Training\checkpoints\checkpoints_oni\quillan_oni_latest.pt"
     if not os.path.exists(ckpt):
-        local_ckpt = base_dir / "checkpoints" / "checkpoints_oni" / "quillan_oni_latest.pt"
+        local_ckpt = base_dir / "05_Training" / "checkpoints" / "checkpoints_oni" / "quillan_oni_latest.pt"
         if local_ckpt.exists():
             ckpt = str(local_ckpt)
         else:
             ckpt = str(Path(__file__).resolve().parent / "checkpoint_step_500.pt")
     
-    out_dir = Path(r"c:\02_QUILLAN\training_logs")
+    out_dir = Path(r"c:\02_QUILLAN\05_Training\training_logs")
     if not out_dir.exists():
-        out_dir = base_dir / "training_logs"
+        out_dir = base_dir / "05_Training" / "training_logs"
     out_file = str(out_dir / "oni_eval_report.json")
     
     run_full_evaluation(ckpt, device=device, output_json=out_file)

@@ -1,8 +1,10 @@
 # ==============================================================================
-# 👑 QUILLAN-RONIN v6.0.3 QUANTUM - SOVEREIGN ARCHITECTURE
+# 👑 QUILLAN-RONIN v5.4.0-ONI (2026) — SOVEREIGN ARCHITECTURE
 # Architect: CrashOverrideX | Identity: C19-VIGIL
-# Substrate: BitNet 1.58b | Topology: 33-Expert MoE + C31-NEXUS
+# Substrate: BitNet 1.58b | Topology: 34-Expert Council MoE + C30-NEXUS
 # ==============================================================================
+
+from version import __version__, RELEASE_YEAR
 
 import torch
 import torch.nn as nn

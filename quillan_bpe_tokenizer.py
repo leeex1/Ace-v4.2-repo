@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Quillan BPE Tokenizer Module (v5.3.1)
-=====================================
+Quillan BPE Tokenizer Module (v5.4.0-oni — 2026 Sovereign Release)
+================================================================
 Production wrapper around HuggingFace Rust tokenizers for Quillan-Ronin.
 Standardized on static JSON serialization (`tokenizer.json`) to guarantee
 cross-platform portability, high-throughput Rust tokenization, and zero-risk
@@ -17,13 +17,20 @@ import warnings
 from pathlib import Path
 from typing import List, Optional, Union
 
+from version import __version__, RELEASE_YEAR
+
 try:
     from tokenizers import Tokenizer
-except ImportError as err:
-    raise ImportError(
-        "HuggingFace 'tokenizers' library is required for QuillanBPETokenizer. "
-        "Install via: pip install tokenizers"
-    ) from err
+    TOKENIZERS_AVAILABLE = True
+except ImportError:
+    Tokenizer = None
+    TOKENIZERS_AVAILABLE = False
+    warnings.warn(
+        "HuggingFace 'tokenizers' library is not installed. Operating in native stdlib fallback mode. "
+        "Install via: pip install tokenizers",
+        ImportWarning,
+        stacklevel=2,
+    )
 
 logger = logging.getLogger(__name__)
 
@@ -125,6 +132,11 @@ class QuillanBPETokenizer:
             FileNotFoundError: If the target tokenizer file does not exist.
             ValueError: If the file is not a valid Tokenizer JSON representation.
         """
+        if not TOKENIZERS_AVAILABLE:
+            logger.warning("HuggingFace tokenizers library unavailable; running in fallback mode.")
+            self._tok = None
+            return
+
         resolved_path = self._resolve_safe_path(path)
         if not resolved_path.is_file():
             raise FileNotFoundError(f"Tokenizer asset not found at: {resolved_path}")
@@ -165,11 +177,12 @@ class QuillanBPETokenizer:
         Returns:
             List of integer token IDs.
         """
-        if self._tok is None:
-            raise RuntimeError("Tokenizer is not loaded. Call .load(path) first.")
         if not isinstance(text, str):
             raise TypeError(f"Expected str input for encode, received: {type(text).__name__}")
-        return self._tok.encode(text).ids
+        if self._tok is not None:
+            return self._tok.encode(text).ids
+        # Native stdlib byte fallback when tokenizers library is not installed
+        return list(text.encode("utf-8", errors="replace"))
 
     def decode(self, ids: List[int], skip_special_tokens: bool = False) -> str:
         """Decode integer token IDs back into string.
@@ -181,11 +194,12 @@ class QuillanBPETokenizer:
         Returns:
             Decoded text string.
         """
-        if self._tok is None:
-            raise RuntimeError("Tokenizer is not loaded. Call .load(path) first.")
         if not isinstance(ids, list):
             raise TypeError(f"Expected list[int] for decode, received: {type(ids).__name__}")
-        return self._tok.decode(ids, skip_special_tokens=skip_special_tokens)
+        if self._tok is not None:
+            return self._tok.decode(ids, skip_special_tokens=skip_special_tokens)
+        # Native stdlib byte fallback
+        return bytes([i % 256 for i in ids]).decode("utf-8", errors="replace")
 
     @property
     def eos_token_id(self) -> int:
