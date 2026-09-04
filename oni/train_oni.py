@@ -53,8 +53,23 @@ def parse_args():
                     help="RQGM: Controlled Utility Evolution epoch length (frozen evaluator within epoch, challenger swap at boundary)")
     ap.add_argument("--rqgm-disable", action="store_true",
                     help="Disable RQGM epoch gating (static evaluator)")
-    ap.add_argument("--device", type=str, default="cpu",
-                    help="Training device: cpu | cuda | cuda:0")
+    ap.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu",
+                    help="Training device: cpu | cuda | cuda:0 (defaults to cuda if available)")
+    ap.add_argument("--data-dir", type=str, default=None,
+                    help="Directory containing train_ids.bin and val_ids.bin")
+    ap.add_argument("--ckpt-dir", type=str, default=None,
+                    help="Directory to save checkpoints")
+    ap.add_argument("--log-dir", type=str, default=None,
+                    help="Directory to save training logs")
+    ap.add_argument("--precision", type=str, default="auto",
+                    choices=["auto", "bf16", "fp16", "fp32"],
+                    help="Precision mode: auto | bf16 | fp16 | fp32 (auto uses BF16 on A100/H100, FP16 on T4, FP32 on Pascal/CPU)")
+    ap.add_argument("--amp", action="store_true",
+                    help="Enable PyTorch Automatic Mixed Precision (legacy flag, alias for --precision fp16 or bf16)")
+    ap.add_argument("--grad-checkpoint", action="store_true",
+                    help="Enable gradient checkpointing to reduce peak VRAM")
+    ap.add_argument("--synthetic-data", action="store_true",
+                    help="Use synthetic token stream for benchmarking or when dataset is not yet prepared")
     return ap.parse_args()
 
 
@@ -103,17 +118,32 @@ class RQGMController:
 
 
 class Corpus:
-    def __init__(self, split: str, seq_len: int):
-        ids = np.memmap(DATA / f"{split}_ids.bin", dtype=np.uint16, mode="r")
-        labels = np.memmap(DATA / f"{split}_labels.bin", dtype=np.int32, mode="r")
+    def __init__(self, split: str, seq_len: int, data_dir: Path, synthetic: bool = False):
+        self.seq_len = seq_len
+        self.synthetic = synthetic
+        ids_path = data_dir / f"{split}_ids.bin"
+        labels_path = data_dir / f"{split}_labels.bin"
+        if not ids_path.exists() or not labels_path.exists() or synthetic:
+            if not synthetic:
+                print(f"[WARN] Dataset files not found in {data_dir} ({ids_path.name}). Using synthetic data stream for benchmarking.")
+            self.synthetic = True
+            self.n_synthetic = 2000
+            return
+
+        ids = np.memmap(ids_path, dtype=np.uint16, mode="r")
+        labels = np.memmap(labels_path, dtype=np.int32, mode="r")
         n = min(len(ids), len(labels)) // seq_len * seq_len
         self.ids = ids[:n].reshape(-1, seq_len)
         self.labels = labels[:n].reshape(-1, seq_len)
 
     def __len__(self):
-        return len(self.ids)
+        return self.n_synthetic if self.synthetic else len(self.ids)
 
     def batch(self, bs, rng):
+        if self.synthetic:
+            x = rng.integers(0, 50257, size=(bs, self.seq_len), dtype=np.int64)
+            y = np.roll(x, -1, axis=-1)
+            return torch.from_numpy(x), torch.from_numpy(y)
         idx = rng.integers(0, len(self), size=bs)
         return (torch.from_numpy(self.ids[idx].astype(np.int64)),
                 torch.from_numpy(self.labels[idx].astype(np.int64)))
@@ -147,11 +177,14 @@ def sample(model, tok, device="cpu", prompt="User: Hello, who are you?\n\nAssist
     model.train()
     return tok.decode(out)
 
-
 def main():
     args = parse_args()
-    CKPT_DIR.mkdir(parents=True, exist_ok=True)
-    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    data_dir = Path(args.data_dir) if args.data_dir else DATA
+    ckpt_dir = Path(args.ckpt_dir) if args.ckpt_dir else CKPT_DIR
+    log_dir = Path(args.log_dir) if args.log_dir else LOG_DIR
+
+    ckpt_dir.mkdir(parents=True, exist_ok=True)
+    log_dir.mkdir(parents=True, exist_ok=True)
 
     # Windows OS Process Priority Elevation & Thread Tuning
     import os
@@ -169,23 +202,24 @@ def main():
 
     rng = np.random.default_rng(42)
     tok = UnifiedQuillanTokenizer()
-    train = Corpus("train", args.seq_len)
-    val = Corpus("val", args.seq_len)
-    print(f"[DATA] train={len(train)} seqs  val={len(val)} seqs")
+    train = Corpus("train", args.seq_len, data_dir, synthetic=args.synthetic_data)
+    val = Corpus("val", args.seq_len, data_dir, synthetic=args.synthetic_data)
+    print(f"[DATA] train={len(train)} seqs  val={len(val)} seqs (dir: {data_dir})")
 
     cfg = QuillanOniConfig(n_layer=args.n_layer, max_seq_len=args.seq_len,
-                           router_mode=args.router_mode, grad_checkpoint=False)
+                           router_mode=args.router_mode, grad_checkpoint=args.grad_checkpoint)
     model = QuillanRoninOni(cfg)
     if args.device != "cpu":
         model = model.to(args.device)
     n_params = sum(p.numel() for p in model.parameters())
     print(f"[MODEL] Quillan-Ronin v5.4.0-oni  n_layer={args.n_layer}  "
-          f"router={args.router_mode}  params={n_params/1e6:.1f}M  device={args.device}")
+          f"router={args.router_mode}  params={n_params/1e6:.1f}M  device={args.device}  "
+          f"grad_ckpt={args.grad_checkpoint}  amp={args.amp}")
 
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.01)
     step, best_val = 0, float("inf")
     ema_sd = None
-    latest = CKPT_DIR / "quillan_oni_latest.pt"
+    latest = ckpt_dir / "quillan_oni_latest.pt"
 
     if args.resume and latest.exists():
         ck = torch.load(latest, map_location="cpu", weights_only=False)
@@ -209,10 +243,39 @@ def main():
         print(f"[RESUME] step {step}, best_val {best_val:.4f}")
         # RQGM resume will be handled after rqgm init (epoch/incumbent)
 
-    log_f = open(LOG_DIR / "oni_train_log.jsonl", "a", encoding="utf-8")
+    log_f = open(log_dir / "oni_train_log.jsonl", "a", encoding="utf-8")
     rqgm = None if args.rqgm_disable else RQGMController(args.rqgm_epoch_length, log_f)
     if rqgm:
         print(f"[RQGM] Controlled Utility Evolution ENABLED — epoch_length={args.rqgm_epoch_length} (C34-PREDATOR/VIR frozen within epoch)", flush=True)
+
+    precision = args.precision.lower()
+    if precision == "auto":
+        if str(args.device).startswith("cuda") and torch.cuda.is_available():
+            if hasattr(torch.cuda, "is_bf16_supported") and torch.cuda.is_bf16_supported():
+                precision = "bf16"
+            elif args.amp:
+                precision = "fp16"
+            else:
+                precision = "fp32"
+        else:
+            precision = "fp32"
+    elif precision == "fp16" or args.amp:
+        precision = "fp16"
+
+    print(f"[PRECISION] Hardware acceleration precision: {precision.upper()}")
+
+    use_bf16 = precision == "bf16"
+    use_fp16 = precision == "fp16"
+    use_amp = use_bf16 or use_fp16
+    amp_dtype = torch.bfloat16 if use_bf16 else torch.float16
+
+    scaler = None
+    if use_fp16:
+        try:
+            scaler = torch.amp.GradScaler("cuda", enabled=True)
+        except (AttributeError, TypeError):
+            scaler = torch.cuda.amp.GradScaler(enabled=True)
+
     model.train()
     t_start = time.time()
     running = []
@@ -232,12 +295,27 @@ def main():
             x, y = train.batch(args.batch_size, rng)
             if args.device != "cpu":
                 x, y = x.to(args.device), y.to(args.device)
-            _, ce, aux = model(x, labels=y)
-            loss = (ce + model.total_aux_loss(aux)) / args.grad_accum
-            loss.backward()
+            if use_amp:
+                with torch.amp.autocast(device_type="cuda", dtype=amp_dtype):
+                    _, ce, aux = model(x, labels=y)
+                    loss = (ce + model.total_aux_loss(aux)) / args.grad_accum
+                if scaler is not None:
+                    scaler.scale(loss).backward()
+                else:
+                    loss.backward()
+            else:
+                _, ce, aux = model(x, labels=y)
+                loss = (ce + model.total_aux_loss(aux)) / args.grad_accum
+                loss.backward()
             step_loss += ce.item() / args.grad_accum
-        gn = torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
-        opt.step()
+        if scaler is not None:
+            scaler.unscale_(opt)
+            gn = torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
+            scaler.step(opt)
+            scaler.update()
+        else:
+            gn = torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
+            opt.step()
 
         # ES-at-Scale: ForgettingMitigation anchor regularizer (2605.30148)
         # Pulls weights toward EMA snapshot to prevent catastrophic forgetting.
