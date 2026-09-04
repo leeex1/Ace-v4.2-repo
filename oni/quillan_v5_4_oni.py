@@ -121,7 +121,8 @@ class QuillanOniConfig:
     aux_load_weight: float = 0.05
     aux_z_weight: float = 0.001
     aux_ethics_weight: float = 0.05
-    aux_aszr_weight: float = 0.01            # Formula #11: Adèlic Spectral Zeta Regularizer (Ihara-Bass Silver Ratio)
+    aux_spectral_weight: float = 0.01        # Ihara-Bass spectral gap regularizer
+    aux_aszr_weight: float = 0.01            # Backward-compatibility alias
     entropy_bonus_weight: float = 0.01
     dropout: float = 0.0
     grad_checkpoint: bool = False
@@ -461,7 +462,7 @@ class QuantumFormulasEngine(nn.Module):
       8  QICS  — Quantum Information Communication (von Neumann entropy)
       9  QSSR  — Quantum System Stability Resilience (Lyapunov)
      10  JQLD  — Joshua's Quantum Leap Dynamo (Lindblad-driven dynamics)
-     11  ASZR  — Adèlic Spectral Zeta Regularizer (Ihara-Bass Silver Ratio gap)
+     11  Spectral Gap Regularizer (Ihara-Bass Silver Ratio)
 
     All methods are pure functions on hidden states or weight tensors (no new learnable
     parameters) so existing checkpoints resume with strict=False and no
@@ -562,12 +563,11 @@ class QuantumFormulasEngine(nn.Module):
         noise = torch.randn_like(hidden.float()) * tau_gumbel * 0.01
         return hidden.float() + noise.to(hidden.dtype)
 
-    # 11. ASZR — Adèlic Spectral Zeta Regularizer (Ihara-Bass Silver Ratio)
-    # Proved in IharaBass.lean & ContinuousTransfer.lean:
+    # 11. Spectral Gap Regularizer (Ihara-Bass Silver Ratio)
     # Gap exponent alpha = 3/2 - log2(1 + sqrt(2)) ~= 0.2284467 (Silver Ratio delta_S = 1 + sqrt(2)).
     # Penalizes singular value ratio collapse to stabilize BitNet 1.58b ternary representation.
-    def aszr_spectral_zeta_loss(self, weight: torch.Tensor, target_gap: float = 0.2284467) -> torch.Tensor:
-        """Adèlic Spectral Zeta Regularizer (Formula 11).
+    def spectral_gap_loss(self, weight: torch.Tensor, target_gap: float = 0.2284467) -> torch.Tensor:
+        """Ihara-Bass Spectral Gap Regularizer.
         
         Monitors the normalized top singular value gap of weight matrices:
             gap = (s_0 - s_1) / (s_0 + 1e-6)
@@ -584,6 +584,10 @@ class QuantumFormulasEngine(nn.Module):
                 gap = (s[0] - s[1]) / (s[0] + 1e-6)
                 return F.mse_loss(gap, torch.tensor(target_gap, device=weight.device, dtype=torch.float32))
         return torch.zeros((), device=weight.device, dtype=torch.float32)
+
+    def aszr_spectral_zeta_loss(self, weight: torch.Tensor, target_gap: float = 0.2284467) -> torch.Tensor:
+        """Backward-compatibility alias for spectral_gap_loss."""
+        return self.spectral_gap_loss(weight, target_gap)
 
 
 
@@ -1503,10 +1507,11 @@ class QuillanRoninOni(nn.Module):
                 aux["qics"] = self.quantum.qics_entropy(x.mean(dim=1))
             except Exception:
                 pass
-        if getattr(cfg, "aux_aszr_weight", 0.0) > 0.0 and len(self.h) > 0:
+        spectral_weight = getattr(cfg, "aux_spectral_weight", getattr(cfg, "aux_aszr_weight", 0.0))
+        if spectral_weight > 0.0 and len(self.h) > 0:
             try:
                 w_sample = self.h[0].attn.prism.vectors["Language"].weight
-                aux["aszr"] = self.quantum.aszr_spectral_zeta_loss(w_sample)
+                aux["spectral_gap"] = self.quantum.spectral_gap_loss(w_sample)
             except Exception:
                 pass
         if e_ice_out is not None:
@@ -1526,8 +1531,10 @@ class QuillanRoninOni(nn.Module):
             loss = loss + 0.005 * aux["qhis"]
         if "qics" in aux:
             loss = loss + 0.002 * aux["qics"]
-        if "aszr" in aux:
-            loss = loss + getattr(cfg, "aux_aszr_weight", 0.01) * aux["aszr"]
+        spec_loss = aux.get("spectral_gap", aux.get("aszr", None))
+        if spec_loss is not None:
+            w_spec = getattr(cfg, "aux_spectral_weight", getattr(cfg, "aux_aszr_weight", 0.01))
+            loss = loss + w_spec * spec_loss
         if "ethics" in aux:
             loss = loss + cfg.aux_ethics_weight * aux["ethics"]
         return loss
