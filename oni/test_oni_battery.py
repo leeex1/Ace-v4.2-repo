@@ -42,7 +42,9 @@ from quillan_v5_4_oni import (
     QuantumFormulasEngine,
     LeeMach6Governor,
     LeeMach6VelocityGovernor,
-    CANONICAL_ROSTER
+    CANONICAL_ROSTER,
+    pack_ternary,
+    unpack_ternary
 )
 
 passed_tests = 0
@@ -87,6 +89,12 @@ bit_lin = BitLinear(128, 128)
 x_in = torch.randn(2, 8, 128, requires_grad=True)
 out_lin = bit_lin(x_in)
 log_test("BitLinear Layer Forward Pass", out_lin.shape == (2, 8, 128))
+
+# 2b. 2-Bit Ternary Packing (Pascal L2 residency)
+t_sample = torch.tensor([[-1.0, 0.0, 1.0, 0.0] * 8], dtype=torch.float32)  # [1, 32]
+t_packed = pack_ternary(t_sample)
+t_unpacked = unpack_ternary(t_packed, t_sample.shape)
+log_test("Pascal L2 2-Bit Ternary Packing (16:1 Compression)", t_packed.shape[-1] == 2 and torch.equal(t_sample, t_unpacked), f"Packed Shape: {t_packed.shape}")
 
 # 3. 9-Vector Prism
 print("\n--- [TEST 3/10] 9-Vector Semantic Prism Decomposition ---")
@@ -148,6 +156,8 @@ qcrdm = q_engine.qcrdm_reasoning(x_in[:, 0, :])
 log_test("Formula 5 (QCRDM Born's Rule Reasoning)", qcrdm.shape == (2, 128))
 jqld = q_engine.jqld_evolution_step(x_in[:, 0, :])
 log_test("Formula 6 (JQLD Lindblad Master Dynamics)", jqld.shape == (2, 128))
+spec_loss = q_engine.spectral_gap_loss(test_w)
+log_test("Ihara-Bass Spectral Gap Regularizer", spec_loss.item() >= 0.0, f"Silver Ratio Gap Loss: {spec_loss.item():.6f}")
 
 # 8. Lee-Mach-6 Governor
 print("\n--- [TEST 8/10] Lee-Mach-6 Hardware PID Governor ---")
@@ -165,6 +175,7 @@ model = QuillanRoninOni(cfg)
 inp = torch.randint(0, 50257, (1, 8))
 target = torch.randint(0, 50257, (1, 8))
 logits, loss_ce, aux_dict = model(inp, labels=target)
+log_test("Spectral Gap Loss in Model Aux Losses", ("spectral_gap" in aux_dict or "aszr" in aux_dict), f"Loss: {aux_dict.get('spectral_gap', aux_dict.get('aszr', torch.tensor(0.0))).item():.6f}")
 total_loss = loss_ce + model.total_aux_loss(aux_dict)
 total_loss.backward()
 grad_norm = nn.utils.clip_grad_norm_(model.parameters(), 1.0)

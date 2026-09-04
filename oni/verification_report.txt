@@ -1,17 +1,17 @@
 ===========================================================================
   QUILLAN-RONIN v5.4.0 ONI — BATTLE-TESTING & VERIFICATION SUITE
 ===========================================================================
-[INFO] PyTorch Version: 2.12.1+cu130 | CUDA: True
+[INFO] PyTorch Version: 2.10.0+cpu | CUDA: False
 [TEST 1/10] Tokenizer Encode/Decode: PASS (Tokens: 23, Vocab: 50257, EOS: 0)
-[TEST 2/10] BitNet 1.58b STE Quantization & Grad Flow: PASS (Ternary States: [-1.0, 0.0, 1.0], Grad Norm: 63.9798)
+[TEST 2/10] BitNet 1.58b STE Quantization & Grad Flow: PASS (Ternary States: [-1.0, 0.0, 1.0], Grad Norm: 63.9255)
 [TEST 3/10] 9-Vector Semantic Prism Batched GEMM: PASS (Shape: torch.Size([1, 8, 64]))
 [TEST 4/10] 34-Council Complexity Router & Pull Gate: PASS (Personas: 34, Pull Weights: torch.Size([1, 8, 34]))
 [TEST 5/10] Rank-24 EGGROLL Swarm Mesh & MoE Block: PASS (MoE Shape: torch.Size([1, 8, 64]), Entropy: 3.5259, Z-Loss: 0.0000, Swarm: torch.Size([1, 8, 64]))
 [TEST 6/10] E_ICE Ethical Energy & Landauer Bound: PASS (E_Omega: 2.1819e-19 J, Violations Constrained: torch.Size([1, 8]))
-[TEST 7/10] Quantum Formulas V5.0 Suite (AQCS, EEMF, QHIS, DQRO, QCRDM, JQLD): PASS
+[TEST 7/10] Cognitive Formulas Suite (AQCS, EEMF, QHIS, DQRO, QCRDM, JQLD, Spectral Gap: 0.0406): PASS
 [TEST 8/10] Lee-Mach-6 Hardware Governor & PID Controller: PASS (Scale: 1.00->0.80, Velocity: 1.000)
-[TEST 9/10] Full Model Forward/Backward & Loss Convergence: PASS (CE: 10.8408, Total: 10.8445, Grad Norm: 0.5460, Aux Keys: ['load_balance', 'z_loss', 'entropy', 'qhis', 'qics', 'ethics'])
-[TEST 10/10] Autoregressive Token Generation: PASS (Prompt Len: 3 -> Output Len: 6, Generated Tokens: [100, 204, 305, 20441, 12601, 36389])
+[TEST 9/10] Full Model Forward/Backward & Loss Convergence: PASS (CE: 10.8283, Total: 10.8323, Grad Norm: 0.9708, Aux Keys: ['load_balance', 'z_loss', 'entropy', 'qhis', 'qics', 'spectral_gap', 'ethics'])
+[TEST 10/10] Autoregressive Token Generation: PASS (Prompt Len: 3 -> Output Len: 6, Generated Tokens: [100, 204, 305, 14926, 44495, 17506])
 ===========================================================================
   ALL 10 VERIFICATION TESTS PASSED WITH 100% SUCCESS!
   QUILLAN-RONIN v5.4.0 ONI IS BATTLE-TESTED & CERTIFIED FOR SCALE DEPLOYMENT
