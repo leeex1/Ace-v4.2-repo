@@ -7,12 +7,10 @@ and oni/train_oni.py.
 """
 
 import json
-import os
 import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch, MagicMock
 
 import numpy as np
 
@@ -21,11 +19,10 @@ oni_dir = Path(__file__).resolve().parent
 if str(oni_dir) not in sys.path:
     sys.path.insert(0, str(oni_dir))
 
-from prepare_data import parse_jsonl_record, pack_tokens_to_bin
+from prepare_data import parse_jsonl_record
 from ingest_hf_dataset import (
     normalize_files_arg,
     pipe_files_to_packer,
-    download_file,
     run_dry_run_test,
     KNOWN_DATASETS,
 )

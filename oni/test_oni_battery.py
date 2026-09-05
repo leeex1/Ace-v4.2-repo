@@ -17,8 +17,6 @@ Validates 100% of the unified architecture for production deployment at scale:
 """
 
 import sys
-import time
-import math
 from pathlib import Path
 
 import torch
@@ -33,14 +31,12 @@ from quillan_v5_4_oni import (
     BitLinear,
     _weight_quant,
     NineVectorPrismDecomposition,
-    CouncilExpertSwarm,
     CouncilExpert,
     ComplexityRouter,
     PersonaPullGate,
     UnrolledCouncilMoEBlock,
     UltrametricCouncilRouter,
     CouncilMoELayer,
-    CouncilPullRouter,
     EthicalImpactConstraintEngine,
     QuantumFormulasEngine,
     LeeMach6Governor,

@@ -174,7 +174,6 @@ def pack_tokens_to_bin(all_tokens, out_dir: Path, val_ratio: float = 0.05) -> di
     n_train = total_tokens - n_val
     if n_train <= 0:
         n_train = max(1, total_tokens - 1)
-        n_val = total_tokens - n_train
 
     train_tokens = np.array(all_tokens[:n_train], dtype=np.uint16)
     val_tokens = np.array(all_tokens[n_train:], dtype=np.uint16)

@@ -27,26 +27,23 @@ Evaluates:
 """
 
 import argparse
-import copy
 import gc
 import json
 import os
 import platform
 import sys
 import time
-from dataclasses import asdict
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 
 # Fix Windows console encoding for safety
 if sys.platform == "win32":
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
+        # Ignore failure if standard output does not support stream reconfiguration
         pass
 
 # Ensure oni and root directories are on path
@@ -61,9 +58,6 @@ try:
     from quillan_v5_4_oni import (
         QuillanOniConfig,
         QuillanRoninOni,
-        CANONICAL_ROSTER,
-        WAVE_CLUSTERS,
-        PRISM_VECTORS,
     )
 except ImportError as e:
     print(f"Error importing Quillan-Ronin modules: {e}")

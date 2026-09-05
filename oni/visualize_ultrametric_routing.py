@@ -28,7 +28,6 @@ Features:
 
 import os
 import sys
-import math
 import time
 import json
 from pathlib import Path
@@ -43,6 +42,7 @@ if sys.platform == "win32":
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
+        # Ignore failure if standard output does not support stream reconfiguration
         pass
 
 # Ensure oni directory is in python path

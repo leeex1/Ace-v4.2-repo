@@ -23,12 +23,10 @@ Provides:
        is unavailable or running on unsupported platforms (e.g. CPU or Windows).
 """
 
-import math
-from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
+from typing import Any, List, Optional, Sequence
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 # Optional Triton JIT compilation check
 try:
@@ -131,10 +129,7 @@ class MoEDispatcher(nn.Module):
         """
         orig_shape = tokens.shape
         if tokens.dim() == 3:
-            B, T, C = tokens.shape
-            tokens = tokens.reshape(-1, C)
-        else:
-            C = tokens.shape[-1]
+            tokens = tokens.reshape(-1, tokens.shape[-1])
 
         BT = tokens.size(0)
         if BT == 0 or topk_indices.numel() == 0:
@@ -182,10 +177,7 @@ class MoEDispatcher(nn.Module):
         """
         orig_shape = tokens.shape
         if tokens.dim() == 3:
-            B, T, C = tokens.shape
-            tokens = tokens.reshape(-1, C)
-        else:
-            C = tokens.shape[-1]
+            tokens = tokens.reshape(-1, tokens.shape[-1])
 
         BT = tokens.size(0)
         if BT == 0 or topk_indices.numel() == 0:
@@ -195,6 +187,7 @@ class MoEDispatcher(nn.Module):
         K = topk_indices.size(-1)
         num_experts = len(experts)
         N = BT * K
+        C = tokens.size(-1)
 
         flat_idx = topk_indices.reshape(-1)
         flat_w = topk_weights.reshape(-1, 1).to(tokens.dtype)
@@ -282,11 +275,9 @@ class MoEDispatcher(nn.Module):
         try:
             orig_shape = tokens.shape
             if tokens.dim() == 3:
-                B, T, C = tokens.shape
-                flat_tokens = tokens.reshape(-1, C)
+                flat_tokens = tokens.reshape(-1, tokens.shape[-1])
             else:
                 flat_tokens = tokens
-                C = tokens.shape[-1]
 
             BT = flat_tokens.size(0)
             if BT == 0 or topk_indices.numel() == 0:
@@ -296,6 +287,7 @@ class MoEDispatcher(nn.Module):
             K = topk_indices.size(-1)
             num_experts = len(experts)
             N = BT * K
+            C = flat_tokens.size(-1)
 
             flat_idx = topk_indices.reshape(-1)
             flat_w = topk_weights.reshape(-1, 1).to(tokens.dtype)

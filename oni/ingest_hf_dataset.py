@@ -39,7 +39,6 @@ import argparse
 import json
 import os
 import sys
-import time
 import tempfile
 import urllib.request
 import urllib.parse
@@ -74,7 +73,7 @@ if str(oni_dir) not in sys.path:
     sys.path.insert(0, str(oni_dir))
 
 from quillan_tokenizer_unified import UnifiedQuillanTokenizer
-from prepare_data import parse_jsonl_record, pack_tokens_to_bin, tokenize_texts
+from prepare_data import parse_jsonl_record, pack_tokens_to_bin
 
 
 # Curated catalog of primary datasets and files owned by CrashOverrideX
@@ -272,6 +271,7 @@ def download_file_urllib(
             try:
                 temp_path.unlink()
             except OSError:
+                # Best-effort cleanup of temporary download file
                 pass
         raise RuntimeError(f"Urllib download failed for {url}: {exc}") from exc
 

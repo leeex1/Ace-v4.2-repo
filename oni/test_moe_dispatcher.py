@@ -14,11 +14,10 @@ Validates the 6-step MoE Dispatch Optimization Plan:
 """
 
 import gc
-import os
 import sys
 import time
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Optional
 
 import torch
 import torch.nn as nn

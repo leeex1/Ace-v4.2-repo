@@ -278,6 +278,7 @@ def main():
         if sys.platform == "win32":
             p.nice(psutil.HIGH_PRIORITY_CLASS)
     except Exception:
+        # psutil not available or permission denied — proceed with standard priority
         pass
 
     num_cpus = os.cpu_count() or 4
@@ -477,21 +478,18 @@ def main():
             model._fired.append(("hetero_transfer", {
                 "non_blocking": args.device != "cpu", "device": args.device}))
         except Exception:
+            # Telemetry record is best-effort
             pass
 
         # ES-at-Scale: ForgettingMitigation anchor regularizer (2605.30148)
         # Pulls weights toward EMA snapshot to prevent catastrophic forgetting.
         if ema_sd is not None and step % 5 == 0:
-            try:
-                from es_at_scale import ForgettingMitigation
-                memory_strength = 0.001  # gentle anchor; scale up if val loss spikes
-                with torch.no_grad():
-                    for name, param in model.named_parameters():
-                        if param.requires_grad and name in ema_sd:
-                            ema_val = ema_sd[name].to(param.device)
-                            param.data.add_(ema_val - param.data, alpha=memory_strength)
-            except ImportError:
-                pass  # ES module not available â€” skip silently
+            memory_strength = 0.001  # gentle anchor; scale up if val loss spikes
+            with torch.no_grad():
+                for name, param in model.named_parameters():
+                    if param.requires_grad and name in ema_sd:
+                        ema_val = ema_sd[name].to(param.device)
+                        param.data.add_(ema_val - param.data, alpha=memory_strength)
 
         step += 1
         running.append(step_loss)
