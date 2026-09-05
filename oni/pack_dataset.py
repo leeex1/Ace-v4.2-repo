@@ -37,6 +37,42 @@ except ImportError:
     from quillan_tokenizer_unified import UnifiedQuillanTokenizer
 
 
+def discover_all_corpus_files(repo_root: Path) -> List[Path]:
+    """Discovers markdown and text files across all 11 knowledge base domains."""
+    subdirs = [
+        "Formal Papers",
+        "01_Knowledge_Base/Formal Papers",
+        "01_Knowledge_Base/Book Series",
+        "01_Knowledge_Base",
+        "Book Series",
+        "Quillan Knowledge files",
+        "system prompts",
+        "Software Engineer",
+        "Audio Engineer",
+        "Skills",
+        "03_Skills",
+        "00 - Meta",
+        "docs",
+    ]
+    seen = set()
+    files = []
+    for s in subdirs:
+        d = repo_root / s
+        if d.is_dir():
+            for f in d.rglob("*"):
+                if f.is_file() and f.suffix.lower() in [".md", ".txt", ".json"]:
+                    if f.name.endswith(".bin") or ".git" in f.parts or "node_modules" in f.parts:
+                        continue
+                    try:
+                        resolved = f.resolve()
+                        if resolved not in seen:
+                            seen.add(resolved)
+                            files.append(f)
+                    except Exception:
+                        pass
+    return files
+
+
 def discover_input_dir(candidate: str | None = None) -> Path:
     """Finds the formal papers / knowledge documents directory."""
     if candidate and Path(candidate).is_dir():
@@ -54,9 +90,8 @@ def discover_input_dir(candidate: str | None = None) -> Path:
         if d.is_dir():
             return d.resolve()
 
-    raise FileNotFoundError(
-        "Could not locate Formal Papers directory. Please specify with --input-dir."
-    )
+    # Fallback to REPO_ROOT
+    return REPO_ROOT
 
 
 def extract_samples_from_file(file_path: Path, min_chars: int = 40) -> List[str]:
@@ -173,16 +208,27 @@ def pack_corpus(
         else:
             train_seqs.append(seq)
 
-    # Ensure at least 1 val sequence
-    if val_ratio > 0 and not val_seqs and len(train_seqs) > 1:
-        val_seqs.append(train_seqs.pop())
+    print(f"[TOKENIZE] Generated {total_tokens:,} total tokens in {t_tok:.2f}s ({total_tokens / max(1e-5, t_tok):,.0f} tok/s).")
 
-    train_arr = np.array(train_seqs, dtype=np.uint16).reshape(-1)
-    val_arr = np.array(val_seqs, dtype=np.uint16).reshape(-1)
+    # Sequence packing
+    num_full_seqs = total_tokens // seq_len
+    truncated_tokens = num_full_seqs * seq_len
+    packed_tokens = all_tokens[:truncated_tokens]
 
-    print(f"[EXPORT] Writing binary datasets to {output_dir}...")
+    seqs = np.array(packed_tokens, dtype=np.uint16).reshape(num_full_seqs, seq_len)
+    
+    # Shuffle sequences deterministically
+    np.random.seed(42)
+    indices = np.random.permutation(num_full_seqs)
+    seqs = seqs[indices]
 
-    # Write train_ids.bin (uint16) & train_labels.bin (int32)
+    n_val = max(1, int(num_full_seqs * val_ratio))
+    val_seqs = seqs[:n_val]
+    train_seqs = seqs[n_val:]
+
+    train_arr = train_seqs.flatten()
+    val_arr = val_seqs.flatten()
+
     train_ids_path = output_dir / "train_ids.bin"
     train_labels_path = output_dir / "train_labels.bin"
     val_ids_path = output_dir / "val_ids.bin"
@@ -221,6 +267,11 @@ def main():
         help="Path to directory containing .md / .txt papers (default: auto-detect 01_Knowledge_Base/Formal Papers)",
     )
     parser.add_argument(
+        "--full-corpus",
+        action="store_true",
+        help="Pack all 11 knowledge domains across the repository (20.34M tokens)",
+    )
+    parser.add_argument(
         "--output-dir",
         type=str,
         default=str(ONI_DIR / "data"),
@@ -240,9 +291,15 @@ def main():
     )
     args = parser.parse_args()
 
-    input_path = discover_input_dir(args.input_dir)
+    input_path = discover_input_dir(args.input_dir) if not args.full_corpus else None
     output_path = Path(args.output_dir).resolve()
-    pack_corpus(input_path, output_path, seq_len=args.seq_len, val_ratio=args.val_ratio)
+    pack_corpus(
+        input_path,
+        output_path,
+        seq_len=args.seq_len,
+        val_ratio=args.val_ratio,
+        full_corpus=args.full_corpus,
+    )
 
 
 if __name__ == "__main__":
