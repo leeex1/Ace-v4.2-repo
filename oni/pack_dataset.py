@@ -4,7 +4,7 @@
 ================================================================================
  QUILLAN-RONIN v5.4.0 ONI - DATASET PREPARATION & TOKEN PACKING
 ================================================================================
-Ingests markdown and text papers from Formal Papers / Knowledge Base,
+Ingests markdown and text papers from Formal Papers / Knowledge Base / Full Corpus,
 tokenizes them via UnifiedQuillanTokenizer (50,257 vocab), and serializes
 zero-copy memory-mapped binary datasets (train_ids, train_labels, val_ids, val_labels).
 
@@ -90,7 +90,6 @@ def discover_input_dir(candidate: str | None = None) -> Path:
         if d.is_dir():
             return d.resolve()
 
-    # Fallback to REPO_ROOT
     return REPO_ROOT
 
 
@@ -132,90 +131,71 @@ def extract_samples_from_file(file_path: Path, min_chars: int = 40) -> List[str]
 
 
 def pack_corpus(
-    input_dir: Path,
+    input_dir: Path | None,
     output_dir: Path,
     seq_len: int = 512,
     val_ratio: float = 0.02,
+    full_corpus: bool = False,
     vocab_size: int = 50257,
 ) -> Tuple[int, int, int]:
-    """Tokenizes all formal papers and writes binary memmap datasets."""
-    print("=" * 80)
-    print(" QUILLAN-RONIN v5.4.0 ONI - DATASET PREPARATION & TOKEN PACKING")
-    print("=" * 80)
-    print(f"Input Source:  {input_dir}")
-    print(f"Output Target: {output_dir}")
-
+    """Tokenizes all text files and packs them into uint16 input / int32 label arrays."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    md_files = sorted(
-        list(input_dir.glob("*.md")) + list(input_dir.glob("*.txt")),
-        key=lambda f: f.name.lower(),
-    )
+    
+    tokenizer = UnifiedQuillanTokenizer()
+    print("=" * 80)
+    print(f"[QUILLAN PACKER] Initializing Corpus Packing (Vocab: {tokenizer.vocab_size:,})")
+    print(f"  - Target Sequence Length: {seq_len}")
+    print(f"  - Validation Ratio:       {val_ratio * 100:.1f}%")
+    print(f"  - Output Directory:       {output_dir}")
+    print("=" * 80)
+
+    if full_corpus:
+        md_files = discover_all_corpus_files(REPO_ROOT)
+        print(f"[SCAN] Full-corpus discovery found {len(md_files):,} documents across 11 domains.")
+    else:
+        if input_dir is None:
+            input_dir = discover_input_dir()
+        md_files = sorted(
+            [f for f in input_dir.rglob("*") if f.is_file() and f.suffix.lower() in [".md", ".txt", ".json"]]
+        )
+        print(f"[SCAN] Found {len(md_files):,} candidate documents in {input_dir}.")
 
     if not md_files:
-        raise ValueError(f"No markdown (.md) or text (.txt) files found in {input_dir}")
+        raise ValueError("No documents found to pack.")
 
-    all_samples: List[str] = []
+    all_samples = []
     for f in md_files:
-        print(f"[INGEST] Reading {f.name}...")
-        file_samples = extract_samples_from_file(f)
-        all_samples.extend(file_samples)
+        samples = extract_samples_from_file(f)
+        all_samples.extend(samples)
 
-    total_samples = len(all_samples)
-    print(f"[INGEST] Total text samples extracted: {total_samples:,}")
-    print(f"[TOKENIZE] Encoding samples using UnifiedQuillanTokenizer...")
-
-    tok = UnifiedQuillanTokenizer()
-    all_tokens: List[int] = []
-
-    t0 = time.time()
-    eos_id = getattr(tok, "eos_token_id", 0)
-    for idx, sample in enumerate(all_samples, 1):
-        ids = tok.encode(sample)
-        if ids:
-            all_tokens.extend(ids)
+    print(f"[EXTRACT] Extracted {len(all_samples):,} coherent text chunks.")
+    print("[TOKENIZE] Encoding samples via UnifiedQuillanTokenizer...")
+    
+    t0 = time.perf_counter()
+    all_tokens = []
+    eos_id = getattr(tokenizer, "eos_token_id", getattr(tokenizer, "eot_token", 50256))
+    for s in all_samples:
+        tokens = tokenizer.encode(s)
+        if tokens:
+            all_tokens.extend(tokens)
             if eos_id is not None:
                 all_tokens.append(eos_id)
 
-        if idx % 1000 == 0 or idx == total_samples:
-            print(f" Processed {idx:,}/{total_samples:,} samples ({len(all_tokens):,} tokens)...")
-
+    t_tok = time.perf_counter() - t0
     total_tokens = len(all_tokens)
-    elapsed = time.time() - t0
-    print(f"[TOKENIZE] Encoding complete: {total_tokens:,} tokens generated ({elapsed:.2f}s).")
+    print(f"[TOKENIZE] Generated {total_tokens:,} total tokens in {t_tok:.2f}s ({total_tokens / max(1e-5, t_tok):,.0f} tok/s).")
 
     if total_tokens < seq_len:
         raise ValueError(f"Total tokens ({total_tokens}) is less than sequence length ({seq_len}).")
-
-    # Sanitize and bound tokens
-    token_arr = np.array(all_tokens, dtype=np.uint16)
-    token_arr = np.clip(token_arr, 0, vocab_size - 1)
-
-    # Calculate full sequences
-    n_seqs = len(token_arr) // seq_len
-    truncated_len = n_seqs * seq_len
-    token_arr = token_arr[:truncated_len]
-
-    # Split into train and val sequences
-    val_interval = max(2, int(1.0 / val_ratio)) if val_ratio > 0 else 0
-    seq_grid = token_arr.reshape(n_seqs, seq_len)
-
-    train_seqs = []
-    val_seqs = []
-
-    for i, seq in enumerate(seq_grid):
-        if val_interval > 0 and (i + 1) % val_interval == 0:
-            val_seqs.append(seq)
-        else:
-            train_seqs.append(seq)
-
-    print(f"[TOKENIZE] Generated {total_tokens:,} total tokens in {t_tok:.2f}s ({total_tokens / max(1e-5, t_tok):,.0f} tok/s).")
 
     # Sequence packing
     num_full_seqs = total_tokens // seq_len
     truncated_tokens = num_full_seqs * seq_len
     packed_tokens = all_tokens[:truncated_tokens]
 
-    seqs = np.array(packed_tokens, dtype=np.uint16).reshape(num_full_seqs, seq_len)
+    token_arr = np.array(packed_tokens, dtype=np.uint16)
+    token_arr = np.clip(token_arr, 0, vocab_size - 1)
+    seqs = token_arr.reshape(num_full_seqs, seq_len)
     
     # Shuffle sequences deterministically
     np.random.seed(42)
@@ -247,7 +227,7 @@ def pack_corpus(
     n_train_seq = len(train_seqs)
     n_val_seq = len(val_seqs)
 
-    print(f"[SUCCESS] Dataset successfully packed:")
+    print("[SUCCESS] Dataset successfully packed:")
     print(f"  - Train: {len(train_arr):,} tokens ({n_train_seq} sequences of {seq_len})")
     print(f"  - Val:   {len(val_arr):,} tokens ({n_val_seq} sequences of {seq_len})")
     print(f"  - Files: {train_ids_path.name}, {train_labels_path.name}, {val_ids_path.name}, {val_labels_path.name}")
@@ -258,7 +238,7 @@ def pack_corpus(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Quillan-Ronin v5.4.0 ONI - Formal Papers Dataset Preparation & Token Packing"
+        description="Quillan-Ronin v5.4.0 ONI - Formal Papers & Full Corpus Dataset Preparation"
     )
     parser.add_argument(
         "--input-dir",
