@@ -410,7 +410,7 @@ def pipe_files_to_packer(
                         if max_samples and total_samples >= max_samples:
                             print(f"  Reached --max-samples limit of {max_samples:,}.")
                             break
-                except Exception as parse_err:
+                except Exception:
                     # Tolerant of malformed lines in large corpora
                     continue
 

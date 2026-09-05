@@ -140,13 +140,6 @@ def extract_texts(input_path: Path, max_samples: int = None):
     return texts
 
 
-def main():
-    args = parse_args()
-    input_path = Path(args.input)
-    if not input_path.exists():
-        print(f"[ERROR] Input path does not exist: {input_path}")
-        sys.exit(1)
-
 def tokenize_texts(texts, domain: str = "general", max_samples: int = None, tok=None):
     """Encode a list of text samples into tokens with eos_token_id delimiter."""
     if tok is None:

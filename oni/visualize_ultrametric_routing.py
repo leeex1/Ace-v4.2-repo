@@ -64,7 +64,6 @@ from quillan_v5_4_oni import (
     QuillanRoninOni,
     QuillanOniConfig,
     CANONICAL_ROSTER,
-    UltrametricCouncilRouter,
     build_canonical_tree_coordinates
 )
 
@@ -415,7 +414,6 @@ def analyze_domain_routing(
     topk_i_np = topk_i.cpu().numpy()  # [T, 4]
     topk_p_np = topk_p.cpu().numpy()  # [T, 4]
     branch_indices_np = branch_indices.cpu().numpy()  # [T, 3]
-    padic_dist_np = padic_dist.cpu().numpy()  # [T, 34]
 
     # Compute cluster probabilities for each token: sum probabilities of personas in cluster
     cluster_probs = np.zeros((num_tokens, 8), dtype=float)

@@ -490,6 +490,7 @@ def run_microbenchmark(device_str: Optional[str] = None):
             "bwd_eager_ms": t_fwd_bwd_eager,
             "bwd_cont_ms": t_fwd_bwd_cont,
             "speedup_bwd": speedup_bwd,
+            "tput_eager": tput_eager,
             "tput_cont": tput_cont,
         })
 

@@ -1729,10 +1729,6 @@ class PersonaPullGate(nn.Module):
         return pull / pull.sum(dim=-1, keepdim=True).clamp_min(1e-8)
 
 
-# Canonical alias
-CouncilPullRouter = PersonaPullGate
-
-
 # ------------------------------------------------------------------
 # ULTRAMETRIC COUNCIL ROUTER — Hierarchical p-adic Tree MoE
 # ------------------------------------------------------------------
@@ -4019,7 +4015,7 @@ class QuillanRoninOni(nn.Module):
         if _FORMAL_PAPERS_WIRED and getattr(self.cfg, "use_speculative", False):
             try:
                 from speculative_decode import SpeculativeDecoder
-                dec = SpeculativeDecoder(draft_model=self, target_model=self, gamma=2)
+                _ = SpeculativeDecoder(draft_model=self, target_model=self, gamma=2)
                 draft_tokens = self.forward(
                     torch.tensor([self._slide_tokens(list(input_tokens))], dtype=torch.long,
                                  device=next(self.parameters()).device),

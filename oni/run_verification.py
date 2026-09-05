@@ -419,7 +419,6 @@ try:
 
     # Deep unit assertions for Papers 126-135 modules
     from paper_116_120_codex_virality_proof_pack import CodexConstitutionalRetriever, NeuralSonifier, UnitDistanceProofChecker
-    from paper_111_115_reactive_wikiskill_pack import WikiSkillCompiler
 
     codex_unit = CodexConstitutionalRetriever()
     c_pass = codex_unit.retrieve("throne ethics")

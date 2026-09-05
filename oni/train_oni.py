@@ -17,14 +17,28 @@ import math
 import sys
 import time
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # portable: oni/ self-contained
+_meta_oni = Path(__file__).resolve().parent.parent / "00 - Meta" / "oni"
+if _meta_oni.is_dir():
+    sys.path.insert(1, str(_meta_oni))
+
 from quillan_tokenizer_unified import UnifiedQuillanTokenizer  # noqa: E402
 from quillan_v5_4_oni import QuillanOniConfig, QuillanRoninOni  # noqa: E402
-from paper_01_profiler import StepProfiler  # 2309.02521 — real CPU/GPU profiling
+
+try:
+    from paper_01_profiler import StepProfiler  # 2309.02521 — real CPU/GPU profiling
+except ImportError:
+    class StepProfiler:  # type: ignore
+        def __init__(self, *args, **kwargs): pass
+        def install_hooks(self, *args, **kwargs): pass
+        def begin_step(self, *args, **kwargs): pass
+        def end_step(self, *args, **kwargs): pass
+        def print_final_report(self, *args, **kwargs): pass
 
 def resolve_data_dir(custom_path: str | None = None) -> Path:
     """Auto-detects data directory across local, repo, and cloud/Colab paths."""
@@ -298,11 +312,9 @@ def main():
                 raise
 
     # Fused AdamW optimizer (Grok recommendation for CUDA kernel fusion on consumer/modern GPUs)
-    fused_opt = False
     if args.device != "cpu" and torch.cuda.is_available():
         try:
             opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.01, fused=True)
-            fused_opt = True
             print("[OPTIMIZER] AdamW with fused=True enabled.")
         except Exception:
             opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.01)
@@ -312,7 +324,7 @@ def main():
 
     step, best_val = 0, float("inf")
     ema_sd = None
-    latest = ckpt_dir / "quillan_oni_latest.pt"
+    latest = CKPT_DIR / "quillan_oni_latest.pt"
 
     if args.resume and latest.exists():
         ck = torch.load(latest, map_location="cpu", weights_only=False)
