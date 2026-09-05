@@ -88,9 +88,9 @@ def parse_args():
                     help="Training device: cpu | cuda | cuda:0")
     ap.add_argument("--data-dir", type=str, default=None,
                     help="Directory containing train_ids.bin / val_ids.bin (default: auto-detect oni/data)")
-    ap.add_argument("--ckpt-dir", type=str, default=None,
+    ap.add_argument("--ckpt-dir", "--checkpoint-dir", type=str, default=None,
                     help="Directory for saving model checkpoints (default: auto-detect)")
-    ap.add_argument("--log-dir", type=str, default=None,
+    ap.add_argument("--log-dir", "--log-file", type=str, default=None,
                     help="Directory for saving training logs (default: auto-detect)")
     ap.add_argument("--grad-checkpoint", action="store_true",
                     help="Enable activation gradient checkpointing (saves ~60%% activation VRAM on 1050 Ti / consumer GPUs)")

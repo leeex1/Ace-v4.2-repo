@@ -65,8 +65,8 @@ jobs:
             --eval-every 500 \
             --sample-every 1000 \
             --save-every 1000 \
-            --checkpoint-dir oni/checkpoints/checkpoints_oni \
-            --log-file oni/training_logs/train_10k.log
+            --ckpt-dir oni/checkpoints/checkpoints_oni \
+            --log-dir oni/training_logs
 
       - name: Execute High-Standard Quality Evaluation Battery
         if: always()
