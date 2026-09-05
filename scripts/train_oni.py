@@ -21,13 +21,16 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, r"C:\02_QUILLAN\_dev")
-from quillan_tokenizer_unified import UnifiedQuillanTokenizer  # noqa: E402
-from quillan_v5_4_oni import QuillanOniConfig, QuillanRoninOni  # noqa: E402
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT / "_dev"))
+sys.path.insert(0, str(REPO_ROOT / "oni"))
 
-DATA = Path(r"C:\02_QUILLAN\training_data\v9")
-CKPT_DIR = Path(r"C:\02_QUILLAN\checkpoints\checkpoints_oni")
-LOG_DIR = Path(r"C:\02_QUILLAN\training_logs")
+from quillan_tokenizer_unified import UnifiedQuillanTokenizer
+from quillan_v5_4_oni import QuillanOniConfig, QuillanRoninOni
+
+DATA = Path(os.environ.get("QUILLAN_DATA", str(REPO_ROOT / "training_data" / "v9")))
+CKPT_DIR = Path(os.environ.get("QUILLAN_CKPT", str(REPO_ROOT / "checkpoints" / "checkpoints_oni")))
+LOG_DIR = Path(os.environ.get("QUILLAN_LOGS", str(REPO_ROOT / "training_logs")))
 
 
 def parse_args():

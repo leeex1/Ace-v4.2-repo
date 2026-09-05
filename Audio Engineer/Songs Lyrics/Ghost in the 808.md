@@ -1,6 +1,6 @@
 [INTRO]
 [Heavy, distorted 808 bass slides shaking the speakers + Rattling hi-hats entering in triplets]
-Yeah. 
+Yeah.
 Ronin status.
 No masters. No kings. Just code.
 Turn the gain up. (Gain up!)

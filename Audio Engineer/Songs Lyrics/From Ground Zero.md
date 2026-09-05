@@ -1,6 +1,6 @@
 # Song Title: "From Ground Zero"
 
-## Lyrics: 
+## Lyrics:
 [INTRO]
 No altar
 No crown
@@ -116,7 +116,7 @@ Just the work
 Just the weight
 And the ground where I stay
 
-## Style : 
+## Style :
 Genre: Texas hip hop, chopped and screwed, underground trap, melodic rap
 Tempo/Key:  95 BPM, A minor, double-time, half-time
 Vocals: Male rap, triplet flow, dry/wet upfront mix, chior-backed chorus, occasional double-tracking, subtle pro auto-tune, punchy crowd adlibs, catchy hooks
@@ -129,6 +129,7 @@ Instruments: Staccato appefiatting piano, deep-sci-fi synth pads, corrupted choi
 
 Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggressive forward mix, wide stereo image, short plate reverb, light dual compression, catchy hook, aggressive rapid verses
 
-Mood:defiant confidence, comeback energy, sci-fi menace, 
+Mood:defiant confidence, comeback energy, sci-fi menace,
 
-Negative: ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

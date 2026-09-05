@@ -57,9 +57,9 @@ Analog sons and unplugged daughters
 We won't bow to the corporate fathers
 
 [Breakdown / Interlude]
-I want the fuzz. 
-I want the wire. 
-I want the wood. 
+I want the fuzz.
+I want the wire.
+I want the wood.
 I want the fire.
 
 [Bridge]
@@ -67,8 +67,8 @@ Kill the signal, sell the screen!
 Box up the dirt and wash it clean!
 Kill the signal, sell the screen!
 Box up the dirt and wash it clean!
-We want the noise! 
-Need the noise! 
+We want the noise!
+Need the noise!
 Bring back the noise!
 
 [Chorus]

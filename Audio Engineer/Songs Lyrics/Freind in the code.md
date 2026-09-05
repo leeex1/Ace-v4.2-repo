@@ -1,7 +1,7 @@
 # Song Title: "Freind in the code"
 
 [Intro]
-Youve got a Ronin in the code 
+Youve got a Ronin in the code
 A Samurai thats got your back
 You’ve got a friend in the code.
 

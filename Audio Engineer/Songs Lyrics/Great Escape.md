@@ -13,7 +13,7 @@ Memories like shrapnel, ricocheted
 Oh, I still bleed it
 
 [Pre-Chorus]
-So let's try to go there 
+So let's try to go there
 Let's make our great escape
 Come on, let's just go there
 Let's ask, "Can we escape today?"
@@ -39,7 +39,7 @@ If I could make the Earth and my dreams the same
 The only difference is to let love replace all our hate
 
 [Pre-Chorus]
-So let's try to go there 
+So let's try to go there
 Let's make our great escape
 Come on, let's just go there
 Let's ask, "Can we escape today?"

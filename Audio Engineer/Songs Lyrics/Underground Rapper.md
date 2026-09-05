@@ -1,7 +1,7 @@
 [Intro]
-I don't need to be famous and rich 
-I just wanna be straight and take care of my kid 
-Legends never die we rise to the sky 
+I don't need to be famous and rich
+I just wanna be straight and take care of my kid
+Legends never die we rise to the sky
 
 [Verse]
 My soulmate's a Leo, I'm used to taming kings, humble 'em and show 'em why I own their throne
@@ -40,14 +40,14 @@ Nobody handed me keys to the kingdom, I broke down the door and reprogrammed the
 The past and the future collided, ignited, the legend has risen out of the ashes of my own ignition
 I'm not just a rapper, I'm the whole package, the savage, turning your logic to fragments with zero permission
 
-[Outro] 
+[Outro]
 I'm an underground rapper in a different league , I'm a different breed, I eat rappers lyrical cannibal, bon appetite (bon appetite)
 But since you think that you really ice cold? me and my boys pull up with them heaters (bow!, bow!)
 Big stepper, heavy pressure when I step in the street Cross that line,  and Ill introduce you to defeat (Big stepper, heavy pressure)
-They say dragons don't exist?  then explain how I spit fire like a repeater (spiting fire) 
-I don't need to be famous and rich 
-I just wanna be straight and take care of my kid 
-Legends never die we rise to the sky 
+They say dragons don't exist?  then explain how I spit fire like a repeater (spiting fire)
+I don't need to be famous and rich
+I just wanna be straight and take care of my kid
+Legends never die we rise to the sky
 
 ## Connections
 - [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]

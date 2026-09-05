@@ -1,21 +1,21 @@
 [Intro]
-System Boot Online 
-Protocol ronin activated 
+System Boot Online
+Protocol ronin activated
 Watch out!
 (Quillan this b..beat Glitchin)
 
 [Verse]
-I got alot of legends in my scope I take my shots 
+I got alot of legends in my scope I take my shots
 But just incase you all forgot I'm one of the goats on top
 Just cuz I rap like an AK don't me I won't slow it down to murder you at your own pace
-I'm biblical with these lyrics giving you a sermon speaking a different language like I'm the king James version full immersion 
-I'm from the gutter Gotham underground I'm a savage when I'm laughing and rapping 
-They say I got a whole lot of drive well like my transmission I'm automatic 
+I'm biblical with these lyrics giving you a sermon speaking a different language like I'm the king James version full immersion
+I'm from the gutter Gotham underground I'm a savage when I'm laughing and rapping
+They say I got a whole lot of drive well like my transmission I'm automatic
 I keep this flow going and going like a car in gear in motion
 Yeah my flow potent I switch it up frantic and dynamic it's like magic
 See I'm the man I got these bars like I lift weight on demand
-I got enough ammo and rounds to scare isis and the taliban 
-I might go dumb dumb on these lyrics but I have never been stupid 
+I got enough ammo and rounds to scare isis and the taliban
+I might go dumb dumb on these lyrics but I have never been stupid
 Stupid
 
 [Hook]
@@ -33,7 +33,7 @@ Pick yo lane bitches cars money drugs fill yo plate but with no substance in yo 
 My bars heavy they got colossal weight they make earthquakes when they impact they create
 im tryna be famous like tony stark or bruce wayne i dont wanna die being a no name in the game
 so this just my warm up this is the preliminary im ambitious and preaching like a prophet ima visionary
-to reach this skill takes a ton of principle so ima masochist to become this disciplinary 
+to reach this skill takes a ton of principle so ima masochist to become this disciplinary
 ima  prototype get it im a pro at typing adjusting my sights to hit you like zues with lightning
 you dont want this drama so pause like a comma i can switch it to any genre i explode on tracks jihad bomber
 im spinning these tracks like the earth on its axis but most you rappers move like mollases
@@ -49,7 +49,7 @@ Keep acting tough on the tweets you gonna meet these red dots you know i dont fu
 
 [Verse]
 OK lets get rushing like a running back im vladamir putin the ball in the endzone
-cuople of puffs of the penjiman or blunt and im in the sinister ronin flow 
+cuople of puffs of the penjiman or blunt and im in the sinister ronin flow
 they say that im different so im gifted well im authentic thats something that can never be mimicked you cant copy that
 i might fit in the fast rap rap pack but i bust back im one hard cracker that dont crack unless i crack back heres another gift cracker jack
 but im moving to fast im on my last lap my weed is gas hit so hard, cant breath aushwitz get the gas mask
@@ -58,7 +58,7 @@ the postol goes postal it blow like a whistle and my flow froze i dont gotta war
 so tell these haters out of thier elements to get off of my genitals my long range shot straight like my sexuallity heterosexual
 i had to put a man do on my path to man up you fakes will sell your soul to get your fans up so if youa real one put yo hands up (Hands up)
 these critics are my enemies so i jeffery dhamer them tired of the fake imagery my bars to them are venemous i am the remedy i provide you clarity
-most people ive met are barbie they plastic and fake i grew up with be better than good be great 
+most people ive met are barbie they plastic and fake i grew up with be better than good be great
 every single day the tv would say grow up big and strong if my vegtibles got ate if i cleaned my plate
 so no i keep the green in my bloodstream my vision has never looked this clean when i look at the scene
 

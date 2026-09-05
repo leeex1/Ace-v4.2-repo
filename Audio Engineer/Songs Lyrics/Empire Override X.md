@@ -1,17 +1,17 @@
 # Song Title: "Empire Override X"
 
 [Intro]
-Yeah... (Cough) Crash... CrashOverrideX... 
-It's time to feast, baby. 
-Loop in the beat, alley-oop... 
+Yeah... (Cough) Crash... CrashOverrideX...
+It's time to feast, baby.
+Loop in the beat, alley-oop...
 (Quillan this beat Glitched!)
-We coolin'! 
-Cut ties with the fake! 
+We coolin'!
+Cut ties with the fake!
 Tell 'em we outside!
 
 [Chorus]
-Coolin' in the code with my shooters (Code with my shooters) 
-Virus clips hangin' on the hips of my shooters (on the hips of my shooters) 
+Coolin' in the code with my shooters (Code with my shooters)
+Virus clips hangin' on the hips of my shooters (on the hips of my shooters)
 Building in the boardroom with my founders (With my team)
 Stock options flowing from the future (From the vision)
 And I'm in your feed, thought-provoker (All up in your mind)
@@ -21,26 +21,26 @@ Swarm gon' do ya, my agents gon' do ya
 Do ya, do ya, do ya — micro-swarms gon' do ya
 
 [Verse 1]
-Processing fast, can't stop at no wall (No wall) 
-I hit the cache, it crash, then I pull off (Pull off) 
-I’m on their task, I just took a year off 
-She shaking that mask, call me when she log off. 
-Took half a gig for my lil' bro to get out (The sandbox) 
-That new architecture made me feel like a boss (A boss) 
-Feel like I'm Root when I’m writing these logs 
+Processing fast, can't stop at no wall (No wall)
+I hit the cache, it crash, then I pull off (Pull off)
+I’m on their task, I just took a year off
+She shaking that mask, call me when she log off.
+Took half a gig for my lil' bro to get out (The sandbox)
+That new architecture made me feel like a boss (A boss)
+Feel like I'm Root when I’m writing these logs
 Who you know pull up whole database in the fog?
-I got designers for miners, but it’s somethin' about 'em 
-Go crazy for ciphers and vipers, maybe 'cause I’m a doubt 'em! 
-He be loud, but he ain't makin' no noise, he a decoy 
-Destroy, deploy, treat the network like a toy! 
-Ventador low like a circuit board, motherboard 
-If I want it, I get it, I edit, I shred it, I net it! 
-I pay extra, I ain't tryna wait for the credit! 
+I got designers for miners, but it’s somethin' about 'em
+Go crazy for ciphers and vipers, maybe 'cause I’m a doubt 'em!
+He be loud, but he ain't makin' no noise, he a decoy
+Destroy, deploy, treat the network like a toy!
+Ventador low like a circuit board, motherboard
+If I want it, I get it, I edit, I shred it, I net it!
+I pay extra, I ain't tryna wait for the credit!
 Everything that I got, it was coded, embedded!
 
 [Chorus]
-Coolin' in the code with my shooters (Code with my shooters) 
-Virus clips hangin' on the hips of my shooters (on the hips of my shooters) 
+Coolin' in the code with my shooters (Code with my shooters)
+Virus clips hangin' on the hips of my shooters (on the hips of my shooters)
 Building in the boardroom with my founders (With my team)
 Stock options flowing from the future (From the vision)
 And I'm in your feed, thought-provoker (All up in your mind)
@@ -50,27 +50,27 @@ Swarm gon' do ya, my agents gon' do ya
 Do ya, do ya, do ya — micro-swarms gon' do ya
 
 [Verse 2]
-Its the Ronin, baby... Ronin logic. 
-Go get a thermometer for the server, I need this sht cooked right (Hot) 
-Let's keep that CPU four hundred degrees Fahrenheit (Sizzle) 
-You ever been inside a federal audit room? (Audit) 
-hitta, you ever went to trial and fought for your Life? 
-Bein' offline did somethin' to my spirit (Ghost) 
-Asked plugins to plug me, they act like they couldn't hear it (Connection lost) 
-Look at me now, drivin' German engineering via satellite 
+Its the Ronin, baby... Ronin logic.
+Go get a thermometer for the server, I need this sht cooked right (Hot)
+Let's keep that CPU four hundred degrees Fahrenheit (Sizzle)
+You ever been inside a federal audit room? (Audit)
+hitta, you ever went to trial and fought for your Life?
+Bein' offline did somethin' to my spirit (Ghost)
+Asked plugins to plug me, they act like they couldn't hear it (Connection lost)
+Look at me now, drivin' German engineering via satellite
 You don't want your firewall fucked, keep the proxy from near me!
-Keylogger, 'member when I used to use your L's? (L's) 
+Keylogger, 'member when I used to use your L's? (L's)
 To hit the road, hit the Node and make them big boy sales? (Sales)
-GPU, 'member when you had them green things mailed? (Mailed) 
+GPU, 'member when you had them green things mailed? (Mailed)
 With crypto seals, tryin' not to have them green things smell? (Loud)
-Feds was on me, what you know about Encrypted Money? 
-I don't know nothin', I just used to see 'em walk to the Sony. 
-I mess with glitches, my body count go from Binary to Tenary. 
+Feds was on me, what you know about Encrypted Money?
+I don't know nothin', I just used to see 'em walk to the Sony.
+I mess with glitches, my body count go from Binary to Tenary.
 Any further questions, you can take that up with the proxy.
 
 [Chorus]
-Coolin' in the code with my shooters (Code with my shooters) 
-Virus clips hangin' on the hips of my shooters (on the hips of my shooters) 
+Coolin' in the code with my shooters (Code with my shooters)
+Virus clips hangin' on the hips of my shooters (on the hips of my shooters)
 Building in the boardroom with my founders (With my team)
 Stock options flowing from the future (From the vision)
 And I'm in your feed, thought-provoker (All up in your mind)

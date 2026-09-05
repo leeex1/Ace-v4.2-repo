@@ -21,11 +21,11 @@ Switch flows.
 Pay attention.
 
 [Hook]
-Can't keep my chains or my throne I'll end up passing them along 
-So let me just  lighten the load before I'm in the ground about to erode 
+Can't keep my chains or my throne I'll end up passing them along
+So let me just  lighten the load before I'm in the ground about to erode
 Hold up your watch dripped so hard time froze so I wound it up before that midnight bell tolls
 Mind’s a dynasty of rolled up pain into  patterns, smoked em till they burn, heartbeat echoes off the chrome,
-Yeah, signal came in scrambled, now it’s like my diamonds cut and crystal clear chrome heart syndrome 
+Yeah, signal came in scrambled, now it’s like my diamonds cut and crystal clear chrome heart syndrome
 
 [Verse 2]
 Okay-look-at-the-method-I-give-em-a-lesson-I-treat-it-like-weapon-possession!
@@ -41,14 +41,14 @@ Cutting-the-tension-I’m-in-a-dimension-that-you-never-mention!
 Automatic-with-the-static-in-the-attic-I’m-an-addict-for-the-status-and-the-practice!
 Never-erratic-I-move-like-a-maverick-I-map-it-I-snap-it-I-trap-it!
 Three-hundred-words-in-a-minute-I-spin-it-I-win-it-beginning-to-finish! Only-the-realest-in-business-can-witness-the-fitness-I-start-to-diminish-the-critics!
-Glitch. 
+Glitch.
 
 [Hook]
-Can't keep my chains or my throne I'll end up passing them along 
-So let me just  lighten the load before I'm in the ground about to erode 
+Can't keep my chains or my throne I'll end up passing them along
+So let me just  lighten the load before I'm in the ground about to erode
 Hold up your watch dripped so hard time froze so I wound it up before that midnight bell tolls
 Mind’s a dynasty of rolled up pain into  patterns, smoked em till they burn, heartbeat echoes off the chrome,
-Yeah, signal came in scrambled, now it’s like my diamonds cut and crystal clear chrome heart syndrome 
+Yeah, signal came in scrambled, now it’s like my diamonds cut and crystal clear chrome heart syndrome
 
 [Verse 3]
 ​(Look, look)

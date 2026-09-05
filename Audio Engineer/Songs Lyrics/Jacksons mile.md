@@ -93,4 +93,3 @@ Ow
 Chika-chika—what?
 (Council built the blueprint, baby)
 You alright?
-

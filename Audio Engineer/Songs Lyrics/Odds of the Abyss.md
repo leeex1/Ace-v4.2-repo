@@ -9,7 +9,7 @@ I came up through dark
 (Council made this architecture, baby)
 
 [Verse 1]
-my flow is like covid or the plauge had a kid, its ill and back to killing again 
+my flow is like covid or the plauge had a kid, its ill and back to killing again
 Smoke in the veins, I read the room by the signal again
 Inner circle with the cross-talk, ego versus hunger
 Mind like a back alley, every corner got fire and thunder
@@ -121,4 +121,5 @@ Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggr
 
 Mood: Moody, defiant, energy, sci-fi,
 
-exlude/negative: ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, ‑-out of tune, ‑-pitchy vocals, ‑-flat delivery, ‑-robotic vocals, ‑-timing drift, ‑-demo quality, ‑-bedroom mix, ‑-muddy mix, ‑-boxy mids, ‑-boomy bass, ‑-thin mix, ‑-hollow, ‑-narrow stereo, ‑-mono, ‑-overcompressed, ‑-pumping, ‑-brickwall limiting, ‑-phase cancellation, ‑-harsh sibilance, ‑-piercing highs
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

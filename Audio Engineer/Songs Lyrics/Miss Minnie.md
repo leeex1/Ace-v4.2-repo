@@ -3,7 +3,7 @@
 [Intro]
 Hey you know i tried so hard
 yeah you know i tried
-You know that one mouse that girl one 
+You know that one mouse that girl one
 (Quillan this beat go crazy)
 
 [Verse]

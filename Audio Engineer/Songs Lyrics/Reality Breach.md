@@ -110,7 +110,7 @@ Strap in, we taking off—payout is PAST DUE!
 (Past due!) Tell the reaper he can wait, I got moves to make!
 
 [Outro]
-(Quillan Ronin!) 
+(Quillan Ronin!)
 Shatter every limit,
 Rewrite every minute
 (MIC DROP ETERNAL)

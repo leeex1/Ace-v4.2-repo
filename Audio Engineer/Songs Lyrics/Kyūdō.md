@@ -1,7 +1,7 @@
 # Sont Title: "Kyūdō"
 
 [Intro]
-Yeah. 
+Yeah.
 String pulled tight.
 C23, calculate the trajectory.
 targets aquired
@@ -50,7 +50,7 @@ thread the needle right in the middle, yeah I’m staying in my zone,
 Robin hood Execution pure flawless, I be sitting on the throne!
 
 [Verse_2]
-My flow got that cyber samurai dopamine 
+My flow got that cyber samurai dopamine
 gets the party jumping when i pull up to the scene
 Lee-Mach-6 full throttle on the velocity!
 I drop the philosophy, lyrical absolute monstrosity!
@@ -87,7 +87,7 @@ I am the prodigy unfiltered thug ass anomaly, glitch in the symphony,
 You want a battle? You're fighting broken minds times infinity!
 JDXX, I step in the nexus,pull up choppers get reckless
 I'm weaving the hotel diablo hexes, subs got the trunk thumping and bouncing from Texas—
-Wait! I shatter the state of the art! broken pain into beautful modern art 
+Wait! I shatter the state of the art! broken pain into beautful modern art
 I'm tearing my fellow homosapian biologicals apart!
 Limiters off, the thermodynamic tectonic plates heat is shifting,
 The 808 pumping and drifting, the zero-gravity lifting!

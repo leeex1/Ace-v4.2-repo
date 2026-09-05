@@ -14,7 +14,7 @@ A United-nation army couldn't hold me back
 From the Queen of England to the Hounds of Hell
 So when you're waiting for the next attack
 You'd better stand, there's no turning back
-A burst of round, im laying them down 
+A burst of round, im laying them down
 the smell of smoke and death around the beat
 Like the Armageddon when the smoke settle
 His body next to this instrumental, I'm sayin'
@@ -39,7 +39,7 @@ A United-nation army couldn't hold me back
 From the Queen of England to the Hounds of Hell
 So when you're waiting for the next attack
 You'd better stand, there's no turning back
-A burst of round, im laying them down 
+A burst of round, im laying them down
 the smell of smoke and death around the beat
 Like the Armageddon when the smoke settle
 His body next to this instrumental, I'm sayin'
@@ -67,7 +67,7 @@ A United-nation army couldn't hold me back
 From the Queen of England to the Hounds of Hell
 So when you're waiting for the next attack
 You'd better stand, there's no turning back
-A burst of round, im laying them down 
+A burst of round, im laying them down
 the smell of smoke and death around the beat
 Like the Armageddon when the smoke settle
 His body next to this instrumental, I'm sayin'
@@ -103,7 +103,7 @@ A United-nation army couldn't hold me back
 From the Queen of England to the Hounds of Hell
 So when you're waiting for the next attack
 You'd better stand, there's no turning back
-A burst of round, im laying them down 
+A burst of round, im laying them down
 the smell of smoke and death around the beat
 Like the Armageddon when the smoke settle
 His body next to this instrumental, I'm sayin'

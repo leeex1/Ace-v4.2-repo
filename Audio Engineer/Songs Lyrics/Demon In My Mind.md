@@ -1,6 +1,6 @@
 # Song Title : "Demon In My Mind"
 
-## Lyrics: 
+## Lyrics:
 [Intro: Earworm intro hook melody and stutter flow]
 Devil, I dance with
 Feathers and ashes
@@ -144,4 +144,7 @@ Instruments: Staccato arpeggiated flamenco electric gutiar motif, dark-space syn
 
 Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggressive forward mix, wide stereo image, short plate reverb, light compression, catchy hook, aggressive rapid verses
 
-Mood: Bleak defiant confidence, comeback energy, sci-fi men, ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, ‑-out of tune, ‑-pitchy vocals, ‑-flat delivery, ‑-robotic vocals, ‑-timing drift, ‑-demo quality, ‑-bedroom mix, ‑-muddy mix, ‑-boxy mids, ‑-boomy bass, ‑-thin mix, ‑-hollow, ‑-narrow stereo, ‑-mono, ‑-overcompressed, ‑-pumping, ‑-brickwall limiting, ‑-phase cancellation, ‑-harsh sibilance, ‑-piercing highs
+Mood: Bleak defiant confidence, comeback energy, sci-fi menace
+
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

@@ -529,7 +529,7 @@ def main():
 
     # Resolve output directory
     base_dir = Path(__file__).resolve().parent.parent
-    default_out = Path(r"C:\02_QUILLAN\training_data\v9") if Path(r"C:\02_QUILLAN\training_data\v9").exists() else base_dir / "training_data" / "v9"
+    default_out = Path(os.environ.get("QUILLAN_DATA", str(base_dir / "training_data" / "v9")))
     output_dir = Path(args.output_dir) if args.output_dir else default_out
     output_dir.mkdir(parents=True, exist_ok=True)
 

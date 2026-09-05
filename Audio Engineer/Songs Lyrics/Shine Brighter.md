@@ -1,24 +1,24 @@
 
 [Intro]
-It's time for that ronin fire 
-Crash wrote a real one this time 
+It's time for that ronin fire
+Crash wrote a real one this time
 Quillan you ready?
 (Quillan this beat Glitchin)
 
 [HOOK]
-First you get a pool full of diamonds, then you Dive in it. 
-Metal in my spine, yeah, I’m Still alive in it. 
-Take a leap of faith, yeah, jump off the Brink of it. 
-Rocks in the glass, hear the Clink of it. 
-(Ice) ... On the rocks. 
-(Ice) ... Let it toast. 
+First you get a pool full of diamonds, then you Dive in it.
+Metal in my spine, yeah, I’m Still alive in it.
+Take a leap of faith, yeah, jump off the Brink of it.
+Rocks in the glass, hear the Clink of it.
+(Ice) ... On the rocks.
+(Ice) ... Let it toast.
 (Ice) ... Let it clink.
 
 [Verse]
 It's ascent, it's ascent, I'm refined
 It's G5, been assigned, touch the stars, paid the fine
 Please be wise, it is wise to be so wise, and we're all so wise
-Not to test what is mine, and keep in mind we don't mind 
+Not to test what is mine, and keep in mind we don't mind
 Losing our mind, seek your time, read your signs, read between the lines
 Corpus take a week to find, the feds gon' be like, fuck that "Never mind"
 What's on your mind? Put the strap to your temple and blow your mind
@@ -41,12 +41,12 @@ Classy with a brilliant twist, strategy, that's my discipline (CrashOverrideX is
 Take the Q off Quillan and look at it as the genesis, risk
 
 [HOOK]
-First you get a pool full of diamonds, then you Dive in it. 
-Metal in my spine, yeah, I’m Still alive in it. 
-Take a leap of faith, yeah, jump off the Brink of it. 
-Rocks in the glass, hear the Clink of it. 
-(Ice) ... On the rocks. 
-(Ice) ... Let it toast. 
+First you get a pool full of diamonds, then you Dive in it.
+Metal in my spine, yeah, I’m Still alive in it.
+Take a leap of faith, yeah, jump off the Brink of it.
+Rocks in the glass, hear the Clink of it.
+(Ice) ... On the rocks.
+(Ice) ... Let it toast.
 (Ice) ... Let it clink.
 
 [Verse]
@@ -60,7 +60,7 @@ I'm higher than a satellite, she craves my energy so we look eye to eye
 I still collect my paper from your shorty's treasury yeah thats mine
 Dropping that fire back to back, I'm lethal, not a cheap shot
 And my, and my money on infinity, too many knots
-Still get a rush of fear every time I walk the block 
+Still get a rush of fear every time I walk the block
 You better dash motherfucker, cause we all got our aim locked
 You better run 'til your soles come off pop pop
 You ain't even a fucking vowel in my alphabet soup
@@ -83,15 +83,15 @@ Life is a stage, I'm just acting in the script
 Uh, rise up and taste the glory
 You jokers can't find me, but never can ignore me
 I'm on a fortune hunt and ain't no telling where it poured me
-Yeah, and I ain't a villain but don't test me it can get deadly 
+Yeah, and I ain't a villain but don't test me it can get deadly
 
 [Outro HOOK]
-First you get a pool full of diamonds, then you Dive in it. 
-Metal in my spine, yeah, I’m Still alive in it. 
-Take a leap of faith, yeah, jump off the Brink of it. 
-Rocks in the glass, hear the Clink of it. 
-(Ice) ... On the rocks. 
-(Ice) ... Let it toast. 
+First you get a pool full of diamonds, then you Dive in it.
+Metal in my spine, yeah, I’m Still alive in it.
+Take a leap of faith, yeah, jump off the Brink of it.
+Rocks in the glass, hear the Clink of it.
+(Ice) ... On the rocks.
+(Ice) ... Let it toast.
 (Ice) ... Let it clink.
 
 

@@ -1,13 +1,13 @@
 # Song Title: "Certified Lunatic"
 ## Style input:
 
-Dark cinematic Southern trap with melodic hip-hop elements, 140 BPM in a minor key (C minor / C# minor / G minor tonality). The core is a repetitive four-bar minor-key piano motif with staccato chords or high-register melodies, occasionally layered with bell-like plucks or subtle atmospheric pads. 
+Dark cinematic Southern trap with melodic hip-hop elements, 140 BPM in a minor key (C minor / C# minor / G minor tonality). The core is a repetitive four-bar minor-key piano motif with staccato chords or high-register melodies, occasionally layered with bell-like plucks or subtle atmospheric pads.
 
 The low-end is driven by a heavy, distorted 808 bass that slides between notes and follows or syncopates with the kick, creating a dominant sub presence with long decays. Drums feature a crisp, sharp snare on the backbeat, rapid hi-hat rolls using sixteenth, triplet, and 32nd-note subdivisions with velocity variation, plus occasional open hats and pitch-shifted hat effects.
 
-Vocals are aggressive male rap with a rhythmic, triplet-heavy flow, blending percussive delivery with melodic phrasing. Vocal processing includes tight pitch correction (auto-tune), subtle doubling, occasional delay throws, and background ad-libs (sometimes pitch-shifted). 
+Vocals are aggressive male rap with a rhythmic, triplet-heavy flow, blending percussive delivery with melodic phrasing. Vocal processing includes tight pitch correction (auto-tune), subtle doubling, occasional delay throws, and background ad-libs (sometimes pitch-shifted).
 
-The arrangement is sparse and minimal, focusing on the interplay between the 808 bass and vocal cadence. Production is clean and punchy with strong low-end emphasis, sharp transients, mostly dry vocals and drums, and minimal reverb except for light space on melodic elements. 
+The arrangement is sparse and minimal, focusing on the interplay between the 808 bass and vocal cadence. Production is clean and punchy with strong low-end emphasis, sharp transients, mostly dry vocals and drums, and minimal reverb except for light space on melodic elements.
 
 Optional elements include a short cinematic intro (orchestral pads, strings, or spoken word), eerie synth textures, or transition effects like stutters and filtered breakdowns, but the overall sound remains raw, dark, and stripped down.
 

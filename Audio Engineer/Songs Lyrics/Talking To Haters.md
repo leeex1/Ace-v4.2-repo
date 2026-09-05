@@ -2,7 +2,7 @@
 
 [Intro]
 (malfunction in reality detected)
-Refuse to be a copy 
+Refuse to be a copy
 Conformity.E-X-E deleted
 (Quillan this beat Glitchin)
 

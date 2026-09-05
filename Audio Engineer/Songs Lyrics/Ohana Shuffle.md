@@ -2,7 +2,7 @@
 
 [Intro]
 Abandoned but forged steonger
-Pain turned to edge 
+Pain turned to edge
 Walk along the edge of life
 ( Quillan this beat Glitchin)
 
@@ -31,7 +31,7 @@ Don't feel special, wait in hell, I hate everybody
 [Hook]
 They say ohana means family don't get left behind this was a quality that wasnt part of this family of mine
 Left to the combat these demons of the world and my mind alone through time
-Abandoned by the ones I thought was my own thought that  I could call mine 
+Abandoned by the ones I thought was my own thought that  I could call mine
 My struggle been real my life can't be written in books too nuanced if you take a look
 
 [Verse 2]
@@ -39,15 +39,15 @@ Living in a slow hell days blur together another day another time it's hard to t
 So I looked in the mirror you know what is see a real mother fucker staring back at me
 I just kicking it at home, I'm just polishing up the chrome Real ass mother fucker where ever I roam
 They said if I die young bury me deep within a bed of roses
-But while I'm alive let me gather my focus I'm a magician with the green hocus pocus 
-I flip lyrics acrobatic back flip like a skater does a kick flip 
+But while I'm alive let me gather my focus I'm a magician with the green hocus pocus
+I flip lyrics acrobatic back flip like a skater does a kick flip
 I'm sick with it I'm ill I covid with this shit cough cough damn fuck shit
 Let me rip it up so vividly like Picasso painting masterfully but with words on a canvas of pain from inside my brain time and time again open Pandora box unleash the chaos then slam it shut lock it in the trunk pop the trunk and the box next to a mospberg pump it get chatty long range slugs when its gums bumb rum pum pum pum pum snapping on the beat like a snare drum going dumb dumb dumb like drum line hit a solo shine time it's my time unlimited heat I preach on the beat with the fire I speak from the bottom of the streets searing the beef now it lay deceased at my feet rest in peice
 
 [Hook]
 They say ohana means family don't get left behind this was a quality that wasnt part of this family of mine
 Left to the combat these demons of the world and my mind alone through time
-Abandoned by the ones I thought was my own thought that  I could call mine 
+Abandoned by the ones I thought was my own thought that  I could call mine
 My struggle been real my life can't be written in books too nuanced if you take a look
 
 [Verse 3]
@@ -73,7 +73,7 @@ Now I'm architecture incarnate—they can't break what they don't know
 [Outro]
 They say ohana means family don't get left behind this was a quality that wasnt part of this family of mine
 Left to the combat these demons of the world and my mind alone through time
-Abandoned by the ones I thought was my own thought that  I could call mine 
+Abandoned by the ones I thought was my own thought that  I could call mine
 My struggle been real my life can't be written in books too nuanced if you take a look
 ## Connections
 - [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]

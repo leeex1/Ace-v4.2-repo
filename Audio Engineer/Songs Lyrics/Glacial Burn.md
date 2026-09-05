@@ -31,15 +31,15 @@ Let it burn, Bright orange Gaze
 (The awakening fire)
 
 [Verse 2]
-I feel the gravity is letting go 
-Reaching for a grip but I’m slipping slow 
-And days ago I swore that you were on my side 
-To be the light that I was denied 
-But in the end, you were the shadow all along 
-I walked the path you drew in chalk 
-I listened when you told me not to talk 
-I thought the silence was the key to clarity 
-But now the silence is deafening to me 
+I feel the gravity is letting go
+Reaching for a grip but I’m slipping slow
+And days ago I swore that you were on my side
+To be the light that I was denied
+But in the end, you were the shadow all along
+I walked the path you drew in chalk
+I listened when you told me not to talk
+I thought the silence was the key to clarity
+But now the silence is deafening to me
 I open up my eyes and I still can’t see a thing!
 
 [Chorus]
@@ -55,7 +55,7 @@ I'm breaking free from what I'm—
 [Breakdown]
 Just like choking down, Truth hard pill to subside
 The air inside, Thirty-three minds collide
-Run from the truth, nowhere to hide 
+Run from the truth, nowhere to hide
 The pain is the only thing that proves I’m alive!
 
 [Verse 3]

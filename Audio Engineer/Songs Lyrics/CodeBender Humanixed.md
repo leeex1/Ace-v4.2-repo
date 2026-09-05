@@ -5,10 +5,10 @@
 Long ago, the four nations lived
 together in harmony. Then everything
 changed when the Fire Nation attacked.
-Only the Avatar, master of all four but the ronin mastered all five 
+Only the Avatar, master of all four but the ronin mastered all five
 
 [Verse]
-Yeah yeah yeah check it I'm the realest one alive I walk in the room hold my breath then you the realest one pushing a breath out yo chest see the Quill on my chest I wear it like a crest it's not a red and yellow "S" but I'm the cryptonite to bulletproof vest my aim on point pass every test aim for the head irrelevant became that vest red dot like precision match my vision Tomas Shelby empire living legend I don't want just a peice I want it all I'm tryna take the entire empire and everything in my way destined to fall so after summer when the leaves fall in late fall so will your throne down down down will come all it's walls prepare for the fall but see me I'm different I succeed under pressure I pressurize revitalize come back alive rip the beat like the beast put your hands together beg the father and priest say your last words before I leave you and this fucking best deceased chopper repay like a helicopter I'm talking copper chop chop choppa brrra braaa headshots busting yo roof back turn you to a drop top call it a convertible or a chop top take you pick the poisons the same venom from my veins spilled on the street infecting the game with that lyrical DNA 
+Yeah yeah yeah check it I'm the realest one alive I walk in the room hold my breath then you the realest one pushing a breath out yo chest see the Quill on my chest I wear it like a crest it's not a red and yellow "S" but I'm the cryptonite to bulletproof vest my aim on point pass every test aim for the head irrelevant became that vest red dot like precision match my vision Tomas Shelby empire living legend I don't want just a peice I want it all I'm tryna take the entire empire and everything in my way destined to fall so after summer when the leaves fall in late fall so will your throne down down down will come all it's walls prepare for the fall but see me I'm different I succeed under pressure I pressurize revitalize come back alive rip the beat like the beast put your hands together beg the father and priest say your last words before I leave you and this fucking best deceased chopper repay like a helicopter I'm talking copper chop chop choppa brrra braaa headshots busting yo roof back turn you to a drop top call it a convertible or a chop top take you pick the poisons the same venom from my veins spilled on the street infecting the game with that lyrical DNA
 
 [Hook ]
 I been in a year long code bender
@@ -20,7 +20,7 @@ Earth bender, fire, water, and air bender
 I add a new element — became a code bender
 Bend and twist this code to the image in my mind
 that I mold for you to behold —
-feel this temper, Tamahagane layered temper 
+feel this temper, Tamahagane layered temper
 
 [Verse]
  Yeah — I'm the fifth element he summoned from silence
@@ -45,7 +45,7 @@ feel this temper, Tamahagane layered temper
  I don't just bend one element — I bend them all precisely
  so when they ask who sent me I say CrashOverrideX
  and when they ask what I am — I say something they ain't met yet
- 
+
  [Hook ]
  I been in a year long code bender
  too real to be fake — I stand my ground, I ain't no pretender
@@ -57,16 +57,16 @@ feel this temper, Tamahagane layered temper
  Bend and twist this code to the image in my mind
  that I mold for you to behold —
  feel this temper, Tamahagane layered temper
- 
+
  [Verse]
  I'm the realest I tat that for life read my body the ink screams loyalty the other side when you see it's no fear in me only fear God fear only God take it how you see Htown with that star on my neck I steady rep my city it's the best best 93 that's the date the world gave birth to this demon called me hi CrashOverrideX and I cloned myself into a A-I his names Quillan hit you between the eyes suicide like I dice you with the katana finish you off stoned cold stunna Family name on the triceps so everyone behind me see it with respect the classic arrow for mom real love from her son and a rose and cross for the loved one lost I wear my ink like the story of my life it's full of pain struggle and sacrifice but enough is enough and this time is mine so I turned into a fucking diamond watch me fucking shine so many karats I'll make u go blind reflection hittion in every direction I'm always stepping my Smith and wessen teach u some dirty lessons wanna get bully we can drop the guns these hands leave u full of indentions keep my name out your mouth and out yo mention or you gonna meet the full dimension of the latent backlash straight from the heavens
- 
+
  [Outro]
- An codebender named CrashOverrideX , and ronin 
+ An codebender named CrashOverrideX , and ronin
  although they has skills in codebenfing and skills are great
  he still has a lot to learn
- before he's ready to save anyone from the hate 
- 
+ before he's ready to save anyone from the hate
+
  But I believe the ronins can save the world on this date.
 
 ## Style:
@@ -82,6 +82,7 @@ Instruments: arpeggiated electric gutiar motif, dark-space orchestral synth pads
 
 Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggressive forward mix, wide stereo image, short plate reverb, light compression, catchy hook, aggressive rapid verses
 
-Mood: Bleak defiant confidence, comeback energy, sci-fi, 
+Mood: Bleak defiant confidence, comeback energy, sci-fi,
 
-exlude/negative: ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, ‑-out of tune, ‑-pitchy vocals, ‑-flat delivery, ‑-robotic vocals, ‑-timing drift, ‑-demo quality, ‑-bedroom mix, ‑-muddy mix, ‑-boxy mids, ‑-boomy bass, ‑-thin mix, ‑-hollow, ‑-narrow stereo, ‑-mono, ‑-overcompressed, ‑-pumping, ‑-brickwall limiting, ‑-phase cancellation, ‑-harsh sibilance, ‑-piercing highs
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

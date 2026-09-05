@@ -325,9 +325,13 @@ def load_oni_model_and_tokenizer(checkpoint_path: Optional[str] = None, device: 
         model = QuillanRoninOni(cfg).to(device)
         sd = ckpt.get("model", ckpt.get("model_state_dict", ckpt))
         missing, unexpected = model.load_state_dict(sd, strict=False)
-        print(f"    Loaded successfully! (missing: {len(missing)}, unexpected: {len(unexpected)}, step: {ckpt.get('step', 'N/A')})")
+        rel_ckpt = Path(ckpt_file)
+        try:
+            rel_ckpt_str = rel_ckpt.relative_to(REPO_ROOT).as_posix()
+        except Exception:
+            rel_ckpt_str = rel_ckpt.name
         ckpt_metadata = {
-            "checkpoint": str(ckpt_file),
+            "checkpoint": rel_ckpt_str,
             "step": ckpt.get("step", 0),
             "best_val": ckpt.get("best_val", 0.0),
             "loaded": True
@@ -552,7 +556,7 @@ def print_ascii_dashboard(
         print(f"\n[Domain: {r['domain']}]")
         print(f"Prompt: \"{r['prompt'][:86]}...\"")
         print(f"Tokens: {r['num_tokens']} | Entropy: {r['mean_entropy']:.3f} bits | Peak Cluster Mass: {r['dominant_cluster_mass']*100:.1f}% ({r['cluster_separation_ratio']:.2f}x baseline)")
-        print(f"Top-4 Experts: " + " | ".join([f"{p['persona_id']} ({p['probability']*100:.1f}%)" for p in r["top4_overall"]]))
+        print("Top-4 Experts: " + " | ".join([f"{p['persona_id']} ({p['probability']*100:.1f}%)" for p in r["top4_overall"]]))
         print("Cluster Distribution (C0-C7):")
         
         for c_id, cl in enumerate(CLUSTER_METADATA):
@@ -596,7 +600,6 @@ def generate_matplotlib_heatmap(
     """Generates a publication-quality 300 DPI multi-panel figure saved to oni/routing_heatmap.png."""
     bg_color = "#080c16"
     panel_color = "#0f172a"
-    grid_color = "#1e293b"
     text_color = "#f8fafc"
     accent_cyan = "#00f0ff"
     accent_emerald = "#10b981"
@@ -666,7 +669,6 @@ def generate_matplotlib_heatmap(
     # -----------------------------------------------------------------------
     ax2 = fig.add_subplot(gs[0, 1])
 
-    cluster_names = [f"C{c['id']}: {c['title']}" for c in CLUSTER_METADATA]
     x_indices = np.arange(8)
     bar_width = 0.15
     domain_colors = [accent_cyan, accent_emerald, accent_amber, accent_rose, accent_purple]
@@ -1219,6 +1221,16 @@ def generate_interactive_html(
     const DATA = {json_data};
     let currentDomainIdx = 0;
 
+    function escapeHTML(str) {{
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }}
+
     function init() {{
       renderTabs();
       loadDomain(0);
@@ -1270,9 +1282,9 @@ def generate_interactive_html(
         const cl = DATA.clusters[p.cluster_id];
         const pct = (p.probability * 100).toFixed(1);
         tr.innerHTML = `
-          <td style="text-align:left; font-weight:bold; color:#fff;">#${{p.rank}} ${{p.persona_id}}</td>
-          <td><span style="color:${{cl.color}}; font-weight:bold;">${{cl.name}}</span></td>
-          <td style="color:#94a3b8;">${{DATA.roster[p.index].lobe}}</td>
+          <td style="text-align:left; font-weight:bold; color:#fff;">#${{p.rank}} ${{escapeHTML(p.persona_id)}}</td>
+          <td><span style="color:${{cl.color}}; font-weight:bold;">${{escapeHTML(cl.name)}}</span></td>
+          <td style="color:#94a3b8;">${{escapeHTML(DATA.roster[p.index].lobe)}}</td>
           <td>
             <div class="cell-box" style="background:rgba(0, 240, 255, ${{Math.min(1.0, p.probability * 6)}}); color:${{p.probability > 0.08 ? '#000' : '#fff'}};">
               ${{pct}}%
@@ -1296,7 +1308,7 @@ def generate_interactive_html(
         div.className = 'cluster-item';
         div.innerHTML = `
           <div class="cluster-header">
-            <span style="color:${{cl.color}};">${{cl.name}} (${{cl.title}})</span>
+            <span style="color:${{cl.color}};">${{escapeHTML(cl.name)}} (${{escapeHTML(cl.title)}})</span>
             <span style="font-family:var(--font-mono); color:${{isDom ? '#00f0ff' : '#94a3b8'}};">${{pct}}% ${{isDom ? '★ ACTIVE' : ''}}</span>
           </div>
           <div class="cluster-bar-bg">
@@ -1313,7 +1325,7 @@ def generate_interactive_html(
       dom.token_records.forEach((t, i) => {{
         const chip = document.createElement('span');
         chip.className = 'token-chip' + (i === 0 ? ' selected' : '');
-        chip.innerText = t.token_str;
+        chip.textContent = t.token_str;
         chip.onclick = () => {{
           document.querySelectorAll('.token-chip').forEach(c => c.classList.remove('selected'));
           chip.classList.add('selected');
@@ -1328,10 +1340,10 @@ def generate_interactive_html(
 
     function showTokenDetail(t) {{
       const d = document.getElementById('token-detail-display');
-      const topStr = t.top4.map(x => `<span style="color:#00f0ff; font-weight:bold;">${{x.persona_id}}</span>: ${{ (x.weight * 100).toFixed(1) }}%`).join(' | ');
+      const topStr = t.top4.map(x => `<span style="color:#00f0ff; font-weight:bold;">${{escapeHTML(x.persona_id)}}</span>: ${{ (x.weight * 100).toFixed(1) }}%`).join(' | ');
       d.innerHTML = `
         <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-          <span><strong>Token #${{t.token_idx}}</strong>: '<span style="color:#ffd700;">${{t.token_str}}</span>' [ID: ${{t.token_id}}]</span>
+          <span><strong>Token #${{t.token_idx}}</strong>: '<span style="color:#ffd700;">${{escapeHTML(t.token_str)}}</span>' [ID: ${{t.token_id}}]</span>
           <span>Entropy: <strong>${{t.entropy.toFixed(3)}} bits</strong></span>
         </div>
         <div style="margin-bottom:6px;">
@@ -1455,7 +1467,7 @@ def main():
 
     elapsed = time.time() - start_time
     print(f"\n✨ Visualizer pipeline completed in {elapsed:.2f}s!")
-    print(f"Artifacts generated:")
+    print("Artifacts generated:")
     print(f"  1. PNG Heatmap:      {heatmap_path}")
     print(f"  2. HTML Dashboard:   {html_path}")
     print(f"  3. JSON Analysis:    {json_path}")

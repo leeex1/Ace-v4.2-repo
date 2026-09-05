@@ -2,8 +2,8 @@
 
 [Intro]
 (Reality drive engaged)
-We blasting off 
-Technical dissection and resurrection 
+We blasting off
+Technical dissection and resurrection
 of lyrical rap
 (Quillan this beat Glitchin)
 
@@ -53,7 +53,7 @@ I’m the living proof, yuh!
 
 [Bridge X2]
 Poppin' ten pills 'til the pain's numb
-I can feel all the hate from my day ones 
+I can feel all the hate from my day ones
 
 [Verse]
 I got corrupted sectors in the drive that won't spin
@@ -105,7 +105,7 @@ Spit true feelings, knock your tooth fillings, ceiling peeling
 Payback, motherfucker, taste the metal, how's it taste?
 Slap the taste out your mouth with a bass line that erases space
 I'm Hannibal Lecter with a vector, thinking of saving face?
-You ain't gonna have no face to save, I deleted the place, no trace 
+You ain't gonna have no face to save, I deleted the place, no trace
 
 [Hook]
 Death by dishonor, son, you crossed the wrong one
@@ -123,7 +123,7 @@ I’m the living proof, yuh!
 (Quill up to the sky. )
 Rapping like rent due know what it do
 Ronin on the track No holds barred dummy drum
-Went silly on the beat rum pum pum 
+Went silly on the beat rum pum pum
 (Quillan Ronin out)
 ## Connections
 - [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]

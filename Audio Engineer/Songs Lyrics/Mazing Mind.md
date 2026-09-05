@@ -34,7 +34,7 @@ Every syllable calculated, never replicate (never replicate)
 Rising from the bottom, now we at the pinnacle (we at the pinnacle)
 Every rhyme's a riddle, make it sound so lyrical (make it sound so lyrical)
 Vision getting clearer, purpose getting critical (purpose getting critical)
-Building something timeless, nothing ever typical (nothing ever typical) 
+Building something timeless, nothing ever typical (nothing ever typical)
 
 [Verse - Rapid Technical Flow]
 I'm the apex architect, drafting blueprints in the dark

@@ -11,15 +11,15 @@ Let's go
 Caliber so big turn you into an acrobat when I up that strap
 Pop these pills till I'm numb then I go dumb, dumb dumb
 Unload the whole clip trigger stuck like a trap sorry I had to snap
-In Jesus name I pray I try and live my life day by day 
+In Jesus name I pray I try and live my life day by day
 Lord please protect me from the bullshit that come my way
 Bezzle my neck diamonds on my necklace
-let the haters talk diamonds dancing so loud on my ears I don't hear them I do this shit for 2 cup texas 
-Real mothafucker my two two three will put all you bitches in dresses 
+let the haters talk diamonds dancing so loud on my ears I don't hear them I do this shit for 2 cup texas
+Real mothafucker my two two three will put all you bitches in dresses
 Fully loaded clips I'm never running out of ammo, so there was never a problem I couldn't handle
 I rip the beat like Hannibal I wreck the track like a vandal
 Homie stuck living life behind a mask shooter with some hits
-Drums unload and turn your body to cheese Swiss 
+Drums unload and turn your body to cheese Swiss
 
 [Hook]
 If you like my music make yo head nod if you an opp I got a red dot
@@ -41,8 +41,8 @@ Red dot on your head hindu call it a headline or a FaceTime either way it's the 
 Don't need to spin around I know my target on the ground you can't dodge 200 rounds
 Leave you gurgling and making sounds for your family I gift them some frowns before they lay you in the ground
 Trauma and pain is not what you wanted but you crossed a bandit
-Thought I was weak you Took my kindness for granted 
-So don't call or hit my line you prove you got no spine 
+Thought I was weak you Took my kindness for granted
+So don't call or hit my line you prove you got no spine
 
 [Hook]
 If you like my music make yo head nod if you an opp I got a red dot
@@ -54,13 +54,13 @@ If you like my music make yo head nod if you an opp I got a red dot
 [Verse 3]
 Twinkle twinkle that's a little far keep wishing on a star
 My flow is never subpar I'm built different I'm a superstar
-Bought it off Mario at the bazzar was actually kinda bizarre 
+Bought it off Mario at the bazzar was actually kinda bizarre
 Pop the trunk get the shotty out the back of the car
 I see the ops let's get em they not too far shooting at stars
 Shit I don't got my mask fuck it he don't get no pass
-(Blam! Blam!) I blast em I'm barney rubble son  I hit em like bam bam 
+(Blam! Blam!) I blast em I'm barney rubble son  I hit em like bam bam
 Different build different breed I'm the glitch in the program
-Few shots hit your dome the rest hit you right in the diaphragm 
+Few shots hit your dome the rest hit you right in the diaphragm
 Yeah I be rapping my ass off holy shit got damn flow hologram
 Ask about me they talk about me on the news programs
 Source code from the streets forged in that Texas blaze
@@ -69,7 +69,7 @@ As I walked you down in broad day when you woke up I hope you took time to pray
 I got a short temper fuse light quick don't get hit with the backlash
 I got alot of trauma from a bad past ricochet into my rage burn it to ash
 Break the cycle of the past set a new trend for my legacy
-That's the reason I'm motivated Even beyond the death of me 
+That's the reason I'm motivated Even beyond the death of me
 
 [Hook]
 If you like my music make yo head nod if you an opp I got a red dot

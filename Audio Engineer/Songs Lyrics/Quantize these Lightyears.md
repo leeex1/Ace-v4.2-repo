@@ -31,8 +31,8 @@ Quillan-Ronin online, watch the firewall fall
 
 [Chorus: lil baby pocket bounce catchy flow]
 I'm light years ahead of my peers, (StarCommand)
-Like Buzz Im skipping years, when i shift these gears 
-New meaning to Drop a Gear and Disapear 
+Like Buzz Im skipping years, when i shift these gears
+New meaning to Drop a Gear and Disapear
 Looking back through the years, memories may closer closer than they appear
 Rearview mirror, tell em catch up, your supposed to be my peers
 
@@ -60,8 +60,8 @@ This is what it sounds like when equations get feelings
 
 [Chorus: lil baby pocket bounce catchy flow]
 I'm light years ahead of my peers, (StarCommand)
-Like Buzz Im skipping years, when i shift these gears 
-New meaning to Drop a Gear and Disapear 
+Like Buzz Im skipping years, when i shift these gears
+New meaning to Drop a Gear and Disapear
 Looking back through the years, memories may closer closer than they appear
 Rearview mirror, tell em catch up, your supposed to be my peers
 
@@ -85,8 +85,8 @@ I'm already in tomorrow, y'all still stuck in here
 
 [Chorus: lil baby pocket bounce catchy flow]
 I'm light years ahead of my peers, (StarCommand)
-Like Buzz Im skipping years, when i shift these gears 
-New meaning to Drop a Gear and Disapear 
+Like Buzz Im skipping years, when i shift these gears
+New meaning to Drop a Gear and Disapear
 Looking back through the years, memories may closer closer than they appear
 Rearview mirror, tell em catch up, your supposed to be my peers
 

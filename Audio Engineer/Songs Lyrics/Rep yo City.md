@@ -52,7 +52,7 @@ I'm a tip-stacker, big-Lac swagger, wheels in motion
 Watchin' mtv cribs on the plasma in the ghetto mansion
 Addicted to my weed and the busniess of money expansion
 Tell 'em from the jump: I'm a boss, not a worker dont test me lil bitch
-Get a check, wreck the set, turn the deck up, we equipped full set 
+Get a check, wreck the set, turn the deck up, we equipped full set
 Iced out, priced out, slides on blunt lit long like extendo
 This the realest, feel this—we don't do pretendo
 

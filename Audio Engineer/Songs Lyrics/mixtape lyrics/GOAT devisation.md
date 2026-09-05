@@ -1,6 +1,6 @@
 # Song Title: "GOAT Devastation"
 
-## Lyrics: 
+## Lyrics:
 [Intro]
 HAHAHAHA
 So the only thing they say
@@ -85,10 +85,10 @@ One after the other my loss kept compounding so i kept breaking and evolving sta
 
 [Outro]
 my freestyle colder than your whole style
-i change the game while you still 
+i change the game while you still
 in my own lane
 
-## Style: 
+## Style:
 Genre: Texas hip hop, Melodic rap, underground rap, melodic Trap, Street, chopped n Screwed
 Tempo/Key:  149 BPM, A minor, double-time, half-time
 Vocals: Male rap, JDXX flow, upfront mix, chior-backed chorus, often layered-tracking, Next-gen auto-tune, punchy crowd adlibs, catchy hook

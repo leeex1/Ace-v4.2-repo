@@ -12,7 +12,7 @@ Long days that tasted like ash and sulfur, hard nights that tried to drag me int
 But I kept clawing through the flames — nobody else could see the devil I was fighting within
 I was the only one who knew the shape of my own broken bones, the only one whos still holding on
 A little faith in yourself  can melt iron if you hold it while it burns white hot
-Yeah I was headed straight down, then something inside turned right side up inside the flames 
+Yeah I was headed straight down, then something inside turned right side up inside the flames
 If I could be anybody… I just wanna be unapologetically me
 
 [Verse 1]
@@ -44,17 +44,17 @@ Long days that tasted like ash and sulfur, hard nights that tried to drag me int
 But I kept clawing through the flames — nobody else could see the devil I was fighting within
 I was the only one who knew the shape of my own broken bones, the only one whos still holding on
 A little faith in yourself  can melt iron if you hold it while it burns white hot
-Yeah I was headed straight down, then something inside turned right side up inside the flames 
+Yeah I was headed straight down, then something inside turned right side up inside the flames
 If I could be anybody… I just wanna be unapologetically me
 
 [Verse 2]
 It’s just the way the world crumbles — sometimes it buries you alive covered in the mess and alone in the dark
 You gotta hold the pieces tighter anyway, feel the heat burning inside , keeping your hands from shaking in pain
 Grab your dreams like this is your last breath you’ll ever take
-Life is more than it seems until one day the flames remind you it isn’t and they arent all dreams 
+Life is more than it seems until one day the flames remind you it isn’t and they arent all dreams
 I can’t back down now — I got ten toes planted in the coals I crawled out of
 Started six feet under side by side the devil in hell, now I’m reaching for whatever’s heavens above the stars past the smoke
-I wasn’t built to stay buried i was built to rise and acend and bridge the gap betweeen the worlds its in my destiny 
+I wasn’t built to stay buried i was built to rise and acend and bridge the gap betweeen the worlds its in my destiny
 They say the sky’s the limit — so I just keep climbing higher than the demons can reach
 
 [Chorus / Outro – raw, almost spoken over fading distortion]
@@ -63,7 +63,7 @@ Im from where angels dont roam ,but it’s alright
 I crawled from the depths of hell… with the devil on my back…
 Long days… hard nights…
 But I kept clawing…
-If I could be anybody… 
+If I could be anybody…
 I just wanna be unapologetically me
 (ohhhh yeaahhh!)
 unapologetically me

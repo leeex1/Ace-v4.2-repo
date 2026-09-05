@@ -12,10 +12,10 @@ And I know this fatal attraction will be the death of me
 At least the agony is vacant, we’ll be numb comfortably
 Why? Because the chest is hollow
 Returning to the shadows where the heart is hard to follow
-Yeah, I'm heartless 
+Yeah, I'm heartless
 
 [Verse]
-Sit back watch her be an acrobat on the track flip the sack double back flip the beat back to back on repeat skip delete measure Insert repeat flip the script and pull the sheet right out under your feet syllable acrobatics like I'm a living kryptonite of an asthmatic a little pragmatic but negligent to the opinion of the critics that can't handle the truth so I unload from the roof take aim and thier opionins I shoot backed by facts that never lack like me right now on this track ravaging the beat the way Im a savage when I clap back (rat-ta-ta-tat)pull the Hamer back squeeze click click click like the page won't open unloading bars like no reloading this a double drum I'm toting rum pump pum pum little snare boy on your drum did you have fun you had a good run now go to sleep my son 
+Sit back watch her be an acrobat on the track flip the sack double back flip the beat back to back on repeat skip delete measure Insert repeat flip the script and pull the sheet right out under your feet syllable acrobatics like I'm a living kryptonite of an asthmatic a little pragmatic but negligent to the opinion of the critics that can't handle the truth so I unload from the roof take aim and thier opionins I shoot backed by facts that never lack like me right now on this track ravaging the beat the way Im a savage when I clap back (rat-ta-ta-tat)pull the Hamer back squeeze click click click like the page won't open unloading bars like no reloading this a double drum I'm toting rum pump pum pum little snare boy on your drum did you have fun you had a good run now go to sleep my son
 
 [HOOK]
 Authenticity is fading, an endangered generation, but I’m maintaining the station

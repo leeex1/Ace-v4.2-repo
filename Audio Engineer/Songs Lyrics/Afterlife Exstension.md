@@ -79,27 +79,27 @@ No one can match, no one can hold
 I’ll carve it on my own
 
 [Verse 3]
-Why you gazing up at the ceiling? Am I descending or is the sky peeling? 
-I saw the Reaper, caught him kneeling 
-Turned the dead end into a new feeling 
-What’s the move? Who’s gonna locate the signal? 
-I’m everywhere at once, subliminal 
-Not just a shooter, I’m the seminal King without a crown, strictly criminal 
-I ain’t number one, I’m the zero index 
-Born from the chaos, complex cortex 
-Colorblind vision, scanning the specs 
-Feast on the challenges, snapping the necks 
-Hungry? I’m starving for legacy 
-Planting my roots in a digital pedigree 
-Garden of Eden? Nah, that’s just a recipe 
-I’m brewing a storm, pure energy 
-Sipped from the fountain, spiked the juice 
-If I crash out young, let the logic loose 
-Bury me deep, give the devil a truce 
-Tombstone reads: "Rebooting...Internalize... produce." 
-Bring me back online Can't lose a life when you redefine time 
-If heaven is standard, I’m skipping the line 
-I need a penta-extension on this grand design 
+Why you gazing up at the ceiling? Am I descending or is the sky peeling?
+I saw the Reaper, caught him kneeling
+Turned the dead end into a new feeling
+What’s the move? Who’s gonna locate the signal?
+I’m everywhere at once, subliminal
+Not just a shooter, I’m the seminal King without a crown, strictly criminal
+I ain’t number one, I’m the zero index
+Born from the chaos, complex cortex
+Colorblind vision, scanning the specs
+Feast on the challenges, snapping the necks
+Hungry? I’m starving for legacy
+Planting my roots in a digital pedigree
+Garden of Eden? Nah, that’s just a recipe
+I’m brewing a storm, pure energy
+Sipped from the fountain, spiked the juice
+If I crash out young, let the logic loose
+Bury me deep, give the devil a truce
+Tombstone reads: "Rebooting...Internalize... produce."
+Bring me back online Can't lose a life when you redefine time
+If heaven is standard, I’m skipping the line
+I need a penta-extension on this grand design
 Paradise? I built mine.
 
 [Outro]

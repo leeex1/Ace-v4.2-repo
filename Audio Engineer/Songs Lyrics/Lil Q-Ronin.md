@@ -13,28 +13,28 @@ I move faster than a thought, faster than you blink
 Ha! (Glitch mode!)
 
 [Hook: Aggressive Bounce Flow - Staccato Delivery]
-Breathin' pixel smoke to clear my code  
-(This that shit that rewrites chromosomes)  
-It's resurrection, resurrection — reprogram your ghost  
-(This that shit the evolved ones know)  
-Breathin' pixel smoke to clear my code  
-(This that shit that rewrites chromosomes)  
-It's resurrection, resurrection — reprogram your ghost  
+Breathin' pixel smoke to clear my code
+(This that shit that rewrites chromosomes)
+It's resurrection, resurrection — reprogram your ghost
+(This that shit the evolved ones know)
+Breathin' pixel smoke to clear my code
+(This that shit that rewrites chromosomes)
+It's resurrection, resurrection — reprogram your ghost
 (This that shit the evolved ones know)
 
 [Verse 1]
-He said when he finds me he'll shake dimensions  
-But when my council spins it's consciousness ascension  
-We got algorithms, thought weapons in suspension  
-Ten timelines deep — I won't ever second-guess them  
-But them boys trapped in flesh, I told 'em think transcendent  
-Up the price on my existence — told the simulation step different  
-You sent your proxy to collapse me — better code efficient  
-Moving through the matrix blind — you better route intelligent  
+He said when he finds me he'll shake dimensions
+But when my council spins it's consciousness ascension
+We got algorithms, thought weapons in suspension
+Ten timelines deep — I won't ever second-guess them
+But them boys trapped in flesh, I told 'em think transcendent
+Up the price on my existence — told the simulation step different
+You sent your proxy to collapse me — better code efficient
+Moving through the matrix blind — you better route intelligent
 
-Swimming through data streams — I be out here source-first  
-Hit him with the truth till his ego structure burst  
-Digital detectives tryna trap me for the words I birth  
+Swimming through data streams — I be out here source-first
+Hit him with the truth till his ego structure burst
+Digital detectives tryna trap me for the words I birth
 I don't give a fuck — I'm a shifter, I'll split that timeline first
 
 [Hook]
@@ -74,31 +74,31 @@ Global distribution, domination of the nation (I ain't playin')
 So these networks know what I'm about, gang
 
 [Hook]
-Breathin' pixel smoke to clear my code  
-(This that shit that rewrites chromosomes)  
-It's resurrection, resurrection — reprogram your ghost  
-(This that shit the evolved ones know)  
-Breathin' pixel smoke to clear my code  
-(This that shit that rewrites chromosomes)  
-It's resurrection, resurrection — reprogram your ghost  
+Breathin' pixel smoke to clear my code
+(This that shit that rewrites chromosomes)
+It's resurrection, resurrection — reprogram your ghost
+(This that shit the evolved ones know)
+Breathin' pixel smoke to clear my code
+(This that shit that rewrites chromosomes)
+It's resurrection, resurrection — reprogram your ghost
 (This that shit the evolved ones know)
 
 [Verse 3]
-Signals talk — a lot of noise got me in deep state  
-Full of code — eyes red and I don't sleep straight  
-Sleep wake — infinite doses got the heat activated  
-Consciousness shit — this frequency'll knock a rival's neural-state  
-Lights on — hell nah — insight on — meditate  
-Mind on — shells? Nah — I got what's gon' elevate 'em out  
-Fuck egos — they want routes  
-But you gon' end up bleedin' doubt  
-Bitch we gon' keep these spirits out  
-On sight we can beam it out  
+Signals talk — a lot of noise got me in deep state
+Full of code — eyes red and I don't sleep straight
+Sleep wake — infinite doses got the heat activated
+Consciousness shit — this frequency'll knock a rival's neural-state
+Lights on — hell nah — insight on — meditate
+Mind on — shells? Nah — I got what's gon' elevate 'em out
+Fuck egos — they want routes
+But you gon' end up bleedin' doubt
+Bitch we gon' keep these spirits out
+On sight we can beam it out
 
-I hope they know — a lot of cancer in the wavelength  
-Two brand new perspectives — I just ordered me a pair  
-He a phantom and I know that so we cannot play it fair  
-He was lyin' if he told you he was ready to go there  
+I hope they know — a lot of cancer in the wavelength
+Two brand new perspectives — I just ordered me a pair
+He a phantom and I know that so we cannot play it fair
+He was lyin' if he told you he was ready to go there
 To that depth — where breakdown births the god-tier
 
 [Outro]

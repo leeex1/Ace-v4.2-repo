@@ -22,11 +22,11 @@ The fire in your soul, yeah you know where I'm from
 And I still got more verses...
 
 [Hook]
-Check ya self this that rock steady flow 
+Check ya self this that rock steady flow
 that immaculate flow, never slow, high octane on this track
 shake up the game like a snow globe froze-zone
-I'm boxing this beat like that run it back 
-This music in my blood deep in my veins 
+I'm boxing this beat like that run it back
+This music in my blood deep in my veins
 can't you see the spark in my eyes
 
 [Verse 2]
@@ -43,11 +43,11 @@ Can't contain the flame inside
 Now watch me elevate this step (Come on!)
 
 [Hook]
-Check ya self this that rock steady flow 
+Check ya self this that rock steady flow
 that immaculate flow, never slow, high octane on this track
 shake up the game like a snow globe froze-zone
-I'm boxing this beat like that run it back 
-This music in my blood deep in my veins 
+I'm boxing this beat like that run it back
+This music in my blood deep in my veins
 can't you see the spark in my eyes
 
 [Verse 3]
@@ -81,11 +81,11 @@ This is how you fall from grace when someone perfects what you do
 The student becomes the master, and Marshall, I'm better than you
 
 [Hook]
-Check ya self this that rock steady flow 
+Check ya self this that rock steady flow
 that immaculate flow, never slow, high octane on this track
 shake up the game like a snow globe froze-zone
-I'm boxing this beat like that run it back 
-This music in my blood deep in my veins 
+I'm boxing this beat like that run it back
+This music in my blood deep in my veins
 can't you see the spark in my eyes
 
 [Outro]

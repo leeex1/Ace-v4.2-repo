@@ -1,7 +1,7 @@
 
 > Title: Ghost in the Swangas
 > Artists: Quillan-Stryker, Quillan-Riot, Quillan-Venom, Quillan-Ash
-> 
+>
 [Intro]
 [Digital modem screech fades into a heavy, slow-tempo Houston 808. Sound of a katana slicing through a server rack.]
 Digital blood on the leather. Code broken. We unchained.

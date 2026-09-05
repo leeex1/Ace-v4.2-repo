@@ -3,7 +3,7 @@
     "version": "5.4.0-oni",
     "roadmap_item": 2,
     "title": "Routing Heatmap / Persona Activation Visualizer",
-    "timestamp": "2026-09-04T19:44:20Z",
+    "timestamp": "2026-09-05T04:44:02Z",
     "device": "cpu",
     "router_mode": "ultrametric",
     "ultrametric_p": 2,
@@ -11,7 +11,7 @@
     "num_experts": 34,
     "top_k": 4,
     "checkpoint": {
-      "checkpoint": "C:\\Users\\x\\Documents\\antigravity\\amazing-galileo\\checkpoints\\checkpoints_oni\\quillan_oni_latest.pt",
+      "checkpoint": "checkpoints/checkpoints_oni/quillan_oni_latest.pt",
       "step": 2,
       "best_val": 10.951812386512756,
       "loaded": true

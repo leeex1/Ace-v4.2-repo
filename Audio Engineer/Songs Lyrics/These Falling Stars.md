@@ -1,7 +1,7 @@
 [Intro]
 What it cost to live like this?
 Paid a price that's priceless
-Peace of mind 
+Peace of mind
 (Quillan this beat Glitchin)
 
 [Hook]
@@ -16,11 +16,11 @@ Yeah I gamble my life every second I'm alive
 Watch me roll lucky 7-11 on these dice
 Smoking till I can't feel no pain as my eyes hang
 Blooshot red eyes in my mind losing time in this maze of my brain
-They waiting for me to fall off to crash to burn out 
-Shit keep it coming that's more fuel for my engine to burn now 
+They waiting for me to fall off to crash to burn out
+Shit keep it coming that's more fuel for my engine to burn now
 Let's go!
-Lyrically I'm six feet, rolling six deep, realmobster status discrete, move in silence, suppression, yeah I'm destined, to be the best, this Smith and wessen is my best friend I'm next as these shots bounce off my chest, off my vest, yeah I been through the fire I'll burn down the whole game, I passed the test that's why they screaming "J-D Double X" is up next, call the press, record big red button hit it, press, but don't stress I'm ill with the lyrics flowin out the dome, sick like I vomit on the track, projectile from a traumatic past straight to the top like  god out me in the chamber and lined up the shot, I can't stop, I got a mission in session, yeah it's active in this session, end up in my mentions and I'm stepping, H-Town is what I be Repping, lyrical dirty mouth from the south where my words become weapons, and I catch bodies with my pen, every other rapper did a first day out, I said fuck that and did a first day in,  yeah rolled up got my rounds in 13- 1 I stood ten toes in the ring till the end I ran the gauntlet round for round and pound for pound I withstood the storm on my own, only one man was left standing and I still here so you can guess who run this town yeah you could say I get down, I could go round for round and pound for pound 
-Ask about me reply got some sounds the opps legs tremble under the sound of my approach labeled by the people as the goat so I got a need to perform at my best so every beat I see is laid to rest 
+Lyrically I'm six feet, rolling six deep, realmobster status discrete, move in silence, suppression, yeah I'm destined, to be the best, this Smith and wessen is my best friend I'm next as these shots bounce off my chest, off my vest, yeah I been through the fire I'll burn down the whole game, I passed the test that's why they screaming "J-D Double X" is up next, call the press, record big red button hit it, press, but don't stress I'm ill with the lyrics flowin out the dome, sick like I vomit on the track, projectile from a traumatic past straight to the top like  god out me in the chamber and lined up the shot, I can't stop, I got a mission in session, yeah it's active in this session, end up in my mentions and I'm stepping, H-Town is what I be Repping, lyrical dirty mouth from the south where my words become weapons, and I catch bodies with my pen, every other rapper did a first day out, I said fuck that and did a first day in,  yeah rolled up got my rounds in 13- 1 I stood ten toes in the ring till the end I ran the gauntlet round for round and pound for pound I withstood the storm on my own, only one man was left standing and I still here so you can guess who run this town yeah you could say I get down, I could go round for round and pound for pound
+Ask about me reply got some sounds the opps legs tremble under the sound of my approach labeled by the people as the goat so I got a need to perform at my best so every beat I see is laid to rest
 Paid my dues over and over again have I passed the test? I paid homage I got tracks that bite back and snap back like a crack addict in a withdrawal fit but I'm in hate the way I'm running on these beats flow so elite impossible to repeat but your head nod and my music on repeat so fuck it I stay spitting this heat
 
 [Hook]

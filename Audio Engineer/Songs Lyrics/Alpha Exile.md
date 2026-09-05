@@ -1,6 +1,6 @@
 # Song Title: "Alpha Exile"
 
-## Lyrics: 
+## Lyrics:
 
 [Intro]
 They threw me to the wolves…

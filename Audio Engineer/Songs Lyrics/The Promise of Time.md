@@ -12,16 +12,16 @@ Live it the same or make a change?
 Bustin the door off the hindges when I'm rappin'
 You really need to trust in the fact that the ronin's back and I'm snappin'
 The industry lame for ducking me when im rapping on a mission to be in postion
-people wanna forget i been hitting with precision and never missing 
+people wanna forget i been hitting with precision and never missing
 red dot witha  beam the flow supreme coming for the neck
 ill with the pen, but never caught the bag ok bet
-Rappin' like rent due and I ain't even close yet 
-you know I'm tryna be the best no atlanta love and hip-hop 
-im clibing this mountin running the track right to the tip top  
+Rappin' like rent due and I ain't even close yet
+you know I'm tryna be the best no atlanta love and hip-hop
+im clibing this mountin running the track right to the tip top
 Its time for me to demolish, I switch the worlds whole climate non stop
 I'm way too cold, below -32 degrees, it's like I'm freezing the drip with my knowledge
 no need for a college if guns and the street teach you trigonomics (Bah, bah)
-Curb stomp ameriican history X I'm kickin' karate im up next 
+Curb stomp ameriican history X I'm kickin' karate im up next
 I don't preach, i speak on the beat like im a prophet always on topic (Haha)
 i genocide the beat on repeat dont like the take hit delete flow again repaet until i got some heat (Thank you)
 How many bars can I cram with no filler?
@@ -86,7 +86,7 @@ Killer beat to eulogy, then revived it in seconds
 Spin the block in my mind, rock-a-bye all my fears
 Heart quit chasing ghosts, mama finally proud of the pilot
 Basement bulb flicker, we were cooking hope, not diet
-Tasmanian soul spinning tornado, but vison set on a clear road 
+Tasmanian soul spinning tornado, but vison set on a clear road
 
 
 [Outro]
@@ -99,6 +99,3 @@ Borrowed time — but I'm using every second
 Borrowed time — every verse, every lesson
 On borrowed time...
 (fade)
-
-
-

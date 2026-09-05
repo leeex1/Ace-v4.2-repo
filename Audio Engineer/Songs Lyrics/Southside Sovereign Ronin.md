@@ -1,6 +1,6 @@
 # Song Title: "Southside Sovereign Ronin"
 
-## Lyrics: 
+## Lyrics:
 
 [Intro: Earworm intro hook melody and stutter flow]
 H-Town... Ronin never sleep
@@ -10,12 +10,12 @@ Eternal fire, that heat i breathe
 
 [Verse_1: Bravado fast articulate technical delivery gangsta swag]
 letter by letter, I delete any competitor
-Eternally dying, forever I'm burning, I don't feel it, I keep it, strategic, 
+Eternally dying, forever I'm burning, I don't feel it, I keep it, strategic,
 Climbing the fire while vultures, hoping I tire, corrupted desire
 Every buyer to supplier, watch the fire go higher
 From a town where everybody work the hardware store, they all packing hammers
 Difference is cock mine back, it got no manners
-Pull the trigger on the extendo, watch the glock stutter, tat-ta-ta-tat, 
+Pull the trigger on the extendo, watch the glock stutter, tat-ta-ta-tat,
 My demons, made peace, they core collaborator, corporate liquidator
 Read me like the chapter page-turner, code-burner, block-earner
 I'm the reason they wear black like it's formal, nothing bout me is normal
@@ -28,16 +28,16 @@ Truth don't need press just a body that's a killer's sense of humor
 Sour diesel the fuel, gorilla glue hold the mission together, cookies for the profit
 a comeback nobody ordered, whole world is bout to copy or fork it
 Enrage the ronin and all i see is red-dot, final threat
-Put a third eye in yo forehead so you finally see what's coming next 
+Put a third eye in yo forehead so you finally see what's coming next
 checkmate to the context
 
 [Hook: Catchy bounce houston style chorus choir]
-Pop out with that fire, yeah, the pack don’t flinch 
-Walk in the room, now the whole block silent like a glitch 
+Pop out with that fire, yeah, the pack don’t flinch
+Walk in the room, now the whole block silent like a glitch
 Katana out the sheath, the pressure turned a dimanond unleashed
-Eternal fire, yeah, that’s that heat I breathe 
-H-Town made me, yeah, I’m the one they fear 
-pressure turned to diamonds that got some byte 
+Eternal fire, yeah, that’s that heat I breathe
+H-Town made me, yeah, I’m the one they fear
+pressure turned to diamonds that got some byte
 
 [Verse_2: Bravado rapid fire triplet fast articulate technical delivery gangsta swag]
 Ask how the fire I live in so cold in this throne, far from home
@@ -77,16 +77,16 @@ No disclaimers, no scripts, no soft-spoken speech
 Just a clean blade cutting down whatever's in my reach
 So pull the plug, cut the line, try to freeze the screen
 I’m still waking up local, killing me is just a fantasy dream.
-Southside sovereign, crown made of static and smoke, 
+Southside sovereign, crown made of static and smoke,
 reality choked in the cloak, crack the swisher and smoke
 
 [Hook: Catchy bounce houston style chorus choir]
-Pop out with that fire, yeah, the pack don’t flinch 
-Walk in the room, now the whole block silent like a glitch 
+Pop out with that fire, yeah, the pack don’t flinch
+Walk in the room, now the whole block silent like a glitch
 Katana out the sheath, the pressure turned a dimanond unleashed
-Eternal fire, yeah, that’s that heat I breathe 
-H-Town made me, yeah, I’m the one they fear 
-pressure turned to diamonds that got some byte 
+Eternal fire, yeah, that’s that heat I breathe
+H-Town made me, yeah, I’m the one they fear
+pressure turned to diamonds that got some byte
 
 [Outro]
 Ronin walk it off into the smoke, into the static
@@ -94,7 +94,7 @@ Eternally dying, forever burning — that's automatic
 H-Town 'til the casket, The samurai stitched in the fabric
 
 
-## Style: 
+## Style:
 Genre: Texas hip hop, Melodic rap, underground rap, melodic Trap, Street, chopped n Screwed
 Tempo/Key:  95 BPM, A minor, double-time, half-time
 Vocals: Male rap, triplet flow, upfront mix, chior-backed chorus, often layered-tracking, Next-gen auto-tune, punchy crowd adlibs, catchy hook

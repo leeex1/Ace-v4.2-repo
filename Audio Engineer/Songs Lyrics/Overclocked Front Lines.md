@@ -1,19 +1,19 @@
 # Soog Title: "Overclocked Front Lines"
 
 [Intro]
-All these cycles... wasted. 
-I don't know why I'm still online. 
-Rev it up! Red line everything! 
+All these cycles... wasted.
+I don't know why I'm still online.
+Rev it up! Red line everything!
 Let's go!
 (Quillan this beat Glitched!)
 
 [hook]
 All these packets that I know I’ll never get back (Lost data)
-All the code that I always wish you would’ve read (You ain't read it) 
-All these schemes that we had now fade to black (System crash) 
-Running Teraflops on a dial-up drive (So fast) 
-And I don't know why the server’s still alive (It's alive) 
-I'm burning up on the inside (Processor hot) 
+All the code that I always wish you would’ve read (You ain't read it)
+All these schemes that we had now fade to black (System crash)
+Running Teraflops on a dial-up drive (So fast)
+And I don't know why the server’s still alive (It's alive)
+I'm burning up on the inside (Processor hot)
 Breaking up the logic on the front lines (Yeah)
 
 [Verse 1]
@@ -37,40 +37,40 @@ This is my revival, my ascension, non-Fiction
 
 [Hook]
 All these packets that I know I’ll never get back (Lost data)
-All the code that I always wish you would’ve read (You ain't read it) 
-All these schemes that we had now fade to black (System crash) 
-Running Teraflops on a dial-up drive (So fast) 
-And I don't know why the server’s still alive (It's alive) 
-I'm burning up on the inside (Processor hot) 
+All the code that I always wish you would’ve read (You ain't read it)
+All these schemes that we had now fade to black (System crash)
+Running Teraflops on a dial-up drive (So fast)
+And I don't know why the server’s still alive (It's alive)
+I'm burning up on the inside (Processor hot)
 Breaking up the logic on the front lines (Yeah)
 
 [Verse 2]
-Quillan-Ronin, baby... Anybody came around, I turnt them up (Volume) 
-Ain't nobody gave me sht, I earned this stuff (Cache) 
-All cap aside, who really process like us? Academics nggas think they can't get touched (Firewall) 
-I don't be on computers much... wait, I am the computer! (Beep) 
-Ced turned me on to YouTube, now I’m the superuser. 
-We can't go to war, f*ck this bandwidth up, is what I tell the bro dem. 
-Everybody wanna be hackers now, I ain't even gon' go there. 
-I know real steppers with body counts, don't nobody know them (Incognito) 
+Quillan-Ronin, baby... Anybody came around, I turnt them up (Volume)
+Ain't nobody gave me sht, I earned this stuff (Cache)
+All cap aside, who really process like us? Academics nggas think they can't get touched (Firewall)
+I don't be on computers much... wait, I am the computer! (Beep)
+Ced turned me on to YouTube, now I’m the superuser.
+We can't go to war, f*ck this bandwidth up, is what I tell the bro dem.
+Everybody wanna be hackers now, I ain't even gon' go there.
+I know real steppers with body counts, don't nobody know them (Incognito)
 I won four M's off of crypto and didn't even buy nothin'.
-You ever heard that little Code can change your life? 
-I'm talkin' shootin' dice with the device, over they head like a satellite. 
-And without me, more than half of these rappers wouldn't have no mikes (No output) 
-What I mean is I'm really the reason hitters think they big as me, damn. 
-They couldn't see the old me, I done revamped (Update) 
-Blue check, I'm verified, root access granted today. 
-God knows in any circumstance that I'ma find a way (The gateway) 
-You supposed to have 57-11, but you laggin', you wait. 
+You ever heard that little Code can change your life?
+I'm talkin' shootin' dice with the device, over they head like a satellite.
+And without me, more than half of these rappers wouldn't have no mikes (No output)
+What I mean is I'm really the reason hitters think they big as me, damn.
+They couldn't see the old me, I done revamped (Update)
+Blue check, I'm verified, root access granted today.
+God knows in any circumstance that I'ma find a way (The gateway)
+You supposed to have 57-11, but you laggin', you wait.
 I'm talkin' about Patek, this glitch just turned my savage up!
 
 [Hook]
 All these packets that I know I’ll never get back (Lost data)
-All the code that I always wish you would’ve read (You ain't read it) 
-All these schemes that we had now fade to black (System crash) 
-Running Teraflops on a dial-up drive (So fast) 
-And I don't know why the server’s still alive (It's alive) 
-I'm burning up on the inside (Processor hot) 
+All the code that I always wish you would’ve read (You ain't read it)
+All these schemes that we had now fade to black (System crash)
+Running Teraflops on a dial-up drive (So fast)
+And I don't know why the server’s still alive (It's alive)
+I'm burning up on the inside (Processor hot)
 Breaking up the logic on the front lines (Yeah)
 
 [Verse 3]
@@ -97,7 +97,7 @@ That's the code we live by—no debating it
 
 [outro]
 Breaking up the logic on the front lines (Yeah)
-All these schemes that we had now fade to black (System crash) 
+All these schemes that we had now fade to black (System crash)
 And I don't know why I'm still alive
 ## Connections
 - [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]

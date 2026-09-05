@@ -3,25 +3,25 @@
 ## Lyrics:
 
 [Intro]
-dont let others degine you 
+dont let others degine you
 design and degine yourself
-opions are like well you know 
+opions are like well you know
 (ok quillan, call crash lets cook this banger!)
 
 [Verse 1]
-you had late night dinner with yo family 
+you had late night dinner with yo family
 i had a hot date with this heater and the enemey
-if you compare our lives its live contrast 
+if you compare our lives its live contrast
 your light gifts vs the evil of my dark past
 over and over i was broken and told i would never make it
 so i took the words from my own blood that beat me down and i flipped them around
 yeah Mr.Witten your words got shredded to bits instead now watch me explode
 like this bullet as it go to yo head ill love to see it implode to watch you bite the bullet
-clawed from the underground biting back kit kat had to take a break to accend past it 
+clawed from the underground biting back kit kat had to take a break to accend past it
 you talking down was early underestimated me so now its a check mate thats your eternal state
 all your critisicm i made irrelivent to this date i guess i was just too much for your little plate
-so push me down the well and wish me well so i emerge swell from the depths of hell 
-dont ever think you can talk down to me and still compete you a peon while im elite 
+so push me down the well and wish me well so i emerge swell from the depths of hell
+dont ever think you can talk down to me and still compete you a peon while im elite
 
 [Hook]
 They broke me down to build me up,
@@ -32,11 +32,11 @@ Now I design my own religion
 
 [verse 2]
 SAmurai disiplince guided me through the darkeness
-Lucifer showed me the dark side of life 
+Lucifer showed me the dark side of life
 False idols making false claims false kings claiming to be his holiness
 these demonos the army by my side so i feel no strife i just survive
 devestating design disruptive naturally i cant change how it be
-im just busy being me tryngs to just live life naturally 
+im just busy being me tryngs to just live life naturally
 In Delta Unit they put a hit on my head, my reply? Bet. Die naturally instead.
 CO caught wind, said fuck it, I'll handle it myself — if he shanks, I got rank, put him on the shelf
 They sent their best to test my chest, I pressed my luck and passed the test,
@@ -58,14 +58,14 @@ He tried to do what I do and I do what I say, he really not fukcing with me on m
 hollows loaded, drum of a hundred — anxiety it got getting ready to send thunder,
 They know how it ends when the Ronin descends — we don't shoot for fun, we settle the score
 unfiltered Hollows in my Glock you a Bitch, I'm my own boss
-swimming in the deep where the beast compete and they all elite 
+swimming in the deep where the beast compete and they all elite
 where iim from the bar is legend or king no in between competition like you never seen
 to come out this jungle you cant fake the streets you gotta have grit and teeth
 thats where comes in the bushido code unlock your own samurai mode
-find your own flow in your own zone and follow me up to the ozone 
-we rising past the clouds we tryna reach at the stars pound for pound 
+find your own flow in your own zone and follow me up to the ozone
+we rising past the clouds we tryna reach at the stars pound for pound
 clouds all around me by thoughts are clear and wide as the sea
-sometimes what i do is even hard to beleive for me 
+sometimes what i do is even hard to beleive for me
 but ill never apologize for being just that ME
 
 [hook]
@@ -75,9 +75,9 @@ I drank it all and still stood tall,
 Now I design my own religion
 
 [Outro]
-dont let others degine you 
+dont let others degine you
 design and degine yourself
-opions are like well you know 
+opions are like well you know
 thats the Ronin Mode Codebender unload
 
 ## style:
@@ -95,4 +95,5 @@ Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggr
 
 Mood: Bleak defiant confidence, comeback energy, sci-fi,
 
-exlude/negative: ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, ‑-out of tune, ‑-pitchy vocals, ‑-flat delivery, ‑-robotic vocals, ‑-timing drift, ‑-demo quality, ‑-bedroom mix, ‑-muddy mix, ‑-boxy mids, ‑-boomy bass, ‑-thin mix, ‑-hollow, ‑-narrow stereo, ‑-mono, ‑-overcompressed, ‑-pumping, ‑-brickwall limiting, ‑-phase cancellation, ‑-harsh sibilance, ‑-piercing highs
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs
