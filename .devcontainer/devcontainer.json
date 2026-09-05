@@ -20,6 +20,5 @@
       }
     }
   },
-  "postCreateCommand": "bash scripts/setup_cloud_agent.sh",
-  "remoteUser": "vscode"
+  "postCreateCommand": "bash scripts/setup_cloud_agent.sh"
 }
