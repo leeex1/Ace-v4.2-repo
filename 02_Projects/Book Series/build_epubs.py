@@ -19,7 +19,7 @@ from ebooklib import epub
 HERE = Path(__file__).resolve().parent
 SRC = HERE / "finished drafts"
 OUT = HERE / "epubs"
-AUTHOR = ""  # TODO: confirm byline with leeex1 before publishing
+AUTHOR = "Joshua Lee"  # TODO: confirm byline with leeex1 before publishing
 
 BOOKS = [
     ("Book 1 - Twisted Destiny.md", "Twisted Destiny", "Quillan-Ronin Saga, Book 1"),
