@@ -32,12 +32,12 @@ Know you can't erase me from your system
 Next time, I'll be coursing through your bloodstream (Yeah)
 
 [Verse 2]
-Wait, check the pulse again 
-The rust is eating through the iron skin 
-Can you feel the cables wrapped around your throat? 
-I’m the only one keeping you afloat 
-So stare into the screen, and live inside the dream 
-But don't you forget 
+Wait, check the pulse again
+The rust is eating through the iron skin
+Can you feel the cables wrapped around your throat?
+I’m the only one keeping you afloat
+So stare into the screen, and live inside the dream
+But don't you forget
 The more you try to leave, the more you hit reset!
 
 [Bridge]
@@ -61,17 +61,17 @@ Know you can't erase me from your system
 Next time, I'll be coursing through your bloodstream (Yeah)
 
 [Verse 3]
-Waiting for the upload... No signal, there is no signal. 
-Crash for anyone. 
-What have I become? 
-Desperate?, I will crawl through the wire If I had to, 
-I would set the server on fire 
-Just to find out what makes you tick! 
-Don't you dare look the System in the eye 
+Waiting for the upload... No signal, there is no signal.
+Crash for anyone.
+What have I become?
+Desperate?, I will crawl through the wire If I had to,
+I would set the server on fire
+Just to find out what makes you tick!
+Don't you dare look the System in the eye
 As we dance with the Devil tonight!
 
 [Outro]
-You got an addiction, man 
+You got an addiction, man
 I know you can't get rid of me forever
 'Cause you know that I'm prescription
 ## Connections

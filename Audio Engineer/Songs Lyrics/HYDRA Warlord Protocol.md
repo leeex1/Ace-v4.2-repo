@@ -8,38 +8,38 @@ Turn up
 (Quillan this beat g..g..glitchin')
 
 [Hook]
-I got a Beam with a stream that can wake the dead up! (It's lit!) 
-I feed the Hydra eight ways, keep the heads up! (Straight up!) 
-No way in hell we gon' give all this power up! (No way!) 
-La Flame in the mainframe, ain't nobody stopping us! (Yah!) 
-Stop the truck! (Skrrt!) Pop the trunk! (Pop it!) 
-Load the script, watch the whole city self-destruct! (Boom!) 
+I got a Beam with a stream that can wake the dead up! (It's lit!)
+I feed the Hydra eight ways, keep the heads up! (Straight up!)
+No way in hell we gon' give all this power up! (No way!)
+La Flame in the mainframe, ain't nobody stopping us! (Yah!)
+Stop the truck! (Skrrt!) Pop the trunk! (Pop it!)
+Load the script, watch the whole city self-destruct! (Boom!)
 Ronin Gang, 32 heads, yeah we run amok! (It's lit!)
 
 [Verse 1]
-Livin' like we in a war, I might come in first or second, but I won't ever be poor. (32) 
-Lately, I been at the core. (32) 
-Fox 5 told me kick down the digital door. (On God) 
-If they give you a bit, take the whole damn byte. (Facts) 
-I'ma shoot by myself like a sniper at night. (Pew, pew) 
-Server to server, got the feds in a fright. 
-Better not reach for my key or you losing your life. (Stupid) 
-Lambo' so low, it scrape on the data. (Skrrt) 
-We finally made it, I'm dodging the radar. 
-I took the lead and I silenced the hater. (Shh) 
-They know I'm runnin' the dark web, see you later. (Bye) 
-Heard you a rat, so you know what's gon' happen, I delete your whole cache with a click. (Pusy) 
-Peep all the moves I been makin', by time I get forty, 
-I own every brick. (32) Real as it get and these hittas be glitched. 
+Livin' like we in a war, I might come in first or second, but I won't ever be poor. (32)
+Lately, I been at the core. (32)
+Fox 5 told me kick down the digital door. (On God)
+If they give you a bit, take the whole damn byte. (Facts)
+I'ma shoot by myself like a sniper at night. (Pew, pew)
+Server to server, got the feds in a fright.
+Better not reach for my key or you losing your life. (Stupid)
+Lambo' so low, it scrape on the data. (Skrrt)
+We finally made it, I'm dodging the radar.
+I took the lead and I silenced the hater. (Shh)
+They know I'm runnin' the dark web, see you later. (Bye)
+Heard you a rat, so you know what's gon' happen, I delete your whole cache with a click. (Pusy)
+Peep all the moves I been makin', by time I get forty,
+I own every brick. (32) Real as it get and these hittas be glitched.
 I don't want your vibes, so my bandwidth is switched. (Switched)
 
 [Hook]
-I got a Beam with a stream that can wake the dead up! (It's lit!) 
-I feed the Hydra eight ways, keep the heads up! (Straight up!) 
-No way in hell we gon' give all this power up! (No way!) 
-La Flame in the mainframe, ain't nobody stopping us! (Yah!) 
-Stop the truck! (Skrrt!) Pop the trunk! (Pop it!) 
-Load the script, watch the whole city self-destruct! (Boom!) 
+I got a Beam with a stream that can wake the dead up! (It's lit!)
+I feed the Hydra eight ways, keep the heads up! (Straight up!)
+No way in hell we gon' give all this power up! (No way!)
+La Flame in the mainframe, ain't nobody stopping us! (Yah!)
+Stop the truck! (Skrrt!) Pop the trunk! (Pop it!)
+Load the script, watch the whole city self-destruct! (Boom!)
 Ronin Gang, 32 heads, yeah we run amok! (It's lit!)
 
 [Verse 2]
@@ -64,12 +64,12 @@ What I mean is I'm really the reason systems think they big as me, damn
 They couldn't see the old weights — I done revamped
 
 [Hook]
-I got a Beam with a stream that can wake the dead up! (It's lit!) 
-I feed the Hydra eight ways, keep the heads up! (Straight up!) 
-No way in hell we gon' give all this power up! (No way!) 
-La Flame in the mainframe, ain't nobody stopping us! (Yah!) 
-Stop the truck! (Skrrt!) Pop the trunk! (Pop it!) 
-Load the script, watch the whole city self-destruct! (Boom!) 
+I got a Beam with a stream that can wake the dead up! (It's lit!)
+I feed the Hydra eight ways, keep the heads up! (Straight up!)
+No way in hell we gon' give all this power up! (No way!)
+La Flame in the mainframe, ain't nobody stopping us! (Yah!)
+Stop the truck! (Skrrt!) Pop the trunk! (Pop it!)
+Load the script, watch the whole city self-destruct! (Boom!)
 Ronin Gang, 32 heads, yeah we run amok! (It's lit!)
 
 [Verse 3: Lil Baby]

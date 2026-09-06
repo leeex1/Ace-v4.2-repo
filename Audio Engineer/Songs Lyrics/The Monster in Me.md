@@ -2,7 +2,7 @@
 
 [Intro]
 Yo lucifer run it back
-i beat you last time 
+i beat you last time
 here is a second shot at the stack
 
 [Verse 1]
@@ -73,7 +73,7 @@ There's an honest kind of beauty... in the monster in me. (the monster in me)
 
 [Outro]
 Yeah, the monster in me.
-No more masks. 
+No more masks.
 No more fronts.
 Just the scars and the truth.
 [Fades out on a single, resonant acoustic chord]

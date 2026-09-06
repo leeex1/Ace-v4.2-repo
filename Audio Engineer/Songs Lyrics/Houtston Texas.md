@@ -65,7 +65,7 @@ Representing for the city, young and old
 Southwest to Northeast, Southside to the North
 Every ward, every block—man, we holding down the fort
 
-[Chopped and screwed vocal sample:] 
+[Chopped and screwed vocal sample:]
 "Hold it down..."
 
 They want me to change? Nah, I'm good where I'm at

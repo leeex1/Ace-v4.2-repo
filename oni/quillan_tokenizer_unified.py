@@ -152,7 +152,6 @@ class UnifiedQuillanTokenizer:
         """Heuristic: detect which legacy tokenizer produced these IDs."""
         if not ids:
             return "empty"
-        mx = max(ids)
         # Custom and tiktoken both 0-50256, need content test
         # Try decoding both ways and check for garbage
         try:

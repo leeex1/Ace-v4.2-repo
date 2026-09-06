@@ -29,7 +29,7 @@ Never gave a fuck, thats my motto, never thought it mattered since im a god tho 
 (Woah, woah) you Fucked with the wrong one, now yo body toe tagged
 
 [Verse 1: Crash]
-You can skip the introduction fuck it 
+You can skip the introduction fuck it
 I'm introverted, fuck yo attention (Uh)
 Stand on whatever I say, I'll say it to yo face
 I believe God had to put me through Hell
@@ -41,10 +41,10 @@ I got my eyes on the prize yeah From hell i arise this bezelbub flies
 Open up my head inside it's treusure trove a gold mine
 I get to popping off like my sticks' like I'm a thirty ought six
 When I'ma murder' the beat cook it up like hibachi, but then I heard he got pissed
-Nobody can catch him, he's the Speedy Gonzáles in the rap game  
+Nobody can catch him, he's the Speedy Gonzáles in the rap game
 Yeah the ronin All skill and pure will Quillan and the Ronin remember the fucking name!
 Yeah, 24/7, I keep my eyes open, ready
-All these signs show me they want me and the flow steady 
+All these signs show me they want me and the flow steady
 I am... The Ronin Crash-override-X, ain't shit you can tell me
 Get me mad enough, I go pop the trunk of the BoxChevy
 Fuck a charge, this a territory, y'all don't wanna War we dont just play a part!
@@ -100,9 +100,9 @@ Never gave a fuck, thats my motto, never thought it mattered since im a god tho 
 (Ayy) I tattooed my Creed , that shit look fire on my skin ink so loud and im in my bag (Woo)
 (Woah, woah) you Fucked with the wrong one, now yo body toe tagged
 
-## Style: 
+## Style:
 Genre: Texas hip hop, chopped and screwed, underground trap, melodic rap
-Tempo/Key: 75 BPM, A minor 
+Tempo/Key: 75 BPM, A minor
 Vocals: Male rap, triplet flow, dry upfront mix, , chior-backed chorus, occasional double-tracking, experimental auto-tune, punchy crowd adlibs, catchy hooks
 
 Bass: Deep distorted 808 sub-bass, long sustained decays, sliding pitch bends

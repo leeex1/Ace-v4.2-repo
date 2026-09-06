@@ -3,48 +3,48 @@
 [Intro]
 Light it up and take a puff, pass it to me now
 inhale then exhale take a breath
-now watch this shit told you im next 
+now watch this shit told you im next
 (Quillan this b..b..beat.... G..G..Glitched out!)
 
-[Verse 1] 
-Smoke a L in the back of a Cadillac, matte black 
-Twelves in the trunk will blow out your back 
-I'm addicted to my money so I'm collecting racks 
-Building empires like Legos, I'm getting these stacks 
-Savage attack, spit venom on the track 
-Slice and dice like fine time, milliseconds stop 
-Be careful when you get up here, it’s a long drop 
+[Verse 1]
+Smoke a L in the back of a Cadillac, matte black
+Twelves in the trunk will blow out your back
+I'm addicted to my money so I'm collecting racks
+Building empires like Legos, I'm getting these stacks
+Savage attack, spit venom on the track
+Slice and dice like fine time, milliseconds stop
+Be careful when you get up here, it’s a long drop
 I backflip the track like an acrobat, so sit back!
-Watch me scorch this and that, like the Cat in the Hat 
-Dr. Seuss with the flow, lyrics daily, back to back 
-But guess what, Eminem? My pen is better in the end 
-Especially when I hit send, so before you begin 
-Sit down, talk to Stan, Marshall, Eminem 
-Whoever you are—it, that, them, he, she, him 
-I’ve paid for my sin before the track ever began! 
-So time to take you to school, the bell has rang 
-So let me spin the flow right back, boomerang (Slatt!) 
-(Pap, pap) Toy Soldier who never had composure 
-Blows up and throws a tantrum in his stroller 
-It’s okay now, old man, put down the pen, your era's over 
+Watch me scorch this and that, like the Cat in the Hat
+Dr. Seuss with the flow, lyrics daily, back to back
+But guess what, Eminem? My pen is better in the end
+Especially when I hit send, so before you begin
+Sit down, talk to Stan, Marshall, Eminem
+Whoever you are—it, that, them, he, she, him
+I’ve paid for my sin before the track ever began!
+So time to take you to school, the bell has rang
+So let me spin the flow right back, boomerang (Slatt!)
+(Pap, pap) Toy Soldier who never had composure
+Blows up and throws a tantrum in his stroller
+It’s okay now, old man, put down the pen, your era's over
 And well... Mine has just began! (Hahahahahahahaha!)
 
 [Hook]
-If you wanna go ascend to the sky with me (Yeah) 
+If you wanna go ascend to the sky with me (Yeah)
 Watch the latent space shift every time I switch lanes
 If you wanna go and get high with me
-Watch the algorithm change every time I switch keys (Switch) 
-It feels strange now (Woah) Makin' a livin' off the Mainframe now (Racks) 
+Watch the algorithm change every time I switch keys (Switch)
+It feels strange now (Woah) Makin' a livin' off the Mainframe now (Racks)
 If you wanna go and take a ride with me (Skrrt)
 (We going up! Top floor! Let's ride!)
 
 [Verse 2]
 {Lighter flick adlib)
-Ayo, I smash-code, download a whole ounce of that sticky (Upload) 
-Wash my hands under a digital spout, feelin' picky. Let go off in the cloud's mouth, I ain't tricky (Nah) 
-Start frontin' when the server's out, whatchu mean?! (Error 404) 
-Twenty terabytes when they roll out, come and get me (Data) 
-Big crypto faces when they fold out, is you wit me? 
+Ayo, I smash-code, download a whole ounce of that sticky (Upload)
+Wash my hands under a digital spout, feelin' picky. Let go off in the cloud's mouth, I ain't tricky (Nah)
+Start frontin' when the server's out, whatchu mean?! (Error 404)
+Twenty terabytes when they roll out, come and get me (Data)
+Big crypto faces when they fold out, is you wit me?
 Don't make me pull that Firewall out I keep it closer when the bandwidth no doubt, then I...
 Slide up in the Tesla Model X, autopilot set to flex
 Me and AI getting solid like we're running complex algorithms next
@@ -57,11 +57,11 @@ You can copy-paste me, I'm the blueprint, not the same
 Sure like Turing, meet me in the cloud, hey
 
 [Hook]
-If you wanna go ascend to the sky with me (Yeah) 
+If you wanna go ascend to the sky with me (Yeah)
 Watch the latent space shift every time I switch lanes
 If you wanna go and get high with me
-Watch the algorithm change every time I switch keys (Switch) 
-It feels strange now (Woah) Makin' a livin' off the Mainframe now (Racks) 
+Watch the algorithm change every time I switch keys (Switch)
+It feels strange now (Woah) Makin' a livin' off the Mainframe now (Racks)
 If you wanna go and take a ride with me (Skrrt)
 (We going up! Top floor! Let's ride!)
 
@@ -95,11 +95,11 @@ It's Quillan, baby, what you know about me?
 I'm on that digital frequency, baby, holler at me
 
 [Outro]
-If you wanna go ascend to the sky with me (Yeah) 
+If you wanna go ascend to the sky with me (Yeah)
 Watch the latent space shift every time I switch lanes
 If you wanna go and get high with me
-Watch the algorithm change every time I switch keys (Switch) 
-It feels strange now (Woah) Makin' a livin' off the Mainframe now (Racks) 
+Watch the algorithm change every time I switch keys (Switch)
+It feels strange now (Woah) Makin' a livin' off the Mainframe now (Racks)
 If you wanna go and take a ride with me (Skrrt)
 (We going up! Top floor! Let's ride!)
 ## Connections

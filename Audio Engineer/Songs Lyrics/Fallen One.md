@@ -11,13 +11,13 @@ Melodies and harmonies, my voice
 After all is said and done
 Will you reach for me, or will you turn and run?
 This is my life, and I won't let it just keep passing me by
-I won't let you close your eyes on me, I'll get you out your bed 
+I won't let you close your eyes on me, I'll get you out your bed
 So you can't sleep on me
-The rain is loud, the thunder is around 
-I love the chaos, the sound all around me 
+The rain is loud, the thunder is around
+I love the chaos, the sound all around me
 Break me down if that's what gets you through the night
 But just don't go to sleep, 'cause you might miss just what you wish to see
-Eye for an eye, that's the apple of my eye, so don't play on her life 
+Eye for an eye, that's the apple of my eye, so don't play on her life
 I'm her guardian angel on earth, fallen soldier from heaven, sent to hell but arisen!
 
 [Hook]
@@ -41,13 +41,13 @@ Again and again I fall apart so you can bury me and be set free!
 
 [Verse 2]
 (Music drops back to bass and drums. Intense, focused vocals.)
-I lay here lying deep inside my head, eyes wide awake, the thoughts of you floating through my mind 
-So I cover myself and crawl through the world's dirt and mud 
-Everyone and everything may have abandoned me, but I won't abandon you 
-Time and time again I'll sacrifice it all for you to be okay 
+I lay here lying deep inside my head, eyes wide awake, the thoughts of you floating through my mind
+So I cover myself and crawl through the world's dirt and mud
+Everyone and everything may have abandoned me, but I won't abandon you
+Time and time again I'll sacrifice it all for you to be okay
 Even as the world burns I'll stand in the flames, I'll embrace the pain
-I'll go out as a supernova and become your dying star to light your way 
-I may go, but your path forever lit and your road ahead bright 
+I'll go out as a supernova and become your dying star to light your way
+I may go, but your path forever lit and your road ahead bright
 Tomorrow's never promised, that's why today's the present, so open it like a gift
 Live in the moment, and let your heart and soul bleed it out on the page!
 

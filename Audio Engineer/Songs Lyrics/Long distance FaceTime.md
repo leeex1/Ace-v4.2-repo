@@ -42,14 +42,14 @@ It's been three days in a row, merk these beats over and over
 yoda, foriegn shopping, let me see, yeah ima cop it
 Told that fake partner to kick rocks, they act like it's a boulder, i dont care what you say
 Ain't no way , no stopping me, multiple albums, targets steady droppin'
-murder for hire really Got the city on fire 
+murder for hire really Got the city on fire
 glock Always taling, always in the skillet poppin', hella cold frostbit, keep it up stay poppin'
 I might have to fuck around and call mariah or rhianna
 Bitch lying on me like she tired so i put her to sleep with facts
 yeah im stirring up the pot, ima cajun call it gumbo when the mix blow
 crashOverrideX, nake you do a backflip on the track ayy
 Yeah, it ain't nice, its on sight once you cross me even if you blood or fam
-You can study where I'm from. this aint no malibu these streets on gangland 
+You can study where I'm from. this aint no malibu these streets on gangland
 This is nothing new to me, try and take my life, up that iron. (blam)
 Chopper so loud it silence the bandstand and bust back like a rubberband
 we get caught you dont know me we aint no homies im 24 shooting like im kobe

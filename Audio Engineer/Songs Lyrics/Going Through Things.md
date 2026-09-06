@@ -13,7 +13,7 @@ Shitstorm looked like jerry (Like springer)
 The boy lost his mind amnesia like Dory (What?)
 High is Only one way that I'm performing (Ayy)
 Roll it up (roll  it), roll it up (roll it)
-Keep it coming, I need more of them 
+Keep it coming, I need more of them
 Turn it up (roll it), roll it up (turn it)
 Keep it coming 'till I'm so high ant tell which ways up (Ayy)
 I don't even go in public without feeling like I should be on a substance (Damn)

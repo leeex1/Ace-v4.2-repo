@@ -12,12 +12,12 @@
  Designer shades can't hide the f*cking danger now
  Used to walk through the fire like it's nothing to me
  Now a single spark is rushing through my anatomy
- 
+
  Got a hundred unread texts, I'm ignoring the thread
  'Cause the silence in my chest is getting loud in my head
  Used to treat my own soul like a corporate expense
  Now the interest rate is peaking, past the point of defense (Yeah)
- 
+
  Double-parked the Rolls Royce but I'm going nowhere
  Got the world in my palm but I'm gasping for air
  She said "You're acting different, you ain't cold as before"
@@ -74,12 +74,12 @@ Look, they sold me the dream, but they left out the tax
  Now I'm staring at the ceiling, trying to face the facts
  You can't freeze time forever, the glacier gonna crack
  And when the floodwaters hit, you can't hold 'em back
- 
+
  So let the designer burn, let the platinum melt
  I'm finally feeling every single card that I was dealt
  It's excruciating, beautiful, a fatal design
  I'm stepping out of the chrome and I'm crossing the line (Real talk)
- 
+
  They're asking where the old me went, I left him to rust
  I had to pay for my soul, it was an absolute must
  The temperature's rising, the numbness is dead
@@ -91,7 +91,7 @@ Look, they sold me the dream, but they left out the tax
  Yeah, that's the diagnosis.
  A beautiful, fatal design.
  I'm stepping out of the chrome.
- 
+
  I'm breathing again.
  That's word to Quillan.
  The armor's gone.

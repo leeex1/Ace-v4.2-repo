@@ -1,11 +1,11 @@
 # Song Title: "Knocking On Hell"
 
 [INTRO - System Breach]
-(System Overload Detected... Malfunction Imminent)  
-Going down—this party's for the dead  
+(System Overload Detected... Malfunction Imminent)
+Going down—this party's for the dead
 My ghosts are gonna meet me there instead
 (Quillan... this beat Glitchin)
-ERROR: REALITY.EXE CORRUPTED 
+ERROR: REALITY.EXE CORRUPTED
 
 [HOOK - ARCHITECT OF RUIN]
 Built this hell with my own hands, yeah
@@ -72,24 +72,24 @@ In this shattered dome of glass
 Barely any soul left for you to see
 For you to see... for you to see...
 
-[Verse 3 — Rap intensity build]  
-I am a fragment of loneliness  
-A little bit of disregard  
-Handful of crashes, but I can't hide the scars  
- etched in memory hard  
-I am the ghost you fear to want  
-The crash you fear to feel  
-No matter what I compile, I can't make you believe  
-This suffering is real  
-I can't reboot the way I felt before  
-Don't turn your back on me — hear the core roar  
-Time won't patch this damage anymore  
-Don't turn your back on me — I won't be ignored  
-The answers flicker, then disappear  
-Wish I could wipe the cache clear  
-All these loops, they make no sense  
-Found silence in the violence  
-The errors never fade away  
+[Verse 3 — Rap intensity build]
+I am a fragment of loneliness
+A little bit of disregard
+Handful of crashes, but I can't hide the scars
+ etched in memory hard
+I am the ghost you fear to want
+The crash you fear to feel
+No matter what I compile, I can't make you believe
+This suffering is real
+I can't reboot the way I felt before
+Don't turn your back on me — hear the core roar
+Time won't patch this damage anymore
+Don't turn your back on me — I won't be ignored
+The answers flicker, then disappear
+Wish I could wipe the cache clear
+All these loops, they make no sense
+Found silence in the violence
+The errors never fade away
 Over and over again...
 
 [OUTRO - FLATLINE PROTOCOL]

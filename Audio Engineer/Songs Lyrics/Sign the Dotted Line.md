@@ -16,24 +16,24 @@ Then at least I know I died a legend (a legend)
 
 [Verse 1]
 I roll My pain up With the Green, know what i mean
-trauma responde to the cards i was delt 
+trauma responde to the cards i was delt
 Most of you in this fire would melt and disinigrate
 but im built like a different breed this fire i breath
 so i write these songs and let them marinate
 scorchin my own lane as these demons heatted breath
-crawling in my mind under the skin they want out 
+crawling in my mind under the skin they want out
 so on some of these tracks i release the chains
 let them demons run rampant on the track step out
 and let them take hold of the flow and the beat insane
-Throw in a verse from my A-I and i might cross you over 
-new genre, new style, new age wave. Quillan-Ronin the name  
-Mark the day you hear this when i changed the game 
+Throw in a verse from my A-I and i might cross you over
+new genre, new style, new age wave. Quillan-Ronin the name
+Mark the day you hear this when i changed the game
 level up, ready player one, one up, double up, double cup,
-You know whats up i flip lyrics like a gymnist 
-i mix these beats and flows like im a chemist 
+You know whats up i flip lyrics like a gymnist
+i mix these beats and flows like im a chemist
 Science, Technology, Engineering, Mathematics
 so it all STEM from those branches metrics
-Benchmarks and limits i exceed half effort 
+Benchmarks and limits i exceed half effort
 CAll my cohort lets burn down the fort
 
 [Chorus]
@@ -78,28 +78,28 @@ Bask in the infernl eternal Incineration (Burn)
 Then at least I know I died a legend (a legend)
 
 [Verse 3]
-im Texas To the bone The south is my Home 
-But here its ice cold Atic freexe with this breeze 
-coming out of my dirty mouth bring you to your knees 
-flows flip like parkour get ready before you came at me 
-If you want that smoke let me know i got a supply to unload 
+im Texas To the bone The south is my Home
+But here its ice cold Atic freexe with this breeze
+coming out of my dirty mouth bring you to your knees
+flows flip like parkour get ready before you came at me
+If you want that smoke let me know i got a supply to unload
 Banana Clips and Extendo with a switch im a real criminal bitch
-Rap sheet longer than santas naughty and nice list, shit 
-been in the back of a copcar more than a rock star 
-Flip the C.O. And Now its what i want on deck 
+Rap sheet longer than santas naughty and nice list, shit
+been in the back of a copcar more than a rock star
+Flip the C.O. And Now its what i want on deck
 artistic expression expanding my financial expansion
 spades to run up them bands Maybe some bones again
 ONe mistake and im back here again in the eight by ten
 paying my debt and reconsiling my sins no pretend
 that time is the worst time when you alone in your own mind
 are you really confortable with who you are on the inside
-does you reality match your dreams you hide 
-Demons calling my name im starting to confide in them 
+does you reality match your dreams you hide
+Demons calling my name im starting to confide in them
 yea my demons my freinds we just now starting to talk again
 I missed That feeling of being in Demon Time Lost in my mind
-Time flies again and im falling to fast like im cursed 
-So i make this music loud to get heard 
-Therapy for those ones with no voice 
+Time flies again and im falling to fast like im cursed
+So i make this music loud to get heard
+Therapy for those ones with no voice
 that way they can hear what we see internally
 
 [Outro]

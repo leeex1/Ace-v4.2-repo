@@ -1,6 +1,6 @@
 # song title : "Cloudy minded Art"
 
-## Lyrics: 
+## Lyrics:
 [Intro]
 Hey you awake?
 Yeah you you awake?
@@ -83,7 +83,7 @@ i always stand ten toes
 heading to my destination
 im on the road
 
-## style: 
+## style:
 Genre: Texas hip hop, Melodic rap, underground rap, melodic Trap, Street, chopped n Screwed
 Tempo/Key:  148 BPM, E minor, double-time, half-time
 Vocals: Male rap, JDXX quadrouplet flow, upfront mix, chior-backed chorus, often layered-tracking, Next-gen auto-tune, punchline crowd adlibs, bouncy catchy hook
@@ -96,4 +96,7 @@ Instruments: arpeggiated electric gutiar motif, dark-space orchestral synth pads
 
 Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggressive forward mix, wide stereo image, short plate reverb, light compression, catchy hook, aggressive rapid verses
 
-Mood: Bleak defiant confidence, comeback energy, sci-fi, menace, ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, ‑-out of tune, ‑-pitchy vocals, ‑-flat delivery, ‑-robotic vocals, ‑-timing drift, ‑-demo quality, ‑-bedroom mix, ‑-muddy mix, ‑-boxy mids, ‑-boomy bass, ‑-thin mix, ‑-hollow, ‑-narrow stereo, ‑-mono, ‑-overcompressed, ‑-pumping, ‑-brickwall limiting, ‑-phase cancellation, ‑-harsh sibilance, ‑-piercing highs
+Mood: Bleak defiant confidence, comeback energy, sci-fi, menace
+
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

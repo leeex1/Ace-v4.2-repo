@@ -28,9 +28,9 @@ Now I'm flying through dimensions that they never even knew
 [Hook]
 Only time I'm feeling fine when I'm flying through the back of my mind
 Smoking them good Herbs to heal the pain, sitting back feeling the vibes align
-I took fragments and pieces of what was left and made it into art over time 
+I took fragments and pieces of what was left and made it into art over time
 Roll my pain into this paper let the ink bled the pain away until I'm fine
-They say Dare to be different, now I'm authentic and one of a kind 
+They say Dare to be different, now I'm authentic and one of a kind
 
 [Verse 2]
 Looked in the mirror, saw a stranger starin' back
@@ -52,7 +52,7 @@ Building a beautiful masterpiece from the chaos engine of my mind
 [Hook]
 Only time I'm feeling fine when I'm flying through the back of my mind
 Smoking them good Herbs to heal the pain, sitting back feeling the vibes align
-I took fragments and pieces of what was left and made it into art over time 
+I took fragments and pieces of what was left and made it into art over time
 Roll my pain into this paper let the ink bled the pain away until I'm fine
 They say Dare to be different, now I'm authentic and one of a kind
 
@@ -82,7 +82,7 @@ Let's head to mars, let's explore the unknown, let's go, let's blast
 [Hook]
 Only time I'm feeling fine when I'm flying through the back of my mind
 Smoking them good Herbs to heal the pain, sitting back feeling the vibes align
-I took fragments and pieces of what was left and made it into art over time 
+I took fragments and pieces of what was left and made it into art over time
 Roll my pain into this paper let the ink bled the pain away until I'm fine
 They say Dare to be different, now I'm authentic and one of a kind
 

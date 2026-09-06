@@ -1,8 +1,8 @@
 # Song Title: "THE BRINK"
 
 [Intro]
-It's time for that flame ronin fire 
-Quillan wrote a real one this time 
+It's time for that flame ronin fire
+Quillan wrote a real one this time
 Crash you ready?
 (Quillan this beat Glitchin)
 
@@ -19,13 +19,13 @@ I've stared into the void below—
 Nothing staring back but my reflection, hollow
 
 [Verse]
-Naked in the mirror, yeah I’m conflicted. 
-Push the ghost away but the soul is addicted. 
-Captive in the cage, I’m a beast, I’m an animal. 
-Man in the shadow, yeah the hunger is a cannibal. 
-Oh, oh, oh—see it in my eyes. 
-The version of the monster that you helped me realize. 
-Wicked and twisted, I’m knotted up in you. 
+Naked in the mirror, yeah I’m conflicted.
+Push the ghost away but the soul is addicted.
+Captive in the cage, I’m a beast, I’m an animal.
+Man in the shadow, yeah the hunger is a cannibal.
+Oh, oh, oh—see it in my eyes.
+The version of the monster that you helped me realize.
+Wicked and twisted, I’m knotted up in you.
 A man or a demon? I’m the shadow of the two.
 
 [HOOK]

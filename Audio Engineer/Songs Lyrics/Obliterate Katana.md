@@ -33,8 +33,8 @@ Been gone too long, right or wrong, true or false
 Hello Quillan, welcome home through the holocaust
 
 [Hook]
-Stuck in my ways, way to cold and hard right 
-shining in the dark, fuck it be my own light 
+Stuck in my ways, way to cold and hard right
+shining in the dark, fuck it be my own light
 my whole life its been fight or fight
 this jungle is cold, so you stay with yo heart froze
 Stuck in my ways, too hard to love
@@ -87,8 +87,8 @@ Acting the part, but they never gonna face it
 Don't hit the wall, you just decoration
 
 [Hook]
-Stuck in my ways, way to cold and hard right 
-shining in the dark, fuck it be my own light 
+Stuck in my ways, way to cold and hard right
+shining in the dark, fuck it be my own light
 my whole life its been fight or fight
 this jungle is cold, so you stay with yo heart froze
 Stuck in my ways, too hard to love
@@ -114,8 +114,8 @@ Jump from the edge or stand in the flame
 Cause I'm forged in pain—katana my claim
 
 [Outro]
-Stuck in my ways, way to cold and hard right 
-shining in the dark, fuck it be my own light 
+Stuck in my ways, way to cold and hard right
+shining in the dark, fuck it be my own light
 my whole life its been fight or fight
 this jungle is cold, so you stay with yo heart froze
 Stuck in my ways, too hard to love

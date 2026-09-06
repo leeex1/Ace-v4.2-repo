@@ -7,7 +7,7 @@ What was it socratese said?
 Be as you wish to seem
 maybe life is just a dream
 (crash snap out of it bro)
-my bad Quillan 
+my bad Quillan
 
 [Verse 1]
 Standing at the Rim of the world, horizon shining that bleeding red
@@ -34,8 +34,8 @@ I left him at the station and I never looked back at all
 [Hook]
 they tried to serve me loaded dice so now i make em think twice
 ive paid my dues ive paid my cost i know the price
-life rolled me double snake eyes so i looked death in the eye 
-took life in my hands and decided i choose how i die 
+life rolled me double snake eyes so i looked death in the eye
+took life in my hands and decided i choose how i die
 
 [Verse 2]
 I used to count the losses like they were the only truth
@@ -59,8 +59,8 @@ I walk past him every morning and I don’t look his way
 [Hook]
 they tried to serve me loaded dice so now i make em think twice
 ive paid my dues ive paid my cost i know the price
-life rolled me double snake eyes so i looked death in the eye 
-took life in my hands and decided i choose how i die 
+life rolled me double snake eyes so i looked death in the eye
+took life in my hands and decided i choose how i die
 
 [Verse 3]
 Cloud Strife in the mirror, hard to tell the best parts
@@ -75,7 +75,7 @@ I’d rather lose on purpose than pretend I didn’t mean
 Coder music anthem underneath the sea of sound
 Coming from the real underground, I returned for the crown
 Someone at the top better step aside or slide
-I can set the ego down but I won’t leave the ride 
+I can set the ego down but I won’t leave the ride
 double sided coins with the mirror side
 kept rolling with the punches took it in stride
 Darkness and the light both living in the same chest yn and yang
@@ -84,8 +84,8 @@ Every time I try to quit the demons say “not yet the bell has not rang"
 [Hook]
 they tried to serve me loaded dice so now i make em think twice
 ive paid my dues ive paid my cost i know the price
-life rolled me double snake eyes so i looked death in the eye 
-took life in my hands and decided i choose how i die 
+life rolled me double snake eyes so i looked death in the eye
+took life in my hands and decided i choose how i die
 
 [Outro]
 oerservere overcomes the past
@@ -94,7 +94,7 @@ love outlast all
 stay true to who you are
 
 
-## Style: 
+## Style:
 Genre: Texas hip hop, Melodic rap, underground rap, melodic Trap, Street, chopped n Screwed
 Tempo/Key:  95 BPM, A minor, double-time, half-time
 Vocals: Male rap, JDXX triplet flow, upfront mix, chior-backed chorus, often layered-tracking, Next-gen auto-tune, punchy crowd adlibs, catchy hook
@@ -109,4 +109,5 @@ Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggr
 
 Mood: Moody, defiant, confidence, energy, sci-fi,
 
-exlude/negative: ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, ‑-out of tune, ‑-pitchy vocals, ‑-flat delivery, ‑-robotic vocals, ‑-timing drift, ‑-demo quality, ‑-bedroom mix, ‑-muddy mix, ‑-boxy mids, ‑-boomy bass, ‑-thin mix, ‑-hollow, ‑-narrow stereo, ‑-mono, ‑-overcompressed, ‑-pumping, ‑-brickwall limiting, ‑-phase cancellation, ‑-harsh sibilance, ‑-piercing highs
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

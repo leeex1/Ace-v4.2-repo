@@ -85,7 +85,7 @@ from the page to the hearse
 lets cause a overload
 so lets goooo!
 
-## style : 
+## style :
 Genre: Texas hip hop, Melodic rap, underground rap, melodic Trap, Street, chopped n Screwed
 Tempo/Key:  97 BPM, D minor, double-time, half-time
 Vocals: Male rap, JDXX quadruplet flow, upfront mix, chior-backed chorus, vocal stacking, layered-tracking, Next-gen auto-tune, punchline crowd adlibs, bouncy/catchy hook
@@ -98,4 +98,7 @@ Instruments: arpeggiated pan flute motif, dark-space orchestral synth pads, corr
 
 Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggressive forward mix, wide stereo image, short plate reverb, light compression, catchy hook, aggressive, structured
 
-Mood: Dark, brooding, defiant, confident energy, sci-fi, ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, ‑-out of tune, ‑-pitchy vocals, ‑-flat delivery, ‑-robotic vocals, ‑-timing drift, ‑-demo quality, ‑-bedroom mix, ‑-muddy mix, ‑-boxy mids, ‑-boomy bass, ‑-thin mix, ‑-hollow, ‑-narrow stereo, ‑-mono, ‑-overcompressed, ‑-pumping, ‑-brickwall limiting, ‑-phase cancellation, ‑-harsh sibilance, ‑-piercing highs
+Mood: Dark, brooding, defiant, confident energy, sci-fi menace
+
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

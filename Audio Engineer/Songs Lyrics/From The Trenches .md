@@ -1,8 +1,8 @@
 # Song Title: "From The Trenches To The Throne"
 
 [Intro]
-(Ah-ah-ah-ah) They said id never make it 
-(Ah-ah-ah-ah) They said i would fail 
+(Ah-ah-ah-ah) They said id never make it
+(Ah-ah-ah-ah) They said i would fail
 (Ah-ah-ah-ah) Mayday! Mayday!
 they said it was impossible
 

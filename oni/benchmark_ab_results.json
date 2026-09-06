@@ -1,0 +1,152 @@
+{
+  "timestamp": "2026-09-04 10:28:01",
+  "system": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python_version": "3.14.2",
+    "torch_version": "2.10.0+cpu",
+    "device": "cpu",
+    "device_name": "Intel64 Family 6 Model 158 Stepping 9, GenuineIntel"
+  },
+  "parameters": {
+    "batch_size": 2,
+    "seq_len": 64,
+    "n_layer": 2,
+    "hidden_dim": 256,
+    "ffn_dim": 512,
+    "steps": 50,
+    "warmup": 10,
+    "top_k": 4
+  },
+  "config_a": {
+    "name": "Baseline Quillan-Ronin v5.4.0 ONI (dense_pull, 34 experts)",
+    "router_mode": "dense_pull",
+    "active_experts": 34,
+    "forward_only": {
+      "steps": 50,
+      "warmup": 10,
+      "batch_size": 2,
+      "seq_len": 64,
+      "total_tokens": 6400,
+      "elapsed_sec": 12.135392700030934,
+      "mean_latency_ms": 242.62,
+      "median_latency_ms": 225.41,
+      "min_latency_ms": 140.66,
+      "max_latency_ms": 517.16,
+      "std_latency_ms": 82.36,
+      "throughput_tokens_sec": 527.38,
+      "peak_vram_allocated_mb": 472.03,
+      "peak_vram_reserved_mb": 472.03,
+      "memory_type": "CPU_RSS",
+      "avg_total_loss": null,
+      "aux_breakdown": {}
+    },
+    "forward_backward": {
+      "steps": 50,
+      "warmup": 10,
+      "batch_size": 2,
+      "seq_len": 64,
+      "total_tokens": 6400,
+      "elapsed_sec": 28.67316510004457,
+      "mean_latency_ms": 572.98,
+      "median_latency_ms": 568.6,
+      "min_latency_ms": 490.82,
+      "max_latency_ms": 732.1,
+      "std_latency_ms": 56.54,
+      "throughput_tokens_sec": 223.21,
+      "peak_vram_allocated_mb": 895.07,
+      "peak_vram_reserved_mb": 895.07,
+      "memory_type": "CPU_RSS",
+      "avg_total_loss": 10.8336,
+      "aux_breakdown": {
+        "total_aux": 0.0062384848669171334,
+        "spectral_gap": 0.0243973146378994,
+        "load_balance": 0.0,
+        "z_loss": 0.0,
+        "entropy": 3.4829562950134276,
+        "ethics": 0.4954117774963379
+      }
+    },
+    "flops_forward": {
+      "total_flops": 4380491776,
+      "giga_flops": 4.380491776,
+      "expert_flops": 427819008.0,
+      "expert_giga_flops": 0.427819008,
+      "active_experts": 34,
+      "total_experts": 34
+    },
+    "flops_train": {
+      "total_flops": 12713656320.0,
+      "giga_flops": 12.71365632,
+      "expert_flops": 855638016.0,
+      "expert_giga_flops": 0.855638016,
+      "active_experts": 34,
+      "total_experts": 34
+    }
+  },
+  "config_b": {
+    "name": "Ultrametric Quillan-Ronin v5.4.0 ONI (ultrametric tree, top-4 experts)",
+    "router_mode": "ultrametric",
+    "active_experts": 4,
+    "forward_only": {
+      "steps": 50,
+      "warmup": 10,
+      "batch_size": 2,
+      "seq_len": 64,
+      "total_tokens": 6400,
+      "elapsed_sec": 8.723692799976561,
+      "mean_latency_ms": 174.39,
+      "median_latency_ms": 142.82,
+      "min_latency_ms": 117.07,
+      "max_latency_ms": 452.11,
+      "std_latency_ms": 71.26,
+      "throughput_tokens_sec": 733.63,
+      "peak_vram_allocated_mb": 864.32,
+      "peak_vram_reserved_mb": 864.32,
+      "memory_type": "CPU_RSS",
+      "avg_total_loss": null,
+      "aux_breakdown": {}
+    },
+    "forward_backward": {
+      "steps": 50,
+      "warmup": 10,
+      "batch_size": 2,
+      "seq_len": 64,
+      "total_tokens": 6400,
+      "elapsed_sec": 72.72378399997251,
+      "mean_latency_ms": 1453.52,
+      "median_latency_ms": 585.22,
+      "min_latency_ms": 444.84,
+      "max_latency_ms": 19731.77,
+      "std_latency_ms": 2916.06,
+      "throughput_tokens_sec": 88.0,
+      "peak_vram_allocated_mb": 1096.1,
+      "peak_vram_reserved_mb": 1096.1,
+      "memory_type": "CPU_RSS",
+      "avg_total_loss": 10.8482,
+      "aux_breakdown": {
+        "total_aux": 0.019366748109459878,
+        "spectral_gap": 0.027424775622785093,
+        "load_balance": 0.0051544239372014996,
+        "z_loss": 12.62286449432373,
+        "entropy": 3.480022439956665,
+        "ethics": 0.4988174045085907
+      }
+    },
+    "flops_forward": {
+      "total_flops": 4003004416,
+      "giga_flops": 4.003004416,
+      "expert_flops": 50331648.0,
+      "expert_giga_flops": 0.050331648,
+      "active_experts": 4,
+      "total_experts": 34
+    },
+    "flops_train": {
+      "total_flops": 11958681600.0,
+      "giga_flops": 11.9586816,
+      "expert_flops": 100663296.0,
+      "expert_giga_flops": 0.100663296,
+      "active_experts": 4,
+      "total_experts": 34
+    }
+  }
+}

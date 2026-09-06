@@ -27,4 +27,5 @@ TEMPO: 114 BPM (drops to 57 BPM half-time in Eclipse sections) | KEY: A Minor �
 Lead: Solo violin vs firey flamenco cruchy Guitar (Back and forth duality)
 Rhythm: Hybrid Live metalcore percussion + lap harp (Earth) + cracking snare rolls (Wind) + electronic hi-hats
 Bass: Warm rolling sub (Solar sections) → grinding distorted reverse synth bass (Eclipse/Drop sections)
-Texture: Liquid synth pad (Water), fiery distorted lead (Fire), void-reverb tails, ambient outro pad, ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals
+Texture: Liquid synth pad (Water), fiery distorted lead (Fire), void-reverb tails, ambient outro pad, ## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

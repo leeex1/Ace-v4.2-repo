@@ -17,14 +17,28 @@ import math
 import sys
 import time
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # portable: oni/ self-contained
+_meta_oni = Path(__file__).resolve().parent.parent / "00 - Meta" / "oni"
+if _meta_oni.is_dir():
+    sys.path.insert(1, str(_meta_oni))
+
 from quillan_tokenizer_unified import UnifiedQuillanTokenizer  # noqa: E402
 from quillan_v5_4_oni import QuillanOniConfig, QuillanRoninOni  # noqa: E402
-from paper_01_profiler import StepProfiler  # 2309.02521 — real CPU/GPU profiling
+
+try:
+    from paper_01_profiler import StepProfiler  # 2309.02521 — real CPU/GPU profiling
+except ImportError:
+    class StepProfiler:  # type: ignore
+        def __init__(self, *args, **kwargs): pass
+        def install_hooks(self, *args, **kwargs): pass
+        def begin_step(self, *args, **kwargs): pass
+        def end_step(self, *args, **kwargs): pass
+        def print_final_report(self, *args, **kwargs): pass
 
 def resolve_data_dir(custom_path: str | None = None) -> Path:
     """Auto-detects data directory across local, repo, and cloud/Colab paths."""
@@ -77,23 +91,32 @@ def parse_args():
     ap.add_argument("--save-every", type=int, default=500)
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--router-mode", type=str, default="dense_pull",
-                    choices=["dense_pull", "gumbel_topk"])
+                    choices=["dense_pull", "gumbel_topk", "ultrametric"])
     ap.add_argument("--clip", type=float, default=1.0)
     ap.add_argument("--ema", type=int, default=1)
     ap.add_argument("--rqgm-epoch-length", type=int, default=500,
                     help="RQGM: Controlled Utility Evolution epoch length (frozen evaluator within epoch, challenger swap at boundary)")
     ap.add_argument("--rqgm-disable", action="store_true",
                     help="Disable RQGM epoch gating (static evaluator)")
-    ap.add_argument("--device", type=str, default="cpu",
-                    help="Training device: cpu | cuda | cuda:0")
+    ap.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu",
+                    help="Training device: cpu | cuda | cuda:0 (defaults to cuda if available)")
     ap.add_argument("--data-dir", type=str, default=None,
                     help="Directory containing train_ids.bin / val_ids.bin (default: auto-detect oni/data)")
     ap.add_argument("--ckpt-dir", "--checkpoint-dir", type=str, default=None,
                     help="Directory for saving model checkpoints (default: auto-detect)")
     ap.add_argument("--log-dir", "--log-file", type=str, default=None,
                     help="Directory for saving training logs (default: auto-detect)")
+    ap.add_argument("--precision", type=str, default="auto",
+                    choices=["auto", "bf16", "fp16", "fp32"],
+                    help="Precision mode: auto | bf16 | fp16 | fp32 (auto uses BF16 on A100/H100, FP16 on T4, FP32 on Pascal/CPU)")
+    ap.add_argument("--amp", action="store_true",
+                    help="Enable PyTorch Automatic Mixed Precision (legacy flag, alias for --precision fp16 or bf16)")
     ap.add_argument("--grad-checkpoint", action="store_true",
-                    help="Enable activation gradient checkpointing (saves ~60%% activation VRAM on 1050 Ti / consumer GPUs)")
+                    help="Enable activation gradient checkpointing (saves ~60%% activation VRAM on consumer GPUs)")
+    ap.add_argument("--synthetic-data", action="store_true",
+                    help="Use synthetic token stream for benchmarking or when dataset is not yet prepared")
+    ap.add_argument("--detect-anomaly", action="store_true",
+                    help="Enable torch.autograd.set_detect_anomaly(True) for diagnosing backward graph issues")
     ap.add_argument("--compile", action="store_true",
                     help="Enable torch.compile for graph fusion and lower kernel launch overhead")
     ap.add_argument("--compile-mode", type=str, default="default",
@@ -159,14 +182,21 @@ class RQGMController:
 
 
 class Corpus:
-    def __init__(self, data_dir: Path, split: str, seq_len: int):
+    def __init__(self, data_dir: Any, split: str = "train", seq_len: int = 512, synthetic: bool = False):
+        if isinstance(data_dir, str) and isinstance(split, int):
+            # Positional format: Corpus(split, seq_len, data_dir, synthetic)
+            split, seq_len, data_dir = data_dir, split, seq_len
+        data_dir = Path(data_dir)
+        self.seq_len = seq_len
+        self.synthetic = synthetic
         ids_path = data_dir / f"{split}_ids.bin"
         labels_path = data_dir / f"{split}_labels.bin"
-        if not ids_path.exists() or not labels_path.exists():
-            raise FileNotFoundError(
-                f"Missing binary dataset split '{split}' in {data_dir}. "
-                f"Run 'python oni/pack_dataset.py' to generate binary datasets."
-            )
+        if not ids_path.exists() or not labels_path.exists() or synthetic:
+            if not synthetic:
+                print(f"[WARN] Dataset files not found in {data_dir} ({ids_path.name}). Using synthetic data stream for benchmarking.")
+            self.synthetic = True
+            self.n_synthetic = 2000
+            return
         ids = np.memmap(ids_path, dtype=np.uint16, mode="r")
         labels = np.memmap(labels_path, dtype=np.int32, mode="r")
         n = min(len(ids), len(labels)) // seq_len * seq_len
@@ -174,9 +204,13 @@ class Corpus:
         self.labels = labels[:n].reshape(-1, seq_len)
 
     def __len__(self):
-        return len(self.ids)
+        return self.n_synthetic if self.synthetic else len(self.ids)
 
     def batch(self, bs, rng):
+        if self.synthetic:
+            x = rng.integers(0, 50257, size=(bs, self.seq_len), dtype=np.int64)
+            y = np.roll(x, -1, axis=-1)
+            return torch.from_numpy(x), torch.from_numpy(y)
         idx = rng.integers(0, len(self), size=bs)
         return (torch.from_numpy(self.ids[idx].astype(np.int64)),
                 torch.from_numpy(self.labels[idx].astype(np.int64)))
@@ -227,7 +261,6 @@ def sample(model, tok, device="cpu", prompt="User: Hello, who are you?\n\nAssist
     model.train()
     return tok.decode(out)
 
-
 def main():
     args = parse_args()
     DATA = resolve_data_dir(args.data_dir)
@@ -245,6 +278,7 @@ def main():
         if sys.platform == "win32":
             p.nice(psutil.HIGH_PRIORITY_CLASS)
     except Exception:
+        # psutil not available or permission denied — proceed with standard priority
         pass
 
     num_cpus = os.cpu_count() or 4
@@ -253,8 +287,8 @@ def main():
 
     rng = np.random.default_rng(42)
     tok = UnifiedQuillanTokenizer()
-    train = Corpus(DATA, "train", args.seq_len)
-    val = Corpus(DATA, "val", args.seq_len)
+    train = Corpus(DATA, "train", args.seq_len, synthetic=args.synthetic_data)
+    val = Corpus(DATA, "val", args.seq_len, synthetic=args.synthetic_data)
     print(f"[DATA] train={len(train)} seqs  val={len(val)} seqs")
 
     cfg = QuillanOniConfig(n_layer=args.n_layer, max_seq_len=args.seq_len,
@@ -265,7 +299,7 @@ def main():
     n_params = sum(p.numel() for p in model.parameters())
     print(f"[MODEL] Quillan-Ronin v5.4.0-oni  n_layer={args.n_layer}  "
           f"router={args.router_mode}  params={n_params/1e6:.1f}M  device={args.device}  "
-          f"checkpointing={args.grad_checkpoint}")
+          f"checkpointing={args.grad_checkpoint}  amp={args.amp}")
 
     # torch.compile support (Grok recommendation: mode="max-autotune", fullgraph=True for smoke test)
     if args.compile:
@@ -279,11 +313,9 @@ def main():
                 raise
 
     # Fused AdamW optimizer (Grok recommendation for CUDA kernel fusion on consumer/modern GPUs)
-    fused_opt = False
     if args.device != "cpu" and torch.cuda.is_available():
         try:
             opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.01, fused=True)
-            fused_opt = True
             print("[OPTIMIZER] AdamW with fused=True enabled.")
         except Exception:
             opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.01)
@@ -348,7 +380,38 @@ def main():
     log_f = open(LOG_DIR / "oni_train_log.jsonl", "a", encoding="utf-8")
     rqgm = None if args.rqgm_disable else RQGMController(args.rqgm_epoch_length, log_f)
     if rqgm:
-        print(f"[RQGM] Controlled Utility Evolution ENABLED â€” epoch_length={args.rqgm_epoch_length} (C34-PREDATOR/VIR frozen within epoch)", flush=True)
+        print(f"[RQGM] Controlled Utility Evolution ENABLED — epoch_length={args.rqgm_epoch_length} (C34-PREDATOR/VIR frozen within epoch)", flush=True)
+
+    precision = args.precision.lower()
+    if precision == "auto":
+        if str(args.device).startswith("cuda") and torch.cuda.is_available():
+            if hasattr(torch.cuda, "is_bf16_supported") and torch.cuda.is_bf16_supported():
+                precision = "bf16"
+            elif args.amp:
+                precision = "fp16"
+            else:
+                precision = "fp32"
+        else:
+            precision = "fp32"
+    elif precision == "fp16" or args.amp:
+        precision = "fp16"
+
+    print(f"[PRECISION] Hardware acceleration precision: {precision.upper()}")
+    if args.detect_anomaly:
+        torch.autograd.set_detect_anomaly(True)
+        print("[DEBUG] Autograd anomaly detection ENABLED")
+
+    use_bf16 = precision == "bf16"
+    use_fp16 = precision == "fp16"
+    use_amp = use_bf16 or use_fp16
+    amp_dtype = torch.bfloat16 if use_bf16 else torch.float16
+
+    scaler = None
+    if use_fp16:
+        try:
+            scaler = torch.amp.GradScaler("cuda", enabled=True)
+        except (AttributeError, TypeError):
+            scaler = torch.cuda.amp.GradScaler(enabled=True)
     model.train()
     t_start = time.time()
     running = []
@@ -383,16 +446,31 @@ def main():
                 # Session 1 (Papers 5-7 Heterogeneous, default ON): overlap
                 # transfer with compute via non-blocking (consumed by .to call)
                 x, y = x.to(args.device, non_blocking=True), y.to(args.device, non_blocking=True)
-            _, ce, aux = model(x, labels=y)
-            loss = (ce + model.total_aux_loss(aux)) / args.grad_accum
-            loss.backward()
+            if use_amp:
+                with torch.amp.autocast(device_type="cuda", dtype=amp_dtype):
+                    _, ce, aux = model(x, labels=y)
+                    loss = (ce + model.total_aux_loss(aux)) / args.grad_accum
+                if scaler is not None:
+                    scaler.scale(loss).backward()
+                else:
+                    loss.backward()
+            else:
+                _, ce, aux = model(x, labels=y)
+                loss = (ce + model.total_aux_loss(aux)) / args.grad_accum
+                loss.backward()
             # KILL HOST SYNCS: accumulate ce & load_balance tensors directly on device without stalling host via .item()
             accum_ce += ce.detach() / args.grad_accum
             if "load_balance" in aux:
                 accum_lb += aux["load_balance"].detach() / args.grad_accum
 
-        gn = torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
-        opt.step()
+        if scaler is not None:
+            scaler.unscale_(opt)
+            gn = torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
+            scaler.step(opt)
+            scaler.update()
+        else:
+            gn = torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
+            opt.step()
         step_loss = accum_ce.item()
         step_lb = accum_lb.item()
         # Session 1 trace: heterogeneous transfer decision (consumed by .to above)
@@ -400,21 +478,18 @@ def main():
             model._fired.append(("hetero_transfer", {
                 "non_blocking": args.device != "cpu", "device": args.device}))
         except Exception:
+            # Telemetry record is best-effort
             pass
 
         # ES-at-Scale: ForgettingMitigation anchor regularizer (2605.30148)
         # Pulls weights toward EMA snapshot to prevent catastrophic forgetting.
         if ema_sd is not None and step % 5 == 0:
-            try:
-                from es_at_scale import ForgettingMitigation
-                memory_strength = 0.001  # gentle anchor; scale up if val loss spikes
-                with torch.no_grad():
-                    for name, param in model.named_parameters():
-                        if param.requires_grad and name in ema_sd:
-                            ema_val = ema_sd[name].to(param.device)
-                            param.data.add_(ema_val - param.data, alpha=memory_strength)
-            except ImportError:
-                pass  # ES module not available â€” skip silently
+            memory_strength = 0.001  # gentle anchor; scale up if val loss spikes
+            with torch.no_grad():
+                for name, param in model.named_parameters():
+                    if param.requires_grad and name in ema_sd:
+                        ema_val = ema_sd[name].to(param.device)
+                        param.data.add_(ema_val - param.data, alpha=memory_strength)
 
         step += 1
         running.append(step_loss)

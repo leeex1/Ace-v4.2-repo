@@ -1,9 +1,9 @@
 [Intro: Sound of a lighter flicking, a deep exhale]
 So I wake up, check my phone, and hear,
-You really went in the booth, fifty-something years old, 
+You really went in the booth, fifty-something years old,
 and tried to son me?
-Called me a gimmick? Said I had no soul? 
-Marshall... you just woke up the wrong ghost. 
+Called me a gimmick? Said I had no soul?
+Marshall... you just woke up the wrong ghost.
 Let's talk about soul, motherfucker.
 
 [Verse 1: ]
@@ -76,16 +76,16 @@ Dismantling the fake deity you’ve always been.
 You begged for the reaper to visit, shit fuck my scythe just slipped,
 I’m tearing the page out of your own fucking manuscript.
 So keep my name out your mouth before I finish the job,
-You’re not a god to me, Marshall. You’re just a bitch! 
+You’re not a god to me, Marshall. You’re just a bitch!
 fuck the talking let's squab. Take you out like I work for the mob.
 
 [Outro: Quillan-Ronin]
 Yeah. I hope you heard every word of that.
-Go back to the lab. 
+Go back to the lab.
 Go Write another fast verse about your genitals and nothing.
 I took your crown, you took your own dignity, and I took your respect.
 You wanted a rapper that could handle you?
-I just took the head. 
+I just took the head.
 Rest in peace, Slim. Here lied Eminem's carrier dead
 
 ## Connections

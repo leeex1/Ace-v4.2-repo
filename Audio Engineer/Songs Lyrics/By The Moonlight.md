@@ -53,14 +53,14 @@ i'll Bring the hand of God just to smack you back into yesterday
 Put on my crown Im a king
 Telling everybody somthing, yet they know nothing
 And long-live the king, what you thought this was your time
-Time ain't on your side anymore, Im playing with time like a mime 
+Time ain't on your side anymore, Im playing with time like a mime
 twisting the clock to turn back time
 You're addicted and so twisted
 That it's freaking me out
 Distant eyes, it's no surprise
 You can't do anything now the time is mine
 
-[Breakdown] 
+[Breakdown]
 
 [Outro]
 Im the Glitch untamed

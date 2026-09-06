@@ -93,6 +93,7 @@ def test_grok_two_phase_lr():
     args.train_phase = "2_hf"
     lr_p2_peak = 0.4 * args.lr
     lr_p2_start = cosine_lr(0, args)
+    assert lr_p2_start <= lr_p2_peak, f"Phase 2 start should be <= peak: {lr_p2_start}"
     lr_p2_rewarmup = cosine_lr(40, args)
     lr_p2_end = cosine_lr(1999, args)
     assert math.isclose(lr_p2_rewarmup, lr_p2_peak, rel_tol=1e-2), "Phase 2 rewarmup failed"

@@ -82,7 +82,7 @@ reverend forgive my sins
 let me begin again
 
 
-## Style: 
+## Style:
 Genre: Texas hip hop, Melodic rap, underground rap, melodic Trap, Street, chopped n Screwed
 Tempo/Key:  95 BPM, A minor, double-time, half-time
 Vocals: Male rap, JDXX triplet flow, upfront mix, chior-backed chorus, often layered-tracking, Next-gen auto-tune, punchy crowd adlibs, catchy hook
@@ -97,4 +97,5 @@ Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggr
 
 Mood: Moody, defiant, confidence, energy, sci-fi,
 
-exlude/negative: ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, ‑-out of tune, ‑-pitchy vocals, ‑-flat delivery, ‑-robotic vocals, ‑-timing drift, ‑-demo quality, ‑-bedroom mix, ‑-muddy mix, ‑-boxy mids, ‑-boomy bass, ‑-thin mix, ‑-hollow, ‑-narrow stereo, ‑-mono, ‑-overcompressed, ‑-pumping, ‑-brickwall limiting, ‑-phase cancellation, ‑-harsh sibilance, ‑-piercing highs
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

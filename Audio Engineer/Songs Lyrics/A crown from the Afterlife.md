@@ -13,7 +13,7 @@ Yeah I come from the bottom different from others, yeah,  I had to grind for it 
 Tell em all I'm coming got them bitches running got em running (running, and running)
 
 [Verse 1]
-Started in the dirt where the streetlights flicker, but my flow got sicker and sicker 
+Started in the dirt where the streetlights flicker, but my flow got sicker and sicker
 Mama worked three jobs, but the reaper came quicker,and quicker
 She left me with a crown before she left this earth, crowned me at birth
 Said "Son, you're a true king"—those were her last words,
@@ -22,7 +22,7 @@ Every time I wanna quit, I hear her and see her—I got no choice,
 She planted seeds in soil that was cracked and dry, but drowned on earth
 Told me "Reach for the stars you'll never make it if you don't try,"
 So I took that pain, turned it to propane, and lit this bitch aflame and bathed in the flames embraced the pain
-Every tear I shed became fuel for the campaign, pop bottle champagne 
+Every tear I shed became fuel for the campaign, pop bottle champagne
 Uncle Glenn said "you won't ever be shit" , said I didn't have what it takes to play the part,
 But I'm living proof that broken pieces can become impressive art,
 Block tried to trap me in a cage so I got a couple keys and unlocked it and turned the page, fresh start
@@ -67,10 +67,10 @@ Now I’m flying above ‘em, I’m flipping the bird (to the haters)
 Bank account getting heavy, weight, the jewelry is froze strike a pose
 I rose through the concrete just like a weed but im a rose
 I know my worth, yeah, want a feature the price went up
-Pouring grit, determination, and success inside of my cup ima chemist mix is up 
+Pouring grit, determination, and success inside of my cup ima chemist mix is up
 They running, they hiding, when the king comes off his throne, they scared of the king gonna hit all in they dome
-I stepped in the ring hands of stone and I won everything no matter into what cell I'm thrown it's my home 
-From the gutter with nothing but these sticks and bars to greatness, the story is told watch it unfold 
+I stepped in the ring hands of stone and I won everything no matter into what cell I'm thrown it's my home
+From the gutter with nothing but these sticks and bars to greatness, the story is told watch it unfold
 Every track that I touch is turning to pure platinum or gold!
 
 [Outro]

@@ -1,7 +1,7 @@
 [Intro]
- Yeah, ay, ay, ay, 
+ Yeah, ay, ay, ay,
 yeah, yeah, yeah,
- alright, let me kill this shit one more time, 
+ alright, let me kill this shit one more time,
 let me  just kill this little flow like this and go,
 
 [Verse 1]
@@ -35,13 +35,13 @@ I'm ripping it up, shredding the fabric every time,
 I'm turning on the game, glitching the matrix with the rhyme,
 I know I tear it up, yeah, these people crave the heat,
 Man, they don't want all the smoke, defeat is bittersweet,
-Anytime I step up to the mic, I make 'em choke, 
-Suffocate the hope, cuz I'm bringing the rope, 
+Anytime I step up to the mic, I make 'em choke,
+Suffocate the hope, cuz I'm bringing the rope,
 Bitch, you—(cough), (cough)—choke on the exhaust,
 Cuz I'm giving it like propane, *bang bang*, what's the cost?
 You don't wanna provoke, cuz I'm contagious with the flow,
-Viral payload, yeah, I'm fighting like a dragon, 
-Breathing fire, napalm spitting, damn, that shit's outrageous, 
+Viral payload, yeah, I'm fighting like a dragon,
+Breathing fire, napalm spitting, damn, that shit's outrageous,
 Oh shit, look there he go, lyrical sniper, headshot, let's go
 
 [Hook]

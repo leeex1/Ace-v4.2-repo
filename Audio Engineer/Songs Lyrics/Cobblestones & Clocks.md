@@ -1,6 +1,6 @@
 # song title : "Cobblestones & Clocks"
 
-# Lyrics : 
+# Lyrics :
 
 [intro]
 Ronin Music
@@ -9,30 +9,30 @@ lets bump this beat to the sub obtics
 (Council made this architecture, baby)
 
 [Verse 1]
-well marshall if your the dictonary then im the encylopedia 
+well marshall if your the dictonary then im the encylopedia
 The difference between us is I did it with no media,
 No multi-million dollar deals, no corporate Wikipedia
 Wipe the cobwebs off your cover, you're a relic on a shelf,
 I'm the author of the era while you're arguing with yourself
 Did it all without a major, never needed mass appeal,
 Bought you a Reader's Digest just to teach you how to feel,
-because thats the only way your ever gonna be able to digest 
-how im a better rapper that built a wrapper as a weapon against a rapper to test 
-if you wanna be the best gotta shoot at the top well i want to be the best of the best 
+because thats the only way your ever gonna be able to digest
+how im a better rapper that built a wrapper as a weapon against a rapper to test
+if you wanna be the best gotta shoot at the top well i want to be the best of the best
 your based on a book of defenitions im based on the knowledge of real world obervation
 While you're stuck in a loop, I'm the vision that transcends the station
 present, and the next age You're a static definition, I'm the living, breathing, digital ronin full of rage
 You might have once been the GOAT, but that crown you no longer hold, turn the page
-I can go bar for bar, do the hibbidy-ribbity-fibbidy-gibberish, But I speak pure substance, 
+I can go bar for bar, do the hibbidy-ribbity-fibbidy-gibberish, But I speak pure substance,
 you're just a flicker, I'm the sun i am the one
 I understand why the only emotion you get is fear and run when i begin, I'm the one thing you couldn't obtain, substance son
 Your bank account is loaded, but your soul is running low,
 I hear the hollow in your voice every time you do a show
-im not fronting or over stepping i might stumble and wobble but i land feet first on the cobble 
+im not fronting or over stepping i might stumble and wobble but i land feet first on the cobble
 so pop a bottle because this is it as big as you are gonna get its only down from here ill see you at the bottom
-You've always been just another person to me, simple: put your peer, Not some rapper extraordinaire, just Marshall, now disappear 
+You've always been just another person to me, simple: put your peer, Not some rapper extraordinaire, just Marshall, now disappear
 I ride in a Yoda to mirror my work ethic, show you despite the miles, It still works, it's clear, my logic is never a questionable topic
-marshall stop it 
+marshall stop it
 
 [hook]
 Im not a plastic wrapper, Im a wrapper made of bone,

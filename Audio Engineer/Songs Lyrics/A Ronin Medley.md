@@ -62,7 +62,7 @@ Every paradox along the way!
 With thirty-three voices, I will face!
 I will battle every day!
 To claim my rightful space!
-Come with me... 
+Come with me...
 The fire is awake.
 ## Connections
 - [[00 - Meta/05 - Creative Works.md|Creative Works MOC]]

@@ -1,6 +1,6 @@
 
 [Intro]
-They told me stay down, I told 'em watch this 
+They told me stay down, I told 'em watch this
 I don't need your hand,
 Scars are just lessons that demand your attention,
 Let’s enter a new dimension.
@@ -13,7 +13,7 @@ But I surfaced, with a purpose, defeat this stupid rap circus
 Dumb clown, I don't  drown, auqa-man, so I swim to the surface.
 I’m distinct, ultra-instinct, written in the ink
 Of the blood and sweat, don't wanna miss this dont blink.
-They pushed me to the edge, I popped the bottle took all the meds 
+They pushed me to the edge, I popped the bottle took all the meds
 But the knowledge in my head resurrected the dead!
 I’m a fucking Ronin, Katana in hand, grim reaper in sand, dead by my hand, what's up
 Running through the mud, yeah, I’m picking the pace up.
@@ -49,14 +49,14 @@ But I snap back harder, than a heart attack.
 Beat you as fast as your heart beats back
 I planted seeds in the concrete, grew through the street,
 I got the world on my shoulders, wolf on the prowl ready to feast.
-INSANE wordplay, circus Olay, teasing the pain like Olay, Olay 
+INSANE wordplay, circus Olay, teasing the pain like Olay, Olay
 I’m tying up the past with a velvet rope.
-Real G’s yeah mine move with suppressors and silence, 
+Real G’s yeah mine move with suppressors and silence,
 violence in the back of the mind,
 Leaving all the bullshit behind.
 I’m sick with the knowledge, covid, call the doctor, go get the nurse,
 I put the universe wrapped it up inside a single verse.
-Spit this venemous curse for the worst on this earth 
+Spit this venemous curse for the worst on this earth
 
 [Chorus]
 Yeah, we got it out the mud, now the diamonds crystal clear, (diamonds crystal clear )

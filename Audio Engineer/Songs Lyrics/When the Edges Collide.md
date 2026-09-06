@@ -1,6 +1,6 @@
 # Song Title: When the Edges Collide
 
-## Lyrics: 
+## Lyrics:
 
 
 [Intro]
@@ -84,6 +84,6 @@ This is what it's like when everything drops.
 
 
 Genre: 2000s gothic metal, symphonic alternative hard rock, metal, Tempo/Key: 120 BPM, D minor, half-time
-Vocals: Haunting ethereal lead vocals, soaring powerful classically-trained tenor-soprano singing, delicate whispered backing harmonies, dry/wet upfront mix, chior-backed chorus, Brooding emotional quiet , verses building intense tension, loud explosive catchy stadium chorus, occasional double-tracking, 
-Drums: massive explosive live acoustic metal drums, crashing cymbals, thick driving doublebass, driving baseline, 
+Vocals: Haunting ethereal lead vocals, soaring powerful classically-trained tenor-soprano singing, delicate whispered backing harmonies, dry/wet upfront mix, chior-backed chorus, Brooding emotional quiet , verses building intense tension, loud explosive catchy stadium chorus, occasional double-tracking,
+Drums: massive explosive live acoustic metal drums, crashing cymbals, thick driving doublebass, driving baseline,
 Instruments: Heavy crunchy distorted downtuned power chords, Melancholic dramatic grand piano intro, epic sweeping cinematic orchestral strings, epic soulful dramatic guitar solo, Production: Wide stereo imaging, wall of sound mix, pristine unclipped saturated loud modern rock production, crystal clear vocal clarity, radio-ready mastering, Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggressive forward mix, wide stereo image, light compression, Mood: Dark

@@ -1,6 +1,6 @@
 # Song Title: "Ronin in the Shadow"
 
-## Lyrics: 
+## Lyrics:
 [Intro - Smooth, low-register melodic loop, distant heavy 808 thuds bumping slowly]
 (Yeah... Quillan let the smoke clear out the room...)
 Look out the window, the block is quiet but the shadows moving.
@@ -89,7 +89,7 @@ Let the track bleed out.
 Yeah.
 [Fade to Silence]
 
-## Style: 
+## Style:
 Genre: Texas hip hop, Melodic rap, underground rap, melodic Trap, Street, chopped n Screwed
 Tempo/Key:  97 BPM, A minor, double-time, half-time
 Vocals: Male rap, triplet flow, upfront mix, chior-backed chorus, often layered-tracking, Next-gen auto-tune, punchy crowd adlibs, catchy hook
@@ -102,4 +102,7 @@ Instruments: Staccato arpeggiated Horn/Brass motif, dark-murderous-space synth p
 
 Production: Tape saturation, vinyl crackle, analog warmth, wide stereo mix, aggressive forward mix, wide stereo image, short plate reverb, light compression, catchy hook, aggressive rapid verses
 
-Mood: Bleak defiant confidence, comeback energy, sci, ‑concert, ‑amateur mix, ‑128kbps, ‑acoustic, ‑acapella, ‑clipping, ‑distortion, ‑background noise, ‑harsh treble, ‑muffled vocals -off-key, ‑-out of tune, ‑-pitchy vocals, ‑-flat delivery, ‑-robotic vocals, ‑-timing drift, ‑-demo quality, ‑-bedroom mix, ‑-muddy mix, ‑-boxy mids, ‑-boomy bass, ‑-thin mix, ‑-hollow, ‑-narrow stereo, ‑-mono, ‑-overcompressed, ‑-pumping, ‑-brickwall limiting, ‑-phase cancellation, ‑-harsh sibilance, ‑-piercing highs
+Mood: Bleak defiant confidence, comeback energy, sci
+
+## Exclude / Negative:
+-concert, -amateur mix, -128kbps, -acoustic, -acapella, -clipping, -distortion, -background noise, -harsh treble, -muffled vocals, -off-key, -out of tune, -pitchy vocals, -flat delivery, -robotic vocals, -timing drift, -demo quality, -bedroom mix, -muddy mix, -boxy mids, -boomy bass, -thin mix, -hollow, -narrow stereo, -mono, -overcompressed, -pumping, -brickwall limiting, -phase cancellation, -harsh sibilance, -piercing highs

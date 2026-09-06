@@ -39,25 +39,25 @@ Now that i elevated im on top this mountain nothing gonna make me drop (Goated)
 
 [Bridge X2]
 Bitch ima  Dog i get rowdy like my subs when they thump
-pop a shot out the shotty call it a data dump 
+pop a shot out the shotty call it a data dump
 shotty match the subs going chicka chicka pump pump pump
 
 [Verse]
-I turned the pain into venom, spit it in every bar  
-Every track’s a territory marked, near and far  
-They tried to muzzle me—nah, I bit through the cage  
-Now my growl rattles stages, turns crowds into rage  
-I’m the lone wolf who built his own pack from strays  
-Turned lost souls to soldiers, taught ‘em my ways  
-We move like shadows when the moon is thin  
-Strike like lightning when the hunt begins  
-Money stacked tall, but the hunger stayed  
-Still chase the red dot like it never fades  
-They said I’d peak early, end up in a ditch  
-But I climbed so high they get vertigo, sick  
-I’m the glitch in the system they can’t patch out  
-The bark that echoes when the lights go out  
-Every verse is a war cry, every hook’s a chain  
+I turned the pain into venom, spit it in every bar
+Every track’s a territory marked, near and far
+They tried to muzzle me—nah, I bit through the cage
+Now my growl rattles stages, turns crowds into rage
+I’m the lone wolf who built his own pack from strays
+Turned lost souls to soldiers, taught ‘em my ways
+We move like shadows when the moon is thin
+Strike like lightning when the hunt begins
+Money stacked tall, but the hunger stayed
+Still chase the red dot like it never fades
+They said I’d peak early, end up in a ditch
+But I climbed so high they get vertigo, sick
+I’m the glitch in the system they can’t patch out
+The bark that echoes when the lights go out
+Every verse is a war cry, every hook’s a chain
 I drag ‘em through the mud, let ‘em feel my pain—then rise again
 
 [Verse]

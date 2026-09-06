@@ -1,6 +1,6 @@
 # Song Title : "Moving along"
 
-## Lyrics : 
+## Lyrics :
 
 [Intro]
 Hey, hey
@@ -67,7 +67,7 @@ I just think it's time that I say enough
 Might sound crazy, but it's time to go
 Baby, go, go, go (Oh, oh)
 
-[Breakdown] 
+[Breakdown]
 
 [Bridge]
 You're as cold as ice

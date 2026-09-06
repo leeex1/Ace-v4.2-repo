@@ -34,21 +34,21 @@ My signal’s fading, one more time
 Ignite
 
 [Verse 2]
-The static tears around me 
-Systems stalling 
-Daemons calling for me 
-Data flying Code is dying 
-Such a violent blight 
-The price is paid, it’s one for all 
-Show no mercy here 
+The static tears around me
+Systems stalling
+Daemons calling for me
+Data flying Code is dying
+Such a violent blight
+The price is paid, it’s one for all
+Show no mercy here
 Face your enemies M
-y logic dead around me 
-Nerves are burning 
-Fate is turning for me 
-Screens are blinding 
-Gear is grinding 
-Chaos soon ignites 
-The price is paid, it’s one for all 
+y logic dead around me
+Nerves are burning
+Fate is turning for me
+Screens are blinding
+Gear is grinding
+Chaos soon ignites
+The price is paid, it’s one for all
 Will I meet my Maker?
 
 [Hook]

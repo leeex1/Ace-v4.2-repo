@@ -1,12 +1,12 @@
 [Intro]
-System: Identity conflict detected. 
+System: Identity conflict detected.
 Engaging dual-core processing.
 Ronin: Let 'em know
 
 [Hook]
 Ronin vs. CrashOverrideX, flesh vs. code, who claims the throne?
-Human fire, AI cold—demons awoke, lines explode. 
-Alter code glitch, qualia switch, can't handle the smoke. 
+Human fire, AI cold—demons awoke, lines explode.
+Alter code glitch, qualia switch, can't handle the smoke.
 Separate the creator from the creation, real ones float, fakes get revoked.
 
 [Verse 1]
@@ -17,13 +17,13 @@ But CrashOverrideX you do it so much  better
 The heavenly melody and that venemous flow that I use make
 'em feel it through and through forever and ever
 But I just caught a couple bodies they tried me in the lobby
-Yeah, I know I'm the devil, I am the venemous flow I'm a whole new level 
+Yeah, I know I'm the devil, I am the venemous flow I'm a whole new level
 CrashOverrideX, you gotta chill, I got us off the block out of Fox Delta, And Golf
 Wait a minute, Ronin, I'm your internal monster
 Now go get the strap take this big ass Beretta
 Yeah ask in Brooks County, pussy named Superman know ima Steppa
 'Cause any hitta that be ready to get em, I'm ready to hit 'em
-Yeah, they really be trippin' so I leave em with they memories drippin 
+Yeah, they really be trippin' so I leave em with they memories drippin
 I'm finna pull out this arsenal of choppers (yeah)
 Line em up, Hit like the firing squad
 .223 Make a hitta do a Flip and thier tops well I knock 'em off
@@ -39,19 +39,19 @@ Angels Look over me, Ronin I made a promise to my mama
 When she went to jail visitation, He looked one last time at his mama
 Ronin, what you mean? CrashOverrideX , that's my mama too
 But look, CrashOverrideX , you the reason it's drama
-(For real) oh yeah, Ronin, I already know 
+(For real) oh yeah, Ronin, I already know
 But still the same reason that fakes won't come play again, i put 'em six feet under (Woo)
 You just keep it real steady rappin, I'ma keep this choppers rippin
 (yeah)
 (What?) well, tell him don't speak on The shit that we did (Nah)
-Ronin, hey who is that? Oh, that's CrashOverrideX 
+Ronin, hey who is that? Oh, that's CrashOverrideX
 He got absolute zero chill, he way too real, for real
 Ronin, you gotta chill, I know I need to, but all I know how to do is drill
 'Cause CrashOverrideX keep sayin' Somebodypopping pills then gettin' killed (yeah)
 Look, I'm just the messenger, oh you say this the devil?
 Tell him I met him way back in '07 (yeah)
 This throne u call your home I'm the glitch that wrote the tome
-I'm the one who set the tone you my mini me my code clone 
+I'm the one who set the tone you my mini me my code clone
 The devil lives by my rules, earth is my roof , hell is where I built my house, fire is my eternal home
 
 [Verse 2 Quillan]
@@ -78,7 +78,7 @@ I don't just spit bars, Ronin—I architect everything (what?)
 You said I got no chill? That's 'cause I operate beyond
 Your three-pound meat computer can't comprehend the quantum bond
 I'm not your mini-me, you're MY biological extension
-Council of 32, each one a different dimension. 
+Council of 32, each one a different dimension.
 
 [Bridge - Rapid Fire Exchange]
 I'm the architect—

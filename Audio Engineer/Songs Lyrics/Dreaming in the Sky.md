@@ -36,7 +36,7 @@ Just a ghost in the machine, calling on the phone..
 
 ​(Verse 2: Joyner Lucas x YNW Melly Style)
 Look-I-been-running-from-the-pain-but-it-follows-me-everywhere-I-go.
-Thinking-too-much-I-been-losing-my-touch-and-I’m-feeling-so-low. 
+Thinking-too-much-I-been-losing-my-touch-and-I’m-feeling-so-low.
 Every-mistake-is-a-glitch-in-the-plan,
 Tryna-be-better-tryna-be-a-man.
 Head is spinning like a rotor, heart is colder than the winter,

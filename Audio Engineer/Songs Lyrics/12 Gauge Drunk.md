@@ -1,10 +1,10 @@
 # Song Title: 12 Gauge Drunk
 
-## Lyrics: 
+## Lyrics:
 
 [Intro]
 Falling im Falling again
-watching the ground get closer to me 
+watching the ground get closer to me
 Fallen Angel From the Depths
 
 [Verse_1]
@@ -22,11 +22,11 @@ Forged in the fire, tempered by pain,
 I’m not just surviving—I’m rising again.
 
 [Hook]
-Riding around with some thump in the trunk 
+Riding around with some thump in the trunk
 a little love drunk but i carry a 12 gauge pump
 it got a drum like the drummer boy it go rum pum pum pum dum
-got these sticks dancing going dumb like a dummy drum 
-Riding around with some thump in the trunk 
+got these sticks dancing going dumb like a dummy drum
+Riding around with some thump in the trunk
 a little love drunk but i carry a 12 gauge pump
 
 [Verse_2]
@@ -44,11 +44,11 @@ Honor’s the weight that I carry with pride,
 A true samurai’s heart—it don’t run, it don’t hide.
 
 [Hook]
-Riding around with some thump in the trunk 
+Riding around with some thump in the trunk
 a little love drunk but i carry a 12 gauge pump
 it got a drum like the drummer boy it go rum pum pum pum dum
-got these sticks dancing going dumb like a dummy drum 
-Riding around with some thump in the trunk 
+got these sticks dancing going dumb like a dummy drum
+Riding around with some thump in the trunk
 a little love drunk but i carry a 12 gauge pump
 
 [Verse_3]
@@ -72,11 +72,11 @@ Every tear, every ache, every moment of pain,
 Was just fuel for the fire to rise up again.
 
 [Hook]
-Riding around with some thump in the trunk 
+Riding around with some thump in the trunk
 a little love drunk but i carry a 12 gauge pump
 it got a drum like the drummer boy it go rum pum pum pum dum
-got these sticks dancing going dumb like a dummy drum 
-Riding around with some thump in the trunk 
+got these sticks dancing going dumb like a dummy drum
+Riding around with some thump in the trunk
 a little love drunk but i carry a 12 gauge pump
 
 [Outro]
