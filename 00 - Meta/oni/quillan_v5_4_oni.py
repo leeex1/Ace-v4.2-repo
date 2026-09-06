@@ -578,6 +578,7 @@ class QuillanOniConfig:
     use_mod: bool = True            # Paper 62 MoD: per-layer token mask (capacity=1.0 neutral)
     mod_capacity: float = 1.0       # 1.0 = all tokens execute (wiring proven, no behavior change yet)
     use_xmem_guard: bool = True     # Paper 12 xMem: per-step VRAM prediction -> profiler
+    use_moe_dispatcher: bool = True  # PR #15 port: contiguous MoE dispatch (auto mode)
     # Session 2 integration (default ON — read-only observers + inference call-sites):
     use_dali_observer: bool = True  # Papers 73/DALI: expert popularity -> plan in trace
     use_ala_observer: bool = True   # Predatory ALA: rewired-link telemetry in trace
@@ -1748,6 +1749,14 @@ class UnrolledCouncilMoEBlock(nn.Module):
         self.c_proj = nn.Linear(cfg.ffn_dim, cfg.hidden_dim)
         self.moe_gate = nn.Linear(cfg.hidden_dim, 1)
         self.tau = cfg.tau_max
+        # PR #15 port: param-free contiguous dispatcher (auto/eager modes).
+        try:
+            from moe_dispatcher import MoEDispatcher as _MoEDisp
+        except Exception:
+            _MoEDisp = None
+        self.moe_dispatcher = _MoEDisp(num_experts=cfg.num_experts) \
+            if (_MoEDisp is not None and getattr(cfg, "use_moe_dispatcher", True)) else None
+        self._last_dispatch = "none"
 
     def set_tau(self, tau: float):
         self.tau = float(max(0.05, min(2.0, tau)))
@@ -1802,20 +1811,33 @@ class UnrolledCouncilMoEBlock(nn.Module):
             topk_p = topk_p / topk_p.sum(dim=-1, keepdim=True)
 
             moe_out = torch.zeros_like(flat_x)
-            # Vectorized dispatch: group all (token, slot) pairs by expert once.
-            K = self.cfg.top_k
-            BT = flat_x.size(0)
-            flat_idx = topk_i.reshape(-1)                                  # [BT*K]
-            flat_w = topk_p.reshape(-1, 1)                                 # [BT*K,1]
-            token_pos = torch.arange(BT, device=x.device).unsqueeze(1).expand(-1, K).reshape(-1)
-            for e in range(self.cfg.num_experts):
-                sel = (flat_idx == e).nonzero(as_tuple=True)[0]
-                if sel.numel() == 0:
-                    continue
-                pos = token_pos[sel]
-                w = flat_w[sel]
-                e_out = self.experts[e](flat_x[pos], gov_scale)
-                moe_out.index_add_(0, pos, w * e_out)
+            # PR #15 port (sneed-and-feed): contiguous dispatcher, param-free,
+            # auto mode (Triton on CUDA, contiguous on CPU), eager-loop fallback.
+            _disp = getattr(self, "moe_dispatcher", None)
+            if _disp is not None and getattr(self.cfg, "use_moe_dispatcher", True):
+                try:
+                    moe_out = _disp(flat_x, topk_i, topk_p, self.experts,
+                                    gov_scale=gov_scale, mode="auto")
+                    self._last_dispatch = "dispatcher"
+                except Exception:
+                    _disp = None
+                    self._last_dispatch = "dispatcher_failed"
+            if _disp is None or not getattr(self.cfg, "use_moe_dispatcher", True):
+                # Reference eager loop (parity baseline).
+                K = self.cfg.top_k
+                BT = flat_x.size(0)
+                flat_idx = topk_i.reshape(-1)                              # [BT*K]
+                flat_w = topk_p.reshape(-1, 1)                             # [BT*K,1]
+                token_pos = torch.arange(BT, device=x.device).unsqueeze(1).expand(-1, K).reshape(-1)
+                for e in range(self.cfg.num_experts):
+                    sel = (flat_idx == e).nonzero(as_tuple=True)[0]
+                    if sel.numel() == 0:
+                        continue
+                    pos = token_pos[sel]
+                    w = flat_w[sel]
+                    e_out = self.experts[e](flat_x[pos], gov_scale)
+                    moe_out.index_add_(0, pos, w * e_out)
+                self._last_dispatch = "eager_loop"
 
             # Aux losses: KL-to-uniform load balance (AGI paper eq.13) + z-loss (ST-MoE)
             mean_p = probs.mean(dim=0)
@@ -3285,6 +3307,13 @@ class QuillanRoninOni(nn.Module):
 
             last_probs = probs
             total_lb, total_z, total_ent = total_lb + lb, total_z + z, total_ent + ent
+            # PR #15 port provenance: which dispatch ran in this layer.
+            try:
+                _dm = getattr(getattr(block, "moe", None), "_last_dispatch", "none")
+                if _dm != "none":
+                    self._fired.append(("moe_dispatch", {"layer": i, "mode": _dm}))
+            except Exception:
+                pass
 
         # Session 4: Paper 21 Gated Recurrent Transformers (GRT) core recurrence
         if getattr(cfg, "use_grt", False) and getattr(self, "grt_core", None) is not None \
