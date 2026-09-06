@@ -58,9 +58,14 @@ def wrap(draw, text, fnt, width):
     return lines
 
 
-def build(num: int, stem: str, title: str) -> Path:
+def build(num: int, stem: str, title: str, total_width_in: float = 0.0) -> Path:
     pages = page_count(num)
     spine_in = pages * WHITE_PP_IN
+    if total_width_in > 0:
+        # KDP previewer is the judge: when its expected total differs from our
+        # spine math (e.g. 13.730 vs 13.670), widen the spine to match exactly.
+        spine_in = total_width_in - 12 - 2 * BLEED
+        print(f"Book {num}: spine overridden to {spine_in:.3f}in (KDP expected {total_width_in:.3f})")
     W = int((BLEED + 6 + spine_in + 6 + BLEED) * DPI)
     H = int((9 + 2 * BLEED) * DPI)
     spine_px = int(spine_in * DPI)
@@ -122,10 +127,18 @@ def main():
     only = None
     if "--book" in sys.argv:
         only = int(sys.argv[sys.argv.index("--book") + 1])
+    width_override = {}
+    if "--cover-width" in sys.argv:
+        # --cover-width N:W pairs KDP's expected total, e.g. --cover-width 1:13.73
+        for pair in sys.argv[sys.argv.index("--cover-width") + 1:]:
+            if ":" not in pair:
+                break
+            n, w = pair.split(":")
+            width_override[int(n)] = float(w)
     for stem, title, num in BOOKS:
         if only and num != only:
             continue
-        build(num, stem, title)
+        build(num, stem, title, width_override.get(num, 0.0))
 
 
 if __name__ == "__main__":
