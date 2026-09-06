@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Build EPUB3 files from the finished-draft markdown novels.
 
@@ -7,7 +7,7 @@ Usage:  python build_epubs.py            (builds all 5 into ./epubs/)
 
 Each H2 (`## ...`) starts a new chapter file. Minimal Markdown -> XHTML:
 headings, paragraphs, **bold**, *italic*, lists, blockquotes, hr.
-Author/cover left unset on purpose — set AUTHOR below when confirmed.
+Author/cover left unset on purpose â€” set AUTHOR below when confirmed.
 """
 import html
 import re
@@ -26,7 +26,7 @@ BOOKS = [
     ("Book 2 - Rise of Ascension.md", "Rise of Ascension", "Quillan-Ronin Saga, Book 2"),
     ("Book 3 - Battle Grandeur.md", "Battle Grandeur", "Quillan-Ronin Saga, Book 3"),
     ("Book 4 - Fall of Empires.md", "Fall of Empires", "Quillan-Ronin Saga, Book 4"),
-    ("Book 5 - Shadows That Speak.md", "Shadows That Speak", "Quillan-Ronin Saga, Book 5"),
+    ("Book 5 - The Howling Shadow.md", "The Howling Shadow", "Quillan-Ronin Saga, Book 5"),
 ]
 
 INLINE = [
