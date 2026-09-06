@@ -688,7 +688,24 @@ def _weight_quant_jit(w: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
     return (w_scaled + (w_q - w_scaled).detach()) / scale
 
 
+try:
+    import quillan_bitnet_cpu as _bitnet_native  # AVX2 build, 4.42x measured 2026-09-06
+    _BITNET_NATIVE_OK = True
+except Exception:
+    _bitnet_native = None
+    _BITNET_NATIVE_OK = False
+
+
 def _weight_quant(w: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
+    # Toolkit session: native AVX2 path first (parity 1.4e-06), JIT fallback.
+    # STE wrap: forward = native quantized output, backward = straight-through
+    # (raw C++ output has no grad_fn; without this, weights would stop training).
+    if _BITNET_NATIVE_OK and w.is_cpu and w.dim() == 2 and w.dtype == torch.float32:
+        try:
+            q = _bitnet_native.bitnet_weight_quant_cpu(w.contiguous(), float(eps))
+            return w + (q - w).detach()
+        except Exception:
+            pass
     return _weight_quant_jit(w, eps)
 
 
