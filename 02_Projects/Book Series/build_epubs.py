@@ -128,7 +128,25 @@ def build_epub(src_file: Path, title: str, series: str) -> Path:
         book.add_author(AUTHOR)
     book.add_metadata("DC", "description", series)
 
+    # Cover art (02_Projects/Book Series/covers/cover_bookN.jpg). Embedded as
+    # cover-image + first spine page. Art-only; typography stamped separately
+    # once AUTHOR byline is confirmed.
+    num = series.split(", Book ")[-1]
+    cover_path = HERE / "covers" / f"cover_book{num}.jpg"
+    cover_item = None
+    if cover_path.exists():
+        with open(cover_path, "rb") as f:
+            cover_bytes = f.read()
+        cover_item = True  # set_cover() adds the image item itself; do NOT add_item
+        book.set_cover("cover.jpg", cover_bytes, create_page=False)
+        cover_page = epub.EpubHtml(title="Cover", file_name="cover.xhtml", lang="en")
+        cover_page.content = ('<html><body><div style="text-align:center">'
+                              '<img src="cover.jpg" alt="cover"/></div></body></html>')
+        book.add_item(cover_page)
+
     items, toc = [], []
+    if cover_item is not None:
+        items.append(cover_page)
     for i, (heading, lines) in enumerate(chunks):
         # skip the pasted Table-of-Contents chapter (we build a real nav)
         if i == 0 and "table of contents" in (heading or "").lower():
