@@ -1,1 +1,0 @@
-{"name":"delete_entities","description":"Delete multiple entities and their associated relations from the knowledge graph","parameters":{"$schema":"http://json-schema.org/draft-07/schema#","properties":{"entityNames":{"description":"An array of entity names to delete","items":{"type":"string"},"type":"array"}},"required":["entityNames"],"type":"object"}}

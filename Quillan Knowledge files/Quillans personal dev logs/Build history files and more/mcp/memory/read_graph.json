@@ -1,1 +1,0 @@
-{"name":"read_graph","description":"Read the entire knowledge graph","parameters":{"$schema":"http://json-schema.org/draft-07/schema#","properties":{},"type":"object"}}

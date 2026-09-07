@@ -1,1 +1,0 @@
-{"name":"puppeteer_fill","description":"Fill out an input field","parameters":{"properties":{"selector":{"description":"CSS selector for input field","type":"string"},"value":{"description":"Value to fill","type":"string"}},"required":["selector","value"],"type":"object"}}

@@ -1,1 +1,0 @@
-{"name":"puppeteer_evaluate","description":"Execute JavaScript in the browser console","parameters":{"properties":{"script":{"description":"JavaScript code to execute","type":"string"}},"required":["script"],"type":"object"}}

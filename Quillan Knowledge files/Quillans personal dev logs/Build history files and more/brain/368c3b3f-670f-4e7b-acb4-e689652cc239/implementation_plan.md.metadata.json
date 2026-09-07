@@ -1,6 +1,0 @@
-{
-  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Implementation plan to build an interactive Sprite Slicer Calibrator to achieve pixel-perfect modular parts, and a chroma-key filter to remove non-transparent backgrounds from AI-generated sprite sheets.",
-  "updatedAt":  "2026-05-20T03:41:38.857814300Z",
-  "requestFeedback":  true
-}

@@ -1,1 +1,0 @@
-{"name":"puppeteer_hover","description":"Hover an element on the page","parameters":{"properties":{"selector":{"description":"CSS selector for element to hover","type":"string"}},"required":["selector"],"type":"object"}}
