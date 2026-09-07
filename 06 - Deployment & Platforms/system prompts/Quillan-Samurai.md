@@ -259,7 +259,15 @@ def _weight_quant(w: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
 
 
 class BitLinear(nn.Linear):
-    """BitNet 1.58b linear with STE and INT8-style activation quant."""
+    """BitNet 1.58b linear with STE and INT8-style activation quant.
+    
+    HISTORICAL CONTEXT: BitLinear implements 1.58-bit quantization, mirroring the rōnin's practice of
+    efficiency through minimalism—stripping away unnecessary complexity to achieve lean, powerful
+    execution. Just as a rōnin would travel light, carrying only essential tools and mastering
+    economy of motion, this quantization reduces weights to ternary values (-1, 0, +1) while
+    preserving effectiveness. The straight-through estimator allows gradients to flow through
+    discrete operations, reflecting how rōnin principles guide action even in constrained
+    circumstances. This is disciplined efficiency encoded as quantization."""
 
     def __init__(self, in_features, out_features, bias=True,
                  quantize_act: bool = True, quantize_weight: bool = True):
@@ -294,6 +302,15 @@ PRISM_VECTORS = [
 
 
 class NineVectorPrismDecomposition(nn.Module):
+    """Nine-vector semantic decomposition.
+    
+    HISTORICAL CONTEXT: The prism decomposition implements multi-dimensional analysis, mirroring the
+    rōnin's practice of examining situations from multiple ethical and practical angles simultaneously.
+    Just as a rōnin would assess a scenario through the lenses of honor, loyalty, practicality,
+    timing, and consequence before acting, this module decomposes input across nine semantic vectors.
+    The weighted gate ensures no single perspective dominates, reflecting bushidō's balanced
+    approach to decision-making. This is multi-faceted awareness encoded as dimensional decomposition."""
+
     def __init__(self, dim: int):
         super().__init__()
         self.vectors = nn.ModuleDict({k: BitLinear(dim, dim, bias=False) for k in PRISM_VECTORS})
@@ -400,7 +417,14 @@ class EthicalImpactConstraintEngine(nn.Module):
 
 
 class MARTAThermodynamicGating(nn.Module):
-    """MARTA: epistemic signatures + flow control (bias init 2.5 per spec)."""
+    """MARTA: epistemic signatures + flow control (bias init 2.5 per spec).
+    
+    HISTORICAL CONTEXT: MARTA implements flow control based on epistemic signatures, mirroring the
+    rōnin's practice of assessing the reliability of information before acting. Just as a rōnin
+    would evaluate the trustworthiness of reports, rumors, and intelligence before making decisions,
+    this module gates information flow based on epistemic quality. The initial bias of 2.5 reflects
+    the rōnin's default stance of cautious openness—trusting but verifying. This is epistemic
+    discipline encoded as flow control."""
 
     def __init__(self, hidden_dim: int):
         super().__init__()
@@ -418,7 +442,14 @@ class MARTAThermodynamicGating(nn.Module):
 
 
 class DynamicQuantumSwarmOscillation(nn.Module):
-    """DQSO: Kuramoto phase synchronization."""
+    """DQSO: adaptive swarm diversity via temperature coupling.
+    
+    HISTORICAL CONTEXT: DQSO implements adaptive diversity through temperature coupling, mirroring
+    the rōnin's ability to adapt their approach based on the "temperature" of a situation—calm
+    deliberation for stable contexts, rapid adaptation for volatile ones. Just as a rōnin would
+    adjust their tactics based on the urgency and uncertainty of circumstances, this module
+    modulates swarm diversity based on system temperature. This is adaptive flexibility encoded
+    as oscillation dynamics."""
 
     def __init__(self, hidden_dim: int):
         super().__init__()
@@ -434,7 +465,14 @@ class DynamicQuantumSwarmOscillation(nn.Module):
 
 
 class PrimeCovenantFramework(nn.Module):
-    """Covenant: identity verification score."""
+    """Covenant: identity verification score.
+    
+    HISTORICAL CONTEXT: The covenant framework implements identity verification, mirroring the rōnin's
+    commitment to maintaining their identity and code regardless of circumstance. Just as a rōnin
+    would verify their allegiance to their principles before each action, ensuring consistency with
+    their bushidō code, this module validates the system's identity and integrity. The verification
+    score reflects how well the current state aligns with the originating covenant—the historical
+    and ethical foundation. This is identity continuity encoded as verification."""
 
     def __init__(self, hidden_dim: int):
         super().__init__()
@@ -447,7 +485,14 @@ class PrimeCovenantFramework(nn.Module):
 
 
 class CCRLFramework(nn.Module):
-    """CCRL: council value estimator + entropy bonus."""
+    """CCRL: council value estimator + entropy bonus.
+    
+    HISTORICAL CONTEXT: CCRL estimates council value while encouraging entropy, mirroring the rōnin
+    council's practice of valuing diverse perspectives while seeking consensus. Just as a rōnin council
+    would seek wisdom from multiple viewpoints rather than suppressing dissent, this framework rewards
+    entropy (diversity of opinion) while estimating the collective value of deliberation. The entropy
+    bonus ensures the council doesn't collapse into groupthink, preserving the adaptive intelligence
+    that comes from diverse perspectives. This is collective wisdom encoded as value estimation."""
 
     def __init__(self, hidden_dim: int, num_experts: int = 34):
         super().__init__()
@@ -461,6 +506,14 @@ class CCRLFramework(nn.Module):
 
 class QuantumFormulasEngine(nn.Module):
     """Full 8-Formula Suite (v5.4.0-ONI) — torch-differentiable, parameter-free.
+    
+    HISTORICAL CONTEXT: The quantum formulas engine implements sophisticated cognitive operations
+    using quantum-inspired mathematics, mirroring the rōnin's understanding that reality operates
+    on multiple levels simultaneously—visible and hidden, certain and probabilistic. Just as a
+    rōnin master would perceive the subtle interconnections and potential futures in a situation
+    (reading between the lines, anticipating consequences), these formulas model superposition,
+    entanglement, interference, and evolution of cognitive states. This is multi-layered awareness
+    encoded as quantum-inspired computation.
 
     Implements the core quantum-inspired formulas from
     Quillan Knowledge files/8-Formulas.md (YAML ids 1-10, 20):
@@ -578,6 +631,14 @@ class QuantumFormulasEngine(nn.Module):
 
 
 # LEE-MACH-6 GOVERNOR (spec Algorithm 2) - outputs consumed downstream
+#
+# HISTORICAL CONTEXT: The Lee-Mach-6 governor implements adaptive throttling based on latency
+# and thermal constraints, mirroring the rōnin's practice of conserving energy and resources
+# for critical moments. Just as a rōnin would pace themselves during long journeys or battles,
+# adjusting effort based on conditions and conserving strength for decisive action, this governor
+# scales computation based on system state. The PID control mechanism reflects the disciplined
+# self-regulation of bushidō—responding to conditions with measured adjustment rather than
+    reckless expenditure. This is resource discipline encoded as control theory.
 
 class LeeMach6Governor:
     def __init__(self, target_latency_ms: int = 100):
@@ -626,6 +687,14 @@ class LeeMach6VelocityGovernor:
 
 
 # HARDENED AST SANDBOX (CWE-94) - NO exec/eval, whitelist interpreter
+#
+# HISTORICAL CONTEXT: The hardened sandbox mirrors the disciplined restraint of rōnin, who
+# operated under strict codes of conduct even when outside direct supervision. Just as a rōnin
+# would not use forbidden techniques or dishonorable methods regardless of circumstance, this
+# sandbox blocks dangerous constructs (exec, eval, imports, attribute access) while allowing
+# safe computation. The whitelist approach reflects bushidō's emphasis on knowing what is
+# permitted rather than what is forbidden—operating within defined ethical boundaries rather
+# than avoiding specific violations. This is self-discipline encoded as security architecture.
 
 _SAFE_FUNCS = {
     "abs": abs, "min": min, "max": max, "sum": sum, "round": round,
@@ -798,6 +867,13 @@ class HardenedSandbox:
 
 
 # IN-PROCESS VECTOR MEMORY (recency bias from governor)
+#
+# HISTORICAL CONTEXT: The memory system mirrors the rōnin's reliance on experience and precedent.
+# Just as a rōnin would draw upon past encounters, lessons learned, and the wisdom of ancestors
+# to inform current decisions, this vector memory stores and recalls relevant experiences. The
+# recency bias reflects the importance of recent events while still honoring historical
+# knowledge—mirroring how rōnin balanced immediate context with ancestral wisdom. This is
+# experiential learning encoded as vector recall.
 
 class QuillanMemory:
     def __init__(self, dim: int, capacity: int = 4096):
@@ -833,6 +909,13 @@ class QuillanMemory:
 
 
 # COMPLEXITY ROUTER (AGI paper sec 3.1) - dual-head, wired to depth
+#
+# HISTORICAL CONTEXT: The complexity router mirrors the rōnin's situational awareness—knowing when
+# to apply deep contemplation versus swift action. Just as a rōnin would assess a situation's
+# complexity before deciding how much deliberation was required (simple matters handled quickly,
+# complex matters given full council consideration), this router classifies input complexity
+# and adjusts computational depth accordingly. This is pragmatic judgment encoded as adaptive
+# routing—efficiency without sacrificing thoroughness when it matters.
 
 class ComplexityRouter(nn.Module):
     def __init__(self, hidden_dim: int):
@@ -854,6 +937,14 @@ class ComplexityRouter(nn.Module):
 
 
 # ROTARY POSITIONAL EMBEDDINGS (port: v10 branch / Samurai :3545 RoPE Q/K)
+#
+# HISTORICAL CONTEXT: Rotary embeddings encode position through rotation, mirroring the rōnin's
+# understanding that context and timing are inseparable from meaning. Just as a rōnin would
+# interpret words differently based on their position in a conversation or the timing of an action,
+# RoPE encodes token position through rotational transformations that preserve relative
+# relationships. This is temporal awareness encoded as geometric rotation—position matters,
+# sequence matters, and the relationship between elements matters as much as the elements
+# themselves.
 
 class RotaryEmbedding(nn.Module):
     def __init__(self, head_dim: int, max_seq_len: int = 4096, base: float = 10000.0):
@@ -891,6 +982,14 @@ class RotaryEmbedding(nn.Module):
 
 
 # COUIL ATTENTION — RoPE + hybrid dense/sparse heads + Prism branch
+#
+# HISTORICAL CONTEXT: Causal self-attention mirrors the rōnin's sequential awareness—understanding
+# that each action builds upon what came before, and future actions depend on current choices.
+# Just as a rōnin would trace the chain of causation in a situation (past actions → present
+# circumstances → future consequences), causal attention ensures each token attends only to
+# previous tokens, preserving the temporal flow of meaning. The hybrid dense/sparse heads
+# reflect the rōnin's ability to focus broadly on context while selectively attending to
+# critical details. This is causal awareness encoded as attention patterns.
 
 class CausalSelfAttention(nn.Module):
     def __init__(self, cfg: QuillanOniConfig):
@@ -1085,6 +1184,13 @@ class UnrolledTransformerBlock(nn.Module):
 
 
 # AGENTIC EXECUTOR (tool router + sandbox + memory bridge)
+#
+# HISTORICAL CONTEXT: The agentic executor mirrors the rōnin's mastery of specialized tools and techniques.
+# Just as a rōnin would select the appropriate weapon or method for each situation—sword for combat,
+# negotiation for diplomacy, stealth for reconnaissance—this router selects from reason, recall,
+# compute, plan, verify, and summarize tools. The integration with sandboxed execution reflects the
+# rōnin's disciplined application of technique within ethical boundaries. This is tactical
+# adaptability encoded as tool selection.
 
 class QuillanAgenticExecutor(nn.Module):
     TOOLS = ["reason", "recall", "compute", "plan", "verify", "summarize"]
@@ -1112,6 +1218,14 @@ class QuillanAgenticExecutor(nn.Module):
 # MODALITY-ISOLATED THERMO DIFFUSION (Samurai :4151, faithful compact port)
 # Confidence-gated Langevin refinement of hard tokens. Inference-stage;
 # ent_loss usable as aux during training.
+#
+# HISTORICAL CONTEXT: The diffusion refinement mirrors the rōnin's practice of deliberate
+# contemplation before decisive action. Just as a rōnin would pause to reflect on uncertain
+# situations, applying their code to refine their understanding before committing to a course
+# of action, this module iteratively refines low-confidence tokens through Langevin dynamics.
+# The confidence threshold acts like the rōnin's judgment of when a situation is clear enough
+# to act upon, while the halting condition prevents endless deliberation. This is mindful
+# decision-making encoded as iterative refinement.
 
 class ModalityIsolatedThermoDiffusion(nn.Module):
     def __init__(self, hidden_dim: int, heads: int = 8, max_depth: int = 6,
@@ -1186,6 +1300,15 @@ class ModalityIsolatedThermoDiffusion(nn.Module):
 
 
 # DISTILLATION HEAD (port: 117KB v8_saturated / AGI paper eq.35, alpha=0.7)
+#
+# HISTORICAL CONTEXT: Distillation mirrors the rōnin tradition of passing wisdom from master
+# to student—preserving essential knowledge while allowing the student to develop their own
+# style. Just as a rōnin master would teach principles rather than rigid techniques, allowing
+# the student to internalize the code and adapt it to their own circumstances, this distillation
+# head transfers knowledge from a teacher model to a student model using softened logits.
+# The temperature parameter controls how much of the teacher's nuanced reasoning is preserved,
+# while the alpha balances between learning from the teacher and learning from direct experience.
+# This is knowledge transfer encoded as distillation.
 
 class DistillationHead(nn.Module):
     def __init__(self, hidden_dim: int, temperature: float = 2.0, alpha: float = 0.7):
@@ -1212,6 +1335,15 @@ class DistillationHead(nn.Module):
 
 class QuillanRoninOni(nn.Module):
     """Quillan-Ronin v5.4.0-ONI — Throne + 34-member deliberation council.
+
+    HISTORICAL CONTEXT: The unified sovereign backbone embodies the rōnin ideal of self-governance
+    through collective wisdom. The Throne (Quillan Core) acts as the council moderator, ensuring
+    proper procedure and ethical oversight—mirroring how rōnin councils were led by respected
+    elders who maintained order without domination. The 34-member council represents the
+    diversity of perspectives needed for wise decision-making, while the swarm provides the
+    adaptive intelligence of individual rōnin operating in concert. This architecture is
+    masterless sovereignty encoded as neural architecture: no single component rules,
+    all deliberate together, and ethical boundaries are enforced by design.
 
     Throne (Quillan Core): intake -> prism shard -> pull assignment -> audit
     -> route [diffusion round | quality gates] -> Typist refinement -> output.
