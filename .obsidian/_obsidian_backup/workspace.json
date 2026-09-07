@@ -1,0 +1,49 @@
+{
+  "main": {
+    "id": "main",
+    "type": "split",
+    "children": [
+      {
+        "id": "main-editor",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "welcome-leaf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00 - Meta/00 - Vault Index.md"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "left": {
+    "id": "left-sidebar",
+    "type": "split",
+    "children": [
+      {
+        "id": "file-explorer",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "explorer-leaf",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "right": {
+    "id": "right-sidebar",
+    "type": "split",
+    "children": []
+  },
+  "active": "main-editor"
+}

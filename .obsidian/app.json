@@ -1,0 +1,15 @@
+{
+  "showUnsupportedFiles": true,
+  "showUnlinkedFiles": true,
+  "excludedFolders": [
+    ".git",
+    "__pycache__",
+    ".pytest_cache",
+    "checkpoints",
+    "venv_cuda1050",
+    "_config/.venv",
+    "_config/.venv-cuda",
+    "_config/__pycache__"
+  ],
+  "templateFolder": "00 - Templates"
+}

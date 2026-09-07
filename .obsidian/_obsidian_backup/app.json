@@ -1,0 +1,8 @@
+{
+  "showUnsupportedFiles": false,
+  "excludedFolders": [
+    ".git",
+    "__pycache__",
+    ".pytest_cache"
+  ]
+}
