@@ -9,8 +9,8 @@ import torch
 from pathlib import Path
 import sys
 
-ONI_DIR = Path(__file__).resolve().parent.parent / "00 - Meta" / "oni"
-REPO_DIR = Path(__file__).resolve().parent.parent
+REPO_DIR = Path(__file__).resolve().parents[3]
+ONI_DIR = REPO_DIR / "09 - Projects" / "projects" / "oni"
 sys.path.insert(0, str(ONI_DIR))
 sys.path.insert(0, str(REPO_DIR))
 

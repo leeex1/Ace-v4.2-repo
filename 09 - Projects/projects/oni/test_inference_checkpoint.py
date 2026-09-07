@@ -7,15 +7,14 @@ from pathlib import Path
 import sys
 import torch
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO_ROOT / "oni"))
-sys.path.insert(0, str(REPO_ROOT / "00 - Meta" / "oni"))
+ONI_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(ONI_DIR))
 
 from quillan_v5_4_oni import QuillanRoninOni, QuillanOniConfig
 from quillan_tokenizer_unified import UnifiedQuillanTokenizer
 
 def main():
-    ckpt_path = Path("oni/checkpoints/checkpoints_oni/quillan_oni_latest.pt")
+    ckpt_path = ONI_DIR / "checkpoints" / "checkpoints_oni" / "quillan_oni_latest.pt"
     if not ckpt_path.exists():
         print(f"Error: Checkpoint not found at {ckpt_path}")
         return

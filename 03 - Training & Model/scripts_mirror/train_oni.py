@@ -21,7 +21,10 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, r"C:\02_QUILLAN\_dev")
+ONI_DIR = Path(__file__).resolve().parents[2] / "09 - Projects" / "projects" / "oni"
+if not (ONI_DIR / "quillan_v5_4_oni.py").is_file():
+    raise FileNotFoundError(f"Canonical ONI model not found: {ONI_DIR}")
+sys.path.insert(0, str(ONI_DIR))
 from quillan_tokenizer_unified import UnifiedQuillanTokenizer  # noqa: E402
 from quillan_v5_4_oni import QuillanOniConfig, QuillanRoninOni  # noqa: E402
 

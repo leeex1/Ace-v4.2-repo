@@ -5,13 +5,15 @@
 # Usage: .\train-chunk.ps1 -ChunkSteps 100 -TargetTotal 15000 [-NoRqgm]
 param([int]$ChunkSteps=100, [int]$TargetTotal=15000, [switch]$NoRqgm)
 $ErrorActionPreference="SilentlyContinue"
-$LogDir="C:\02_QUILLAN\05_Training\training_logs"
+$RepoRoot=(Get-Item $PSScriptRoot).Parent.Parent.Parent.Parent.FullName
+$ProjectRoot=Join-Path $RepoRoot "09 - Projects\projects"
+$LogDir=Join-Path $ProjectRoot "05_Training\training_logs"
 $Jsonl="$LogDir\oni_train_log.jsonl"
 $Flag="$LogDir\TRAIN_STOP.flag"
 $Py="C:\Users\Admin\AppData\Local\Programs\Python\Python314\python.exe"
-$Train="c:\02_QUILLAN\00 - Meta\oni\train_oni.py"
+$Train=Join-Path $ProjectRoot "oni\train_oni.py"
 $ChunkLog="$LogDir\chunk_loop.log"
-$OniDir="C:\02_QUILLAN\00 - Meta\oni"
+$OniDir=Join-Path $ProjectRoot "oni"
 
 function CurStep {
   # Source of truth order: chunk_state.json (written after every good chunk)
@@ -20,7 +22,7 @@ function CurStep {
   if(Test-Path $state){
     try { return [int](Get-Content $state -Raw | ConvertFrom-Json).next_start } catch {}
   }
-  $ck="C:\02_QUILLAN\05_Training\checkpoints\checkpoints_oni\quillan_oni_latest.pt"
+  $ck=Join-Path $ProjectRoot "05_Training\checkpoints\checkpoints_oni\quillan_oni_latest.pt"
   if(Test-Path $ck){
     $s=C:\Users\Admin\AppData\Local\Programs\Python\Python314\python.exe "$OniDir\profiles\ckpt-step.py" $ck 2>$null
     if($s -match "^\d+$"){ return [int]$s }
@@ -45,7 +47,7 @@ while($true){
   if($NoRqgm){ $extra=" --rqgm-disable" }
   $log="$LogDir\oni_chunk_$($cur)_$($next).log"
   # Proven volume on 28GB box: batch 1 / accum 1 (batch 2x4 dies silently in first fwd). Do not raise without a voltest.
-  $p=Start-Process -FilePath $Py -ArgumentList ("-u `"$Train`" --steps $next --batch-size 1 --grad-accum 1 --device cpu --resume"+$extra) -WorkingDirectory "C:\02_QUILLAN\00 - Meta\oni" -RedirectStandardOutput $log -RedirectStandardError ($log+".err") -WindowStyle Hidden -PassThru
+  $p=Start-Process -FilePath $Py -ArgumentList ("-u `"$Train`" --steps $next --batch-size 1 --grad-accum 1 --device cpu --resume"+$extra) -WorkingDirectory $OniDir -RedirectStandardOutput $log -RedirectStandardError ($log+".err") -WindowStyle Hidden -PassThru
   $p.WaitForExit()
   $code=$p.ExitCode
   "[chunk] chunk exit code $code (log oni_chunk_$($cur)_$($next).log)" | Out-File $ChunkLog -Append -Encoding utf8

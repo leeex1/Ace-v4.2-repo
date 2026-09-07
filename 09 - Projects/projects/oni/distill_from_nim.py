@@ -6,7 +6,8 @@ from pathlib import Path
 from openai import OpenAI
 
 # Load key
-for p in [r"C:\02_QUILLAN\.env", r"C:\02_QUILLAN\00 - Meta\.env"]:
+REPO_ROOT = Path(__file__).resolve().parents[3]
+for p in [REPO_ROOT / ".env"]:
     if Path(p).exists():
         for line in Path(p).read_text().splitlines():
             if "NVIDIA_API_KEY" in line and "=" in line:
@@ -49,7 +50,7 @@ if __name__=="__main__":
     # Hybrid runtime: threads/offload/RAM-floor policy (same as trainer).
     # Teachers stay cloud (no VRAM); student compute follows hybrid routing.
     import sys as _sys
-    _sys.path.insert(0, r"C:\02_QUILLAN\00 - Meta\oni")
+    _sys.path.insert(0, str(Path(__file__).resolve().parent))
     from hybrid_runtime import init as _hybrid_init
     _hybrid_init()
     # Test with 3 prompts
@@ -65,14 +66,15 @@ if __name__=="__main__":
     # Now manual tensor update stub: load Quillan and do one CE step on teacher outputs
     print("\n[DISTILL] Loading Quillan student 222M for manual tensor update...")
     import sys
-    sys.path.insert(0, r"C:\02_QUILLAN\00 - Meta\oni")
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
     from quillan_v5_4_oni import QuillanOniConfig, QuillanRoninOni
     from quillan_tokenizer_unified import UnifiedQuillanTokenizer
     cfg=QuillanOniConfig(n_layer=6)
     model=QuillanRoninOni(cfg)
     tok=UnifiedQuillanTokenizer()
     # Load checkpoint
-    ck=torch.load(r"C:\02_QUILLAN\05_Training\checkpoints\checkpoints_oni\quillan_oni_latest.pt", map_location="cpu")
+    ckpt_path = REPO_ROOT / "09 - Projects" / "projects" / "05_Training" / "checkpoints" / "checkpoints_oni" / "quillan_oni_latest.pt"
+    ck=torch.load(ckpt_path, map_location="cpu")
     model.load_state_dict(ck["model"], strict=False)
     print(f"[DISTILL] Loaded step {ck['step']}, doing 1 manual CE step on teacher traces...")
     model.train()

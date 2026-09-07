@@ -6,9 +6,11 @@
 # and reports the estimated lost steps. (3) Everything here is reversible.
 param([string]$Profile="", [switch]$Force)
 $ErrorActionPreference="SilentlyContinue"
-$LogDir="C:\02_QUILLAN\05_Training\training_logs"
+$RepoRoot=(Get-Item $PSScriptRoot).Parent.Parent.Parent.Parent.FullName
+$ProjectRoot=Join-Path $RepoRoot "09 - Projects\projects"
+$LogDir=Join-Path $ProjectRoot "05_Training\training_logs"
 $Flag="$LogDir\TRAIN_STOP.flag"
-$OniDir="C:\02_QUILLAN\00 - Meta\oni"
+$OniDir=Join-Path $ProjectRoot "oni"
 
 function RamFreeGB { [math]::Round((Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory/1MB,2) }
 function TrainRunning {
