@@ -229,7 +229,6 @@ worker/node_modules/
 09 - Projects/projects/Metamon-Survival-Rogue/
 09 - Projects/projects/Metamon-Survival-Rogue_dup/
 *.db
-!quillan.db
 *.db-shm
 *.db-wal
 *.sqlite3
