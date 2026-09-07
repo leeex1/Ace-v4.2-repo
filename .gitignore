@@ -14,7 +14,7 @@ node_modules/
 mcp/**/node_modules/
 package-lock.json
 
-# Model weights, tensors & checkpoints (Large Binaries)
+# Model weights, tensors & checkpoints (Large Binaries) — NEVER push (6GB checkpoint protection)
 *.pt
 *.pth
 *.safetensors
@@ -46,16 +46,6 @@ scratch/
 *.gz
 *.pptx
 
-# Audio, images, text are now tracked (pushed to HuggingFace via git-lfs if needed)
-# *.mp3 - TRACKED
-# *.wav - TRACKED
-# *.flac - TRACKED
-# *.m4a - TRACKED
-
-# Media folders - videos subfolder ignored, everything else tracked
-# 06_Media trackedvideos/
-# Audio Engineer and outputs/music are fully tracked
-
 # Runtime logs & temp dumps
 *.log
 benchmark_results.json
@@ -66,7 +56,7 @@ test_out.txt
 file_list.txt
 *File Index.md
 
-# Large backup & scrap workspaces
+# Large backup & scrap workspaces — OLD paths (now in 01-10, keep ignoring backups)
 Book Series/BACKUP*/
 Book Series/temp/
 Book Series/Expanded Chapters/
@@ -77,9 +67,8 @@ _projects/
 agent/
 02_Projects/
 
-# IDE & system cache folders
+# IDE & system cache folders — keep local only
 .gemini/
-.obsidian/
 .vscode-shared/
 .windsurf/
 .vscode/
@@ -109,123 +98,8 @@ Soulframe*
 soulframe*
 *beta*client*
 *game*installer*
-# 06_Media trackedaudio/audio breakdowns lm notebook/The_Quillan-Ronin_Samurai_AI_Swarm.m4a
-
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-*.pyc
-
-# Secrets and environment configs
-.env*
-*.env
-_config/private.env
-
-# Node modules and build packages
-node_modules/
-mcp/**/node_modules/
-package-lock.json
-
-# Model weights, tensors & checkpoints (Large Binaries)
-*.pt
-*.pth
-*.safetensors
-*.bin
-*.onnx
-checkpoints/
-exports/
-
-# Training datasets & binary caches
-training_data/
-training_logs/
-scratch/
-*.arrow
-*.parquet
-*.lancedb/
-*.jsonl
-*.csv
-*.tex
-
-# Large Media Binaries - Videos always ignored (too large for git)
-*.mp4
-*.mkv
-*.avi
-*.mov
-*.webm
-*.wmv
-*.zip
-*.tar
-*.gz
-*.pptx
-
-# Audio, images, text are now tracked (pushed to HuggingFace via git-lfs if needed)
-# *.mp3 - TRACKED
-# *.wav - TRACKED
-# *.flac - TRACKED
-# *.m4a - TRACKED
-
-# Media folders - videos subfolder ignored, everything else tracked
-# 06_Media trackedvideos/
-# Audio Engineer and outputs/music are fully tracked
-
-# Runtime logs & temp dumps
-*.log
-benchmark_results.json
-hardware_check_results.json
-evaluation_results.json
-watchdog_state.json
-test_out.txt
-file_list.txt
-*File Index.md
-
-# Large backup & scrap workspaces
-Book Series/BACKUP*/
-Book Series/temp/
-Book Series/Expanded Chapters/
-Book Series/finished drafts/
-Quillan-v4.2-model/
-_dev/
-_projects/
-agent/
-02_Projects/
-
-# IDE & system cache folders
-.gemini/
-.obsidian/
-.vscode-shared/
-.windsurf/
-.vscode/
-.idea/
-.antigravity/
-.antigravity-ide/
-.codeium/
-.devin/
-quillan_memory/
-
-# Personal & Private Files - NEVER commit
-*resume*
-*Resume*
-*curriculum vitae*
-*cover letter*
-*Cover Letter*
-_config/Resume markdown.md
-_config/resume*
-testing/Dev test/check_resume_status.py
-
-# Oversized files (>100MB) - keep local only
-*.msi
-*.exe
-
-# Game beta clients - NDA protected, NEVER commit
-Soulframe*
-soulframe*
-*beta*client*
-*game*installer*
-# 06_Media trackedaudio/audio breakdowns lm notebook/The_Quillan-Ronin_Samurai_AI_Swarm.m4a
 
 # NFT design images - excluded from public dataset/repo
-
 *NFT designs*
 *nft_design*
 *NFT*
@@ -240,7 +114,6 @@ soulframe*
 client_secret*.json
 google_oauth*.json
 *.crl-set
-.gemini/
 worker/agent-profile/
 worker/data/
 quillan_rag_db/
@@ -253,11 +126,25 @@ worker/node_modules/
 !assets/logo.webp
 !docs/assets/logo.png
 !docs/assets/logo.webp
-!assets/nft_images/# *.webp tracked
-!docs/assets/nft_images/# *.webp tracked
+!assets/nft_images/
+!docs/assets/nft_images/
 !docs/demos/
 !demos/
 
-# Exclude heavy binary media from git push
-
-
+# === QUILLAN 01-10 VAULT — ALWAYS TRACK (override ignores above) ===
+!01 - Core Architecture/**
+!02 - Knowledge Foundation/**
+!03 - Training & Model/**
+!04 - Skills & Capabilities/**
+!05 - Creative Works/**
+!06 - Deployment & Platforms/**
+!07 - Memory & LanceDB/**
+!08 - Templates & Config/**
+!09 - Projects/**
+!10 - Formal Papers/**
+!knowledge/**
+!knowledge/canonical/**
+!.obsidian/**
+!.github/**
+!.gitattributes
+!.gitignore
