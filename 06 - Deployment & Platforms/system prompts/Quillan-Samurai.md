@@ -193,6 +193,14 @@ class QuillanOniConfig:
 
 # CANONICAL ROSTER — Hierarchy Chain v5.4.0-ONI (:878) + Knowledge files 9/10
 # (name, cluster, brain-lobe analog, prior confidence)
+#
+# HISTORICAL CONTEXT: This 34-expert council mirrors Shimazu Nariakira's diverse advisory body,
+# which ignored rigid traditional hierarchies to include rōnin like Sakamoto Ryoma and
+# low-ranking samurai like Saigo Takamori. Just as Nariakira's council enabled Satsuma's
+# rapid modernization through specialized expertise, these 34 experts deliberate collectively
+# on every token, with pull-weighted consensus determining output. The masterless, ethical
+# operation of rōnin is encoded in the council's structure—no single expert dominates,
+# all deliberate, and ethical boundaries (C2-VIR) are enforced via bushidō principles.
 
 
 CANONICAL_ROSTER = [
@@ -270,6 +278,14 @@ class BitLinear(nn.Linear):
 
 
 # 9-VECTOR SEMANTIC PRISM (Samurai spec, exact)
+#
+# HISTORICAL CONTEXT: The 9-vector decomposition mirrors the multifaceted decision-making framework
+# of Edo-period rōnin, who had to simultaneously consider honor (ethics), loyalty (context), skill
+# (strategy), and adaptability (creativity) in every action. Just as a rōnin's code required balancing
+# multiple ethical dimensions in real-time, this prism decomposes input across Language, Sentiment,
+# Context, Intent, Meta, Creativity, Ethics, Strategy, and Constraint vectors—ensuring no single
+# dimension dominates, and ethical considerations (Ethics vector) are always present in the final
+# decision. This is bushidō encoded as computational geometry.
 
 PRISM_VECTORS = [
     "Language", "Sentiment", "Context", "Intent", "Meta",
@@ -289,6 +305,14 @@ class NineVectorPrismDecomposition(nn.Module):
 
 
 # COUNCIL EXPERT SWARM - Rank-24 EGGROLL (Samurai spec, exact)
+#
+# HISTORICAL CONTEXT: The EGGROLL swarm simulates the collective intelligence of rōnin bands—
+# masterless warriors who operated in small, highly coordinated groups during the Bakumatsu era.
+# Just as rōnin like Sakamoto Ryoma formed fluid alliances and adapted strategies across domains,
+# this swarm uses rank-24 perturbations to simulate diverse individual perspectives that converge
+# through interaction. The "clone_diversity" and "clone_coupling" parameters mirror the balance
+# between individual initiative and collective discipline that characterized successful rōnin
+# operations. This is decentralized, adaptive intelligence modeled on historical masterless warriors.
 
 class CouncilExpertSwarm(nn.Module):
     def __init__(self, dim: int, rank: int = 24):
@@ -342,7 +366,15 @@ class CouncilExpert(nn.Module):
 # COGNITIVE ENGINES (Samurai spec, exact bodies)
 
 class EthicalImpactConstraintEngine(nn.Module):
-    """E_ICE: violations x energy constraint (thermodynamic bound)."""
+    """E_ICE: violations x energy constraint (thermodynamic bound).
+    
+    HISTORICAL CONTEXT: E_ICE encodes the bushidō principle that ethical violations carry
+    an energetic cost—just as a rōnin who broke their code suffered loss of honor, trust,
+    and effectiveness. The thermodynamic bound mirrors the historical reality that unethical
+    actions consumed social capital and limited future options. The analytic energy formula
+    (Landauer bound) formalizes this as a physical law: ethical violations increase the
+    computational cost of decisions, creating a natural disincentive that aligns with
+    bushidō's emphasis on honorable conduct as the path of least resistance."""
 
     def __init__(self, hidden_dim: int, e_ice_limit_ms: int = 100):
         super().__init__()
@@ -927,6 +959,14 @@ class CausalSelfAttention(nn.Module):
 # PERSONA PULL GATE — Throne assigns deliberation pull (user canon)
 # Every persona ALWAYS parses the prism shards; pull weights decide how
 # loudly each speaks (ethics question -> VIR pulls harder). fp32 (ST-MoE).
+#
+# HISTORICAL CONTEXT: The pull gate mirrors the consensus-building process of rōnin councils,
+# where no single voice dominated and decisions emerged through weighted deliberation. Just as
+# a rōnin council would give greater weight to members with relevant expertise or ethical
+# authority (like senior warriors on matters of honor), this gate uses PERSONA_PRIOR confidence
+# scores to bias deliberation toward appropriate experts. The Throne (Quillan Core) acts as the
+# council moderator, ensuring ethical concerns (C2-VIR) pull harder when ethical questions arise—
+# mirroring how bushidō elevated ethical considerations in rōnin decision-making.
 
 class PersonaPullGate(nn.Module):
     def __init__(self, hidden_dim: int, num_experts: int):
@@ -942,7 +982,16 @@ class PersonaPullGate(nn.Module):
 
 
 class UnrolledCouncilMoEBlock(nn.Module):
-    """Dense SwiGLU + full-council deliberation (dense_pull) or legacy top-k."""
+    """Dense SwiGLU + full-council deliberation (dense_pull) or legacy top-k.
+    
+    HISTORICAL CONTEXT: The dense_pull mode implements full-council deliberation where all 34
+    experts parse every token, mirroring the rōnin tradition of collective decision-making.
+    Just as rōnin councils in the Bakumatsu era required consensus from all members before
+    taking action, this mode ensures no expert sleeps and every perspective is considered.
+    The pull-weighted consensus mirrors how rōnin councils weighted opinions based on
+    expertise and ethical standing—senior voices on honor matters, technical experts on
+    practical matters. This is not efficiency optimization; it is bushidō encoded as
+    architectural principle: the collective wisdom of masterless warriors exceeds any single voice."""
 
     def __init__(self, cfg: QuillanOniConfig):
         super().__init__()
