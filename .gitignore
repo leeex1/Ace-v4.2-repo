@@ -56,7 +56,7 @@ test_out.txt
 file_list.txt
 *File Index.md
 
-# Large backup & scrap workspaces — OLD paths (now in 01-10, keep ignoring backups)
+# Large backup & scrap workspaces — OLD paths
 Book Series/BACKUP*/
 Book Series/temp/
 Book Series/Expanded Chapters/
@@ -99,12 +99,12 @@ soulframe*
 *beta*client*
 *game*installer*
 
-# NFT design images - excluded from public dataset/repo
+# NFT design images - excluded
 *NFT designs*
 *nft_design*
 *NFT*
 
-# Security, Credentials, and Local Profiles (NEVER COMMIT OR UPLOAD)
+# Security, Credentials, and Local Profiles
 .env
 .env.*
 *.key
@@ -133,18 +133,36 @@ worker/node_modules/
 
 # === QUILLAN 01-10 VAULT — ALWAYS TRACK (override ignores above) ===
 !01 - Core Architecture/**
-!02 - Knowledge Foundation/**
-!03 - Training & Model/**
+!02 - Knowledge Foundation/knowledge/canonical/**
+!02 - Knowledge Foundation/*.md
+!02 - Knowledge Foundation/00 - Meta/*.md
+!03 - Training & Model/*.py
+!03 - Training & Model/*.md
+!03 - Training & Model/src/**
 !04 - Skills & Capabilities/**
-!05 - Creative Works/**
-!06 - Deployment & Platforms/**
-!07 - Memory & LanceDB/**
+!05 - Creative Works/*.md
+!05 - Creative Works/*.html
+!06 - Deployment & Platforms/Platforms/**
+!07 - Memory & LanceDB/*.md
+!07 - Memory & LanceDB/sessions/**
 !08 - Templates & Config/**
-!09 - Projects/**
+!09 - Projects/projects/**
 !10 - Formal Papers/**
-!knowledge/**
 !knowledge/canonical/**
-!.obsidian/**
 !.github/**
 !.gitattributes
 !.gitignore
+
+# Re-ignore caches INSIDE vault (even though vault is allowed)
+**/__pycache__/**
+**/venv/**
+**/.venv/**
+**/node_modules/**
+**/offload/**
+**/csrc/build/**
+**/*.pt
+**/*.pth
+**/*.safetensors
+**/*.bin
+**/*.lancedb/**
+**/quillan_memory/**
