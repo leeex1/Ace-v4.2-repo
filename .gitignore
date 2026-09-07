@@ -62,21 +62,28 @@ Book Series/temp/
 Book Series/Expanded Chapters/
 Book Series/finished drafts/
 Quillan-v4.2-model/
+_archive/
+_config/
 _dev/
 _projects/
 agent/
 02_Projects/
 
 # IDE & system cache folders — keep local only
+.agents/
+.antigravity/
+.antigravity-ide/
+.claude/
+.codeium/
+.devcontainer/
+.devin/
 .gemini/
+.obsidian/
 .vscode-shared/
 .windsurf/
 .vscode/
 .idea/
-.antigravity/
-.antigravity-ide/
 .codeium/
-.devin/
 quillan_memory/
 
 # Personal & Private Files - NEVER commit
@@ -122,29 +129,28 @@ extension/
 worker/node_modules/
 
 # Web Portal Assets (Always Tracked for GitHub Pages)
-!assets/logo.png
-!assets/logo.webp
-!docs/assets/logo.png
-!docs/assets/logo.webp
-!assets/nft_images/
-!docs/assets/nft_images/
-!docs/demos/
-!demos/
+!assets/**
+!docs/**
+!demos/**
+!audio/**
+!gallery/**
+!images/**
+!main-images/**
+!06_Media/**
+!nn_visualizer.html
+!nft_data.json
+!.nojekyll
 
 # === QUILLAN 01-10 VAULT — ALWAYS TRACK (override ignores above) ===
 !01 - Core Architecture/**
 !02 - Knowledge Foundation/knowledge/canonical/**
 !02 - Knowledge Foundation/*.md
-!02 - Knowledge Foundation/00 - Meta/*.md
-!03 - Training & Model/*.py
-!03 - Training & Model/*.md
 !03 - Training & Model/src/**
 !04 - Skills & Capabilities/**
-!05 - Creative Works/*.md
-!05 - Creative Works/*.html
+!05 - Creative Works/**
 !06 - Deployment & Platforms/Platforms/**
-!07 - Memory & LanceDB/*.md
 !07 - Memory & LanceDB/sessions/**
+!07 - Memory & LanceDB/*.md
 !08 - Templates & Config/**
 !09 - Projects/projects/**
 !10 - Formal Papers/**
@@ -153,7 +159,7 @@ worker/node_modules/
 !.gitattributes
 !.gitignore
 
-# Re-ignore caches INSIDE vault (even though vault is allowed)
+# Re-ignore caches & legacy duplicates INSIDE vault (even though vault is allowed)
 **/__pycache__/**
 **/venv/**
 **/.venv/**
@@ -164,5 +170,69 @@ worker/node_modules/
 **/*.pth
 **/*.safetensors
 **/*.bin
+**/*.gguf
+**/*.arrow
+**/*.parquet
+**/*.jsonl
+**/*.mp4
+**/*.mkv
+**/*.avi
+**/*.mov
+**/*.webm
+**/*.zip
+**/*.tar
+**/*.gz
+**/*.exe
+**/*.msi
+**/checkpoints/**
+**/exports/**
+**/training_data/**
+**/training_logs/**
+**/*Soulframe*
+**/*soulframe*
 **/*.lancedb/**
 **/quillan_memory/**
+**/Book Series/*.mp3
+**/Book Series/BACKUP*/**
+02 - Knowledge Foundation/knowledge/legacy/**
+09 - Projects/projects/**/BACKUP*/
+**/.devin/**
+**/.claude/**
+**/.agents/**
+**/.gemini/**
+**/.gitnexus/**
+**/.obsidian/**
+**/.vscode/**
+**/.vscode-shared/**
+**/.windsurf/**
+**/.codeium/**
+**/_config/**
+**/_projects/**
+**/_archive/**
+**/_dev/**
+**/warframe models/**
+**/*resume*
+**/*Resume*
+**/*cover letter*
+**/*Cover Letter*
+**/.env
+**/.env.*
+**/*.key
+**/*.pem
+**/*.secret
+09 - Projects/projects/quillan_quantum_ide/
+09 - Projects/projects/Nextverse-protype-app--main/
+09 - Projects/projects/extension/
+09 - Projects/projects/worker/
+09 - Projects/projects/testing/Validation-test-kit/
+09 - Projects/projects/testing/Quillan-Ronin-chrome-extension/
+09 - Projects/projects/Metamon-Survival-Rogue/
+09 - Projects/projects/Metamon-Survival-Rogue_dup/
+*.db
+!quillan.db
+*.db-shm
+*.db-wal
+*.sqlite3
+**/quillan_rag_db/**
+**/thoughts.lance/**
+**/Quillans personal dev logs/Build history files and more/**
