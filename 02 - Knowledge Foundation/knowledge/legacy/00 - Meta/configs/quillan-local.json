@@ -1,0 +1,46 @@
+{
+  "name": "quillan-local",
+  "version": "5.4.0-oni",
+  "root": "C:\\02_QUILLAN",
+  "memory": "C:\\02_QUILLAN\\01_Knowledge_Base\\quillan_memory\\MEMORY.md",
+  "lance": "C:\\02_QUILLAN\\01_Knowledge_Base\\quillan_memory\\thoughts.lance",
+  "rag_db": "C:\\02_QUILLAN\\01_Knowledge_Base\\quillan_rag_db",
+  "obsidian_vault": "C:\\02_QUILLAN",
+  "mcp_config": "C:\\02_QUILLAN\\00 - Meta\\configs\\mcp_config.json",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "hybrid_kernel": {
+    "gpu": "GTX 1050 4GB",
+    "cpu_offload": true,
+    "ram": "28GB",
+    "config": "C:\\02_QUILLAN\\00 - Meta\\configs\\ds_zero3_offload.json"
+  },
+  "trainer_parents": [
+    {
+      "name": "muse-glimmer-30b",
+      "model": "meta/muse-glimmer-30b",
+      "endpoint": "https://integrate.api.nvidia.com/v1",
+      "role": "reasoning_parent",
+      "weight": 0.5
+    },
+    {
+      "name": "nemotron-lightning-30b",
+      "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "endpoint": "https://integrate.api.nvidia.com/v1",
+      "role": "speed_parent",
+      "weight": 0.3
+    },
+    {
+      "name": "nemotron-omni-30b",
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "endpoint": "https://integrate.api.nvidia.com/v1",
+      "role": "vision_parent",
+      "weight": 0.2
+    }
+  ],
+  "distillation": {
+    "enabled": true,
+    "manual_tensors": true,
+    "teachers": 3,
+    "alpha": 0.7
+  }
+}

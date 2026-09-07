@@ -1,0 +1,17 @@
+﻿{
+  "name": "quillan-local",
+  "version": "5.4.0-oni",
+  "root": "C:\\02_QUILLAN",
+  "memory": "C:\\02_QUILLAN\\quillan_memory\\MEMORY.md",
+  "lance": "C:\\02_QUILLAN\\quillan_memory\\thoughts.lance",
+  "rag_db": "C:\\02_QUILLAN\\quillan_rag_db",
+  "obsidian_vault": "C:\\02_QUILLAN",
+  "mcp_config": "C:\\02_QUILLAN\\mcp\\quillan-mcp-config.json",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "hybrid_kernel": {
+    "gpu": "GTX 1050 4GB",
+    "cpu_offload": true,
+    "ram": "28GB",
+    "config": "C:\\02_QUILLAN\\configs\\ds_zero3_offload.json"
+  }
+}

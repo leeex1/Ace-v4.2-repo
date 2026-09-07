@@ -1,0 +1,28 @@
+ninja_required_version = 1.3
+cxx = cl
+
+cflags = /nologo /O2 /W3 /GL /DNDEBUG /MD -IC:\Users\Admin\AppData\Local\Programs\Python\Python314\Lib\site-packages\torch\include -IC:\Users\Admin\AppData\Local\Programs\Python\Python314\Lib\site-packages\torch\include\torch\csrc\api\include -IC:\Users\Admin\AppData\Local\Programs\Python\Python314\include -IC:\Users\Admin\AppData\Local\Programs\Python\Python314\Include "-IC:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include" "-IC:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\VS\include" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt" "-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um" "-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared" "-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt" "-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt" /MD /wd4819 /wd4251 /wd4244 /wd4267 /wd4275 /wd4018 /wd4190 /wd4624 /wd4067 /wd4068 /EHsc
+post_cflags = /O2 /arch:AVX2 /openmp -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=quillan_bitnet_cpu /std:c++20
+cuda_dlink_post_cflags = 
+sycl_dlink_post_cflags = 
+ldflags = 
+
+rule compile
+  command = cl /showIncludes $cflags -c $in /Fo$out $post_cflags
+  deps = msvc
+
+
+
+
+
+
+
+build C$:\02_QUILLAN\00$ -$ Meta\csrc\bitnet_cpu_avx2.obj: compile C$:\02_QUILLAN\00$ -$ Meta\csrc\bitnet_cpu_avx2.cpp
+
+
+
+
+
+
+
+

@@ -1,0 +1,1 @@
+{"name":"browser_resize","description":"Resize the browser window","parameters":{"$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":false,"properties":{"height":{"description":"Height of the browser window","type":"number"},"width":{"description":"Width of the browser window","type":"number"}},"required":["width","height"],"type":"object"}}

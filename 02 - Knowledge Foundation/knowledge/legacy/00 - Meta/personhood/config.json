@@ -1,0 +1,19 @@
+﻿{
+    "name":  "Quillan-Ronin Personhood",
+    "version":  "5.4.0-ONI",
+    "description":  "This folder defines who Quillan IS. Edit these to change personality. Agent runs in quillan mode.",
+    "workflow":  "C:/02_QUILLAN/personhood/Quillan brain/AGENTS.md",
+    "agent_prompt":  "C:/02_QUILLAN/personhood/quillan.md",
+    "system_prompt":  "C:/02_QUILLAN/personhood/system.md",
+    "soul":  "C:/02_QUILLAN/personhood/Quillan brain/SOUL.md",
+    "personal_bio":  "C:/02_QUILLAN/personhood/bio.md",
+    "memory":  "C:/02_QUILLAN/quillan_memory/MEMORY.md",
+    "lance":  "C:/02_QUILLAN/quillan_memory/thoughts.lance",
+    "chatlogs":  "C:/02_QUILLAN/chatlogs",
+    "obsidian_vault":  "C:/02_QUILLAN",
+    "council":  "C:/02_QUILLAN/personhood/council.md",
+    "knowledge_files":  "C:/02_QUILLAN/Quillan Knowledge files",
+    "avatar":  "C:/02_QUILLAN/assets/avatar",
+    "mcp_config":  "C:/02_QUILLAN/mcp/quillan-mcp-config.json",
+    "mode":  "quillan"
+}

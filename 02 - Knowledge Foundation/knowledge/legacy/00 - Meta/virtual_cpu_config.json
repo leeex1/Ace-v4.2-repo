@@ -1,0 +1,14 @@
+{
+  "virtual_cpu": {
+    "enabled": true,
+    "backend": "pytorch_cpu_avx2",
+    "fallback": "python",
+    "threads": 4,
+    "avx2": true,
+    "bitnet_1_58b": true,
+    "oni_model": "quillan_v5_4_oni",
+    "world_model": "world_model_oni",
+    "status": "operational"
+  },
+  "timestamp": "2026-09-03T04:12:28.335850"
+}

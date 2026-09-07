@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "mode": "hybrid",
+  "updated_by": "toolkit_benchmark.py",
+  "host": {
+    "cpu": "Intel i5-7500, 4 cores, AVX2",
+    "gpu": "GTX 1050 4GB (sm_61 \u2014 NOT usable via stock torch cu130, see cuda_status)",
+    "ram_gb": 28,
+    "ram_min_free_gb": 8.0
+  },
+  "cuda_status": {
+    "torch_cuda": "13.0",
+    "nvcc": "11.8",
+    "sm_61_supported_by_torch": false,
+    "policy": "no stock-torch CUDA compute until torch downgrade (cu117-era) or custom sm_61 kernel build with matched toolkit"
+  },
+  "torch": {
+    "num_threads": 4,
+    "num_interop_threads": 2,
+    "matmul_precision": "high",
+    "cudnn_benchmark": true
+  },
+  "offload": {
+    "root": "C:\\02_QUILLAN\\00 - Meta\\offload",
+    "activations": "C:\\02_QUILLAN\\00 - Meta\\offload\\activations",
+    "optimizer": "C:\\02_QUILLAN\\00 - Meta\\offload\\optimizer",
+    "pin_memory": true
+  },
+  "vgpu": {
+    "split_ratio_gpu": 0.0,
+    "note": "0.0 = all-CPU until CUDA path is proven by benchmark (no simulated GPU numbers)"
+  },
+  "routing": {
+    "train_compute": "cpu",
+    "train_optimizer": "cpu",
+    "distill_teachers": "cloud_nim",
+    "distill_student": "cpu",
+    "inference": "cpu (follows input device; cuda only after cuda_status flips)",
+    "rag_embed": "cpu"
+  },
+  "strategy": {
+    "seq_len_le_512": "dp_only",
+    "seq_len_le_2048": "dp_gc",
+    "seq_len_le_8192": "dp_sp_memo",
+    "seq_len_gt_8192": "dp_sp_cpu_offload"
+  }
+}

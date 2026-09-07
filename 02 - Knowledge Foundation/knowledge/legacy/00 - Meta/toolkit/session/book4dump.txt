@@ -1,0 +1,12 @@
+POS 134425: LEFT=[ng the port rib that will] HIT=[扩大 ] RIGHT=[under the Rift's pressure]
+  HEX: 0x6269 0x5927 0x20
+POS 331510: LEFT=[ The sight was not merely] HIT=[å] RIGHT=[£®è§‚ — it was *fundament]
+  HEX: 0xe5
+POS 331513: LEFT=[e sight was not merelyå£®] HIT=[è] RIGHT=[§‚ — it was *fundamental*]
+  HEX: 0xe8
+POS 421609: LEFT=[ted the system's scanning] HIT=[脉冲 ] RIGHT=[and bought them precious ]
+  HEX: 0x8109 0x51b2 0x20
+POS 432197: LEFT=[ars were notched with the] HIT=[记忆 ] RIGHT=[of old wounds — the tear ]
+  HEX: 0x8bb0 0x5fc6 0x20
+POS 618753: LEFT=[and never once asked what] HIT=[她 ] RIGHT=[had been born. "He was al]
+  HEX: 0x5979 0x20

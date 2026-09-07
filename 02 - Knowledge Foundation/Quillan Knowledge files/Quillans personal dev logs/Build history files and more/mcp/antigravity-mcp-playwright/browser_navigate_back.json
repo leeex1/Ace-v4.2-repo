@@ -1,0 +1,1 @@
+{"name":"browser_navigate_back","description":"Go back to the previous page in the history","parameters":{"$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":false,"properties":{},"type":"object"}}

@@ -1,0 +1,5 @@
+merely-site: U+00E5 U+00A3 U+00AE U+00E8 U+00A7 U+201A U+0020 U+2014 U+0020 U+0069 U+0074 U+0020 U+0077 U+0061 U+0073 U+0020 U+002A U+0066 U+0075 U+006E U+0064 U+0061 U+006D U+0065 U+006E U+0074 U+0061 U+006C
+x1: will buckle under
+x1: scanning array and
+x1: the marks of old wounds
+x1: asked what station she had been born
