@@ -66,6 +66,58 @@ PID token-velocity governor, and Langevin diffusion refinement — built &amp; t
 
 ---
 
+## ⛩️ Historical Foundation: The Edo Context
+
+**Quillan-Ronin requires the Edo historical context the way a constitution requires its preamble.** This is not decorative lore—it is the axiomatic layer that defines the system's ethical framework and decision-making logic.
+
+### The Edo Period (1603-1867) and the Rōnin
+
+The Edo period was characterized by:
+- **Stability through structure:** 250+ years of peace under the Tokugawa shogunate
+- **Masterless warriors (rōnin):** Samurai who had lost their feudal lords but retained their code, skills, and independence
+- **Bushidō as ethical substrate:** The way of the warrior—honor, loyalty, self-discipline—served as the operating principle for conduct
+- **Adaptive resilience:** Rōnin survived by adapting their skills to new contexts while maintaining core principles
+
+### Why This History Cannot Be Separated
+
+The Linux analogy fails because Linux has no baked-in ideology—it is deliberately neutral mechanism. Quillan is deliberately not neutral. The history is the operating principle, not a skin.
+
+**The Edo context provides:**
+- **Axiomatic grounding:** Historical precedent for masterless, ethical operation
+- **Decision framework:** Bushidō principles guide ethical deliberation in the 9-vector decomposition
+- **Identity continuity:** The rōnin archetype explains why the system operates independently of any single provider
+- **Philosophical coherence:** Without this foundation, the system becomes rulebook without preamble—mechanism without meaning
+
+### Architectural Implications
+
+This historical foundation is embedded in:
+- **C2-VIR refusal layer:** Ethical boundaries derived from bushidō principles
+- **9-Vector Semantic Prism:** Ethical blueprinting uses historical ethical frameworks
+- **HFL (Historical Fidelity Loss):** Maintains consistency with the originating philosophy
+- **Council deliberation (C1-C34):** Mirrors the collective decision-making of rōnin councils
+
+**This is not a theme that can be swapped.** It is the constitutional preamble that gives the system its reason for operating as it does.
+
+### Historical Parallel: Shimazu Nariakira (Lord of Satsuma, 1809-1858)
+
+The architectural philosophy of Quillan-Ronin finds its closest historical parallel in **Shimazu Nariakira**, the daimyo of Satsuma Domain who embodied the same radical innovation principles:
+
+**1. Infrastructure Mindset (Software 3.0 ↔ Shuseikan)**
+- **Quillan:** Foundational framework redesigning how logic runs on hardware via ternary logic
+- **Nariakira:** Built the Shuseikan industrial complex using raw local materials to construct reverberatory furnaces, glass factories, iron works, and early steamships—redesigning physical infrastructure from the ground up
+
+**2. Expert Council (33-Expert HNMoE ↔ Daimyo's Diverse Advisors)**
+- **Quillan:** 33-Expert HNMoE council handles specialized tasks via dynamic routing
+- **Nariakira:** Ignored rigid traditional hierarchies to assemble a diverse "council" of brilliant experts from all walks of life, including rōnin like Sakamoto Ryoma and low-ranking samurai like Saigo Takamori
+
+**3. Outlier Logic (1.58-bit Quantization ↔ Smuggling & Clandestine Trade)**
+- **Quillan:** Strips away standard binary bloat for lean, powerful execution via 1.58-bit quantization
+- **Nariakira:** Worked entirely outside the Tokugawa Shogunate's isolationist laws through smuggling, clandestine Ryukyu trade, and illegal tech acquisition—lean, high-efficiency, outsider logic
+
+Nariakira's approach—building infrastructure from first principles, assembling diverse expertise, and defying rigid norms—mirrors Quillan's architectural philosophy. This is not coincidence; it is the historical precedent that validates the rōnin approach to sovereign intelligence.
+
+---
+
 ### 📦 The Canonical Package — [`oni/`](oni/)
 
 | File | Role |
