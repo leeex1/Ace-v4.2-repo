@@ -101,8 +101,66 @@ body{
 }
 #node-tooltip h4{font-family:'Orbitron';color:#ffd700;font-size:12px;margin-bottom:5px;display:flex;align-items:center;gap:6px;}
 
+#architecture-ribbon {
+  position: fixed;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(4, 8, 18, 0.92);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 8px;
+  padding: 5px 12px;
+  z-index: 22;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+  max-width: 96vw;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.ribbon-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: #94a3b8;
+  padding: 4px 9px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ribbon-chip:hover {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.12);
+  border-color: rgba(0, 240, 255, 0.4);
+  transform: translateY(-1px);
+}
+.ribbon-chip.active {
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.16);
+  border-color: #ffd700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.35);
+}
+.chip-num {
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.18);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.ribbon-arrow {
+  color: rgba(0, 240, 255, 0.4);
+  font-size: 10px;
+}
+
 @media (max-width:850px){
-  #left-panel{display:none;}
+  #left-panel{width:180px; font-size:9px;}
   #right-panel{display:none;}
 }
 </style>
@@ -123,6 +181,22 @@ body{
   <div style="font-size:10.5px; color:#ffd700; font-family:'Orbitron'; padding-right:85px;">
     [3D ORBIT & HOLOGRAPHIC RAYCAST ACTIVE]
   </div>
+</div>
+
+<div id="architecture-ribbon">
+  <div class="ribbon-chip active" onclick="focusLayer(0)"><span class="chip-num">L1</span> Dual Ingest Bridge</div>
+  <div class="ribbon-arrow">→</div>
+  <div class="ribbon-chip" onclick="focusLayer(1)"><span class="chip-num">L2</span> 9-Vector Prism</div>
+  <div class="ribbon-arrow">→</div>
+  <div class="ribbon-chip" onclick="focusLayer(2)"><span class="chip-num">L3</span> Complexity Router</div>
+  <div class="ribbon-arrow">→</div>
+  <div class="ribbon-chip" onclick="focusLayer(3)"><span class="chip-num">L4</span> Top-4 Gating</div>
+  <div class="ribbon-arrow">→</div>
+  <div class="ribbon-chip" onclick="focusLayer(4)"><span class="chip-num">L5</span> 34-Council Swarms</div>
+  <div class="ribbon-arrow">→</div>
+  <div class="ribbon-chip" onclick="focusLayer(5)"><span class="chip-num">L6</span> Flash Diffusion</div>
+  <div class="ribbon-arrow">→</div>
+  <div class="ribbon-chip" onclick="focusLayer(6)"><span class="chip-num">L7</span> Sovereign Head</div>
 </div>
 
 <div id="left-panel">
@@ -181,7 +255,7 @@ const scene = new THREE.Scene();
 scene.fog = new THREE.FogExp2(0x020408, 0.016);
 
 const camera = new THREE.PerspectiveCamera(54, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 3, 25);
+camera.position.set(0, 3.5, 33);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -334,10 +408,53 @@ LAYERS.forEach((layer, lIdx) => {
     layerNodes.push(core);
     allNodeMeshes.push(core);
   }
+
+  // 3D Holographic Layer Label Billboard Sprite
+  const labelSprite = createLayerLabelSprite(layer.name, `L${lIdx+1} · ${layer.count} Nodes`, `#${layer.color.toString(16).padStart(6, '0')}`);
+  const topY = Math.max(6.2, startY + (layer.count - 1) * spacing + 2.4);
+  labelSprite.position.set(layer.x, topY, 0);
+  scene.add(labelSprite);
+
   scene.add(grp);
   layerGroups.push(grp);
   nodes.push(layerNodes);
 });
+
+// Helper to generate glowing 3D holographic text billboard sprites
+function createLayerLabelSprite(title, sub, colorHex) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 128;
+  const ctx = canvas.getContext('2d');
+  
+  ctx.fillStyle = 'rgba(4, 10, 24, 0.88)';
+  ctx.strokeStyle = colorHex;
+  ctx.lineWidth = 4;
+  if (ctx.roundRect) {
+    ctx.roundRect(8, 8, 496, 112, 18);
+  } else {
+    ctx.rect(8, 8, 496, 112);
+  }
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.font = 'bold 34px "Orbitron", sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(title.toUpperCase(), 256, 44);
+
+  ctx.font = '600 22px "JetBrains Mono", monospace';
+  ctx.fillStyle = colorHex;
+  ctx.fillText(sub, 256, 86);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.minFilter = THREE.LinearFilter;
+  const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.95 });
+  const sprite = new THREE.Sprite(mat);
+  sprite.scale.set(6.8, 1.7, 1);
+  return sprite;
+}
 
 // Synaptic Laser Conduits with Streamer Photon Trains
 const connections = [];
@@ -480,9 +597,12 @@ window.addEventListener('click', (e) => {
     const pos = target.userData.root.position;
     smoothTransition(pos.x, pos.y, pos.z + 7, pos.x, pos.y, pos.z);
     
-    // Highlight layer button
+    // Highlight layer button & ribbon chip
     document.querySelectorAll('.stage-btn').forEach((b, i) => {
       b.classList.toggle('active', i === target.userData.layerIdx);
+    });
+    document.querySelectorAll('.ribbon-chip').forEach((c, i) => {
+      c.classList.toggle('active', i === target.userData.layerIdx);
     });
   }
 });
@@ -496,10 +616,11 @@ function smoothTransition(cx, cy, cz, tx, ty, tz) {
 }
 
 function resetCamera() {
-  smoothTransition(0, 3, 25, 0, 0, 0);
+  smoothTransition(0, 3.5, 33, 0, 0, 0);
   controls.autoRotate = true;
   document.getElementById('btn-rotate').innerText = '🔄 Orbit: ON';
   document.querySelectorAll('.stage-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.ribbon-chip').forEach(c => c.classList.remove('active'));
 }
 
 function setCameraAngle(angle) {
@@ -530,10 +651,13 @@ function togglePulse() {
 function focusLayer(idx) {
   if (LAYERS[idx]) {
     const lx = LAYERS[idx].x;
-    smoothTransition(lx, 2, 10, lx, 0, 0);
+    smoothTransition(lx, 2, 11, lx, 0, 0);
     
     document.querySelectorAll('.stage-btn').forEach((b, i) => {
       b.classList.toggle('active', i === idx);
+    });
+    document.querySelectorAll('.ribbon-chip').forEach((c, i) => {
+      c.classList.toggle('active', i === idx);
     });
   }
 }
