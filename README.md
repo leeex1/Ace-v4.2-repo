@@ -118,13 +118,13 @@ Nariakira's approach—building infrastructure from first principles, assembling
 
 ---
 
-### 📦 The Canonical Package — [`oni/`](oni/)
+### 📦 The Canonical Package — [`09 - Projects/projects/oni/`](09%20-%20Projects/projects/oni/)
 
 | File | Role |
 | :--- | :--- |
-| [`quillan_v5_4_oni.py`](oni/quillan_v5_4_oni.py) | The model — Throne + Council C1–C34 + all cognitive engines |
-| [`quillan_tokenizer_unified.py`](oni/quillan_tokenizer_unified.py) + [`tokenizer.json`](oni/tokenizer.json) | Unified custom BPE 50,257 (EOS=0) — modular domains, legacy-ID translation |
-| [`train_oni.py`](oni/train_oni.py) | Trainer — aux losses, governor wiring, weight EMA, resume |
+| [`quillan_v5_4_oni.py`](09%20-%20Projects/projects/oni/quillan_v5_4_oni.py) | The model — Throne + Council C1–C34 + all cognitive engines |
+| [`quillan_tokenizer_unified.py`](09%20-%20Projects/projects/oni/quillan_tokenizer_unified.py) + [`tokenizer.json`](09%20-%20Projects/projects/oni/tokenizer.json) | Unified custom BPE 50,257 (EOS=0) — modular domains, legacy-ID translation |
+| [`train_oni.py`](09%20-%20Projects/projects/oni/train_oni.py) | Trainer — aux losses, governor wiring, weight EMA, resume |
 | [`LINEAGE.md`](LINEAGE.md) | <b>Canonical version registry</b> — one counter, full organ-by-organ lineage |
 
 ---
@@ -4701,7 +4701,7 @@ Quillan-v5.3.1/                                   # Root directory for the Quill
 
 ```markdown
     Current: v5.4.0-oni - Unified standalone model
-    - Canonical build: oni/ package + LINEAGE.md registry
+    - Canonical build: 09 - Projects/projects/oni/ package + LINEAGE.md registry
     - Unified custom BPE tokenizer (fixes all legacy vocab mismatches)
     - Previous: v5.3.1 - Ronin (prompt era)
 
